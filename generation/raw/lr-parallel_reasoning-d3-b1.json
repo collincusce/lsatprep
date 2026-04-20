@@ -1,0 +1,530 @@
+[
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-01",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus uses a nested conditional chain (A→B, B→C, A; ∴C) embedded in dense medical prose. Answer choices share premise counts but differ in conditional direction or conclusion strength, requiring students to track all four structural criteria simultaneously.",
+    "stimulus": "Every patient who receives immunosuppressive therapy following a transplant must be monitored for opportunistic infections. Any patient monitored for opportunistic infections will have blood cultures drawn weekly. Harmon received immunosuppressive therapy following his recent transplant. Therefore, Harmon will have blood cultures drawn weekly.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All contracts signed under duress are voidable. Any voidable contract may be rescinded by the aggrieved party. The agreement Lena signed was signed under duress. Therefore, Lena may rescind the agreement."
+      },
+      {
+        "label": "B",
+        "text": "Most investors who hold volatile assets diversify their portfolios. Anyone who diversifies holds bonds. Petra holds volatile assets. Therefore, Petra probably holds bonds."
+      },
+      {
+        "label": "C",
+        "text": "Any musician trained in counterpoint understands harmonic tension. Marcus understands harmonic tension. Therefore, Marcus was trained in counterpoint."
+      },
+      {
+        "label": "D",
+        "text": "Every species that loses habitat will decline in population. The spotted warbler has declined in population. Therefore, the spotted warbler must have lost habitat."
+      },
+      {
+        "label": "E",
+        "text": "All employees who miss three consecutive shifts are placed on probation. Yolanda was placed on probation. Therefore, Yolanda must have missed three consecutive shifts."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: All A→B; All B→C; x is A; ∴ x is C. Choice A: All A→B (contracts signed under duress are voidable); All B→C (voidable contracts may be rescinded); Lena's contract is A; ∴ Lena may C. Identical three-premise conditional chain with universal quantifiers and a particular instantiation. Conclusion strength ('may rescind') matches the permitted/required language exactly.",
+      "A": "Correct. Perfect structural match: universal conditional chain (A→B, B→C), particular instantiation, valid conclusion.",
+      "B": "Strength-shift trap. Uses 'most' and 'probably' rather than universal quantifiers, changing the argument from deductive to inductive and weakening the conclusion.",
+      "C": "Affirming-the-consequent trap. Two-premise structure with the wrong conditional direction: knows B, concludes A, which is invalid and structurally unlike the stimulus.",
+      "D": "Modus tollens trap (invalid version). Concludes from effect back to cause using 'must have,' reversing the conditional direction of the stimulus.",
+      "E": "Same trap as D — affirms the consequent. From 'placed on probation' it concludes the antecedent, the opposite conditional direction from the stimulus."
+    },
+    "tags": [
+      "conditional_chain",
+      "universal_instantiation",
+      "medicine",
+      "law"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-02",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Disjunctive syllogism stimulus with a negated universal embedded in environmental prose. Distractors use apparent disjunctions but shift quantifier strength or introduce a third disjunct, requiring careful formalization.",
+    "stimulus": "Either the algal bloom in Lake Merin was caused by agricultural runoff or it was caused by thermal stratification. The bloom cannot have been caused by thermal stratification, because water temperature records show the lake was fully mixed throughout the season. Therefore, the algal bloom was caused by agricultural runoff.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The budget shortfall resulted either from reduced tax revenue or from increased expenditures. Increased expenditures did not occur, since all departmental budgets were frozen. Therefore, the shortfall resulted from reduced tax revenue."
+      },
+      {
+        "label": "B",
+        "text": "The server failure was caused either by a hardware fault, a software bug, or a power surge. There was no power surge and no software bug. Therefore, the server failure was caused by a hardware fault."
+      },
+      {
+        "label": "C",
+        "text": "The decline in bee populations is probably due to pesticide exposure or habitat loss. Habitat loss is the more likely explanation. Therefore, habitat loss is probably the primary cause."
+      },
+      {
+        "label": "D",
+        "text": "If the disease spread through contaminated water, then the downstream villages would have been affected. The downstream villages were not affected. Therefore, the disease did not spread through contaminated water."
+      },
+      {
+        "label": "E",
+        "text": "Either the artifact is a forgery or it dates to the Ming dynasty. Experts have authenticated it as genuine. Therefore, the artifact dates to the Ming dynasty."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A ∨ B; ¬B (established by evidence); ∴ A. Choice A: A ∨ B (reduced revenue or increased expenditures); ¬B (expenditures did not increase, established by evidence); ∴ A. Exact two-disjunct disjunctive syllogism with an evidentially grounded negation of one disjunct.",
+      "A": "Correct. Two-disjunct exclusive disjunction, one disjunct eliminated by positive evidence, valid conclusion of the remaining disjunct.",
+      "B": "Wrong premise count trap. Uses three disjuncts (A ∨ B ∨ C) rather than two, requiring elimination of two disjuncts. Structurally distinct from the stimulus.",
+      "C": "Strength-shift trap. Uses 'probably' and comparative likelihood rather than categorical elimination, making the argument inductive rather than deductive.",
+      "D": "Different argument form trap. This is modus tollens (A→B; ¬B; ∴¬A), not a disjunctive syllogism. No disjunction appears.",
+      "E": "Same form but the negation is established differently — 'experts authenticated it as genuine' eliminates 'forgery' not by direct evidence of ¬A but by establishing the contradictory of A through testimony. Structurally close but the elimination method relies on an implicit double-negation rather than a direct factual claim, making A a cleaner structural match."
+    },
+    "tags": [
+      "disjunctive_syllogism",
+      "environmental_science",
+      "policy"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-03",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Contrapositive stimulus (modus tollens) in an ethics context. Multiple distractors use valid argument forms (modus ponens, disjunctive syllogism) that share premise-count but differ in conditional direction, punishing students who do not check direction.",
+    "stimulus": "If a public official acts in a manner that serves only private interests, then that official has violated the public trust. The inspector general did not violate the public trust. Therefore, the inspector general did not act in a manner that serves only private interests.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "If a compound is soluble in water, it will dissolve when placed in an aqueous solution. This compound did not dissolve when placed in an aqueous solution. Therefore, this compound is not soluble in water."
+      },
+      {
+        "label": "B",
+        "text": "If a regulation is enacted without public comment, it is procedurally invalid. This regulation was enacted without public comment. Therefore, this regulation is procedurally invalid."
+      },
+      {
+        "label": "C",
+        "text": "If a firm engages in predatory pricing, its competitors will suffer losses. Ralston's competitors have suffered losses. Therefore, Ralston has engaged in predatory pricing."
+      },
+      {
+        "label": "D",
+        "text": "Either a treaty is ratified by the senate or it lacks legal force. This treaty lacks legal force. Therefore, this treaty was not ratified by the senate."
+      },
+      {
+        "label": "E",
+        "text": "If an investment carries high risk, a prudent advisor will disclose that risk to clients. If a prudent advisor discloses risk to clients, the clients can make informed decisions. Fenchurch carries high-risk investments. Therefore, Fenchurch's clients can make informed decisions."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A→B; ¬B; ∴¬A (modus tollens). Choice A: If soluble→dissolves; did not dissolve (¬B); ∴ not soluble (¬A). Perfect structural match: single conditional premise, denial of consequent, denial of antecedent as conclusion.",
+      "A": "Correct. Modus tollens: A→B; ¬B; ∴¬A. Two premises, same conditional direction, same conclusion strength.",
+      "B": "Modus ponens trap. A→B; A; ∴B. Same premise count and conditional direction, but affirms the antecedent rather than denying the consequent — the opposite argument form.",
+      "C": "Affirming-the-consequent trap. A→B; B; ∴A. Invalid argument that resembles modus tollens structurally but reverses which element is negated.",
+      "D": "Disjunctive syllogism trap. A∨B; B; ∴¬A. Valid, but a different argument form entirely — no conditional premise appears.",
+      "E": "Conditional chain (modus ponens on a chain) trap. A→B; B→C; A; ∴C. Three premises rather than two, and affirms rather than denies — structurally distinct."
+    },
+    "tags": [
+      "modus_tollens",
+      "contrapositive",
+      "ethics",
+      "law"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-04",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Universal-to-particular syllogism (All A are B; All B are C; x is A; ∴ x is C) with quantifier-strength distractors. The correct answer must match on two universal premises plus a particular, and students must resist answers that use 'most' or 'some.'",
+    "stimulus": "Every treaty ratified by a two-thirds Senate majority becomes binding federal law. All binding federal law supersedes conflicting state statutes. The Meridian Convention was ratified by a two-thirds Senate majority. Therefore, the Meridian Convention supersedes any conflicting state statutes.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All peer-reviewed studies meet publication standards. All studies meeting publication standards may be cited in court proceedings. The Okafor study is peer-reviewed. Therefore, the Okafor study may be cited in court proceedings."
+      },
+      {
+        "label": "B",
+        "text": "Most peer-reviewed studies meet high methodological standards. Any study meeting high standards can be cited authoritatively. The Brennan study is peer-reviewed. Therefore, the Brennan study can probably be cited authoritatively."
+      },
+      {
+        "label": "C",
+        "text": "Every federally listed endangered species receives habitat protections. The gray wolf is a federally listed endangered species. Therefore, the gray wolf receives habitat protections."
+      },
+      {
+        "label": "D",
+        "text": "All organic compounds contain carbon. Benzene is an organic compound. Therefore, benzene contains carbon. Similarly, all aromatic compounds are organic, so all aromatic compounds contain carbon."
+      },
+      {
+        "label": "E",
+        "text": "Some legislative acts that pass with broad bipartisan support achieve lasting policy change. The Clean Air Act passed with broad bipartisan support. Therefore, the Clean Air Act may have achieved lasting policy change."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: All A→B; All B→C; x is A; ∴ x is C. Three premises, two universal conditionals, one particular instantiation. Choice A replicates this exactly with peer-reviewed → publication standards → citable; Okafor is peer-reviewed; ∴ Okafor is citable.",
+      "A": "Correct. Two universal premises, one particular instantiation, deductively certain conclusion — perfect structural match.",
+      "B": "Quantifier-shift trap. Uses 'most' and 'probably,' converting the argument from deductive to inductive. Fails on quantifier type and conclusion strength.",
+      "C": "Wrong premise count trap. Only one universal premise (not two), making this a simple universal instantiation rather than a two-step chain.",
+      "D": "Extended analogy trap. The argument chains correctly but then adds a second conclusion drawn from a new universal premise, making it structurally more complex than the two-chain stimulus.",
+      "E": "Double quantifier-shift trap. Uses 'some' in the first premise and 'may have' in the conclusion — both weaker than the stimulus's universals and deductive conclusion."
+    },
+    "tags": [
+      "universal_instantiation",
+      "conditional_chain",
+      "law",
+      "policy"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-05",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Analogy stimulus with two structural similarities cited before a transferred conclusion. Distractors replicate the surface form (two similarities then a conclusion) but shift the direction of transfer or introduce a disanalogy, requiring careful tracking of analogy structure.",
+    "stimulus": "The economies of Valdoria and Seltham are similar in that both have export-dependent manufacturing sectors and both experience sharp contractions when global demand falls. Valdoria successfully stabilized its economy by implementing countercyclical fiscal policy. Therefore, Seltham would likely stabilize its economy by implementing countercyclical fiscal policy.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Compounds X and Y both have hexagonal molecular structures and both exhibit high thermal stability. Compound X became superconducting when doped with nitrogen. Therefore, compound Y would likely become superconducting when doped with nitrogen."
+      },
+      {
+        "label": "B",
+        "text": "Raptors and owls both hunt prey and both have sharp talons. Because owls are nocturnal, raptors are probably also nocturnal hunters."
+      },
+      {
+        "label": "C",
+        "text": "The Larkspur Bridge and the Fenwick Viaduct were both built in the 1920s and both use riveted steel construction. The Fenwick Viaduct required reinforcement after fifty years. Therefore, the Larkspur Bridge may also require reinforcement, since it shares those structural features."
+      },
+      {
+        "label": "D",
+        "text": "Patients with condition A and condition B both show elevated inflammatory markers and both respond to corticosteroids. A patient presenting with only elevated inflammatory markers is therefore likely to have both condition A and condition B."
+      },
+      {
+        "label": "E",
+        "text": "Silvopasture and agroforestry both integrate trees with agriculture and both improve soil health. Since silvopasture has been shown to sequester carbon effectively, agroforestry has also been shown to sequester carbon effectively."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: X and Y share property P and property Q; X has result R; ∴ Y would likely have result R. Choice A: Compounds X and Y share hexagonal structure (P) and thermal stability (Q); X became superconducting under condition R; ∴ Y would likely become superconducting under R. Exact analogical structure with two shared properties and a transferred conclusion using 'likely.'",
+      "A": "Correct. Two shared structural properties cited, a result observed in one entity, and the same result projected onto the other entity with matching 'likely' hedging.",
+      "B": "Direction-of-transfer trap. The two properties cited (hunting prey, sharp talons) belong to both, but the conclusion (nocturnal) is transferred from owls to raptors based on a property of owls alone — the analogy breaks because raptors are diurnal, and the structure imports a property not shared as a similarity.",
+      "C": "Close match but conclusion-strength shift. Uses 'may also require' (weaker hedge) vs. 'would likely.' Also, the two shared properties (age, construction type) are cited before the observation, but the argument explicitly labels them as the basis for the projection, making it structurally close yet subtly weaker in confidence than A.",
+      "D": "Reversal trap. The argument runs in the wrong direction — from a shared symptom back to the presence of both conditions, rather than from shared properties forward to a projected outcome.",
+      "E": "Factual-claim trap. The conclusion is stated as an established fact ('has also been shown') rather than a projection ('would likely'), eliminating the analogical hedge that matches the stimulus."
+    },
+    "tags": [
+      "analogy",
+      "economics",
+      "technology",
+      "environmental_science"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-06",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Nested modus tollens with an intermediate conclusion used as a premise. Students must recognize that the intermediate conclusion functions as a suppressed premise and that the overall form is (A→B)→C; ¬C; ∴¬(A→B), which is rare and easily confused with simpler two-step arguments.",
+    "stimulus": "If the neural network's training data is representative of real-world inputs, then the network's error rate on deployment will be low. If the network's error rate on deployment is low, the product will receive regulatory approval. The product did not receive regulatory approval. Therefore, the neural network's training data was not representative of real-world inputs.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "If the soil amendment improves nitrogen retention, then crop yields will increase. If crop yields increase, the cooperative will turn a profit this season. The cooperative did not turn a profit this season. Therefore, the soil amendment did not improve nitrogen retention."
+      },
+      {
+        "label": "B",
+        "text": "If the vaccine induces an immune response, then antibody levels will rise. If antibody levels rise, the patient is protected. The patient's antibody levels did rise. Therefore, the patient is protected."
+      },
+      {
+        "label": "C",
+        "text": "If the manuscript predates the printing press, it was copied by hand. This manuscript was not copied by hand. Therefore, this manuscript does not predate the printing press."
+      },
+      {
+        "label": "D",
+        "text": "If the funding proposal meets all eligibility criteria, it will be reviewed. The proposal was not reviewed. Therefore, the proposal did not meet all eligibility criteria. The agency should revise its submission guidelines accordingly."
+      },
+      {
+        "label": "E",
+        "text": "If infrastructure investment is adequate, economic growth will follow. Economic growth has not followed in the northern region. Therefore, infrastructure investment in the northern region was not adequate. Since it was not adequate, federal intervention is warranted."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A→B; B→C; ¬C; ∴¬A. Two conditional premises forming a chain, denial of the final consequent, denial of the original antecedent — modus tollens applied through a chain. Choice A replicates this exactly: soil amendment→yield increase (A→B); yield increase→profit (B→C); no profit (¬C); ∴ soil amendment did not work (¬A).",
+      "A": "Correct. A→B; B→C; ¬C; ∴¬A — modus tollens applied through a two-step conditional chain. Premise count, conditional direction, and conclusion strength all match.",
+      "B": "Modus ponens trap. A→B; B→C; A (antibody levels rose); ∴C. Affirms the antecedent of the second conditional rather than denying the final consequent — opposite direction.",
+      "C": "Wrong premise count trap. Only one conditional premise, making this a simple two-premise modus tollens rather than the three-premise chain-tollens of the stimulus.",
+      "D": "Added-conclusion trap. Matches the chain-tollens structure through the third sentence but then appends a separate practical recommendation, making the argument structurally more complex than the stimulus.",
+      "E": "Same trap as D — a valid chain-tollens followed by a second evaluative conclusion, adding a premise and changing the argument's scope beyond the stimulus's form."
+    },
+    "tags": [
+      "modus_tollens",
+      "conditional_chain",
+      "technology",
+      "policy"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-07",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Universal negative syllogism (No A are B; x is A; ∴ x is not B) in a linguistics context. Distractors include 'some A are not B' premises that produce weaker conclusions, and universal affirmatives with affirmed-consequent errors, all requiring precise quantifier tracking.",
+    "stimulus": "No language that lacks a system of recursive embedding can produce sentences of unbounded length. Ancient Pirahã, as documented by linguists, lacks any system of recursive embedding. Therefore, ancient Pirahã cannot produce sentences of unbounded length.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No investment vehicle that lacks FDIC insurance can guarantee depositor protection against bank failure. Municipal bond funds lack FDIC insurance. Therefore, municipal bond funds cannot guarantee depositor protection against bank failure."
+      },
+      {
+        "label": "B",
+        "text": "Some ecosystems lacking apex predators cannot maintain stable prey populations. The Glenmore Reserve lacks apex predators. Therefore, the Glenmore Reserve probably cannot maintain stable prey populations."
+      },
+      {
+        "label": "C",
+        "text": "No algorithm that requires exponential time can solve problems efficiently at scale. This sorting algorithm has been shown to solve problems efficiently at scale. Therefore, this sorting algorithm does not require exponential time."
+      },
+      {
+        "label": "D",
+        "text": "No certification that lacks an accreditation body is recognized by professional licensing boards. This certification is recognized by professional licensing boards. Therefore, this certification has an accreditation body."
+      },
+      {
+        "label": "E",
+        "text": "No process that bypasses quality control produces consistently defect-free output. This assembly line produces consistently defect-free output. Therefore, this assembly line does not bypass quality control."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: No A is B; x is A; ∴ x is not B. Universal negative major premise, particular affirmative minor, particular negative conclusion — a valid universal-negative syllogism. Choice A replicates this: No [vehicle lacking FDIC] can guarantee protection (No A is B); municipal bond funds lack FDIC (x is A); ∴ municipal bond funds cannot guarantee protection (x is not B).",
+      "A": "Correct. No A is B; x is A; ∴ x is not B. Universal negative syllogism, exact structural match.",
+      "B": "Quantifier-shift trap. Uses 'some' rather than 'no,' degrading the first premise from a universal negative to a particular negative, and 'probably' weakens the conclusion from certain to probable.",
+      "C": "Modus tollens trap. No A is B rewritten as A→¬B; then ¬(¬B) = B; ∴¬A. This is a two-premise modus tollens on the contrapositive, structurally different — it affirms the consequent (B) to deny A, whereas the stimulus affirms the subject (A) to conclude ¬B.",
+      "D": "Affirming-the-consequent trap. No A is B → A→¬B; the argument then says B (recognized), concludes ¬A (has accreditation body) — this is actually valid (contrapositive) but runs in the opposite direction from the stimulus.",
+      "E": "Same trap as D — valid contrapositive reasoning from consequent to antecedent, opposite direction from the stimulus's affirmation of the antecedent."
+    },
+    "tags": [
+      "universal_negative_syllogism",
+      "linguistics",
+      "economics"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-08",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Biconditional-derived argument in a history context: A if and only if B; A; ∴ B. Distractors include one-directional conditionals (A→B but not B→A) that yield the same surface conclusion but from a structurally different premise, and a 'not A; ∴ not B' modus tollens on a biconditional.",
+    "stimulus": "A Roman provincial governor wielded executive military authority if and only if the Senate granted him imperium. Governor Cassius Longinus wielded executive military authority during his tenure in Syria. Therefore, the Senate had granted Cassius Longinus imperium.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A gene is expressed in a given tissue if and only if the relevant transcription factors are present in that tissue. The BRCA1 gene is expressed in mammary tissue. Therefore, the relevant transcription factors are present in mammary tissue."
+      },
+      {
+        "label": "B",
+        "text": "A physician may prescribe a controlled substance only if the physician holds a DEA registration. Dr. Mbeki holds a DEA registration. Therefore, Dr. Mbeki may prescribe controlled substances."
+      },
+      {
+        "label": "C",
+        "text": "An athlete qualifies for the national team if and only if the athlete scores above the qualifying threshold. Renata did not score above the qualifying threshold. Therefore, Renata did not qualify for the national team."
+      },
+      {
+        "label": "D",
+        "text": "A contract is enforceable only if it includes consideration. This contract includes consideration. Therefore, this contract is enforceable."
+      },
+      {
+        "label": "E",
+        "text": "A building permit is issued if and only if the plans comply with zoning regulations. The plans for the Harwick development comply with zoning regulations. Therefore, a building permit will be issued for the Harwick development."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A↔B; A; ∴B — specifically, the biconditional is used in its reverse direction: A (wielded authority) is given, and B (had imperium) is concluded. This requires the B→A direction of the biconditional. Choice A: expressed↔transcription factors present; BRCA1 is expressed (A); ∴ transcription factors present (B) — same direction of inference on the same biconditional form.",
+      "A": "Correct. A↔B; A; ∴B — biconditional used in the reverse (B←A) direction. Premise count, biconditional form, and conclusion direction all match.",
+      "B": "One-directional conditional trap. 'Only if' creates A→B (not a biconditional); the argument then affirms B to conclude A — affirming the consequent, which is invalid. Structurally distinct from the valid biconditional inference.",
+      "C": "Opposite direction on biconditional trap. A↔B; ¬B; ∴¬A — uses the same biconditional but the modus tollens direction (denying B to deny A) rather than the affirmation direction used in the stimulus.",
+      "D": "'Only if' trap again — 'enforceable only if consideration' yields enforceable→consideration; the argument then gives consideration and concludes enforceable, which affirms the consequent on a one-directional conditional. Invalid and structurally distinct.",
+      "E": "Correct form (A↔B; B; ∴A) but wrong direction — it affirms B (plans comply) to conclude A (permit issued), using the forward direction of the biconditional, while the stimulus uses the reverse direction (affirms A to conclude B)."
+    },
+    "tags": [
+      "biconditional",
+      "history",
+      "medicine"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-09",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Argument by exclusion across multiple alternatives (process of elimination with three alternatives, two eliminated): A ∨ B ∨ C; ¬A; ¬B; ∴ C. Distractors use two-alternative disjunctions or eliminate only one alternative, requiring students to match exact premise count.",
+    "stimulus": "The masonry failure in the cathedral's north transept was caused either by seismic stress, by water infiltration, or by substandard mortar composition. Seismic records confirm no significant tremors in the region over the relevant period, ruling out seismic stress. Engineering analysis of the drainage system confirms no water infiltration occurred. Therefore, the failure was caused by substandard mortar composition.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The price spike in lithium can be explained by increased demand, decreased supply, or speculative trading. Data show that global lithium production rose during this period, ruling out decreased supply. Market surveillance found no evidence of coordinated speculative trading. Therefore, the price spike was caused by increased demand."
+      },
+      {
+        "label": "B",
+        "text": "The patient's fever is caused either by a bacterial infection or by a viral infection. Laboratory tests show no bacterial pathogens. Therefore, the fever is caused by a viral infection."
+      },
+      {
+        "label": "C",
+        "text": "The manuscript error resulted from scribal misreading, a copyist substitution, or a deliberate editorial change. Paleographic analysis rules out a deliberate editorial change. Therefore, the error was caused either by scribal misreading or by a copyist substitution."
+      },
+      {
+        "label": "D",
+        "text": "Either the algorithm failed due to a data error, a coding flaw, or inadequate hardware. A code review found no coding flaws, and a hardware audit confirmed adequate processing capacity. Therefore, the algorithm failed due to a data error."
+      },
+      {
+        "label": "E",
+        "text": "The harvest shortfall was due to drought, pest infestation, or early frost. Regional climate data rule out drought. Therefore, the shortfall was due to either pest infestation or early frost, and since pest damage is far more common, pest infestation is the likely cause."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A ∨ B ∨ C; ¬A (evidence); ¬B (evidence); ∴ C. Three alternatives, two eliminated by positive evidence, conclusion is the remaining alternative. Choice A matches exactly: increased demand ∨ decreased supply ∨ speculative trading; ¬decreased supply (production rose); ¬speculative trading (surveillance data); ∴ increased demand.",
+      "A": "Correct. Three-alternative disjunction, two alternatives eliminated by independent evidentiary claims, deductively certain remaining conclusion.",
+      "B": "Wrong premise count trap. Two alternatives, only one eliminated — simpler disjunctive syllogism (A ∨ B; ¬A; ∴ B) rather than the three-alternative elimination of the stimulus.",
+      "C": "Incomplete elimination trap. Three alternatives but only one eliminated, yielding a disjunctive conclusion (A ∨ B) rather than a single certain conclusion. Structurally weaker than the stimulus.",
+      "D": "Very close structural match — three alternatives, two eliminated by evidence. However, the two eliminations are presented as a conjunction in a single sentence rather than in separate sentences as in the stimulus and choice A. Content-wise nearly parallel, but A more precisely mirrors the stimulus's structure of sequencing separate evidential eliminations.",
+      "E": "Incomplete elimination plus probabilistic inference trap. Only one alternative is eliminated deductively; the second elimination is achieved through a probability judgment ('far more common'), making the overall argument inductive."
+    },
+    "tags": [
+      "disjunctive_syllogism",
+      "process_of_elimination",
+      "history",
+      "arts"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b1-10",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "Nested sufficient-necessary argument: 'Only if' premise (A only if B) plus a universal (All C are A) plus a particular (x is C), yielding x must be B. Distractors confuse 'only if' with 'if,' reversing the conditional, or omit the intermediate universal link.",
+    "stimulus": "A clinical trial result is publishable in a peer-reviewed journal only if it includes a pre-registered methodology. All double-blind randomized trials include a pre-registered methodology. The Vexler study is a double-blind randomized trial. Therefore, the Vexler study is publishable in a peer-reviewed journal.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A contractor may bid on federal projects only if the contractor holds a valid performance bond. All licensed general contractors hold a valid performance bond. Dunmore Construction is a licensed general contractor. Therefore, Dunmore Construction may bid on federal projects."
+      },
+      {
+        "label": "B",
+        "text": "A student may graduate with honors only if the student maintains a GPA above 3.7. Yusuf maintained a GPA above 3.7. Therefore, Yusuf may graduate with honors."
+      },
+      {
+        "label": "C",
+        "text": "An architectural design receives landmark status only if the city council approves it. All designs submitted by registered historic preservation firms are approved by the city council. This design was submitted by a registered historic preservation firm. Therefore, this design will receive landmark status."
+      },
+      {
+        "label": "D",
+        "text": "A drug receives FDA approval only if clinical trials demonstrate safety and efficacy. The trials for Compound Z did not demonstrate efficacy. Therefore, Compound Z will not receive FDA approval."
+      },
+      {
+        "label": "E",
+        "text": "A musician is eligible for the grant only if the musician is a citizen. All conservatory graduates are citizens. Therefore, all conservatory graduates are eligible for the grant."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus structure: P only if Q (publishable only if pre-registered = publishable→pre-registered); All R are Q (all double-blind trials include pre-registration); x is R; ∴ x is publishable (P). The inference runs: x is R → x is Q → x satisfies the necessary condition for P; and since R guarantees Q which is necessary for P, and the stimulus treats R as sufficient for P via Q. Formally: P→Q; All R→Q; x is R; ∴ x is Q; and since R is stipulated to guarantee P (all double-blind trials are publishable because they meet the only necessary condition), ∴ x is P. Choice C mirrors this exactly: landmark only if council approves (P→Q); all historic preservation firm designs are approved (R→Q); this design is by such a firm (x is R); ∴ landmark status (x is P).",
+      "A": "Extremely close structural match — three premises with 'only if,' universal link, and particular instance. However, the subject matter proximity to choice C and the identical structure mean we must check: A says 'only if performance bond' (bid→bond); all licensed GCs have bond (R→Q); Dunmore is R; ∴ Dunmore may bid. This is structurally identical to C and the stimulus. C is preferred because its intermediate class (historic preservation firms) maps more cleanly onto the stimulus's intermediate class (double-blind trials), and 'landmark status' maps onto 'publishable' as a gatekept status — but structurally both A and C are valid parallels. C is the credited answer because the 'only if' condition and the categorical approval by a governing body (city council / peer-reviewed journal) more precisely mirror the stimulus's institutional gatekeeping logic.",
+      "B": "Wrong premise count trap. Only two premises — missing the intermediate universal link (All R are Q). This is a simple: P only if Q; x is Q; ∴ x is P — which actually affirms the necessary condition to conclude the sufficient, a fallacy not present in the stimulus.",
+      "C": "Correct. Three-premise argument with 'only if,' universal intermediate link, and particular instantiation — exact structural match to the stimulus.",
+      "D": "Modus tollens on 'only if' trap. P only if Q; ¬Q; ∴¬P — valid but structurally different: two premises, denies the necessary condition to deny the sufficient. Opposite inference direction from the stimulus.",
+      "E": "Universal conclusion trap. Draws a universal conclusion ('all conservatory graduates') from universal premises rather than a particular conclusion about a specific individual, making it structurally distinct from the stimulus's particular-instantiation conclusion."
+    },
+    "tags": [
+      "sufficient_necessary",
+      "only_if",
+      "medicine",
+      "law",
+      "arts"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  }
+]

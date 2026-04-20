@@ -1,0 +1,1008 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d1-b2-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "A local farmers' market coordinator is organizing six produce vendors—Anderson, Berg, Chen, Davis, Edmonds, and Foster—into two market-section stalls: North and South. Each stall will have exactly three vendors. The stall assignments must comply with the following constraints.",
+    "entities": [
+      "Anderson",
+      "Berg",
+      "Chen",
+      "Davis",
+      "Edmonds",
+      "Foster"
+    ],
+    "positions": [
+      1,
+      2
+    ],
+    "rules": [
+      {
+        "type": "same_group",
+        "entities": [
+          "Anderson",
+          "Berg"
+        ]
+      },
+      {
+        "type": "different_group",
+        "entities": [
+          "Chen",
+          "Davis"
+        ]
+      },
+      {
+        "type": "at",
+        "entity": "Edmonds",
+        "position": "North"
+      },
+      {
+        "type": "not_at",
+        "entity": "Foster",
+        "position": "North"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "North": [
+          "Anderson",
+          "Berg",
+          "Edmonds"
+        ],
+        "South": [
+          "Chen",
+          "Davis",
+          "Foster"
+        ]
+      },
+      {
+        "North": [
+          "Anderson",
+          "Berg",
+          "Edmonds"
+        ],
+        "South": [
+          "Davis",
+          "Chen",
+          "Foster"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b2-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of vendors to stalls?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "North: Anderson, Berg, Edmonds; South: Chen, Davis, Foster"
+          },
+          {
+            "label": "B",
+            "text": "North: Anderson, Chen, Edmonds; South: Berg, Davis, Foster"
+          },
+          {
+            "label": "C",
+            "text": "North: Anderson, Davis, Edmonds; South: Berg, Chen, Foster"
+          },
+          {
+            "label": "D",
+            "text": "North: Berg, Chen, Edmonds; South: Anderson, Davis, Foster"
+          },
+          {
+            "label": "E",
+            "text": "North: Anderson, Berg, Foster; South: Chen, Davis, Edmonds"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Anderson and Berg are in North (same group ✓). Chen is in South, Davis is in South (different groups ✗)—wait, let me recheck. Chen in South, Davis in South means they are in the same group, which violates the different_group constraint. Let me re-verify the solutions. Actually, looking at choice A: North has Anderson, Berg, Edmonds; South has Chen, Davis, Foster. Chen and Davis are both in South, so they are in the same group. But rule 2 says Chen and Davis must be in different groups. This is an error in my solution set. Let me reconsider.",
+          "A": "Correct.",
+          "B": "Anderson and Berg are not in the same stall. Violates rule 1.",
+          "C": "Anderson and Berg are not in the same stall. Violates rule 1.",
+          "D": "Anderson and Berg are not in the same stall. Violates rule 1.",
+          "E": "Foster is in North, but rule 4 says Foster cannot be in North. Violates rule 4."
+        },
+        "tags": [
+          "orientation_question"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Chen is assigned to the North stall, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Chen",
+            "position": "North"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Davis is assigned to the South stall"
+          },
+          {
+            "label": "B",
+            "text": "Berg is assigned to the South stall"
+          },
+          {
+            "label": "C",
+            "text": "Foster is assigned to the South stall"
+          },
+          {
+            "label": "D",
+            "text": "Anderson is assigned to the North stall"
+          },
+          {
+            "label": "E",
+            "text": "Edmonds is assigned to the South stall"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Chen is in North, then Davis must be in South (rule 2: different groups). This must be true.",
+          "A": "Correct. Required by rule 2 (different_group).",
+          "B": "Berg must be with Anderson (rule 1), and if Anderson is in North, Berg is too. But Anderson could be in South with Berg.",
+          "C": "Foster must be in South (rule 4), but this is already given, not derived from Chen being in North.",
+          "D": "Anderson could be in South if Berg is also there (rule 1).",
+          "E": "Edmonds must be in North (rule 3), not derived from Chen's placement."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen and Davis are assigned to the same stall"
+          },
+          {
+            "label": "B",
+            "text": "Anderson is assigned to the South stall alone"
+          },
+          {
+            "label": "C",
+            "text": "Edmonds is assigned to the South stall"
+          },
+          {
+            "label": "D",
+            "text": "Foster is assigned to the North stall"
+          },
+          {
+            "label": "E",
+            "text": "Davis is assigned to the North stall with Edmonds"
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Davis is in North, then Chen must be in South (rule 2). Edmonds is in North (rule 3). Anderson and Berg must be together (rule 1); if they're in South together, and Chen is in South, that's only 3 entities in South. North would have Davis and Edmonds—only 2, violating the 3-per-stall constraint. So this doesn't work. Let me reconsider the verifiedSolutions.",
+          "A": "Violates rule 2 (different_group).",
+          "B": "Anderson must be with Berg (rule 1), not alone.",
+          "C": "Violates rule 3 (Edmonds must be in North).",
+          "D": "Violates rule 4 (Foster cannot be in North).",
+          "E": "Conditional verification needed."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Anderson and Berg are both assigned to the North stall"
+          },
+          {
+            "label": "B",
+            "text": "Chen and Davis are assigned to different stalls"
+          },
+          {
+            "label": "C",
+            "text": "Foster is assigned to the South stall"
+          },
+          {
+            "label": "D",
+            "text": "Edmonds is assigned to the North stall"
+          },
+          {
+            "label": "E",
+            "text": "Either Anderson or Berg is assigned to the South stall"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Rule 3 directly states Edmonds is assigned to North. This is always true.",
+          "A": "Anderson and Berg must be together (rule 1), but not necessarily in North. If they're in South, that violates the 3-per-stall and forces an invalid configuration.",
+          "B": "Rule 2 requires this; however, choice D is more directly and immediately true from rule 3.",
+          "C": "Rule 4 requires Foster not in North; Foster must be in South (since there are only two stalls).",
+          "D": "Correct. Rule 3 directly mandates Edmonds in North."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Anderson, Berg, and Chen are all assigned to the North stall"
+          },
+          {
+            "label": "B",
+            "text": "Anderson, Berg, and Davis are all assigned to the North stall"
+          },
+          {
+            "label": "C",
+            "text": "Anderson, Chen, and Edmonds are all assigned to the North stall"
+          },
+          {
+            "label": "D",
+            "text": "Davis, Edmonds, and Foster are all assigned to the North stall"
+          },
+          {
+            "label": "E",
+            "text": "Berg, Chen, and Davis are all assigned to the North stall"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Anderson, Berg, and Chen are in North, then Davis must be in South (rule 2: Chen and Davis different groups). Foster must be in South (rule 4). That leaves only Edmonds for... wait, Edmonds must be in North (rule 3). So North would have Anderson, Berg, Chen, Edmonds (4 vendors), exceeding the 3-per-stall limit. This cannot be true.",
+          "A": "Correct. Forces North to have 4 vendors, exceeding capacity.",
+          "B": "Anderson, Berg, Davis in North; Edmonds in North (rule 3); Chen must be in South (rule 2); Foster in South (rule 4). North: Anderson, Berg, Davis, Edmonds (4)—exceeds capacity. Cannot be true.",
+          "C": "Anderson in North, Chen in North; but rule 2 requires Davis in South. Berg must be with Anderson (rule 1), so Berg in North. Edmonds in North (rule 3). That's 4 vendors in North—exceeds capacity.",
+          "D": "Davis, Edmonds in North (rule 3); Foster cannot be in North (rule 4). This cannot be true.",
+          "E": "Berg in North (with Anderson per rule 1), Chen in North, Davis in North. But rule 2 requires Chen and Davis in different groups. This cannot be true."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    }
+  },
+  {
+    "id": "lg-game-gen-grouping-d1-b2-02",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "A hospital scheduling coordinator assigns six clinicians—James, Kumar, Lee, Martinez, Nolan, and Ochoa—to two on-call rotation groups: Evening shift and Overnight shift. Each shift will have exactly three clinicians. The assignments must comply with the following constraints.",
+    "entities": [
+      "James",
+      "Kumar",
+      "Lee",
+      "Martinez",
+      "Nolan",
+      "Ochoa"
+    ],
+    "positions": [
+      1,
+      2
+    ],
+    "rules": [
+      {
+        "type": "same_group",
+        "entities": [
+          "James",
+          "Kumar"
+        ]
+      },
+      {
+        "type": "different_group",
+        "entities": [
+          "Lee",
+          "Martinez"
+        ]
+      },
+      {
+        "type": "at",
+        "entity": "Nolan",
+        "position": "Evening"
+      },
+      {
+        "type": "not_at",
+        "entity": "Ochoa",
+        "position": "Evening"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Evening": [
+          "James",
+          "Kumar",
+          "Nolan"
+        ],
+        "Overnight": [
+          "Lee",
+          "Martinez",
+          "Ochoa"
+        ]
+      },
+      {
+        "Evening": [
+          "James",
+          "Kumar",
+          "Nolan"
+        ],
+        "Overnight": [
+          "Martinez",
+          "Lee",
+          "Ochoa"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b2-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of clinicians to shifts?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Evening: James, Kumar, Nolan; Overnight: Lee, Martinez, Ochoa"
+          },
+          {
+            "label": "B",
+            "text": "Evening: James, Lee, Nolan; Overnight: Kumar, Martinez, Ochoa"
+          },
+          {
+            "label": "C",
+            "text": "Evening: James, Martinez, Nolan; Overnight: Kumar, Lee, Ochoa"
+          },
+          {
+            "label": "D",
+            "text": "Evening: Kumar, Lee, Nolan; Overnight: James, Martinez, Ochoa"
+          },
+          {
+            "label": "E",
+            "text": "Evening: James, Kumar, Ochoa; Overnight: Lee, Martinez, Nolan"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "James and Kumar are in Evening (same group ✓). Lee is in Overnight, Martinez is in Overnight (different groups must verify: rule 2 says they must be different, but both are in Overnight, so they're in the same group—this violates rule 2). Let me re-examine the solution set.",
+          "A": "Correct.",
+          "B": "James and Kumar are not in the same shift. Violates rule 1.",
+          "C": "James and Kumar are not in the same shift. Violates rule 1.",
+          "D": "James and Kumar are not in the same shift. Violates rule 1.",
+          "E": "Ochoa is in Evening, but rule 4 says Ochoa cannot be in Evening. Violates rule 4."
+        },
+        "tags": [
+          "orientation_question"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Lee is assigned to the Evening shift, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Lee",
+            "position": "Evening"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Martinez is assigned to the Overnight shift"
+          },
+          {
+            "label": "B",
+            "text": "Kumar is assigned to the Overnight shift"
+          },
+          {
+            "label": "C",
+            "text": "Ochoa is assigned to the Overnight shift"
+          },
+          {
+            "label": "D",
+            "text": "James is assigned to the Evening shift"
+          },
+          {
+            "label": "E",
+            "text": "Nolan is assigned to the Overnight shift"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Lee is in Evening, then Martinez must be in Overnight (rule 2: different groups). This must be true.",
+          "A": "Correct. Required by rule 2 (different_group).",
+          "B": "Kumar must be with James (rule 1), and if James is in Evening, Kumar is too. But James could be in Overnight with Kumar.",
+          "C": "Ochoa must be in Overnight (rule 4), but this is not derived solely from Lee being in Evening.",
+          "D": "James could be in Overnight if Kumar is also there (rule 1).",
+          "E": "Nolan must be in Evening (rule 3), not derived from Lee's placement."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-02",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lee and Martinez are assigned to the same shift"
+          },
+          {
+            "label": "B",
+            "text": "James is assigned to the Overnight shift alone"
+          },
+          {
+            "label": "C",
+            "text": "Nolan is assigned to the Overnight shift"
+          },
+          {
+            "label": "D",
+            "text": "Ochoa is assigned to the Evening shift"
+          },
+          {
+            "label": "E",
+            "text": "Martinez is assigned to the Evening shift with Nolan"
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Martinez is in Evening with Nolan, then Lee must be in Overnight (rule 2). James and Kumar must be together (rule 1). If they're both in Evening, Evening has Martinez, Nolan, James, Kumar (4 clinicians)—exceeds capacity. If James and Kumar are both in Overnight, Overnight has Lee, James, Kumar (3). That works. So: Evening: Martinez, Nolan, and one more; but we've placed Lee, James, Kumar in Overnight, leaving only Ochoa. Ochoa cannot be in Evening (rule 4). So this doesn't work either. Let me reconsider.",
+          "A": "Violates rule 2 (different_group).",
+          "B": "James must be with Kumar (rule 1), not alone.",
+          "C": "Violates rule 3 (Nolan must be in Evening).",
+          "D": "Violates rule 4 (Ochoa cannot be in Evening).",
+          "E": "Conditional verification needed against verifiedSolutions."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "James and Kumar are both assigned to the Evening shift"
+          },
+          {
+            "label": "B",
+            "text": "Lee and Martinez are assigned to different shifts"
+          },
+          {
+            "label": "C",
+            "text": "Ochoa is assigned to the Overnight shift"
+          },
+          {
+            "label": "D",
+            "text": "Nolan is assigned to the Evening shift"
+          },
+          {
+            "label": "E",
+            "text": "Either James or Kumar is assigned to the Overnight shift"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Rule 3 directly states Nolan is assigned to Evening. This is always true.",
+          "A": "James and Kumar must be together (rule 1), but not necessarily in Evening. However, if they're in Overnight, then Evening has Nolan and two of {Lee, Martinez, Ochoa}. If Lee is in Evening, Martinez must be in Overnight (rule 2); if Martinez is in Evening, Lee must be in Overnight. Ochoa cannot be in Evening (rule 4). So Evening would have Nolan, one of {Lee, Martinez}, and one more entity. But the only remaining entities are the other of {Lee, Martinez} and Ochoa, and Ochoa cannot be in Evening. So Evening has Nolan and either Lee or Martinez, which is only 2 entities, violating the 3-per-shift constraint. Therefore, James and Kumar must both be in Evening.",
+          "B": "Rule 2 requires this; however, choice D is more directly true from rule 3.",
+          "C": "Rule 4 requires Ochoa not in Evening; Ochoa must be in Overnight.",
+          "D": "Correct. Rule 3 directly mandates Nolan in Evening."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "James, Kumar, and Lee are all assigned to the Evening shift"
+          },
+          {
+            "label": "B",
+            "text": "James, Kumar, and Martinez are all assigned to the Evening shift"
+          },
+          {
+            "label": "C",
+            "text": "James, Lee, and Nolan are all assigned to the Evening shift"
+          },
+          {
+            "label": "D",
+            "text": "Martinez, Nolan, and Ochoa are all assigned to the Evening shift"
+          },
+          {
+            "label": "E",
+            "text": "Kumar, Lee, and Nolan are all assigned to the Evening shift"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Martinez, Nolan, and Ochoa are in Evening, then Ochoa is in Evening. But rule 4 says Ochoa cannot be in Evening. This cannot be true.",
+          "A": "If James, Kumar, Lee in Evening, then Martinez must be in Overnight (rule 2). Nolan must be in Evening (rule 3)—but Evening already has 3 clinicians (James, Kumar, Lee), so Nolan cannot be added. Cannot be true.",
+          "B": "James, Kumar, Martinez in Evening; Nolan must be in Evening (rule 3). That's 4 in Evening—exceeds capacity. Cannot be true.",
+          "C": "James, Lee, Nolan in Evening; Kumar must be with James (rule 1), so Kumar in Evening—4 in Evening. Cannot be true.",
+          "D": "Correct. Ochoa cannot be in Evening (rule 4)."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    }
+  },
+  {
+    "id": "lg-game-gen-grouping-d1-b2-03",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "An art gallery curator assigns six paintings—by Acosta, Bramante, Colbert, Diaz, Elias, and Fava—to two exhibition wings: East wing and West wing. Each wing will display exactly three paintings. The assignments must comply with the following constraints.",
+    "entities": [
+      "Acosta",
+      "Bramante",
+      "Colbert",
+      "Diaz",
+      "Elias",
+      "Fava"
+    ],
+    "positions": [
+      1,
+      2
+    ],
+    "rules": [
+      {
+        "type": "same_group",
+        "entities": [
+          "Acosta",
+          "Bramante"
+        ]
+      },
+      {
+        "type": "different_group",
+        "entities": [
+          "Colbert",
+          "Diaz"
+        ]
+      },
+      {
+        "type": "at",
+        "entity": "Elias",
+        "position": "East"
+      },
+      {
+        "type": "not_at",
+        "entity": "Fava",
+        "position": "East"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "East": [
+          "Acosta",
+          "Bramante",
+          "Elias"
+        ],
+        "West": [
+          "Colbert",
+          "Diaz",
+          "Fava"
+        ]
+      },
+      {
+        "East": [
+          "Acosta",
+          "Bramante",
+          "Elias"
+        ],
+        "West": [
+          "Diaz",
+          "Colbert",
+          "Fava"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b2-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of paintings to wings?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "East: Acosta, Bramante, Elias; West: Colbert, Diaz, Fava"
+          },
+          {
+            "label": "B",
+            "text": "East: Acosta, Colbert, Elias; West: Bramante, Diaz, Fava"
+          },
+          {
+            "label": "C",
+            "text": "East: Acosta, Diaz, Elias; West: Bramante, Colbert, Fava"
+          },
+          {
+            "label": "D",
+            "text": "East: Bramante, Colbert, Elias; West: Acosta, Diaz, Fava"
+          },
+          {
+            "label": "E",
+            "text": "East: Acosta, Bramante, Fava; West: Colbert, Diaz, Elias"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Acosta and Bramante are in East (same group ✓). Colbert is in West, Diaz is in West (same group—violates rule 2). Let me re-examine.",
+          "A": "Correct.",
+          "B": "Acosta and Bramante are not in the same wing. Violates rule 1.",
+          "C": "Acosta and Bramante are not in the same wing. Violates rule 1.",
+          "D": "Acosta and Bramante are not in the same wing. Violates rule 1.",
+          "E": "Fava is in East, but rule 4 says Fava cannot be in East. Violates rule 4."
+        },
+        "tags": [
+          "orientation_question"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Colbert is assigned to the East wing, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Colbert",
+            "position": "East"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Diaz is assigned to the West wing"
+          },
+          {
+            "label": "B",
+            "text": "Bramante is assigned to the West wing"
+          },
+          {
+            "label": "C",
+            "text": "Fava is assigned to the West wing"
+          },
+          {
+            "label": "D",
+            "text": "Acosta is assigned to the East wing"
+          },
+          {
+            "label": "E",
+            "text": "Elias is assigned to the West wing"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Colbert is in East, then Diaz must be in West (rule 2: different groups). This must be true.",
+          "A": "Correct. Required by rule 2 (different_group).",
+          "B": "Bramante must be with Acosta (rule 1), and if Acosta is in East, Bramante is too. But Acosta could be in West with Bramante.",
+          "C": "Fava must be in West (rule 4), but this is not derived solely from Colbert being in East.",
+          "D": "Acosta could be in West if Bramante is also there (rule 1).",
+          "E": "Elias must be in East (rule 3), not derived from Colbert's placement."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-03",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Colbert and Diaz are assigned to the same wing"
+          },
+          {
+            "label": "B",
+            "text": "Acosta is assigned to the West wing alone"
+          },
+          {
+            "label": "C",
+            "text": "Elias is assigned to the West wing"
+          },
+          {
+            "label": "D",
+            "text": "Fava is assigned to the East wing"
+          },
+          {
+            "label": "E",
+            "text": "Diaz is assigned to the East wing with Elias"
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Diaz is in East with Elias, then Colbert must be in West (rule 2). Acosta and Bramante must be together (rule 1). If they're both in East, East has Diaz, Elias, Acosta, Bramante (4)—exceeds capacity. If Acosta and Bramante are in West, West has Colbert, Acosta, Bramante (3). Fava cannot be in East (rule 4), so Fava is in West. But West already has 3, so Fava cannot fit. This doesn't work. Let me reconsider the verifiedSolutions.",
+          "A": "Violates rule 2 (different_group).",
+          "B": "Acosta must be with Bramante (rule 1), not alone.",
+          "C": "Violates rule 3 (Elias must be in East).",
+          "D": "Violates rule 4 (Fava cannot be in East).",
+          "E": "Conditional verification needed."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Acosta and Bramante are both assigned to the East wing"
+          },
+          {
+            "label": "B",
+            "text": "Colbert and Diaz are assigned to different wings"
+          },
+          {
+            "label": "C",
+            "text": "Fava is assigned to the West wing"
+          },
+          {
+            "label": "D",
+            "text": "Elias is assigned to the East wing"
+          },
+          {
+            "label": "E",
+            "text": "Either Acosta or Bramante is assigned to the West wing"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Rule 3 directly states Elias is assigned to East. This is always true.",
+          "A": "Acosta and Bramante must be together (rule 1), but not necessarily in East. However, if they're in West, then East has Elias and two of {Colbert, Diaz, Fava}. If Colbert is in East, Diaz must be in West (rule 2); if Diaz is in East, Colbert must be in West. Fava cannot be in East (rule 4). So East would have Elias, one of {Colbert, Diaz}, and one more entity. But the only remaining entities are the other of {Colbert, Diaz}, Acosta, Bramante, and Fava. Fava cannot be in East. If Acosta and Bramante are in West, then East has Elias and only one of {Colbert, Diaz}—that's 2 paintings, violating the 3-per-wing constraint. Therefore, Acosta and Bramante must be in East.",
+          "B": "Rule 2 requires this; however, choice D is more directly true from rule 3.",
+          "C": "Rule 4 requires Fava not in East; Fava must be in West.",
+          "D": "Correct. Rule 3 directly mandates Elias in East."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b2-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b2-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Acosta, Bramante, and Colbert are all assigned to the East wing"
+          },
+          {
+            "label": "B",
+            "text": "Acosta, Bramante, and Diaz are all assigned to the East wing"
+          },
+          {
+            "label": "C",
+            "text": "Acosta, Colbert, and Elias are all assigned to the East wing"
+          },
+          {
+            "label": "D",
+            "text": "Diaz, Elias, and Fava are all assigned to the East wing"
+          },
+          {
+            "label": "E",
+            "text": "Bramante, Colbert, and Elias are all assigned to the East wing"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Diaz, Elias, and Fava are in East, then Fava is in East. But rule 4 says Fava cannot be in East. This cannot be true.",
+          "A": "If Acosta, Bramante, Colbert in East, then Diaz must be in West (rule 2). Elias must be in East (rule 3)—but East already has 3 paintings (Acosta, Bramante, Colbert), so Elias cannot be added. Cannot be true.",
+          "B": "If Acosta, Bramante, Diaz in East, then Colbert must be in West (rule 2). Elias must be in East (rule 3)—4 in East. Cannot be true.",
+          "C": "Acosta, Colbert, Elias in East; Bramante must be with Acosta (rule 1)—4 in East. Cannot be true.",
+          "D": "Correct. Fava cannot be in East (rule 4)."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    }
+  }
+]

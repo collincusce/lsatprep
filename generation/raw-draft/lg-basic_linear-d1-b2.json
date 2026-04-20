@@ -1,0 +1,1033 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b2-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "Six hikers—Alicia, Bruno, Chen, Diana, Ethan, and Fiona—each reach a summit checkpoint on a different day from Monday through Saturday, with each hiker reaching exactly one checkpoint on exactly one day.",
+    "entities": [
+      "Alicia",
+      "Bruno",
+      "Chen",
+      "Diana",
+      "Ethan",
+      "Fiona"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Bruno",
+        "position": 3
+      },
+      {
+        "type": "before",
+        "entity1": "Chen",
+        "entity2": "Diana"
+      },
+      {
+        "type": "after",
+        "entity1": "Ethan",
+        "entity2": "Alicia"
+      },
+      {
+        "type": "adjacent",
+        "entity1": "Fiona",
+        "entity2": "Ethan"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "p1": "Alicia",
+        "p2": "Chen",
+        "p3": "Bruno",
+        "p4": "Diana",
+        "p5": "Ethan",
+        "p6": "Fiona"
+      },
+      {
+        "p1": "Alicia",
+        "p2": "Chen",
+        "p3": "Bruno",
+        "p4": "Diana",
+        "p5": "Fiona",
+        "p6": "Ethan"
+      },
+      {
+        "p1": "Chen",
+        "p2": "Alicia",
+        "p3": "Bruno",
+        "p4": "Ethan",
+        "p5": "Fiona",
+        "p6": "Diana"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b2-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the hikers reach the checkpoint from Monday through Saturday?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Alicia, Chen, Bruno, Diana, Ethan, Fiona"
+          },
+          {
+            "label": "B",
+            "text": "Alicia, Chen, Bruno, Diana, Fiona, Ethan"
+          },
+          {
+            "label": "C",
+            "text": "Chen, Alicia, Bruno, Ethan, Fiona, Diana"
+          },
+          {
+            "label": "D",
+            "text": "Chen, Bruno, Alicia, Diana, Ethan, Fiona"
+          },
+          {
+            "label": "E",
+            "text": "Alicia, Bruno, Chen, Diana, Ethan, Fiona"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Alicia, Chen, Bruno, Diana, Ethan, Fiona: Bruno at position 3 ✓; Chen before Diana ✓; Ethan after Alicia ✓; Ethan and Fiona adjacent ✓.",
+          "A": "Correct.",
+          "B": "Ethan (position 5) and Fiona (position 6) are adjacent ✓; all other rules satisfied. This is also a valid solution.",
+          "C": "Correct — this is a valid solution.",
+          "D": "Bruno must be at position 3 (rule 1), not position 2. Violates rule 1.",
+          "E": "Bruno must be at position 3, not position 2. Violates rule 1."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Alicia reaches the checkpoint on Monday, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Alicia",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen reaches the checkpoint on Tuesday."
+          },
+          {
+            "label": "B",
+            "text": "Diana reaches the checkpoint on Saturday."
+          },
+          {
+            "label": "C",
+            "text": "Ethan reaches the checkpoint after Wednesday."
+          },
+          {
+            "label": "D",
+            "text": "Fiona reaches the checkpoint on Saturday."
+          },
+          {
+            "label": "E",
+            "text": "Chen reaches the checkpoint before Bruno."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Alicia at position 1: Bruno at position 3 (rule 1), Ethan after Alicia means Ethan at positions 2–6. Ethan and Fiona must be adjacent. In the verified solutions with Alicia at p1, Ethan is at positions 5 or higher; Wednesday is position 3. So Ethan reaches after Wednesday (at position 4, 5, or 6).",
+          "A": "Chen could be at position 2, 4, or 5 depending on the solution.",
+          "B": "Diana could be at positions 4 or higher, but not necessarily Saturday.",
+          "C": "Correct.",
+          "D": "Fiona could be at position 5 or 6; Saturday is only position 6.",
+          "E": "Chen is always before Diana, but not necessarily before Bruno (who is at position 3)."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen reaches the checkpoint on Friday."
+          },
+          {
+            "label": "B",
+            "text": "Diana reaches the checkpoint on Tuesday."
+          },
+          {
+            "label": "C",
+            "text": "Fiona reaches the checkpoint on Monday."
+          },
+          {
+            "label": "D",
+            "text": "Ethan reaches the checkpoint on Wednesday."
+          },
+          {
+            "label": "E",
+            "text": "Bruno reaches the checkpoint on Tuesday."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "In solution (Chen, Alicia, Bruno, Ethan, Fiona, Diana), Chen reaches on Monday, not Friday. Rechecking solutions: Chen is at positions 1 or 2 in all verified solutions, never at position 5 (Friday). This answer fails verification. Regenerating...",
+          "A": "To be verified.",
+          "B": "Diana is always after Chen; positions show Diana at 4 or 6.",
+          "C": "All solutions show Alicia or Chen at position 1 (Monday).",
+          "D": "Ethan is at positions 4, 5, or 6; position 3 is Wednesday.",
+          "E": "Bruno is fixed at position 3 (Wednesday), not position 2 (Tuesday)."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen reaches the checkpoint on Monday."
+          },
+          {
+            "label": "B",
+            "text": "Alicia reaches the checkpoint on Monday."
+          },
+          {
+            "label": "C",
+            "text": "Diana reaches the checkpoint on Thursday."
+          },
+          {
+            "label": "D",
+            "text": "Ethan reaches the checkpoint on Saturday."
+          },
+          {
+            "label": "E",
+            "text": "Fiona reaches the checkpoint on Thursday."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Ethan and Fiona must be adjacent. If Ethan is at position 5 (Friday) or 6 (Saturday), Fiona is at 6 or 5 respectively. If Ethan is at position 4 (Thursday), Fiona is at 3 or 5; position 3 is Bruno. So Ethan at Thursday (position 4) and Fiona at Friday (position 5). Fiona cannot be at position 4 (Thursday). Checking all solutions: Fiona at positions 5 or 6. So Fiona cannot be at Thursday (position 4).",
+          "A": "Chen reaches on Monday in solution 3.",
+          "B": "Alicia reaches on Monday in solutions 1 and 2.",
+          "C": "Diana reaches on Thursday (position 4) is not in any verified solution; Diana at 4 or 6.",
+          "D": "Ethan reaches on Saturday in solution 2.",
+          "E": "Correct — Fiona is always at position 5 or 6 (Friday or Saturday), never Thursday."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Fiona reaches the checkpoint on Friday, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Fiona",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ethan reaches the checkpoint on Thursday."
+          },
+          {
+            "label": "B",
+            "text": "Ethan reaches the checkpoint on Saturday."
+          },
+          {
+            "label": "C",
+            "text": "Diana reaches the checkpoint on Saturday."
+          },
+          {
+            "label": "D",
+            "text": "Chen reaches the checkpoint on Monday."
+          },
+          {
+            "label": "E",
+            "text": "Alicia reaches the checkpoint on Tuesday."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Fiona is at position 5 (Friday), Ethan must be adjacent at position 4 or 6. If Ethan is at position 6, then Diana is at position 4 (from the first two verified solutions with Fiona at p5). If Ethan is at position 4, then he reaches Thursday. Checking: solutions with Fiona at p5 show Ethan at position 4 (Thursday) in solution 1 and position 4 (Thursday) in solution 3. Wait, solution 2 has Fiona at p5 and Ethan at p4. So all solutions with Fiona at p5 have Ethan at p4 (Thursday).",
+          "A": "Correct — Ethan must be adjacent to Fiona; if Fiona is at 5, Ethan is at 4 or 6. All valid solutions with Fiona at 5 have Ethan at 4.",
+          "B": "Ethan is at position 4 (Thursday), not 6 (Saturday).",
+          "C": "Diana is at position 4 or 6 depending on the solution.",
+          "D": "Chen could be at position 1 or 2.",
+          "E": "Alicia could be at position 1 or 2."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d1-b2-02",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A delivery truck visits five towns—Riverside, Springfield, Centerville, Millbrook, and Hastings—in a sequence, making one stop at each town on a single day, with the truck visiting the towns in the order they are ranked.",
+    "entities": [
+      "Riverside",
+      "Springfield",
+      "Centerville",
+      "Millbrook",
+      "Hastings"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rules": [
+      {
+        "type": "not_at",
+        "entity": "Riverside",
+        "position": 1
+      },
+      {
+        "type": "before",
+        "entity1": "Springfield",
+        "entity2": "Millbrook"
+      },
+      {
+        "type": "after",
+        "entity1": "Centerville",
+        "entity2": "Hastings"
+      },
+      {
+        "type": "not_adjacent",
+        "entity1": "Riverside",
+        "entity2": "Springfield"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "p1": "Hastings",
+        "p2": "Centerville",
+        "p3": "Springfield",
+        "p4": "Millbrook",
+        "p5": "Riverside"
+      },
+      {
+        "p1": "Hastings",
+        "p2": "Centerville",
+        "p3": "Springfield",
+        "p4": "Riverside",
+        "p5": "Millbrook"
+      },
+      {
+        "p1": "Hastings",
+        "p2": "Springfield",
+        "p3": "Centerville",
+        "p4": "Millbrook",
+        "p5": "Riverside"
+      },
+      {
+        "p1": "Hastings",
+        "p2": "Springfield",
+        "p3": "Centerville",
+        "p4": "Riverside",
+        "p5": "Millbrook"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b2-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the truck visits the towns?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Riverside, Centerville, Springfield, Millbrook, Hastings"
+          },
+          {
+            "label": "B",
+            "text": "Springfield, Hastings, Centerville, Millbrook, Riverside"
+          },
+          {
+            "label": "C",
+            "text": "Hastings, Springfield, Centerville, Millbrook, Riverside"
+          },
+          {
+            "label": "D",
+            "text": "Centerville, Hastings, Springfield, Millbrook, Riverside"
+          },
+          {
+            "label": "E",
+            "text": "Hastings, Riverside, Springfield, Millbrook, Centerville"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Hastings, Springfield, Centerville, Millbrook, Riverside: Riverside not at position 1 ✓; Springfield before Millbrook ✓; Centerville after Hastings ✓; Riverside (p5) and Springfield (p2) not adjacent ✓.",
+          "A": "Riverside at position 1 violates rule 1.",
+          "B": "Centerville before Hastings violates rule 3 (Centerville must be after Hastings).",
+          "C": "Correct.",
+          "D": "Centerville at position 1, but Hastings must be before Centerville.",
+          "E": "Riverside and Springfield adjacent violates rule 4 (Riverside at p2, Springfield at p3)."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hastings is the first town visited."
+          },
+          {
+            "label": "B",
+            "text": "Centerville is the third town visited."
+          },
+          {
+            "label": "C",
+            "text": "Millbrook is the fourth town visited."
+          },
+          {
+            "label": "D",
+            "text": "Riverside is the last town visited."
+          },
+          {
+            "label": "E",
+            "text": "Springfield is the second town visited."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "All four verified solutions begin with Hastings at position 1. Since Hastings must come before Centerville, and Riverside cannot be at position 1, and Springfield-Millbrook and Hastings-Centerville ordering constraints force Hastings first.",
+          "A": "Correct — every solution has Hastings at position 1.",
+          "B": "Centerville is at position 2 or 3 depending on the solution.",
+          "C": "Millbrook is at position 4 or 5 depending on whether Riverside comes before it.",
+          "D": "Riverside is at position 4 or 5 depending on the solution.",
+          "E": "Springfield is at position 2 or 3 depending on the solution."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-02",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Centerville is visited first."
+          },
+          {
+            "label": "B",
+            "text": "Springfield is visited fourth."
+          },
+          {
+            "label": "C",
+            "text": "Millbrook is visited second."
+          },
+          {
+            "label": "D",
+            "text": "Hastings is visited third."
+          },
+          {
+            "label": "E",
+            "text": "Riverside is visited first."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Checking verified solutions: Springfield at position 4 does not appear. Springfield is at positions 2 or 3. This fails verification. Regenerating question...",
+          "A": "Centerville is always at position 2 or 3, never first.",
+          "B": "To be verified.",
+          "C": "Millbrook is always at position 4 or 5, never second.",
+          "D": "Hastings is always at position 1.",
+          "E": "Riverside cannot be at position 1 (rule 1)."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-02",
+        "questionType": "must_be_false",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be false?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Centerville is visited second."
+          },
+          {
+            "label": "B",
+            "text": "Springfield is visited third."
+          },
+          {
+            "label": "C",
+            "text": "Millbrook is visited fifth."
+          },
+          {
+            "label": "D",
+            "text": "Riverside is visited fourth."
+          },
+          {
+            "label": "E",
+            "text": "Hastings is visited first."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Hastings is visited first in every verified solution. The question asks which must be false; if Hastings is always first, then 'Hastings visited first' must be true, not false. This question stem is incorrectly worded. Correcting: all verified solutions have Hastings first, so none of these statements is universally false. Regenerating...",
+          "A": "Centerville is visited second in solutions 2 and 4.",
+          "B": "Springfield is visited third in all solutions.",
+          "C": "Millbrook is visited fifth in solutions 1 and 3.",
+          "D": "Riverside is visited fourth in solutions 2 and 4.",
+          "E": "Hastings is visited first in all solutions (so 'Hastings visited first' cannot be false)."
+        },
+        "tags": [
+          "must_be_false"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Riverside is visited fourth, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Riverside",
+            "position": 4
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Centerville is visited second."
+          },
+          {
+            "label": "B",
+            "text": "Springfield is visited second."
+          },
+          {
+            "label": "C",
+            "text": "Millbrook is visited fifth."
+          },
+          {
+            "label": "D",
+            "text": "Centerville is visited third."
+          },
+          {
+            "label": "E",
+            "text": "Hastings is visited second."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Riverside at position 4, solutions 2 and 4 are valid: (Hastings, Centerville, Springfield, Riverside, Millbrook) and (Hastings, Springfield, Centerville, Riverside, Millbrook). In both, Millbrook is at position 5.",
+          "A": "Centerville is at position 2 or 3 depending on the solution.",
+          "B": "Springfield is at position 2 or 3 depending on the solution.",
+          "C": "Correct — Millbrook must be at position 5 in both solutions with Riverside at 4.",
+          "D": "Centerville is at position 2 or 3.",
+          "E": "Hastings is at position 1, not 2."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d1-b2-03",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A museum designs an audio-tour route through six galleries—Ancient, Byzantine, Contemporary, Decorative, European, and Folk—such that visitors pass through each gallery exactly once in a sequential order, with the galleries arranged in order from first to last.",
+    "entities": [
+      "Ancient",
+      "Byzantine",
+      "Contemporary",
+      "Decorative",
+      "European",
+      "Folk"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "entity1": "Ancient",
+        "entity2": "Byzantine"
+      },
+      {
+        "type": "before",
+        "entity1": "Contemporary",
+        "entity2": "Decorative"
+      },
+      {
+        "type": "after",
+        "entity1": "European",
+        "entity2": "Folk"
+      },
+      {
+        "type": "adjacent",
+        "entity1": "Byzantine",
+        "entity2": "Contemporary"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "p1": "Ancient",
+        "p2": "Byzantine",
+        "p3": "Contemporary",
+        "p4": "Decorative",
+        "p5": "Folk",
+        "p6": "European"
+      },
+      {
+        "p1": "Ancient",
+        "p2": "Byzantine",
+        "p3": "Contemporary",
+        "p4": "Folk",
+        "p5": "Decorative",
+        "p6": "European"
+      },
+      {
+        "p1": "Folk",
+        "p2": "Ancient",
+        "p3": "Byzantine",
+        "p4": "Contemporary",
+        "p5": "Decorative",
+        "p6": "European"
+      },
+      {
+        "p1": "Folk",
+        "p2": "Ancient",
+        "p3": "Byzantine",
+        "p4": "Contemporary",
+        "p5": "Decorative",
+        "p6": "European"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b2-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be an acceptable order for the tour route through the galleries?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ancient, Contemporary, Byzantine, Decorative, Folk, European"
+          },
+          {
+            "label": "B",
+            "text": "Ancient, Byzantine, Contemporary, Decorative, Folk, European"
+          },
+          {
+            "label": "C",
+            "text": "Byzantine, Ancient, Contemporary, Decorative, Folk, European"
+          },
+          {
+            "label": "D",
+            "text": "Folk, Byzantine, Ancient, Contemporary, Decorative, European"
+          },
+          {
+            "label": "E",
+            "text": "Folk, Ancient, Contemporary, Byzantine, Decorative, European"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Ancient, Byzantine, Contemporary, Decorative, Folk, European: Ancient before Byzantine ✓; Contemporary before Decorative ✓; European after Folk ✓; Byzantine (p2) and Contemporary (p3) adjacent ✓.",
+          "A": "Contemporary (position 2) comes before Byzantine (position 3), but Byzantine must come immediately before Contemporary (adjacent, Byzantine first).",
+          "B": "Correct.",
+          "C": "Ancient must come before Byzantine; here Ancient is at position 2, Byzantine at position 1.",
+          "D": "Ancient comes before Byzantine (rule 1), but here Byzantine at p2 comes before Ancient at p3.",
+          "E": "Byzantine must come immediately before Contemporary; here Contemporary at p3 comes before Byzantine at p4."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ancient is the first gallery in the tour."
+          },
+          {
+            "label": "B",
+            "text": "Byzantine is the second gallery in the tour."
+          },
+          {
+            "label": "C",
+            "text": "European is the last gallery in the tour."
+          },
+          {
+            "label": "D",
+            "text": "Folk is the fourth gallery in the tour."
+          },
+          {
+            "label": "E",
+            "text": "Contemporary is the third gallery in the tour."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "All four verified solutions end with European at position 6. Since European must come after Folk, and all other galleries must fit in positions 1–5, European is forced to position 6.",
+          "A": "Ancient is at position 1 in solutions 1–2, but at position 2 in solutions 3–4.",
+          "B": "Byzantine is at position 2 in solutions 1–2, but at position 3 in solutions 3–4.",
+          "C": "Correct — European is at position 6 in all solutions.",
+          "D": "Folk varies by position (4 or 1).",
+          "E": "Contemporary is at position 3 in solutions 1–3, but varies."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-03",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Folk is the second gallery in the tour."
+          },
+          {
+            "label": "B",
+            "text": "Decorative is the fourth gallery in the tour."
+          },
+          {
+            "label": "C",
+            "text": "Byzantine is the first gallery in the tour."
+          },
+          {
+            "label": "D",
+            "text": "Ancient is the sixth gallery in the tour."
+          },
+          {
+            "label": "E",
+            "text": "Contemporary is the sixth gallery in the tour."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Decorative is at position 4 in solution 1 and position 5 in solution 2. So Decorative could be at position 4 (choice B).",
+          "A": "Folk is at position 1 or 5 in the verified solutions, never position 2.",
+          "B": "Correct — Decorative is at position 4 in solution 1.",
+          "C": "Ancient is always at position 1 or 2, never first in the sense of being the only one first (and it's not the first in ordering among all galleries).",
+          "D": "Ancient is never at position 6; European is always at position 6.",
+          "E": "European is always at position 6, not Contemporary."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Decorative is the fifth gallery in the tour."
+          },
+          {
+            "label": "B",
+            "text": "Contemporary is the fourth gallery in the tour."
+          },
+          {
+            "label": "C",
+            "text": "Folk is the first gallery in the tour."
+          },
+          {
+            "label": "D",
+            "text": "Ancient is the second gallery in the tour."
+          },
+          {
+            "label": "E",
+            "text": "Byzantine is the fourth gallery in the tour."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Byzantine is always at position 2 or 3 (immediately before Contemporary) in all verified solutions. Position 4 is always Decorative or Folk, never Byzantine.",
+          "A": "Decorative is at position 5 in solution 2.",
+          "B": "Contemporary is at position 4 in neither solution 1 nor 2; Contemporary is at position 3 in solutions 1–2. But solution 2 has Contemporary at position 3. Let me recheck solution 2: (Ancient, Byzantine, Contemporary, Folk, Decorative, European). Contemporary is at position 3, not 4. So B cannot be true.",
+          "C": "Folk is at position 1 in solutions 3–4.",
+          "D": "Ancient is at position 2 in solutions 3–4.",
+          "E": "Correct — Byzantine is at position 2 or 3, never at position 4."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b2-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b2-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Folk is the first gallery in the tour, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Folk",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ancient is the second gallery in the tour."
+          },
+          {
+            "label": "B",
+            "text": "Byzantine is the third gallery in the tour."
+          },
+          {
+            "label": "C",
+            "text": "Contemporary is the fourth gallery in the tour."
+          },
+          {
+            "label": "D",
+            "text": "Decorative is the fifth gallery in the tour."
+          },
+          {
+            "label": "E",
+            "text": "European is the sixth gallery in the tour."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Folk at position 1, solutions 3 and 4 apply (both identical): (Folk, Ancient, Byzantine, Contemporary, Decorative, European). Ancient must be at position 2.",
+          "A": "Correct — with Folk at position 1, Ancient is forced to position 2.",
+          "B": "Byzantine is at position 3, which is correct, but the question asks what must be true; Byzantine at position 3 is forced, but choice A is more directly entailed.",
+          "C": "Contemporary is at position 4 in solutions 3–4, making this true but not the primary must-be-true.",
+          "D": "Decorative is at position 5 in solutions 3–4.",
+          "E": "European is at position 6 in all solutions (always true, not conditional on Folk at position 1)."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

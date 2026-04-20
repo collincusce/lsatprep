@@ -38,6 +38,16 @@ function sortedBatches(prefix) {
     .sort();
 }
 
+// Patch missing explanations[correctAnswer] with "Correct." — some generators
+// (Haiku especially) put the full rationale under `correct` and skip the
+// correct-letter entry. Frontend renders best when all 5 letter entries exist.
+function patchExplanations(q) {
+  if (!q.explanations || !q.correctAnswer) return;
+  if (!q.explanations[q.correctAnswer]) {
+    q.explanations[q.correctAnswer] = 'Correct.';
+  }
+}
+
 // --- LR ---------------------------------------------------------------------
 
 function assembleLr() {
@@ -50,6 +60,7 @@ function assembleLr() {
     }
     for (const q of batch) {
       if (q.criticNotes !== undefined) delete q.criticNotes;
+      patchExplanations(q);
       records.push(q);
     }
   }
@@ -87,6 +98,7 @@ function assembleRc() {
         q.id = `rc-${zeroPad(questionCounter)}`;
         q.passageId = newPassageId;
         delete q.criticNotes;
+        patchExplanations(q);
       }
       passages.push(passage);
     }
@@ -124,6 +136,7 @@ function assembleLg() {
         q.id = `lg-${zeroPad(questionCounter)}`;
         q.gameId = newGameId;
         delete q.criticNotes;
+        patchExplanations(q);
       }
       games.push(game);
     }

@@ -1,0 +1,111 @@
+[
+  {
+    "id": "lr-gen-parallel_flaw-d3-b3-01",
+    "section": "LR",
+    "subtype": "parallel_flaw",
+    "difficulty": 3,
+    "difficultyReason": "The flaw is a necessary/sufficient confusion embedded in a medical context: the stimulus treats a condition sufficient for a diagnosis as if it were necessary, concluding that the absence of the sufficient condition rules out the diagnosis. Each answer choice is a dense mini-argument; two choices share the medical domain, and one answer is a valid inference that mimics the structure without the flaw, requiring careful conditional tracking.",
+    "stimulus": "Most patients who have Harmon's syndrome exhibit elevated levels of the protein cortinase. Dr. Patel's patient does not have elevated cortinase levels. Therefore, Dr. Patel's patient almost certainly does not have Harmon's syndrome.",
+    "questionStem": "The flawed reasoning in which one of the following is most similar to the flawed reasoning in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Most award-winning documentary films rely heavily on archival footage. The film currently under review relies heavily on archival footage. Therefore, this film is probably an award-winning documentary."
+      },
+      {
+        "label": "B",
+        "text": "Nearly all successful tech startups have received venture capital funding. The company Orblink has not received venture capital funding. Therefore, Orblink is almost certainly not a successful tech startup."
+      },
+      {
+        "label": "C",
+        "text": "All confirmed cases of Valdez disease involve abnormal liver enzyme readings. This patient has abnormal liver enzyme readings. Therefore, this patient probably has Valdez disease."
+      },
+      {
+        "label": "D",
+        "text": "The majority of professional marathon runners train at high altitude. Serena trains at high altitude. Therefore, Serena is probably a professional marathon runner."
+      },
+      {
+        "label": "E",
+        "text": "Every student who passed the bar exam on the first attempt had enrolled in a preparatory course. Marcus did not pass the bar exam on the first attempt. Therefore, Marcus probably did not enroll in a preparatory course."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The stimulus flaw: 'Most X have property P; this thing lacks P; therefore it's probably not X.' This treats a property that most (not all) X's have as though its absence rules out X — denying a non-universal sufficient indicator to deny category membership. Choice B replicates this exactly: most successful tech startups have venture capital funding; Orblink lacks it; therefore Orblink is almost certainly not a successful tech startup. The 'most' qualifier means some successful startups lack VC funding, so the absence of VC funding does not rule out success.",
+      "A": "This commits the reverse flaw — affirming a property common to X's and concluding the thing is probably an X (base-rate reversal, Carpaccio-style). The stimulus's flaw runs in the opposite direction: denying the property to deny membership.",
+      "B": "Correct. Mirrors the stimulus's flaw precisely: most members of a category have property P; this item lacks P; therefore it's almost certainly not in the category. Because only 'most' (not all) members have P, the absence of P does not reliably exclude membership.",
+      "C": "This commits base-rate reversal with a universal quantifier ('all confirmed cases involve…'). The conditional is All X → P, then P is present, concluding X — affirming the consequent. Different flaw from the stimulus.",
+      "D": "This commits base-rate reversal (affirming a property common to X's to conclude membership in X). While structurally related, the conclusion affirms membership from presence of a property, not denies membership from absence — the opposite direction from the stimulus.",
+      "E": "This uses a universal conditional (every student who passed enrolled), then denies the consequent to deny the antecedent — denying the consequent. That is actually valid (modus tollens). No flaw is committed here."
+    },
+    "tags": [
+      "parallel_flaw",
+      "necessary_sufficient_confusion",
+      "most_vs_all",
+      "medicine",
+      "economics"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_flaw.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_flaw-d3-b3-02",
+    "section": "LR",
+    "subtype": "parallel_flaw",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus commits a part-to-whole compositional fallacy in an environmental science context: properties true of individual components are illegitimately attributed to the aggregate system. Answer choices span economics, linguistics, and biology, and two choices involve plausible-sounding aggregation reasoning that actually constitutes a different error (whole-to-part division fallacy), demanding precise flaw-family discrimination.",
+    "stimulus": "Each individual coral polyp in the Aldara Reef can survive a water temperature increase of up to four degrees Celsius. Therefore, the Aldara Reef as a whole can certainly survive a water temperature increase of up to four degrees Celsius.",
+    "questionStem": "Which one of the following arguments exhibits flawed reasoning most similar to that exhibited by the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every component in the Meridian Bridge was individually tested and certified to bear loads of up to fifty tons. Therefore, the Meridian Bridge as a whole can certainly bear a load of fifty tons."
+      },
+      {
+        "label": "B",
+        "text": "The Valdoran dialect is spoken in several isolated mountain villages. Each of those villages has fewer than two hundred residents. Therefore, the total number of Valdoran dialect speakers is probably fewer than two thousand."
+      },
+      {
+        "label": "C",
+        "text": "The Harrington investment portfolio performed well during every individual quarter of last year. Therefore, the portfolio certainly performed well over the entire year as a whole."
+      },
+      {
+        "label": "D",
+        "text": "Every wolf in the Greymoor pack is capable of taking down a full-grown elk on its own. Therefore, the Greymoor pack as a whole is certainly capable of taking down a full-grown elk."
+      },
+      {
+        "label": "E",
+        "text": "The national economy as a whole grew by three percent last year. Therefore, each individual sector of the economy almost certainly grew by approximately three percent last year."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The stimulus flaw is a composition fallacy: what is true of each individual part (tolerates 4°C increase) is assumed to be true of the whole system (the reef tolerates the same increase). In complex systems, aggregate behavior differs from component behavior — interdependencies, cascade effects, and cumulative stress mean the whole need not inherit the property of its parts. Choice A replicates this exactly: each component is certified to bear 50 tons individually, but the bridge as a constructed system may not bear 50 tons — structural interactions, load distribution, and weak-point dynamics mean the whole does not simply inherit each component's property.",
+      "A": "Correct. Each part has property P individually; therefore the whole has property P. This is the composition fallacy, matching the stimulus precisely.",
+      "B": "This is an arithmetic aggregation inference: it multiplies individual village size by a rough count of villages to estimate a total. The reasoning is potentially valid (if the village count is roughly right) or at worst an estimation error — it is not a composition fallacy because it does not attribute a qualitative property of parts to the whole.",
+      "C": "This is a close relative — composition across time rather than across parts-to-whole. Each temporal segment performed well; therefore the whole period did. While this is also a composition fallacy, it aggregates across time intervals rather than physical components-to-system, making it a different dimension of the error than the stimulus, which aggregates biological components to an ecological system. The stimulus is specifically about physical/systemic tolerance thresholds, not temporal segments.",
+      "D": "This is actually a valid inference (or close to it): if each wolf individually can take down an elk, then the pack collectively can certainly do so — the pack's capability is at least as great as any individual member's capability for this task. No fallacy is committed; this is a trap 'valid analog.'",
+      "E": "This commits the division fallacy — attributing a property of the whole to each of its parts — which is the reverse of the composition fallacy in the stimulus. Opposite direction, different error."
+    },
+    "tags": [
+      "parallel_flaw",
+      "composition_fallacy",
+      "part_to_whole",
+      "environmental_science",
+      "economics",
+      "technology"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_flaw.json"
+      ]
+    }
+  }
+]

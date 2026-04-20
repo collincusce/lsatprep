@@ -1,0 +1,430 @@
+[
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-01",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus uses a nested conditional chain (A→B, B→C, C→D; A; ∴ D) embedded in medical prose. Answer choices each present five-line arguments with similar surface complexity; the correct answer must match on all four nodes of the chain, premise count, and conclusion strength ('must').",
+    "stimulus": "Every drug that inhibits enzyme X will reduce inflammation. Every compound that reduces inflammation will lower the patient's fever. Every substance that lowers a patient's fever will shorten the illness duration. Compound Z inhibits enzyme X. Therefore, Compound Z must shorten the illness duration.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every legislation that caps emissions will reduce pollution. Every policy that reduces pollution will lower health-care costs. Every measure that lowers health-care costs will increase worker productivity. Bill 7 caps emissions. Therefore, Bill 7 must increase worker productivity."
+      },
+      {
+        "label": "B",
+        "text": "Every drug that inhibits enzyme X will reduce inflammation. Every compound that reduces inflammation will lower fever. Drug W reduces inflammation. Therefore, Drug W must lower fever."
+      },
+      {
+        "label": "C",
+        "text": "Every treatment that reduces fever will shorten illness. Every illness that is shortened improves patient morale. Treatment Q reduces fever. Therefore, Treatment Q probably improves patient morale."
+      },
+      {
+        "label": "D",
+        "text": "Every compound that inhibits enzyme X will reduce inflammation. Compound Z does not inhibit enzyme X. Therefore, Compound Z will not reduce inflammation."
+      },
+      {
+        "label": "E",
+        "text": "Every drug that reduces inflammation will lower fever. Every drug that lowers fever will shorten illness. Drug Y lowers fever. Therefore, Drug Y must shorten illness."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The stimulus chains four universals (A→B, B→C, C→D), then asserts A of a particular, concluding D with 'must.' Choice A mirrors this exactly: caps emissions → reduces pollution → lowers costs → increases productivity; Bill 7 caps emissions; therefore Bill 7 must increase productivity. Four nodes, three conditional links, same conclusion force.",
+      "A": "Correct. Four-node chain (A→B→C→D), particular asserts A, conclusion asserts D with 'must.' Structure is identical.",
+      "B": "Wrong premise count. B drops one link in the chain (only A→B→C, not A→B→C→D) and starts the minor premise at a later node; the chain has only three nodes. Trap: same topic domain as stimulus.",
+      "C": "Strength-shift trap. The conclusion says 'probably improves' rather than 'must improve,' and the chain is only two links long, not three.",
+      "D": "Wrong argument form. D denies the antecedent (¬A; ∴ ¬B), which is an invalid form entirely different from the valid four-node modus ponens chain in the stimulus.",
+      "E": "Missing-premise trap. E uses only a two-link chain (A→B→C), but the minor premise asserts B (not A), making it a valid two-step modus ponens — still one node short of the stimulus's three-link chain."
+    },
+    "tags": [
+      "conditional_chain",
+      "universal_to_particular",
+      "four_node_chain",
+      "medicine",
+      "policy"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-02",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus uses a contrapositive applied to a universal ('All A that are B are C; x is A and not C; ∴ x is not B'). Distractors share environmental vocabulary or use modus ponens on the same universals, forcing careful attention to contrapositive direction and quantifier scope.",
+    "stimulus": "All ecosystems that receive sufficient rainfall support diverse plant communities. The highland plateau is an ecosystem that does not support a diverse plant community. Therefore, the highland plateau does not receive sufficient rainfall.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All software systems that receive regular updates remain secure. The payroll system does not remain secure. Therefore, the payroll system does not receive regular updates."
+      },
+      {
+        "label": "B",
+        "text": "All ecosystems with diverse plant communities receive sufficient rainfall. The coastal wetland has a diverse plant community. Therefore, the coastal wetland receives sufficient rainfall."
+      },
+      {
+        "label": "C",
+        "text": "Most ecosystems that receive sufficient rainfall support diverse plant communities. The valley floor does not support a diverse plant community. Therefore, the valley floor probably does not receive sufficient rainfall."
+      },
+      {
+        "label": "D",
+        "text": "All ecosystems that support diverse plant communities have stable soil. The rainforest supports a diverse plant community. Therefore, the rainforest has stable soil."
+      },
+      {
+        "label": "E",
+        "text": "No ecosystem that lacks rainfall can support animal life. The desert lacks sufficient rainfall. Therefore, the desert cannot support animal life."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus form: All A→B; x is A and ¬B; ∴ x is ¬(sufficient rainfall) — modus tollens on a universal. Choice A: All (systems receiving updates)→(secure); payroll is not secure; ∴ payroll does not receive updates. Identical contrapositive structure.",
+      "A": "Correct. Universal conditional, negative minor premise on the consequent, conclusion denies the antecedent via valid modus tollens.",
+      "B": "Affirms the consequent trap. B's minor premise asserts the consequent (has diverse community), and the conclusion asserts the antecedent — that is affirming the consequent, which is invalid and structurally different.",
+      "C": "Quantifier-shift trap. C weakens 'all' to 'most' and concludes 'probably,' matching neither the universality of the stimulus's premise nor the certainty of its conclusion.",
+      "D": "Wrong argument form. D applies modus ponens (affirms the antecedent, concludes the consequent) rather than modus tollens. The logical direction is reversed from the stimulus.",
+      "E": "Surface-similar topic, different structure. E uses a negative universal ('No A can B') and modus ponens, which differs from the stimulus's affirmative universal with modus tollens."
+    },
+    "tags": [
+      "modus_tollens",
+      "contrapositive",
+      "universal",
+      "environmental_science",
+      "technology"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-03",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus is a disjunctive syllogism nested within a universal: 'Every X is either A or B; x is X and not A; ∴ x is B.' Distractors use similar vocabulary but apply the disjunction to the wrong level (universal vs. particular) or add an extra premise, requiring careful parsing of quantifier scope.",
+    "stimulus": "Every contract before this court is either enforceable or void. The lease agreement before this court is not enforceable. Therefore, the lease agreement is void.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every chemical reaction in this experiment is either exothermic or endothermic. Reaction 4 in this experiment is not exothermic. Therefore, Reaction 4 is endothermic."
+      },
+      {
+        "label": "B",
+        "text": "Some contracts before this court are either enforceable or void. The mortgage before this court is not enforceable. Therefore, the mortgage is probably void."
+      },
+      {
+        "label": "C",
+        "text": "Every statute passed by the legislature is either constitutional or subject to review. Statute 12 is subject to review. Therefore, Statute 12 is not constitutional."
+      },
+      {
+        "label": "D",
+        "text": "Every document in this archive is authentic or a reproduction. Document 7 is authentic. Therefore, Document 7 is not a reproduction."
+      },
+      {
+        "label": "E",
+        "text": "Every contract is enforceable if both parties consent and the terms are legal. This contract's terms are not legal. Therefore, this contract is not enforceable."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: Universal disjunction over a set (every X is A or B); particular x belongs to the set and is ¬A; conclude x is B. Choice A: universal disjunction (every reaction is exothermic or endothermic); Reaction 4 is ¬exothermic; conclude it is endothermic. Perfect structural match.",
+      "A": "Correct. Universal disjunction applied to a set member; negative minor premise eliminates one disjunct; conclusion affirms the remaining disjunct. Mirrors the stimulus exactly.",
+      "B": "Quantifier-shift trap. 'Some' replaces 'every,' weakening the universal premise, and 'probably' softens the conclusion — two mismatches with the stimulus.",
+      "C": "Affirms one disjunct trap. C's minor premise asserts one disjunct (is subject to review) and concludes the other is false, which is an invalid inference when the disjunction is inclusive.",
+      "D": "Same-direction flaw. D affirms one disjunct positively and concludes the negation of the other — identical invalid form to C. Also treats the disjunction as exclusive without justification.",
+      "E": "Different argument form. E uses a conjunctive conditional (A ∧ B → C; ¬B; ∴ ¬C) — a modus tollens on a conjunctive antecedent — not a disjunctive syllogism."
+    },
+    "tags": [
+      "disjunctive_syllogism",
+      "universal",
+      "law",
+      "chemistry"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-04",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus is a two-premise analogy argument: X and Y share two relevant properties P and Q; Y has property R; ∴ X has R. Distractors share either one property or the conclusion, but not the full two-property analogical base, or they reverse which entity has R.",
+    "stimulus": "The economies of both Northland and Southland have high household debt ratios and contracting manufacturing sectors. Southland's currency depreciated sharply last year. Therefore, Northland's currency will likely depreciate as well.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Both species Corvid A and Corvid B have identical nesting behaviors and equivalent foraging ranges. Corvid B has shown population decline in fragmented habitats. Therefore, Corvid A will likely show population decline in fragmented habitats as well."
+      },
+      {
+        "label": "B",
+        "text": "Northland's economy has a high household debt ratio. Economies with high household debt ratios tend to have currency depreciation. Therefore, Northland's currency will likely depreciate."
+      },
+      {
+        "label": "C",
+        "text": "Southland's currency depreciated last year. Northland's manufacturing sector is contracting just as Southland's was before its depreciation. Therefore, Northland's currency will likely depreciate."
+      },
+      {
+        "label": "D",
+        "text": "Both Northland and Southland have contracting manufacturing sectors. Northland's currency depreciated last year. Therefore, Southland's currency will likely depreciate as well."
+      },
+      {
+        "label": "E",
+        "text": "All countries with high household debt and contracting manufacturing sectors eventually see currency depreciation. Northland has both conditions. Therefore, Northland's currency must depreciate."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: X and Y share two properties (P and Q); Y has R; ∴ X has R (analogical inference). Choice A: Corvid A and B share two properties (nesting behavior and foraging range); Corvid B has R (population decline); ∴ Corvid A has R. Two shared properties, correct entity direction, 'likely' conclusion — perfect match.",
+      "A": "Correct. Two entities share exactly two properties; one entity is shown to have outcome R; the other is predicted to have R via analogy. Conclusion strength ('likely') matches.",
+      "B": "Wrong form. B is a two-premise syllogism using a statistical universal ('tend to'), not an analogy between two named entities sharing properties. Only one shared property is cited.",
+      "C": "Only one shared property trap. C cites only the contracting manufacturing sector as the basis for analogy; the debt ratio is absent. The stimulus requires two shared properties as the analogical foundation.",
+      "D": "Reversed entity trap. D shares one property and makes the correct entity Y (Southland) the one whose conclusion is drawn, rather than X (Northland) — direction is reversed relative to the stimulus.",
+      "E": "Different argument form and strength-shift. E uses a universal generalization with deductive force ('must'), not an analogy between two named entities. 'Must' vs. 'likely' is a conclusion-strength mismatch."
+    },
+    "tags": [
+      "analogy",
+      "two_property_base",
+      "economics",
+      "environmental_science"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-05",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus uses a universal-to-particular syllogism with an intermediate universal ('All A are B; all B are C; x is A; ∴ x is C'), but the middle term is negated in some distractors or the minor premise is placed at a different node, forcing students to trace the chain carefully.",
+    "stimulus": "All published works that contain original expression are protected by copyright. All works protected by copyright require the author's permission before reproduction. The novel Evergreen contains original expression and is a published work. Therefore, reproducing Evergreen requires the author's permission.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All licensed physicians who perform surgery must carry malpractice insurance. All those who carry malpractice insurance must register with the state board. Dr. Osei is a licensed physician who performs surgery. Therefore, Dr. Osei must register with the state board."
+      },
+      {
+        "label": "B",
+        "text": "All published works require the author's permission before reproduction. Evergreen is a published work. Therefore, reproducing Evergreen requires the author's permission."
+      },
+      {
+        "label": "C",
+        "text": "All works with original expression are copyrighted. All copyrighted works require permission before reproduction. Evergreen does not require permission. Therefore, Evergreen lacks original expression."
+      },
+      {
+        "label": "D",
+        "text": "All licensed physicians must carry malpractice insurance. Dr. Kim is not a licensed physician. Therefore, Dr. Kim need not carry malpractice insurance."
+      },
+      {
+        "label": "E",
+        "text": "All works containing original expression are protected by copyright. Evergreen is protected by copyright. Therefore, Evergreen contains original expression."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: All A→B; All B→C; x is A; ∴ x is C. Three premises (two universals + one particular), valid AAA-1 syllogistic chain. Choice A: All (licensed surgeons)→(carry insurance); All (carry insurance)→(register with board); Dr. Osei is a licensed surgeon; ∴ Dr. Osei must register. Identical three-premise, two-link chain.",
+      "A": "Correct. Two universal premises chain A→B and B→C; minor premise places a particular at A; conclusion places it at C. Three premises, two links, certain conclusion.",
+      "B": "Wrong premise count trap. B collapses the two-step chain into one universal premise (A→C directly) and one minor premise — only two premises total, missing the intermediate link.",
+      "C": "Different argument form. C uses modus tollens (¬C; A→B→C; ∴ ¬A) — a contrapositive application — rather than the forward-direction modus ponens chain of the stimulus.",
+      "D": "Denies the antecedent. D's minor premise negates A (¬A) and concludes ¬B, which is the fallacy of denying the antecedent — an invalid form structurally distinct from the stimulus.",
+      "E": "Affirms the consequent. E's minor premise asserts B (is copyrighted) and concludes A (has original expression) — affirming the consequent, an invalid form entirely different from the stimulus."
+    },
+    "tags": [
+      "universal_to_particular",
+      "two_link_chain",
+      "law",
+      "modus_ponens"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-06",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus combines a biconditional premise with a universal ('A language preserves a cultural practice if and only if it retains the relevant vocabulary; Language L retains the vocabulary; ∴ L preserves the practice'). Distractors exploit the biconditional by reversing direction or replacing it with a one-way conditional, requiring recognition of both directions of the if-and-only-if.",
+    "stimulus": "A linguistic community preserves a traditional practice if and only if its language retains the vocabulary associated with that practice. The Valeri community's language retains the vocabulary associated with its weaving tradition. Therefore, the Valeri community preserves its weaving tradition.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A legal right is enforceable if and only if it is codified in statute. The right to quiet enjoyment is codified in statute. Therefore, the right to quiet enjoyment is enforceable."
+      },
+      {
+        "label": "B",
+        "text": "A traditional practice is preserved if the community teaches it to children. The Valeri community teaches weaving to its children. Therefore, the Valeri community preserves its weaving tradition."
+      },
+      {
+        "label": "C",
+        "text": "A linguistic community preserves a traditional practice only if its language retains the relevant vocabulary. The Valeri community does not retain the vocabulary. Therefore, the Valeri community does not preserve the practice."
+      },
+      {
+        "label": "D",
+        "text": "A legal right is enforceable if and only if it is codified in statute. The right to privacy is not enforceable. Therefore, the right to privacy is not codified in statute."
+      },
+      {
+        "label": "E",
+        "text": "A linguistic community preserves a traditional practice if and only if its language retains the vocabulary. The Doru community does not preserve its fishing tradition. Therefore, the Doru community's language does not retain fishing vocabulary."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: A ↔ B (biconditional); B is asserted; ∴ A. Choice A: legal right enforceable ↔ codified in statute (biconditional); right to quiet enjoyment is codified; ∴ it is enforceable. Same biconditional premise structure, same direction (assert B, conclude A), identical form.",
+      "A": "Correct. Biconditional premise; minor premise asserts the right-hand side (B); conclusion affirms the left-hand side (A). Mirrors the stimulus's use of the biconditional's B→A direction.",
+      "B": "One-way conditional trap. B replaces the biconditional with a simple 'if' (sufficient condition only), which is a weaker, structurally different premise. The inference is valid but not parallel.",
+      "C": "Wrong direction of biconditional. C uses only the 'only if' half (A→B), then applies modus tollens (¬B; ∴ ¬A). The stimulus uses the other direction (B→A) with modus ponens. Different conditional direction.",
+      "D": "Same biconditional, wrong direction trap. D asserts ¬A and concludes ¬B — this uses modus tollens on the A→B half of the biconditional — the opposite direction from the stimulus's B→A modus ponens.",
+      "E": "Same biconditional, wrong direction and negative minor premise. E asserts ¬A and concludes ¬B (modus tollens on A→B direction), which differs from the stimulus's positive assertion of B to conclude A."
+    },
+    "tags": [
+      "biconditional",
+      "modus_ponens",
+      "linguistics",
+      "law"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-07",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus is a three-premise argument combining a universal negative with an existential: 'No A is B; some C are A; ∴ some C are not B.' Distractors flip the quantifier type, reverse the negative, or use modus ponens on a universal, requiring careful tracking of both the negative universal and the existential.",
+    "stimulus": "No algorithm that relies solely on historical data can accurately predict unprecedented market events. Some risk-assessment tools used by this bank rely solely on historical data. Therefore, some risk-assessment tools used by this bank cannot accurately predict unprecedented market events.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No vaccine developed without clinical trials can be approved for public use. Some vaccines currently in distribution were developed without clinical trials. Therefore, some vaccines currently in distribution cannot be approved for public use."
+      },
+      {
+        "label": "B",
+        "text": "No historical data set can predict unprecedented events. All risk-assessment tools rely on historical data. Therefore, no risk-assessment tool can predict unprecedented events."
+      },
+      {
+        "label": "C",
+        "text": "No algorithm relying solely on historical data can predict unprecedented events. No risk-assessment tool at this bank relies solely on historical data. Therefore, all risk-assessment tools at this bank can predict unprecedented events."
+      },
+      {
+        "label": "D",
+        "text": "Some algorithms cannot predict unprecedented events. Some risk-assessment tools are algorithms. Therefore, some risk-assessment tools cannot predict unprecedented events."
+      },
+      {
+        "label": "E",
+        "text": "No historical model is completely reliable. This bank's risk-assessment tool is a historical model. Therefore, this bank's risk-assessment tool is not completely reliable."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: No A is B (universal negative); some C are A (existential affirmative); ∴ some C are not B (existential negative). Choice A: No (vaccine without trials) is (approved); some (vaccines in distribution) are (vaccines without trials); ∴ some (vaccines in distribution) are not (approved). Identical EIO syllogism.",
+      "A": "Correct. Universal negative major premise, existential affirmative minor premise, existential negative conclusion — EIO syllogism matching the stimulus precisely.",
+      "B": "Quantifier-shift trap. B uses 'all' in the minor premise instead of 'some,' producing an AEE syllogism with a universal negative conclusion ('no risk tool') rather than the existential negative conclusion of the stimulus.",
+      "C": "Invalid form and negative minor premise. C negates the minor premise (No C are A) rather than asserting some C are A, and draws a universal positive conclusion — both the form and conclusion type differ from the stimulus.",
+      "D": "Missing universal negative premise. D uses two existential/particular premises ('some algorithms cannot…; some tools are algorithms'), which is an undistributed-middle fallacy and structurally distinct from the valid EIO form of the stimulus.",
+      "E": "Different argument form and quantifier. E applies a universal negative to a singular term ('this bank's tool'), drawing a singular conclusion. This is a universal-to-particular modus tollens pattern, not the existential syllogism of the stimulus."
+    },
+    "tags": [
+      "universal_negative",
+      "existential",
+      "EIO_syllogism",
+      "technology",
+      "economics"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d3-b3-08",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus uses a conditional with a conjunctive antecedent (A ∧ B → C; A is present; B is present; ∴ C) across three explicit premises. Distractors either use only one conjunct, deny one conjunct to draw a negative conclusion, or switch to a disjunctive antecedent, requiring students to verify that both conjuncts are affirmed.",
+    "stimulus": "Whenever a historical monument is both listed on the national registry and located within a protected zone, federal preservation funds are automatically allocated to it. The Alderton Clocktower is listed on the national registry, and it is located within a protected zone. Therefore, federal preservation funds are automatically allocated to the Alderton Clocktower.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Whenever a manuscript is both authenticated by a certified archivist and catalogued in the national database, it qualifies for digitization funding. The Morrow Letters have been authenticated by a certified archivist and catalogued in the national database. Therefore, the Morrow Letters qualify for digitization funding."
+      },
+      {
+        "label": "B",
+        "text": "Whenever a monument is listed on the national registry, it may receive preservation funds. The Alderton Clocktower is listed on the national registry. Therefore, the Alderton Clocktower may receive preservation funds."
+      },
+      {
+        "label": "C",
+        "text": "Whenever a historical monument is listed on the national registry or located in a protected zone, it receives federal attention. The Alderton Clocktower is listed on the national registry. Therefore, the Alderton Clocktower receives federal attention."
+      },
+      {
+        "label": "D",
+        "text": "Whenever a historical monument is both listed on the national registry and in a protected zone, it receives federal funds. The Barton Bridge is not located in a protected zone. Therefore, federal funds are not allocated to the Barton Bridge."
+      },
+      {
+        "label": "E",
+        "text": "Whenever a manuscript is authenticated and catalogued, it qualifies for funding. The Morrow Letters have not been catalogued. Therefore, the Morrow Letters do not qualify for funding."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Stimulus: (A ∧ B) → C; A; B; ∴ C. Three premises (one conditional + two conjunct-affirmers), valid modus ponens on a conjunctive antecedent. Choice A: (authenticated ∧ catalogued) → qualifies; Morrow Letters are authenticated; Morrow Letters are catalogued; ∴ qualify. Identical structure — both conjuncts explicitly affirmed.",
+      "A": "Correct. Conjunctive antecedent conditional; both conjuncts explicitly affirmed in two separate minor premises; conclusion follows by modus ponens. Mirrors the stimulus exactly.",
+      "B": "Missing conjunct trap. B reduces the conjunctive antecedent to a single condition ('listed on registry'), dropping the second conjunct entirely. It also weakens the consequent from automatic allocation to 'may receive,' a strength mismatch.",
+      "C": "Disjunctive antecedent trap. C replaces the conjunction ('and') with a disjunction ('or'), making a weaker antecedent. The inference is valid but structurally different — the stimulus requires both conditions, not just one.",
+      "D": "Denies one conjunct trap. D's minor premise negates one conjunct (¬B) and concludes the negation of the consequent (¬C). This attempts modus tollens on an incomplete basis — denying one conjunct of a conjunctive antecedent does not entail ¬C if A could still obtain with another route.",
+      "E": "Denies antecedent trap. E negates one conjunct (not catalogued) and concludes ¬C — the same structural error as D but in a different domain. Denying one element of a conjunctive antecedent does not validly entail denial of the consequent."
+    },
+    "tags": [
+      "conjunctive_antecedent",
+      "modus_ponens",
+      "history",
+      "arts",
+      "policy"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_reasoning.json"
+      ]
+    }
+  }
+]

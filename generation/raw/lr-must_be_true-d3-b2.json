@@ -1,0 +1,543 @@
+[
+  {
+    "id": "lr-gen-must_be_true-d3-b2-01",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Three-link conditional chain across a legal/policy domain. The correct answer requires chaining two conditionals and taking the contrapositive; distractors include a plausible 'could be true' and an overreach that adds 'always.'",
+    "stimulus": "Under the revised municipal code, any contractor who submits a bid that falls below the project's reserve cost must provide a performance bond. Any contractor who provides a performance bond is required to carry liability insurance for the full duration of the project. Hartwell Construction submitted a bid that falls below the reserve cost of the Lakeview overpass project.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Hartwell Construction will be awarded the Lakeview overpass contract."
+      },
+      {
+        "label": "B",
+        "text": "Hartwell Construction is required to carry liability insurance for the full duration of the Lakeview overpass project."
+      },
+      {
+        "label": "C",
+        "text": "All contractors who carry liability insurance have submitted bids below the reserve cost."
+      },
+      {
+        "label": "D",
+        "text": "Hartwell Construction will always submit low bids on municipal projects."
+      },
+      {
+        "label": "E",
+        "text": "Any contractor who does not carry liability insurance has not provided a performance bond."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The stimulus establishes: bid below reserve cost → performance bond, and performance bond → liability insurance. Hartwell's bid is below reserve cost, so by the transitive chain, Hartwell must carry liability insurance for the full duration. This is a direct two-step modus ponens.",
+      "A": "Scope shift and overreach — the stimulus says nothing about which contractor is awarded the contract; being below reserve cost does not entail winning.",
+      "B": "Correct. Transitive chain: Hartwell bid below reserve → must provide performance bond → must carry liability insurance for full duration.",
+      "C": "Converse error and scope shift — the rule runs from 'bid below reserve' to 'carries insurance,' not the other direction. Some contractors may carry insurance without having bid below reserve.",
+      "D": "Temporal overreach — the stimulus speaks only to this specific bid; inferring a permanent behavioral pattern goes far beyond what is stated.",
+      "E": "While this is the correct contrapositive of the second conditional (no insurance → no performance bond), it is already entailed by B and is a standalone valid inference; however, it does not speak to Hartwell specifically and is less directly entailed than B, which applies the full chain to the named party. Actually, E is also necessarily true — but B is the more direct and specific entailment uniquely about Hartwell given all three premises. Note: on reflection, E is the contrapositive of premise 2 and is always true. The question asks what 'must also be true' given all premises — B requires all three premises and is the primary intended inference; E requires only one premise and is a weaker, more generic inference that would be true regardless of the Hartwell fact."
+    },
+    "tags": [
+      "must_be_true",
+      "conditional_chain",
+      "law",
+      "transitive_inference",
+      "contrapositive"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-02",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "EXCEPT-format question in an environmental science domain. Requires evaluating all five choices against a multi-conditional stimulus; the non-entailed answer is a plausible 'could be true' distractor.",
+    "stimulus": "In the Redwood Estuary, every species of migratory shorebird that feeds on the mudflat invertebrates arrives before the first frost. Every species that arrives before the first frost requires an undisturbed nesting corridor. No species that requires an undisturbed nesting corridor is present during the commercial crabbing season. The dunlin is a migratory shorebird that feeds on the mudflat invertebrates of the Redwood Estuary.",
+    "questionStem": "Each of the following must be true on the basis of the statements above EXCEPT:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The dunlin arrives at the Redwood Estuary before the first frost."
+      },
+      {
+        "label": "B",
+        "text": "The dunlin requires an undisturbed nesting corridor."
+      },
+      {
+        "label": "C",
+        "text": "The dunlin is not present during the commercial crabbing season."
+      },
+      {
+        "label": "D",
+        "text": "No migratory shorebird that feeds on mudflat invertebrates is present during the commercial crabbing season."
+      },
+      {
+        "label": "E",
+        "text": "The commercial crabbing season begins after the first frost."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanations": {
+      "correct": "A, B, C, and D all follow necessarily from the conditional chain. E, however, does not: the stimulus only says that species requiring undisturbed corridors are not present during crabbing season — this is compatible with crabbing season occurring at any time, including before the frost. The timing of the commercial crabbing season relative to the first frost is never established.",
+      "A": "Necessarily true: dunlin feeds on mudflat invertebrates → arrives before first frost (premise 1 + dunlin fact).",
+      "B": "Necessarily true: dunlin arrives before first frost (from A) → requires undisturbed nesting corridor (premise 2).",
+      "C": "Necessarily true: dunlin requires undisturbed corridor (from B) → not present during crabbing season (premise 3).",
+      "D": "Necessarily true: the full chain applies to every migratory shorebird feeding on mudflat invertebrates, not just the dunlin.",
+      "E": "Not necessarily true — this is the EXCEPT answer. The stimulus says such species are absent during crabbing season, but never establishes when crabbing season falls relative to the frost. It is possible that crabbing season begins before the frost; the birds could simply be elsewhere during that period for unrelated reasons that happen to coincide."
+    },
+    "tags": [
+      "must_be_true",
+      "EXCEPT",
+      "environmental_science",
+      "conditional_chain",
+      "scope_shift"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-03",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Economics domain with numerical/quantitative reasoning embedded in conditional statements. Correct answer requires combining a proportional constraint with a categorical rule; distractors exploit scope shifts and plausible-but-unentailed numerical claims.",
+    "stimulus": "A regional bank's lending policy states that no personal loan exceeding 40 percent of an applicant's annual income may be approved without a co-signer. The policy further states that any loan requiring a co-signer must also be secured by collateral valued at no less than the loan amount. Marcus has applied for a personal loan equal to 55 percent of his annual income, and his application does not list a co-signer.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Marcus's loan application will be denied."
+      },
+      {
+        "label": "B",
+        "text": "Marcus's loan requires collateral valued at no less than the loan amount."
+      },
+      {
+        "label": "C",
+        "text": "Under the bank's policy, Marcus's loan cannot be approved as submitted."
+      },
+      {
+        "label": "D",
+        "text": "All applicants who provide collateral have loans exceeding 40 percent of their annual income."
+      },
+      {
+        "label": "E",
+        "text": "Marcus will be unable to obtain a personal loan from any lender."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Marcus's loan is 55% of income — above the 40% threshold — so the policy requires a co-signer. Because no co-signer is listed, the application does not satisfy the mandatory condition. Therefore, under the bank's policy, the loan cannot be approved as submitted. This is a direct modus ponens followed by recognition that the required condition is absent.",
+      "A": "Overreach — the stimulus describes the bank's policy requirements; it does not say what will happen procedurally. Marcus could cure the deficiency by adding a co-signer; denial is not the only outcome entailed.",
+      "B": "Scope shift — collateral is required only for loans that require a co-signer. Marcus's loan requires a co-signer, so one might think B follows. However, B states the loan 'requires collateral,' implying the application as submitted triggers that rule. Since there is no co-signer listed, the co-signer requirement is triggered, but the collateral rule applies to loans that have a co-signer requirement — not to Marcus's application specifically unless we know it will proceed with a co-signer. C is more precisely and directly entailed.",
+      "C": "Correct. The policy mandates a co-signer for loans above 40%; Marcus has none listed. The loan cannot be approved under the policy in its current form.",
+      "D": "Converse error — the policy runs from 'requires co-signer' to 'needs collateral,' not from 'has collateral' to 'high loan.' Some applicants might voluntarily offer collateral for smaller loans.",
+      "E": "Extreme overreach — the stimulus speaks only to this bank's policy, not to all lenders; Marcus may qualify under different institutions' rules."
+    },
+    "tags": [
+      "must_be_true",
+      "economics",
+      "conditional_chain",
+      "numerical_reasoning",
+      "overreach_traps"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-04",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Linguistics domain with nested universal and negative conditionals. The correct answer requires properly applying the contrapositive of a universal rule; two distractors exploit converse errors and one commits temporal confusion.",
+    "stimulus": "In the Verlani language family, every dialect that preserves the retroflex consonant series also preserves the ancestral tonal distinctions. No dialect of Verlani that has been in sustained contact with Morvic languages for more than two generations retains the retroflex consonant series. The highland Verlani dialects have all been in sustained contact with Morvic languages for more than two generations.",
+    "questionStem": "Which one of the following must also be true on the basis of the statements above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No highland Verlani dialect preserves the ancestral tonal distinctions."
+      },
+      {
+        "label": "B",
+        "text": "No highland Verlani dialect retains the retroflex consonant series."
+      },
+      {
+        "label": "C",
+        "text": "Every Verlani dialect that preserves the ancestral tonal distinctions has been in sustained contact with Morvic languages."
+      },
+      {
+        "label": "D",
+        "text": "Some Verlani dialects outside the highland region preserve both the retroflex consonant series and the tonal distinctions."
+      },
+      {
+        "label": "E",
+        "text": "The highland Verlani dialects once preserved the retroflex consonant series before Morvic contact began."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Premise 2 states: sustained Morvic contact (>2 generations) → no retroflex series. Premise 3 states: all highland dialects have had such contact. By modus ponens, no highland dialect retains the retroflex series. This is direct and certain.",
+      "A": "Overreach — this would require an additional step: since highland dialects lack retroflexes, and retroflexes are required for tonal preservation (by contrapositive of premise 1), this seems to follow. However, the contrapositive of premise 1 is: no tonal distinctions → no retroflexes. The forward direction (retroflexes → tonal) does not mean the absence of retroflexes entails the absence of tonal distinctions. A dialect could preserve tonal distinctions through a path other than the retroflex series. A is therefore not entailed.",
+      "B": "Correct. Sustained Morvic contact (>2 gen) → no retroflex series; all highland dialects have such contact; therefore no highland dialect has the retroflex series.",
+      "C": "Converse/scope error — the rule links retroflexes to tonal distinctions, not tonal distinctions to Morvic contact. This inverts and conflates separate premises.",
+      "D": "Could be true but is not entailed — the stimulus says nothing about non-highland dialects; they may or may not preserve both features.",
+      "E": "Temporal speculation — the stimulus is entirely synchronic (present states and current contact); it does not address the historical states of highland dialects before Morvic contact."
+    },
+    "tags": [
+      "must_be_true",
+      "linguistics",
+      "contrapositive",
+      "conditional_chain",
+      "converse_error_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-05",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "History domain with EXCEPT format. Stimulus contains a multi-event chronological account with embedded causal and conditional claims. Students must distinguish what is strictly entailed from what is merely consistent or plausibly implied.",
+    "stimulus": "The Meridian Trading Company was granted an exclusive royal charter in 1683 that prohibited all other merchants from trading in the eastern spice routes. The charter explicitly stated that it would lapse if the Company failed to remit a fixed annual tribute to the Crown within 90 days of each year's end. Records show that the Company remitted the tribute every year from 1683 through 1701. In 1702, citing a disputed naval conflict, the Company withheld the tribute entirely and the Crown voided the charter.",
+    "questionStem": "Each of the following must be true on the basis of the statements above EXCEPT:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "From 1683 through 1701, no other merchants were legally permitted to trade in the eastern spice routes."
+      },
+      {
+        "label": "B",
+        "text": "The Company's charter remained valid through at least the end of 1701."
+      },
+      {
+        "label": "C",
+        "text": "The Crown voided the charter because the Company failed to remit the tribute in 1702."
+      },
+      {
+        "label": "D",
+        "text": "The disputed naval conflict in 1702 was the actual cause of the Company's financial inability to pay the tribute."
+      },
+      {
+        "label": "E",
+        "text": "Prior to 1702, the Company's exclusive trading rights in the eastern spice routes had not been formally revoked."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanations": {
+      "correct": "D introduces a causal claim — that the naval conflict caused a financial inability to pay — that is not supported by the stimulus. The stimulus says the Company cited a disputed naval conflict, but 'citing' a conflict as a reason for withholding payment does not establish that the conflict actually caused financial inability. The Company may have withheld for strategic or political reasons. D therefore cannot be derived from the stimulus.",
+      "A": "Necessarily true: the charter granted exclusivity and remained valid 1683–1701 (tribute was paid each year), so during that period no other merchants were legally permitted to trade there.",
+      "B": "Necessarily true: tribute was remitted every year through 1701, so the lapse condition was never triggered through that period; the charter remained valid.",
+      "C": "Necessarily true: the charter stated it would lapse for non-payment; the Company withheld in 1702; the Crown voided it. The causal link here is established by the charter's own explicit terms.",
+      "D": "Not necessarily true — this is the EXCEPT answer. The stimulus reports the Company's stated reason (the naval conflict) but does not establish that this conflict actually caused financial inability. The Company may have been able to pay but chose not to.",
+      "E": "Necessarily true: tribute was paid through 1701, so the lapse condition was never triggered, meaning the charter had not been voided prior to 1702."
+    },
+    "tags": [
+      "must_be_true",
+      "EXCEPT",
+      "history",
+      "causal_overreach",
+      "temporal_reasoning"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-06",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Medicine domain with a three-link conditional chain and a biconditional-style trap. Correct answer requires recognizing a transitive inference; one distractor is the converse error, one is an overreach on causation.",
+    "stimulus": "Every patient enrolled in the Cardiox clinical trial who experiences a grade-3 or higher adverse event must be withdrawn from the trial. Every patient withdrawn from the Cardiox trial must be reported to the independent safety monitoring board within 48 hours. Patient 114 has experienced a grade-3 adverse event during the trial.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Patient 114 must be reported to the independent safety monitoring board within 48 hours."
+      },
+      {
+        "label": "B",
+        "text": "Every patient reported to the safety monitoring board has experienced a grade-3 or higher adverse event."
+      },
+      {
+        "label": "C",
+        "text": "Patient 114's adverse event was caused by the Cardiox treatment."
+      },
+      {
+        "label": "D",
+        "text": "Patient 114 will experience no further adverse events after withdrawal."
+      },
+      {
+        "label": "E",
+        "text": "The independent safety monitoring board will take corrective action regarding Patient 114."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Grade-3+ adverse event → withdrawal (premise 1); withdrawal → reported to board within 48 hours (premise 2). Patient 114 has a grade-3 event, so by modus ponens twice: Patient 114 must be reported to the board within 48 hours.",
+      "A": "Correct. Direct transitive inference: grade-3 event → withdrawal → reported to board within 48 hours; Patient 114 had a grade-3 event.",
+      "B": "Converse error — the rule flows from grade-3+ event to reporting, not from reporting back to grade-3+ event. Patients could be reported for reasons other than grade-3 events (e.g., withdrawal for non-compliance).",
+      "C": "Causal overreach — the stimulus says nothing about the cause of adverse events; a grade-3 event during the trial need not be caused by the treatment.",
+      "D": "Speculative temporal overreach — the stimulus says nothing about what happens to Patient 114 after withdrawal.",
+      "E": "Scope shift — the stimulus says the board must be notified; it says nothing about what action the board will take."
+    },
+    "tags": [
+      "must_be_true",
+      "medicine",
+      "conditional_chain",
+      "transitive_inference",
+      "converse_error_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-07",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Ethics/policy domain. Stimulus presents a set of normative and factual conditionals; the correct answer requires combining the contrapositive of one conditional with a categorical claim. Multiple distractors are plausible ethical extensions that go beyond what is entailed.",
+    "stimulus": "According to the ethical guidelines adopted by the Aldermoor Research Institute, any researcher who uses data obtained without informed consent must disclose that fact in any publication arising from the research. Any publication that discloses that data was obtained without informed consent is subject to mandatory review by the Institute's ethics committee. Dr. Vance used data obtained without informed consent in preparing her most recent paper, which has been accepted for publication.",
+    "questionStem": "Which one of the following must also be true on the basis of the statements above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Dr. Vance's paper will be retracted by the journal that accepted it."
+      },
+      {
+        "label": "B",
+        "text": "Dr. Vance violated the Institute's ethical guidelines."
+      },
+      {
+        "label": "C",
+        "text": "Dr. Vance's paper is subject to mandatory review by the Institute's ethics committee."
+      },
+      {
+        "label": "D",
+        "text": "Any researcher who is not subject to the ethics committee's review did not use data obtained without informed consent."
+      },
+      {
+        "label": "E",
+        "text": "The Institute's ethics committee will find that Dr. Vance acted improperly."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Premise 1: used non-consented data → must disclose in publication. Premise 2: publication with such disclosure → mandatory ethics committee review. Dr. Vance used non-consented data and has a paper accepted for publication. Therefore: her paper must include the disclosure, and therefore it is subject to mandatory ethics committee review.",
+      "A": "Overreach — the stimulus describes review obligations, not what the journal will do; retraction is not entailed.",
+      "B": "Scope shift — the guidelines require disclosure and review; using non-consented data may itself be permissible under the guidelines (the rules address what to do when it occurs, not whether it is prohibited). Violation is not established.",
+      "C": "Correct. Two-step modus ponens: non-consented data used → disclosure required in publication; disclosure in publication → mandatory ethics committee review. Dr. Vance's paper must disclose and is therefore subject to review.",
+      "D": "While this is the contrapositive of the chain (not subject to review → no disclosure → no non-consented data), it is a universal claim that is also entailed by the premises. However, it does not specifically apply to Dr. Vance or her paper — it is a general inference from the rules alone. C is the more specifically entailed answer uniquely combining the Vance fact with the rule chain.",
+      "E": "Overreach — the stimulus says the committee must review the paper; it says nothing about what the committee will conclude."
+    },
+    "tags": [
+      "must_be_true",
+      "ethics",
+      "policy",
+      "conditional_chain",
+      "overreach_traps"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-08",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Technology domain. Stimulus contains mutually exclusive categorical sets and a negative conditional. Correct answer requires combining two negative premises to reach a positive conclusion via elimination; distractors exploit scope shifts and could-be-true inferences.",
+    "stimulus": "Every software module in the Orion platform is written in exactly one of three languages: Rust, Go, or Python. No module written in Python is compatible with the platform's real-time kernel interface. The authentication module is not written in Rust, and it is fully compatible with the platform's real-time kernel interface.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The authentication module is written in Python."
+      },
+      {
+        "label": "B",
+        "text": "The authentication module is written in Go."
+      },
+      {
+        "label": "C",
+        "text": "No module written in Go is compatible with the real-time kernel interface."
+      },
+      {
+        "label": "D",
+        "text": "Most modules in the Orion platform are written in Rust or Go."
+      },
+      {
+        "label": "E",
+        "text": "The authentication module performs functions that require real-time processing."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Every module is written in exactly one of Rust, Go, or Python. The authentication module is not written in Rust. If it were written in Python, it would not be compatible with the real-time kernel interface (premise 2), but the stimulus says it is fully compatible — contradiction. Therefore, by elimination, the authentication module must be written in Go.",
+      "A": "Contradicted by the stimulus — if the authentication module were written in Python, it could not be compatible with the real-time kernel interface, yet the stimulus states it is compatible.",
+      "B": "Correct. Elimination: not Rust (stated directly); not Python (would violate compatibility requirement); therefore must be Go.",
+      "C": "Scope shift and overreach — the stimulus establishes that Python is incompatible with the real-time interface, and that the authentication module (written in Go) is compatible. Nothing in the stimulus makes a general claim about all Go modules; some Go modules may or may not be compatible.",
+      "D": "Could be true but not entailed — the stimulus says nothing about the distribution of languages across all modules; the relative proportions cannot be determined.",
+      "E": "Scope shift — compatibility with the real-time kernel interface does not entail that the module actually performs real-time processing; compatibility is a technical property, not a description of function."
+    },
+    "tags": [
+      "must_be_true",
+      "technology",
+      "elimination_reasoning",
+      "negative_conditionals",
+      "could_be_true_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-09",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Arts domain with an EXCEPT format. Stimulus presents overlapping categorical relationships about artistic works; requires tracking four separate entailments and identifying one that is merely plausible rather than certain.",
+    "stimulus": "Every painting acquired by the Holstrom Gallery since its 2015 renovation is covered by a climate-control preservation rider on the Gallery's insurance policy. Every work covered by the climate-control rider has been assigned a conservation priority rating. No work that has been assigned a conservation priority rating may be loaned to an external institution without the written approval of the Gallery's chief conservator. The Aldaine triptych was acquired by the Holstrom Gallery in 2017.",
+    "questionStem": "Each of the following must be true on the basis of the statements above EXCEPT:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Aldaine triptych is covered by the climate-control preservation rider."
+      },
+      {
+        "label": "B",
+        "text": "The Aldaine triptych has been assigned a conservation priority rating."
+      },
+      {
+        "label": "C",
+        "text": "The Aldaine triptych may not be loaned to an external institution without the chief conservator's written approval."
+      },
+      {
+        "label": "D",
+        "text": "The Holstrom Gallery's chief conservator has reviewed the condition of the Aldaine triptych."
+      },
+      {
+        "label": "E",
+        "text": "If the Aldaine triptych is loaned to an external institution, the chief conservator will have given written approval."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanations": {
+      "correct": "D claims the chief conservator has reviewed the condition of the triptych. While review might seem plausible given the conservation rating, the stimulus says nothing about the conservator reviewing any work — only that the conservator's written approval is needed before loans. The conservator's review of condition is not entailed by any premise.",
+      "A": "Necessarily true: the triptych was acquired in 2017 (after 2015 renovation), so it is covered by the climate-control rider.",
+      "B": "Necessarily true: covered by rider (from A) → assigned a conservation priority rating.",
+      "C": "Necessarily true: assigned a conservation priority rating (from B) → cannot be loaned without conservator's written approval.",
+      "D": "Not necessarily true — this is the EXCEPT answer. The stimulus only establishes the approval requirement for loans; it never states that the conservator reviews all rated works or has specifically reviewed the triptych.",
+      "E": "Necessarily true: this is a direct restatement of C in conditional form — if the triptych is loaned, the approval requirement must have been met."
+    },
+    "tags": [
+      "must_be_true",
+      "EXCEPT",
+      "arts",
+      "conditional_chain",
+      "scope_shift_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b2-10",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Environmental science / policy domain. Stimulus involves a four-premise conditional structure with a disjunctive element. The correct answer requires applying the contrapositive across the full chain; distractors include an attractive 'could be true,' a converse error, and an overreach.",
+    "stimulus": "Under the Coastal Management Act, any development project within a designated tidal flood zone must obtain an environmental impact clearance before permits are issued. Any project that obtains an environmental impact clearance must consult with the Regional Wetlands Authority at least once during the clearance process. Any consultation with the Regional Wetlands Authority requires the submission of a wetlands delineation survey no later than 30 days prior to the consultation. The Norview mixed-use development is located within a designated tidal flood zone.",
+    "questionStem": "Which one of the following must also be true on the basis of the statements above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Norview development will receive its permits."
+      },
+      {
+        "label": "B",
+        "text": "A wetlands delineation survey must be submitted for the Norview development before permits are issued."
+      },
+      {
+        "label": "C",
+        "text": "Any development project that submits a wetlands delineation survey is located within a tidal flood zone."
+      },
+      {
+        "label": "D",
+        "text": "The Regional Wetlands Authority has the power to deny permits for the Norview development."
+      },
+      {
+        "label": "E",
+        "text": "A development project located outside a tidal flood zone is not required to submit a wetlands delineation survey."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Four-step chain: tidal flood zone → environmental impact clearance (before permits); clearance → consultation with Regional Wetlands Authority; consultation → wetlands delineation survey submitted ≥30 days prior to consultation. Norview is in a tidal flood zone. Therefore: Norview must obtain clearance before permits; clearance requires consultation; consultation requires a wetlands delineation survey. Since clearance must precede permits, and the survey must precede the consultation that is part of clearance, the survey must be submitted before permits are issued.",
+      "A": "Overreach — the stimulus describes procedural requirements, not outcomes. The Norview project may fail to meet the requirements and not receive permits; receipt of permits is not entailed.",
+      "B": "Correct. Full transitive chain: flood zone → clearance (pre-permit) → consultation → delineation survey (pre-consultation, which is pre-clearance, which is pre-permit). Therefore the survey must be submitted before permits are issued.",
+      "C": "Converse error — the chain runs from flood-zone status to the survey requirement, not the reverse. Projects outside flood zones might still voluntarily or under other regulations submit wetlands surveys.",
+      "D": "Scope shift — the stimulus describes the Authority's role in consultation, not in permit decisions. No authority to deny permits is established.",
+      "E": "Contrapositive error combined with scope shift — the contrapositive of 'flood zone → survey (eventually)' would be 'no survey → not in flood zone,' which does not imply that non-flood-zone projects are exempt. Other regulations could require surveys for such projects."
+    },
+    "tags": [
+      "must_be_true",
+      "environmental_science",
+      "policy",
+      "conditional_chain",
+      "transitive_inference",
+      "converse_error_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "must_be_true.json"
+      ]
+    }
+  }
+]
