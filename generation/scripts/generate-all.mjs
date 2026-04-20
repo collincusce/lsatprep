@@ -25,11 +25,12 @@ function logEvent(event) {
   try { require('node:fs').appendFileSync(logFile, line + '\n'); } catch {}
 }
 
-// Batch sizing — balance tokens per call vs call count.
+// Batch sizing — small batches to stay under output-TPM ceiling with high concurrency
+// AND to reduce Sonnet's malformed-JSON failure mode (correlated with long outputs).
 const BATCH = {
-  LR: 10,  // ~8k output tokens, well within per-call limits
-  RC: 3,   // 3 passages × 7 Q ≈ 12k output; comfortable
-  LG: 3    // 3 games × 5 Q ≈ 10k output; solver overhead makes bigger batches unreliable
+  LR: 3,   // ~2.1k output tokens/call — 5× smaller = ~5× more concurrency for same TPM
+  RC: 1,   // 1 passage × 7 Q ≈ 4k output tokens
+  LG: 1    // 1 game × 5 Q ≈ 3.5k output tokens
 };
 
 function countDelivered() {
@@ -195,7 +196,7 @@ async function main() {
     return;
   }
 
-  const CONCURRENCY = 6;
+  const CONCURRENCY = 30;
   const started = Date.now();
   let finished = 0;
 

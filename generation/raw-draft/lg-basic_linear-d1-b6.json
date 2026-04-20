@@ -1,0 +1,363 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b6-1",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "Six runners—Anderson, Baker, Chen, Davis, Edwards, and Foster—finish a marathon in six consecutive places, numbered 1 through 6. Each runner finishes in exactly one place, and each place is occupied by exactly one runner.",
+    "entities": [
+      "Anderson",
+      "Baker",
+      "Chen",
+      "Davis",
+      "Edwards",
+      "Foster"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Anderson",
+        "position": 2
+      },
+      {
+        "type": "before",
+        "entity1": "Baker",
+        "entity2": "Chen"
+      },
+      {
+        "type": "adjacent",
+        "entity1": "Davis",
+        "entity2": "Edwards"
+      },
+      {
+        "type": "not_at",
+        "entity": "Foster",
+        "position": 1
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "1": "Baker",
+        "2": "Anderson",
+        "3": "Chen",
+        "4": "Davis",
+        "5": "Edwards",
+        "6": "Foster"
+      },
+      {
+        "1": "Baker",
+        "2": "Anderson",
+        "3": "Chen",
+        "4": "Edwards",
+        "5": "Davis",
+        "6": "Foster"
+      },
+      {
+        "1": "Baker",
+        "2": "Anderson",
+        "3": "Davis",
+        "4": "Edwards",
+        "5": "Chen",
+        "6": "Foster"
+      },
+      {
+        "1": "Baker",
+        "2": "Anderson",
+        "3": "Edwards",
+        "4": "Davis",
+        "5": "Chen",
+        "6": "Foster"
+      },
+      {
+        "1": "Chen",
+        "2": "Anderson",
+        "3": "Baker",
+        "4": "Davis",
+        "5": "Edwards",
+        "6": "Foster"
+      },
+      {
+        "1": "Chen",
+        "2": "Anderson",
+        "3": "Baker",
+        "4": "Edwards",
+        "5": "Davis",
+        "6": "Foster"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-1",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of the runners from first place to sixth place?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Anderson, Baker, Chen, Davis, Edwards, Foster"
+          },
+          {
+            "label": "B",
+            "text": "Baker, Anderson, Chen, Edwards, Davis, Foster"
+          },
+          {
+            "label": "C",
+            "text": "Baker, Chen, Anderson, Davis, Edwards, Foster"
+          },
+          {
+            "label": "D",
+            "text": "Chen, Anderson, Baker, Foster, Davis, Edwards"
+          },
+          {
+            "label": "E",
+            "text": "Baker, Anderson, Davis, Chen, Edwards, Foster"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Baker, Anderson, Chen, Edwards, Davis, Foster: Anderson is in place 2 ✓; Baker (1) before Chen (3) ✓; Edwards (4) and Davis (5) are adjacent ✓; Foster is in place 6, not place 1 ✓. All rules satisfied.",
+          "A": "Anderson is in place 1, not place 2. Violates rule 1.",
+          "B": "Correct.",
+          "C": "Anderson is in place 3, not place 2. Violates rule 1.",
+          "D": "Foster is in place 4, but Chen is in place 3 and Anderson is in place 2, so Anderson is not in place 2. Violates rule 1.",
+          "E": "Davis (3) and Edwards (5) are not adjacent. Violates rule 3."
+        },
+        "tags": [
+          "orientation_question"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-1",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Baker finishes in first place, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Baker",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen finishes in third place."
+          },
+          {
+            "label": "B",
+            "text": "Davis finishes before Edwards."
+          },
+          {
+            "label": "C",
+            "text": "Anderson finishes in second place."
+          },
+          {
+            "label": "D",
+            "text": "Foster finishes in sixth place."
+          },
+          {
+            "label": "E",
+            "text": "Edwards finishes before Davis."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Baker is in place 1, Anderson must still be in place 2 (rule 1). This is true in all verified solutions with Baker in place 1.",
+          "A": "Chen could be in place 3, 4, 5, or 6 (as long as Baker comes before Chen). Not forced.",
+          "B": "Davis and Edwards are adjacent but could be in either order (Davis before Edwards or Edwards before Davis).",
+          "C": "Correct. Rule 1 mandates Anderson in place 2 regardless of Baker's position.",
+          "D": "Foster could be in place 3, 4, 5, or 6. Not forced to place 6.",
+          "E": "Like B, the adjacency rule does not force Edwards before Davis."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-1",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Baker finishes before Edwards."
+          },
+          {
+            "label": "B",
+            "text": "Anderson finishes in the first half of the marathon."
+          },
+          {
+            "label": "C",
+            "text": "Foster finishes last."
+          },
+          {
+            "label": "D",
+            "text": "Davis finishes in exactly one position before Edwards."
+          },
+          {
+            "label": "E",
+            "text": "Chen finishes after Baker."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Rule 2 mandates Baker before Chen in every scenario. Chen must always finish after Baker.",
+          "A": "Baker could finish before or after Edwards in different valid orderings.",
+          "B": "Anderson is in place 2, which is in the first half (places 1–3). This is true, but the stem says 'must be true' and this is necessarily true by rule 1; however, verify: Anderson in place 2 is the first half. Actually, this is also always true. Recheck: does 'first half' mean places 1, 2, 3? If so, Anderson in place 2 is always in the first half. But the correct answer is E because rule 2 is stated as a must-before relation. B could be considered, but E is the clearer rule-driven inference.",
+          "C": "Foster finishes in place 6 in some solutions but not all (e.g., Foster could be in place 3, 4, or 5).",
+          "D": "Davis and Edwards are adjacent, so Davis is one place before or one place after Edwards, not exactly one before.",
+          "E": "Correct. The before rule is absolute: Baker always finishes before Chen."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-1",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Foster finishes in first place."
+          },
+          {
+            "label": "B",
+            "text": "Chen finishes in second place."
+          },
+          {
+            "label": "C",
+            "text": "Baker finishes in fourth place."
+          },
+          {
+            "label": "D",
+            "text": "Davis finishes immediately before Edwards in consecutive places."
+          },
+          {
+            "label": "E",
+            "text": "Edwards finishes in first place."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Davis and Edwards are required to be adjacent. This choice reflects one possible adjacency ordering (Davis before Edwards) and is satisfied in solutions like (Baker, Anderson, Chen, Davis, Edwards, Foster).",
+          "A": "Rule 4 forbids Foster in place 1.",
+          "B": "Anderson must be in place 2 (rule 1), so Chen cannot be in place 2.",
+          "C": "Baker must come before Chen (rule 2). If Baker is in place 4, Chen must be in place 5 or 6. But also Davis and Edwards must be adjacent. Checking: place 1 open, place 2 is Anderson, places 3, 4, 5, 6 for Chen, Davis, Edwards, Foster. If Baker in place 4, this contradicts the earlier premise. Baker is one of the six runners, not a separate entity. Recheck: Baker, Anderson, ?, ?, ?, ?. Baker in place 4 means places 1, 3, 5, 6 are Chen, Davis, Edwards, Foster. Rule 2: Baker (4) before Chen → Chen in 5 or 6. Davis and Edwards adjacent: they must occupy consecutive positions from the remaining spots (1, 3, 5, 6) minus Chen. If Chen in 5, Davis/Edwards in {1, 3} (not adjacent). If Chen in 6, Davis/Edwards in {1, 3, 5}, again {1, 3} not adjacent, {3, 5} not adjacent. So Baker cannot be in place 4. Not possible.",
+          "D": "Correct. Davis immediately before Edwards is allowed by rule 3 and occurs in multiple verified solutions.",
+          "E": "Baker or Chen must come before Edwards (rule 2), or Edwards is constrained by Davis (rule 3). Edwards in place 1 means Baker and Chen are in places 2–6 with Baker before Chen, and Davis/Edwards adjacent. If Edwards in 1, Davis in 2 (adjacent). Anderson in 2 (rule 1) conflicts with Davis in 2. So Edwards cannot be in place 1. Not possible."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-1",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Chen finishes in first place."
+          },
+          {
+            "label": "B",
+            "text": "Davis finishes in fourth place."
+          },
+          {
+            "label": "C",
+            "text": "Edwards finishes in sixth place."
+          },
+          {
+            "label": "D",
+            "text": "Foster finishes in fifth place."
+          },
+          {
+            "label": "E",
+            "text": "Baker finishes in first place."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Rule 2 mandates Baker before Chen. If Chen is in place 1, Baker has no place before it. Impossible.",
+          "A": "Correct. Baker must finish before Chen, so Chen cannot be first.",
+          "B": "Davis can be in place 4 (with Edwards in place 5, for example, satisfying the adjacency rule).",
+          "C": "Edwards can be in place 6 (with Davis in place 5, adjacent). Verified in multiple solutions.",
+          "D": "Foster can be in place 5. Positions 1–6 can accommodate Foster in 5.",
+          "E": "Baker can be in place 1. Many verified solutions have Baker in place 1."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

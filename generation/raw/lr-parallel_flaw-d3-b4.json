@@ -1,0 +1,162 @@
+[
+  {
+    "id": "lr-gen-parallel_flaw-d3-b4-01",
+    "section": "LR",
+    "subtype": "parallel_flaw",
+    "difficulty": 3,
+    "difficultyReason": "The flaw is a necessary/sufficient confusion in a medical context: the argument treats a condition sufficient for a diagnosis as if it were necessary, concluding that absence of the sufficient condition rules out the diagnosis. Answer choices are dense five-line mini-arguments; two exploit similar probabilistic language, one is valid, and one commits a different conditional error.",
+    "stimulus": "Patients with Marfan syndrome almost always display unusually long limb proportions. Dr. Reyes's new patient does not display unusually long limb proportions. Therefore, this patient almost certainly does not have Marfan syndrome.",
+    "questionStem": "The flawed reasoning in which one of the following is most similar to the flawed reasoning in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Most championship-winning cycling teams rely heavily on domestiques who sacrifice individual performance for the team leader. The Valderon cycling team does not rely heavily on domestiques. Therefore, the Valderon team almost certainly will not win a championship."
+      },
+      {
+        "label": "B",
+        "text": "Virtually all cases of foot-and-mouth disease in livestock involve fever in the early stages. The animals in this herd are not showing early-stage fever. Therefore, this herd almost certainly does not have foot-and-mouth disease."
+      },
+      {
+        "label": "C",
+        "text": "Most award-winning documentary films feature extensive archival footage. This documentary features extensive archival footage. Therefore, this documentary will probably win an award."
+      },
+      {
+        "label": "D",
+        "text": "Engineers at Strathmore Corp. generally hold advanced degrees. Portia holds an advanced degree. Therefore, Portia is probably an engineer at Strathmore Corp."
+      },
+      {
+        "label": "E",
+        "text": "A surplus in the national grain supply always leads to lower bread prices. Bread prices have not fallen this quarter. Therefore, there is probably no surplus in the national grain supply this quarter."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The stimulus argues: virtually all X have property P; this thing lacks P; therefore this thing almost certainly isn't X. This treats P — a feature that reliably accompanies X — as though its absence rules out X. P is sufficient (or near-sufficient) evidence for X, not necessary. Choice B replicates this exactly: virtually all foot-and-mouth cases show early fever; this herd lacks early fever; therefore almost certainly no foot-and-mouth. Same flaw, same quantifier strength ('virtually all' / 'almost certainly'), same domain-independent structure.",
+      "A": "Close but off-by-a-dimension: the premise says 'most' (not 'virtually all'), and reliance on domestiques is one strategy among several for winning, not a near-universal accompaniment. The reasoning is more ambiguous than clearly flawed in the same way. More importantly, the conclusion concerns a future outcome rather than the absence of an existing condition, subtly shifting the logical structure.",
+      "B": "Correct. Mirrors the stimulus precisely: a near-universal accompaniment (early fever) is treated as necessary, so its absence is taken to rule out the diagnosis.",
+      "C": "This commits base-rate reversal: most award-winners have feature F; this has F; therefore probably an award-winner. That is the reversed-conditional flaw, not the stimulus's flaw of treating a sufficient condition as necessary.",
+      "D": "Also base-rate reversal (same flaw as C): most members of group G have property P; this person has P; therefore probably in group G. Different flaw from the stimulus.",
+      "E": "This is actually valid modus tollens: if surplus then lower prices; prices have not fallen; therefore no surplus. The stimulus's flaw is not committed here; this is correct deductive reasoning."
+    },
+    "tags": [
+      "parallel_flaw",
+      "necessary_sufficient_confusion",
+      "medicine",
+      "conditional_reasoning"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_flaw.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_flaw-d3-b4-02",
+    "section": "LR",
+    "subtype": "parallel_flaw",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus commits a composition fallacy: because every individual component of a system has a certain property, the system as a whole is concluded to have that property. The answer choices include a valid inference from parts to whole, a division fallacy (inverse), a base-rate reversal, and a near-miss that involves aggregation but of a different logical type.",
+    "stimulus": "Every individual clause in the proposed trade agreement has been carefully reviewed and found to be economically sound. Therefore, the trade agreement as a whole is economically sound.",
+    "questionStem": "Which one of the following arguments exhibits flawed reasoning most similar to that exhibited by the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Each ingredient in Chef Moreau's signature stew has been tested in isolation and found to be safe for human consumption. Therefore, the stew itself is safe for human consumption."
+      },
+      {
+        "label": "B",
+        "text": "The Kelvington Orchestra is considered one of the finest ensembles in the region. Therefore, each musician in the orchestra is probably among the finest in the region."
+      },
+      {
+        "label": "C",
+        "text": "Most of the provisions of the Harwick environmental statute have withstood judicial challenge. Therefore, this particular provision, which has never been challenged, is probably constitutional."
+      },
+      {
+        "label": "D",
+        "text": "Every chapter of Professor Ibáñez's textbook covers a discrete topic and can be read independently. Therefore, the textbook as a whole covers a wide range of independent topics."
+      },
+      {
+        "label": "E",
+        "text": "The majority of clauses in last year's version of this treaty were eventually amended. The current version of the treaty differs substantially from last year's version. Therefore, the current version will probably also require substantial amendment."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The stimulus moves from 'each part has property P' to 'the whole has property P,' ignoring that interactions among parts can produce emergent problems. Choice A replicates this exactly: each ingredient is safe in isolation, therefore the combination is safe — ignoring that interactions between ingredients (e.g., toxic combinations) could render the stew unsafe. The composition fallacy is perfectly mirrored.",
+      "A": "Correct. Parts → whole fallacy with the same logical gap: safety of individual components does not guarantee safety of the combined system.",
+      "B": "This commits the division fallacy — the inverse of composition: attributing a property of the whole to each of its parts. The stimulus goes from parts to whole (composition); this goes from whole to parts (division). Different flaw.",
+      "C": "This is a base-rate argument with probabilistic hedging ('probably'). It does not involve parts-to-whole reasoning at all; it infers from the majority of similar items to one particular item. Different flaw.",
+      "D": "This is actually a valid inference: if each chapter covers a discrete, independent topic, then the collection of chapters does cover a range of independent topics. The conclusion follows from the premises without a logical gap. No flaw.",
+      "E": "This commits a weak analogy or hasty generalization: because a past version needed amendment, the current (substantially different) version will too. No parts-to-whole structure; different flaw."
+    },
+    "tags": [
+      "parallel_flaw",
+      "composition_fallacy",
+      "economics",
+      "parts_to_whole"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_flaw.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-parallel_flaw-d3-b4-03",
+    "section": "LR",
+    "subtype": "parallel_flaw",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus commits a base-rate reversal in a linguistics/history context: most members of category X share feature F; this item has feature F; therefore it is probably an X. Answer choices include a valid base-rate inference, a necessary/sufficient confusion, a division fallacy, and an answer that mimics the topic but reverses the quantifier dimension (absolute vs. proportional), requiring precise structural matching.",
+    "stimulus": "Most loanwords that entered the English language during the Norman period were drawn from Old French administrative vocabulary. The word 'parliament' has clear Old French administrative roots. Therefore, 'parliament' was most likely introduced into English during the Norman period.",
+    "questionStem": "The flawed reasoning in which one of the following is most similar to the flawed reasoning in the argument above?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The majority of architectural innovations adopted in medieval Castile were influenced by Moorish design principles. The tower at Alcántara displays strong Moorish design influences. Therefore, the tower at Alcántara was most likely built during the period when Castile was adopting such innovations."
+      },
+      {
+        "label": "B",
+        "text": "All pottery fragments recovered from the Delvani site date to the early Bronze Age. This shard was recovered from the Delvani site. Therefore, this shard almost certainly dates to the early Bronze Age."
+      },
+      {
+        "label": "C",
+        "text": "Words of Germanic origin constitute the largest single source group among Old English vocabulary items. The word 'strength' is of Germanic origin. Therefore, 'strength' was almost certainly part of Old English vocabulary."
+      },
+      {
+        "label": "D",
+        "text": "The Hellenistic period produced more philosophical texts than any other era in ancient history. This manuscript is a philosophical text from antiquity. Therefore, this manuscript was most likely produced during the Hellenistic period."
+      },
+      {
+        "label": "E",
+        "text": "Most Roman-era inscriptions found in northern Britain were commissioned by military officers. The garrison at Hadrian's Wall was composed almost entirely of military officers. Therefore, most inscriptions found at Hadrian's Wall were probably commissioned by the officers stationed there."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanations": {
+      "correct": "The stimulus: most items in category X share feature F; this item has feature F; therefore it is probably an X. This reverses the base rate — having F makes something more likely to be an X only if X's are also the dominant producers of F-bearing items, which the premise doesn't establish. Choice D replicates this exactly: the Hellenistic period produced more philosophical texts than any other era (most philosophical texts are Hellenistic); this manuscript is philosophical; therefore probably Hellenistic. The same reversed-base-rate move: having feature F (being philosophical) is treated as strong evidence for category X (Hellenistic), but many philosophical texts come from other eras too.",
+      "A": "Very close, but the structure here is subtly different: the premise says Castile adopted Moorish innovations during a specific period, and the conclusion infers timing of construction — this involves a temporal scope shift and an ambiguity about whether Moorish influence was confined to that period. It partially mimics the flaw but introduces an additional temporal-scope error not present in the stimulus.",
+      "B": "This is valid modus ponens: all items from the Delvani site are early Bronze Age; this is from the site; therefore early Bronze Age. The universal quantifier ('all') makes the inference deductively valid, not flawed.",
+      "C": "This also appears to be a valid inference: Germanic words are the largest source group in Old English, and 'strength' is Germanic; it does not follow with certainty that 'strength' was in Old English, but the conclusion ('almost certainly') goes beyond what the premise licenses. However, this is more a case of overconfident conclusion from a majority premise than a reversed base-rate. More importantly, the premise structure is 'Germanic words form the largest source group in X vocabulary' → 'this Germanic word was in X vocabulary,' which conflates being a source with being present — a subtly different error (scope shift) rather than a pure base-rate reversal.",
+      "D": "Correct. Mirrors the stimulus: most F-bearers belong to era/category X; this item is F; therefore probably X. The base-rate is reversed: being a philosophical text doesn't make Hellenistic origin probable just because Hellenistic output was high.",
+      "E": "This is a valid inference: most inscriptions at Roman northern Britain sites were by military officers; Hadrian's Wall was staffed by officers; therefore its inscriptions were probably by those officers. The reasoning flows coherently from the base-rate without reversal — there is no logical gap exploited here."
+    },
+    "tags": [
+      "parallel_flaw",
+      "base_rate_reversal",
+      "linguistics",
+      "history",
+      "conditional_reasoning"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "parallel_flaw.json"
+      ]
+    }
+  }
+]

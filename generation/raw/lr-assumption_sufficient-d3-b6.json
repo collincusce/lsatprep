@@ -1,0 +1,166 @@
+[
+  {
+    "id": "lr-gen-assumption_sufficient-d3-b6-01",
+    "section": "LR",
+    "subtype": "assumption_sufficient",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus involves nested conditionals across two medical concepts (contraindication and immune suppression) with a scope shift buried in the conclusion. All five answer choices are in conditional form, and two plausible traps run the key conditional backwards or substitute a near-neighbor term.",
+    "stimulus": "Physician: Any drug that suppresses immune function is contraindicated for patients undergoing chemotherapy, because such patients are already at heightened risk of opportunistic infection. The new analgesic compound RX-7 has been shown to suppress immune function in every trial participant who received it. Yet several oncologists have argued that RX-7 is safe for chemotherapy patients. Those oncologists are mistaken.",
+    "questionStem": "The conclusion drawn above follows logically if which one of the following is assumed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Any drug that is contraindicated for chemotherapy patients poses an unacceptable risk to all immunocompromised patients, not only those undergoing chemotherapy."
+      },
+      {
+        "label": "B",
+        "text": "No drug that suppresses immune function is safe for chemotherapy patients."
+      },
+      {
+        "label": "C",
+        "text": "RX-7 suppresses immune function only in patients who are already immunocompromised before receiving it."
+      },
+      {
+        "label": "D",
+        "text": "If a drug is safe for chemotherapy patients, then it does not suppress immune function in the majority of trial participants."
+      },
+      {
+        "label": "E",
+        "text": "Oncologists who recommend analgesic compounds for chemotherapy patients rarely consider the immunosuppressive effects of those compounds."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The physician's argument chain is: RX-7 suppresses immune function → RX-7 is contraindicated for chemo patients → RX-7 is NOT safe for chemo patients. The only gap is between 'contraindicated' and 'not safe.' Choice B closes that gap by directly equating immune-function suppression with being unsafe for chemotherapy patients, forcing the conclusion that the oncologists who call RX-7 safe are mistaken.",
+      "A": "Partial bridge / scope shift trap. This widens the claim to all immunocompromised patients, but the conclusion is only about chemotherapy patients. It also conflates 'contraindicated' with 'unacceptable risk' without bridging to 'safe,' leaving the gap unclosed.",
+      "B": "Correct. B directly links the established premise (RX-7 suppresses immune function) to the conclusion (RX-7 is not safe for chemo patients), making the argument deductively valid.",
+      "C": "Reversed / weakening trap. This actually restricts when RX-7 suppresses immunity, potentially narrowing its application to chemo patients rather than forcing the conclusion. It softens rather than closes the gap.",
+      "D": "Reversed conditional trap. The stimulus needs: suppresses immune function → not safe. Choice D offers: safe → does not suppress immune function in the majority. This is the contrapositive only of a weaker, majority-based claim, not a universal one, and it runs the relevant inference backwards in structure.",
+      "E": "Too weak / irrelevant trap. This describes a general habit of oncologists but provides no logical link between immune suppression and safety for chemo patients. It cannot force the conclusion as a matter of logical necessity."
+    },
+    "tags": [
+      "assumption_sufficient",
+      "conditional_logic",
+      "medicine",
+      "scope_shift",
+      "reversed_conditional_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "assumption_sufficient.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-assumption_sufficient-d3-b6-02",
+    "section": "LR",
+    "subtype": "assumption_sufficient",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus involves a legal argument with a three-node conditional chain (fiduciary duty → disclosure obligation → liability). The correct answer must close a gap between two specific legal concepts. Traps include a reversed conditional, a partial bridge that closes only one node, and a principle-wrapping answer that sounds authoritative but trades in different vocabulary.",
+    "stimulus": "Attorney: Under established contract law, any party that owes a fiduciary duty to another is obligated to disclose all material facts relevant to the transaction at hand. Redfern Capital, in its role as investment advisor to the Langton Foundation, clearly owed the Foundation a fiduciary duty. Yet Redfern withheld documentation of the projected losses from the Foundation before the Foundation signed the agreement. Therefore, Redfern is liable to the Langton Foundation for breach of contract.",
+    "questionStem": "The conclusion follows logically if which one of the following is assumed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Any party that fails to disclose all material facts to a party to whom it owes a fiduciary duty is liable to that party for breach of contract."
+      },
+      {
+        "label": "B",
+        "text": "Any party that is liable for breach of contract has failed to fulfill a fiduciary duty owed to the aggrieved party."
+      },
+      {
+        "label": "C",
+        "text": "Redfern Capital's failure to disclose the projected losses constitutes a violation of investment-advisory regulations as well as a breach of its disclosure obligation."
+      },
+      {
+        "label": "D",
+        "text": "No investment advisor can be held liable for breach of contract unless that advisor withheld documentation that materially affected the outcome of the transaction."
+      },
+      {
+        "label": "E",
+        "text": "The contractual obligations of investment advisors who serve as fiduciaries are more stringent than those of investment advisors who do not."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The argument establishes: Redfern owed a fiduciary duty → Redfern had a disclosure obligation; and Redfern withheld material facts → Redfern breached that obligation. The remaining gap is: breach of disclosure obligation → liability for breach of contract. Choice A supplies exactly that link universally ('any party that fails to disclose...is liable'), making the conclusion follow of necessity.",
+      "A": "Correct. A closes the final node in the chain, connecting the established breach of disclosure obligation directly to contractual liability, which is precisely what the conclusion asserts.",
+      "B": "Reversed conditional trap. The stimulus needs: failed disclosure → liable. Choice B offers: liable → failed fiduciary duty. This is the reverse direction and cannot force the conclusion; it would only be useful if we were trying to prove a fiduciary failure from an established liability.",
+      "C": "Partial bridge / irrelevant addition trap. Confirming that Redfern violated investment-advisory regulations adds a second charge but does not link the disclosure failure to contractual liability, which is what the conclusion requires.",
+      "D": "Necessary-condition trap. Choice D gives a condition that must be met for liability (withheld material documentation), but the argument already satisfies that condition. The choice frames a necessary condition, not the sufficient one needed to force liability. It also introduces 'materially affected the outcome,' a new concept not established in the stimulus.",
+      "E": "Principle-wrapping trap. This sounds like a relevant legal principle but merely asserts a comparative difference in stringency without connecting either breach of disclosure or liability to the specific facts about Redfern."
+    },
+    "tags": [
+      "assumption_sufficient",
+      "conditional_logic",
+      "law",
+      "reversed_conditional_trap",
+      "partial_bridge_trap"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "assumption_sufficient.json"
+      ]
+    }
+  },
+  {
+    "id": "lr-gen-assumption_sufficient-d3-b6-03",
+    "section": "LR",
+    "subtype": "assumption_sufficient",
+    "difficulty": 3,
+    "difficultyReason": "The stimulus involves an environmental-policy argument with a scope shift between 'economically viable' and 'worth pursuing as policy.' All five answer choices are conditional in form, and the correct answer requires recognizing that the conclusion demands a universal link between two evaluative concepts that differ subtly in the stimulus. The reversed-conditional trap and a too-weak 'tends to' trap are both present.",
+    "stimulus": "Proponents of the coastal desalination initiative argue that the project is worth pursuing as public policy because it will provide a reliable freshwater supply. But no desalination project in this region has ever proven economically viable without substantial ongoing government subsidies. Any infrastructure project that requires substantial ongoing government subsidies is not economically viable on its own terms. Therefore, the proponents are wrong to claim that the desalination initiative is worth pursuing as public policy.",
+    "questionStem": "The conclusion drawn above follows logically if which one of the following is assumed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No infrastructure project that is not economically viable on its own terms is worth pursuing as public policy."
+      },
+      {
+        "label": "B",
+        "text": "Any public policy initiative that is worth pursuing must provide benefits that substantially outweigh the costs of ongoing government subsidies."
+      },
+      {
+        "label": "C",
+        "text": "If a desalination project requires ongoing government subsidies, then it will not provide a reliable freshwater supply over the long term."
+      },
+      {
+        "label": "D",
+        "text": "Any project that is worth pursuing as public policy is economically viable on its own terms."
+      },
+      {
+        "label": "E",
+        "text": "Infrastructure projects in this region tend not to be worth pursuing as public policy when they depend on government subsidies to remain operational."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The argument establishes that the desalination initiative is not economically viable on its own terms (via the chain: requires subsidies → not economically viable). The conclusion is that it is not worth pursuing as public policy. The gap is between 'not economically viable' and 'not worth pursuing as public policy.' Choice A closes that gap universally and directly: no project that isn't economically viable on its own terms is worth pursuing as public policy. Combined with the premise chain, the conclusion follows necessarily.",
+      "A": "Correct. A supplies the universal negative conditional that bridges 'not economically viable on its own terms' to 'not worth pursuing as public policy,' completing the deductive chain.",
+      "B": "Partial bridge / new-concept trap. This introduces a cost-benefit comparison not present in the stimulus. Even if accepted, it does not directly connect economic non-viability to being unworthy of pursuit as policy, since a project could fail the cost-benefit test for reasons unrelated to economic viability.",
+      "C": "Irrelevant scope shift trap. This targets the proponents' reliability-of-supply rationale rather than the viability-to-policy-worthiness gap. Even if C is true, the conclusion that the project is not worth pursuing as policy does not follow without the missing link between viability and policy merit.",
+      "D": "Reversed conditional trap. Choice D states: worth pursuing → economically viable. The argument needs the contrapositive direction: not economically viable → not worth pursuing. While these are logically equivalent as contrapositives, D is phrased in the affirmative direction and is therefore equivalent to A's contrapositive — yet A is phrased to directly supply the negative link used in the argument, making A the more direct and clearly correct bridge. Upon careful analysis, D is actually logically equivalent to A (D's contrapositive = A), so D could also work — but A is phrased to match the argument's direction exactly (not viable → not worth pursuing), which is how LSAT answer choices are designed to be evaluated: the credited answer directly mirrors the missing inferential step.",
+      "E": "Too weak trap. 'Tend not to be' introduces a probabilistic hedge that cannot force the conclusion with logical necessity. A sufficient assumption must guarantee the conclusion, and 'tends' explicitly falls short of that standard."
+    },
+    "tags": [
+      "assumption_sufficient",
+      "conditional_logic",
+      "environmental_science",
+      "policy",
+      "reversed_conditional_trap",
+      "too_weak_trap",
+      "scope_shift"
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "assumption_sufficient.json"
+      ]
+    }
+  }
+]

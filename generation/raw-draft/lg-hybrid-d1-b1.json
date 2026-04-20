@@ -1,0 +1,377 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d1-b1-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "A museum will display five sculptures—Anchor, Briar, Cove, Dune, and Elm—across three consecutive wings: North, Center, and South. Each wing will hold exactly one or two sculptures. Within each wing, sculptures are arranged left-to-right in a specific order. The arrangement is subject to the following conditions.",
+    "entities": [
+      "Anchor",
+      "Briar",
+      "Cove",
+      "Dune",
+      "Elm"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Anchor",
+        "position": 1
+      },
+      {
+        "type": "before",
+        "entity1": "Briar",
+        "entity2": "Dune"
+      },
+      {
+        "type": "same_group",
+        "entities": [
+          "Cove",
+          "Elm"
+        ]
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Briar",
+          "position": 2
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Dune",
+          "position": 3
+        }
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": [
+          "Anchor",
+          "Briar"
+        ],
+        "groupSize": 2,
+        "n": 1
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Anchor": 1,
+        "Briar": 2,
+        "Cove": 4,
+        "Dune": 3,
+        "Elm": 4
+      },
+      {
+        "Anchor": 1,
+        "Briar": 2,
+        "Cove": 3,
+        "Dune": 5,
+        "Elm": 3
+      },
+      {
+        "Anchor": 1,
+        "Briar": 3,
+        "Cove": 4,
+        "Dune": 4,
+        "Elm": 5
+      },
+      {
+        "Anchor": 1,
+        "Briar": 3,
+        "Cove": 2,
+        "Dune": 4,
+        "Elm": 2
+      },
+      {
+        "Anchor": 1,
+        "Briar": 4,
+        "Cove": 2,
+        "Dune": 5,
+        "Elm": 2
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b1-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete left-to-right arrangement of sculptures in the three wings?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "North: Anchor, Briar; Center: Dune; South: Cove, Elm"
+          },
+          {
+            "label": "B",
+            "text": "North: Anchor; Center: Briar, Dune; South: Cove, Elm"
+          },
+          {
+            "label": "C",
+            "text": "North: Anchor; Center: Briar; South: Dune, Cove, Elm"
+          },
+          {
+            "label": "D",
+            "text": "North: Anchor, Briar; Center: Dune, Cove; South: Elm"
+          },
+          {
+            "label": "E",
+            "text": "North: Anchor; Center: Briar, Elm; South: Dune, Cove"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Anchor is at position 1 (North, left). Briar at position 2, Dune at position 3 satisfies the conditional (if Briar at 2, then Dune at 3). Cove and Elm are together (positions 4–5, South), satisfying the same-group rule. Briar comes before Dune. Exactly one of {Anchor, Briar} is in the leftmost wing (Anchor is, Briar is not).",
+          "A": "Violates the 'exactly one of {Anchor, Briar}' rule—both are in the North wing.",
+          "C": "South holds three sculptures; each wing holds at most two. Violates the distribution constraint.",
+          "D": "Cove and Elm are not together (Cove at position 4, Elm at position 5 would work, but Dune and Cove are at 4, Elm at 5). Actually, this has Dune, Cove in Center and Elm in South—Cove and Elm are not in the same wing.",
+          "E": "Briar and Elm are in Center; Cove and Dune in South. Cove and Elm are not in the same wing, violating the same-group rule."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Briar is in the North wing."
+          },
+          {
+            "label": "B",
+            "text": "Dune is in the Center or South wing."
+          },
+          {
+            "label": "C",
+            "text": "Cove and Elm are in the South wing."
+          },
+          {
+            "label": "D",
+            "text": "Anchor is the only sculpture in the North wing."
+          },
+          {
+            "label": "E",
+            "text": "Briar comes before Cove."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Anchor is always at position 1 (North wing, leftmost). Briar must come before Dune. Since Anchor occupies position 1, Briar is at position 2 or later, and Dune is always after Briar. Thus Dune is at position 3 or later, placing it in Center or South.",
+          "A": "Briar could be at position 3, 4, or later (Center or South wing). Not always in North.",
+          "C": "Cove and Elm must be together, but that wing could be North, Center, or South depending on other placements.",
+          "D": "Briar could be in the North wing (e.g., positions 1 and 2), making the North wing hold two sculptures.",
+          "E": "Cove and Elm are together and could appear before or after Briar, depending on the arrangement."
+        },
+        "tags": [
+          "must_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Cove and Elm are in the Center wing, which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "same_group",
+            "entities": [
+              "Cove",
+              "Elm"
+            ],
+            "wing": "Center"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Anchor is in the Center wing."
+          },
+          {
+            "label": "B",
+            "text": "Briar and Dune are both in the South wing."
+          },
+          {
+            "label": "C",
+            "text": "Anchor and Briar are in the North wing with Anchor leftmost."
+          },
+          {
+            "label": "D",
+            "text": "Briar is in the Center wing with Cove."
+          },
+          {
+            "label": "E",
+            "text": "Dune is in the North wing."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Cove and Elm in Center, Anchor at position 1 (North), and the local rule pinning Cove/Elm to Center, Briar and Dune must be distributed. If Briar is at position 2 (North, right of Anchor) and Dune at position 3 (Center, but Cove/Elm are there—contradiction). Try: Anchor at 1, Briar at 2 (North), Dune at positions 3–4 in Center with Cove and Elm, or Dune in South. Actually, Cove and Elm occupy two positions in Center; Dune must be elsewhere. Briar at 2 (North) and Dune at 5 (South) works: Anchor (1, North), Briar (2, North), Cove/Elm (3–4, Center), Dune (5, South). C matches this scenario.",
+          "A": "Anchor is fixed at position 1 (North), not Center.",
+          "B": "If Briar and Dune are both in South, Briar would be at a higher position than Dune, violating the 'Briar before Dune' rule.",
+          "D": "Cove and Elm are together in Center. Briar cannot be in Center with them if Cove and Elm together occupy Center positions.",
+          "E": "Dune must come after Briar. Anchor is at position 1. Briar is at 2 or later. Dune is after Briar, so at least position 3—not in North."
+        },
+        "tags": [
+          "could_be_true",
+          "hybrid",
+          "local_rule"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following cannot be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cove is in the North wing."
+          },
+          {
+            "label": "B",
+            "text": "Dune is in the Center wing."
+          },
+          {
+            "label": "C",
+            "text": "Elm is in the South wing."
+          },
+          {
+            "label": "D",
+            "text": "Briar is in the South wing."
+          },
+          {
+            "label": "E",
+            "text": "Anchor and Briar are in the North wing."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "The rule 'exactly one of {Anchor, Briar}' in the leftmost wing means exactly one is in the North wing. Since Anchor is always at position 1 (North), Briar cannot be in the North wing. Thus E cannot be true.",
+          "A": "Cove could be in the North wing (paired with Anchor or Briar)—not ruled out.",
+          "B": "Dune could be in the Center wing (e.g., position 3)—not ruled out.",
+          "C": "Elm is grouped with Cove; if they are together in South, this is allowed.",
+          "D": "Briar could be in the South wing (position 4 or 5)—not ruled out."
+        },
+        "tags": [
+          "cannot_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Briar is in the Center wing, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Briar",
+            "wing": "Center"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Dune is in the South wing."
+          },
+          {
+            "label": "B",
+            "text": "Cove and Elm are in the South wing."
+          },
+          {
+            "label": "C",
+            "text": "Anchor is in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Briar comes immediately before Dune."
+          },
+          {
+            "label": "E",
+            "text": "The North wing contains exactly one sculpture."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Anchor is at position 1 (North). If Briar is in Center (position 3 or 4), then Briar is not at position 2. The conditional 'if Briar at 2, then Dune at 3' does not apply. Dune must still come after Briar. With Briar in Center and Cove/Elm together, Dune must be in South (later positions). Thus A must be true.",
+          "B": "Cove and Elm are together, but they could be in North, Center, or South. Not forced to South.",
+          "C": "Anchor is always in North (position 1), but this doesn't specifically follow from 'Briar in Center' alone.",
+          "D": "Briar and Dune need not be adjacent.",
+          "E": "If Briar is in Center and Cove/Elm are in North with Anchor, then North could have two or three sculptures—not exactly one."
+        },
+        "tags": [
+          "must_be_true",
+          "hybrid",
+          "local_rule"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

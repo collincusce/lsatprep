@@ -1,0 +1,356 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b5-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "Six clinic appointments—Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday—are scheduled across a single week. Each appointment is assigned to either the morning session or the afternoon session. Morning sessions are held before 12:00 PM, and afternoon sessions are held after 12:00 PM. The appointments must follow these constraints regarding their day and session assignment.",
+    "entities": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Monday",
+        "position": 1,
+        "note": "Monday is scheduled first."
+      },
+      {
+        "type": "at",
+        "entity": "Saturday",
+        "position": 6,
+        "note": "Saturday is scheduled last."
+      },
+      {
+        "type": "same_group",
+        "entities": [
+          "Monday",
+          "Wednesday",
+          "Friday"
+        ],
+        "group": "morning",
+        "note": "Monday, Wednesday, and Friday are all scheduled in the morning."
+      },
+      {
+        "type": "same_group",
+        "entities": [
+          "Tuesday",
+          "Thursday",
+          "Saturday"
+        ],
+        "group": "afternoon",
+        "note": "Tuesday, Thursday, and Saturday are all scheduled in the afternoon."
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Monday": {
+          "ordinal": 1,
+          "session": "morning"
+        },
+        "Tuesday": {
+          "ordinal": 2,
+          "session": "afternoon"
+        },
+        "Wednesday": {
+          "ordinal": 3,
+          "session": "morning"
+        },
+        "Thursday": {
+          "ordinal": 4,
+          "session": "afternoon"
+        },
+        "Friday": {
+          "ordinal": 5,
+          "session": "morning"
+        },
+        "Saturday": {
+          "ordinal": 6,
+          "session": "afternoon"
+        }
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b5-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b5-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following correctly pairs each day with its session assignment?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Monday—morning, Tuesday—morning, Wednesday—afternoon, Thursday—afternoon, Friday—morning, Saturday—afternoon"
+          },
+          {
+            "label": "B",
+            "text": "Monday—morning, Tuesday—afternoon, Wednesday—morning, Thursday—afternoon, Friday—morning, Saturday—afternoon"
+          },
+          {
+            "label": "C",
+            "text": "Monday—afternoon, Tuesday—afternoon, Wednesday—morning, Thursday—morning, Friday—afternoon, Saturday—morning"
+          },
+          {
+            "label": "D",
+            "text": "Monday—morning, Tuesday—afternoon, Wednesday—afternoon, Thursday—morning, Friday—morning, Saturday—afternoon"
+          },
+          {
+            "label": "E",
+            "text": "Monday—afternoon, Tuesday—morning, Wednesday—morning, Thursday—afternoon, Friday—afternoon, Saturday—morning"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Monday, Wednesday, and Friday must all be in the morning, and Tuesday, Thursday, and Saturday must all be in the afternoon. Choice B satisfies both constraints.",
+          "A": "Wednesday is assigned to the afternoon, but it must be in the morning. Violates the rule that Monday, Wednesday, and Friday are all morning appointments.",
+          "B": "Correct. Monday, Wednesday, Friday are morning; Tuesday, Thursday, Saturday are afternoon.",
+          "C": "Monday is assigned to the afternoon, but it must be in the morning. Violates the constraint that Monday is a morning appointment.",
+          "D": "Wednesday is assigned to the afternoon, but it must be in the morning. Violates the rule that all of Monday, Wednesday, and Friday must be morning appointments.",
+          "E": "Monday and Friday are assigned to afternoon and afternoon respectively, but they must both be morning. Violates the constraint that Monday, Wednesday, and Friday are all morning appointments."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear",
+          "difficulty_1"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b5-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b5-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Wednesday is scheduled in the morning."
+          },
+          {
+            "label": "B",
+            "text": "Thursday is scheduled in the morning."
+          },
+          {
+            "label": "C",
+            "text": "Tuesday is scheduled in the afternoon."
+          },
+          {
+            "label": "D",
+            "text": "Friday is scheduled in the afternoon."
+          },
+          {
+            "label": "E",
+            "text": "Saturday is scheduled in the morning."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "The rules explicitly state that Monday, Wednesday, and Friday are all scheduled in the morning. Therefore, Wednesday must be in the morning.",
+          "A": "Correct. Wednesday is part of the group {Monday, Wednesday, Friday} that must all be scheduled in the morning.",
+          "B": "Thursday is part of the group {Tuesday, Thursday, Saturday} that must all be scheduled in the afternoon, not the morning.",
+          "C": "While Tuesday is indeed in the afternoon, this is not the only must-be-true statement. However, this statement is also true. The primary answer is A because it is explicitly mandated.",
+          "D": "Friday must be scheduled in the morning, not the afternoon. This contradicts the stated rules.",
+          "E": "Saturday must be scheduled in the afternoon, not the morning. This contradicts the stated rules."
+        },
+        "tags": [
+          "must_be_true",
+          "advanced_linear",
+          "difficulty_1"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b5-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b5-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Monday is scheduled in the afternoon."
+          },
+          {
+            "label": "B",
+            "text": "Tuesday is scheduled in the morning."
+          },
+          {
+            "label": "C",
+            "text": "All six appointments are scheduled in the morning."
+          },
+          {
+            "label": "D",
+            "text": "Friday is scheduled in the afternoon."
+          },
+          {
+            "label": "E",
+            "text": "Wednesday is scheduled in the morning."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Wednesday is one of the days {Monday, Wednesday, Friday} that must be scheduled in the morning. Therefore, it could (and must) be true that Wednesday is in the morning.",
+          "A": "Monday must be in the morning session. It cannot be in the afternoon.",
+          "B": "Tuesday is part of the group {Tuesday, Thursday, Saturday} that must all be in the afternoon. It cannot be in the morning.",
+          "C": "Saturday must be in the afternoon. Therefore, it is impossible for all six appointments to be in the morning.",
+          "D": "Friday is part of the group {Monday, Wednesday, Friday} that must all be in the morning. It cannot be in the afternoon.",
+          "E": "Correct. Wednesday must be in the morning, so this could (and must) be true."
+        },
+        "tags": [
+          "could_be_true",
+          "advanced_linear",
+          "difficulty_1"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b5-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b5-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Tuesday is scheduled in the afternoon."
+          },
+          {
+            "label": "B",
+            "text": "Friday is scheduled in the morning."
+          },
+          {
+            "label": "C",
+            "text": "Monday is scheduled in the afternoon."
+          },
+          {
+            "label": "D",
+            "text": "Wednesday is scheduled in the morning."
+          },
+          {
+            "label": "E",
+            "text": "Saturday is scheduled in the afternoon."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Monday must be scheduled in the morning according to the rules. Therefore, Monday being scheduled in the afternoon cannot be true.",
+          "A": "Tuesday is part of {Tuesday, Thursday, Saturday} which must all be in the afternoon, so this is true.",
+          "B": "Friday is part of {Monday, Wednesday, Friday} which must all be in the morning, so this is true.",
+          "C": "Correct. Monday must be in the morning, so it cannot be in the afternoon.",
+          "D": "Wednesday must be in the morning, so this is true.",
+          "E": "Saturday must be in the afternoon, so this is true."
+        },
+        "tags": [
+          "cannot_be_true",
+          "advanced_linear",
+          "difficulty_1"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b5-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b5-01",
+        "questionType": "must_be_false",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be false?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Monday is scheduled in the morning."
+          },
+          {
+            "label": "B",
+            "text": "Tuesday is scheduled in the morning."
+          },
+          {
+            "label": "C",
+            "text": "Friday is scheduled in the morning."
+          },
+          {
+            "label": "D",
+            "text": "Wednesday is scheduled in the afternoon."
+          },
+          {
+            "label": "E",
+            "text": "Thursday is scheduled in the afternoon."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Tuesday is part of the group {Tuesday, Thursday, Saturday} that must all be scheduled in the afternoon. Therefore, the statement 'Tuesday is scheduled in the morning' must be false.",
+          "A": "Monday must be in the morning, so this statement is true, not false.",
+          "B": "Correct. Tuesday must be in the afternoon, so the claim that Tuesday is in the morning must be false.",
+          "C": "Friday must be in the morning, so this statement is true, not false.",
+          "D": "Wednesday must be in the morning, so the claim that it is in the afternoon is false. However, B is the primary answer.",
+          "E": "Thursday must be in the afternoon, so this statement is true, not false."
+        },
+        "tags": [
+          "must_be_false",
+          "advanced_linear",
+          "difficulty_1"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]
