@@ -1,0 +1,312 @@
+[
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-01",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-fact tension: a new drug outperforms placebo in trials, patients prescribed the drug in general practice recover no faster than untreated patients, yet hospitals that adopted the drug report shorter average stays. Resolution hinges on a selection effect at the hospital level — only the sickest patients are admitted and treated, so hospital averages are driven by case mix rather than drug efficacy.",
+    "stimulus": "In randomized trials, patients taking the antiviral drug Reviran recovered from severe influenza two days faster than patients given a placebo. In general practice, however, patients prescribed Reviran recovered no faster than patients who received no antiviral treatment. Nonetheless, hospitals that adopted Reviran as standard care for admitted flu patients reported that average length of stay fell by nearly a full day after the drug was introduced.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy in the information above?",
+    "choices": [
+      {"label": "A", "text": "General practitioners prescribe Reviran primarily to patients whose flu symptoms are already improving, whereas hospitals administer it only to patients whose symptoms are severe enough to require admission."},
+      {"label": "B", "text": "Reviran is significantly more expensive than other antiviral drugs currently on the market."},
+      {"label": "C", "text": "Hospitals that adopted Reviran also expanded their outpatient follow-up programs during the same period."},
+      {"label": "D", "text": "The placebo used in the randomized trials was indistinguishable in appearance from Reviran tablets."},
+      {"label": "E", "text": "Most patients who are prescribed Reviran by a general practitioner do not complete the full course of treatment."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If general practitioners prescribe Reviran mainly to patients already on the mend, the 'treated' group in general practice is biased toward mild cases who would have recovered quickly regardless — wiping out the drug's apparent edge. Hospitals, by contrast, give it to severe cases for whom the trial-proven two-day shortening translates into meaningfully shorter admissions. Both patterns arise from who receives the drug, not whether it works.",
+      "A": "Correct.",
+      "B": "Cost is irrelevant to recovery speed or length of stay.",
+      "C": "Expanded follow-up could explain shorter hospital stays but says nothing about why general practice showed no benefit while trials did.",
+      "D": "Blinding quality supports the trial result but doesn't reconcile it with the general-practice and hospital data.",
+      "E": "Non-adherence would explain why general practice saw no benefit but would leave the hospital and trial results unreconciled — and if anything deepens the contrast."
+    },
+    "tags": ["paradox_resolve", "selection_effect", "medicine"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-02",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-layer paradox: nationwide worker productivity rose, average hourly wages also rose, yet median household income fell. Resolution requires recognizing a compositional shift — high earners working more hours and low earners dropping out of the labor force — which a simple productivity-wage story cannot explain.",
+    "stimulus": "Over the past decade, output per hour worked in the country of Alvara rose by 22 percent, and average hourly wages, adjusted for inflation, rose by 9 percent. Despite these gains, the median household's annual income fell by 4 percent during the same period.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "The cost of housing in Alvara rose faster than either wages or productivity over the decade."},
+      {"label": "B", "text": "A substantial number of lower-wage workers left the labor force during the decade, while many higher-wage workers increased their hours; the average wage figure reflects only those still employed."},
+      {"label": "C", "text": "Productivity gains were concentrated in export industries, whose goods were sold mostly to customers outside Alvara."},
+      {"label": "D", "text": "Most of the hourly wage gains were driven by increases at the top of the wage distribution, while wages at the bottom rose more slowly."},
+      {"label": "E", "text": "Average household size in Alvara increased slightly over the decade, spreading household income over more people."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "If many low-wage workers exited the labor force, their zero earnings drag median household income down even as the remaining employed workers — a wealthier slice — push the average wage up. Meanwhile, higher-wage workers working more hours raise productivity. The three statistics measure different populations, so all three can move as described simultaneously.",
+      "A": "Rising housing costs don't affect income measurements.",
+      "B": "Correct.",
+      "C": "Export concentration could explain productivity gains but doesn't explain why median household income fell despite rising wages.",
+      "D": "Top-heavy wage growth raises the average, but without an exit from the labor force it cannot pull median household income below its starting point.",
+      "E": "Household size affects per-person income, not household income; and the stated increase is 'slight,' insufficient for a 4 percent drop."
+    },
+    "tags": ["paradox_resolve", "compositional_shift", "economics"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-03",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three facts: firms that adopted the new security protocol experience the same number of successful intrusions as those that didn't, security auditors unanimously rate the protocol as stronger, and yet the average dollar loss per intrusion at adopting firms is substantially lower. Resolution requires a definitional distinction between types of intrusion events — counted attacks versus data loss.",
+    "stimulus": "Cybersecurity researchers report that firms that adopted the new Sentinel authentication protocol suffer, on average, the same number of successful intrusions per year as comparable firms that did not adopt it. Auditors unanimously rate Sentinel as more resistant to unauthorized access than the industry standard. Nevertheless, the average dollar loss per intrusion at adopting firms is only about one-fifth of the loss at nonadopting firms.",
+    "questionStem": "Which one of the following, if true, most helps to explain the discrepancy?",
+    "choices": [
+      {"label": "A", "text": "Sentinel blocks the most sophisticated intrusion techniques but allows certain low-level intrusions — such as benign automated probes that briefly access harmless files — to be logged as 'successful' even though no sensitive data is reached."},
+      {"label": "B", "text": "Firms that adopt Sentinel tend to be larger and hold more valuable data than firms that do not adopt it."},
+      {"label": "C", "text": "The cost of implementing Sentinel is substantially higher than the cost of maintaining the industry-standard protocol."},
+      {"label": "D", "text": "Auditors who rated Sentinel were not informed of the dollar-loss data when making their assessments."},
+      {"label": "E", "text": "Many firms that adopted Sentinel also increased their spending on employee cybersecurity training in the same year."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If Sentinel lets trivial probes be recorded as 'successful intrusions' while blocking the damaging ones, adopting firms can match nonadopters in raw count while losing far less per event. The auditors' favorable rating — keyed to blocking serious breaches — is also consistent. All three facts reconcile once 'successful intrusion' is understood to cover heterogeneous severity.",
+      "A": "Correct.",
+      "B": "Larger, more valuable targets would raise, not lower, losses per intrusion at adopters — deepening the paradox.",
+      "C": "Implementation cost doesn't affect intrusion counts or per-intrusion losses.",
+      "D": "Blinding of auditors addresses rating integrity but not the count-vs.-loss mismatch.",
+      "E": "A confounded training effect could lower losses, but it leaves unexplained why intrusion counts didn't also fall at adopting firms."
+    },
+    "tags": ["paradox_resolve", "definitional_shift", "technology"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-04",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-way tension: habitat protection expanded, documented populations of the target species rose, yet field biologists report fewer sightings in the wild than before protection. Resolution requires a temporal-methodological shift — population figures derive from new surveying techniques that count animals previously invisible to observers.",
+    "stimulus": "When the Mersin government declared the coastal cedar forest a protected reserve ten years ago, the goal was to aid the recovery of the Mersin loris, a small nocturnal primate. Official population estimates for the loris have since risen from roughly 1,200 to over 4,000 individuals. Yet naturalists who have walked the reserve regularly for decades report seeing the loris far less often than they did before protection began.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "Shortly after the reserve was created, biologists began using infrared camera traps placed deep in the forest interior, which detect lorises that human observers, restricted to trails, never encounter."},
+      {"label": "B", "text": "The Mersin loris is more active on moonless nights than on moonlit ones."},
+      {"label": "C", "text": "The cedar forest contains several other nocturnal primate species besides the Mersin loris."},
+      {"label": "D", "text": "Visitor access to parts of the reserve has been restricted since its creation, reducing the number of trails naturalists may walk."},
+      {"label": "E", "text": "Mersin loris populations in unprotected neighboring forests have declined sharply over the past ten years."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If new camera-trap surveys detect lorises hidden from trail-bound human observers, the official population figure can climb even as naturalists' sightings on the trails fall — perhaps because behavioral change, disturbance avoidance, or simply the trails no longer intersecting dense habitat. The apparent mismatch is an artifact of two different counting methods.",
+      "A": "Correct.",
+      "B": "Moonlight variation is a constant factor and cannot explain a directional change.",
+      "C": "Presence of other species doesn't affect loris sightings or counts of lorises specifically.",
+      "D": "Restricted trail access could explain fewer sightings but doesn't on its own explain the large rise in population estimates.",
+      "E": "Decline in neighboring forests explains nothing about sightings in the reserve, and a loris influx would tend to raise, not lower, on-trail encounters."
+    },
+    "tags": ["paradox_resolve", "measurement_artifact", "environmental_science"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-05",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three interlocking facts about a reform: arrests for fraud fell, prosecutors filed charges in a higher percentage of referred cases, yet the absolute number of fraud convictions also fell. Resolution requires spotting that the reform narrowed what qualifies as a chargeable fraud case, affecting the pipeline at the front.",
+    "stimulus": "Five years ago, the state legislature overhauled its fraud statutes, narrowing the definition of criminal fraud to exclude certain deceptive but non-malicious business practices. Since the overhaul, arrests for fraud have fallen by 30 percent statewide. Prosecutors, however, now file formal charges in 85 percent of cases referred to them, up from 60 percent before the overhaul. Despite this higher charging rate, the absolute number of fraud convictions has fallen by nearly 20 percent.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "The statutory overhaul eliminated from fraud law a large class of minor, easily-proven offenses, so the cases that remain are fewer in number but more likely to survive a prosecutor's screen."},
+      {"label": "B", "text": "Defendants charged with fraud under the new statute are more likely to request jury trials than defendants charged under the old statute."},
+      {"label": "C", "text": "Prosecutors' offices received a budget increase in the year following the overhaul."},
+      {"label": "D", "text": "Many businesses responded to the overhaul by increasing their internal compliance audits."},
+      {"label": "E", "text": "The overhaul lengthened the average sentence for fraud convictions."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If the overhaul removed a large tier of low-grade offenses from fraud law, total arrests drop and the surviving cases are concentrated in serious, well-evidenced conduct — exactly the cases prosecutors readily charge, explaining the higher charging percentage. Convictions still fall in absolute terms because the pool of chargeable conduct shrank. All three statistics reconcile through the narrowed definition.",
+      "A": "Correct.",
+      "B": "Trial choice doesn't determine how many cases are charged or arrested.",
+      "C": "A budget increase should raise, not lower, conviction counts and doesn't explain the charging-rate shift.",
+      "D": "Private compliance work might reduce fraud, but it doesn't explain why prosecutors' charging rate rose.",
+      "E": "Sentence length is about punishment, not conviction counts or charging decisions."
+    },
+    "tags": ["paradox_resolve", "definitional_shift", "law"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-06",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-way historical paradox: printed book production surged, documented literacy rates climbed, yet surviving personal correspondence from ordinary citizens during the period is far scarcer than from the decade preceding it. Resolution requires a differential-survival confounder: paper quality or conservation practices changed in a way that disproportionately destroyed the later correspondence.",
+    "stimulus": "Historians studying the kingdom of Voren note that between 1620 and 1640 the annual output of printed books in the kingdom tripled and documented literacy rates among free citizens rose from roughly 25 percent to over 50 percent. Nevertheless, the number of surviving personal letters written by ordinary Vorenian citizens during 1620–1640 is substantially smaller than the number surviving from the decade 1610–1620.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "Around 1620, Vorenian papermakers began using a new wood-pulp process whose acidic output becomes brittle and disintegrates within a century, whereas the rag paper used in the preceding decade has survived intact."},
+      {"label": "B", "text": "Literacy rates among enslaved persons in Voren, who could not legally write letters, remained near zero throughout both periods."},
+      {"label": "C", "text": "The printed books produced during 1620–1640 were mostly religious tracts rather than works of secular correspondence."},
+      {"label": "D", "text": "Historians have studied the decade 1610–1620 far more intensively than the subsequent two decades."},
+      {"label": "E", "text": "The price of paper rose sharply after 1640, making private correspondence a luxury only the wealthy could afford."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "A shift to acidic wood-pulp paper in 1620 would cause letters written on it to disintegrate, while earlier rag-paper letters endure. The count of 'surviving' letters is then a measure of paper chemistry, not of how many letters were written. Rising literacy and book production can coexist with a shrinking surviving corpus once differential survival is in view.",
+      "A": "Correct.",
+      "B": "Enslaved persons' literacy is held constant, so it cannot produce the observed change between the two periods.",
+      "C": "Book content doesn't affect how many personal letters survive.",
+      "D": "If anything, more intensive study of the earlier period could raise the count of surviving letters from it, but it doesn't explain why the later period shows fewer surviving letters in absolute terms.",
+      "E": "This concerns the period after 1640, not the period of the paradox."
+    },
+    "tags": ["paradox_resolve", "survival_bias", "history"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-07",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-way linguistic paradox: immersion-program learners outscore classroom-only learners on grammar tests, classroom-only learners outscore immersion learners on vocabulary tests, yet in unscripted conversation native speakers rate the immersion learners as substantially more fluent. Resolution turns on a hidden confounder — the vocabulary test penalizes register-appropriate word choices that immersion learners acquire.",
+    "stimulus": "Researchers compared two groups of adult Vethan-language learners. On standardized grammar tests, students who had completed a six-month immersion program in Vethea outperformed students who studied only in classrooms. On standardized vocabulary tests, however, the classroom-only students outperformed the immersion students. Yet in recorded unscripted conversations, native Vethan speakers rated the immersion students as substantially more fluent than the classroom-only students.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "The standardized vocabulary test rewards knowledge of formal and literary Vethan words, while native speakers in everyday conversation use — and expect — colloquial and regional words that immersion students acquire and classroom students do not."},
+      {"label": "B", "text": "The immersion program included more hours of instruction per week than the classroom-only program."},
+      {"label": "C", "text": "Students who enroll in immersion programs tend to have higher baseline language-learning aptitude than students who choose classroom programs."},
+      {"label": "D", "text": "Vethan grammar is widely considered among the most difficult features of the language to master."},
+      {"label": "E", "text": "Native Vethan speakers who served as raters were not informed which learners had completed immersion."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If the vocabulary test rewards formal words but native speakers use — and grade for — colloquial ones, immersion students can look weaker on the test while sounding more fluent in conversation. This hidden register mismatch simultaneously explains lower test scores, higher conversational ratings, and is fully compatible with the immersion group's stronger grammar.",
+      "A": "Correct.",
+      "B": "More instructional hours could raise all scores but cannot explain why the immersion group does worse on vocabulary while doing better on grammar and conversation.",
+      "C": "Higher aptitude predicts better performance across all three measures, deepening rather than resolving the vocabulary anomaly.",
+      "D": "Grammar's difficulty doesn't reconcile the vocabulary-vs.-conversation gap.",
+      "E": "Blinding supports the conversational ratings' credibility but doesn't explain the vocabulary test result."
+    },
+    "tags": ["paradox_resolve", "definitional_shift", "linguistics"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-08",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-fact policy paradox: housing subsidies expanded, the absolute number of unsheltered residents fell, yet the rate of unsheltered homelessness per capita in the city rose. Resolution requires recognizing a migration-driven base-rate change — the population denominator fell faster than the numerator, producing a rise in rate despite falling counts.",
+    "stimulus": "Five years ago the city of Porthaven tripled its housing subsidy budget. Since then, the number of residents classified as unsheltered — people living on the streets or in vehicles — has fallen from 4,800 to 3,900. Despite this decline, the rate of unsheltered homelessness in Porthaven, measured as unsheltered residents per 10,000 total residents, has risen by more than 15 percent during the same five years.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "During the five-year period, the total population of Porthaven fell sharply as many working-age residents moved to neighboring cities with lower costs of living."},
+      {"label": "B", "text": "Most of the new subsidies were used by residents to remain in existing housing rather than to move into previously vacant units."},
+      {"label": "C", "text": "Residents classified as 'sheltered homeless' — those in shelters or transitional housing — also declined over the five-year period."},
+      {"label": "D", "text": "Porthaven's unsheltered count is conducted during a single night in January each year."},
+      {"label": "E", "text": "Several neighboring cities reduced their own housing subsidy programs during the same period."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "A rate is a ratio. If Porthaven's total population fell faster in percentage terms than its unsheltered count, the rate per 10,000 rises even as the numerator falls. The subsidies plausibly helped drive the numerator down, while outmigration of working-age residents shrinks the denominator faster still. All three facts are reconciled through the denominator change.",
+      "A": "Correct.",
+      "B": "This concerns how subsidies were used and wouldn't explain a rate that rises while counts fall.",
+      "C": "Parallel decline in sheltered homelessness doesn't affect the per-capita unsheltered rate's direction.",
+      "D": "Counting methodology is held constant across years.",
+      "E": "Neighboring cuts might push homeless populations toward Porthaven, which would raise the count — but Porthaven's count fell, so this deepens the paradox."
+    },
+    "tags": ["paradox_resolve", "denominator_shift", "policy"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-09",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-fact arts paradox: ticket prices fell, the number of exhibitions offered increased, yet total paid attendance dropped. Resolution requires seeing that a new free-admission policy for the permanent collection diverted visitors who would previously have purchased tickets.",
+    "stimulus": "The Kellerstrom Museum of Modern Art reports that over the past three years it reduced the price of a single-day admission ticket by 20 percent and increased the number of special exhibitions it hosts each year from six to nine. Nevertheless, total paid attendance at the museum fell by nearly 25 percent during the same period.",
+    "questionStem": "Which one of the following, if true, most helps to explain the discrepancy?",
+    "choices": [
+      {"label": "A", "text": "Three years ago the museum began offering free admission to its permanent collection, with tickets required only for the special exhibitions; most visitors report coming primarily to see the permanent collection."},
+      {"label": "B", "text": "The museum's three-year operating budget has remained essentially flat in inflation-adjusted terms."},
+      {"label": "C", "text": "Attendance at other art museums in the region has also declined over the past three years."},
+      {"label": "D", "text": "Several of the museum's special exhibitions have received enthusiastic reviews in major publications."},
+      {"label": "E", "text": "The museum's ticket price reduction was smaller, in percentage terms, than the price reductions announced by several of its peer institutions during the same period."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If admission to the permanent collection became free and most visitors come primarily for it, those visitors no longer appear in paid-attendance figures. Meanwhile, the cheaper tickets and increased exhibition count draw visitors specifically to special exhibitions. Total paid attendance drops because the mass of general visitors has been redirected to free admission — a category shift, not a falling interest in the museum.",
+      "A": "Correct.",
+      "B": "A flat budget doesn't explain visitor choices.",
+      "C": "A regional decline could explain lower attendance but leaves unexplained why the museum's own price cut and added exhibitions failed to offset it — and the choice resolves one half only.",
+      "D": "Favorable reviews would raise, not lower, paid attendance; deepens the paradox.",
+      "E": "Relative price position doesn't explain a 25 percent drop on top of an absolute price cut."
+    },
+    "tags": ["paradox_resolve", "category_shift", "arts"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  },
+  {
+    "id": "lr-gen-paradox_resolve-d3-b0-10",
+    "section": "LR",
+    "subtype": "paradox_resolve",
+    "difficulty": 3,
+    "difficultyReason": "Three-fact ethical-policy paradox: an opt-out organ donation policy produces higher registered donor rates than the prior opt-in policy, public attitude surveys show approval of donation unchanged, yet the number of transplants actually performed per year has declined. Resolution rests on a temporal-logistical confounder — the policy also inadvertently shortened the window for family consultation, causing more registered donors' organs never to be recovered.",
+    "stimulus": "Three years ago, the nation of Berwick replaced its opt-in organ donation policy with an opt-out policy, under which citizens are presumed donors unless they register a refusal. Since the change, the proportion of adults counted as registered donors has risen from 38 percent to 74 percent, and public opinion surveys show that popular approval of organ donation has remained essentially unchanged. Yet the number of organ transplants actually performed in Berwick each year has declined by about 10 percent since the policy took effect.",
+    "questionStem": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": [
+      {"label": "A", "text": "The opt-out policy was accompanied by a new hospital protocol that reduced the time families are given to consent to organ recovery after a relative's death; as a result, recovery teams now miss the narrow medical window for retrieval in many more cases than before."},
+      {"label": "B", "text": "A majority of Berwick citizens who became registered donors under the new policy did not learn of their registration until after the policy took effect."},
+      {"label": "C", "text": "Other nations that adopted opt-out policies have reported varying effects on transplant numbers."},
+      {"label": "D", "text": "Berwick's population has grown slightly since the policy change."},
+      {"label": "E", "text": "The opt-out policy was introduced alongside a public information campaign emphasizing the benefits of organ donation."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Transplants require two things: a donor on the books and a successful, timely recovery. If the opt-out reform came packaged with a protocol that shortens family consultation and medical retrieval windows, registered donor numbers can climb while recoveries — and thus transplants — fall. Popular approval stays flat because approval isn't the bottleneck. All three facts reconcile once the recovery-window change is introduced.",
+      "A": "Correct.",
+      "B": "Late-notice registration would still produce registered donors available at death; it doesn't explain why transplants fell.",
+      "C": "Reports from other nations don't explain Berwick's specific outcome.",
+      "D": "Slight population growth would tend to raise, not lower, the absolute transplant count; deepens the paradox.",
+      "E": "A favorable information campaign should raise donation and transplant numbers, sharpening rather than resolving the conflict."
+    },
+    "tags": ["paradox_resolve", "temporal_confounder", "ethics"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["paradox_resolve.json"]
+    }
+  }
+]

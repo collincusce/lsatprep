@@ -1,0 +1,564 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d2-b0-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 2,
+    "scenario": "A museum will display exactly five sculptures — Anchor, Briar, Cove, Dune, and Elm — across three consecutive wings: the North wing, the Center wing, and the South wing. The North wing holds exactly two sculptures, the Center wing holds exactly two sculptures, and the South wing holds exactly one sculpture. Within each wing the sculptures are arranged in a visible left-to-right order; we refer to the leftmost position of the North wing as North-1 and the right one as North-2, similarly for Center-1 and Center-2, with the single slot in the South wing simply called South. The display is subject to the following conditions. Cove is displayed in the North wing. Briar is displayed in the Center wing. Elm is displayed somewhere to the left of Dune (reading North-1, North-2, Center-1, Center-2, South as a single left-to-right sequence). Cove is displayed somewhere to the left of Anchor. If Anchor is displayed at North-2, then Dune is displayed in the South wing.",
+    "entities": ["Anchor", "Briar", "Cove", "Dune", "Elm"],
+    "positions": [1, 2, 3, 4, 5],
+    "positionLabels": {
+      "1": "North-1",
+      "2": "North-2",
+      "3": "Center-1",
+      "4": "Center-2",
+      "5": "South"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Cove", "position": 3 },
+      { "type": "not_at", "entity": "Cove", "position": 4 },
+      { "type": "not_at", "entity": "Cove", "position": 5 },
+      { "type": "not_at", "entity": "Briar", "position": 1 },
+      { "type": "not_at", "entity": "Briar", "position": 2 },
+      { "type": "not_at", "entity": "Briar", "position": 5 },
+      { "type": "before", "a": "Elm", "b": "Dune" },
+      { "type": "before", "a": "Cove", "b": "Anchor" },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Anchor", "position": 2 }, "thenRule": { "type": "at", "entity": "Dune", "position": 5 } }
+    ],
+    "verifiedSolutions": [
+      { "Anchor": 2, "Briar": 3, "Cove": 1, "Dune": 5, "Elm": 4 },
+      { "Anchor": 2, "Briar": 4, "Cove": 1, "Dune": 5, "Elm": 3 },
+      { "Anchor": 3, "Briar": 4, "Cove": 1, "Dune": 5, "Elm": 2 },
+      { "Anchor": 3, "Briar": 4, "Cove": 2, "Dune": 5, "Elm": 1 },
+      { "Anchor": 4, "Briar": 3, "Cove": 1, "Dune": 5, "Elm": 2 },
+      { "Anchor": 4, "Briar": 3, "Cove": 2, "Dune": 5, "Elm": 1 },
+      { "Anchor": 5, "Briar": 3, "Cove": 1, "Dune": 4, "Elm": 2 },
+      { "Anchor": 5, "Briar": 3, "Cove": 2, "Dune": 4, "Elm": 1 },
+      { "Anchor": 5, "Briar": 4, "Cove": 1, "Dune": 3, "Elm": 2 },
+      { "Anchor": 5, "Briar": 4, "Cove": 2, "Dune": 3, "Elm": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d2-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate list of the sculptures displayed at North-1, North-2, Center-1, Center-2, and South, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Cove, Elm, Briar, Anchor, Dune" },
+          { "label": "B", "text": "Briar, Cove, Elm, Anchor, Dune" },
+          { "label": "C", "text": "Elm, Dune, Briar, Anchor, Cove" },
+          { "label": "D", "text": "Cove, Dune, Briar, Anchor, Elm" },
+          { "label": "E", "text": "Anchor, Cove, Briar, Elm, Dune" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Cove is at North-1 (North wing, OK), Briar is at Center-1 (Center wing, OK), Elm (pos 2) is to the left of Dune (pos 5), Cove (pos 1) is to the left of Anchor (pos 4), and Anchor is not at North-2 so the conditional is vacuously satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Briar is at North-1 — but the rules require Briar to be displayed in the Center wing.",
+          "C": "Cove is at South — but the rules require Cove to be in the North wing.",
+          "D": "Elm is at South (position 5) and Dune is at North-2 (position 2), so Elm is not displayed to the left of Dune — violates the Elm-before-Dune rule.",
+          "E": "Anchor is at North-1 (position 1) and Cove is at North-2 (position 2), so Cove is not displayed to the left of Anchor — violates the Cove-before-Anchor rule."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Anchor is displayed at Center-1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Anchor", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Briar is displayed at Center-2." },
+          { "label": "B", "text": "Cove is displayed at North-2." },
+          { "label": "C", "text": "Elm is displayed at North-1." },
+          { "label": "D", "text": "Dune is displayed at Center-2." },
+          { "label": "E", "text": "Anchor is displayed at Center-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Anchor at Center-1 (pos 3), Briar must still be in the Center wing. Since Center-1 is taken by Anchor, Briar must be at Center-2. Dune must be in the South (Elm must precede Dune and Dune has nowhere else to go that keeps Elm to its left given North is filled by Cove and one of {Elm} and Center is Anchor+Briar). Enumeration confirms Briar=Center-2 in both remaining worlds.",
+          "A": "Correct. Briar must occupy Center-2 once Anchor takes Center-1.",
+          "B": "Cove could be at either North-1 or North-2; not forced.",
+          "C": "Elm could be at either North-1 or North-2; not forced.",
+          "D": "Dune must be in the South (position 5), not Center-2.",
+          "E": "Anchor is given as Center-1, not Center-2."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Cove is displayed at North-2, then which one of the following CANNOT be true?",
+        "localRules": [
+          { "type": "at", "entity": "Cove", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Elm is displayed at Center-1." },
+          { "label": "B", "text": "Dune is displayed in the South wing." },
+          { "label": "C", "text": "Anchor is displayed in the South wing." },
+          { "label": "D", "text": "Briar is displayed at Center-2." },
+          { "label": "E", "text": "Elm is displayed at North-1." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Cove is at North-2, then North-1 must be filled by some other sculpture. Briar must be in Center; Anchor must come after Cove; Dune must come after Elm. This forces Elm to North-1 in every surviving world, so Elm cannot be at Center-1.",
+          "A": "Correct. In every world with Cove at North-2, Elm must be at North-1.",
+          "B": "Dune in South is possible (Dune at pos 5 in several worlds with Cove at North-2).",
+          "C": "Anchor in South is possible (e.g., Anchor=5, Cove=2, Elm=1, Dune=3, Briar=4).",
+          "D": "Briar at Center-2 occurs in some surviving worlds (e.g., Anchor=3, Briar=4, Cove=2, Elm=1, Dune=5).",
+          "E": "Elm at North-1 is in fact forced, so it is true, not impossible."
+        },
+        "tags": ["cannot_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Dune is displayed at North-1." },
+          { "label": "B", "text": "Anchor is displayed in the South wing." },
+          { "label": "C", "text": "Dune is displayed in the South wing." },
+          { "label": "D", "text": "Elm is displayed at North-1." },
+          { "label": "E", "text": "Briar is displayed at Center-1." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Elm must be displayed to the left of Dune, so Dune cannot occupy the leftmost position (North-1). Every valid world places Dune at Center-2 or further to the right.",
+          "A": "Correct. Dune at North-1 would leave no position to the left of it for Elm.",
+          "B": "Anchor in the South wing is realized in multiple valid worlds (e.g., Anchor=5, Briar=3, Cove=1, Dune=4, Elm=2).",
+          "C": "Dune in the South wing is extremely common across valid worlds.",
+          "D": "Elm at North-1 is realized in many worlds (e.g., Anchor=3, Briar=4, Cove=2, Dune=5, Elm=1).",
+          "E": "Briar at Center-1 is realized in many worlds (e.g., Anchor=2, Briar=3, Cove=1, Dune=5, Elm=4)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Cove is displayed in the Center wing." },
+          { "label": "B", "text": "Briar is displayed in the South wing." },
+          { "label": "C", "text": "Anchor is displayed in the South wing." },
+          { "label": "D", "text": "Dune is displayed at North-1." },
+          { "label": "E", "text": "Cove is displayed to the right of Anchor." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Anchor in the South wing occurs in four valid worlds (the ones where Anchor is at position 5). For example, Anchor=5, Briar=3, Cove=1, Dune=4, Elm=2.",
+          "A": "Cove must be in the North wing by rule; it cannot be in Center.",
+          "B": "Briar must be in the Center wing by rule; it cannot be in South.",
+          "C": "Correct. Several valid worlds place Anchor at South.",
+          "D": "Dune at North-1 is impossible because Elm must be to the left of Dune.",
+          "E": "Cove must be displayed to the left of Anchor by rule."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d2-b0-02",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 2,
+    "scenario": "At a track meet, exactly six runners — Park, Quinn, Ruiz, Singh, Tate, and Umar — will be divided between two relay teams, Blue and Gold. Each team has exactly three runners, and on each team the runners are ordered by the leg they run (leg 1, leg 2, or leg 3). The six roster slots are therefore Blue-leg-1, Blue-leg-2, Blue-leg-3, Gold-leg-1, Gold-leg-2, and Gold-leg-3, and each runner fills exactly one slot. The assignment is subject to the following conditions. Park runs for Gold. Quinn runs leg 2 for Blue. Ruiz runs the first leg on whichever team she is assigned to. Singh runs the third leg on whichever team she is assigned to. If Tate runs the first leg for Blue, then Umar runs the third leg for Gold.",
+    "entities": ["Park", "Quinn", "Ruiz", "Singh", "Tate", "Umar"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "positionLabels": {
+      "1": "Blue-leg-1",
+      "2": "Blue-leg-2",
+      "3": "Blue-leg-3",
+      "4": "Gold-leg-1",
+      "5": "Gold-leg-2",
+      "6": "Gold-leg-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Park", "position": 1 },
+      { "type": "not_at", "entity": "Park", "position": 2 },
+      { "type": "not_at", "entity": "Park", "position": 3 },
+      { "type": "at", "entity": "Quinn", "position": 2 },
+      { "type": "not_at", "entity": "Ruiz", "position": 2 },
+      { "type": "not_at", "entity": "Ruiz", "position": 3 },
+      { "type": "not_at", "entity": "Ruiz", "position": 5 },
+      { "type": "not_at", "entity": "Ruiz", "position": 6 },
+      { "type": "not_at", "entity": "Singh", "position": 1 },
+      { "type": "not_at", "entity": "Singh", "position": 2 },
+      { "type": "not_at", "entity": "Singh", "position": 4 },
+      { "type": "not_at", "entity": "Singh", "position": 5 },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Tate", "position": 1 }, "thenRule": { "type": "at", "entity": "Umar", "position": 6 } }
+    ],
+    "verifiedSolutions": [
+      { "Park": 4, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 5, "Umar": 6 },
+      { "Park": 4, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 6, "Umar": 5 },
+      { "Park": 4, "Quinn": 2, "Ruiz": 1, "Singh": 6, "Tate": 3, "Umar": 5 },
+      { "Park": 4, "Quinn": 2, "Ruiz": 1, "Singh": 6, "Tate": 5, "Umar": 3 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 4, "Umar": 6 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 6, "Umar": 4 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 1, "Singh": 6, "Tate": 3, "Umar": 4 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 1, "Singh": 6, "Tate": 4, "Umar": 3 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 4, "Singh": 3, "Tate": 1, "Umar": 6 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 4, "Singh": 3, "Tate": 6, "Umar": 1 },
+      { "Park": 5, "Quinn": 2, "Ruiz": 4, "Singh": 6, "Tate": 3, "Umar": 1 },
+      { "Park": 6, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 4, "Umar": 5 },
+      { "Park": 6, "Quinn": 2, "Ruiz": 1, "Singh": 3, "Tate": 5, "Umar": 4 },
+      { "Park": 6, "Quinn": 2, "Ruiz": 4, "Singh": 3, "Tate": 5, "Umar": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d2-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the assignment of runners to Blue-leg-1, Blue-leg-2, Blue-leg-3, Gold-leg-1, Gold-leg-2, and Gold-leg-3, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ruiz, Quinn, Singh, Park, Tate, Umar" },
+          { "label": "B", "text": "Ruiz, Tate, Singh, Park, Quinn, Umar" },
+          { "label": "C", "text": "Ruiz, Quinn, Tate, Singh, Park, Umar" },
+          { "label": "D", "text": "Tate, Quinn, Ruiz, Park, Umar, Singh" },
+          { "label": "E", "text": "Quinn, Ruiz, Singh, Park, Tate, Umar" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ruiz at Blue-leg-1 (OK — Ruiz runs leg 1); Quinn at Blue-leg-2 (OK); Singh at Blue-leg-3 (OK — Singh runs leg 3); Park at Gold-leg-1 (OK — Park on Gold); Tate at Gold-leg-2 (Tate not at Blue leg 1, so the conditional is vacuously satisfied); Umar at Gold-leg-3.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Quinn is at Gold-leg-2 — but Quinn must run leg 2 for Blue.",
+          "C": "Singh is at Gold-leg-1 — but Singh must run leg 3 on whichever team she is on.",
+          "D": "Ruiz is at Blue-leg-3 — but Ruiz must run leg 1 on whichever team she is on. (Also Tate at Blue-leg-1 triggers the conditional, which requires Umar at Gold-leg-3, not satisfied here either.)",
+          "E": "Quinn is at Blue-leg-1 — but Quinn must run Blue-leg-2."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Tate runs the first leg for Blue, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Tate", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Umar runs the third leg for Gold." },
+          { "label": "B", "text": "Park runs the third leg for Gold." },
+          { "label": "C", "text": "Singh runs leg 3 for Gold." },
+          { "label": "D", "text": "Ruiz runs leg 1 for Blue." },
+          { "label": "E", "text": "Park runs leg 1 for Gold." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "The conditional rule directly forces Umar to Gold-leg-3 once Tate is at Blue-leg-1. Enumeration leaves a single world: Park=Gold-leg-2, Quinn=Blue-leg-2, Ruiz=Gold-leg-1, Singh=Blue-leg-3, Tate=Blue-leg-1, Umar=Gold-leg-3.",
+          "A": "Correct. The conditional pins Umar to Gold-leg-3.",
+          "B": "Park is at Gold-leg-2 in the surviving world, not Gold-leg-3.",
+          "C": "Singh is at Blue-leg-3 in the surviving world, not Gold-leg-3.",
+          "D": "Ruiz is at Gold-leg-1 in the surviving world, not Blue-leg-1 (Tate is there).",
+          "E": "Park is at Gold-leg-2 in the surviving world, not Gold-leg-1."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Park runs leg 2 for Blue." },
+          { "label": "B", "text": "Ruiz runs leg 3 for Gold." },
+          { "label": "C", "text": "Singh runs leg 1 for Blue." },
+          { "label": "D", "text": "Ruiz runs leg 1 for Gold." },
+          { "label": "E", "text": "Quinn runs leg 2 for Gold." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Ruiz runs leg 1 on whichever team she is on; several valid worlds place her on Gold at leg 1 (e.g., Park=5, Quinn=2, Ruiz=4, Singh=3, Tate=1, Umar=6).",
+          "A": "Park must run for Gold, not Blue.",
+          "B": "Ruiz must run leg 1 on whichever team; Gold-leg-3 is excluded.",
+          "C": "Singh must run leg 3 on whichever team; Blue-leg-1 is excluded.",
+          "D": "Correct. Ruiz on Gold-leg-1 is realized in several valid worlds.",
+          "E": "Quinn is pinned to Blue-leg-2."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Quinn runs leg 2 for Blue." },
+          { "label": "B", "text": "Park runs leg 3 for Gold." },
+          { "label": "C", "text": "Singh runs leg 3 for Blue." },
+          { "label": "D", "text": "Tate runs for Blue." },
+          { "label": "E", "text": "Umar runs for Gold." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Quinn is explicitly pinned by the rules to Blue-leg-2.",
+          "A": "Correct. The rules directly pin Quinn at Blue-leg-2.",
+          "B": "Park runs for Gold but could be on leg 1, leg 2, or leg 3.",
+          "C": "Singh runs leg 3 but could be on either Blue or Gold.",
+          "D": "Tate can run for either team in various valid worlds.",
+          "E": "Umar can run for either team in various valid worlds."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ruiz runs leg 1 for Gold, then which one of the following CANNOT be true?",
+        "localRules": [
+          { "type": "at", "entity": "Ruiz", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Umar runs leg 2 for Gold." },
+          { "label": "B", "text": "Tate runs leg 3 for Blue." },
+          { "label": "C", "text": "Singh runs leg 3 for Gold." },
+          { "label": "D", "text": "Park runs leg 3 for Gold." },
+          { "label": "E", "text": "Tate runs leg 2 for Gold." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "When Ruiz is at Gold-leg-1, the remaining Gold slots (legs 2 and 3) are filled from {Park, Singh, Tate, Umar}. Enumeration of the surviving worlds shows Umar at Gold-leg-2 never occurs — Umar always lands at Blue-leg-3 or Gold-leg-3 in these worlds.",
+          "A": "Correct. Umar cannot be at Gold-leg-2 given Ruiz at Gold-leg-1.",
+          "B": "Tate at Blue-leg-3 occurs (e.g., Park=5, Quinn=2, Ruiz=4, Singh=6, Tate=3, Umar=1).",
+          "C": "Singh at Gold-leg-3 occurs (e.g., Park=5, Quinn=2, Ruiz=4, Singh=6, Tate=3, Umar=1).",
+          "D": "Park at Gold-leg-3 occurs (e.g., Park=6, Quinn=2, Ruiz=4, Singh=3, Tate=5, Umar=1).",
+          "E": "Tate at Gold-leg-2 occurs (e.g., Park=6, Quinn=2, Ruiz=4, Singh=3, Tate=5, Umar=1)."
+        },
+        "tags": ["cannot_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d2-b0-03",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 2,
+    "scenario": "A small bakery produces exactly six items in a single morning — Fougasse, Ganache, Hazelnut, Iced, Jam, and Kouign — split between two product lines: Bread and Pastry. Exactly three items are baked on the Bread line and exactly three on the Pastry line. On each line the three items are baked in a strict order: Bread-batch-1 (earliest), Bread-batch-2, and Bread-batch-3; similarly Pastry-batch-1, Pastry-batch-2, and Pastry-batch-3. Each item occupies exactly one batch slot. The schedule is subject to the following conditions. Fougasse and Kouign are both on the Bread line. Ganache and Jam are both on the Pastry line. Fougasse is baked earlier than Kouign. Jam is baked earlier than Ganache. If Iced is baked as Bread-batch-2, then Hazelnut is baked as Pastry-batch-3.",
+    "entities": ["Fougasse", "Ganache", "Hazelnut", "Iced", "Jam", "Kouign"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "positionLabels": {
+      "1": "Bread-batch-1",
+      "2": "Bread-batch-2",
+      "3": "Bread-batch-3",
+      "4": "Pastry-batch-1",
+      "5": "Pastry-batch-2",
+      "6": "Pastry-batch-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Fougasse", "position": 4 },
+      { "type": "not_at", "entity": "Fougasse", "position": 5 },
+      { "type": "not_at", "entity": "Fougasse", "position": 6 },
+      { "type": "not_at", "entity": "Ganache", "position": 1 },
+      { "type": "not_at", "entity": "Ganache", "position": 2 },
+      { "type": "not_at", "entity": "Ganache", "position": 3 },
+      { "type": "not_at", "entity": "Jam", "position": 1 },
+      { "type": "not_at", "entity": "Jam", "position": 2 },
+      { "type": "not_at", "entity": "Jam", "position": 3 },
+      { "type": "not_at", "entity": "Kouign", "position": 4 },
+      { "type": "not_at", "entity": "Kouign", "position": 5 },
+      { "type": "not_at", "entity": "Kouign", "position": 6 },
+      { "type": "before", "a": "Fougasse", "b": "Kouign" },
+      { "type": "before", "a": "Jam", "b": "Ganache" },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Iced", "position": 2 }, "thenRule": { "type": "at", "entity": "Hazelnut", "position": 6 } }
+    ],
+    "verifiedSolutions": [
+      { "Fougasse": 1, "Ganache": 5, "Hazelnut": 2, "Iced": 6, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 1, "Ganache": 5, "Hazelnut": 3, "Iced": 6, "Jam": 4, "Kouign": 2 },
+      { "Fougasse": 1, "Ganache": 5, "Hazelnut": 6, "Iced": 2, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 1, "Ganache": 5, "Hazelnut": 6, "Iced": 3, "Jam": 4, "Kouign": 2 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 2, "Iced": 4, "Jam": 5, "Kouign": 3 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 2, "Iced": 5, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 3, "Iced": 4, "Jam": 5, "Kouign": 2 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 3, "Iced": 5, "Jam": 4, "Kouign": 2 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 4, "Iced": 3, "Jam": 5, "Kouign": 2 },
+      { "Fougasse": 1, "Ganache": 6, "Hazelnut": 5, "Iced": 3, "Jam": 4, "Kouign": 2 },
+      { "Fougasse": 2, "Ganache": 5, "Hazelnut": 1, "Iced": 6, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 2, "Ganache": 5, "Hazelnut": 6, "Iced": 1, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 2, "Ganache": 6, "Hazelnut": 1, "Iced": 4, "Jam": 5, "Kouign": 3 },
+      { "Fougasse": 2, "Ganache": 6, "Hazelnut": 1, "Iced": 5, "Jam": 4, "Kouign": 3 },
+      { "Fougasse": 2, "Ganache": 6, "Hazelnut": 4, "Iced": 1, "Jam": 5, "Kouign": 3 },
+      { "Fougasse": 2, "Ganache": 6, "Hazelnut": 5, "Iced": 1, "Jam": 4, "Kouign": 3 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d2-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order in which the items are baked across the Bread line (batches 1 through 3) and the Pastry line (batches 1 through 3), respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Fougasse, Hazelnut, Kouign, Jam, Ganache, Iced" },
+          { "label": "B", "text": "Fougasse, Hazelnut, Kouign, Ganache, Jam, Iced" },
+          { "label": "C", "text": "Kouign, Hazelnut, Fougasse, Jam, Ganache, Iced" },
+          { "label": "D", "text": "Fougasse, Jam, Kouign, Hazelnut, Ganache, Iced" },
+          { "label": "E", "text": "Ganache, Hazelnut, Kouign, Jam, Fougasse, Iced" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Fougasse=Bread-batch-1, Hazelnut=Bread-batch-2, Kouign=Bread-batch-3 (Fougasse before Kouign, both on Bread); Jam=Pastry-batch-1, Ganache=Pastry-batch-2 (Jam before Ganache, both on Pastry); Iced=Pastry-batch-3. Iced is not at Bread-batch-2, so the conditional is vacuously satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Ganache is at Pastry-batch-1 and Jam is at Pastry-batch-2, so Jam is not baked earlier than Ganache — violates the Jam-before-Ganache rule.",
+          "C": "Kouign is at Bread-batch-1 and Fougasse is at Bread-batch-3, so Fougasse is not baked earlier than Kouign — violates the Fougasse-before-Kouign rule.",
+          "D": "Jam is at Bread-batch-2 — but the rules require Jam to be on the Pastry line.",
+          "E": "Ganache is at Bread-batch-1 — but the rules require Ganache to be on the Pastry line."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Kouign is baked as Pastry-batch-3." },
+          { "label": "B", "text": "Hazelnut is baked on the Pastry line." },
+          { "label": "C", "text": "Iced is baked on the Bread line." },
+          { "label": "D", "text": "Fougasse is baked as Bread-batch-2." },
+          { "label": "E", "text": "Ganache is baked as Pastry-batch-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Kouign is fixed to the Bread line by rule, so Kouign can never be a Pastry batch.",
+          "A": "Correct. Kouign must be on Bread.",
+          "B": "Hazelnut on Pastry occurs in several valid worlds (e.g., Hazelnut at Pastry-batch-3).",
+          "C": "Iced on Bread occurs in several valid worlds (e.g., Iced at Bread-batch-3).",
+          "D": "Fougasse at Bread-batch-2 occurs (e.g., Fougasse=2, Ganache=5, Hazelnut=1, Iced=6, Jam=4, Kouign=3).",
+          "E": "Ganache at Pastry-batch-2 (position 5) occurs in many worlds."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Jam is baked on the Bread line." },
+          { "label": "B", "text": "Iced is baked as Pastry-batch-1." },
+          { "label": "C", "text": "Ganache is baked earlier than Jam." },
+          { "label": "D", "text": "Kouign is baked as Pastry-batch-2." },
+          { "label": "E", "text": "Fougasse is baked as Bread-batch-3." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Iced at Pastry-batch-1 (position 4) occurs in multiple worlds (e.g., Fougasse=1, Ganache=6, Hazelnut=3, Iced=4, Jam=5, Kouign=2).",
+          "A": "Jam is fixed to Pastry by rule.",
+          "B": "Correct. Iced on Pastry-batch-1 is realized in several valid worlds.",
+          "C": "Jam must be earlier than Ganache by rule.",
+          "D": "Kouign is fixed to Bread by rule.",
+          "E": "Fougasse must be earlier than Kouign. With both on Bread and three Bread slots, Fougasse at Bread-batch-3 would leave no later Bread slot for Kouign."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Iced is baked as Bread-batch-1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Iced", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Fougasse is baked as Bread-batch-2." },
+          { "label": "B", "text": "Hazelnut is baked as Pastry-batch-3." },
+          { "label": "C", "text": "Jam is baked as Pastry-batch-1." },
+          { "label": "D", "text": "Ganache is baked as Pastry-batch-3." },
+          { "label": "E", "text": "Hazelnut is baked as Pastry-batch-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Iced filling Bread-batch-1, the other two Bread slots must go to Fougasse and Kouign in that order (Fougasse before Kouign). Fougasse is therefore forced to Bread-batch-2 and Kouign to Bread-batch-3 in every surviving world.",
+          "A": "Correct. Fougasse must be at Bread-batch-2 in every surviving world.",
+          "B": "Hazelnut is at Pastry-batch-3 in only one of the three surviving worlds; not forced.",
+          "C": "Jam is at Pastry-batch-1 in two of three surviving worlds, but not all; not forced.",
+          "D": "Ganache is at Pastry-batch-3 in two of three surviving worlds, but not all; not forced.",
+          "E": "Hazelnut is at Pastry-batch-2 in only one of the three surviving worlds; not forced."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Hazelnut is baked as Bread-batch-1, then which one of the following CANNOT be true?",
+        "localRules": [
+          { "type": "at", "entity": "Hazelnut", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Iced is baked on the Bread line." },
+          { "label": "B", "text": "Fougasse is baked as Bread-batch-2." },
+          { "label": "C", "text": "Kouign is baked as Bread-batch-3." },
+          { "label": "D", "text": "Ganache is baked as Pastry-batch-3." },
+          { "label": "E", "text": "Jam is baked as Pastry-batch-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Hazelnut occupies Bread-batch-1, then the remaining two Bread slots must be filled by Fougasse and Kouign (in that order). Iced must therefore be on the Pastry line in every surviving world.",
+          "A": "Correct. With Hazelnut at Bread-batch-1, Iced cannot be on Bread.",
+          "B": "Fougasse at Bread-batch-2 is realized (e.g., Fougasse=2, Ganache=5, Hazelnut=1, Iced=6, Jam=4, Kouign=3).",
+          "C": "Kouign at Bread-batch-3 is realized in all surviving worlds.",
+          "D": "Ganache at Pastry-batch-3 (position 6) is realized in most surviving worlds.",
+          "E": "Jam at Pastry-batch-2 (position 5) is realized in some surviving worlds."
+        },
+        "tags": ["cannot_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  }
+]

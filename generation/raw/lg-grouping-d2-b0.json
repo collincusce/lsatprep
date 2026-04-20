@@ -1,0 +1,1231 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b0-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "Exactly six volunteers — Ames, Barr, Cho, Doyle, Ek, and Flores — will be assigned to exactly one of two neighborhood cleanup crews: Harbor and Maple. Each crew is assigned exactly three volunteers. The assignment must satisfy the following conditions. Barr and Cho are assigned to different crews. If Flores is assigned to the Harbor crew, then Cho is assigned to the Maple crew. If Ames is assigned to the Maple crew, then Doyle is also assigned to the Maple crew.",
+    "entities": [
+      "Ames",
+      "Barr",
+      "Cho",
+      "Doyle",
+      "Ek",
+      "Flores"
+    ],
+    "groups": [
+      "Harbor",
+      "Maple"
+    ],
+    "groupSize": 3,
+    "rules": [
+      {
+        "type": "different_group",
+        "a": "Barr",
+        "b": "Cho"
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Flores",
+          "position": "Harbor"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Cho",
+          "position": "Maple"
+        }
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Ames",
+          "position": "Maple"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Doyle",
+          "position": "Maple"
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ames": "Harbor",
+        "Barr": "Harbor",
+        "Cho": "Maple",
+        "Doyle": "Harbor",
+        "Ek": "Maple",
+        "Flores": "Maple"
+      },
+      {
+        "Ames": "Harbor",
+        "Barr": "Harbor",
+        "Cho": "Maple",
+        "Doyle": "Maple",
+        "Ek": "Harbor",
+        "Flores": "Maple"
+      },
+      {
+        "Ames": "Harbor",
+        "Barr": "Harbor",
+        "Cho": "Maple",
+        "Doyle": "Maple",
+        "Ek": "Maple",
+        "Flores": "Harbor"
+      },
+      {
+        "Ames": "Harbor",
+        "Barr": "Maple",
+        "Cho": "Harbor",
+        "Doyle": "Harbor",
+        "Ek": "Maple",
+        "Flores": "Maple"
+      },
+      {
+        "Ames": "Harbor",
+        "Barr": "Maple",
+        "Cho": "Harbor",
+        "Doyle": "Maple",
+        "Ek": "Harbor",
+        "Flores": "Maple"
+      },
+      {
+        "Ames": "Maple",
+        "Barr": "Harbor",
+        "Cho": "Maple",
+        "Doyle": "Maple",
+        "Ek": "Harbor",
+        "Flores": "Harbor"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of volunteers to crews?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor: Ames, Barr, Doyle; Maple: Cho, Ek, Flores"
+          },
+          {
+            "label": "B",
+            "text": "Harbor: Ames, Barr, Cho; Maple: Doyle, Ek, Flores"
+          },
+          {
+            "label": "C",
+            "text": "Harbor: Barr, Doyle, Ek; Maple: Ames, Cho, Flores"
+          },
+          {
+            "label": "D",
+            "text": "Harbor: Cho, Ek, Flores; Maple: Ames, Barr, Doyle"
+          },
+          {
+            "label": "E",
+            "text": "Harbor: Ames, Barr, Doyle, Ek; Maple: Cho, Flores"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Barr (Harbor) and Cho (Maple) are in different crews. Flores is in Maple, so the Flores-Harbor conditional is vacuously satisfied. Ames is in Harbor, so the Ames-Maple conditional is vacuously satisfied. Each crew has exactly three volunteers.",
+          "A": "Correct.",
+          "B": "Barr and Cho are both in Harbor. Violates the rule that Barr and Cho are in different crews.",
+          "C": "Ames is in Maple but Doyle is in Harbor. Violates the rule that if Ames is in Maple then Doyle is in Maple.",
+          "D": "Flores is in Harbor but Cho is also in Harbor. Violates the rule that if Flores is in Harbor then Cho is in Maple.",
+          "E": "Harbor has four volunteers. Violates the requirement that each crew has exactly three volunteers."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ames is assigned to the Maple crew, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ames",
+            "position": "Maple"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Barr is assigned to the Maple crew."
+          },
+          {
+            "label": "B",
+            "text": "Cho is assigned to the Harbor crew."
+          },
+          {
+            "label": "C",
+            "text": "Ek is assigned to the Maple crew."
+          },
+          {
+            "label": "D",
+            "text": "Flores is assigned to the Harbor crew."
+          },
+          {
+            "label": "E",
+            "text": "Doyle is assigned to the Harbor crew."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Ames is in Maple, Doyle must also be in Maple. Since Maple already has Ames and Doyle, Cho must take the third Maple slot (Barr and Cho are in different crews and only one Harbor slot remains after Barr fills one of Barr/Cho). Working it out: Maple contains Ames, Doyle, and Cho; Harbor must therefore contain Barr, Ek, and Flores. So Flores is in Harbor.",
+          "A": "Barr must be in Harbor, not Maple (Barr and Cho differ, and Cho is in Maple).",
+          "B": "Cho must be in Maple to fill the third Maple slot.",
+          "C": "Ek must be in Harbor to fill out that crew.",
+          "D": "Correct.",
+          "E": "Doyle must be in Maple because of the Ames-Maple conditional."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Flores is assigned to the Harbor crew, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Flores",
+            "position": "Harbor"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ames is assigned to the Harbor crew."
+          },
+          {
+            "label": "B",
+            "text": "Barr is assigned to the Maple crew."
+          },
+          {
+            "label": "C",
+            "text": "Ek is assigned to the Maple crew."
+          },
+          {
+            "label": "D",
+            "text": "Doyle is assigned to the Maple crew."
+          },
+          {
+            "label": "E",
+            "text": "Cho is assigned to the Harbor crew."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Flores is in Harbor, the first conditional forces Cho into Maple. Barr (who must be in a different crew from Cho) is therefore in Harbor. Harbor now holds Flores and Barr plus one more; Maple holds Cho plus two more. Whichever of Ames and Ek takes the last Harbor slot, the other goes to Maple along with Doyle — and in every case Doyle ends up in Maple (if Ames took Maple, the second conditional forces Doyle to Maple; if Ames took Harbor, Maple still needs Doyle alongside Cho and Ek).",
+          "A": "Ames could be in Harbor or Maple.",
+          "B": "Barr must be in Harbor because Cho is in Maple.",
+          "C": "Ek could be in Harbor (with Ames in Maple) or Maple.",
+          "D": "Correct.",
+          "E": "Cho must be in Maple because Flores is in Harbor."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Barr and Cho are both assigned to the Harbor crew."
+          },
+          {
+            "label": "B",
+            "text": "Flores is assigned to the Harbor crew and Cho is assigned to the Harbor crew."
+          },
+          {
+            "label": "C",
+            "text": "Ames is assigned to the Maple crew and Doyle is assigned to the Harbor crew."
+          },
+          {
+            "label": "D",
+            "text": "Ek is assigned to the Harbor crew."
+          },
+          {
+            "label": "E",
+            "text": "Barr, Cho, and Ek are all assigned to the Harbor crew."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "For example, the assignment Harbor: Ames, Barr, Ek; Maple: Cho, Doyle, Flores satisfies every rule: Barr and Cho are in different crews, Flores is in Maple (so the Flores conditional is vacuous), Ames is in Harbor (so the Ames conditional is vacuous), and each crew has three members.",
+          "A": "Barr and Cho must be in different crews.",
+          "B": "If Flores is in Harbor, Cho must be in Maple; this combination is forbidden.",
+          "C": "If Ames is in Maple, Doyle must also be in Maple.",
+          "D": "Correct.",
+          "E": "Barr and Cho must be in different crews, so they cannot both be in Harbor."
+        },
+        "tags": [
+          "could_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ames is assigned to the Maple crew."
+          },
+          {
+            "label": "B",
+            "text": "Barr is assigned to the Maple crew."
+          },
+          {
+            "label": "C",
+            "text": "Cho is assigned to the Harbor crew."
+          },
+          {
+            "label": "D",
+            "text": "Flores is assigned to the Harbor crew and Doyle is assigned to the Harbor crew."
+          },
+          {
+            "label": "E",
+            "text": "Ek is assigned to the Harbor crew."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Flores is in Harbor, then Cho must be in Maple. Barr must then be in Harbor (different from Cho). Harbor thus contains Flores and Barr and needs one more slot; Maple contains Cho and needs two more. If Doyle were also in Harbor, Harbor would have Flores, Barr, Doyle — full — and Maple would need Ames and Ek to join Cho. But then Ames is in Maple, which forces Doyle into Maple, contradicting Doyle in Harbor. So Doyle cannot be in Harbor when Flores is in Harbor.",
+          "A": "Possible — e.g., Harbor: Barr, Ek, Flores; Maple: Ames, Cho, Doyle.",
+          "B": "Possible — e.g., Harbor: Ames, Cho, Doyle; Maple: Barr, Ek, Flores.",
+          "C": "Possible — e.g., Harbor: Ames, Cho, Doyle; Maple: Barr, Ek, Flores.",
+          "D": "Correct — this combination cannot occur.",
+          "E": "Possible — e.g., Harbor: Ames, Barr, Ek; Maple: Cho, Doyle, Flores."
+        },
+        "tags": [
+          "cannot_be_true",
+          "except",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d2-b0-02",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "Seven students — Patel, Quinn, Reyes, Saito, Tan, Unger, and Vega — each enroll in exactly one of three electives: Art, Biology, and Civics. Art enrolls exactly three students; Biology enrolls exactly two students; Civics enrolls exactly two students. The following conditions apply. Patel enrolls in Art. Quinn and Reyes enroll in different electives. Saito and Tan enroll in the same elective. If Unger enrolls in Biology, then Vega enrolls in Civics.",
+    "entities": [
+      "Patel",
+      "Quinn",
+      "Reyes",
+      "Saito",
+      "Tan",
+      "Unger",
+      "Vega"
+    ],
+    "groups": [
+      "Art",
+      "Biology",
+      "Civics"
+    ],
+    "groupSize": null,
+    "rules": [
+      {
+        "type": "exactly_n_in_group",
+        "entities": [
+          "Patel",
+          "Quinn",
+          "Reyes",
+          "Saito",
+          "Tan",
+          "Unger",
+          "Vega"
+        ],
+        "group": "Art",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": [
+          "Patel",
+          "Quinn",
+          "Reyes",
+          "Saito",
+          "Tan",
+          "Unger",
+          "Vega"
+        ],
+        "group": "Biology",
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": [
+          "Patel",
+          "Quinn",
+          "Reyes",
+          "Saito",
+          "Tan",
+          "Unger",
+          "Vega"
+        ],
+        "group": "Civics",
+        "n": 2
+      },
+      {
+        "type": "at",
+        "entity": "Patel",
+        "position": "Art"
+      },
+      {
+        "type": "different_group",
+        "a": "Quinn",
+        "b": "Reyes"
+      },
+      {
+        "type": "same_group",
+        "a": "Saito",
+        "b": "Tan"
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Unger",
+          "position": "Biology"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Vega",
+          "position": "Civics"
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Patel": "Art",
+        "Quinn": "Art",
+        "Reyes": "Biology",
+        "Saito": "Civics",
+        "Tan": "Civics",
+        "Unger": "Art",
+        "Vega": "Biology"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Art",
+        "Reyes": "Civics",
+        "Saito": "Biology",
+        "Tan": "Biology",
+        "Unger": "Art",
+        "Vega": "Civics"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Art",
+        "Reyes": "Civics",
+        "Saito": "Biology",
+        "Tan": "Biology",
+        "Unger": "Civics",
+        "Vega": "Art"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Biology",
+        "Reyes": "Art",
+        "Saito": "Civics",
+        "Tan": "Civics",
+        "Unger": "Art",
+        "Vega": "Biology"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Biology",
+        "Reyes": "Civics",
+        "Saito": "Art",
+        "Tan": "Art",
+        "Unger": "Biology",
+        "Vega": "Civics"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Biology",
+        "Reyes": "Civics",
+        "Saito": "Art",
+        "Tan": "Art",
+        "Unger": "Civics",
+        "Vega": "Biology"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Civics",
+        "Reyes": "Art",
+        "Saito": "Biology",
+        "Tan": "Biology",
+        "Unger": "Art",
+        "Vega": "Civics"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Civics",
+        "Reyes": "Art",
+        "Saito": "Biology",
+        "Tan": "Biology",
+        "Unger": "Civics",
+        "Vega": "Art"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Civics",
+        "Reyes": "Biology",
+        "Saito": "Art",
+        "Tan": "Art",
+        "Unger": "Biology",
+        "Vega": "Civics"
+      },
+      {
+        "Patel": "Art",
+        "Quinn": "Civics",
+        "Reyes": "Biology",
+        "Saito": "Art",
+        "Tan": "Art",
+        "Unger": "Civics",
+        "Vega": "Biology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate list of the students enrolled in each elective?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Art: Patel, Quinn, Unger; Biology: Reyes, Vega; Civics: Saito, Tan"
+          },
+          {
+            "label": "B",
+            "text": "Art: Quinn, Saito, Tan; Biology: Patel, Reyes; Civics: Unger, Vega"
+          },
+          {
+            "label": "C",
+            "text": "Art: Patel, Saito, Tan; Biology: Quinn, Reyes; Civics: Unger, Vega"
+          },
+          {
+            "label": "D",
+            "text": "Art: Patel, Quinn, Saito; Biology: Tan, Vega; Civics: Reyes, Unger"
+          },
+          {
+            "label": "E",
+            "text": "Art: Patel, Quinn, Vega; Biology: Reyes, Unger; Civics: Saito, Tan"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Patel is in Art. Quinn (Art) and Reyes (Biology) are in different electives. Saito and Tan are both in Civics. Unger is in Art, not Biology, so the conditional is vacuously satisfied. Enrollments: Art 3, Biology 2, Civics 2.",
+          "A": "Correct.",
+          "B": "Patel is in Biology, violating the rule that Patel enrolls in Art.",
+          "C": "Quinn and Reyes are both in Biology, violating the rule that they enroll in different electives.",
+          "D": "Saito is in Art and Tan is in Biology, violating the rule that they enroll in the same elective.",
+          "E": "Unger is in Biology but Vega is in Art, violating the rule that if Unger enrolls in Biology then Vega enrolls in Civics."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Unger enrolls in Biology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Unger",
+            "position": "Biology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Quinn enrolls in Civics."
+          },
+          {
+            "label": "B",
+            "text": "Reyes enrolls in Biology."
+          },
+          {
+            "label": "C",
+            "text": "Saito enrolls in Art."
+          },
+          {
+            "label": "D",
+            "text": "Vega enrolls in Biology."
+          },
+          {
+            "label": "E",
+            "text": "Reyes enrolls in Civics."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Unger is in Biology, the conditional forces Vega into Civics. Civics then has two students, Vega and one of Quinn/Reyes, filling it. Saito and Tan must enroll together, but Biology has only two slots and Unger already occupies one (with exactly one slot left for the Quinn/Reyes split), and Civics is full. So Saito and Tan must both enroll in Art.",
+          "A": "Quinn could enroll in either Biology or Civics.",
+          "B": "Reyes could enroll in either Biology or Civics.",
+          "C": "Correct.",
+          "D": "The conditional forces Vega into Civics, not Biology.",
+          "E": "Reyes could enroll in either Biology or Civics."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Saito enrolls in Biology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Saito",
+            "position": "Biology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Unger enrolls in Art."
+          },
+          {
+            "label": "B",
+            "text": "Vega enrolls in Civics."
+          },
+          {
+            "label": "C",
+            "text": "Tan enrolls in Biology."
+          },
+          {
+            "label": "D",
+            "text": "Reyes enrolls in Civics."
+          },
+          {
+            "label": "E",
+            "text": "Quinn enrolls in Biology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Saito and Tan must enroll in the same elective. If Saito is in Biology, Tan is in Biology as well.",
+          "A": "Unger could enroll in Art or Civics.",
+          "B": "Vega could enroll in Art or Civics.",
+          "C": "Correct.",
+          "D": "Reyes could enroll in Art or Civics (Quinn and Reyes split between them).",
+          "E": "Biology is filled by Saito and Tan, leaving no room for Quinn."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Patel enrolls in Biology."
+          },
+          {
+            "label": "B",
+            "text": "Quinn and Reyes both enroll in Art."
+          },
+          {
+            "label": "C",
+            "text": "Saito enrolls in Art and Tan enrolls in Biology."
+          },
+          {
+            "label": "D",
+            "text": "Vega enrolls in Art."
+          },
+          {
+            "label": "E",
+            "text": "Unger enrolls in Biology and Vega enrolls in Art."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "For example, Art: Patel, Reyes, Vega; Biology: Saito, Tan; Civics: Quinn, Unger satisfies every rule.",
+          "A": "Patel is required to enroll in Art.",
+          "B": "Quinn and Reyes must enroll in different electives.",
+          "C": "Saito and Tan must enroll in the same elective.",
+          "D": "Correct.",
+          "E": "If Unger enrolls in Biology, then Vega must enroll in Civics."
+        },
+        "tags": [
+          "could_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Saito and Unger both enroll in Biology."
+          },
+          {
+            "label": "B",
+            "text": "Reyes enrolls in Biology."
+          },
+          {
+            "label": "C",
+            "text": "Vega enrolls in Art."
+          },
+          {
+            "label": "D",
+            "text": "Unger enrolls in Civics."
+          },
+          {
+            "label": "E",
+            "text": "Quinn enrolls in Civics."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Saito is in Biology, then Tan is also in Biology (they must enroll together), filling Biology's two slots. Unger cannot then also be in Biology.",
+          "A": "Correct — cannot be true.",
+          "B": "Possible — e.g., Art: Patel, Quinn, Unger; Biology: Reyes, Vega; Civics: Saito, Tan.",
+          "C": "Possible — e.g., Art: Patel, Quinn, Vega; Biology: Saito, Tan; Civics: Reyes, Unger.",
+          "D": "Possible — e.g., Art: Patel, Quinn, Vega; Biology: Saito, Tan; Civics: Reyes, Unger.",
+          "E": "Possible — e.g., Art: Patel, Reyes, Unger; Biology: Saito, Tan; Civics: Quinn, Vega."
+        },
+        "tags": [
+          "cannot_be_true",
+          "except",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d2-b0-03",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "Exactly eight jurors — Ito, Jain, Klein, Lam, Mori, Nash, Ota, and Park — will be assigned to exactly one of two trial pools: North and South. Each pool is assigned exactly four jurors. The assignment must satisfy the following conditions. Ito is assigned to the North pool. Jain and Klein are assigned to different pools. Lam and Mori are assigned to the same pool. Exactly two of Nash, Ota, and Park are assigned to the North pool. If Jain is assigned to the North pool, then Lam is assigned to the South pool.",
+    "entities": [
+      "Ito",
+      "Jain",
+      "Klein",
+      "Lam",
+      "Mori",
+      "Nash",
+      "Ota",
+      "Park"
+    ],
+    "groups": [
+      "North",
+      "South"
+    ],
+    "groupSize": 4,
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Ito",
+        "position": "North"
+      },
+      {
+        "type": "different_group",
+        "a": "Jain",
+        "b": "Klein"
+      },
+      {
+        "type": "same_group",
+        "a": "Lam",
+        "b": "Mori"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": [
+          "Nash",
+          "Ota",
+          "Park"
+        ],
+        "group": "North",
+        "n": 2
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Jain",
+          "position": "North"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Lam",
+          "position": "South"
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ito": "North",
+        "Jain": "North",
+        "Klein": "South",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "North",
+        "Ota": "North",
+        "Park": "South"
+      },
+      {
+        "Ito": "North",
+        "Jain": "North",
+        "Klein": "South",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "North",
+        "Ota": "South",
+        "Park": "North"
+      },
+      {
+        "Ito": "North",
+        "Jain": "North",
+        "Klein": "South",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "South",
+        "Ota": "North",
+        "Park": "North"
+      },
+      {
+        "Ito": "North",
+        "Jain": "South",
+        "Klein": "North",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "North",
+        "Ota": "North",
+        "Park": "South"
+      },
+      {
+        "Ito": "North",
+        "Jain": "South",
+        "Klein": "North",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "North",
+        "Ota": "South",
+        "Park": "North"
+      },
+      {
+        "Ito": "North",
+        "Jain": "South",
+        "Klein": "North",
+        "Lam": "South",
+        "Mori": "South",
+        "Nash": "South",
+        "Ota": "North",
+        "Park": "North"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of jurors to pools?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "North: Ito, Jain, Nash, Ota; South: Klein, Lam, Mori, Park"
+          },
+          {
+            "label": "B",
+            "text": "North: Jain, Klein, Lam, Mori; South: Ito, Nash, Ota, Park"
+          },
+          {
+            "label": "C",
+            "text": "North: Ito, Jain, Klein, Nash; South: Lam, Mori, Ota, Park"
+          },
+          {
+            "label": "D",
+            "text": "North: Ito, Klein, Lam, Nash; South: Jain, Mori, Ota, Park"
+          },
+          {
+            "label": "E",
+            "text": "North: Ito, Klein, Lam, Mori; South: Jain, Nash, Ota, Park"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ito is in North. Jain (North) and Klein (South) are in different pools. Lam and Mori are both in South. Exactly two of Nash, Ota, and Park (Nash and Ota) are in North. Jain is in North, so by the conditional Lam must be in South — and Lam is in South. Each pool has four jurors.",
+          "A": "Correct.",
+          "B": "Ito is in South, violating the rule that Ito is in North.",
+          "C": "Jain and Klein are both in North, violating the rule that they are in different pools.",
+          "D": "Lam is in North and Mori is in South, violating the rule that they are assigned to the same pool.",
+          "E": "None of Nash, Ota, and Park are in North, violating the rule that exactly two of them are in the North pool."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Jain is assigned to the North pool, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jain",
+            "position": "North"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Nash is assigned to the North pool."
+          },
+          {
+            "label": "B",
+            "text": "Ota is assigned to the North pool."
+          },
+          {
+            "label": "C",
+            "text": "Park is assigned to the South pool."
+          },
+          {
+            "label": "D",
+            "text": "Mori is assigned to the South pool."
+          },
+          {
+            "label": "E",
+            "text": "Klein is assigned to the North pool."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Jain is in North, then Lam is in South (by the conditional), and Mori is in the same pool as Lam, so Mori is in South.",
+          "A": "Nash could be in North or South (two of Nash, Ota, Park are in North).",
+          "B": "Ota could be in North or South.",
+          "C": "Park could be in North or South.",
+          "D": "Correct.",
+          "E": "Klein is in the opposite pool from Jain; since Jain is in North, Klein is in South."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Park is assigned to the South pool, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Park",
+            "position": "South"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jain is assigned to the North pool."
+          },
+          {
+            "label": "B",
+            "text": "Klein is assigned to the South pool."
+          },
+          {
+            "label": "C",
+            "text": "Nash is assigned to the North pool."
+          },
+          {
+            "label": "D",
+            "text": "Lam is assigned to the North pool."
+          },
+          {
+            "label": "E",
+            "text": "Ota is assigned to the South pool."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Exactly two of Nash, Ota, and Park are in the North pool. If Park is in South, then both Nash and Ota must be in North.",
+          "A": "Jain could be in either pool.",
+          "B": "Klein could be in either pool.",
+          "C": "Correct.",
+          "D": "Lam is always in the same pool as Mori, and because Ito is in North, the distribution constraints leave Lam and Mori together in South in every valid scenario.",
+          "E": "Ota must be in North when Park is in South."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jain is assigned to the South pool."
+          },
+          {
+            "label": "B",
+            "text": "Klein is assigned to the North pool."
+          },
+          {
+            "label": "C",
+            "text": "Lam is assigned to the South pool."
+          },
+          {
+            "label": "D",
+            "text": "Nash is assigned to the North pool."
+          },
+          {
+            "label": "E",
+            "text": "Ota is assigned to the South pool."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Ito is in North. Exactly two of Nash, Ota, and Park are in North, so one of them is in South. That means North contains Ito plus two of {Nash, Ota, Park} plus one of {Jain, Klein} — four total. The remaining four go to South: the third of {Nash, Ota, Park}, the other of {Jain, Klein}, and both Lam and Mori (who must be together). Since Lam and Mori cannot both fit in North (there is no room for two more after Ito and the Nash/Ota/Park pair and the Jain/Klein slot), Lam must be in South.",
+          "A": "Jain could be in either pool.",
+          "B": "Klein could be in either pool.",
+          "C": "Correct.",
+          "D": "Nash could be in either pool.",
+          "E": "Ota could be in either pool."
+        },
+        "tags": [
+          "must_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jain is assigned to the North pool and Nash is assigned to the South pool."
+          },
+          {
+            "label": "B",
+            "text": "Klein is assigned to the North pool and Park is assigned to the North pool."
+          },
+          {
+            "label": "C",
+            "text": "Lam is assigned to the North pool."
+          },
+          {
+            "label": "D",
+            "text": "Ota is assigned to the South pool."
+          },
+          {
+            "label": "E",
+            "text": "Jain is assigned to the South pool and Klein is assigned to the North pool."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "North contains Ito, exactly two of {Nash, Ota, Park}, and exactly one of {Jain, Klein} — a total of four jurors. There is no room for Lam in North, so Lam must be in South (and Mori with Lam).",
+          "A": "Possible — e.g., North: Ito, Jain, Ota, Park; South: Klein, Lam, Mori, Nash.",
+          "B": "Possible — e.g., North: Ito, Klein, Ota, Park; South: Jain, Lam, Mori, Nash.",
+          "C": "Correct — cannot be true.",
+          "D": "Possible — e.g., North: Ito, Jain, Nash, Park; South: Klein, Lam, Mori, Ota.",
+          "E": "Possible — e.g., North: Ito, Klein, Nash, Ota; South: Jain, Lam, Mori, Park."
+        },
+        "tags": [
+          "cannot_be_true",
+          "except",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ]
+  }
+]

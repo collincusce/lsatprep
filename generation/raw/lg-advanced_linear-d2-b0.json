@@ -1,0 +1,557 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b0-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "Exactly six talks — Alder, Banik, Cho, Dorsey, Epps, and Finch — will be scheduled at a one-day conference in six consecutive slots numbered first through sixth. Each talk is assigned to either the A-track or the B-track, with exactly three talks on each track. The schedule must satisfy the following constraints. The Alder talk is scheduled before the Dorsey talk. The Banik talk is scheduled immediately before or immediately after the Cho talk. The Epps talk is not the first talk. The Finch talk is scheduled before the Epps talk. The Alder talk and the Finch talk are not scheduled in immediately consecutive slots. The Dorsey talk is not the first talk. The Banik talk is scheduled before the Epps talk. The Alder talk is scheduled before the Epps talk. The Alder talk and the Dorsey talk are assigned to the same track. The Banik talk and the Cho talk are assigned to different tracks. The Epps talk and the Finch talk are assigned to the same track. The Alder talk and the Finch talk are assigned to different tracks. The talk in slot 3 is on the A-track. The talk in slot 6 is on the B-track.",
+    "entities": ["Alder", "Banik", "Cho", "Dorsey", "Epps", "Finch"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "attributeDimension": {
+      "name": "track",
+      "values": ["A", "B"],
+      "groupSize": 3
+    },
+    "rules": [
+      { "type": "before", "a": "Alder", "b": "Dorsey" },
+      { "type": "adjacent", "a": "Banik", "b": "Cho" },
+      { "type": "not_at", "entity": "Epps", "position": 1 },
+      { "type": "before", "a": "Finch", "b": "Epps" },
+      { "type": "not_adjacent", "a": "Alder", "b": "Finch" },
+      { "type": "not_at", "entity": "Dorsey", "position": 1 },
+      { "type": "before", "a": "Banik", "b": "Epps" },
+      { "type": "before", "a": "Alder", "b": "Epps" },
+      { "type": "same_group", "a": "Alder", "b": "Dorsey", "note": "track" },
+      { "type": "different_group", "a": "Banik", "b": "Cho", "note": "track" },
+      { "type": "same_group", "a": "Epps", "b": "Finch", "note": "track" },
+      { "type": "different_group", "a": "Alder", "b": "Finch", "note": "track" },
+      { "type": "cross_dim", "description": "The talk in slot 3 is on the A-track." },
+      { "type": "cross_dim", "description": "The talk in slot 6 is on the B-track." }
+    ],
+    "verifiedSolutions": [
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 5, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 4, "attribute": "B" } },
+      { "Alder": { "position": 1, "attribute": "B" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 6, "attribute": "B" }, "Epps": { "position": 5, "attribute": "A" }, "Finch": { "position": 4, "attribute": "A" } },
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 5, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 4, "attribute": "B" } },
+      { "Alder": { "position": 1, "attribute": "B" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 6, "attribute": "B" }, "Epps": { "position": 5, "attribute": "A" }, "Finch": { "position": 4, "attribute": "A" } },
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 4, "attribute": "B" }, "Dorsey": { "position": 2, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 1, "attribute": "A" }, "Banik": { "position": 4, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 2, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 3, "attribute": "A" }, "Banik": { "position": 1, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 3, "attribute": "A" }, "Banik": { "position": 1, "attribute": "B" }, "Cho": { "position": 2, "attribute": "A" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 3, "attribute": "A" }, "Banik": { "position": 2, "attribute": "A" }, "Cho": { "position": 1, "attribute": "B" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 3, "attribute": "A" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 1, "attribute": "A" }, "Dorsey": { "position": 4, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 5, "attribute": "B" } },
+      { "Alder": { "position": 4, "attribute": "A" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 5, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 1, "attribute": "B" } },
+      { "Alder": { "position": 4, "attribute": "B" }, "Banik": { "position": 2, "attribute": "B" }, "Cho": { "position": 3, "attribute": "A" }, "Dorsey": { "position": 6, "attribute": "B" }, "Epps": { "position": 5, "attribute": "A" }, "Finch": { "position": 1, "attribute": "A" } },
+      { "Alder": { "position": 4, "attribute": "A" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 5, "attribute": "A" }, "Epps": { "position": 6, "attribute": "B" }, "Finch": { "position": 1, "attribute": "B" } },
+      { "Alder": { "position": 4, "attribute": "B" }, "Banik": { "position": 3, "attribute": "A" }, "Cho": { "position": 2, "attribute": "B" }, "Dorsey": { "position": 6, "attribute": "B" }, "Epps": { "position": 5, "attribute": "A" }, "Finch": { "position": 1, "attribute": "A" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the complete assignment of talks to slots and tracks, listed as slot(talk, track) from first to sixth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Alder, A), 2(Banik, B), 3(Cho, A), 4(Dorsey, A), 5(Finch, B), 6(Epps, B)" },
+          { "label": "B", "text": "1(Dorsey, A), 2(Banik, B), 3(Cho, A), 4(Alder, A), 5(Finch, B), 6(Epps, B)" },
+          { "label": "C", "text": "1(Alder, A), 2(Finch, B), 3(Cho, A), 4(Banik, B), 5(Dorsey, A), 6(Epps, B)" },
+          { "label": "D", "text": "1(Alder, A), 2(Banik, A), 3(Cho, B), 4(Dorsey, A), 5(Finch, B), 6(Epps, B)" },
+          { "label": "E", "text": "1(Alder, A), 2(Banik, B), 3(Cho, A), 4(Finch, B), 5(Dorsey, A), 6(Epps, A)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Alder(1) before Dorsey(4); Banik(2) and Cho(3) adjacent; Epps(6) not first; Finch(5) before Epps(6); Alder(1) and Finch(5) not adjacent; Dorsey not at 1; Banik(2) before Epps(6); Alder(1) before Epps(6); Alder and Dorsey both on A (same track); Banik(B) and Cho(A) different; Epps and Finch both on B (same track); Alder(A) and Finch(B) different; slot 3 = A; slot 6 = B. Track counts: A = {Alder, Cho, Dorsey} and B = {Banik, Finch, Epps}, each 3.",
+          "A": "Correct. Every ordinal and track rule is satisfied.",
+          "B": "Dorsey is in slot 1, violating the rule that Dorsey is not the first talk.",
+          "C": "Alder(1) and Finch(2) are in immediately consecutive slots, violating the not-adjacent rule.",
+          "D": "Cho is on the B-track while assigned to slot 3, but the talk in slot 3 must be on the A-track.",
+          "E": "Epps is assigned to the A-track, but Epps and Finch must be on the same track and Finch is on B; also violates the slot-6 = B rule."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Cho talk is in slot 3." },
+          { "label": "B", "text": "The Alder talk is on the A-track." },
+          { "label": "C", "text": "The Epps talk is in slot 5 or slot 6." },
+          { "label": "D", "text": "The Dorsey talk is in slot 4." },
+          { "label": "E", "text": "The Banik talk is on the A-track." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Epps is never first (given), Finch precedes Epps, Alder precedes Epps, and Banik precedes Epps, so at least three talks precede Epps. Since Dorsey also cannot precede Alder (Alder precedes Dorsey) but Dorsey may or may not precede Epps, Epps is forced into slot 5 or 6 across all 16 verified worlds.",
+          "A": "Cho occupies slot 1, 2, 3, or 4 across the 16 worlds, so it is not forced into 3.",
+          "B": "Alder is on the A-track in 12/16 worlds and on the B-track in 4/16 worlds. Not forced.",
+          "C": "Correct. In all 16 verified worlds Epps is in slot 5 or slot 6.",
+          "D": "Dorsey appears in slot 2, 4, 5, or 6 — not forced to 4.",
+          "E": "Banik is on the A-track in 8/16 worlds and on the B-track in 8/16 worlds. Not forced."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the Finch talk is in slot 1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Finch", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Alder talk is in slot 3." },
+          { "label": "B", "text": "The Alder talk is in slot 4." },
+          { "label": "C", "text": "The Dorsey talk is in slot 5." },
+          { "label": "D", "text": "The Banik talk is in slot 2." },
+          { "label": "E", "text": "The Cho talk is in slot 3." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Finch is at 1, then Alder cannot be at 2 (not adjacent to Finch), cannot be at 5 or 6 (before Epps, and Epps is at 5 or 6), and cannot be at 3 (the talk at 3 is on the A-track while Alder and Finch are on different tracks; also there is no valid Alder-at-3 world with Finch-at-1). Enumerating the four worlds with Finch=1 shows Alder is always in slot 4.",
+          "A": "No world with Finch=1 has Alder=3.",
+          "B": "Correct. All four Finch-at-1 worlds place Alder at slot 4.",
+          "C": "Dorsey is at 5 or 6 in the Finch=1 worlds, so not forced to 5.",
+          "D": "Banik is at 2 or 3 in the Finch=1 worlds, not forced.",
+          "E": "Cho is at 2 or 3 in the Finch=1 worlds, not forced."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the Epps talk is in slot 5, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Epps", "position": 5 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Dorsey talk is in slot 6." },
+          { "label": "B", "text": "The Alder talk is on the A-track." },
+          { "label": "C", "text": "The Banik talk is in slot 3." },
+          { "label": "D", "text": "The Cho talk is on the B-track." },
+          { "label": "E", "text": "The Finch talk is in slot 4." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Epps at 5 means slot 6 must be filled by someone after Epps in the ordering. Finch, Alder, and Banik all precede Epps and so cannot occupy slot 6. Slot 6 is also on the B-track. Cho is same-track as the slot-3 talk (A) only when Banik is at 3; otherwise Cho is at 3 and Banik is adjacent. Enumeration of the 4 Epps-at-5 worlds shows Dorsey is always the slot-6 talk.",
+          "A": "Correct. All four Epps-at-5 worlds place Dorsey at slot 6.",
+          "B": "When Epps is at 5, Alder is on the B-track in all four Epps-at-5 worlds (Alder is same-track as Dorsey, who is on B when at slot 6). So Alder is on B, not A — this choice is false, not forced-true.",
+          "C": "Banik appears at slot 2 or 3 when Epps is at 5; not forced to 3.",
+          "D": "Cho is on the A-track in all four Epps-at-5 worlds (because Cho is different-track from Banik, and Banik settles to A or B depending on slot). Not forced to B — in fact, Cho is always A here.",
+          "E": "Finch is at slot 1 in two Epps-at-5 worlds and at slot 4 in two. Not forced to any single slot."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Banik talk is in slot 1." },
+          { "label": "B", "text": "The Cho talk is in slot 4." },
+          { "label": "C", "text": "The Alder talk is in slot 5." },
+          { "label": "D", "text": "The Dorsey talk is in slot 2." },
+          { "label": "E", "text": "The Finch talk is in slot 1." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Alder must come before Dorsey and before Epps. Since Dorsey cannot be first, Alder occupies slot 1, 3, or 4 in every verified world. Alder is never in slot 5 — if Alder were at 5, Dorsey (after Alder) would have to be at 6 and Epps (after Alder) would also have to be after 5, but Epps can only be at 5 or 6, leaving no room.",
+          "A": "Banik is in slot 1 in some worlds (e.g., Alder=3, Banik=1, Cho=2, Dorsey=4, Epps=6, Finch=5).",
+          "B": "Cho is in slot 4 in some worlds (e.g., Alder=1, Banik=3, Cho=4, Dorsey=2, Epps=6, Finch=5).",
+          "C": "Correct. Alder is in slot 1, 3, or 4 in every verified world; Alder is never in slot 5.",
+          "D": "Dorsey is in slot 2 in some worlds (e.g., Alder=1, Banik=3, Cho=4, Dorsey=2, Epps=6, Finch=5).",
+          "E": "Finch is in slot 1 in some worlds (e.g., Alder=4, Banik=2, Cho=3, Dorsey=5, Epps=6, Finch=1)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b0-02",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "At a small gallery opening, exactly five patrons — Perez, Quinn, Ruiz, Soto, and Tang — will occupy five seats arranged in a row and numbered first through fifth. Each patron wears either a crimson jacket or a navy jacket, and exactly three wear crimson and exactly two wear navy. The seating and jackets must satisfy the following. Perez does not sit in the first seat. Perez does not sit in the fifth seat. Quinn sits in some seat before Ruiz. Soto and Tang sit in immediately consecutive seats. Tang sits in some seat before Perez. Soto and Tang wear jackets of different colors. Quinn and Ruiz wear jackets of the same color. The patron in the second seat wears a navy jacket.",
+    "entities": ["Perez", "Quinn", "Ruiz", "Soto", "Tang"],
+    "positions": [1, 2, 3, 4, 5],
+    "attributeDimension": {
+      "name": "jacket",
+      "values": ["crimson", "navy"],
+      "counts": { "crimson": 3, "navy": 2 }
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Perez", "position": 1 },
+      { "type": "not_at", "entity": "Perez", "position": 5 },
+      { "type": "before", "a": "Quinn", "b": "Ruiz" },
+      { "type": "adjacent", "a": "Soto", "b": "Tang" },
+      { "type": "before", "a": "Tang", "b": "Perez" },
+      { "type": "exactly_n_in_group", "entities": ["Perez", "Quinn", "Ruiz", "Soto", "Tang"], "group": "crimson", "n": 3, "note": "jacket" },
+      { "type": "exactly_n_in_group", "entities": ["Perez", "Quinn", "Ruiz", "Soto", "Tang"], "group": "navy", "n": 2, "note": "jacket" },
+      { "type": "different_group", "a": "Soto", "b": "Tang", "note": "jacket" },
+      { "type": "same_group", "a": "Quinn", "b": "Ruiz", "note": "jacket" },
+      { "type": "cross_dim", "description": "The patron in the second seat wears a navy jacket." }
+    ],
+    "verifiedSolutions": [
+      { "Perez": { "position": 3, "attribute": "navy" }, "Quinn": { "position": 4, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 1, "attribute": "crimson" }, "Tang": { "position": 2, "attribute": "navy" } },
+      { "Perez": { "position": 3, "attribute": "navy" }, "Quinn": { "position": 4, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 2, "attribute": "navy" }, "Tang": { "position": 1, "attribute": "crimson" } },
+      { "Perez": { "position": 4, "attribute": "navy" }, "Quinn": { "position": 1, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 2, "attribute": "navy" }, "Tang": { "position": 3, "attribute": "crimson" } },
+      { "Perez": { "position": 4, "attribute": "navy" }, "Quinn": { "position": 1, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 3, "attribute": "crimson" }, "Tang": { "position": 2, "attribute": "navy" } },
+      { "Perez": { "position": 4, "attribute": "navy" }, "Quinn": { "position": 3, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 1, "attribute": "crimson" }, "Tang": { "position": 2, "attribute": "navy" } },
+      { "Perez": { "position": 4, "attribute": "navy" }, "Quinn": { "position": 3, "attribute": "crimson" }, "Ruiz": { "position": 5, "attribute": "crimson" }, "Soto": { "position": 2, "attribute": "navy" }, "Tang": { "position": 1, "attribute": "crimson" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the complete seating and jacket assignment, listed as seat(patron, jacket) from first to fifth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Soto, crimson), 2(Tang, navy), 3(Perez, navy), 4(Quinn, crimson), 5(Ruiz, crimson)" },
+          { "label": "B", "text": "1(Soto, crimson), 2(Tang, crimson), 3(Perez, navy), 4(Quinn, crimson), 5(Ruiz, navy)" },
+          { "label": "C", "text": "1(Quinn, crimson), 2(Perez, navy), 3(Soto, crimson), 4(Tang, navy), 5(Ruiz, crimson)" },
+          { "label": "D", "text": "1(Tang, crimson), 2(Perez, navy), 3(Soto, navy), 4(Quinn, crimson), 5(Ruiz, crimson)" },
+          { "label": "E", "text": "1(Soto, navy), 2(Tang, crimson), 3(Perez, navy), 4(Quinn, crimson), 5(Ruiz, crimson)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Perez(3) is not at 1 or 5; Quinn(4) before Ruiz(5); Soto(1) and Tang(2) adjacent; Tang(2) before Perez(3); Soto(crimson) and Tang(navy) different colors; Quinn(crimson) and Ruiz(crimson) same color; jacket counts crimson=3, navy=2; the patron in seat 2 (Tang) wears navy.",
+          "A": "Correct. All rules hold.",
+          "B": "Soto(crimson) and Tang(crimson) are the same color, violating the different-colors rule.",
+          "C": "Tang is seated fourth and Perez is seated second, so Tang is not before Perez.",
+          "D": "Soto and Tang are not seated in immediately consecutive positions (Soto is at 3 and Tang is at 1).",
+          "E": "The patron in seat 2 (Tang) wears crimson, violating the cross-dimensional rule that seat 2 is navy."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Perez sits in the third seat." },
+          { "label": "B", "text": "Tang wears a navy jacket." },
+          { "label": "C", "text": "Ruiz sits in the fifth seat." },
+          { "label": "D", "text": "Soto sits in the first seat." },
+          { "label": "E", "text": "Quinn wears a navy jacket." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Ruiz must follow Quinn, and no other patron has a forced position after Ruiz; enumerating all 6 verified worlds shows Ruiz is always in seat 5.",
+          "A": "Perez is at seat 3 or 4 — not forced to 3.",
+          "B": "Tang is navy in 3 worlds and crimson in 3 worlds. Not forced.",
+          "C": "Correct. Ruiz is at seat 5 in all 6 verified worlds.",
+          "D": "Soto is at seat 1, 2, or 3 — not forced to 1.",
+          "E": "Quinn wears crimson in all 6 worlds (not navy). The statement that Quinn wears navy is actually false in every world."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Tang wears a navy jacket." },
+          { "label": "B", "text": "Perez wears a crimson jacket." },
+          { "label": "C", "text": "Quinn wears a navy jacket." },
+          { "label": "D", "text": "Ruiz sits in the fourth seat." },
+          { "label": "E", "text": "Soto sits in the fourth seat." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Tang wears a navy jacket in 3 of the 6 verified worlds (the worlds where Tang is seated second or where Soto is crimson and Tang is navy).",
+          "A": "Correct. Tang wears navy in 3/6 worlds (e.g., Soto=1 crimson, Tang=2 navy, Perez=3 navy, Quinn=4 crimson, Ruiz=5 crimson).",
+          "B": "Perez wears navy in every verified world (Perez is at seat 3 or 4 and wears navy in all 6). Perez never wears crimson.",
+          "C": "Quinn wears crimson in every verified world (forced because Quinn/Ruiz are the same color and Ruiz is at seat 5, which is crimson in every world). Quinn never wears navy.",
+          "D": "Ruiz is at seat 5 in every verified world. Ruiz is never at seat 4.",
+          "E": "Soto is at seat 1, 2, or 3 in every verified world. Soto is never at seat 4."
+        },
+        "tags": ["could_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true about the jacket colors?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Soto wears a crimson jacket." },
+          { "label": "B", "text": "Tang wears a navy jacket." },
+          { "label": "C", "text": "Perez wears a navy jacket." },
+          { "label": "D", "text": "Soto and Quinn wear jackets of the same color." },
+          { "label": "E", "text": "Tang and Quinn wear jackets of different colors." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Perez is at seat 3 or 4 in every world, and Perez is navy in every verified world. This follows because Quinn and Ruiz must be same color (and they fill the two highest seats available together with seat 5), Soto/Tang must be different, and seat 2 is navy. Enumerating the worlds shows Perez wears navy in all 6.",
+          "A": "Soto is crimson in 3 worlds and navy in 3 worlds. Not forced.",
+          "B": "Tang is navy in 3 worlds and crimson in 3 worlds. Not forced.",
+          "C": "Correct. Perez wears a navy jacket in all 6 verified worlds.",
+          "D": "Soto and Quinn are both crimson in some worlds but different colors in others. Not forced.",
+          "E": "Tang and Quinn have the same color in some worlds (both crimson) and different in others. Not forced."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Quinn sits in the first seat." },
+          { "label": "B", "text": "Soto sits in the first seat." },
+          { "label": "C", "text": "Tang sits in the second seat." },
+          { "label": "D", "text": "Perez sits in the second seat." },
+          { "label": "E", "text": "Quinn sits in the third seat." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Perez is never in the first seat (rule) and is at seat 3 or 4 in every verified world. More specifically, seat 2 wears navy and Perez could wear navy, but Tang must precede Perez, so Perez cannot be at seat 2.",
+          "A": "Quinn is at seat 1 in some verified worlds (e.g., Quinn=1, Soto=2, Tang=3, Perez=4, Ruiz=5).",
+          "B": "Soto is at seat 1 in some verified worlds (e.g., Soto=1, Tang=2, Perez=3, Quinn=4, Ruiz=5).",
+          "C": "Tang is at seat 2 in some verified worlds (e.g., Soto=1, Tang=2, Perez=3, Quinn=4, Ruiz=5).",
+          "D": "Correct. Tang must precede Perez, and Tang must be in one of seats 1-4; if Perez were at seat 2, Tang would need to be at seat 1 — but then Soto/Tang adjacency would put Soto at seat 2, not Perez. So Perez is never at seat 2.",
+          "E": "Quinn is at seat 3 in some verified worlds (e.g., Soto=1, Tang=2, Quinn=3, Perez=4, Ruiz=5)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b0-03",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A courier will make deliveries at exactly six stops — Harlan, Ives, Juno, Keele, Lowen, and Marsh — one after another, in order from first through sixth. Each delivery occurs either in the morning or in the afternoon, and exactly three deliveries occur in each half of the day. The route must satisfy the following constraints. The Harlan delivery is made at some point before the Marsh delivery. The Juno delivery is made at some point before the Keele delivery. The Ives delivery and the Lowen delivery are made at immediately consecutive stops. The Harlan delivery is not the sixth stop. The Juno delivery and the Marsh delivery are not made at immediately consecutive stops. The Marsh delivery is made at some point after the Keele delivery. The Ives delivery is not the first stop. The Keele delivery is not the second stop. The Harlan and Juno deliveries occur in the same half of the day. The Keele and Marsh deliveries occur in different halves of the day. The Ives and Lowen deliveries occur in the same half of the day. The first stop is in the morning. The sixth stop is in the afternoon.",
+    "entities": ["Harlan", "Ives", "Juno", "Keele", "Lowen", "Marsh"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "attributeDimension": {
+      "name": "half_of_day",
+      "values": ["morning", "afternoon"],
+      "groupSize": 3
+    },
+    "rules": [
+      { "type": "before", "a": "Harlan", "b": "Marsh" },
+      { "type": "before", "a": "Juno", "b": "Keele" },
+      { "type": "adjacent", "a": "Ives", "b": "Lowen" },
+      { "type": "not_at", "entity": "Harlan", "position": 6 },
+      { "type": "not_adjacent", "a": "Juno", "b": "Marsh" },
+      { "type": "after", "a": "Marsh", "b": "Keele" },
+      { "type": "not_at", "entity": "Ives", "position": 1 },
+      { "type": "not_at", "entity": "Keele", "position": 2 },
+      { "type": "same_group", "a": "Harlan", "b": "Juno", "note": "half_of_day" },
+      { "type": "different_group", "a": "Keele", "b": "Marsh", "note": "half_of_day" },
+      { "type": "same_group", "a": "Ives", "b": "Lowen", "note": "half_of_day" },
+      { "type": "cross_dim", "description": "The first stop is in the morning." },
+      { "type": "cross_dim", "description": "The sixth stop is in the afternoon." }
+    ],
+    "verifiedSolutions": [
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 2, "attribute": "afternoon" }, "Juno": { "position": 4, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 3, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 3, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 4, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 3, "attribute": "afternoon" }, "Juno": { "position": 4, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 2, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 4, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 4, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 3, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 4, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 6, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "afternoon" }, "Lowen": { "position": 6, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "morning" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 6, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "afternoon" } },
+      { "Harlan": { "position": 1, "attribute": "morning" }, "Ives": { "position": 6, "attribute": "afternoon" }, "Juno": { "position": 2, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "afternoon" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "morning" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 3, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 4, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 4, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 4, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 3, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 4, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 6, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 5, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "afternoon" }, "Lowen": { "position": 6, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "morning" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 6, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "morning" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "afternoon" } },
+      { "Harlan": { "position": 2, "attribute": "morning" }, "Ives": { "position": 6, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 3, "attribute": "afternoon" }, "Lowen": { "position": 5, "attribute": "afternoon" }, "Marsh": { "position": 4, "attribute": "morning" } },
+      { "Harlan": { "position": 3, "attribute": "afternoon" }, "Ives": { "position": 2, "attribute": "morning" }, "Juno": { "position": 4, "attribute": "afternoon" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 1, "attribute": "morning" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 4, "attribute": "morning" }, "Ives": { "position": 2, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 3, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 4, "attribute": "afternoon" }, "Ives": { "position": 2, "attribute": "morning" }, "Juno": { "position": 3, "attribute": "afternoon" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 1, "attribute": "morning" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 4, "attribute": "morning" }, "Ives": { "position": 3, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 5, "attribute": "morning" }, "Lowen": { "position": 2, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 5, "attribute": "morning" }, "Ives": { "position": 2, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 4, "attribute": "morning" }, "Lowen": { "position": 3, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 5, "attribute": "afternoon" }, "Ives": { "position": 2, "attribute": "morning" }, "Juno": { "position": 3, "attribute": "afternoon" }, "Keele": { "position": 4, "attribute": "morning" }, "Lowen": { "position": 1, "attribute": "morning" }, "Marsh": { "position": 6, "attribute": "afternoon" } },
+      { "Harlan": { "position": 5, "attribute": "morning" }, "Ives": { "position": 3, "attribute": "afternoon" }, "Juno": { "position": 1, "attribute": "morning" }, "Keele": { "position": 4, "attribute": "morning" }, "Lowen": { "position": 2, "attribute": "afternoon" }, "Marsh": { "position": 6, "attribute": "afternoon" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the complete delivery route, listed as stop(name, half-of-day) from first to sixth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Harlan, morning), 2(Ives, afternoon), 3(Lowen, afternoon), 4(Juno, morning), 5(Keele, morning), 6(Marsh, afternoon)" },
+          { "label": "B", "text": "1(Harlan, morning), 2(Keele, morning), 3(Juno, morning), 4(Ives, afternoon), 5(Lowen, afternoon), 6(Marsh, afternoon)" },
+          { "label": "C", "text": "1(Harlan, morning), 2(Juno, morning), 3(Marsh, afternoon), 4(Ives, afternoon), 5(Lowen, afternoon), 6(Keele, morning)" },
+          { "label": "D", "text": "1(Juno, morning), 2(Harlan, morning), 3(Marsh, afternoon), 4(Ives, afternoon), 5(Lowen, afternoon), 6(Keele, afternoon)" },
+          { "label": "E", "text": "1(Harlan, afternoon), 2(Juno, morning), 3(Ives, afternoon), 4(Lowen, afternoon), 5(Keele, morning), 6(Marsh, afternoon)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Harlan(1) before Marsh(6); Juno(4) before Keele(5); Ives(2) and Lowen(3) adjacent; Harlan(1) not at 6; Juno(4) and Marsh(6) not adjacent; Marsh(6) after Keele(5); Ives not at 1; Keele(5) not at 2; Harlan(morning) and Juno(morning) same half; Keele(morning) and Marsh(afternoon) different halves; Ives(afternoon) and Lowen(afternoon) same half; stop 1 = morning; stop 6 = afternoon. Morning counts: {Harlan, Juno, Keele} = 3; afternoon: {Ives, Lowen, Marsh} = 3.",
+          "A": "Correct. All ordinal and attribute rules hold.",
+          "B": "Keele is at stop 2, violating the rule that Keele is not the second stop.",
+          "C": "Marsh is before Keele here (Marsh=3, Keele=6), violating the Marsh-after-Keele rule; also stop 6 must be afternoon.",
+          "D": "Keele is at stop 6 wearing afternoon, but Marsh must come after Keele — Marsh is at stop 3, so Marsh is not after Keele.",
+          "E": "Stop 1 (Harlan) is afternoon, violating the cross-dimensional rule that the first stop is morning."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Marsh delivery is the sixth stop." },
+          { "label": "B", "text": "The Keele delivery is in the morning." },
+          { "label": "C", "text": "The Marsh delivery is at stop 4 or stop 6." },
+          { "label": "D", "text": "The Juno delivery is in the morning." },
+          { "label": "E", "text": "The Harlan delivery is the first stop." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Marsh must come after Keele and after Harlan, and Marsh cannot be adjacent to Juno. Across all 25 verified worlds Marsh occupies either stop 4 or stop 6.",
+          "A": "Marsh is at stop 4 in several worlds (e.g., Harlan=1, Ives=6, Juno=2, Keele=3, Lowen=5, Marsh=4). Not forced to 6.",
+          "B": "Keele is morning in 21/25 worlds and afternoon in 4/25. Not forced to morning.",
+          "C": "Correct. Marsh appears only at stop 4 or stop 6 across all 25 verified worlds.",
+          "D": "Juno is morning in 22/25 worlds and afternoon in 3/25. Not forced.",
+          "E": "Harlan is at stops 1, 2, 3, 4, or 5 across the verified worlds. Not forced to 1."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the Marsh delivery is the fourth stop, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Marsh", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Juno delivery is the first stop." },
+          { "label": "B", "text": "The Ives delivery is the sixth stop." },
+          { "label": "C", "text": "The Keele delivery is the third stop." },
+          { "label": "D", "text": "The Harlan delivery is the first stop." },
+          { "label": "E", "text": "The Lowen delivery is the fifth stop." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Marsh is at stop 4, Keele precedes Marsh but is not at stop 2 and is not at stop 4 (that is Marsh). Juno precedes Keele. Juno and Marsh are not adjacent, so Juno is not at stop 3 or stop 5. Harlan precedes Marsh and is not at stop 6. Working through, Keele must be at stop 3 in every Marsh-at-4 world.",
+          "A": "Juno is at stop 1 or stop 2 when Marsh is at 4 — not forced to 1.",
+          "B": "Ives is at stop 5, 6, or elsewhere — not forced to 6.",
+          "C": "Correct. Keele must be at stop 3 whenever Marsh is at stop 4.",
+          "D": "Harlan is at stop 1 or stop 2 when Marsh is at 4 — not forced to 1.",
+          "E": "Lowen is at stop 5 or 6 when Marsh is at 4 — not forced to 5."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Keele delivery is at stop 2." },
+          { "label": "B", "text": "The Harlan delivery is at stop 6." },
+          { "label": "C", "text": "The Juno delivery is in the afternoon." },
+          { "label": "D", "text": "The Marsh delivery is at stop 2." },
+          { "label": "E", "text": "The Ives delivery is at stop 1." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Juno is in the afternoon in 3 of the 25 verified worlds (those where Harlan is also in the afternoon, since Harlan and Juno share a half-of-day).",
+          "A": "The rules explicitly forbid Keele from being at stop 2.",
+          "B": "The rules explicitly forbid Harlan from being at stop 6.",
+          "C": "Correct. Juno is in the afternoon in 3/25 worlds (e.g., Lowen=1 morning, Ives=2 morning, Juno=3 afternoon, Harlan=4 afternoon, Keele=5 morning, Marsh=6 afternoon).",
+          "D": "Marsh must come after Keele and after Harlan, and Marsh is never at stop 2 in any verified world.",
+          "E": "The rules explicitly forbid Ives from being at stop 1."
+        },
+        "tags": ["could_be_true", "cross_dimensional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Harlan delivery is at stop 4." },
+          { "label": "B", "text": "The Ives delivery is at stop 6." },
+          { "label": "C", "text": "The Keele delivery is at stop 2." },
+          { "label": "D", "text": "The Juno delivery is at stop 4." },
+          { "label": "E", "text": "The Lowen delivery is at stop 6." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "The rules explicitly forbid Keele from being at stop 2.",
+          "A": "Harlan is at stop 4 in some verified worlds (e.g., Harlan=4, Juno=1, Lowen=3, Ives=2, Keele=5, Marsh=6).",
+          "B": "Ives is at stop 6 in some verified worlds (e.g., Harlan=1, Juno=2, Keele=3, Marsh=4, Lowen=5, Ives=6).",
+          "C": "Correct. Keele at stop 2 violates the explicit 'Keele is not the second stop' rule.",
+          "D": "Juno is at stop 4 in some verified worlds (e.g., Harlan=1, Juno=4, Keele=5, Lowen=3, Ives=2, Marsh=6).",
+          "E": "Lowen is at stop 6 in some verified worlds (e.g., Harlan=1, Juno=2, Keele=3, Ives=5, Lowen=6, Marsh=4)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  }
+]

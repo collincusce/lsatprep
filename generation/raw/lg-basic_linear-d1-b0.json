@@ -1,0 +1,511 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b0-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "Exactly five speakers — Farrell, Gupta, Huang, Ibanez, and Jain — will each deliver one keynote on one of five consecutive days, Monday through Friday. Each speaker delivers exactly one keynote, and each day is assigned exactly one speaker. The schedule conforms to the following constraints. Farrell speaks on Monday. Huang speaks on some day before Ibanez. Gupta and Jain speak on consecutive days.",
+    "entities": ["Farrell", "Gupta", "Huang", "Ibanez", "Jain"],
+    "positions": [1, 2, 3, 4, 5],
+    "rules": [
+      { "type": "at", "entity": "Farrell", "position": 1 },
+      { "type": "before", "a": "Huang", "b": "Ibanez" },
+      { "type": "adjacent", "a": "Gupta", "b": "Jain" }
+    ],
+    "verifiedSolutions": [
+      { "Farrell": 1, "Gupta": 2, "Huang": 4, "Ibanez": 5, "Jain": 3 },
+      { "Farrell": 1, "Gupta": 3, "Huang": 2, "Ibanez": 5, "Jain": 4 },
+      { "Farrell": 1, "Gupta": 3, "Huang": 4, "Ibanez": 5, "Jain": 2 },
+      { "Farrell": 1, "Gupta": 4, "Huang": 2, "Ibanez": 3, "Jain": 5 },
+      { "Farrell": 1, "Gupta": 4, "Huang": 2, "Ibanez": 5, "Jain": 3 },
+      { "Farrell": 1, "Gupta": 5, "Huang": 2, "Ibanez": 3, "Jain": 4 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the speakers deliver their keynotes, from Monday through Friday?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Farrell, Huang, Jain, Gupta, Ibanez" },
+          { "label": "B", "text": "Gupta, Huang, Jain, Farrell, Ibanez" },
+          { "label": "C", "text": "Farrell, Ibanez, Gupta, Jain, Huang" },
+          { "label": "D", "text": "Farrell, Huang, Gupta, Ibanez, Jain" },
+          { "label": "E", "text": "Farrell, Jain, Huang, Gupta, Ibanez" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Farrell is on Monday (position 1); Huang (Tuesday, 2) is before Ibanez (Friday, 5); Gupta (Thursday, 4) and Jain (Wednesday, 3) are on consecutive days. All three rules are satisfied.",
+          "A": "Correct. Farrell first, Huang before Ibanez, Gupta and Jain consecutive.",
+          "B": "Gupta is on Monday rather than Farrell, violating the rule that Farrell speaks on Monday.",
+          "C": "Ibanez (Tuesday) speaks before Huang (Friday), violating the rule that Huang speaks before Ibanez.",
+          "D": "Gupta is on Wednesday and Jain is on Friday, so they are not on consecutive days. Violates the Gupta-Jain adjacency rule.",
+          "E": "Jain is on Tuesday and Gupta is on Thursday, so they are not on consecutive days. Violates the Gupta-Jain adjacency rule."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Ibanez speaks on Wednesday, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "Ibanez", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Gupta speaks on Friday." },
+          { "label": "B", "text": "Jain speaks on Wednesday." },
+          { "label": "C", "text": "Huang speaks on Thursday." },
+          { "label": "D", "text": "Gupta speaks on Tuesday." },
+          { "label": "E", "text": "Ibanez speaks on Friday." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Farrell on Monday and Ibanez on Wednesday, Huang must be on Tuesday (the only earlier open slot). Gupta and Jain fill Thursday and Friday in either order, so Gupta on Friday is one admissible outcome.",
+          "A": "Correct. Farrell(1), Huang(2), Ibanez(3), Jain(4), Gupta(5) is valid.",
+          "B": "Ibanez already occupies Wednesday, so Jain cannot also be on Wednesday.",
+          "C": "Huang must be before Ibanez (Wednesday), and Monday is taken by Farrell, so Huang must be on Tuesday — not Thursday.",
+          "D": "Huang must be on Tuesday (the only slot before Ibanez), so Gupta cannot be on Tuesday.",
+          "E": "Ibanez is on Wednesday by hypothesis, not Friday."
+        },
+        "tags": ["could_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Huang speaks on Thursday, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Huang", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ibanez speaks on Friday." },
+          { "label": "B", "text": "Gupta speaks on Tuesday." },
+          { "label": "C", "text": "Jain speaks on Wednesday." },
+          { "label": "D", "text": "Ibanez speaks on Wednesday." },
+          { "label": "E", "text": "Gupta speaks on Thursday." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Huang on Thursday forces Ibanez into Friday, since Ibanez must come after Huang and no later day is available. Gupta and Jain then take Tuesday and Wednesday (in either order) to satisfy their adjacency.",
+          "A": "Correct. Friday is the only day available that satisfies Huang-before-Ibanez.",
+          "B": "Gupta could be on Tuesday or Wednesday; not forced.",
+          "C": "Jain could be on Tuesday or Wednesday; not forced.",
+          "D": "Ibanez must come after Huang (Thursday), so Ibanez cannot be on Wednesday.",
+          "E": "Huang is on Thursday by hypothesis, so Gupta cannot also be on Thursday."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Huang does not speak on Friday." },
+          { "label": "B", "text": "Ibanez speaks on Friday." },
+          { "label": "C", "text": "Gupta speaks on Tuesday." },
+          { "label": "D", "text": "Jain speaks on Monday." },
+          { "label": "E", "text": "Ibanez speaks on Wednesday." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ibanez must speak on some day after Huang. If Huang were on Friday, no day would remain for Ibanez. Therefore Huang cannot be on Friday.",
+          "A": "Correct. Huang must leave at least one later day for Ibanez.",
+          "B": "Ibanez could be on Wednesday, Thursday, or Friday depending on the arrangement; not forced.",
+          "C": "Gupta can occupy Tuesday through Friday in various valid worlds; not forced.",
+          "D": "Farrell is on Monday, so Jain cannot be on Monday.",
+          "E": "Ibanez can be on Wednesday or Friday in various valid worlds; not forced."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ibanez speaks on Tuesday." },
+          { "label": "B", "text": "Gupta speaks on Wednesday." },
+          { "label": "C", "text": "Huang speaks on Tuesday." },
+          { "label": "D", "text": "Jain speaks on Thursday." },
+          { "label": "E", "text": "Ibanez speaks on Friday." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Farrell is on Monday, so Huang (who must come before Ibanez) would have to be on Monday to put Ibanez on Tuesday — but Monday is already taken. No valid schedule has Ibanez on Tuesday.",
+          "A": "Correct. Huang has no earlier day available if Ibanez is on Tuesday.",
+          "B": "Gupta on Wednesday is realized (e.g., Farrell, Huang, Gupta, Jain, Ibanez).",
+          "C": "Huang on Tuesday is realized (e.g., Farrell, Huang, Gupta, Jain, Ibanez).",
+          "D": "Jain on Thursday is realized (e.g., Farrell, Huang, Gupta, Jain, Ibanez).",
+          "E": "Ibanez on Friday is realized (e.g., Farrell, Huang, Gupta, Jain, Ibanez)."
+        },
+        "tags": ["cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d1-b0-02",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A museum docent will guide visitors past exactly six exhibits — coins, drums, etchings, fossils, gowns, and helmets — one exhibit at a time, in an order numbered first through sixth. Each exhibit is visited exactly once. The tour conforms to the following constraints. The coins exhibit is visited at some point before the drums exhibit. The etchings exhibit and the fossils exhibit are visited in immediately consecutive positions. The gowns exhibit is visited third. The helmets exhibit is not visited first.",
+    "entities": ["coins", "drums", "etchings", "fossils", "gowns", "helmets"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "rules": [
+      { "type": "before", "a": "coins", "b": "drums" },
+      { "type": "adjacent", "a": "etchings", "b": "fossils" },
+      { "type": "at", "entity": "gowns", "position": 3 },
+      { "type": "not_at", "entity": "helmets", "position": 1 }
+    ],
+    "verifiedSolutions": [
+      { "coins": 1, "drums": 2, "etchings": 4, "fossils": 5, "gowns": 3, "helmets": 6 },
+      { "coins": 1, "drums": 2, "etchings": 5, "fossils": 4, "gowns": 3, "helmets": 6 },
+      { "coins": 1, "drums": 2, "etchings": 5, "fossils": 6, "gowns": 3, "helmets": 4 },
+      { "coins": 1, "drums": 2, "etchings": 6, "fossils": 5, "gowns": 3, "helmets": 4 },
+      { "coins": 1, "drums": 4, "etchings": 5, "fossils": 6, "gowns": 3, "helmets": 2 },
+      { "coins": 1, "drums": 4, "etchings": 6, "fossils": 5, "gowns": 3, "helmets": 2 },
+      { "coins": 1, "drums": 6, "etchings": 4, "fossils": 5, "gowns": 3, "helmets": 2 },
+      { "coins": 1, "drums": 6, "etchings": 5, "fossils": 4, "gowns": 3, "helmets": 2 },
+      { "coins": 4, "drums": 5, "etchings": 1, "fossils": 2, "gowns": 3, "helmets": 6 },
+      { "coins": 4, "drums": 5, "etchings": 2, "fossils": 1, "gowns": 3, "helmets": 6 },
+      { "coins": 4, "drums": 6, "etchings": 1, "fossils": 2, "gowns": 3, "helmets": 5 },
+      { "coins": 4, "drums": 6, "etchings": 2, "fossils": 1, "gowns": 3, "helmets": 5 },
+      { "coins": 5, "drums": 6, "etchings": 1, "fossils": 2, "gowns": 3, "helmets": 4 },
+      { "coins": 5, "drums": 6, "etchings": 2, "fossils": 1, "gowns": 3, "helmets": 4 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of exhibits the docent visits, from first to sixth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "coins, drums, gowns, etchings, fossils, helmets" },
+          { "label": "B", "text": "drums, coins, gowns, etchings, fossils, helmets" },
+          { "label": "C", "text": "coins, drums, helmets, etchings, fossils, gowns" },
+          { "label": "D", "text": "coins, etchings, gowns, drums, fossils, helmets" },
+          { "label": "E", "text": "helmets, coins, gowns, drums, etchings, fossils" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Coins (1) precedes drums (2); etchings (4) and fossils (5) are in consecutive positions; gowns is third; helmets (6) is not first. Every rule holds.",
+          "A": "Correct. All four constraints are satisfied.",
+          "B": "Drums is first and coins is second, so coins does not precede drums. Violates the coins-before-drums rule.",
+          "C": "Gowns is sixth rather than third. Violates the rule that gowns is third.",
+          "D": "Etchings is second and fossils is fifth, so they are not in consecutive positions. Violates the etchings-fossils adjacency rule.",
+          "E": "Helmets is first. Violates the rule that helmets is not first."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If coins is the fourth exhibit visited, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "coins", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Helmets is the sixth exhibit visited." },
+          { "label": "B", "text": "Drums is the second exhibit visited." },
+          { "label": "C", "text": "Gowns is the fourth exhibit visited." },
+          { "label": "D", "text": "Coins is the first exhibit visited." },
+          { "label": "E", "text": "Drums is the third exhibit visited." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With coins at 4 and gowns at 3, drums must be at 5 or 6, and etchings/fossils occupy the remaining adjacent pair from {1,2}. Helmets then fills whichever of {5, 6} is left. Helmets sixth is realized, for example, by etchings(1), fossils(2), gowns(3), coins(4), drums(5), helmets(6).",
+          "A": "Correct. Etchings(1), fossils(2), gowns(3), coins(4), drums(5), helmets(6) satisfies every rule.",
+          "B": "Drums must come after coins (position 4), so drums cannot be at 2.",
+          "C": "Gowns is fixed at position 3 by rule, so it cannot be at 4.",
+          "D": "Coins is at 4 by hypothesis, not 1.",
+          "E": "Gowns is at 3 by rule, so drums cannot be at 3."
+        },
+        "tags": ["could_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If etchings is the first exhibit visited, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "etchings", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Fossils is the second exhibit visited." },
+          { "label": "B", "text": "Drums is the fifth exhibit visited." },
+          { "label": "C", "text": "Helmets is the fourth exhibit visited." },
+          { "label": "D", "text": "Coins is the fourth exhibit visited." },
+          { "label": "E", "text": "Drums is the sixth exhibit visited." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Etchings and fossils must be adjacent. With etchings at 1, fossils must be at 2 — no other adjacent position is available.",
+          "A": "Correct. Position 2 is the only position adjacent to position 1.",
+          "B": "Drums can be at 5 or 6 depending on the arrangement; not forced.",
+          "C": "Helmets can be at 4, 5, or 6 in these worlds; not forced to 4.",
+          "D": "Coins can be at 4 or 5; not forced to 4.",
+          "E": "Drums can be at 5 or 6; not forced to 6."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Coins is not the sixth exhibit visited." },
+          { "label": "B", "text": "Drums is the sixth exhibit visited." },
+          { "label": "C", "text": "Helmets is the sixth exhibit visited." },
+          { "label": "D", "text": "Coins is the first exhibit visited." },
+          { "label": "E", "text": "Etchings is the fourth exhibit visited." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Drums must come after coins, so coins must leave at least one later position for drums. Therefore coins cannot occupy the final position.",
+          "A": "Correct. Coins must have drums somewhere later, so coins is never sixth.",
+          "B": "Drums can be at 2, 4, 5, or 6 in various valid tours; not forced.",
+          "C": "Helmets can be at 2, 4, 5, or 6; not forced to 6.",
+          "D": "Coins can be at 1, 4, or 5; not forced to 1.",
+          "E": "Etchings can be at 1, 2, 4, 5, or 6; not forced to 4."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Drums is the first exhibit visited." },
+          { "label": "B", "text": "Helmets is the second exhibit visited." },
+          { "label": "C", "text": "Coins is the fifth exhibit visited." },
+          { "label": "D", "text": "Fossils is the sixth exhibit visited." },
+          { "label": "E", "text": "Etchings is the second exhibit visited." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Coins must precede drums. If drums were first, no position would remain before it for coins. So drums cannot be first.",
+          "A": "Correct. Coins would have nowhere earlier to go if drums were first.",
+          "B": "Helmets second is realized (e.g., coins, helmets, gowns, drums, etchings, fossils).",
+          "C": "Coins fifth is realized (e.g., etchings, fossils, gowns, helmets, coins, drums).",
+          "D": "Fossils sixth is realized (e.g., coins, drums, gowns, helmets, etchings, fossils).",
+          "E": "Etchings second is realized (e.g., fossils, etchings, gowns, coins, drums, helmets)."
+        },
+        "tags": ["cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d1-b0-03",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "Exactly five runners — Ortiz, Perez, Quinn, Reyes, and Singh — finish a marathon, each in a different finishing position from first through fifth. There are no ties. The finishing order conforms to the following constraints. Ortiz finishes at some point before Perez. Quinn does not finish first. Reyes and Singh finish in consecutive positions. Singh does not finish fifth.",
+    "entities": ["Ortiz", "Perez", "Quinn", "Reyes", "Singh"],
+    "positions": [1, 2, 3, 4, 5],
+    "rules": [
+      { "type": "before", "a": "Ortiz", "b": "Perez" },
+      { "type": "not_at", "entity": "Quinn", "position": 1 },
+      { "type": "adjacent", "a": "Reyes", "b": "Singh" },
+      { "type": "not_at", "entity": "Singh", "position": 5 }
+    ],
+    "verifiedSolutions": [
+      { "Ortiz": 1, "Perez": 2, "Quinn": 3, "Reyes": 5, "Singh": 4 },
+      { "Ortiz": 1, "Perez": 2, "Quinn": 5, "Reyes": 3, "Singh": 4 },
+      { "Ortiz": 1, "Perez": 2, "Quinn": 5, "Reyes": 4, "Singh": 3 },
+      { "Ortiz": 1, "Perez": 3, "Quinn": 2, "Reyes": 5, "Singh": 4 },
+      { "Ortiz": 1, "Perez": 4, "Quinn": 5, "Reyes": 2, "Singh": 3 },
+      { "Ortiz": 1, "Perez": 4, "Quinn": 5, "Reyes": 3, "Singh": 2 },
+      { "Ortiz": 1, "Perez": 5, "Quinn": 2, "Reyes": 3, "Singh": 4 },
+      { "Ortiz": 1, "Perez": 5, "Quinn": 2, "Reyes": 4, "Singh": 3 },
+      { "Ortiz": 1, "Perez": 5, "Quinn": 4, "Reyes": 2, "Singh": 3 },
+      { "Ortiz": 1, "Perez": 5, "Quinn": 4, "Reyes": 3, "Singh": 2 },
+      { "Ortiz": 3, "Perez": 4, "Quinn": 5, "Reyes": 1, "Singh": 2 },
+      { "Ortiz": 3, "Perez": 4, "Quinn": 5, "Reyes": 2, "Singh": 1 },
+      { "Ortiz": 3, "Perez": 5, "Quinn": 4, "Reyes": 1, "Singh": 2 },
+      { "Ortiz": 3, "Perez": 5, "Quinn": 4, "Reyes": 2, "Singh": 1 },
+      { "Ortiz": 4, "Perez": 5, "Quinn": 3, "Reyes": 1, "Singh": 2 },
+      { "Ortiz": 4, "Perez": 5, "Quinn": 3, "Reyes": 2, "Singh": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the runners finish, from first to fifth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ortiz, Perez, Quinn, Singh, Reyes" },
+          { "label": "B", "text": "Perez, Ortiz, Quinn, Singh, Reyes" },
+          { "label": "C", "text": "Quinn, Ortiz, Perez, Singh, Reyes" },
+          { "label": "D", "text": "Ortiz, Singh, Perez, Reyes, Quinn" },
+          { "label": "E", "text": "Ortiz, Perez, Quinn, Reyes, Singh" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ortiz (1) finishes before Perez (2); Quinn (3) is not first; Reyes (5) and Singh (4) are in consecutive positions; Singh (4) is not fifth. All rules hold.",
+          "A": "Correct. Every constraint is satisfied.",
+          "B": "Perez is first and Ortiz is second, so Ortiz does not finish before Perez. Violates the Ortiz-before-Perez rule.",
+          "C": "Quinn is first. Violates the rule that Quinn does not finish first.",
+          "D": "Singh is second and Reyes is fourth, so they are not in consecutive positions. Violates the Reyes-Singh adjacency rule.",
+          "E": "Singh is fifth. Violates the rule that Singh does not finish fifth."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Quinn finishes second, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "Quinn", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Perez finishes fifth." },
+          { "label": "B", "text": "Singh finishes fifth." },
+          { "label": "C", "text": "Ortiz finishes second." },
+          { "label": "D", "text": "Quinn finishes first." },
+          { "label": "E", "text": "Reyes finishes second." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Quinn at 2, Ortiz must be first (since Ortiz precedes Perez and Quinn occupies 2). Reyes and Singh take an adjacent pair from the remaining positions 3, 4 (since Singh cannot be 5), leaving Perez at either 3 or 5. Perez fifth is realized, for example, by Ortiz(1), Quinn(2), Reyes(3), Singh(4), Perez(5).",
+          "A": "Correct. Ortiz(1), Quinn(2), Reyes(3), Singh(4), Perez(5) satisfies every rule.",
+          "B": "Singh cannot be fifth by rule.",
+          "C": "Quinn is at 2 by hypothesis, so Ortiz cannot also be at 2.",
+          "D": "Quinn is at 2 by hypothesis, not 1.",
+          "E": "Quinn is at 2 by hypothesis, so Reyes cannot also be at 2."
+        },
+        "tags": ["could_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Ortiz finishes third, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Ortiz", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Reyes does not finish third." },
+          { "label": "B", "text": "Quinn finishes fourth." },
+          { "label": "C", "text": "Perez finishes fourth." },
+          { "label": "D", "text": "Singh finishes second." },
+          { "label": "E", "text": "Reyes finishes first." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Ortiz at 3, position 3 is occupied, so no one else can be at 3; in particular Reyes is not at 3. (In every such arrangement, Reyes and Singh fill positions 1 and 2 as an adjacent pair, while Perez and Quinn fill positions 4 and 5.)",
+          "A": "Correct. Position 3 is taken by Ortiz.",
+          "B": "Quinn is at 4 or 5; not forced to 4.",
+          "C": "Perez is at 4 or 5 (since Perez follows Ortiz at 3); not forced to 4.",
+          "D": "Singh is at 1 or 2; not forced to 2.",
+          "E": "Reyes is at 1 or 2; not forced to 1."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Perez does not finish first." },
+          { "label": "B", "text": "Ortiz finishes first." },
+          { "label": "C", "text": "Quinn finishes fifth." },
+          { "label": "D", "text": "Reyes finishes third." },
+          { "label": "E", "text": "Singh finishes second." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ortiz finishes before Perez, so at least one earlier position must exist for Ortiz. Therefore Perez cannot finish first.",
+          "A": "Correct. Ortiz must finish earlier than Perez.",
+          "B": "Ortiz can finish first, third, or fourth in various valid orders; not forced to first.",
+          "C": "Quinn can finish second, third, fourth, or fifth; not forced to fifth.",
+          "D": "Reyes can finish at 1, 2, 3, 4, or 5 depending on the arrangement; not forced to 3.",
+          "E": "Singh can finish at 1, 2, 3, or 4; not forced to 2."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ortiz finishes fifth." },
+          { "label": "B", "text": "Perez finishes fifth." },
+          { "label": "C", "text": "Quinn finishes third." },
+          { "label": "D", "text": "Reyes finishes fifth." },
+          { "label": "E", "text": "Singh finishes third." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ortiz must finish before Perez, so Ortiz cannot take the last position — there would be no later position available for Perez.",
+          "A": "Correct. Perez must finish after Ortiz, so Ortiz cannot be fifth.",
+          "B": "Perez fifth is realized (e.g., Ortiz, Quinn, Reyes, Singh, Perez).",
+          "C": "Quinn third is realized (e.g., Ortiz, Perez, Quinn, Singh, Reyes).",
+          "D": "Reyes fifth is realized (e.g., Ortiz, Perez, Quinn, Singh, Reyes).",
+          "E": "Singh third is realized (e.g., Ortiz, Reyes, Singh, Quinn, Perez)."
+        },
+        "tags": ["cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  }
+]

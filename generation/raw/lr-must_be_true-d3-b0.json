@@ -1,0 +1,272 @@
+[
+  {
+    "id": "lr-gen-must_be_true-d3-b0-01",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires chaining four conditionals and applying two contrapositives to reach the inference about a named individual. Trap (A) is an affirming-the-consequent error; trap (D) collapses a 'some' into a universal.",
+    "stimulus": "Every endocrinologist at Meridian Hospital who supervises a first-year resident serves on at least one departmental committee. Any physician at Meridian who serves on a departmental committee has completed the hospital's peer-review training. No physician at Meridian who has completed the peer-review training has fewer than five years of post-fellowship experience. Dr. Ahmadi is an endocrinologist at Meridian with only three years of post-fellowship experience.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "Any endocrinologist at Meridian with at least five years of post-fellowship experience supervises a first-year resident." },
+      { "label": "B", "text": "Dr. Ahmadi does not supervise a first-year resident." },
+      { "label": "C", "text": "Dr. Ahmadi has not completed the hospital's peer-review training, and she is therefore ineligible to do so." },
+      { "label": "D", "text": "Every physician at Meridian who has supervised a first-year resident has at least five years of post-fellowship experience." },
+      { "label": "E", "text": "Most endocrinologists at Meridian serve on a departmental committee." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "If Dr. Ahmadi supervised a first-year resident, she would (i) serve on a departmental committee, (ii) have completed peer-review training, and (iii) therefore have at least five years of post-fellowship experience. She has only three. By the contrapositive chain, she does not supervise a first-year resident.",
+      "A": "Affirms the consequent. The chain runs from 'supervises' to the training and experience requirements, not the reverse.",
+      "B": "Correct.",
+      "C": "Two-part claim: the first half (not completed training) follows, but the stimulus says nothing about eligibility to complete the training — it rules out current completion only.",
+      "D": "Collapses the restricted conditional into a universal about everyone who has ever supervised a first-year resident in any capacity — the stimulus's rule is stated about endocrinologists currently supervising.",
+      "E": "The stimulus gives no distributional claim about endocrinologists generally."
+    },
+    "tags": ["must_be_true", "contrapositive_chain", "four_conditional_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-02",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires combining a universal, a most-statement, and a some-statement to derive a guaranteed overlap (some-plus-most chain). Trap (B) is a most-to-all overreach; trap (E) is a could-be-true overlap the statements do not force.",
+    "stimulus": "Every journal indexed by the Central Linguistics Database requires double-blind peer review of submitted articles. Most journals indexed by the Central Linguistics Database publish at least one issue devoted to fieldwork methodology each year. Some journals that publish an issue devoted to fieldwork methodology each year also publish articles in at least three languages besides English. No journal that requires double-blind peer review accepts advertising from textbook publishers.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      { "label": "A", "text": "At least some journals that publish an issue devoted to fieldwork methodology each year do not accept advertising from textbook publishers." },
+      { "label": "B", "text": "All journals indexed by the Central Linguistics Database publish at least one issue devoted to fieldwork methodology each year." },
+      { "label": "C", "text": "Every journal that publishes articles in at least three languages besides English is indexed by the Central Linguistics Database." },
+      { "label": "D", "text": "Most journals that publish articles in at least three languages besides English do not accept advertising from textbook publishers." },
+      { "label": "E", "text": "Some journals indexed by the Central Linguistics Database publish articles in at least three languages besides English." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Most indexed journals publish a fieldwork-methodology issue, which means at least some indexed journals do. Every indexed journal requires double-blind peer review, and no journal that requires that review accepts textbook-publisher advertising. So at least some journals that publish a fieldwork-methodology issue do not accept such advertising.",
+      "A": "Correct.",
+      "B": "Most-to-all overreach. The stimulus says 'most,' not 'all.'",
+      "C": "Converse error. The stimulus tells us what indexed journals do, not that every journal publishing in multiple languages is indexed.",
+      "D": "Could be true but not must. The three-languages group is only linked to the methodology-issue group via 'some,' which doesn't support a claim about 'most.'",
+      "E": "Could be true but not must. The overlap between 'methodology-issue' journals and 'three-languages' journals is partial; those 'three-languages' journals need not be indexed ones."
+    },
+    "tags": ["must_be_true", "some_most_universal_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-03",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Pigeonhole reasoning over five committee members with overlapping constraints plus a conditional. Traps include a miscounted overlap (C) and an out-of-scope inference (E).",
+    "stimulus": "The Ferren Arts Council Grant Committee consists of exactly five members. Each member specializes in exactly one of the following four disciplines: theater, dance, visual art, or music. At least one member specializes in each discipline. No theater specialist on the committee also serves on the Ferren Festival Board. Every visual-art specialist on the committee serves on the Ferren Festival Board.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "At least three members of the committee do not serve on the Ferren Festival Board." },
+      { "label": "B", "text": "Exactly one member of the committee specializes in each of theater, dance, and music." },
+      { "label": "C", "text": "More committee members serve on the Ferren Festival Board than do not." },
+      { "label": "D", "text": "At least one member of the committee serves on the Ferren Festival Board." },
+      { "label": "E", "text": "No dance specialist on the committee serves on the Ferren Festival Board." }
+    ],
+    "correctAnswer": "D",
+    "explanations": {
+      "correct": "Each of the four disciplines has at least one specialist, so at least one member is a visual-art specialist. Every visual-art specialist serves on the Festival Board. Therefore, at least one committee member serves on the Festival Board.",
+      "A": "Miscounts. With five members and four disciplines each represented, the distribution of non-board members is not fixed — only the theater specialists must not serve on the board, and there is at least one, not necessarily three.",
+      "B": "Could be true but not must. One of the four disciplines could have two specialists (with the fifth slot unknown), but the stimulus does not force a particular distribution.",
+      "C": "Cannot be determined. The number of members on the board depends on the unspecified distribution across disciplines.",
+      "D": "Correct.",
+      "E": "Out of scope. The stimulus is silent on whether dance specialists serve on the Festival Board."
+    },
+    "tags": ["must_be_true", "pigeonhole", "small_set_reasoning"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-04",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires reading 'unless' correctly and chaining it through two further conditionals and a contrapositive applied to a named case. Trap (A) is a converse error; trap (C) overreaches a 'some' to an 'all.'",
+    "stimulus": "No appellate brief filed in the Fourth Circuit is accepted for oral argument unless it cites at least three prior circuit decisions. Any brief accepted for oral argument in the Fourth Circuit that challenges a statute on constitutional grounds is assigned to a three-judge panel. Every brief assigned to a three-judge panel is subject to expedited scheduling. The Ortiz brief was filed in the Fourth Circuit, challenges a statute on constitutional grounds, and is not subject to expedited scheduling.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "Any brief filed in the Fourth Circuit that cites at least three prior circuit decisions is accepted for oral argument." },
+      { "label": "B", "text": "The Ortiz brief cites fewer than three prior circuit decisions." },
+      { "label": "C", "text": "The Ortiz brief has not been accepted for oral argument." },
+      { "label": "D", "text": "Every brief filed in the Fourth Circuit that challenges a statute on constitutional grounds is subject to expedited scheduling." },
+      { "label": "E", "text": "Most briefs filed in the Fourth Circuit are assigned to a three-judge panel." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "If the Ortiz brief had been accepted for oral argument, then because it challenges a statute on constitutional grounds, it would be assigned to a three-judge panel, and hence subject to expedited scheduling. It is not subject to expedited scheduling, so by contrapositive chain it has not been accepted for oral argument.",
+      "A": "Converse error. The citation rule is necessary for acceptance, not sufficient.",
+      "B": "Could be true but not must. The failure to be subject to expedited scheduling is fully explained by the brief's not being accepted for oral argument; nothing forces a particular citation count.",
+      "C": "Correct.",
+      "D": "Overreaches. The expedited-scheduling rule kicks in only after a brief is accepted for oral argument.",
+      "E": "Unsupported. The stimulus gives no distributional claim about briefs generally."
+    },
+    "tags": ["must_be_true", "unless_conditional", "named_case_contrapositive"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-05",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires chaining two conditionals, applying a contrapositive, and combining the result with a quantifier claim about a named species. Trap (B) is an affirming-the-consequent error; trap (D) is a scope shift.",
+    "stimulus": "Every amphibian species native to the Caledon Wetlands whose larvae require still water to develop has suffered a population decline of more than 30 percent since the 2005 drainage project. Any Caledon-native amphibian species that has suffered a population decline of more than 30 percent since 2005 has been placed on the provincial watch list. No Caledon-native amphibian species currently approved for commercial harvest is on the provincial watch list. The Caledon mud-frog is a Caledon-native amphibian species whose larvae require still water to develop.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "The Caledon mud-frog is not currently approved for commercial harvest." },
+      { "label": "B", "text": "Any Caledon-native amphibian species on the provincial watch list has larvae that require still water to develop." },
+      { "label": "C", "text": "Most Caledon-native amphibian species have suffered a population decline of more than 30 percent since 2005." },
+      { "label": "D", "text": "No amphibian species on the provincial watch list is approved for commercial harvest anywhere in the province." },
+      { "label": "E", "text": "The Caledon mud-frog's population would not have declined by more than 30 percent if the 2005 drainage project had not occurred." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The mud-frog's larvae require still water, so it has suffered a 30%+ decline, and so it is on the watch list. No Caledon-native species approved for commercial harvest is on the watch list. Hence the mud-frog is not currently approved for commercial harvest.",
+      "A": "Correct.",
+      "B": "Affirming the consequent. The conditional runs from 'still water' to 'declined,' not back.",
+      "C": "Unsupported. The stimulus constrains only still-water-larvae species, not the broader Caledon amphibian population.",
+      "D": "Scope shift. The rule applies to Caledon-native species, not to amphibian species on the watch list from anywhere in the province.",
+      "E": "Causal overreach. The stimulus correlates the drainage with declines but does not license a counterfactual claim about what would have happened otherwise."
+    },
+    "tags": ["must_be_true", "contrapositive_chain", "named_case"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-06",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires combining two universal conditionals with a most-statement and a some-statement to derive a guaranteed existential, then reject an overreach about the same set. Traps include a most-to-all overreach (C) and a scope shift (E).",
+    "stimulus": "Every sovereign bond issued by a country with an investment-grade credit rating is eligible for purchase by the regional pension fund. Most sovereign bonds eligible for purchase by the regional pension fund carry a maturity of ten years or longer. No sovereign bond that carries a maturity of ten years or longer is included in the fund's short-duration index. Some sovereign bonds issued by countries with an investment-grade credit rating are denominated in currencies other than the euro.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "At least some sovereign bonds eligible for purchase by the regional pension fund are not included in the fund's short-duration index." },
+      { "label": "B", "text": "No sovereign bond issued by a country with an investment-grade credit rating is included in the fund's short-duration index." },
+      { "label": "C", "text": "All sovereign bonds issued by countries with an investment-grade credit rating carry a maturity of ten years or longer." },
+      { "label": "D", "text": "Most sovereign bonds denominated in currencies other than the euro are eligible for purchase by the regional pension fund." },
+      { "label": "E", "text": "No short-duration-index bond is denominated in a currency other than the euro." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Most eligible bonds carry a ten-plus-year maturity, so at least some do. No ten-plus-year bond is in the short-duration index. Hence at least some eligible bonds are not in the short-duration index.",
+      "A": "Correct.",
+      "B": "Overreach. Only the bonds with ten-plus-year maturity are excluded from the short-duration index — some investment-grade bonds might have shorter maturities.",
+      "C": "Most-to-all overreach. The stimulus says 'most eligible,' not 'all investment-grade.'",
+      "D": "Reverses the direction of 'some.' The stimulus says some investment-grade bonds are non-euro-denominated, not that most non-euro-denominated bonds are eligible.",
+      "E": "Out of scope. The stimulus gives no information about the currency denomination of short-duration-index bonds."
+    },
+    "tags": ["must_be_true", "most_plus_universal"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-07",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires applying a contrapositive of a conjunctive conditional and chaining it with two further conditionals. Trap (E) is a scope shift; trap (A) converts 'some' into 'most.'",
+    "stimulus": "If an enterprise software release is distributed to customers without having passed both regression testing and security audit, the release team must file a post-release incident report. No release for which a post-release incident report has been filed is eligible for the quarterly reliability bonus. Every release that fails security audit is rescheduled for the following quarter. Some releases rescheduled for the following quarter are later withdrawn entirely.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      { "label": "A", "text": "Most releases that fail security audit are later withdrawn entirely." },
+      { "label": "B", "text": "Any release that is eligible for the quarterly reliability bonus has passed both regression testing and security audit." },
+      { "label": "C", "text": "No release distributed without passing security audit is later withdrawn entirely." },
+      { "label": "D", "text": "Every release that has passed regression testing is eligible for the quarterly reliability bonus." },
+      { "label": "E", "text": "No release that has been rescheduled for the following quarter is eligible for the quarterly reliability bonus." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "If a release is distributed without passing both tests, an incident report is filed, and no such release is bonus-eligible. By contrapositive, any bonus-eligible release must have been distributed after passing both regression testing and security audit.",
+      "A": "Some-to-most overreach. The stimulus says some rescheduled releases are withdrawn, not that most security-audit-failing releases are.",
+      "B": "Correct.",
+      "C": "Overreach. A release that fails security audit is rescheduled rather than distributed, but the stimulus does not say it can never later be withdrawn — some rescheduled releases are.",
+      "D": "Overreaches. Passing regression testing alone doesn't guarantee bonus eligibility; security audit must also be passed, and the stimulus doesn't state regression passage is sufficient.",
+      "E": "Scope shift. The stimulus ties bonus ineligibility to incident reports, not directly to rescheduling."
+    },
+    "tags": ["must_be_true", "conjunctive_contrapositive"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-08",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires combining a universal, a some-statement, and a second universal to derive a guaranteed existential, while avoiding a tempting converse trap and a miscounted pigeonhole claim.",
+    "stimulus": "Every bioethics course offered by the Hargrove Institute this year includes at least one unit on informed consent. Any bioethics course that includes a unit on informed consent also includes a unit on privacy. Some bioethics courses offered by the Hargrove Institute this year are team-taught by a physician and a philosopher. No team-taught bioethics course at the Hargrove Institute has an enrollment cap below 20 students.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "At least some bioethics courses that include a unit on privacy have an enrollment cap of at least 20 students." },
+      { "label": "B", "text": "Every bioethics course that includes a unit on privacy is team-taught by a physician and a philosopher." },
+      { "label": "C", "text": "Most bioethics courses at the Hargrove Institute are team-taught." },
+      { "label": "D", "text": "No bioethics course at the Hargrove Institute with an enrollment cap below 20 students includes a unit on informed consent." },
+      { "label": "E", "text": "Some bioethics courses at the Hargrove Institute do not include a unit on informed consent." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Some Hargrove bioethics courses are team-taught. Every Hargrove bioethics course includes a unit on informed consent, and therefore also on privacy. Team-taught courses have an enrollment cap of at least 20. So at least some courses that include a unit on privacy have an enrollment cap of at least 20.",
+      "A": "Correct.",
+      "B": "Converse error. Team-teaching is not a necessary condition for including a privacy unit.",
+      "C": "Some-to-most overreach.",
+      "D": "Contradicted by the stimulus — every Hargrove bioethics course includes informed consent.",
+      "E": "Contradicted by the stimulus — every such course includes the unit on informed consent."
+    },
+    "tags": ["must_be_true", "existential_from_some_plus_universal"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-09",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires reading a biconditional-style 'only if' and combining it with two further conditionals and a named case. Trap (C) is a converse error; trap (D) is a could-be-true.",
+    "stimulus": "A municipal ordinance proposed in Westbrook advances to the second reading only if it has been endorsed by at least three members of the Planning Board. Any ordinance endorsed by at least three members of the Planning Board is referred to the City Solicitor for a legal sufficiency review. Every ordinance referred to the City Solicitor for a legal sufficiency review is posted to the public docket. Ordinance 2026-11, proposed in Westbrook, has not been posted to the public docket.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "Ordinance 2026-11 has not been endorsed by at least three members of the Planning Board." },
+      { "label": "B", "text": "Ordinance 2026-11 has been rejected by a majority of the Planning Board." },
+      { "label": "C", "text": "Any Westbrook ordinance posted to the public docket has been endorsed by at least three members of the Planning Board." },
+      { "label": "D", "text": "Ordinance 2026-11 will be withdrawn before its second reading." },
+      { "label": "E", "text": "Every Westbrook ordinance that has advanced to the second reading has been posted to the public docket." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "If Ordinance 2026-11 had been endorsed by at least three Planning Board members, it would have been referred for legal sufficiency review, and thus posted to the public docket. It has not been posted. By contrapositive chain, it has not been endorsed by three or more Planning Board members.",
+      "A": "Correct.",
+      "B": "Overreach. Not being endorsed by at least three members is consistent with being endorsed by one or two, or with no vote yet having been taken.",
+      "C": "Converse error. Posting follows from referral, not the other way.",
+      "D": "Could be true but not must. The stimulus describes procedural requirements, not future withdrawal.",
+      "E": "Overreach. Advancing to second reading requires Planning Board endorsement, but the stimulus does not establish a universal rule that every advanced ordinance has completed the posting step."
+    },
+    "tags": ["must_be_true", "only_if_conditional", "named_case_contrapositive"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d3-b0-10",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 3,
+    "difficultyReason": "Requires combining two universal conditionals and a 'most' statement to derive a guaranteed existential about a triple overlap, then avoiding a tempting overreach to 'all.' Trap (D) collapses 'most' into 'all'; trap (E) is a scope shift.",
+    "stimulus": "Every parish church in the Ladon diocese whose foundation predates 1650 is listed in the regional architectural register. Any church listed in the regional architectural register must use lime-based mortar in any restoration work. Most parish churches in the Ladon diocese whose foundation predates 1650 have undergone at least one exterior restoration since 2000. No church that has undergone an exterior restoration since 2000 has had its bell tower demolished.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "At least some churches that have used lime-based mortar in restoration work have not had their bell towers demolished." },
+      { "label": "B", "text": "Every church in the regional architectural register has a foundation that predates 1650." },
+      { "label": "C", "text": "No church with a foundation predating 1650 has had its bell tower demolished." },
+      { "label": "D", "text": "All parish churches in the Ladon diocese with foundations predating 1650 have undergone at least one exterior restoration since 2000." },
+      { "label": "E", "text": "Any church in the Ladon diocese that uses lime-based mortar has a foundation predating 1650." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Most pre-1650 Ladon parish churches have undergone an exterior restoration since 2000, so at least some have. Every pre-1650 such church is on the register, and any church on the register must use lime-based mortar in restoration work. So the restored pre-1650 churches used lime-based mortar. None of those has had its bell tower demolished. Hence at least some churches that used lime-based mortar in restoration have not had their bell towers demolished.",
+      "A": "Correct.",
+      "B": "Converse error. Being listed in the register does not by itself imply a pre-1650 foundation.",
+      "C": "Most-to-all overreach. Only the pre-1650 churches that were restored since 2000 are covered by the no-demolition rule.",
+      "D": "Most-to-all overreach.",
+      "E": "Converse error. Using lime-based mortar is a requirement imposed on register-listed churches, not a property unique to pre-1650 foundations."
+    },
+    "tags": ["must_be_true", "most_plus_universal_triple_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  }
+]
