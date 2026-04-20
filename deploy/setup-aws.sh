@@ -20,10 +20,15 @@ if [ ! -f "$ENV_FILE" ]; then
   echo "[setup-aws] .env not found at $ENV_FILE — aborting." >&2
   exit 1
 fi
-set -a
-# shellcheck disable=SC1090
-. "$ENV_FILE"
-set +a
+
+# Load .env without shell expansion (values may contain $, `, etc.).
+while IFS= read -r line || [ -n "$line" ]; do
+  case "$line" in ''|\#*) continue ;; esac
+  key="${line%%=*}"
+  val="${line#*=}"
+  if [[ "$val" == \"*\" || "$val" == \'*\' ]]; then val="${val:1:${#val}-2}"; fi
+  export "$key=$val"
+done < "$ENV_FILE"
 
 : "${ANTHROPIC_API_KEY:?missing in .env}"
 : "${ALARM_EMAIL:?missing in .env}"

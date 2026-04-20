@@ -11,10 +11,16 @@ if [ ! -f "$ENV_FILE" ]; then
   echo "[deploy-lambda] .env not found at $ENV_FILE — aborting." >&2
   exit 1
 fi
-set -a
-# shellcheck disable=SC1090
-. "$ENV_FILE"
-set +a
+
+# Load .env without shell expansion (values may contain $, `, etc.).
+while IFS= read -r line || [ -n "$line" ]; do
+  case "$line" in ''|\#*) continue ;; esac
+  key="${line%%=*}"
+  val="${line#*=}"
+  # Trim surrounding quotes if present.
+  if [[ "$val" == \"*\" || "$val" == \'*\' ]]; then val="${val:1:${#val}-2}"; fi
+  export "$key=$val"
+done < "$ENV_FILE"
 
 : "${ANTHROPIC_API_KEY:?missing in .env}"
 : "${SHARED_SECRET:?missing in .env (run setup-aws.sh first)}"
