@@ -21,9 +21,10 @@ The repo lives at `/home/ccusce/lsatprep` inside WSL Ubuntu. From Windows you ca
 
 ## Deploy
 
-- Frontend: `git push` to `main` → GitHub Actions publishes `frontend/` to Pages in ~60 s.
+- Frontend: `git push` to `main`. GitHub Pages is configured in the repo's Settings → Pages with source = `main` branch, folder = `/frontend`. No GitHub Actions workflow; this is intentional (pet project, no CI/CD).
 - Lambda: `./deploy/deploy-lambda.sh` from a machine that has `.env` present.
 - `.env` lives only on Collin's local machine. Never commit it. Never print `ANTHROPIC_API_KEY` in shell output, log lines, or conversation text.
+- Before any commit that touches `frontend/questions.json`, run `node generation/scripts/validate-bank.mjs` locally.
 
 ## AWS
 

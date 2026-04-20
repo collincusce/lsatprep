@@ -29,7 +29,7 @@ node generation/scripts/validate-bank.mjs
 
 ## Deploy
 
-- **Frontend:** `git push` to `main`; GitHub Actions publishes `frontend/` to Pages.
+- **Frontend:** `git push` to `main`. GitHub Pages serves directly from the `main` branch's `/frontend` folder (configured in repo Settings → Pages). No CI workflow.
 - **Lambda:** `./deploy/deploy-lambda.sh` (requires `.env` with `ANTHROPIC_API_KEY`).
 - **One-time AWS setup:** `./deploy/setup-aws.sh` (creates Lambda, Function URL, SNS topic, alarm, budget).
 
