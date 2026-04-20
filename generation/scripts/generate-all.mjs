@@ -34,14 +34,34 @@ const BATCH = {
 };
 
 function countDelivered() {
-  const counts = {}; // "LR|strengthen|2" -> count
-  // Count from existing raw/ (shipped) AND raw-draft/ (in-flight, review pending)
-  for (const dir of [RAW, DRAFT]) {
-    if (!existsSync(dir)) continue;
-    for (const f of readdirSync(dir)) {
-      if (!f.endsWith('.json')) continue;
+  // Count from the SHIPPED bank (frontend/questions.json) because it reflects
+  // post-cap assembly. raw/ files may contain more than ships; we need to fill
+  // cells based on what actually survives assembly.
+  const counts = {};
+  const bankPath = join(ROOT, 'frontend/questions.json');
+  if (existsSync(bankPath)) {
+    try {
+      const bank = JSON.parse(readFileSync(bankPath, 'utf8'));
+      for (const q of bank.lr || []) {
+        const k = `LR|${q.subtype}|${q.difficulty}`;
+        counts[k] = (counts[k] || 0) + 1;
+      }
+      for (const p of bank.rc || []) {
+        const k = `RC|${p.genre}|${p.difficulty}`;
+        counts[k] = (counts[k] || 0) + (p.questions?.length || 0);
+      }
+      for (const g of bank.lg || []) {
+        const k = `LG|${g.family}|${g.difficulty}`;
+        counts[k] = (counts[k] || 0) + (g.questions?.length || 0);
+      }
+    } catch {}
+  }
+  // Also count in-flight drafts so a rerun doesn't duplicate work
+  if (existsSync(DRAFT)) {
+    for (const f of readdirSync(DRAFT)) {
+      if (!f.endsWith('.json') || f.startsWith('_DEBUG')) continue;
       let arr;
-      try { arr = JSON.parse(readFileSync(join(dir, f), 'utf8')); } catch { continue; }
+      try { arr = JSON.parse(readFileSync(join(DRAFT, f), 'utf8')); } catch { continue; }
       if (!Array.isArray(arr)) continue;
       for (const item of arr) {
         const section = item.section;

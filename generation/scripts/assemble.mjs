@@ -48,10 +48,23 @@ function patchExplanations(q) {
   }
 }
 
+// Read coverage matrix and build { "LR|strengthen|2": 90, ... } target map.
+const MATRIX = JSON.parse(readFileSync(join(ROOT, 'generation/coverage-matrix.json'), 'utf8'));
+const CELL_TARGETS = {};
+for (const c of MATRIX.cells) {
+  const slot = c.subtype || c.genre || c.family;
+  CELL_TARGETS[`${c.section}|${slot}|${c.difficulty}`] = c.count;
+}
+function cellKey(section, item) {
+  const slot = item.subtype || item.genre || item.family;
+  return `${section}|${slot}|${item.difficulty}`;
+}
+
 // --- LR ---------------------------------------------------------------------
 
 function assembleLr() {
-  const records = [];
+  // Per-cell bucket so we can cap each (subtype × difficulty) to its matrix target.
+  const buckets = {};
   for (const file of sortedBatches('lr-')) {
     const batch = readJson(join(RAW_DIR, file));
     if (!Array.isArray(batch)) {
@@ -61,9 +74,20 @@ function assembleLr() {
     for (const q of batch) {
       if (q.criticNotes !== undefined) delete q.criticNotes;
       patchExplanations(q);
-      records.push(q);
+      const key = cellKey('LR', q);
+      if (!buckets[key]) buckets[key] = [];
+      buckets[key].push(q);
     }
   }
+
+  // Emit in deterministic order (subtype alphabetical, then difficulty 1→3).
+  const records = [];
+  const keys = Object.keys(buckets).sort();
+  for (const key of keys) {
+    const target = CELL_TARGETS[key] || buckets[key].length;
+    records.push(...buckets[key].slice(0, target));
+  }
+
   // Renumber ids.
   for (let i = 0; i < records.length; i++) {
     records[i].id = `lr-${zeroPad(i + 1)}`;
@@ -74,10 +98,9 @@ function assembleLr() {
 // --- RC ---------------------------------------------------------------------
 
 function assembleRc() {
-  const passages = [];
-  let passageCounter = 0;
-  let questionCounter = 0;
-
+  // Bucket passages by cell, then take passages until each cell's question count
+  // reaches its matrix target.
+  const buckets = {};
   for (const file of sortedBatches('rc-')) {
     const batch = readJson(join(RAW_DIR, file));
     if (!Array.isArray(batch)) {
@@ -85,34 +108,52 @@ function assembleRc() {
       continue;
     }
     for (const passage of batch) {
-      passageCounter += 1;
-      const newPassageId = `rc-passage-${zeroPad(passageCounter)}`;
-      passage.id = newPassageId;
-      delete passage.criticNotes;
-      if (!Array.isArray(passage.questions)) {
-        console.warn(`  ${file} passage ${passageCounter}: no questions array`);
-        passage.questions = [];
-      }
-      for (const q of passage.questions) {
-        questionCounter += 1;
-        q.id = `rc-${zeroPad(questionCounter)}`;
-        q.passageId = newPassageId;
-        delete q.criticNotes;
-        patchExplanations(q);
-      }
-      passages.push(passage);
+      const key = cellKey('RC', passage);
+      if (!buckets[key]) buckets[key] = [];
+      buckets[key].push(passage);
     }
   }
-  return passages;
+
+  // Emit deterministic: genre alphabetical, difficulty 1→3.
+  const kept = [];
+  const keys = Object.keys(buckets).sort();
+  for (const key of keys) {
+    const target = CELL_TARGETS[key] || Infinity;
+    let questionTally = 0;
+    for (const passage of buckets[key]) {
+      if (questionTally >= target) break;
+      const qCount = passage.questions?.length || 0;
+      // Keep the passage if we haven't hit target yet — even if it pushes us
+      // over by a few questions (we don't split passages).
+      kept.push(passage);
+      questionTally += qCount;
+    }
+  }
+
+  // Now renumber everything sequentially.
+  let passageCounter = 0;
+  let questionCounter = 0;
+  for (const passage of kept) {
+    passageCounter += 1;
+    const newPassageId = `rc-passage-${zeroPad(passageCounter)}`;
+    passage.id = newPassageId;
+    delete passage.criticNotes;
+    if (!Array.isArray(passage.questions)) passage.questions = [];
+    for (const q of passage.questions) {
+      questionCounter += 1;
+      q.id = `rc-${zeroPad(questionCounter)}`;
+      q.passageId = newPassageId;
+      delete q.criticNotes;
+      patchExplanations(q);
+    }
+  }
+  return kept;
 }
 
 // --- LG ---------------------------------------------------------------------
 
 function assembleLg() {
-  const games = [];
-  let gameCounter = 0;
-  let questionCounter = 0;
-
+  const buckets = {};
   for (const file of sortedBatches('lg-')) {
     const batch = readJson(join(RAW_DIR, file));
     if (!Array.isArray(batch)) {
@@ -120,28 +161,44 @@ function assembleLg() {
       continue;
     }
     for (const game of batch) {
-      gameCounter += 1;
-      const newGameId = `lg-game-${zeroPad(gameCounter)}`;
-      game.id = newGameId;
-      delete game.criticNotes;
-      if (!Array.isArray(game.verifiedSolutions) || game.verifiedSolutions.length === 0) {
-        console.warn(`  ${file} game ${gameCounter}: missing or empty verifiedSolutions`);
-      }
-      if (!Array.isArray(game.questions)) {
-        console.warn(`  ${file} game ${gameCounter}: no questions array`);
-        game.questions = [];
-      }
-      for (const q of game.questions) {
-        questionCounter += 1;
-        q.id = `lg-${zeroPad(questionCounter)}`;
-        q.gameId = newGameId;
-        delete q.criticNotes;
-        patchExplanations(q);
-      }
-      games.push(game);
+      const key = cellKey('LG', game);
+      if (!buckets[key]) buckets[key] = [];
+      buckets[key].push(game);
     }
   }
-  return games;
+
+  const kept = [];
+  const keys = Object.keys(buckets).sort();
+  for (const key of keys) {
+    const target = CELL_TARGETS[key] || Infinity;
+    let questionTally = 0;
+    for (const game of buckets[key]) {
+      if (questionTally >= target) break;
+      kept.push(game);
+      questionTally += game.questions?.length || 0;
+    }
+  }
+
+  let gameCounter = 0;
+  let questionCounter = 0;
+  for (const game of kept) {
+    gameCounter += 1;
+    const newGameId = `lg-game-${zeroPad(gameCounter)}`;
+    game.id = newGameId;
+    delete game.criticNotes;
+    if (!Array.isArray(game.verifiedSolutions) || game.verifiedSolutions.length === 0) {
+      console.warn(`  game ${gameCounter}: missing or empty verifiedSolutions`);
+    }
+    if (!Array.isArray(game.questions)) game.questions = [];
+    for (const q of game.questions) {
+      questionCounter += 1;
+      q.id = `lg-${zeroPad(questionCounter)}`;
+      q.gameId = newGameId;
+      delete q.criticNotes;
+      patchExplanations(q);
+    }
+  }
+  return kept;
 }
 
 // --- bankVersion helper -----------------------------------------------------

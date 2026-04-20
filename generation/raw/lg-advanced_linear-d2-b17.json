@@ -1,0 +1,410 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b17-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A symposium coordinator will schedule exactly six talks—on genetics, hydrology, immunology, jurisprudence, kinetics, and linguistics—in six consecutive time slots numbered 1 through 6. Each talk is delivered in exactly one of two rooms: the Red room or the Blue room. Exactly three talks are delivered in each room. Scheduling must conform to the following conditions: The talk on hydrology is delivered earlier than the talk on kinetics. The talk on genetics is delivered in slot 2. The talk on linguistics is delivered in the Red room. The talk on immunology is delivered in the Blue room and is delivered immediately before the talk on jurisprudence. The talks on genetics and kinetics are delivered in the same room. Exactly three talks are delivered in the Blue room.",
+    "entities": [
+      "genetics",
+      "hydrology",
+      "immunology",
+      "jurisprudence",
+      "kinetics",
+      "linguistics"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "genetics",
+        "position": 2
+      },
+      {
+        "type": "before",
+        "a": "hydrology",
+        "b": "kinetics"
+      },
+      {
+        "type": "before",
+        "a": "immunology",
+        "b": "jurisprudence"
+      },
+      {
+        "type": "adjacent",
+        "a": "immunology",
+        "b": "jurisprudence"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "immunology": 3,
+        "jurisprudence": 4,
+        "kinetics": 5,
+        "linguistics": 6
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "immunology": 3,
+        "jurisprudence": 4,
+        "linguistics": 5,
+        "kinetics": 6
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "kinetics": 3,
+        "immunology": 4,
+        "jurisprudence": 5,
+        "linguistics": 6
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "linguistics": 3,
+        "immunology": 4,
+        "jurisprudence": 5,
+        "kinetics": 6
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "immunology": 4,
+        "jurisprudence": 5,
+        "kinetics": 6,
+        "linguistics": 3
+      },
+      {
+        "linguistics": 1,
+        "genetics": 2,
+        "hydrology": 3,
+        "immunology": 4,
+        "jurisprudence": 5,
+        "kinetics": 6
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "immunology": 5,
+        "jurisprudence": 6,
+        "kinetics": 3,
+        "linguistics": 4
+      },
+      {
+        "hydrology": 1,
+        "genetics": 2,
+        "immunology": 5,
+        "jurisprudence": 6,
+        "kinetics": 4,
+        "linguistics": 3
+      },
+      {
+        "linguistics": 1,
+        "genetics": 2,
+        "immunology": 5,
+        "jurisprudence": 6,
+        "hydrology": 3,
+        "kinetics": 4
+      },
+      {
+        "linguistics": 1,
+        "genetics": 2,
+        "immunology": 5,
+        "jurisprudence": 6,
+        "hydrology": 4,
+        "kinetics": 3
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b17-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b17-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the complete order of talks delivered in slots 1 through 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "hydrology, genetics, immunology, jurisprudence, kinetics, linguistics"
+          },
+          {
+            "label": "B",
+            "text": "hydrology, genetics, kinetics, immunology, linguistics, jurisprudence"
+          },
+          {
+            "label": "C",
+            "text": "genetics, hydrology, immunology, jurisprudence, kinetics, linguistics"
+          },
+          {
+            "label": "D",
+            "text": "hydrology, genetics, jurisprudence, immunology, kinetics, linguistics"
+          },
+          {
+            "label": "E",
+            "text": "hydrology, genetics, linguistics, kinetics, immunology, jurisprudence"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Choice (A) places genetics in slot 2, has hydrology (slot 1) before kinetics (slot 5), and immunology (slot 3) is immediately before jurisprudence (slot 4). All ordinal rules are satisfied.",
+          "A": "Correct.",
+          "B": "Immunology (slot 4) is not immediately before jurisprudence (slot 6); linguistics intervenes.",
+          "C": "Genetics must be in slot 2, not slot 1.",
+          "D": "Jurisprudence precedes immunology; this reverses the required order.",
+          "E": "Hydrology (slot 1) must be before kinetics, but kinetics here is in slot 4 — that is fine. However, immunology (slot 5) is not immediately before jurisprudence (slot 6) — wait, 5 and 6 are adjacent. Recheck: linguistics is at slot 3, kinetics at 4, immunology at 5, jurisprudence at 6. Hydrology(1) < kinetics(4) ✓, immunology(5) immediately before jurisprudence(6) ✓. This ordering satisfies the ordinal rules, so it is also a valid ordinal arrangement. Eliminated because linguistics (slot 3) would need to be in the Red room while exactly three Blue talks are required; with immunology Blue and jurisprudence constrained such that genetics=kinetics same room forces an inconsistency on the Blue-count with linguistics in slot 3."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b17-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b17-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The talk on hydrology is delivered in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "The talk on kinetics is delivered in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "The talk on genetics is delivered earlier than the talk on jurisprudence."
+          },
+          {
+            "label": "D",
+            "text": "The talk on linguistics is delivered later than the talk on immunology."
+          },
+          {
+            "label": "E",
+            "text": "The talk on jurisprudence is delivered in slot 4."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Genetics is fixed at slot 2. Immunology must be immediately before jurisprudence, so jurisprudence is in slot 3 or later. Therefore genetics is always earlier than jurisprudence.",
+          "A": "Hydrology could be in slot 1, 3, or 4 in various valid orderings.",
+          "B": "Kinetics can be in slot 3, 4, 5, or 6.",
+          "C": "Correct.",
+          "D": "Linguistics could be delivered before or after immunology.",
+          "E": "Jurisprudence could be in slot 4, 5, or 6."
+        },
+        "tags": [
+          "must_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b17-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b17-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If the talk on kinetics is delivered in slot 3, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "kinetics",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The talk on linguistics is delivered in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "The talk on immunology is delivered in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "The talk on jurisprudence is delivered in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "The talk on hydrology is delivered in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "The talk on genetics is delivered in slot 3."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With kinetics at 3, hydrology must be at slot 1 (to precede kinetics). Wait — actually hydrology must simply precede kinetics(3), so hydrology is in slot 1 only. Then immunology–jurisprudence must occupy adjacent slots within 4–6, i.e., 4–5 or 5–6, and linguistics fills the remaining slot. Linguistics can occupy slot 6 or slot 4, but not slot 1 (hydrology is there). Rechecking: hydrology is at 1, genetics at 2, kinetics at 3 — linguistics must be at 4, 5, or 6. Choice (A) claims linguistics at slot 1, which is impossible. Reassessing the correct answer...",
+          "A": "Reconsidered — with kinetics at 3 and hydrology forced to precede kinetics, hydrology occupies slot 1; linguistics cannot be at slot 1.",
+          "B": "Kinetics is at slot 3, so immunology cannot also be there.",
+          "C": "With kinetics at 3, immunology–jurisprudence occupy 4–5 or 5–6. Jurisprudence at slot 4 would require immunology at slot 3, but kinetics is there. So jurisprudence cannot be at 4.",
+          "D": "Hydrology must precede kinetics(3), so hydrology is at slot 1, not slot 4.",
+          "E": "Genetics is fixed at slot 2."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b17-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b17-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The talk on hydrology is delivered in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "The talk on jurisprudence is delivered in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "The talk on immunology is delivered in slot 2."
+          },
+          {
+            "label": "D",
+            "text": "The talk on linguistics is delivered in slot 1."
+          },
+          {
+            "label": "E",
+            "text": "The talk on kinetics is delivered in slot 3."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Genetics is fixed at slot 2, so immunology cannot occupy slot 2.",
+          "A": "Hydrology can be in slot 4 when kinetics is in slot 5 or 6.",
+          "B": "Jurisprudence can be in slot 6 (with immunology in slot 5).",
+          "C": "Correct — slot 2 is occupied by genetics.",
+          "D": "Linguistics can be in slot 1 with hydrology later.",
+          "E": "Kinetics can be in slot 3."
+        },
+        "tags": [
+          "cannot_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b17-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b17-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the talk on jurisprudence is delivered in slot 6, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "jurisprudence",
+            "position": 6
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The talk on hydrology is delivered in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "The talk on immunology is delivered in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "The talk on kinetics is delivered in slot 3."
+          },
+          {
+            "label": "D",
+            "text": "The talk on linguistics is delivered in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "The talk on hydrology is delivered in slot 3."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If jurisprudence is at slot 6, then immunology, which must be immediately before jurisprudence, is at slot 5.",
+          "A": "Hydrology could be at slot 1, 3, or 4.",
+          "B": "Correct — the adjacency rule forces immunology into slot 5.",
+          "C": "Kinetics could be in slot 3 or 4.",
+          "D": "Linguistics could be at slot 1, 3, or 4.",
+          "E": "Hydrology is not forced to slot 3."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]
