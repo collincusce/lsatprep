@@ -24,15 +24,52 @@ export function renderTestSetup(mainEl) {
   });
 }
 
+// Approximates a real LSAT section's difficulty distribution: ~30% 1★ easy,
+// ~45% 2★ medium, ~25% 3★ hard. Within the section questions are presented in
+// section-list order (not re-sorted by difficulty) so the bank doesn't always
+// start with the easiest question, same as LSAC's own test construction.
+function pickSectionWithDifficultyMix({ bank, section, count, seenIds, rng, extraFilters = {} }) {
+  const easyCount   = Math.round(count * 0.30);
+  const hardCount   = Math.round(count * 0.25);
+  const mediumCount = count - easyCount - hardCount;
+
+  const easy = pickQuestions({
+    bank, filters: { section, difficultyMin: 1, difficultyMax: 1, ...extraFilters },
+    count: easyCount, seenIds, rng
+  });
+  const medium = pickQuestions({
+    bank, filters: { section, difficultyMin: 2, difficultyMax: 2, ...extraFilters },
+    count: mediumCount, seenIds, rng
+  });
+  const hard = pickQuestions({
+    bank, filters: { section, difficultyMin: 3, difficultyMax: 3, ...extraFilters },
+    count: hardCount, seenIds, rng
+  });
+
+  // Interleave so the section doesn't feel front-loaded easy or back-loaded
+  // hard. Crude but effective: shuffle each bucket, then round-robin.
+  const merged = [];
+  const buckets = [easy, medium, hard];
+  const maxLen = Math.max(easy.length, medium.length, hard.length);
+  for (let i = 0; i < maxLen; i++) {
+    for (const b of buckets) {
+      if (i < b.length) merged.push(b[i]);
+    }
+  }
+  return merged;
+}
+
 function assembleTest(bank, prefs) {
   const seenIds = seenQuestionIds();
   const rng = seededRng(Date.now());
-  const lr1 = pickQuestions({ bank, filters: { section: 'LR' }, count: 25, seenIds, rng });
-  const lr2 = pickQuestions({ bank, filters: { section: 'LR' }, count: 25, seenIds, rng });
-  const rc = pickQuestions({ bank, filters: { section: 'RC' }, count: 27, seenIds, rng });
+
+  const lr1 = pickSectionWithDifficultyMix({ bank, section: 'LR', count: 25, seenIds, rng });
+  const lr2 = pickSectionWithDifficultyMix({ bank, section: 'LR', count: 25, seenIds, rng });
+  const rc  = pickSectionWithDifficultyMix({ bank, section: 'RC', count: 27, seenIds, rng });
   const fourth = prefs.lgEnabled
-    ? pickQuestions({ bank, filters: { section: 'LG', lgEnabled: true }, count: 23, seenIds, rng })
-    : pickQuestions({ bank, filters: { section: 'LR' }, count: 23, seenIds, rng });
+    ? pickSectionWithDifficultyMix({ bank, section: 'LG', count: 23, seenIds, rng, extraFilters: { lgEnabled: true } })
+    : pickSectionWithDifficultyMix({ bank, section: 'LR', count: 23, seenIds, rng });
+
   return [
     { name: 'Section 1 · LR', questions: lr1, durationMs: 35 * 60 * 1000, experimental: false },
     { name: 'Section 2 · LR', questions: lr2, durationMs: 35 * 60 * 1000, experimental: false },
