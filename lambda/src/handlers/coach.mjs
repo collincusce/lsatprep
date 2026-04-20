@@ -31,8 +31,8 @@ Correct answer (not to volunteer): ${correctAnswer || '(unknown)'}`;
     { role: 'user', content: userMessage }
   ];
 
+  const out = writeSseHeaders(stream);
   try {
-    writeSseHeaders(stream);
     for await (const delta of callStream({
       model,
       system: SYSTEM,
@@ -40,13 +40,13 @@ Correct answer (not to volunteer): ${correctAnswer || '(unknown)'}`;
       maxTokens: 500,
       cacheSystem: true
     })) {
-      writeSseEvent(stream, { delta });
+      writeSseEvent(out, { delta });
     }
-    writeSseEvent(stream, '[DONE]');
-    stream.end();
+    writeSseEvent(out, '[DONE]');
+    out.end();
   } catch (err) {
     console.error('coach handler error', err);
-    try { writeSseEvent(stream, { error: 'upstream AI error' }); } catch {}
-    try { stream.end(); } catch {}
+    try { writeSseEvent(out, { error: 'upstream AI error' }); } catch {}
+    try { out.end(); } catch {}
   }
 }

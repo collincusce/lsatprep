@@ -44,9 +44,10 @@ aws lambda wait function-updated \
   --function-name "$FUNCTION_NAME" \
   --profile "$AWS_PROFILE" --region "$AWS_REGION"
 
-echo "[deploy-lambda] updating env vars..."
+echo "[deploy-lambda] updating config + env vars..."
 aws lambda update-function-configuration \
   --function-name "$FUNCTION_NAME" \
+  --handler src/index.handler \
   --environment "Variables={ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY,SHARED_SECRET=$SHARED_SECRET,ALLOWED_ORIGIN=$ALLOWED_ORIGIN}" \
   --profile "$AWS_PROFILE" --region "$AWS_REGION" > /dev/null
 

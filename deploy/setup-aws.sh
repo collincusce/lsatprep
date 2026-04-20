@@ -96,7 +96,7 @@ if ! aws_cli lambda get-function --function-name "$FUNCTION_NAME" > /dev/null 2>
     --function-name "$FUNCTION_NAME" \
     --runtime nodejs20.x \
     --role "$ROLE_ARN" \
-    --handler index.handler \
+    --handler src/index.handler \
     --zip-file "fileb://$PLACEHOLDER_ZIP" \
     --memory-size 512 \
     --timeout 30 \
@@ -123,12 +123,19 @@ JSON
     --cors "$CORS_JSON" > /dev/null
 fi
 # Tolerate ResourceConflictException (permission already exists).
+# Both InvokeFunctionUrl AND InvokeFunction are required for public URL access
+# per AWS's newer resource-policy check (undocumented as of 2026-04).
 aws_cli lambda add-permission \
   --function-name "$FUNCTION_NAME" \
   --statement-id FunctionURLAllowPublicAccess \
   --principal "*" \
   --action lambda:InvokeFunctionUrl \
   --function-url-auth-type NONE > /dev/null 2>&1 || true
+aws_cli lambda add-permission \
+  --function-name "$FUNCTION_NAME" \
+  --statement-id FunctionURLAllowPublicInvoke \
+  --principal "*" \
+  --action lambda:InvokeFunction > /dev/null 2>&1 || true
 LAMBDA_FUNCTION_URL="$(aws_cli lambda get-function-url-config --function-name "$FUNCTION_NAME" --query FunctionUrl --output text)"
 if grep -q '^LAMBDA_FUNCTION_URL=' "$ENV_FILE"; then
   sed -i "s|^LAMBDA_FUNCTION_URL=.*|LAMBDA_FUNCTION_URL=$LAMBDA_FUNCTION_URL|" "$ENV_FILE"

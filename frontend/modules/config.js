@@ -4,7 +4,7 @@
 // Anthropic monthly cap.
 
 export const CONFIG = {
-  lambdaUrl: "https://tw3pixuv3yxujrpkfm7dzjzyce0cgajw.lambda-url.us-east-1.on.aws/",
+  lambdaUrl: "https://air3kgsbrvlgyf4lhzqd76vije0plaff.lambda-url.us-east-1.on.aws/",
   sharedSecret: "1091f5bccb49f1f1d6ddad992b132f49a380eb43d85ee0f7566f1d1fb8516234",
   bankVersionExpected: "2026-04-19-placeholder"
 };

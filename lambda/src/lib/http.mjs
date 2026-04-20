@@ -29,22 +29,40 @@ export function corsHeaders() {
   };
 }
 
+// In AWS Lambda (streamifyResponse), the response stream has no writeHead —
+// you set status/headers via awslambda.HttpResponseStream.from(stream, metadata)
+// BEFORE the first write. Locally (in tests), we keep the writeHead contract.
+function attachStatus(stream, status, headers) {
+  // Tests: mock stream with writeHead.
+  if (typeof stream.writeHead === 'function') {
+    stream.writeHead(status, headers);
+    return stream;
+  }
+  // Lambda runtime: wrap with HttpResponseStream if available.
+  if (typeof awslambda !== 'undefined' && awslambda?.HttpResponseStream?.from) {
+    return awslambda.HttpResponseStream.from(stream, { statusCode: status, headers });
+  }
+  // Fallback: no-op; body still streams, status defaults to 200.
+  return stream;
+}
+
 export function respond(stream, status, body, extraHeaders = {}) {
   const headers = {
     'content-type': typeof body === 'string' ? 'text/plain' : 'application/json',
     ...corsHeaders(),
     ...extraHeaders
   };
-  if (stream.writeHead) stream.writeHead(status, headers);
+  const out = attachStatus(stream, status, headers);
   if (body !== undefined && body !== '') {
     const payload = typeof body === 'string' ? body : JSON.stringify(body);
-    stream.write(payload);
+    out.write(payload);
   }
-  stream.end();
+  out.end();
+  return out;
 }
 
 export function writeSseHeaders(stream, extraHeaders = {}) {
-  stream.writeHead(200, {
+  return attachStatus(stream, 200, {
     'content-type': 'text/event-stream',
     'cache-control': 'no-cache, no-transform',
     'connection': 'keep-alive',
