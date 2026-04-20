@@ -1,4 +1,4 @@
-import { pickQuestions, seededRng } from '../selector.js';
+import { pickQuestionsWithDifficultyMix, seededRng } from '../selector.js';
 import { bankSnapshot } from '../bank.js';
 import { recordAttempt, recordSession, seenQuestionIds, snapshot } from '../store.js';
 import { renderQuestionCard } from '../components/question-card.js';
@@ -19,7 +19,9 @@ export function renderDrillSession(mainEl, ctx) {
   }
 
   const seed = Date.now();
-  const questions = pickQuestions({
+  // pickQuestionsWithDifficultyMix applies the 30/45/25 split ONLY when the
+  // user hasn't pinned a difficulty range — respects explicit picks in drill setup.
+  const questions = pickQuestionsWithDifficultyMix({
     bank,
     filters: {
       section: cfg.section,

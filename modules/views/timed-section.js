@@ -1,5 +1,5 @@
 import { bankSnapshot } from '../bank.js';
-import { pickQuestions, seededRng } from '../selector.js';
+import { pickQuestionsWithDifficultyMix, seededRng } from '../selector.js';
 import { recordAttempt, recordSession, seenQuestionIds, snapshot } from '../store.js';
 import { renderQuestionCard } from '../components/question-card.js';
 
@@ -36,7 +36,7 @@ export function renderTimedSection(mainEl, ctx) {
   const bank = bankSnapshot();
   const section = ctx.query.section || 'LR';
   const count = section === 'LR' ? 25 : section === 'RC' ? 27 : 23;
-  const questions = pickQuestions({
+  const questions = pickQuestionsWithDifficultyMix({
     bank,
     filters: { section, lgEnabled: snapshot().preferences.lgEnabled },
     count,

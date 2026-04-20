@@ -79,6 +79,7 @@ export function renderAbout(mainEl) {
       <ul>
         <li><strong>~4,000 practice questions</strong> across Logical Reasoning, Reading Comprehension, and Logic Games — calibrated to 1★ / 2★ / 3★ difficulty against what real LSAT takers find easy, medium, or hard.</li>
         <li><strong>Three study modes.</strong> Drill (one question at a time, instant feedback), timed section (one 35-minute section, scored at the end), and full-length test (four sections with a break, end-of-test scoring).</li>
+        <li><strong>Realistic difficulty mix.</strong> Any timed section, full-length test, or drill (where you haven't pinned a difficulty) is sampled at roughly <strong>30% easy · 45% medium · 25% hard</strong> — the same mix real LSAT sections are built on — and ordered randomly within the section.</li>
         <li><strong>Writing Sample practice.</strong> 30 LSAC-style prompts. You write for 35 minutes, then get a rubric grade (A–F) with feedback on organization, argument strength, evidence use, and clarity.</li>
         <li><strong>AI tutor on every question.</strong> When you miss one, you can ask for a tailored explanation or open a coach chat that hints at what you missed rather than just handing you the answer.</li>
         <li><strong>Progress tracking</strong> with a diagnostic weakness report that reads your attempts and tells you which subtypes to focus on next.</li>
