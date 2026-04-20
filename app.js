@@ -13,6 +13,7 @@ import { renderResults } from './modules/views/results.js';
 import { renderCoach } from './modules/views/coach.js';
 import { renderProgress } from './modules/views/progress.js';
 import { renderSettings } from './modules/views/settings.js';
+import { renderAbout } from './modules/views/about.js';
 import { renderNotFound } from './modules/views/not-found.js';
 import { mountNav } from './modules/components/nav.js';
 import { applyThemePreference } from './modules/theme.js';
@@ -60,6 +61,7 @@ async function bootstrap() {
   register(`${BASE}/coach/:qid`, wrapHandler(renderCoach));
   register(`${BASE}/progress`, wrapHandler(renderProgress));
   register(`${BASE}/settings`, wrapHandler(renderSettings));
+  register(`${BASE}/about`, wrapHandler(renderAbout));
   registerFallback(wrapHandler(renderNotFound));
 
   initRouter();

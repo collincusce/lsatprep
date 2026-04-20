@@ -1,56 +1,768 @@
 {
-  "version": "placeholder",
-  "bankVersion": "2026-04-19-placeholder",
+  "version": "1.0",
+  "bankVersion": "2026-04-20-placeholder",
+  "generatedAt": "2026-04-20T06:10:04.389Z",
+  "totalTarget": 4000,
   "sections": {
     "LR": {
       "name": "Logical Reasoning",
+      "coverageTarget": 2000,
       "subtypes": {
-        "assumption_necessary": { "name": "Necessary Assumption", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "assumption_sufficient": { "name": "Sufficient Assumption", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "strengthen": { "name": "Strengthen", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "weaken": { "name": "Weaken", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "flaw": { "name": "Flaw in the Reasoning", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "parallel_reasoning": { "name": "Parallel Reasoning", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "parallel_flaw": { "name": "Parallel Flaw", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "method_of_reasoning": { "name": "Method of Reasoning", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "role_in_argument": { "name": "Role in Argument", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "point_at_issue": { "name": "Point at Issue", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "main_point": { "name": "Main Point", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "must_be_true": { "name": "Must Be True", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "most_strongly_supported": { "name": "Most Strongly Supported", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "principle_conform": { "name": "Principle (Conform)", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "principle_justify": { "name": "Principle (Justify)", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] },
-        "paradox_resolve": { "name": "Paradox / Resolve", "coverageTarget": 0, "difficultyAnchors": { "1": "", "2": "", "3": "" }, "commonTraps": [], "stemTemplates": [] }
+        "assumption_necessary": {
+          "name": "Necessary Assumption",
+          "description": "The stimulus is a short argument — typically 40–90 words — that moves from one or two premises to a conclusion.",
+          "coverageTarget": 159,
+          "byDifficulty": {
+            "1": 38,
+            "2": 70,
+            "3": 51
+          },
+          "stemTemplates": [
+            "\"Which one of the following is an assumption required by the argument?\" (dossier §3.1, line 104)",
+            "\"The argument depends on assuming which one of the following?\" (§3.1, line 105)",
+            "\"Which one of the following is an assumption on which the argument relies?\" (§3.1, line 106)",
+            "\"The [speaker]'s argument requires the assumption that\""
+          ],
+          "commonTraps": [
+            "**Too strong / sufficient:** Answer proves the conclusion outright instead of merely enabling it. A giveaway is universal language (\"all,\" \"no,\" \"always\") when the argument needed only a narrow bridge. (Dossier §3.1, line 109; §6.5.)",
+            "**Out of scope:** Topically continuous with the stimulus but untouched by the reasoning. In the hippo stimulus, \"tomb was not reentered\" is scope-drift — entry history is not a link in the broken-legs inference. (§6.2, line 403.)",
+            "**Reversed direction:** States the assumption backwards — `B → A` when the argument needs `A → B`. Especially common when the stimulus contains a conditional premise. (§3.1, line 111.)",
+            "**Defender disguised as strengthener:** Looks like an argument-booster rather than a gap-filler. Necessary assumptions are often defensive (ruling out a specific alternative), so students pass them over for something \"stronger-sounding.\"",
+            "**Shift in subject:** Swaps the stimulus's exact subject for a close relative (§6.10, line 447). E.g., stimulus is about \"this hippopotamus\"; trap is about \"earthenware figures in general.\""
+          ],
+          "difficultyAnchors": {
+            "1": "Single-premise argument with one obvious gap. E.g., \"Dr. Kwon concludes that the new antibiotic works because every patient in her trial recovered",
+            "2": "Two-premise argument with several topically-related distractors. The hippopotamus case (`lr-lsac-largeprint-02.json`) is the prototype: curator infers religious function from broken legs",
+            "3": "Argument with a chronological or conditional subtlety (see `lr-lsac-sample-08.json`, lake-sediment bones). The necessary assumption concerns *when* or *how* an evidentiary fact was produced, not *what* it states. Negation test requires re-reading the stimulus to see what the argument was actually doing."
+          },
+          "rubricPath": "docs/taxonomy/LR/assumption_necessary.md"
+        },
+        "assumption_sufficient": {
+          "name": "Sufficient Assumption",
+          "description": "The stimulus is an argument with an obvious unbridged gap between premises and conclusion.",
+          "coverageTarget": 147,
+          "byDifficulty": {
+            "1": 32,
+            "2": 64,
+            "3": 51
+          },
+          "stemTemplates": [
+            "\"The conclusion follows logically if which one of the following is assumed?\" (dossier §3.2, line 120)",
+            "\"Which one of the following, if assumed, enables the conclusion above to be properly drawn?\"",
+            "\"The conclusion drawn above follows logically if which one of the following is assumed?\" (anchor stem in `lr-lsac-sample-07.json`)",
+            "\"Which one of the following principles, if valid, would most help to justify the reasoning above?\" — overlaps principle_justify; use the bare \"assumed\" stem when the gap is logical, not ethical. (§3.2, line 121.)"
+          ],
+          "commonTraps": [
+            "**Reversed conditional:** Stimulus concludes `A → B`; trap offers `B → A`. The Peacock stimulus baits this with choice (D) running the conditional backwards. (§3.2, line 123.)",
+            "**Too weak:** The answer increases likelihood but does not close the gap to certainty. Sufficient-assumption questions punish answers with \"tends to,\" \"most,\" \"often,\" \"usually.\" The correct answer almost always uses \"all,\" \"no,\" \"every,\" or \"only.\" (§3.2, line 124.)",
+            "**Partial bridge:** Closes one premise's gap but leaves another unclosed. If the stimulus needs two links (`A → B`, `B → C`), a trap supplies only one.",
+            "**Principle-wrapping:** Trap is phrased as a broad principle that *sounds* strong but trades in different vocabulary than the stimulus (see Peacock's (E): \"the content of a poet's work...is the most decisive factor\" — intuitive but insufficient).",
+            "**Shift in subject:** Answer applies to a near-neighbor of the stimulus's subject (feminist vs. progressive in Peacock's (A)). Always verify the answer uses the same terms as the stimulus's conclusion. (§6.10.)"
+          ],
+          "difficultyAnchors": {
+            "1": "One-step gap. Stimulus: \"Everyone on the committee voted yes. Kuroda is on the committee. Therefore Kuroda voted yes.\" Wait — that's already valid. Easier stimuli have a transparent conditional gap like \"Everyone on the committee is over 40",
+            "2": "Two-concept gap with modest distractor density. Stimulus bridges, e.g., \"eligible → certified\" and \"certified → licensed\"",
+            "3": "Five conditional answer choices, any of which plausibly strengthens but only one of which forces the conclusion. Scope shift buried in the stimulus (as in Peacock/Hacker: \"politically conservative act\" vs. \"politically conservative person\"). Reversed-conditional trap is almost always present."
+          },
+          "rubricPath": "docs/taxonomy/LR/assumption_sufficient.md"
+        },
+        "strengthen": {
+          "name": "Strengthen",
+          "description": "The stimulus is a causal, analogical, or predictive argument — premises pointing to a conclusion that the author presents as probable rather than certain.",
+          "coverageTarget": 192,
+          "byDifficulty": {
+            "1": 51,
+            "2": 90,
+            "3": 51
+          },
+          "stemTemplates": [
+            "\"Which one of the following, if true, most strengthens the argument?\" (dossier §3.3, line 133)",
+            "\"Which one of the following, if true, provides the most support for the argument?\" (§3.3, line 134)",
+            "\"Which one of the following, if true, most helps to support the [speaker]'s reasoning?\"",
+            "**EXCEPT variant:** \"Each of the following, if true, strengthens the argument EXCEPT:\" (see `lr-lsac-largeprint-03.json` for a 3★ example)"
+          ],
+          "commonTraps": [
+            "**Introduces alternative cause (disguised weakener):** The choice reads like support but actually supplies a rival explanation, weakening rather than strengthening. Common in causal stimuli. (Dossier §3.3, line 137.)",
+            "**Accurate but irrelevant:** A factually plausible addition that neither rules out an alternative nor bridges a premise-to-conclusion gap. (§3.3, line 138.)",
+            "**Strengthens a different conclusion:** The choice would strengthen a sister argument (about \"scientific theories in general\" rather than \"this theory about this supernova\"). The supernova item's (D) illustrates. (§3.3, line 139.)",
+            "**Opposite answer:** Directly weakens instead of strengthening — watch for causal direction reversal or concessions to alternatives. (§6.4, lines 411–415.)",
+            "**Unwarranted comparison:** Introduces a comparison the stimulus doesn't make (§6.9, lines 441–445), which can feel supportive without actually anchoring the stimulus's claim.",
+            "**EXCEPT-trap: a strengthener, not the odd-one-out:** In EXCEPT stems, four choices should all strengthen and exactly one should fail to. Students in time pressure pick the first answer that looks like a strengthener instead of scanning for the one that *doesn't*."
+          ],
+          "difficultyAnchors": {
+            "1": "Single causal inference with one visible alternative. Adding \"the alternative doesn't hold\" trivially strengthens. E.g., an argument that a new fertilizer caused increased yields",
+            "2": "Scientific/methodological argument where the correct answer confirms a load-bearing assumption. The 1987 supernova (`lr-lsac-sample-04.json`) is canonical: argument assumes instruments would have detected a neutron star if one existed",
+            "3": "EXCEPT-format (`lr-lsac-largeprint-03.json`) or a multi-step causal chain where the correct strengthener addresses a non-obvious link. Answer choices often include a plausible-sounding fact that strengthens a neighboring claim rather than the actual conclusion."
+          },
+          "rubricPath": "docs/taxonomy/LR/strengthen.md"
+        },
+        "weaken": {
+          "name": "Weaken",
+          "description": "The stimulus is an argument — almost always causal, predictive, or analogical — whose conclusion overreaches its premises.",
+          "coverageTarget": 191,
+          "byDifficulty": {
+            "1": 51,
+            "2": 89,
+            "3": 51
+          },
+          "stemTemplates": [
+            "\"Which one of the following, if true, most weakens the argument?\" (dossier §3.4, line 147)",
+            "\"Which one of the following, if true, most seriously undermines the argument's conclusion?\" (§3.4, line 148)",
+            "\"Which one of the following, if true, most calls into question the [speaker]'s reasoning?\"",
+            "**EXCEPT variant:** \"Each of the following, if true, weakens the argument EXCEPT:\""
+          ],
+          "commonTraps": [
+            "**Opposite answer (strengthens):** The choice actually bolsters the argument. Especially seductive when the stimulus is controversial and the choice aligns with the student's intuition. (Dossier §3.4, line 151; §6.4, lines 411–415.)",
+            "**Accurate but irrelevant:** True-sounding factual detail that doesn't bear on the premise-to-conclusion move. (§3.4, line 152.)",
+            "**Too narrow:** Weakens one link in a multi-step chain while leaving the conclusion standing. If the stimulus argues \"A caused B which caused C,\" attacking A→B only weakens the conclusion if B→C is otherwise intact. (§3.4, line 153.)",
+            "**Reversed causation (misapplied):** Reverses the stimulus's cause and effect (§6.7, lines 429–433). This is *correct* for pure-causal weakens, but a trap when the stimulus's conclusion is about correlation rather than direct causation.",
+            "**Shift in subject:** Weakens a claim adjacent to the conclusion. E.g., stimulus concludes the new drug is effective; trap shows another drug has side effects. (§6.10, lines 447–451.)",
+            "**Unwarranted comparison:** Introduces a comparative that the stimulus didn't license (§6.9). \"Drug X is less effective than drug Y\" doesn't weaken \"drug X is effective\" unless the stimulus hinged on relative efficacy."
+          ],
+          "difficultyAnchors": {
+            "1": "Single causal claim with one obvious alternative. Stimulus: \"After the bakery switched to local flour, sales rose 15%",
+            "2": "Two-step causal chain or a predictive argument where the weakener attacks the move from evidence to conclusion rather than either item in isolation. Distractors include one strengthener and one out-of-scope fact about the same topic.",
+            "3": "Methodological argument whose conclusion depends on an unstated assumption buried in a premise. Correct weakener attacks the hidden link. Answer choices are dense with qualifiers"
+          },
+          "rubricPath": "docs/taxonomy/LR/weaken.md"
+        },
+        "flaw": {
+          "name": "Flaw in the Reasoning",
+          "description": "The stimulus is a flawed argument.",
+          "coverageTarget": 166,
+          "byDifficulty": {
+            "1": 38,
+            "2": 77,
+            "3": 51
+          },
+          "stemTemplates": [
+            "\"The reasoning in the argument is most vulnerable to criticism on the grounds that the argument...\" (dossier §3.5, line 159)",
+            "\"The argument is flawed in that it...\" (§3.5, line 160)",
+            "\"The reasoning above is questionable because it...\" (§3.5, line 161)",
+            "\"The [speaker]'s argument is flawed because it fails to...\" / \"takes for granted that...\"",
+            "**EXCEPT variant:** \"Each of the following describes a flaw in the argument EXCEPT:\""
+          ],
+          "commonTraps": [
+            "**Misdescribes the argument:** The choice names a real flaw type but doesn't match what the stimulus actually did. In the democracy item, (A) \"confuses necessary and sufficient\" sounds like the right kind of flaw but mis-locates what the political scientist actually does. (Dossier §3.5, line 164.)",
+            "**Plausible but absent:** A flaw that could be made about a related argument but isn't in this one. Tempting if the student has pre-primed on a flaw taxonomy.",
+            "**Right flaw, reversed:** Describes the flaw backwards — \"treats a sufficient condition as necessary\" when the author did the opposite. (§3.5, line 166.)",
+            "**Too charitable:** Describes a minor weakness (an unsupported premise, an extraneous statement) rather than the structural error. Flaw questions reward picking the central structural fault, not a peripheral one.",
+            "**Accurate but harmless:** The choice describes something the argument technically does but which is not a flaw in context."
+          ],
+          "difficultyAnchors": {
+            "1": "Classic named flaw in pure form. Ad hominem, circular reasoning, or false dichotomy stated in plain terms. The mayor's expressway (`lr-lsac-largeprint-01.json`) is at the easier end: \"either we build it or do nothing\" sets up exactly one move.",
+            "2": "A standard flaw with two or three plausible mis-descriptions in the answer set. One trap describes a flaw that *could* apply to a similar argument",
+            "3": "The flaw is a subtle confusion of relations (\"neither necessary nor sufficient\" vs. \"does not promote\" in `lr-lsac-sample-05.json`), an equivocation on a term used in two senses, or a scope shift. Answer choices use abstract logical vocabulary (\"treats a sufficient condition as necessary,\" \"infers from the absence of evidence for X the presence of evidence against X\")."
+          },
+          "rubricPath": "docs/taxonomy/LR/flaw.md"
+        },
+        "parallel_reasoning": {
+          "name": "Parallel Reasoning",
+          "description": "The stimulus is a short, **valid** argument — one, two, or three premises leading to a conclusion in a clean logical shape (conditional chain, disjunctive syllogism, analogy, or universal-to-particular).",
+          "coverageTarget": 115,
+          "byDifficulty": {
+            "1": 26,
+            "2": 51,
+            "3": 38
+          },
+          "stemTemplates": [
+            "\"The reasoning in the argument above is most similar to the reasoning in which one of the following?\" (dossier §3.6, line 174)",
+            "\"Which one of the following arguments is most similar in its reasoning to the argument above?\" (§3.6, line 175)",
+            "\"The pattern of reasoning in which one of the following is most parallel to that in the argument above?\""
+          ],
+          "commonTraps": [
+            "**Same topic, different structure:** The choice echoes the stimulus's subject matter but uses a different argument form. The lure is content familiarity. (Dossier §3.6, line 178.)",
+            "**Same conclusion strength, wrong premise count:** Three-premise stimulus vs. two-premise answer, or vice versa. (§3.6, line 179.)",
+            "**Valid but not parallel:** A valid argument with a different logical shape (modus ponens vs. modus tollens vs. universal-instantiation). (§3.6, line 180.)",
+            "**Invalid answer paired with a valid stimulus:** Parallel-reasoning stimuli are almost always valid; a flawed answer choice never matches a valid stimulus. (If the stimulus is flawed, it becomes a parallel_flaw item — do not blur subtypes.)",
+            "**Strength-shift:** Stimulus concludes with \"must be\"; trap concludes with \"probably is\" (or vice versa). The conclusion's modal force should match exactly."
+          ],
+          "difficultyAnchors": {
+            "1": "Transparent conditional stimulus. E.g., \"If the shipment arrives, the warehouse will be stocked",
+            "2": "Disjunctive or contrapositive stimulus with a few distractors that share topic but not form. Student must formalize the stimulus as, e.g., `A ∨ B",
+            "3": "Dense quantified or nested-conditional stimulus. Answer choices are each five lines of prose, several with surface-similar structure"
+          },
+          "rubricPath": "docs/taxonomy/LR/parallel_reasoning.md"
+        },
+        "parallel_flaw": {
+          "name": "Parallel Flaw",
+          "description": "The stimulus is a **flawed** argument.",
+          "coverageTarget": 89,
+          "byDifficulty": {
+            "1": 19,
+            "2": 38,
+            "3": 32
+          },
+          "stemTemplates": [
+            "\"The flawed reasoning in which one of the following is most similar to the flawed reasoning in the argument above?\" (dossier §3.7, line 186)",
+            "\"Which one of the following arguments exhibits flawed reasoning most similar to that exhibited by the argument above?\" (§3.7, line 187)",
+            "\"Which one of the following contains a pattern of flawed reasoning most similar to that in the argument above?\" (anchor stem in `lr-lsac-sample-10.json`)"
+          ],
+          "commonTraps": [
+            "**Valid analog:** An answer whose topic and structure feel parallel but which contains no flaw. The stimulus is flawed; the correct answer must also be flawed. (Dossier §3.7, line 190.)",
+            "**Different flaw, same topic:** Answer commits a distinct reasoning error dressed in familiar subject matter. (§3.7, line 191.)",
+            "**Close but off-by-one:** The flaw rhymes with the stimulus's but differs in a specific dimension — percentage vs. absolute number (§6.8, lines 435–439), relative vs. comparative, universal vs. existential quantifier. (§3.7, line 192.)",
+            "**Right flaw, wrong conclusion strength:** Stimulus concludes \"probably X\"; trap concludes \"certainly X\" or \"X in all cases.\" The flaw must be replicated at matching strength.",
+            "**Misidentification premium:** If the student misdiagnoses the stimulus's flaw (e.g., calls base-rate reversal a correlation-causation flaw), they will pick an answer matching the wrong flaw category."
+          ],
+          "difficultyAnchors": {
+            "1": "Transparent flaw (ad hominem, circular reasoning, false dichotomy). Only one answer matches both the structure and the flaw",
+            "2": "Named logical flaw (necessary/sufficient confusion, correlation→causation). Two or three answer choices have surface plausibility",
+            "3": "Base-rate or compositional flaw where answer choices share topic or vocabulary. Carpaccio-tier: each choice is a dense five-line mini-argument"
+          },
+          "rubricPath": "docs/taxonomy/LR/parallel_flaw.md"
+        },
+        "method_of_reasoning": {
+          "name": "Method of Reasoning",
+          "description": "The stimulus is a short argument (usually attributed to a named speaker).",
+          "coverageTarget": 103,
+          "byDifficulty": {
+            "1": 26,
+            "2": 45,
+            "3": 32
+          },
+          "stemTemplates": [
+            "\"The argument proceeds by...\" (dossier §3.8, line 200)",
+            "\"The [speaker]'s reasoning does which one of the following?\" (§3.8, line 201)",
+            "\"Which one of the following describes a technique of reasoning used in the argument?\" (§3.8, line 202)",
+            "\"The [speaker]'s argument derives its conclusion by...\""
+          ],
+          "commonTraps": [
+            "**Partially true:** Describes one move the argument makes but not the main technique. A student in a hurry sees a sentence that sounds accurate and stops. (Dossier §3.8, line 205.)",
+            "**Extreme verbs:** \"Proves,\" \"disproves,\" \"refutes,\" \"establishes\" when the argument only suggests or supports. Authentic LSAT method answers prefer \"offers evidence that,\" \"suggests,\" \"uses\" over absolute verbs. (§3.8, line 206.)",
+            "**Accurate description of a different argument:** The choice describes a plausible technique, but one from a hypothetical sister argument, not this one.",
+            "**Content over technique:** Trap paraphrases *what the argument says* rather than *how it reasons*. Method-of-reasoning answers should describe the logical operation, never the topic.",
+            "**Mis-scaled:** Describes the argument as a generalization when it's a specific inference, or vice versa."
+          ],
+          "difficultyAnchors": {
+            "1": "One-move argument. Author cites an authority, draws an analogy, gives a counterexample, or appeals to a definition. Only one answer choice describes that technique",
+            "2": "Two-move argument. Author sets up an opposing position, then attacks it. The correct answer captures the full move (\"rejects a claim by showing it is inconsistent with a generally accepted principle\"). Print-ad stimulus is this level.",
+            "3": "Multi-step argument with an intermediate conclusion and an embedded concession. Answer choices use dense formal vocabulary (\"argues that a phenomenon is a counterexample to a universal claim by providing a single verifiable instance\"). Student must track what each part of the argument does."
+          },
+          "rubricPath": "docs/taxonomy/LR/method_of_reasoning.md"
+        },
+        "role_in_argument": {
+          "name": "Role in Argument",
+          "description": "The stimulus is an argument containing a specifically-quoted or paraphrased claim (the target claim).",
+          "coverageTarget": 103,
+          "byDifficulty": {
+            "1": 26,
+            "2": 45,
+            "3": 32
+          },
+          "stemTemplates": [
+            "\"The claim that [X] plays which one of the following roles in the argument?\" (dossier §3.9, line 212)",
+            "\"The reference to [X] functions in the argument to...\" (§3.9, line 213)",
+            "\"Which one of the following most accurately describes the role played in the [speaker]'s argument by the statement that [X]?\""
+          ],
+          "commonTraps": [
+            "**Confuses premise with conclusion (or with subsidiary conclusion):** Calls the target a premise when it's an intermediate conclusion, or calls it the main conclusion when it's subsidiary. (Dossier §3.9, line 216.)",
+            "**Accurate content, wrong function:** Describes what the target claim *says* rather than how it's *used*. (§3.9, line 217.)",
+            "**Partial function:** Correctly identifies one function the target serves but misses that it serves another (e.g., \"it is a premise\" — true but incomplete if the claim is also an intermediate conclusion).",
+            "**Opposing view confusion:** Trap says \"a view the author accepts\" when the author is rebutting it, or vice versa. Flags: \"some argue,\" \"critics claim,\" \"it is often said\" typically introduce views the author will dispute.",
+            "**Background vs. support:** Trap calls a scene-setting statement a \"premise that supports the conclusion\" when it's merely contextual."
+          ],
+          "difficultyAnchors": {
+            "1": "Two-sentence argument. Target claim is either the main conclusion (in which case \"therefore\" or \"thus\" precedes it) or a single supporting premise. Only one answer choice fits the textual position.",
+            "2": "Argument with a concession (\"some argue that X, but in fact Y because Z\"). Target claim is the concession — neither pure premise nor pure conclusion. Student must recognize the author is acknowledging and rebutting.",
+            "3": "Argument with a main conclusion + intermediate conclusion + evidence for the intermediate. Target claim is the intermediate conclusion, which simultaneously serves as a conclusion (supported by evidence) and a premise (supporting the main conclusion). Two answer choices partially fit"
+          },
+          "rubricPath": "docs/taxonomy/LR/role_in_argument.md"
+        },
+        "point_at_issue": {
+          "name": "Point at Issue",
+          "description": "The stimulus is a **dialogue between two named speakers** (Laird and Kim, Moreno and Peña, Dr.",
+          "coverageTarget": 83,
+          "byDifficulty": {
+            "1": 19,
+            "2": 38,
+            "3": 26
+          },
+          "stemTemplates": [
+            "\"A and B disagree over whether...\" (dossier §3.10, line 223)",
+            "\"The dialogue provides the most support for the claim that A and B disagree about...\" (§3.10, line 224)",
+            "\"On the basis of their statements, A and B are committed to disagreeing about which one of the following?\"",
+            "\"A and B's statements provide the most support for the claim that they would disagree about whether...\"",
+            "(Disagree-variant and agree-variant both exist; the common stem is the disagree form.)"
+          ],
+          "commonTraps": [
+            "**One-sided:** Only one speaker takes a position; the other doesn't address the proposition. Most common trap type. (Dossier §3.10, line 226.)",
+            "**Agreement in disguise:** Both speakers would actually accept the proposition. The Laird/Kim trap (A) \"derives significance in part from providing new technologies\" is an agreement. (§3.10, line 227; §6.10, line 451.)",
+            "**Out of scope:** Neither speaker addresses it, or it's a tangential point. (§3.10, line 228.)",
+            "**Shift in subject:** The proposition swaps a near-neighbor of what the speakers debate (Laird/Kim's (E) shifts from \"most valuable\" to \"any value\"). (§6.10, lines 447–451.)",
+            "**One-side explicit, other-side unclear:** Speaker A clearly affirms; Speaker B's statement is ambiguous. If B's view is not derivable with confidence, the answer isn't defensible as a point at issue."
+          ],
+          "difficultyAnchors": {
+            "1": "Short dialogue, sharply opposed positions, one central topic. Speakers use the same vocabulary and clearly contradict each other. Four distractors are out-of-scope",
+            "2": "Speakers overlap on much, disagree on one specific axis. The correct answer identifies that axis",
+            "3": "Speakers have nuanced partially-overlapping views. The disagreement may be about degree (who assigns more weight to what), about a presupposition (a claim one assumes but the other rejects), or about a conditional (if P then Q for one, if P then not Q for the other). Three answer choices are near-misses."
+          },
+          "rubricPath": "docs/taxonomy/LR/point_at_issue.md"
+        },
+        "main_point": {
+          "name": "Main Point",
+          "description": "The stimulus is an argument with a clear main conclusion.",
+          "coverageTarget": 83,
+          "byDifficulty": {
+            "1": 26,
+            "2": 38,
+            "3": 19
+          },
+          "stemTemplates": [
+            "\"Which one of the following most accurately expresses the main conclusion of the argument?\" (dossier §3.11, line 237)",
+            "\"Which one of the following most accurately expresses the main point of the [speaker]'s argument?\"",
+            "\"The main point of the argument is that...\""
+          ],
+          "commonTraps": [
+            "**Restates a premise as if it were the conclusion:** The choice captures something the author says is true but uses it as support, not as the conclusion. (Dossier §3.11, line 239.)",
+            "**Verbatim but wrong:** Quotes wording from the stimulus but from the wrong sentence — often an intermediate conclusion. (§3.11, line 240.)",
+            "**Overstates / understates:** Strengthens the author's hedged claim to an absolute, or weakens the author's firm claim to a \"maybe.\" Main-point answers must preserve the original modal force.",
+            "**Mis-scoped:** Generalizes the conclusion beyond its stated scope, or narrows it. E.g., stimulus concludes \"this policy failed\"; trap says \"all such policies fail\" or \"the policy failed for this reason.\"",
+            "**Opposing view misread:** If the stimulus opens with \"some argue that X,\" students may read X as the conclusion. The conclusion is always the author's view, not the view the author is rebutting."
+          ],
+          "difficultyAnchors": {
+            "1": "Short stimulus (30–50 words) with \"therefore\" or \"thus\" followed directly by the main conclusion. The correct answer paraphrases that sentence. Distractors restate premises.",
+            "2": "Stimulus with an intermediate conclusion. The main conclusion is either the first or last sentence",
+            "3": "Stimulus opens with the conclusion and then provides multiple tiers of support, some of which use their own conclusion markers. The correct answer reaches back to the opening sentence. Two or three distractors pull from the middle of the argument"
+          },
+          "rubricPath": "docs/taxonomy/LR/main_point.md"
+        },
+        "must_be_true": {
+          "name": "Must Be True",
+          "description": "The stimulus is **not an argument** but a set of factual statements.",
+          "coverageTarget": 128,
+          "byDifficulty": {
+            "1": 32,
+            "2": 58,
+            "3": 38
+          },
+          "stemTemplates": [
+            "\"Which one of the following must also be true?\" (dossier §3.12, line 248)",
+            "\"If the statements above are true, which one of the following must also be true?\" (§3.12, line 249)",
+            "\"The statements above, if true, most strongly support which one of the following conclusions?\" — **Note:** this phrasing is actually most_strongly_supported, not must_be_true. The distinguishing word is \"must.\"",
+            "\"Which one of the following can be properly inferred from the passage?\" (anchor stem on `lr-lsac-sample-03.json`)",
+            "**EXCEPT variant:** \"Each of the following must be true on the basis of the statements above EXCEPT:\""
+          ],
+          "commonTraps": [
+            "**Could be true but not must:** Answer is consistent with the stimulus but not forced by it. Students accept it because it sounds plausible given what they know about the world. (Dossier §3.12, line 252.)",
+            "**Too strong / overreach:** Extends the stimulus's claim beyond what is supported — adds \"all,\" \"never,\" \"only,\" or unjustified causal language (Quebec Bridge's (A) and (D) both overreach). (§3.12, line 253; §6.5, lines 417–421.)",
+            "**Contradicted by the stimulus:** Answer is refuted by what the stimulus actually says. Rarer, but appears when a student misreads a double negative or \"unless.\"",
+            "**Scope shift:** Correct inference would be about one specific subject; answer applies it to a broader or narrower one. Quebec Bridge's (C) shifts from \"bridges built via rules of thumb\" to \"bridge engineers' analytical capability.\"",
+            "**Temporal confusion:** Answer attributes a property to the wrong time period (§6.6, lines 423–427). Stimulus says \"in the 1960s, X\"; trap says \"X\" flatly."
+          ],
+          "difficultyAnchors": {
+            "1": "Two or three facts with one obvious consequence. E.g., \"All oaks are deciduous. The tree in the quad is an oak.\" Correct answer: \"The tree in the quad is deciduous.\" No trap requires inference beyond one step.",
+            "2": "Historical or descriptive passage (Quebec Bridge style) where the correct answer is a modest, hedged inference. Traps overreach by adding \"therefore unsafe\" or \"therefore the only cause.\"",
+            "3": "Conditional chain with three or more links. Correct answer is a contrapositive or transitive inference requiring formal reasoning. EXCEPT-format is standard at this level. Distractors include a \"could be true\" and a \"too strong\" overshoot."
+          },
+          "rubricPath": "docs/taxonomy/LR/must_be_true.md"
+        },
+        "most_strongly_supported": {
+          "name": "Most Strongly Supported",
+          "description": "The stimulus is a set of facts, not an argument.",
+          "coverageTarget": 115,
+          "byDifficulty": {
+            "1": 32,
+            "2": 51,
+            "3": 32
+          },
+          "stemTemplates": [
+            "\"Which one of the following is most strongly supported by the information above?\" (dossier §3.13, line 262)",
+            "\"The statements above, if true, most support which one of the following?\" (§3.13, line 263)",
+            "\"The information above most strongly supports which one of the following claims?\"",
+            "\"Which one of the following inferences is most supported by the information above?\""
+          ],
+          "commonTraps": [
+            "**Too strong:** The choice uses absolute language where the stimulus justifies only hedged language. This is the dominant trap for this subtype — extreme answers nearly always lose. (Dossier §3.13, line 265.)",
+            "**Plausible but unsupported:** Appealing worldly truth that a student recognizes as generally accurate but which is not derivable from the stimulus. (§3.13, line 266.)",
+            "**Opposite direction:** Correct answer would move in one direction; trap moves in the other. E.g., stimulus supports \"X is less effective than previously believed\"; trap says \"X is more effective.\"",
+            "**Scope creep:** Applies a claim about a specific group to a larger one, or about a specific period to all periods. (§6.6, lines 423–427, temporal confusion.)",
+            "**Relative/absolute confusion:** Stimulus supports a comparative claim; trap reads as absolute. (§6.8, lines 435–439.)"
+          ],
+          "difficultyAnchors": {
+            "1": "Three or four related facts with one clear implication. E.g., a study found X correlates with Y",
+            "2": "Stimulus presents a mix of data and qualifications. The correct answer is a modest inference that respects the qualifications. Trap answers either drop a qualifier or add one the stimulus doesn't justify.",
+            "3": "Stimulus contains multiple datapoints in tension"
+          },
+          "rubricPath": "docs/taxonomy/LR/most_strongly_supported.md"
+        },
+        "principle_conform": {
+          "name": "Principle (Conform)",
+          "description": "The stimulus states a **principle** — a general rule about when some action is appropriate, some judgment is justified, or some outcome follows.",
+          "coverageTarget": 103,
+          "byDifficulty": {
+            "1": 26,
+            "2": 45,
+            "3": 32
+          },
+          "stemTemplates": [
+            "\"Which one of the following judgments most closely conforms to the principle above?\" (dossier §3.14, line 273)",
+            "\"Which one of the following conforms most closely to the principle stated above?\" (§3.14, line 274)",
+            "\"The principle above, if valid, most helps to justify which one of the following judgments?\"",
+            "\"Which one of the following situations most closely conforms to the principle stated by the [speaker]?\""
+          ],
+          "commonTraps": [
+            "**Reversed application:** Applies the principle's contrapositive incorrectly, or applies the converse. If the principle is \"if X, then Y,\" a trap describes \"if Y, then X\" conformance. (Dossier §3.14, line 276.)",
+            "**Partial fit:** Satisfies only the antecedent or only the consequent, not both. In a \"should be compensated if both A and B\" principle, a trap describes someone meeting A but not B. (§3.14, line 277.)",
+            "**Outside the principle's scope:** Answer describes a scenario that the principle doesn't address at all (principle is about public officials; answer is about private citizens).",
+            "**Violates the principle:** Answer describes conduct the principle would condemn. If the principle says \"only if X is Y justified,\" a trap shows Y justified without X.",
+            "**Extra fact misdirection:** Answer introduces irrelevant facts that create noise; student gets distracted and misses that the core conditional isn't satisfied."
+          ],
+          "difficultyAnchors": {
+            "1": "Single-antecedent principle. \"An apology is called for only when one has caused harm.\" Correct answer describes someone who caused harm and apologized",
+            "2": "Two-part antecedent. \"A consumer should receive compensation if (a) the product failed within warranty and (b) the failure was not caused by misuse.\" Correct answer satisfies both parts",
+            "3": "Principle with exception or nested clause. \"Scientists should publish negative findings unless publication would cause disproportionate harm, except when the finding contradicts a broadly-held view.\" Correct answer threads the full logical path. Distractors take wrong turns at each branch."
+          },
+          "rubricPath": "docs/taxonomy/LR/principle_conform.md"
+        },
+        "principle_justify": {
+          "name": "Principle (Justify)",
+          "description": "The stimulus is a short argument — often a judgment, recommendation, or normative claim with a specific reason.",
+          "coverageTarget": 83,
+          "byDifficulty": {
+            "1": 19,
+            "2": 38,
+            "3": 26
+          },
+          "stemTemplates": [
+            "\"Which one of the following principles, if valid, most helps to justify the reasoning above?\" (dossier §3.15, line 284)",
+            "\"Which one of the following principles, if valid, most helps to justify the [speaker]'s reasoning?\"",
+            "\"The [speaker]'s argument most closely conforms to which one of the following principles?\"",
+            "\"The reasoning above most closely conforms to which one of the following general principles?\""
+          ],
+          "commonTraps": [
+            "**Too narrow:** The principle doesn't cover the full argument. It justifies one step but leaves another unsupported. (Dossier §3.15, line 287.)",
+            "**Too broad:** The principle covers the argument but also licenses conclusions the argument doesn't draw — and may even contradict other parts of the stimulus. (§3.15, line 288.)",
+            "**Reversed:** The principle implies the opposite conclusion. Pharma-pricing's (D) \"people in wealthy nations should not have better access\" inverts the journalist's critique. (§3.15, line 289.)",
+            "**Tangential principle:** Addresses a topically related issue that isn't the argument's core. Pharma-pricing's (A) concerns illness vs. health; (B) concerns institutional obligation — both feel ethical and related, but neither underwrites *this* argument.",
+            "**Principle ⇒ premise mismatch:** The principle could justify a different argument with similar vocabulary but doesn't match the stimulus's actual claim structure."
+          ],
+          "difficultyAnchors": {
+            "1": "Clear one-move argument with an obvious principle gap. \"Mei didn't plagiarize",
+            "2": "Argument with a normative claim + a specific reason. Correct principle licenses that move",
+            "3": "Argument with multiple normative steps. Correct principle must cover all of them without over-covering. Distractors include one too-broad principle that would also license unrelated conclusions, and one too-narrow principle that would justify only part of the argument."
+          },
+          "rubricPath": "docs/taxonomy/LR/principle_justify.md"
+        },
+        "paradox_resolve": {
+          "name": "Paradox / Resolve",
+          "description": "The stimulus presents **two seemingly-conflicting facts** — observations, statistics, or outcomes that appear inconsistent with one another.",
+          "coverageTarget": 140,
+          "byDifficulty": {
+            "1": 38,
+            "2": 64,
+            "3": 38
+          },
+          "stemTemplates": [
+            "\"Which one of the following, if true, most helps to resolve the apparent discrepancy in the information above?\" (dossier §3.16, line 295; anchor stem in `lr-lsac-sample-09.json`)",
+            "\"Which one of the following, if true, would most help to explain the surprising phenomenon?\" (§3.16, line 296)",
+            "\"Which one of the following, if true, most helps to reconcile the apparent conflict above?\"",
+            "\"Which one of the following, if true, would most help to explain why [apparent conflict]?\""
+          ],
+          "commonTraps": [
+            "**Deepens the paradox:** Answer adds information that makes the conflict worse, not better. Headlights' (E) — mandatory-headlight jurisdictions have poor visibility — would make mandatory headlights more useful, sharpening rather than dissolving the paradox. (Dossier §3.16, line 298.)",
+            "**Irrelevant:** True-sounding fact that doesn't touch the conflict. (§3.16, line 299.)",
+            "**Resolves one horn only:** Explains one of the two facts but leaves the other unexplained. A good resolution has to account for both. (§3.16, line 300.)",
+            "**Opposite-direction resolution:** Explains the inverse of the observed pattern. E.g., stimulus notes \"A is up while B is down\"; trap explains why \"A is down while B is up.\"",
+            "**Presupposes what needs to be resolved:** Answer assumes the very inconsistency it's meant to dissolve (circular resolution)."
+          ],
+          "difficultyAnchors": {
+            "1": "Two facts with one obvious confounder. E.g., a town's park attendance fell despite the park being expanded",
+            "2": "Statistical or policy paradox with a self-selection or reverse-causation explanation. Headlights stimulus is here: the correct answer (C) identifies that voluntary users are a biased sample. Distractors explain one half of the paradox but leave the other unexplained.",
+            "3": "Paradox involving multiple interacting mechanisms. Correct resolution requires a compound explanation (e.g., a demographic shift plus a policy change). Distractors include a \"deepens the paradox\" (worsens rather than resolves) and one \"resolves one horn only.\""
+          },
+          "rubricPath": "docs/taxonomy/LR/paradox_resolve.md"
+        }
       }
     },
     "RC": {
       "name": "Reading Comprehension",
+      "coverageTarget": 1100,
       "genres": {
-        "humanities": { "name": "Humanities", "coverageTarget": 0 },
-        "social_sciences": { "name": "Social Sciences", "coverageTarget": 0 },
-        "natural_science": { "name": "Natural Science", "coverageTarget": 0 },
-        "law": { "name": "Law", "coverageTarget": 0 },
-        "comparative": { "name": "Comparative Reading", "coverageTarget": 0 }
+        "humanities": {
+          "name": "Humanities",
+          "description": "Humanities passages treat arts, literature, literary criticism, philosophy of art, music history, aesthetics, and kindred topics (dossier §4.1, lines 312).",
+          "coverageTarget": 247,
+          "byDifficulty": {
+            "1": 62,
+            "2": 116,
+            "3": 69
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "A single artist/work/movement, a clearly-stated \"traditional view vs. author's view\" contrast, accessible vocabulary (no technical aesthetics terminology). One thesis, one nuance.",
+            "2": "Two critical frames held in tension (e.g., \"parody\" vs. \"realism\" for Lichtenstein). Author's attitude revealed in stacked qualifiers (\"not merely X, but also Y\"). Vocabulary includes period- or movement-specific terms defined only implicitly.",
+            "3": "Three or more interpretive frames, author's stance only resolvable by assembling hints across paragraphs 2 and 3. Dense pronoun chains (\"its,\" \"their\" referring to abstractions like \"the movement\" or \"this impulse\"). Unfamiliar aesthetic terminology (e.g., \"diegesis,\" \"ekphrasis,\" \"histrionic,\" \"anagogic\") used in-passage without gloss."
+          },
+          "rubricPath": "docs/taxonomy/RC/humanities.md"
+        },
+        "social_sciences": {
+          "name": "Social Sciences",
+          "description": "Social-sciences passages cover history, political science, sociology, anthropology, economics, and psychology (dossier §4.1, line 313).",
+          "coverageTarget": 238,
+          "byDifficulty": {
+            "1": 54,
+            "2": 115,
+            "3": 69
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "One scholar or school of thought, a single phenomenon, explanation given directly. Quantitative content is minimal or walked through in plain numbers.",
+            "2": "Two scholars with competing accounts (the canonical Mackay-vs-Garber structure). Technical terminology defined inline but used throughout (e.g., \"speculative bubble,\" \"fundamentals,\" \"descendent bulbs,\" \"reproduction cost\"). The author's own stance requires inference from which view receives more supportive elaboration.",
+            "3": "Three or more positions, nested comparisons across time periods or regions, quantitative reasoning the student must track (e.g., \"prices fell to 10 percent... by 1739, to one two-hundredth of 1 percent...\"). Correlational vs. causal claims distinguished only implicitly. Technical models stated compactly (one or two sentences of setup carrying the rest of the passage)."
+          },
+          "rubricPath": "docs/taxonomy/RC/social_sciences.md"
+        },
+        "natural_science": {
+          "name": "Natural Science",
+          "description": "Natural-science passages cover biology, chemistry, physics, geology, ecology, astronomy, and neuroscience (dossier §4.1, line 314).",
+          "coverageTarget": 231,
+          "byDifficulty": {
+            "1": 54,
+            "2": 108,
+            "3": 69
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "Single phenomenon, single mechanism explained step by step. One technical term per paragraph, defined on first use. Experimental reasoning is explicit (\"because X was observed, researchers concluded Y\").",
+            "2": "Two competing hypotheses with differing predictions",
+            "3": "Nested mechanisms (a process at one scale explained by a process at another scale — e.g., a population-level pattern explained by a cellular mechanism). Multiple confounds mentioned. The editorial paragraph separates what the evidence establishes from what the author infers. Dense noun phrases (\"the rate of stellar nucleosynthesis,\" \"an enzymatic cascade initiated by...\") the student must parse quickly."
+          },
+          "rubricPath": "docs/taxonomy/RC/natural_science.md"
+        },
+        "law": {
+          "name": "Law",
+          "description": "Law passages cover legal reasoning, case analysis, statutory interpretation, jurisprudence, legal history, and policy-as-law (dossier §4.1, line 315).",
+          "coverageTarget": 215,
+          "byDifficulty": {
+            "1": 46,
+            "2": 100,
+            "3": 69
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "Single legal question, one jurisdiction, one illustrative case. Terminology (e.g., \"constitutional protection,\" \"provincial courts\") is legally ordinary and requires no specialist background.",
+            "2": "One doctrine applied to two or more situations with different outcomes",
+            "3": "A doctrine spanning multiple regimes (federal/provincial, common law/civil law, domestic/international) or eras (pre- and post-reform). Unfamiliar technical terms (\"escheat,\" \"per curiam,\" \"ultra vires,\" \"jus cogens,\" \"lex specialis\") used without full definition. Distinguishing what a court held from what the author infers from that holding requires careful re-reading."
+          },
+          "rubricPath": "docs/taxonomy/RC/law.md"
+        },
+        "comparative": {
+          "name": "Comparative Reading",
+          "description": "Comparative passages present two short texts on the same topic, typically from different disciplines, eras, or stances.",
+          "coverageTarget": 169,
+          "byDifficulty": {
+            "1": 38,
+            "2": 85,
+            "3": 46
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "Generalization/instance or principle/application pairs where the relationship is transparent — passage A states a general account, passage B offers a concrete case that instantiates it. Minimal tension between the authors.",
+            "2": "Point/counterpoint pairs where the disagreement is stated clearly and bounded (authors agree on the facts, disagree on interpretation, as in the global-warming pair). Student must distinguish what both authors accept from what each adds.",
+            "3": "Pairs where the authors talk past each other — different framings of the same topic that require the student to identify a question that neither explicitly asks but both implicitly answer differently. Or pairs where the passages share vocabulary but use key terms with subtly different senses (e.g., \"equality\" means \"formal legal equality\" in A and \"substantive equality of outcome\" in B)."
+          },
+          "rubricPath": "docs/taxonomy/RC/comparative.md"
+        }
       },
       "questionTypes": {
-        "main_point": { "name": "Main Point" },
-        "author_tone": { "name": "Author's Tone" },
-        "passage_structure": { "name": "Passage Structure" },
-        "specific_detail": { "name": "Specific Detail" },
-        "inference": { "name": "Inference" },
-        "function": { "name": "Function" },
-        "strengthen_weaken_author": { "name": "Strengthen/Weaken Author's Claim" },
-        "application": { "name": "Application" }
+        "main_point": {
+          "name": "Main Point"
+        },
+        "author_attitude": {
+          "name": "Author's Attitude"
+        },
+        "passage_structure": {
+          "name": "Passage Structure"
+        },
+        "specific_detail": {
+          "name": "Specific Detail"
+        },
+        "inference": {
+          "name": "Inference"
+        },
+        "function": {
+          "name": "Function"
+        },
+        "strengthen_weaken_claim": {
+          "name": "Strengthen/Weaken Claim"
+        },
+        "application": {
+          "name": "Application"
+        }
       }
     },
     "LG": {
       "name": "Logic Games",
+      "coverageTarget": 900,
       "families": {
-        "basic_linear": { "name": "Basic Linear", "coverageTarget": 0 },
-        "advanced_linear": { "name": "Advanced Linear", "coverageTarget": 0 },
-        "grouping": { "name": "Grouping", "coverageTarget": 0 },
-        "hybrid": { "name": "Hybrid", "coverageTarget": 0 }
+        "basic_linear": {
+          "name": "Basic Linear",
+          "description": "Basic linear games assign exactly N entities into N ordered slots, 1:1 (dossier §5.1, lines 347–353).",
+          "coverageTarget": 225,
+          "byDifficulty": {
+            "1": 71,
+            "2": 103,
+            "3": 51
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "5–6 entities",
+            "2": "6–7 entities",
+            "3": "7–8 entities"
+          },
+          "rubricPath": "docs/taxonomy/LG/basic_linear.md"
+        },
+        "advanced_linear": {
+          "name": "Advanced Linear",
+          "description": "Advanced linear keeps the 1:1 slot-to-entity spine of basic linear but adds a second dimension per slot: every slot has both an **ordinal position** and an **attribute** the entity at that slot carries (dossier §5.2, lines 355–360).",
+          "coverageTarget": 212,
+          "byDifficulty": {
+            "1": 45,
+            "2": 96,
+            "3": 71
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "5–6 entities",
+            "2": "6 entities",
+            "3": "6–7 entities"
+          },
+          "rubricPath": "docs/taxonomy/LG/advanced_linear.md"
+        },
+        "grouping": {
+          "name": "Grouping",
+          "description": "Grouping games distribute entities into two or more named groups (or partition a pool into \"chosen\" / \"not chosen\") rather than sequencing them (dossier §5.3, lines 362–367).",
+          "coverageTarget": 237,
+          "byDifficulty": {
+            "1": 58,
+            "2": 115,
+            "3": 64
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "6 entities, 2–3 groups of uniform fixed size",
+            "2": "7–8 entities, 3 groups",
+            "3": "8–10 entities, 3–4 groups"
+          },
+          "rubricPath": "docs/taxonomy/LG/grouping.md"
+        },
+        "hybrid": {
+          "name": "Hybrid",
+          "description": "Hybrid games combine two families in a single scenario, most commonly **grouping-plus-sequencing** (dossier §5.4, lines 369–375).",
+          "coverageTarget": 226,
+          "byDifficulty": {
+            "1": 39,
+            "2": 116,
+            "3": 71
+          },
+          "stemTemplates": [],
+          "commonTraps": [],
+          "difficultyAnchors": {
+            "1": "Small hybrid — 5–6 entities, one axis trivially determined (e.g., every group has exactly two members and one is fixed). 3–4 rules with at most one cross-structure rule. Solution count small.",
+            "2": "6–8 entities across both structures",
+            "3": "7–9 entities"
+          },
+          "rubricPath": "docs/taxonomy/LG/hybrid.md"
+        }
+      },
+      "questionTypes": {
+        "orientation_question": {
+          "name": "Orientation"
+        },
+        "could_be_true": {
+          "name": "Could Be True"
+        },
+        "must_be_true": {
+          "name": "Must Be True"
+        },
+        "cannot_be_true": {
+          "name": "Cannot Be True"
+        },
+        "must_be_false": {
+          "name": "Must Be False"
+        },
+        "rule_substitution": {
+          "name": "Rule Substitution"
+        },
+        "equivalent": {
+          "name": "Equivalent Rule"
+        }
       }
     }
-  }
+  },
+  "difficultyScale": {
+    "1": {
+      "label": "1★",
+      "description": "Easier — ≈80–100% of LSAT takers get these right."
+    },
+    "2": {
+      "label": "2★",
+      "description": "Medium — ≈50–79% of LSAT takers get these right."
+    },
+    "3": {
+      "label": "3★",
+      "description": "Harder — under 50% of LSAT takers get these right."
+    }
+  },
+  "trapCatalog": [
+    {
+      "id": "sufficient_necessary_swap",
+      "name": "Sufficient / Necessary Swap",
+      "description": "Reverses the direction of a conditional."
+    },
+    {
+      "id": "out_of_scope",
+      "name": "Out of Scope",
+      "description": "Brings in a topic the stimulus never addresses."
+    },
+    {
+      "id": "half_right",
+      "name": "Half Right / Half Wrong",
+      "description": "First clause matches; second clause contradicts the stimulus."
+    },
+    {
+      "id": "opposite_answer",
+      "name": "Opposite Answer",
+      "description": "States the reverse of what follows — often by dropping a negation."
+    },
+    {
+      "id": "too_strong",
+      "name": "Too Strong",
+      "description": "Overstates the stimulus (only → all; some → most)."
+    },
+    {
+      "id": "temporal_confusion",
+      "name": "Temporal Confusion",
+      "description": "Swaps past/present/future against what the stimulus claims."
+    },
+    {
+      "id": "reversed_causation",
+      "name": "Reversed Causation",
+      "description": "Claims Y caused X when the stimulus shows X caused Y."
+    },
+    {
+      "id": "relative_vs_absolute",
+      "name": "Relative vs. Absolute",
+      "description": "Confuses percent changes with absolute counts or vice versa."
+    },
+    {
+      "id": "unwarranted_comparison",
+      "name": "Unwarranted Comparison",
+      "description": "Compares two things the stimulus never put on the same scale."
+    },
+    {
+      "id": "shift_in_subject",
+      "name": "Shift in Subject",
+      "description": "Slightly changes who/what the stimulus is talking about."
+    }
+  ]
 }

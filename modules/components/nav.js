@@ -9,7 +9,8 @@ const LINKS = [
   { href: `${BASE}/test`, label: 'Test', match: /^\/test/ },
   { href: `${BASE}/writing`, label: 'Writing', match: /^\/writing/ },
   { href: `${BASE}/progress`, label: 'Progress', match: /^\/progress/ },
-  { href: `${BASE}/settings`, label: 'Settings', match: /^\/settings/ }
+  { href: `${BASE}/settings`, label: 'Settings', match: /^\/settings/ },
+  { href: `${BASE}/about`, label: 'About', match: /^\/about/ }
 ];
 
 export function mountNav(rootEl, ctx) {
