@@ -265,9 +265,36 @@ fieldset {
 }
 fieldset legend { padding: 0 var(--space-2); font-weight: 500; }
 
+/* Coverage matrix table (About page) */
+.matrix-wrap { overflow-x: auto; }
+table.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+table.matrix th,
+table.matrix td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+table.matrix th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-fg-muted);
+  background: var(--color-surface-muted);
+  position: sticky; top: 0;
+}
+table.matrix tr.section-head td {
+  background: var(--color-surface-muted);
+  border-top: 1px solid var(--color-border);
+}
+
 /* Responsive tweaks */
 @media (max-width: 480px) {
   h1 { font-size: var(--text-2xl); }
   h2 { font-size: var(--text-xl); }
   .app-nav { padding: var(--space-2); }
+  table.matrix th, table.matrix td { padding: var(--space-1) var(--space-2); }
 }

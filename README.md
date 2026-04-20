@@ -14,6 +14,44 @@ A friend-project LSAT prep web app: 4,000 AI-generated questions across Logical 
 - **Generation** (`generation/`): offline six-stage pipeline (research → taxonomy → coverage → generate → critic → assemble) using parallel Claude Code subagents. Outputs `frontend/questions.json`.
 - **Deploy** (`deploy/`): bash scripts + scoped IAM policy. All AWS resources tagged `project=lsatprep`.
 
+## Coverage matrix
+
+The 4,000 questions are stratified across section, subtype, and difficulty. Counts below are planning targets; the per-run generation report documents the actual delivered distribution. Difficulty is 1★ (≈80–100% of LSAT takers get it right) / 2★ (≈50–79%) / 3★ (under 50%).
+
+| Section / Type            |     Count | Notes (d1 / d2 / d3, or count)    |
+| :------------------------ | --------: | :-------------------------------- |
+| **Logical Reasoning**     |   ~2,000  | 16 subtypes × difficulty          |
+| &nbsp;&nbsp;Assumption — Necessary      |   240 | 80 / 120 / 40  |
+| &nbsp;&nbsp;Assumption — Sufficient     |   120 | 40 / 60 / 20   |
+| &nbsp;&nbsp;Strengthen                  |   240 | 80 / 120 / 40  |
+| &nbsp;&nbsp;Weaken                      |   240 | 80 / 120 / 40  |
+| &nbsp;&nbsp;Flaw                        |   200 | 60 / 100 / 40  |
+| &nbsp;&nbsp;Parallel Reasoning          |   120 | 20 / 60 / 40   |
+| &nbsp;&nbsp;Parallel Flaw               |   100 | 20 / 60 / 20   |
+| &nbsp;&nbsp;Method of Reasoning         |   100 | 40 / 40 / 20   |
+| &nbsp;&nbsp;Role in Argument            |   120 | 40 / 60 / 20   |
+| &nbsp;&nbsp;Point at Issue              |   100 | 40 / 40 / 20   |
+| &nbsp;&nbsp;Main Point                  |   100 | 60 / 40 / 0    |
+| &nbsp;&nbsp;Must Be True                |   140 | 40 / 80 / 20   |
+| &nbsp;&nbsp;Most Strongly Supported     |   120 | 40 / 60 / 20   |
+| &nbsp;&nbsp;Principle — Conform          |    60 | 20 / 30 / 10   |
+| &nbsp;&nbsp;Principle — Justify          |    60 | 20 / 30 / 10   |
+| &nbsp;&nbsp;Paradox / Resolve            |    60 | 20 / 20 / 20   |
+| **Reading Comprehension** |   ~1,100  | ~160 passages × ~7 Q              |
+| &nbsp;&nbsp;Humanities                   |   280 | 40 passages    |
+| &nbsp;&nbsp;Social Sciences              |   280 | 40 passages    |
+| &nbsp;&nbsp;Natural Science              |   280 | 40 passages    |
+| &nbsp;&nbsp;Law                          |   140 | 20 passages    |
+| &nbsp;&nbsp;Comparative Reading          |   120 | 20 passages (paired) |
+| **Logic Games**           |     ~900  | ~140 games × ~6–7 Q               |
+| &nbsp;&nbsp;Basic Linear                 |   200 | 30 games       |
+| &nbsp;&nbsp;Advanced Linear              |   260 | 40 games       |
+| &nbsp;&nbsp;Grouping                     |   240 | 40 games       |
+| &nbsp;&nbsp;Hybrid                       |   220 | 30 games       |
+| **Grand total**           | **~4,000** |                                   |
+
+The machine-readable version is `generation/coverage-matrix.json`; the generator fan-out (Task 25–27) reads it directly.
+
 ## Dev setup
 
 ```bash
