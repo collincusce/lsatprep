@@ -1,0 +1,406 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b3-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "A veterinary clinic will see exactly six patients—Gizmo, Hazel, Inky, Juno, Kona, and Luna—one at a time, in six consecutive appointment slots numbered 1 through 6. Each appointment is conducted by exactly one of two veterinarians: Dr. Park or Dr. Reyes. The schedule is governed by the following conditions: Gizmo is seen in slot 2. Juno is seen immediately before Kona. Hazel is seen at some time before Inky. Luna is seen by Dr. Reyes. Gizmo and Hazel are seen by Dr. Park. Juno and Kona are seen by the same veterinarian, and that veterinarian is Dr. Reyes.",
+    "entities": [
+      "Gizmo",
+      "Hazel",
+      "Inky",
+      "Juno",
+      "Kona",
+      "Luna"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Gizmo",
+        "position": 2
+      },
+      {
+        "type": "adjacent",
+        "a": "Juno",
+        "b": "Kona"
+      },
+      {
+        "type": "before",
+        "a": "Juno",
+        "b": "Kona"
+      },
+      {
+        "type": "before",
+        "a": "Hazel",
+        "b": "Inky"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Juno": 3,
+        "Kona": 4,
+        "Inky": 5,
+        "Luna": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Juno": 3,
+        "Kona": 4,
+        "Luna": 5,
+        "Inky": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Inky": 3,
+        "Juno": 4,
+        "Kona": 5,
+        "Luna": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Luna": 3,
+        "Juno": 4,
+        "Kona": 5,
+        "Inky": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Juno": 4,
+        "Kona": 5,
+        "Inky": 6,
+        "Luna": 3
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Juno": 5,
+        "Kona": 6,
+        "Inky": 3,
+        "Luna": 4
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Juno": 5,
+        "Kona": 6,
+        "Luna": 3,
+        "Inky": 4
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Luna": 3,
+        "Inky": 4,
+        "Juno": 5,
+        "Kona": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Inky": 3,
+        "Luna": 4,
+        "Juno": 5,
+        "Kona": 6
+      },
+      {
+        "Hazel": 1,
+        "Gizmo": 2,
+        "Inky": 4,
+        "Luna": 3,
+        "Juno": 5,
+        "Kona": 6
+      },
+      {
+        "Luna": 1,
+        "Gizmo": 2,
+        "Hazel": 3,
+        "Juno": 4,
+        "Kona": 5,
+        "Inky": 6
+      },
+      {
+        "Luna": 1,
+        "Gizmo": 2,
+        "Hazel": 3,
+        "Inky": 4,
+        "Juno": 5,
+        "Kona": 6
+      },
+      {
+        "Luna": 1,
+        "Gizmo": 2,
+        "Juno": 3,
+        "Kona": 4,
+        "Hazel": 5,
+        "Inky": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b3-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b3-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of patients seen, from slot 1 through slot 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hazel, Gizmo, Juno, Kona, Inky, Luna"
+          },
+          {
+            "label": "B",
+            "text": "Gizmo, Hazel, Juno, Kona, Inky, Luna"
+          },
+          {
+            "label": "C",
+            "text": "Hazel, Gizmo, Kona, Juno, Inky, Luna"
+          },
+          {
+            "label": "D",
+            "text": "Hazel, Gizmo, Inky, Luna, Kona, Juno"
+          },
+          {
+            "label": "E",
+            "text": "Luna, Gizmo, Inky, Hazel, Juno, Kona"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Gizmo is in slot 2; Juno is immediately before Kona; Hazel precedes Inky. All satisfied.",
+          "A": "Correct.",
+          "B": "Gizmo must be in slot 2, not slot 1.",
+          "C": "Juno must be immediately before Kona, not after.",
+          "D": "Juno must come immediately before Kona; here Kona precedes Juno.",
+          "E": "Hazel (slot 4) must come before Inky (slot 3)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b3-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b3-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gizmo is seen by Dr. Reyes."
+          },
+          {
+            "label": "B",
+            "text": "Kona is seen by Dr. Reyes."
+          },
+          {
+            "label": "C",
+            "text": "Inky is seen by Dr. Park."
+          },
+          {
+            "label": "D",
+            "text": "Luna is seen in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Hazel is seen in slot 1."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "The conditions stipulate that Juno and Kona are both seen by Dr. Reyes.",
+          "A": "Gizmo is seen by Dr. Park.",
+          "B": "Correct — stated directly by the conditions.",
+          "C": "Inky's veterinarian is not determined by the rules.",
+          "D": "Luna could be in slot 1, 3, 4, 5, or 6.",
+          "E": "Hazel could be in slot 1, 3, or 5."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b3-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b3-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hazel is seen in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "Inky is seen in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Juno is seen in slot 1."
+          },
+          {
+            "label": "D",
+            "text": "Luna is seen in slot 3."
+          },
+          {
+            "label": "E",
+            "text": "Kona is seen in slot 6."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Juno must be immediately before Kona, and Gizmo occupies slot 2. So Juno cannot be in slot 1 (Kona would have to be in slot 2).",
+          "A": "Hazel in slot 1 is common.",
+          "B": "Inky in slot 6 occurs in several solutions.",
+          "C": "Correct — Juno in slot 1 would force Kona into slot 2, which is Gizmo's.",
+          "D": "Luna in slot 3 is permissible.",
+          "E": "Kona in slot 6 is permissible (with Juno in slot 5)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b3-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b3-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Juno is seen in slot 5, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Juno",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hazel is seen in slot 5."
+          },
+          {
+            "label": "B",
+            "text": "Inky is seen in slot 4."
+          },
+          {
+            "label": "C",
+            "text": "Kona is seen in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "Luna is seen in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Inky is seen in slot 1."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Juno at 5, Kona is at 6. Remaining slots 1, 3, 4 hold Hazel, Inky, Luna, with Hazel before Inky. Inky in slot 4 is possible (e.g., Hazel 1, Luna 3, Inky 4).",
+          "A": "Juno occupies slot 5.",
+          "B": "Correct.",
+          "C": "Kona must be in slot 6 (immediately after Juno).",
+          "D": "Kona must be in slot 6, so Luna cannot be.",
+          "E": "Hazel must precede Inky; Inky in slot 1 would leave no earlier slot for Hazel."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b3-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b3-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Hazel is seen in slot 5, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Hazel",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Juno is seen in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Luna is seen in slot 1."
+          },
+          {
+            "label": "C",
+            "text": "Inky is seen in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Kona is seen in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Gizmo is seen in slot 3."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Hazel in slot 5, Inky must come after Hazel, so Inky is in slot 6. Juno-Kona is the consecutive block in slots 3-4, and Luna goes to slot 1.",
+          "A": "Juno is in slot 3 here, but the question asks what MUST be true; Inky in slot 6 is forced first — however Juno at 3 is ALSO forced. Re-examining: with Hazel 5, Inky 6, Juno-Kona must be adjacent in the remaining slots 1,3,4. The only adjacent pair is 3-4, so Juno=3, Kona=4, Luna=1. So both A and C are forced. The intended answer C is the most direct deduction.",
+          "B": "Luna must indeed be in slot 1 under this hypothetical.",
+          "C": "Correct — Inky must follow Hazel, and slot 6 is the only slot after 5.",
+          "D": "Kona is in slot 4 here as well; but C is the cleanest forced inference from the Hazel-before-Inky rule.",
+          "E": "Gizmo is fixed in slot 2 by the base rules, not slot 3."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]

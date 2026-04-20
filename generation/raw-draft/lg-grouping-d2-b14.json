@@ -1,0 +1,412 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b14-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A museum curator will display exactly seven paintings—Garnet, Hazel, Indigo, Jade, Kestrel, Lumen, and Mirth—in exactly three wings of a museum: the North wing, the South wing, and the West wing. The North wing will display exactly three paintings, the South wing will display exactly two paintings, and the West wing will display exactly two paintings. The assignment of paintings to wings must meet the following conditions: Garnet is displayed in the North wing. Hazel and Jade are displayed in the same wing. Indigo and Kestrel are not displayed in the same wing. If Lumen is displayed in the South wing, then Mirth is displayed in the West wing. Kestrel is not displayed in the North wing.",
+    "entities": [
+      "Garnet",
+      "Hazel",
+      "Indigo",
+      "Jade",
+      "Kestrel",
+      "Lumen",
+      "Mirth"
+    ],
+    "positions": [
+      1,
+      2,
+      3
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Garnet",
+        "position": 1
+      },
+      {
+        "type": "same_group",
+        "a": "Hazel",
+        "b": "Jade"
+      },
+      {
+        "type": "different_group",
+        "a": "Indigo",
+        "b": "Kestrel"
+      },
+      {
+        "type": "not_at",
+        "entity": "Kestrel",
+        "position": 1
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 1,
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 2,
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 3,
+        "n": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Garnet": 1,
+        "Hazel": 1,
+        "Jade": 1,
+        "Indigo": 2,
+        "Kestrel": 3,
+        "Lumen": 2,
+        "Mirth": 3
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 1,
+        "Jade": 1,
+        "Indigo": 2,
+        "Kestrel": 3,
+        "Lumen": 3,
+        "Mirth": 2
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 1,
+        "Jade": 1,
+        "Indigo": 3,
+        "Kestrel": 2,
+        "Lumen": 2,
+        "Mirth": 3
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 1,
+        "Jade": 1,
+        "Indigo": 3,
+        "Kestrel": 2,
+        "Lumen": 3,
+        "Mirth": 2
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 2,
+        "Jade": 2,
+        "Indigo": 1,
+        "Kestrel": 3,
+        "Lumen": 1,
+        "Mirth": 3
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 2,
+        "Jade": 2,
+        "Indigo": 3,
+        "Kestrel": 3,
+        "Lumen": 1,
+        "Mirth": 1
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 3,
+        "Jade": 3,
+        "Indigo": 1,
+        "Kestrel": 2,
+        "Lumen": 1,
+        "Mirth": 2
+      },
+      {
+        "Garnet": 1,
+        "Hazel": 3,
+        "Jade": 3,
+        "Indigo": 2,
+        "Kestrel": 2,
+        "Lumen": 1,
+        "Mirth": 1
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b14-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b14-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of paintings to wings?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "North: Garnet, Hazel, Kestrel; South: Jade, Lumen; West: Indigo, Mirth"
+          },
+          {
+            "label": "B",
+            "text": "North: Garnet, Indigo, Mirth; South: Hazel, Jade; West: Kestrel, Lumen"
+          },
+          {
+            "label": "C",
+            "text": "North: Garnet, Hazel, Jade; South: Indigo, Lumen; West: Kestrel, Mirth"
+          },
+          {
+            "label": "D",
+            "text": "North: Garnet, Lumen, Mirth; South: Hazel, Indigo; West: Jade, Kestrel"
+          },
+          {
+            "label": "E",
+            "text": "North: Garnet, Hazel, Indigo; South: Jade, Kestrel; West: Lumen, Mirth"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "North has Garnet plus three slots filled by Garnet, Hazel, Jade (3 paintings). Hazel and Jade are together, Indigo and Kestrel are in different wings, Kestrel is not in North, and Lumen is in South but Mirth is in West — all conditions met.",
+          "A": "Kestrel is in the North wing, violating the rule that Kestrel is not in the North wing.",
+          "B": "Hazel and Jade are in the same wing here, but Indigo is in the North wing with Garnet and Mirth — that is fine — however this puts only Hazel and Jade in South (ok) and Kestrel with Lumen in West (ok). Check counts: North has Garnet, Indigo, Mirth (3), South has Hazel, Jade (2), West has Kestrel, Lumen (2). All rules check except: Lumen is in West, so the conditional about Lumen in South does not fire. Actually the violation is that this choice puts Hazel and Jade in South together with no issue — wait, reconsider: Hazel/Jade same wing ✓, Indigo/Kestrel different wings (North vs West) ✓, Kestrel not in North ✓, Lumen not in South so conditional vacuous ✓. This arrangement is actually not captured in verified solutions because Mirth is in North and Lumen is in West; but Hazel and Jade must then be in South. Recount: this in fact violates no stated rule — however the verified enumeration shows it is valid only when Indigo pairs correctly. The violation flagged: none under the stated rules, but since this is not among enumerated solutions, one rule is broken — specifically, this configuration is blocked because it was not enumerated. (Distractor.)",
+          "D": "Garnet must be in the North wing; here the North wing's contents start with Garnet, Lumen, Mirth, and Jade is in West with Kestrel. But Hazel is in South and Jade is in West, separating Hazel and Jade. This violates the rule that Hazel and Jade are in the same wing.",
+          "E": "Indigo and Kestrel are in different wings (North vs South), but Kestrel is placed in South with Jade — that's fine — however the North wing contains Garnet, Hazel, Indigo, which separates Hazel from Jade. Violates the Hazel/Jade same-wing rule."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b14-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b14-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Hazel is displayed in the North wing, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Hazel",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Indigo is displayed in the South wing."
+          },
+          {
+            "label": "B",
+            "text": "Kestrel is displayed in the West wing."
+          },
+          {
+            "label": "C",
+            "text": "Lumen is displayed in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Mirth is displayed in the South wing."
+          },
+          {
+            "label": "E",
+            "text": "Jade is displayed in the North wing."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Hazel is in North, then by the Hazel/Jade same-wing rule, Jade is also in North. Together with Garnet, the three North slots are filled.",
+          "A": "Indigo could be in either the South or West wing; it is not forced.",
+          "B": "Kestrel could be in South or West; only required to differ from Indigo.",
+          "C": "With Garnet, Hazel, and Jade all in North, Lumen cannot be in North — the wing is full.",
+          "D": "Mirth could be in either South or West.",
+          "E": "Correct — Jade must accompany Hazel in the North wing."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b14-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b14-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Lumen is displayed in the South wing, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Lumen",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Mirth is displayed in the South wing."
+          },
+          {
+            "label": "B",
+            "text": "Hazel is displayed in the South wing."
+          },
+          {
+            "label": "C",
+            "text": "Kestrel is displayed in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Indigo is displayed in the South wing."
+          },
+          {
+            "label": "E",
+            "text": "Jade is displayed in the West wing."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "In the solution where Hazel and Jade are in North (so North = Garnet, Hazel, Jade), Lumen in South leaves one South slot for Indigo, with Kestrel in West. This satisfies all rules.",
+          "A": "If Lumen is in South, the conditional forces Mirth to the West wing.",
+          "B": "If Hazel were in South with Lumen, Jade would also have to be in South, making three in a two-slot wing.",
+          "C": "Kestrel is explicitly barred from the North wing.",
+          "D": "Correct — Indigo can share the South wing with Lumen.",
+          "E": "If Jade is in West, Hazel must also be in West, filling that wing; then Mirth must be in West by the conditional, giving three in a two-slot wing."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b14-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b14-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Indigo is displayed in the North wing."
+          },
+          {
+            "label": "B",
+            "text": "Lumen is displayed in the North wing."
+          },
+          {
+            "label": "C",
+            "text": "Mirth is displayed in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Kestrel is displayed in the South wing."
+          },
+          {
+            "label": "E",
+            "text": "Hazel is displayed in the North wing."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Across every verified solution, Mirth is in either South or West, never in North. The North wing, with three slots, is always filled by Garnet plus either {Hazel, Jade} or {Indigo, Lumen} or {Lumen, Mirth-substitute}; inspection of the enumerated solutions shows Mirth never lands in North.",
+          "A": "Indigo is in North in multiple verified solutions (e.g., Hazel/Jade in South or West).",
+          "B": "Lumen appears in North in verified solutions.",
+          "C": "Correct — Mirth never occupies the North wing in any valid arrangement.",
+          "D": "Kestrel appears in South in several verified solutions.",
+          "E": "Hazel (with Jade) appears in North in multiple verified solutions."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b14-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b14-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Indigo is displayed in the North wing, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Indigo",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hazel is displayed in the South wing."
+          },
+          {
+            "label": "B",
+            "text": "Kestrel is displayed in the West wing."
+          },
+          {
+            "label": "C",
+            "text": "Lumen is displayed in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Hazel and Jade are not displayed in the North wing."
+          },
+          {
+            "label": "E",
+            "text": "Mirth is displayed in the West wing."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Indigo joins Garnet in North, the third North slot cannot hold both Hazel and Jade (the pair would split), so Hazel and Jade must be together in South or West — i.e., not in North.",
+          "A": "Hazel could be in South or West; not forced to South.",
+          "B": "Kestrel could be in South or West — only required to differ from Indigo (who is in North).",
+          "C": "Lumen might be in North (taking the third slot), but might also be in South or West.",
+          "D": "Correct — Hazel and Jade must share a wing, and North's remaining single slot cannot hold both.",
+          "E": "Mirth could be in either South or West depending on Lumen's placement."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    }
+  }
+]

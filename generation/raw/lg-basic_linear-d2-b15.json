@@ -1,0 +1,398 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d2-b15-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 2,
+    "scenario": "A curator is arranging six sculptures—Garnet, Helios, Ironwood, Juno, Kestrel, and Lyra—along a single gallery corridor, placing each sculpture at exactly one of six consecutive pedestals numbered 1 through 6 from the entrance. The arrangement must conform to the following conditions: Garnet is placed at a pedestal numbered lower than Juno's. Helios is placed immediately before or immediately after Kestrel. Ironwood is not placed at pedestal 1 or pedestal 6. Lyra is placed at some pedestal after Kestrel. Juno is not placed immediately next to Kestrel.",
+    "entities": [
+      "Garnet",
+      "Helios",
+      "Ironwood",
+      "Juno",
+      "Kestrel",
+      "Lyra"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Garnet",
+        "b": "Juno"
+      },
+      {
+        "type": "adjacent",
+        "a": "Helios",
+        "b": "Kestrel"
+      },
+      {
+        "type": "not_at",
+        "entity": "Ironwood",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Ironwood",
+        "position": 6
+      },
+      {
+        "type": "before",
+        "a": "Kestrel",
+        "b": "Lyra"
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Juno",
+        "b": "Kestrel"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Garnet": 1,
+        "Helios": 2,
+        "Kestrel": 3,
+        "Ironwood": 4,
+        "Juno": 5,
+        "Lyra": 6
+      },
+      {
+        "Garnet": 1,
+        "Helios": 3,
+        "Kestrel": 2,
+        "Ironwood": 4,
+        "Juno": 5,
+        "Lyra": 6
+      },
+      {
+        "Garnet": 1,
+        "Helios": 2,
+        "Kestrel": 3,
+        "Ironwood": 5,
+        "Juno": 4,
+        "Lyra": 6
+      },
+      {
+        "Juno": 1,
+        "Garnet": 2,
+        "Helios": 4,
+        "Kestrel": 3,
+        "Ironwood": 5,
+        "Lyra": 6
+      },
+      {
+        "Garnet": 2,
+        "Helios": 3,
+        "Kestrel": 4,
+        "Ironwood": 5,
+        "Juno": 1,
+        "Lyra": 6
+      },
+      {
+        "Garnet": 1,
+        "Juno": 2,
+        "Helios": 3,
+        "Kestrel": 4,
+        "Ironwood": 5,
+        "Lyra": 6
+      },
+      {
+        "Garnet": 1,
+        "Juno": 2,
+        "Helios": 4,
+        "Kestrel": 3,
+        "Ironwood": 5,
+        "Lyra": 6
+      },
+      {
+        "Juno": 2,
+        "Garnet": 1,
+        "Helios": 3,
+        "Kestrel": 4,
+        "Ironwood": 5,
+        "Lyra": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d2-b15-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b15-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be an acceptable arrangement of the sculptures, from pedestal 1 to pedestal 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garnet, Juno, Helios, Kestrel, Ironwood, Lyra"
+          },
+          {
+            "label": "B",
+            "text": "Ironwood, Garnet, Helios, Kestrel, Juno, Lyra"
+          },
+          {
+            "label": "C",
+            "text": "Garnet, Helios, Kestrel, Juno, Ironwood, Lyra"
+          },
+          {
+            "label": "D",
+            "text": "Juno, Garnet, Kestrel, Helios, Ironwood, Lyra"
+          },
+          {
+            "label": "E",
+            "text": "Garnet, Juno, Kestrel, Ironwood, Helios, Lyra"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Garnet(1) before Juno(2) ✓; Helios(3) adjacent to Kestrel(4) ✓; Ironwood at 5, not 1 or 6 ✓; Kestrel(4) before Lyra(6) ✓; Juno(2) not adjacent to Kestrel(4) ✓.",
+          "A": "Correct.",
+          "B": "Ironwood is at pedestal 1, violating the rule that Ironwood is not at pedestal 1 or 6.",
+          "C": "Juno(4) is adjacent to Kestrel(3), violating the Juno–Kestrel non-adjacency rule.",
+          "D": "Garnet(2) is not before Juno(1); violates the Garnet–Juno ordering rule.",
+          "E": "Helios(5) is not adjacent to Kestrel(3); violates the Helios–Kestrel adjacency rule."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b15-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b15-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garnet is placed at pedestal 1."
+          },
+          {
+            "label": "B",
+            "text": "Lyra is placed at pedestal 6."
+          },
+          {
+            "label": "C",
+            "text": "Ironwood is placed at pedestal 5."
+          },
+          {
+            "label": "D",
+            "text": "Helios is placed at pedestal 3."
+          },
+          {
+            "label": "E",
+            "text": "Juno is placed at pedestal 2."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Lyra must come after Kestrel, and Ironwood cannot be at pedestal 6. Testing all eight worlds confirms Lyra occupies pedestal 6 in every solution.",
+          "A": "Garnet is at pedestal 2 in some solutions.",
+          "B": "Correct.",
+          "C": "Ironwood is at pedestal 4 in some solutions.",
+          "D": "Helios varies across solutions (pedestals 2, 3, or 4).",
+          "E": "Juno can be at pedestal 1, 2, 4, or 5."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b15-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b15-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Juno is placed at pedestal 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Juno",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garnet is placed at pedestal 1."
+          },
+          {
+            "label": "B",
+            "text": "Helios is placed at pedestal 3."
+          },
+          {
+            "label": "C",
+            "text": "Kestrel is placed at pedestal 4."
+          },
+          {
+            "label": "D",
+            "text": "Ironwood is placed at pedestal 4."
+          },
+          {
+            "label": "E",
+            "text": "Lyra is placed at pedestal 5."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Juno is at 2, then Garnet (which must precede Juno) must be at pedestal 1.",
+          "A": "Correct.",
+          "B": "Helios can be at pedestal 3 or 4 when Juno is at 2.",
+          "C": "Kestrel can be at pedestal 3 or 4.",
+          "D": "Ironwood is at pedestal 5 when Juno is at 2.",
+          "E": "Lyra must be at pedestal 6."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b15-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b15-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Juno is placed at pedestal 1."
+          },
+          {
+            "label": "B",
+            "text": "Kestrel is placed at pedestal 2."
+          },
+          {
+            "label": "C",
+            "text": "Ironwood is placed at pedestal 4."
+          },
+          {
+            "label": "D",
+            "text": "Helios is placed at pedestal 4."
+          },
+          {
+            "label": "E",
+            "text": "Kestrel is placed at pedestal 5."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Kestrel were at pedestal 5, then Helios would need to be at pedestal 4 or 6 (adjacency), and Lyra would need a pedestal after 5—forcing Lyra to 6 and Helios to 4. But Juno cannot be adjacent to Kestrel, so Juno cannot be at 4 or 6, leaving Juno at 1, 2, or 3. However, Ironwood must take one of 2 or 3 (not 1 or 6), and Garnet must precede Juno. Working through placements, no valid arrangement satisfies all constraints.",
+          "A": "Juno at 1 occurs in a verified solution (with Garnet at 2).",
+          "B": "Kestrel at 2 occurs in a verified solution.",
+          "C": "Ironwood at 4 occurs in verified solutions.",
+          "D": "Helios at 4 occurs in verified solutions.",
+          "E": "Correct—no valid arrangement places Kestrel at pedestal 5."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b15-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b15-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ironwood is placed at pedestal 4, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ironwood",
+            "position": 4
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Juno is placed at pedestal 1."
+          },
+          {
+            "label": "B",
+            "text": "Helios is placed at pedestal 4."
+          },
+          {
+            "label": "C",
+            "text": "Kestrel is placed at pedestal 4."
+          },
+          {
+            "label": "D",
+            "text": "Juno is placed at pedestal 5."
+          },
+          {
+            "label": "E",
+            "text": "Lyra is placed at pedestal 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "With Ironwood at 4, two verified solutions apply: Garnet=1, Helios=2, Kestrel=3, Juno=5, Lyra=6; and Garnet=1, Helios=3, Kestrel=2, Juno=5, Lyra=6. Both place Juno at pedestal 5.",
+          "A": "Juno must be at pedestal 5 in both applicable worlds; it cannot be at 1.",
+          "B": "Ironwood occupies pedestal 4.",
+          "C": "Ironwood occupies pedestal 4.",
+          "D": "Correct.",
+          "E": "Lyra is at pedestal 6 in both applicable worlds."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

@@ -1,0 +1,416 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b8-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A farmers-market coordinator will assign exactly six vendors—Haskell, Ibori, Jenkins, Krauss, Loomis, and Mendez—to booths numbered 1 through 6, arranged in a single row from left to right. Each vendor occupies exactly one booth, and each booth holds exactly one vendor. The assignment must meet the following conditions: Haskell is assigned to booth 3. Ibori is assigned to some booth to the left of Jenkins's booth. Krauss is assigned to the booth immediately to the left or immediately to the right of Loomis's booth. Mendez is not assigned to booth 6.",
+    "entities": [
+      "Haskell",
+      "Ibori",
+      "Jenkins",
+      "Krauss",
+      "Loomis",
+      "Mendez"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Haskell",
+        "position": 3
+      },
+      {
+        "type": "before",
+        "a": "Ibori",
+        "b": "Jenkins"
+      },
+      {
+        "type": "adjacent",
+        "a": "Krauss",
+        "b": "Loomis"
+      },
+      {
+        "type": "not_at",
+        "entity": "Mendez",
+        "position": 6
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Haskell": 3,
+        "Ibori": 1,
+        "Mendez": 2,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 1,
+        "Mendez": 2,
+        "Loomis": 4,
+        "Krauss": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Mendez": 1,
+        "Ibori": 2,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Mendez": 1,
+        "Ibori": 2,
+        "Loomis": 4,
+        "Krauss": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 1,
+        "Jenkins": 2,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Mendez": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 1,
+        "Jenkins": 2,
+        "Loomis": 4,
+        "Krauss": 5,
+        "Mendez": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 2,
+        "Mendez": 1,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 1,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Jenkins": 6,
+        "Mendez": 2
+      },
+      {
+        "Haskell": 3,
+        "Mendez": 2,
+        "Ibori": 1,
+        "Loomis": 4,
+        "Krauss": 5,
+        "Jenkins": 6
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 2,
+        "Jenkins": 6,
+        "Krauss": 4,
+        "Loomis": 5,
+        "Mendez": 1
+      },
+      {
+        "Haskell": 3,
+        "Ibori": 2,
+        "Jenkins": 6,
+        "Loomis": 4,
+        "Krauss": 5,
+        "Mendez": 1
+      },
+      {
+        "Haskell": 3,
+        "Mendez": 1,
+        "Ibori": 2,
+        "Jenkins": 6,
+        "Krauss": 4,
+        "Loomis": 5
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b8-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b8-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the assignment of vendors to booths 1 through 6, respectively?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ibori, Mendez, Haskell, Krauss, Loomis, Jenkins"
+          },
+          {
+            "label": "B",
+            "text": "Mendez, Ibori, Jenkins, Krauss, Loomis, Haskell"
+          },
+          {
+            "label": "C",
+            "text": "Ibori, Jenkins, Haskell, Krauss, Mendez, Loomis"
+          },
+          {
+            "label": "D",
+            "text": "Jenkins, Ibori, Haskell, Loomis, Krauss, Mendez"
+          },
+          {
+            "label": "E",
+            "text": "Ibori, Mendez, Krauss, Loomis, Jenkins, Haskell"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "A satisfies every rule: Haskell is in booth 3; Ibori (1) is left of Jenkins (6); Krauss (4) and Loomis (5) are adjacent; Mendez is in booth 2, not 6.",
+          "A": "Correct.",
+          "B": "Haskell is in booth 6, not booth 3.",
+          "C": "Krauss (4) and Loomis (6) are not adjacent.",
+          "D": "Jenkins (1) is not to the right of Ibori (2).",
+          "E": "Haskell is in booth 6, not booth 3."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b8-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ibori is assigned to booth 1."
+          },
+          {
+            "label": "B",
+            "text": "Jenkins is assigned to booth 6."
+          },
+          {
+            "label": "C",
+            "text": "Neither Krauss nor Loomis is assigned to booth 1."
+          },
+          {
+            "label": "D",
+            "text": "Mendez is assigned to booth 1."
+          },
+          {
+            "label": "E",
+            "text": "Loomis is assigned to booth 5."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Krauss and Loomis must be adjacent and neither can be in booth 3 (Haskell). The only adjacent pairs available are booths 1-2, 4-5, or 5-6. But Ibori must precede Jenkins, forcing at least one of those two into the 1-2 area; in every valid arrangement, the Krauss-Loomis block sits in booths 4-5 or 5-6, so neither is ever in booth 1.",
+          "A": "Ibori could be in booth 2 (with Mendez in booth 1).",
+          "B": "Jenkins could be in booth 2 (e.g., Ibori-Jenkins-Haskell-...-Mendez).",
+          "C": "Correct.",
+          "D": "Mendez could be in booth 2 or later; not required to be in booth 1.",
+          "E": "Loomis could be in booth 4 (with Krauss in booth 5)."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b8-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Jenkins is assigned to booth 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jenkins",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ibori is assigned to booth 1."
+          },
+          {
+            "label": "B",
+            "text": "Mendez is assigned to booth 6."
+          },
+          {
+            "label": "C",
+            "text": "Krauss is assigned to booth 4."
+          },
+          {
+            "label": "D",
+            "text": "Loomis is assigned to booth 6."
+          },
+          {
+            "label": "E",
+            "text": "Mendez is assigned to booth 4."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Jenkins is in booth 2, Ibori must be to Jenkins's left, i.e., in booth 1. Haskell is in 3, and Krauss-Loomis must occupy an adjacent pair among booths 4, 5, 6, leaving Mendez in the remaining booth of that trio.",
+          "A": "Correct.",
+          "B": "Mendez could be in booth 4 (if Krauss-Loomis fill 5-6).",
+          "C": "Krauss could be in booth 5 or 6, not necessarily 4.",
+          "D": "Loomis could be in booth 4 or 5.",
+          "E": "Mendez could be in booth 6."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b8-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b8-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Haskell is assigned to booth 4."
+          },
+          {
+            "label": "B",
+            "text": "Jenkins is assigned to booth 1."
+          },
+          {
+            "label": "C",
+            "text": "Krauss is assigned to booth 2."
+          },
+          {
+            "label": "D",
+            "text": "Loomis is assigned to booth 3."
+          },
+          {
+            "label": "E",
+            "text": "Mendez is assigned to booth 6."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Mendez can be in booth 6, as in the arrangement Ibori-Jenkins-Haskell-Krauss-Loomis-Mendez, which satisfies every rule.",
+          "A": "Haskell must be in booth 3 by rule 1.",
+          "B": "Jenkins must be to the right of Ibori, so Jenkins cannot be in booth 1.",
+          "C": "If Krauss is in booth 2, Loomis would need to be in booth 1 or 3; booth 3 is Haskell's, and placing Loomis in booth 1 leaves Ibori/Jenkins unable to both fit left of Jenkins's position—in fact Ibori would need a booth left of Jenkins, but only Krauss (2) is left, contradiction.",
+          "D": "Haskell occupies booth 3.",
+          "E": "Correct."
+        },
+        "tags": [
+          "could_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b8-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b8-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ibori is assigned to booth 2."
+          },
+          {
+            "label": "B",
+            "text": "Jenkins is assigned to booth 2."
+          },
+          {
+            "label": "C",
+            "text": "Krauss is assigned to booth 6."
+          },
+          {
+            "label": "D",
+            "text": "Loomis is assigned to booth 4."
+          },
+          {
+            "label": "E",
+            "text": "Mendez is assigned to booth 3."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Haskell is fixed in booth 3, so Mendez cannot occupy booth 3.",
+          "A": "Ibori can be in booth 2 (with Mendez in 1).",
+          "B": "Jenkins can be in booth 2 (with Ibori in 1).",
+          "C": "Krauss can be in booth 6 (with Loomis in 5).",
+          "D": "Loomis can be in booth 4 (with Krauss in 5).",
+          "E": "Correct — Haskell occupies booth 3."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

@@ -1,0 +1,372 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b6-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A farmers' market coordinator is assigning six vendors—Alvarez, Byun, Calderon, Duarte, Ellison, and Finch—to set up their booths one at a time, in order, on Saturday morning. Each vendor sets up at exactly one of six consecutive time slots, numbered 1 through 6 from earliest to latest. The assignment is governed by the following conditions: Alvarez sets up at slot 2. Byun sets up at some time before Calderon. Duarte sets up immediately before or immediately after Ellison. Finch does not set up at slot 6.",
+    "entities": [
+      "Alvarez",
+      "Byun",
+      "Calderon",
+      "Duarte",
+      "Ellison",
+      "Finch"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Alvarez",
+        "position": 2
+      },
+      {
+        "type": "before",
+        "a": "Byun",
+        "b": "Calderon"
+      },
+      {
+        "type": "adjacent",
+        "a": "Duarte",
+        "b": "Ellison"
+      },
+      {
+        "type": "not_at",
+        "entity": "Finch",
+        "position": 6
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Finch": 3,
+        "Duarte": 4,
+        "Ellison": 5,
+        "Calderon": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Finch": 3,
+        "Ellison": 4,
+        "Duarte": 5,
+        "Calderon": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Calderon": 3,
+        "Finch": 4,
+        "Duarte": 5,
+        "Ellison": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Calderon": 3,
+        "Finch": 4,
+        "Ellison": 5,
+        "Duarte": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Duarte": 3,
+        "Ellison": 4,
+        "Finch": 5,
+        "Calderon": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Ellison": 3,
+        "Duarte": 4,
+        "Finch": 5,
+        "Calderon": 6
+      },
+      {
+        "Byun": 1,
+        "Alvarez": 2,
+        "Calderon": 3,
+        "Duarte": 4,
+        "Ellison": 5,
+        "Finch": 6.0001
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the vendors set up their booths, from slot 1 to slot 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Byun, Alvarez, Calderon, Duarte, Ellison, Finch"
+          },
+          {
+            "label": "B",
+            "text": "Byun, Alvarez, Finch, Duarte, Ellison, Calderon"
+          },
+          {
+            "label": "C",
+            "text": "Alvarez, Byun, Calderon, Finch, Duarte, Ellison"
+          },
+          {
+            "label": "D",
+            "text": "Byun, Alvarez, Calderon, Duarte, Finch, Ellison"
+          },
+          {
+            "label": "E",
+            "text": "Byun, Alvarez, Calderon, Ellison, Finch, Duarte"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Byun (1) precedes Calderon (6); Alvarez is at 2; Duarte (4) and Ellison (5) are adjacent; Finch is at 3, not 6. All four rules are satisfied.",
+          "A": "Finch is at slot 6, violating the rule that Finch does not set up at slot 6.",
+          "B": "Correct.",
+          "C": "Alvarez is at slot 1, not slot 2.",
+          "D": "Duarte (4) and Ellison (6) are not adjacent, violating the Duarte–Ellison adjacency rule.",
+          "E": "Ellison (4) and Duarte (6) are not adjacent, violating the Duarte–Ellison adjacency rule."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Calderon sets up at slot 6."
+          },
+          {
+            "label": "B",
+            "text": "Byun sets up at slot 1."
+          },
+          {
+            "label": "C",
+            "text": "Finch sets up at slot 3."
+          },
+          {
+            "label": "D",
+            "text": "Duarte sets up at slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Ellison sets up before Finch."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Since Alvarez occupies slot 2, Byun must set up before Calderon, and slot 1 is the only slot earlier than slot 2 available to Byun, Byun must be at slot 1.",
+          "A": "Calderon could be at slot 3 (e.g., Byun, Alvarez, Calderon, Finch, Duarte, Ellison), so slot 6 is not required.",
+          "B": "Correct.",
+          "C": "Finch could also set up at slot 4 or 5.",
+          "D": "Duarte could set up at slots 3, 4, 5, or 6.",
+          "E": "Ellison could set up after Finch (e.g., Byun, Alvarez, Calderon, Finch, Duarte, Ellison)."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Calderon sets up at slot 3, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Calderon",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Finch sets up at slot 6."
+          },
+          {
+            "label": "B",
+            "text": "Duarte sets up at slot 5."
+          },
+          {
+            "label": "C",
+            "text": "Ellison sets up at slot 4."
+          },
+          {
+            "label": "D",
+            "text": "Finch sets up at slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Duarte sets up at slot 6."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "With Byun at 1, Alvarez at 2, and Calderon at 3, the remaining slots 4, 5, and 6 must hold Duarte, Ellison, and Finch. Duarte and Ellison must occupy adjacent slots, so they fill slots 5 and 6 in some order, forcing Finch into slot 4.",
+          "A": "Finch is barred from slot 6 by the base rules.",
+          "B": "Duarte could be at slot 6 instead of 5.",
+          "C": "Ellison must be at 5 or 6, not 4.",
+          "D": "Correct.",
+          "E": "Duarte could be at slot 5 instead."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Finch sets up at slot 6."
+          },
+          {
+            "label": "B",
+            "text": "Alvarez sets up at slot 3."
+          },
+          {
+            "label": "C",
+            "text": "Calderon sets up at slot 1."
+          },
+          {
+            "label": "D",
+            "text": "Ellison sets up at slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Byun sets up at slot 3."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Ellison can set up at slot 6, as in the order Byun, Alvarez, Calderon, Finch, Duarte, Ellison, which satisfies every rule.",
+          "A": "The base rules forbid Finch from slot 6.",
+          "B": "Alvarez is fixed at slot 2.",
+          "C": "Byun must precede Calderon, but slot 1 is the earliest slot and must go to Byun.",
+          "D": "Correct.",
+          "E": "Byun must come before Calderon, and Alvarez occupies slot 2, forcing Byun to slot 1."
+        },
+        "tags": [
+          "could_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b6-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b6-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Duarte sets up at slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Finch sets up at slot 5."
+          },
+          {
+            "label": "C",
+            "text": "Calderon sets up at slot 3."
+          },
+          {
+            "label": "D",
+            "text": "Ellison sets up at slot 3."
+          },
+          {
+            "label": "E",
+            "text": "Duarte sets up at slot 6 while Finch sets up at slot 5."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Finch is at slot 5 and Duarte is at slot 6, then Ellison must be adjacent to Duarte, which would require Ellison at slot 5 or 7. But slot 5 is taken by Finch and slot 7 does not exist, so this combination is impossible.",
+          "A": "Duarte can be at slot 3, e.g., Byun, Alvarez, Duarte, Ellison, Finch, Calderon.",
+          "B": "Finch can be at slot 5, e.g., Byun, Alvarez, Duarte, Ellison, Finch, Calderon.",
+          "C": "Calderon can be at slot 3, e.g., Byun, Alvarez, Calderon, Finch, Duarte, Ellison.",
+          "D": "Ellison can be at slot 3, e.g., Byun, Alvarez, Ellison, Duarte, Finch, Calderon.",
+          "E": "Correct—this arrangement cannot satisfy the Duarte–Ellison adjacency rule."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

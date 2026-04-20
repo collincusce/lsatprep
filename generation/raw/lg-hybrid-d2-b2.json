@@ -1,0 +1,401 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d2-b2-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 2,
+    "scenario": "A community orchestra will perform exactly six pieces — a fanfare (F), a gavotte (G), a hymn (H), a jig (J), a march (M), and a nocturne (N) — one after another in positions 1 through 6. Each piece is further classified as either strings-led or brass-led. The performance is subject to the following conditions: Exactly three pieces are strings-led. The fanfare is brass-led and is performed earlier than the hymn. The gavotte is strings-led. The march is performed immediately after the jig. The nocturne is performed fifth. The hymn and the nocturne are led by different sections. Exactly one of the fanfare or the gavotte is performed first.",
+    "entities": [
+      "F",
+      "G",
+      "H",
+      "J",
+      "M",
+      "N"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "F",
+        "b": "H"
+      },
+      {
+        "type": "adjacent",
+        "a": "J",
+        "b": "M"
+      },
+      {
+        "type": "before",
+        "a": "J",
+        "b": "M"
+      },
+      {
+        "type": "at",
+        "entity": "N",
+        "position": 5
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "F",
+          "G"
+        ],
+        "position": 1
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "F": 1,
+        "G": 2,
+        "J": 3,
+        "M": 4,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "F": 1,
+        "G": 3,
+        "J": 2,
+        "M": 3,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "F": 1,
+        "J": 2,
+        "M": 3,
+        "G": 4,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "G": 1,
+        "F": 2,
+        "J": 3,
+        "M": 4,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "G": 1,
+        "F": 3,
+        "J": 2,
+        "M": 3,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "G": 1,
+        "J": 2,
+        "M": 3,
+        "F": 4,
+        "N": 5,
+        "H": 6
+      },
+      {
+        "F": 1,
+        "H": 2,
+        "J": 3,
+        "M": 4,
+        "N": 5,
+        "G": 6
+      },
+      {
+        "G": 1,
+        "J": 2,
+        "M": 3,
+        "H": 4,
+        "N": 5,
+        "F": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d2-b2-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b2-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order in which the six pieces are performed, from first to sixth?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "fanfare, gavotte, jig, march, nocturne, hymn"
+          },
+          {
+            "label": "B",
+            "text": "fanfare, jig, march, gavotte, hymn, nocturne"
+          },
+          {
+            "label": "C",
+            "text": "gavotte, fanfare, march, jig, nocturne, hymn"
+          },
+          {
+            "label": "D",
+            "text": "gavotte, hymn, jig, march, nocturne, fanfare"
+          },
+          {
+            "label": "E",
+            "text": "hymn, fanfare, jig, march, nocturne, gavotte"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Choice A places the nocturne fifth, the jig immediately before the march, the fanfare before the hymn, and exactly one of the fanfare or gavotte first. All rules are satisfied.",
+          "A": "Correct.",
+          "B": "Violates the rule that the nocturne is performed fifth.",
+          "C": "The jig must be immediately before the march, not after it.",
+          "D": "The fanfare must be performed earlier than the hymn; here the hymn is second and the fanfare is sixth.",
+          "E": "Exactly one of the fanfare or the gavotte must be first; here neither is."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b2-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The hymn is performed sixth."
+          },
+          {
+            "label": "B",
+            "text": "The jig is performed earlier than the nocturne."
+          },
+          {
+            "label": "C",
+            "text": "The gavotte is performed first."
+          },
+          {
+            "label": "D",
+            "text": "The march is performed fourth."
+          },
+          {
+            "label": "E",
+            "text": "The fanfare is performed earlier than the jig."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "The nocturne is fixed at position 5. The jig-march block occupies two consecutive positions with the jig earlier; since position 5 is taken by the nocturne and the block cannot straddle it at 5-6, the jig occupies some position from 1 to 4 — in every case earlier than the nocturne.",
+          "A": "The hymn can occupy position 4 (e.g., G,J,M,H,N,F), so need not be sixth.",
+          "B": "Correct.",
+          "C": "Either the fanfare or the gavotte is first; the gavotte need not be.",
+          "D": "The march can land at positions 3 or 4, so this is not required.",
+          "E": "The fanfare can be performed fourth or sixth, later than the jig."
+        },
+        "tags": [
+          "must_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b2-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b2-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If the gavotte is performed first, which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "G",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The fanfare is performed second."
+          },
+          {
+            "label": "B",
+            "text": "The hymn is performed second."
+          },
+          {
+            "label": "C",
+            "text": "The march is performed second."
+          },
+          {
+            "label": "D",
+            "text": "The jig is performed fourth."
+          },
+          {
+            "label": "E",
+            "text": "The nocturne is performed sixth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With the gavotte first and the nocturne fifth, one workable arrangement is G, F, J, M, N, H — the fanfare in position 2, the jig-march block in 3-4, and the hymn sixth (after the fanfare).",
+          "A": "Correct.",
+          "B": "If the hymn were second, the fanfare would have to come before it, but position 1 is occupied by the gavotte. No slot remains earlier than the hymn for the fanfare.",
+          "C": "The march must be immediately after the jig, so the march cannot be second unless the jig is first — but the gavotte is first.",
+          "D": "If the jig is fourth, the march is fifth, but the nocturne is fifth.",
+          "E": "The nocturne is fixed at position 5, not 6."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b2-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b2-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If the hymn is performed second, which one of the following CANNOT be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "H",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The fanfare is performed first."
+          },
+          {
+            "label": "B",
+            "text": "The gavotte is performed sixth."
+          },
+          {
+            "label": "C",
+            "text": "The jig is performed third."
+          },
+          {
+            "label": "D",
+            "text": "The march is performed fourth."
+          },
+          {
+            "label": "E",
+            "text": "The gavotte is performed first."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If the hymn is second, the fanfare must be earlier — so the fanfare is first. Exactly one of the fanfare or gavotte is first, and that must be the fanfare; hence the gavotte cannot be first.",
+          "A": "The fanfare must be first (to be earlier than the hymn at 2), so this is true, not impossible.",
+          "B": "With order F, H, J, M, N, G, the gavotte is sixth — possible.",
+          "C": "The jig at position 3 with the march at 4 is consistent with F, H, J, M, N, G.",
+          "D": "Same arrangement places the march fourth — possible.",
+          "E": "Correct — the fanfare must take position 1, so the gavotte cannot."
+        },
+        "tags": [
+          "cannot_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b2-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the jig is performed second, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "J",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The hymn is performed sixth."
+          },
+          {
+            "label": "B",
+            "text": "The gavotte is performed first."
+          },
+          {
+            "label": "C",
+            "text": "The fanfare is performed fourth."
+          },
+          {
+            "label": "D",
+            "text": "The march is performed fifth."
+          },
+          {
+            "label": "E",
+            "text": "The gavotte is performed fourth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With the jig at 2, the march is at 3 and the nocturne is at 5. Positions 1, 4, and 6 remain for F, G, and H. The fanfare must precede the hymn, and exactly one of F or G is first. In every valid assignment the hymn ends up at position 6 (e.g., F/G at 1, the other at 4, H at 6; or G at 1 and F at 4 with H at 6). Position 4 cannot hold the hymn because the fanfare would then need a slot earlier than 4 other than the first, which is impossible given F and G split positions 1 and 4.",
+          "A": "Correct.",
+          "B": "Either F or G can be first.",
+          "C": "The fanfare can be first or fourth.",
+          "D": "The march is third, not fifth.",
+          "E": "The gavotte can be first or fourth."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

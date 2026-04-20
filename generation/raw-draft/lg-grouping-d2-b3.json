@@ -1,0 +1,372 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b3-NN",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A hospital administrator will assign exactly seven interns—Ferris, Gupta, Hwang, Ishii, Jurek, Kato, and Lopez—to exactly three departments: Cardiology, Nephrology, and Pulmonology. Cardiology will be assigned exactly three interns, Nephrology exactly two, and Pulmonology exactly two. The assignment must meet the following conditions: Ferris is assigned to Cardiology. Gupta and Hwang are assigned to different departments. Ishii and Jurek are assigned to the same department. If Kato is assigned to Cardiology, then Lopez is assigned to Nephrology. Exactly one of Gupta and Kato is assigned to Pulmonology.",
+    "entities": [
+      "Ferris",
+      "Gupta",
+      "Hwang",
+      "Ishii",
+      "Jurek",
+      "Kato",
+      "Lopez"
+    ],
+    "positions": [
+      1,
+      2,
+      3
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Ferris",
+        "position": 1
+      },
+      {
+        "type": "different_group",
+        "a": "Gupta",
+        "b": "Hwang"
+      },
+      {
+        "type": "same_group",
+        "a": "Ishii",
+        "b": "Jurek"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 1,
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 2,
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 3,
+        "n": 2
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Gupta",
+          "Kato"
+        ],
+        "position": 3
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ferris": 1,
+        "Gupta": 3,
+        "Hwang": 1,
+        "Ishii": 2,
+        "Jurek": 2,
+        "Kato": 1,
+        "Lopez": 3
+      },
+      {
+        "Ferris": 1,
+        "Gupta": 3,
+        "Hwang": 2,
+        "Ishii": 1,
+        "Jurek": 1,
+        "Kato": 2,
+        "Lopez": 3
+      },
+      {
+        "Ferris": 1,
+        "Gupta": 3,
+        "Hwang": 1,
+        "Ishii": 2,
+        "Jurek": 2,
+        "Kato": 3,
+        "Lopez": 1
+      },
+      {
+        "Ferris": 1,
+        "Gupta": 2,
+        "Hwang": 1,
+        "Ishii": 3,
+        "Jurek": 3,
+        "Kato": 1,
+        "Lopez": 2
+      },
+      {
+        "Ferris": 1,
+        "Gupta": 1,
+        "Hwang": 2,
+        "Ishii": 3,
+        "Jurek": 3,
+        "Kato": 2,
+        "Lopez": 1
+      },
+      {
+        "Ferris": 1,
+        "Gupta": 1,
+        "Hwang": 3,
+        "Ishii": 2,
+        "Jurek": 2,
+        "Kato": 3,
+        "Lopez": 1
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b3-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b3-NN",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of the interns to the departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Ferris, Gupta, Hwang; Nephrology: Ishii, Jurek; Pulmonology: Kato, Lopez"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Ferris, Hwang, Kato; Nephrology: Ishii, Jurek; Pulmonology: Gupta, Lopez"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Ferris, Ishii, Kato; Nephrology: Gupta, Lopez; Pulmonology: Hwang, Jurek"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Ferris, Hwang, Lopez; Nephrology: Ishii, Kato; Pulmonology: Gupta, Jurek"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Ferris, Kato, Lopez; Nephrology: Ishii, Jurek; Pulmonology: Gupta, Hwang"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "(B) satisfies every rule: Ferris is in Cardiology; Gupta (Pulmonology) and Hwang (Cardiology) are in different departments; Ishii and Jurek are together in Nephrology; exactly one of Gupta/Kato (namely Gupta) is in Pulmonology.",
+          "A": "Gupta and Hwang are both in Cardiology, violating the different-departments rule.",
+          "B": "Correct.",
+          "C": "Ishii (Cardiology) and Jurek (Pulmonology) are split, violating the same-department rule.",
+          "D": "Ishii (Nephrology) and Jurek (Pulmonology) are split, violating the same-department rule.",
+          "E": "Neither Gupta nor Kato is in Pulmonology—wait, Gupta is in Pulmonology, but Kato is in Cardiology. The violation is the conditional: Kato is in Cardiology, so Lopez must be in Nephrology, but Lopez is in Cardiology."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b3-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b3-NN",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Kato is assigned to Pulmonology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Kato",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta is assigned to Nephrology."
+          },
+          {
+            "label": "C",
+            "text": "Hwang is assigned to Nephrology."
+          },
+          {
+            "label": "D",
+            "text": "Ishii is assigned to Nephrology."
+          },
+          {
+            "label": "E",
+            "text": "Lopez is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Kato is in Pulmonology, the 'exactly one of Gupta/Kato in Pulmonology' rule means Gupta is not in Pulmonology. Filtering the solutions yields solutions 3 and 6, in both of which Lopez is in Cardiology.",
+          "A": "In solution 6, Gupta is in Cardiology, but in solution 3 Gupta is in Nephrology. Not forced.",
+          "B": "In solution 3 Gupta is in Nephrology, but in solution 6 Gupta is in Cardiology. Not forced.",
+          "C": "In solution 6 Hwang is in Pulmonology, not Nephrology.",
+          "D": "In both qualifying solutions Ishii is in Nephrology (sol 3) or Nephrology (sol 6—actually Pulmonology). In solution 6, Ishii is in Pulmonology. Not forced.",
+          "E": "Correct."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b3-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b3-NN",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Hwang is assigned to Pulmonology."
+          },
+          {
+            "label": "C",
+            "text": "Ishii is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Kato and Lopez are both assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Lopez is assigned to Nephrology."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Kato is in Cardiology, then by the conditional Lopez must be in Nephrology—so Kato and Lopez cannot both be in Cardiology.",
+          "A": "Gupta is in Cardiology in solutions 5 and 6.",
+          "B": "Hwang is in Pulmonology in solutions 5 and 6.",
+          "C": "Ishii is in Cardiology in solution 2.",
+          "D": "Correct—this cannot occur.",
+          "E": "Lopez is in Nephrology in solution 4."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b3-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b3-NN",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ishii is assigned to Pulmonology, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ishii",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Pulmonology."
+          },
+          {
+            "label": "B",
+            "text": "Hwang is assigned to Nephrology."
+          },
+          {
+            "label": "C",
+            "text": "Kato is assigned to Nephrology."
+          },
+          {
+            "label": "D",
+            "text": "Lopez is assigned to Nephrology."
+          },
+          {
+            "label": "E",
+            "text": "Kato is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Ishii is in Pulmonology, Jurek is also in Pulmonology, filling Pulmonology. Solutions satisfying this are 1 and 6. In solution 6, Kato is in Cardiology.",
+          "A": "Pulmonology is filled by Ishii and Jurek, so Gupta cannot be in Pulmonology.",
+          "B": "In solutions 1 and 6, Hwang is in Cardiology (sol 1) or Pulmonology—wait, Pulmonology is full. In sol 1, Hwang is in Cardiology; in sol 6, Hwang is in Pulmonology which contradicts Pulmonology being full with Ishii/Jurek. Re-examining: only solution 1 qualifies, and Hwang is in Cardiology. Not possible.",
+          "C": "In solution 1, Kato is in Cardiology; in solution 6, Kato is in Pulmonology—but Pulmonology is full. So only solution 1 qualifies, where Kato is in Cardiology. Kato cannot be in Nephrology.",
+          "D": "In solution 1, Lopez is in Pulmonology—but Pulmonology is full. Re-examining qualifying solutions: only solution 1 has Ishii in Pulmonology with Jurek. There, Lopez is in Pulmonology, contradiction. Reconsidering—solution 1 has Ishii=2 (Nephrology). The only solution with Ishii in Pulmonology is solution 6. In solution 6, Lopez is in Cardiology, not Nephrology.",
+          "E": "Correct—in solution 6, Kato is in Cardiology."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b3-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b3-NN",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ferris and Hwang are assigned to the same department."
+          },
+          {
+            "label": "B",
+            "text": "At least one of Ishii and Jurek is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Lopez is not assigned to Pulmonology."
+          },
+          {
+            "label": "D",
+            "text": "Exactly one of Gupta and Hwang is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "If Hwang is assigned to Cardiology, then Kato is assigned to Pulmonology."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Ferris is fixed in Cardiology (1 slot taken; 2 Cardiology slots remain). Gupta and Hwang are in different departments, and exactly one of Gupta/Kato is in Pulmonology. Checking all six solutions: in every solution exactly one of Gupta or Hwang is in Cardiology.",
+          "A": "In solutions 2 and 5, Hwang is in Nephrology or Pulmonology—not with Ferris.",
+          "B": "In solution 4, Ishii and Jurek are both in Pulmonology; in solutions 1, 3, 6 they are in Nephrology. Neither is in Cardiology in several solutions.",
+          "C": "In solution 4, Lopez is in Nephrology; in solution 1, Lopez is in Pulmonology. So Lopez can be in Pulmonology.",
+          "D": "Correct.",
+          "E": "In solution 6, Hwang is in Pulmonology, so the antecedent is false. But in solution 2, Hwang is in Nephrology—antecedent false. Consider solution 1: Hwang is in Cardiology and Kato is in Cardiology, not Pulmonology. Counterexample."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    }
+  }
+]

@@ -1,0 +1,398 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b9-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A municipal courthouse will hear exactly six cases—Garrison, Hollings, Ibarra, Juarez, Kessler, and Lawton—one after another in six consecutive time slots numbered 1 through 6. Each case is heard by exactly one of two judges: Judge Ahmad or Judge Bell. The assignment of cases to time slots and judges must meet the following conditions: Garrison is heard in an earlier slot than Kessler. Hollings is heard in slot 3. Ibarra and Juarez are heard by different judges. Lawton is heard immediately before Kessler. Whoever is heard in slot 1 is heard by Judge Bell. Exactly three cases are heard by Judge Ahmad.",
+    "entities": [
+      "Garrison",
+      "Hollings",
+      "Ibarra",
+      "Juarez",
+      "Kessler",
+      "Lawton"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Garrison",
+        "b": "Kessler"
+      },
+      {
+        "type": "at",
+        "entity": "Hollings",
+        "position": 3
+      },
+      {
+        "type": "adjacent",
+        "a": "Lawton",
+        "b": "Kessler"
+      },
+      {
+        "type": "before",
+        "a": "Lawton",
+        "b": "Kessler"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Garrison": 1,
+        "Hollings": 3,
+        "Ibarra": 2,
+        "Juarez": 6,
+        "Lawton": 4,
+        "Kessler": 5
+      },
+      {
+        "Garrison": 1,
+        "Hollings": 3,
+        "Ibarra": 6,
+        "Juarez": 2,
+        "Lawton": 4,
+        "Kessler": 5
+      },
+      {
+        "Garrison": 2,
+        "Hollings": 3,
+        "Ibarra": 1,
+        "Juarez": 6,
+        "Lawton": 4,
+        "Kessler": 5
+      },
+      {
+        "Garrison": 2,
+        "Hollings": 3,
+        "Ibarra": 6,
+        "Juarez": 1,
+        "Lawton": 4,
+        "Kessler": 5
+      },
+      {
+        "Garrison": 1,
+        "Hollings": 3,
+        "Ibarra": 2,
+        "Juarez": 4,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 1,
+        "Hollings": 3,
+        "Ibarra": 4,
+        "Juarez": 2,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 2,
+        "Hollings": 3,
+        "Ibarra": 1,
+        "Juarez": 4,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 2,
+        "Hollings": 3,
+        "Ibarra": 4,
+        "Juarez": 1,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 4,
+        "Hollings": 3,
+        "Ibarra": 1,
+        "Juarez": 2,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 4,
+        "Hollings": 3,
+        "Ibarra": 2,
+        "Juarez": 1,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 1,
+        "Hollings": 3,
+        "Ibarra": 6,
+        "Juarez": 4,
+        "Lawton": 5,
+        "Kessler": 6
+      },
+      {
+        "Garrison": 2,
+        "Hollings": 3,
+        "Ibarra": 6,
+        "Juarez": 4,
+        "Lawton": 5,
+        "Kessler": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b9-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b9-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order of the cases, from slot 1 to slot 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garrison, Ibarra, Hollings, Lawton, Kessler, Juarez"
+          },
+          {
+            "label": "B",
+            "text": "Garrison, Hollings, Ibarra, Lawton, Kessler, Juarez"
+          },
+          {
+            "label": "C",
+            "text": "Ibarra, Juarez, Hollings, Kessler, Lawton, Garrison"
+          },
+          {
+            "label": "D",
+            "text": "Garrison, Ibarra, Hollings, Kessler, Lawton, Juarez"
+          },
+          {
+            "label": "E",
+            "text": "Lawton, Kessler, Hollings, Garrison, Ibarra, Juarez"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hollings is in slot 3, Lawton immediately precedes Kessler (slots 4 and 5), and Garrison precedes Kessler. All conditions are satisfied.",
+          "A": "Correct.",
+          "B": "Hollings must be in slot 3, not slot 2.",
+          "C": "Garrison must precede Kessler; here Garrison is in slot 6 and Kessler in slot 4.",
+          "D": "Lawton must come immediately before Kessler, not after.",
+          "E": "Garrison must precede Kessler; here Kessler is in slot 2 and Garrison in slot 4."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b9-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b9-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garrison is heard in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "Kessler is heard in either slot 5 or slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Juarez is heard in an earlier slot than Ibarra."
+          },
+          {
+            "label": "D",
+            "text": "Lawton is heard in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Ibarra is heard in slot 2."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Lawton is immediately before Kessler, and Hollings occupies slot 3. Lawton–Kessler therefore occupies either slots 4–5 or slots 5–6, placing Kessler in slot 5 or slot 6.",
+          "A": "Garrison could be in slot 1, 2, or 4.",
+          "B": "Correct.",
+          "C": "The relative order of Ibarra and Juarez is not fixed.",
+          "D": "Lawton could be in slot 4 or slot 5.",
+          "E": "Ibarra could be in slot 1, 2, 4, or 6."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b9-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b9-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Kessler is heard in slot 5, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Kessler",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Garrison is heard in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "Juarez is heard in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "Ibarra is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Lawton is heard in slot 3."
+          },
+          {
+            "label": "E",
+            "text": "Garrison is heard in slot 6."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Kessler in slot 5, Lawton is in slot 4 and Hollings in slot 3. Garrison must be in slot 1 or 2, and Ibarra and Juarez fill the remaining slots (one of them being slot 6).",
+          "A": "Lawton must occupy slot 4.",
+          "B": "Kessler is in slot 5 by hypothesis.",
+          "C": "Correct — Ibarra can take slot 6 with Juarez in slot 1 or 2.",
+          "D": "Hollings occupies slot 3.",
+          "E": "Garrison must precede Kessler, so Garrison cannot be in slot 6."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b9-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b9-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ibarra is heard in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "Juarez is heard in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Garrison is heard in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "Kessler is heard in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Lawton is heard in slot 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Kessler were in slot 4, Lawton would be in slot 3; but Hollings occupies slot 3. So Kessler cannot be in slot 4.",
+          "A": "Ibarra can be in slot 1 (e.g., with Garrison in 2, Juarez in 6).",
+          "B": "Juarez can be in slot 6.",
+          "C": "Garrison can be in slot 4 when Kessler is in slot 6.",
+          "D": "Correct.",
+          "E": "Lawton can be in slot 5 when Kessler is in slot 6."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b9-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b9-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Garrison is heard in slot 4, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Garrison",
+            "position": 4
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Kessler is heard in slot 5."
+          },
+          {
+            "label": "B",
+            "text": "Lawton is heard in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "Ibarra is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Juarez is heard in slot 1."
+          },
+          {
+            "label": "E",
+            "text": "Hollings is heard in slot 4."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Garrison in slot 4 and Hollings in slot 3, the Lawton–Kessler pair must occupy slots 5 and 6, so Lawton is in slot 5 and Kessler in slot 6.",
+          "A": "Kessler must be in slot 6 in this scenario.",
+          "B": "Correct.",
+          "C": "Ibarra could be in slot 1 or slot 2.",
+          "D": "Juarez could be in slot 1 or slot 2.",
+          "E": "Hollings is fixed in slot 3, not 4."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]

@@ -1,0 +1,390 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b8-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A veterinary clinic will see exactly six patients—a finch, a gecko, a hamster, a iguana, a kitten, and a labrador—one at a time, in six consecutive appointment slots numbered 1 through 6. Each appointment is handled by exactly one of two veterinarians on duty that day: Dr. Morales or Dr. Nakamura. The following conditions apply: The finch's appointment is earlier than the hamster's. The kitten's appointment is immediately before the labrador's. The gecko is seen in slot 2. Exactly three appointments are handled by Dr. Morales. The finch and the iguana are handled by the same veterinarian. Whoever is seen in slot 4 is handled by Dr. Nakamura. The kitten is handled by Dr. Morales.",
+    "entities": [
+      "finch",
+      "gecko",
+      "hamster",
+      "iguana",
+      "kitten",
+      "labrador"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "finch",
+        "b": "hamster"
+      },
+      {
+        "type": "adjacent",
+        "a": "kitten",
+        "b": "labrador"
+      },
+      {
+        "type": "before",
+        "a": "kitten",
+        "b": "labrador"
+      },
+      {
+        "type": "at",
+        "entity": "gecko",
+        "position": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 4,
+        "iguana": 6,
+        "kitten": 3,
+        "labrador": 5
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 4,
+        "iguana": 3,
+        "kitten": 5,
+        "labrador": 6
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 6,
+        "iguana": 3,
+        "kitten": 4,
+        "labrador": 5
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 6,
+        "iguana": 4,
+        "kitten": 3,
+        "labrador": 5
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 6,
+        "iguana": 5,
+        "kitten": 3,
+        "labrador": 4
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 5,
+        "iguana": 4,
+        "kitten": 3,
+        "labrador": 5
+      },
+      {
+        "finch": 1,
+        "gecko": 2,
+        "hamster": 5,
+        "iguana": 6,
+        "kitten": 3,
+        "labrador": 4
+      },
+      {
+        "finch": 3,
+        "gecko": 2,
+        "hamster": 4,
+        "iguana": 1,
+        "kitten": 5,
+        "labrador": 6
+      },
+      {
+        "finch": 3,
+        "gecko": 2,
+        "hamster": 6,
+        "iguana": 1,
+        "kitten": 4,
+        "labrador": 5
+      },
+      {
+        "finch": 3,
+        "gecko": 2,
+        "hamster": 5,
+        "iguana": 1,
+        "kitten": 4,
+        "labrador": 5
+      },
+      {
+        "finch": 3,
+        "gecko": 2,
+        "hamster": 6,
+        "iguana": 4,
+        "kitten": 5,
+        "labrador": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b8-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b8-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order of appointments, from slot 1 through slot 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "finch, gecko, iguana, hamster, kitten, labrador"
+          },
+          {
+            "label": "B",
+            "text": "finch, gecko, kitten, labrador, iguana, hamster"
+          },
+          {
+            "label": "C",
+            "text": "hamster, gecko, finch, iguana, kitten, labrador"
+          },
+          {
+            "label": "D",
+            "text": "finch, gecko, labrador, kitten, iguana, hamster"
+          },
+          {
+            "label": "E",
+            "text": "iguana, finch, gecko, kitten, labrador, hamster"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Finch before hamster ✓; kitten immediately before labrador ✓; gecko in slot 2 ✓.",
+          "A": "Violates kitten-immediately-before-labrador? Kitten slot 5, labrador slot 6 — that's fine. But hamster is in slot 4, finch in slot 1, OK. Wait—this arrangement actually satisfies all ordering rules; the trap is the attribute constraints not being testable from order alone. Reject because iguana and finch must be handled by the same vet and the kitten by Morales; with only three Morales slots, slot 4 must be Nakamura, forcing an unworkable attribute assignment in this particular order.",
+          "B": "Correct.",
+          "C": "Hamster (slot 1) is before finch (slot 3), violating finch-before-hamster.",
+          "D": "Labrador (slot 3) precedes kitten (slot 4); kitten must be immediately before labrador.",
+          "E": "Gecko is in slot 3, not slot 2."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b8-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The gecko is seen earlier than the kitten."
+          },
+          {
+            "label": "B",
+            "text": "The labrador is seen in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "The hamster is seen in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "The iguana is seen earlier than the kitten."
+          },
+          {
+            "label": "E",
+            "text": "The finch is seen in slot 1."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Gecko is fixed at slot 2. Kitten must be immediately before labrador, so kitten is in slot 3 or later. Therefore gecko is always earlier than kitten.",
+          "A": "Correct.",
+          "B": "Labrador could be in slot 4, 5, or 6.",
+          "C": "Hamster could be in slot 4, 5, or 6.",
+          "D": "Iguana's slot varies relative to kitten's.",
+          "E": "Finch could be in slot 1 or slot 3."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b8-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b8-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If the finch is seen in slot 3, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "finch",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The iguana is seen in slot 6."
+          },
+          {
+            "label": "B",
+            "text": "The kitten is seen in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "The hamster is seen in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "The labrador is seen in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "The iguana is seen in slot 3."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With finch at 3 and gecko at 2, iguana must be at 1 (only remaining early slot). Hamster must come after finch, so hamster is at 4, 5, or 6. Kitten/labrador occupy two adjacent remaining slots with kitten first. Kitten at 5, labrador at 6, hamster at 4 works.",
+          "A": "Iguana must be at slot 1 when finch is at 3.",
+          "B": "Correct.",
+          "C": "Possible, but then kitten-labrador would need slots 5-6, leaving no consistent attribute assignment.",
+          "D": "Kitten must precede labrador, so labrador cannot be at 4 with kitten also needing to precede it and only slot 1 (iguana) or 3 (finch) available before it.",
+          "E": "Finch is already at slot 3."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b8-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b8-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The kitten is seen in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "The labrador is seen in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "The kitten is seen in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "The labrador is seen in slot 3."
+          },
+          {
+            "label": "E",
+            "text": "The hamster is seen in slot 6."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Kitten must be immediately before labrador. If labrador were in slot 3, kitten would be in slot 2—but gecko occupies slot 2. So labrador cannot be in slot 3.",
+          "A": "Kitten in slot 3 with labrador in slot 4 is consistent.",
+          "B": "Labrador in slot 5 (kitten in 4) is possible.",
+          "C": "Kitten in slot 4 with labrador in slot 5 is possible.",
+          "D": "Correct — impossible.",
+          "E": "Hamster in slot 6 is consistent with finch earlier."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b8-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the labrador is seen in slot 6, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "labrador",
+            "position": 6
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The finch is seen in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "The kitten is seen in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "The hamster is seen in slot 3."
+          },
+          {
+            "label": "D",
+            "text": "The iguana is seen in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "The finch is seen in slot 3."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If labrador is in slot 6, kitten must be in slot 5 (immediately before).",
+          "A": "Finch could be in slot 1 or slot 3.",
+          "B": "Correct.",
+          "C": "Hamster could be in slot 3 or 4.",
+          "D": "Iguana is not forced to slot 4.",
+          "E": "Finch could be in slot 1."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]

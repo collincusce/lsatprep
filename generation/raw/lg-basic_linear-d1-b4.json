@@ -1,0 +1,364 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b4-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A bakery delivery truck makes exactly six stops — at a cafe, a diner, a grocery, a hotel, an inn, and a juicebar — one after another along a single route. The stops are numbered 1 through 6 in the order they are made. The order of the stops is consistent with the following conditions: The grocery is the second stop. The cafe is stopped at before the diner. The hotel is stopped at immediately before or immediately after the inn. The juicebar is the last stop.",
+    "entities": [
+      "cafe",
+      "diner",
+      "grocery",
+      "hotel",
+      "inn",
+      "juicebar"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "grocery",
+        "position": 2
+      },
+      {
+        "type": "before",
+        "a": "cafe",
+        "b": "diner"
+      },
+      {
+        "type": "adjacent",
+        "a": "hotel",
+        "b": "inn"
+      },
+      {
+        "type": "at",
+        "entity": "juicebar",
+        "position": 6
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "cafe": 1,
+        "grocery": 2,
+        "diner": 3,
+        "hotel": 4,
+        "inn": 5,
+        "juicebar": 6
+      },
+      {
+        "cafe": 1,
+        "grocery": 2,
+        "diner": 3,
+        "inn": 4,
+        "hotel": 5,
+        "juicebar": 6
+      },
+      {
+        "cafe": 1,
+        "grocery": 2,
+        "hotel": 3,
+        "inn": 4,
+        "diner": 5,
+        "juicebar": 6
+      },
+      {
+        "cafe": 1,
+        "grocery": 2,
+        "inn": 3,
+        "hotel": 4,
+        "diner": 5,
+        "juicebar": 6
+      },
+      {
+        "cafe": 3,
+        "grocery": 2,
+        "hotel": 4,
+        "inn": 5,
+        "diner": 1,
+        "juicebar": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b4-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b4-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of stops on the delivery route, from stop 1 to stop 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "cafe, grocery, diner, hotel, inn, juicebar"
+          },
+          {
+            "label": "B",
+            "text": "grocery, cafe, hotel, inn, diner, juicebar"
+          },
+          {
+            "label": "C",
+            "text": "cafe, grocery, hotel, diner, inn, juicebar"
+          },
+          {
+            "label": "D",
+            "text": "cafe, grocery, diner, hotel, juicebar, inn"
+          },
+          {
+            "label": "E",
+            "text": "diner, grocery, cafe, inn, hotel, juicebar"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Grocery is at stop 2, cafe precedes diner, hotel and inn are adjacent, and juicebar is last. All four base rules are satisfied.",
+          "A": "Correct. All four base rules check out.",
+          "B": "The grocery is stop 1, not stop 2. Violates the first rule.",
+          "C": "Hotel (3) and inn (5) are not adjacent. Violates the hotel-inn adjacency rule.",
+          "D": "Juicebar is at stop 5, not stop 6. Violates the last rule.",
+          "E": "Diner (1) is stopped at before cafe (3). Violates the cafe-before-diner rule."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b4-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b4-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The cafe is the first stop."
+          },
+          {
+            "label": "B",
+            "text": "The diner is stopped at before the juicebar."
+          },
+          {
+            "label": "C",
+            "text": "The hotel is stopped at before the inn."
+          },
+          {
+            "label": "D",
+            "text": "The diner is the third stop."
+          },
+          {
+            "label": "E",
+            "text": "The inn is stopped at immediately after the grocery."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Juicebar is at stop 6, the last stop, so every other entity — including the diner — must come before it.",
+          "A": "The cafe could be stop 3 (with the diner at a later stop); it need not be first.",
+          "B": "Correct. Since juicebar is fixed at stop 6, every other stop, including the diner, precedes it.",
+          "C": "The hotel and the inn must be adjacent but either order is permitted.",
+          "D": "The diner could be at stop 3, 5, or even 1 in principle; it is not fixed at stop 3.",
+          "E": "The inn need not come immediately after the grocery; the cafe or hotel could occupy stop 3."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b4-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b4-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If the hotel is the third stop, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "hotel",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The diner is the first stop."
+          },
+          {
+            "label": "B",
+            "text": "The inn is the second stop."
+          },
+          {
+            "label": "C",
+            "text": "The diner is the fifth stop."
+          },
+          {
+            "label": "D",
+            "text": "The cafe is the fourth stop."
+          },
+          {
+            "label": "E",
+            "text": "The juicebar is the fifth stop."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With grocery at 2, hotel at 3, juicebar at 6, and hotel-inn adjacent, the inn takes stop 4. The cafe and diner fill stops 1 and 5 with cafe before diner: cafe at 1, diner at 5.",
+          "A": "The diner must follow the cafe, so the diner cannot be the first stop.",
+          "B": "The grocery is fixed at stop 2.",
+          "C": "Correct. Cafe at 1, grocery at 2, hotel at 3, inn at 4, diner at 5, juicebar at 6 satisfies every rule.",
+          "D": "Stop 4 must be the inn, since the inn is adjacent to the hotel at stop 3 and stop 2 is the grocery.",
+          "E": "The juicebar is fixed at stop 6."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b4-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b4-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The cafe is the third stop."
+          },
+          {
+            "label": "B",
+            "text": "The diner is the fifth stop."
+          },
+          {
+            "label": "C",
+            "text": "The inn is the third stop."
+          },
+          {
+            "label": "D",
+            "text": "The hotel is the fifth stop."
+          },
+          {
+            "label": "E",
+            "text": "The cafe is the fifth stop."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If the cafe were at stop 5, the diner would have to be at stop 6; but stop 6 is juicebar. So cafe cannot be fifth.",
+          "A": "Possible: cafe at 3 with diner later works in at least one arrangement.",
+          "B": "Possible: diner at 5 occurs in several valid arrangements.",
+          "C": "Possible: inn at 3 with hotel at 4 is permitted.",
+          "D": "Possible: hotel at 5 with inn at 4 is permitted.",
+          "E": "Correct. Cafe at 5 forces diner at 6, but juicebar is fixed at 6."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b4-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b4-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the diner is the third stop, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "diner",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The cafe is the first stop."
+          },
+          {
+            "label": "B",
+            "text": "The hotel is the fourth stop."
+          },
+          {
+            "label": "C",
+            "text": "The inn is the fifth stop."
+          },
+          {
+            "label": "D",
+            "text": "The hotel is the fifth stop."
+          },
+          {
+            "label": "E",
+            "text": "The cafe is the fourth stop."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With grocery at 2, diner at 3, and juicebar at 6, the cafe must precede the diner. The only slot left before stop 3 is stop 1, so the cafe is first. (Hotel and inn then occupy stops 4 and 5 in some order.)",
+          "A": "Correct. Stop 1 is the only pre-diner slot available for the cafe.",
+          "B": "The hotel could be stop 4 or stop 5.",
+          "C": "The inn could be stop 4 or stop 5.",
+          "D": "The hotel could be stop 4 or stop 5.",
+          "E": "The cafe must precede the diner (stop 3), so it cannot be stop 4."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

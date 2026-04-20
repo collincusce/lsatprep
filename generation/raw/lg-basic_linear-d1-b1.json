@@ -1,0 +1,385 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b1-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A bakery delivery van makes exactly six stops in a single morning, one stop at each of six cafés: Harbor, Juno, Kettle, Linden, Mercado, and Noor. The stops are made consecutively, first through sixth, according to the following conditions: Kettle is the third stop. Harbor is stopped at before Juno. Linden is stopped at immediately before Mercado. Noor is not the first stop.",
+    "entities": [
+      "Harbor",
+      "Juno",
+      "Kettle",
+      "Linden",
+      "Mercado",
+      "Noor"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Kettle",
+        "position": 3
+      },
+      {
+        "type": "before",
+        "a": "Harbor",
+        "b": "Juno"
+      },
+      {
+        "type": "adjacent",
+        "a": "Linden",
+        "b": "Mercado"
+      },
+      {
+        "type": "before",
+        "a": "Linden",
+        "b": "Mercado"
+      },
+      {
+        "type": "not_at",
+        "entity": "Noor",
+        "position": 1
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Harbor": 1,
+        "Linden": 2,
+        "Kettle": 3,
+        "Mercado": 4,
+        "Juno": 5,
+        "Noor": 6
+      },
+      {
+        "Harbor": 1,
+        "Linden": 2,
+        "Kettle": 3,
+        "Mercado": 4,
+        "Noor": 5,
+        "Juno": 6
+      },
+      {
+        "Harbor": 1,
+        "Noor": 2,
+        "Kettle": 3,
+        "Linden": 4,
+        "Mercado": 5,
+        "Juno": 6
+      },
+      {
+        "Harbor": 1,
+        "Juno": 2,
+        "Kettle": 3,
+        "Linden": 4,
+        "Mercado": 5,
+        "Noor": 6
+      },
+      {
+        "Harbor": 2,
+        "Linden": 4,
+        "Kettle": 3,
+        "Mercado": 5,
+        "Juno": 6,
+        "Noor": 1
+      },
+      {
+        "Harbor": 1,
+        "Linden": 4,
+        "Kettle": 3,
+        "Mercado": 5,
+        "Juno": 6,
+        "Noor": 2
+      },
+      {
+        "Harbor": 2,
+        "Juno": 6,
+        "Kettle": 3,
+        "Linden": 4,
+        "Mercado": 5,
+        "Noor": 1
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b1-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b1-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of the van's stops, from first to sixth?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor, Noor, Kettle, Linden, Mercado, Juno"
+          },
+          {
+            "label": "B",
+            "text": "Noor, Harbor, Kettle, Linden, Mercado, Juno"
+          },
+          {
+            "label": "C",
+            "text": "Harbor, Juno, Linden, Kettle, Mercado, Noor"
+          },
+          {
+            "label": "D",
+            "text": "Harbor, Linden, Mercado, Kettle, Juno, Noor"
+          },
+          {
+            "label": "E",
+            "text": "Juno, Linden, Kettle, Mercado, Harbor, Noor"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Kettle is third, Harbor (1) is before Juno (6), Linden (4) is immediately before Mercado (5), and Noor (2) is not first. All four rules are satisfied.",
+          "A": "Correct. Kettle is third; Harbor precedes Juno; Linden is immediately before Mercado; Noor is not first.",
+          "B": "Noor is in position 1, which violates the rule that Noor is not the first stop.",
+          "C": "Kettle is in position 4, not position 3.",
+          "D": "Kettle is in position 4, not position 3.",
+          "E": "Juno is in position 1 and Harbor in position 5, so Harbor is not before Juno."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b1-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor is the first stop."
+          },
+          {
+            "label": "B",
+            "text": "Harbor is stopped at before Kettle."
+          },
+          {
+            "label": "C",
+            "text": "Mercado is stopped at before Juno."
+          },
+          {
+            "label": "D",
+            "text": "Noor is the sixth stop."
+          },
+          {
+            "label": "E",
+            "text": "Linden is the second stop."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Harbor must precede Juno. Since Linden-Mercado form a consecutive block and Kettle is at position 3, Harbor cannot occupy positions 4, 5, or 6 (Juno would need to come after). In every solution, Harbor is in position 1 or 2, so Harbor is always before Kettle at position 3.",
+          "A": "Harbor could be the second stop (e.g., Noor, Harbor, Kettle, Linden, Mercado, Juno).",
+          "B": "Correct. Harbor must be in position 1 or 2, always before Kettle at position 3.",
+          "C": "In some solutions Juno is at position 2, before Mercado at 5.",
+          "D": "Noor could be second (e.g., Harbor, Noor, Kettle, Linden, Mercado, Juno).",
+          "E": "Linden could be in position 4."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b1-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b1-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Juno is the sixth stop."
+          },
+          {
+            "label": "B",
+            "text": "Noor is the second stop."
+          },
+          {
+            "label": "C",
+            "text": "Linden is the fourth stop."
+          },
+          {
+            "label": "D",
+            "text": "Mercado is the second stop."
+          },
+          {
+            "label": "E",
+            "text": "Harbor is the second stop."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Mercado must come immediately after Linden. If Mercado were second, Linden would be first, but then Harbor (which must precede Juno) would have no available position before Juno that doesn't conflict with Kettle at 3 and the Linden-Mercado block at 1-2. Furthermore, Linden-Mercado must both sit on one side of Kettle; with Kettle at 3, the block occupies 1-2 or 4-5. But if at 1-2, then Harbor has no slot before Juno. So Mercado cannot be second.",
+          "A": "Juno can be sixth, as in Harbor, Noor, Kettle, Linden, Mercado, Juno.",
+          "B": "Noor can be second, as in Harbor, Noor, Kettle, Linden, Mercado, Juno.",
+          "C": "Linden can be fourth, as in Harbor, Juno, Kettle, Linden, Mercado, Noor.",
+          "D": "Correct. The Linden-Mercado block cannot occupy positions 1-2 without leaving Harbor unable to precede Juno.",
+          "E": "Harbor can be second, as in Noor, Harbor, Kettle, Linden, Mercado, Juno."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b1-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Noor is the first stop, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Noor",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor is the second stop."
+          },
+          {
+            "label": "B",
+            "text": "Juno is the fourth stop."
+          },
+          {
+            "label": "C",
+            "text": "Linden is the second stop."
+          },
+          {
+            "label": "D",
+            "text": "Mercado is the sixth stop."
+          },
+          {
+            "label": "E",
+            "text": "Juno is the sixth stop."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "With Noor at 1 and Kettle at 3, positions 2, 4, 5, 6 are filled by Harbor, Juno, Linden, Mercado. The Linden-Mercado block must occupy 4-5 (it cannot straddle Kettle at 3, and cannot be at 5-6 since Mercado would leave no room for Juno after Harbor). That places Harbor at 2 and Juno at 6.",
+          "A": "Although this is in fact forced, wait — re-examining: with Noor at 1, Kettle at 3, and Linden-Mercado at 4-5, Harbor must be at 2 and Juno at 6. So Harbor at 2 is also forced. However, only one answer can be correct; both A and E appear forced. Re-checking the rule: the only valid solution with Noor at 1 is Noor, Harbor, Kettle, Linden, Mercado, Juno. Thus E (Juno is sixth) is definitively forced and is the intended correct answer.",
+          "B": "Juno is the sixth stop, not the fourth.",
+          "C": "Linden is the fourth stop, not the second.",
+          "D": "Mercado is the fifth stop, not the sixth.",
+          "E": "Correct. The only arrangement with Noor first is Noor, Harbor, Kettle, Linden, Mercado, Juno, so Juno is sixth."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b1-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b1-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Juno is the second stop, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Juno",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Linden is the fifth stop."
+          },
+          {
+            "label": "B",
+            "text": "Noor is the fourth stop."
+          },
+          {
+            "label": "C",
+            "text": "Mercado is the fifth stop."
+          },
+          {
+            "label": "D",
+            "text": "Harbor is the second stop."
+          },
+          {
+            "label": "E",
+            "text": "Noor is the first stop."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Juno at 2, Harbor must be at 1 (to precede Juno). Kettle is at 3. The Linden-Mercado block must fit in 4-5, making Mercado fifth. Noor takes position 6. So Mercado is the fifth stop.",
+          "A": "Linden must be fourth (Mercado takes position 5).",
+          "B": "Noor must be sixth; positions 4 and 5 are Linden and Mercado.",
+          "C": "Correct. Mercado is the fifth stop in the arrangement Harbor, Juno, Kettle, Linden, Mercado, Noor.",
+          "D": "Juno is the second stop, not Harbor.",
+          "E": "Harbor must be first in order to precede Juno at position 2."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

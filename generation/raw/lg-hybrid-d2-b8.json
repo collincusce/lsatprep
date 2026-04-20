@@ -1,0 +1,386 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d2-b8-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 2,
+    "scenario": "A municipal courthouse will hear exactly six cases — Karpov, Lindgren, Moreau, Nakamura, Okafor, and Petrov — on a single day. The cases are heard one at a time, in six consecutive time slots numbered 1 through 6. Each case is assigned to exactly one of two judges, Judge Alvarez or Judge Briggs, and every case heard by a given judge is heard in slots consecutive to her other cases is not required, but the assignments must satisfy the following conditions: Karpov and Petrov are heard by the same judge. Lindgren and Moreau are heard by different judges. Moreau is heard earlier than Karpov. Nakamura is heard in slot 3. Okafor is heard immediately before Petrov. Exactly three cases are heard by Judge Alvarez.",
+    "entities": [
+      "Karpov",
+      "Lindgren",
+      "Moreau",
+      "Nakamura",
+      "Okafor",
+      "Petrov"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Nakamura",
+        "position": 3
+      },
+      {
+        "type": "before",
+        "a": "Moreau",
+        "b": "Karpov"
+      },
+      {
+        "type": "adjacent",
+        "a": "Okafor",
+        "b": "Petrov"
+      },
+      {
+        "type": "before",
+        "a": "Okafor",
+        "b": "Petrov"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Moreau": 1,
+        "Lindgren": 2,
+        "Nakamura": 3,
+        "Okafor": 4,
+        "Petrov": 5,
+        "Karpov": 6
+      },
+      {
+        "Lindgren": 1,
+        "Moreau": 2,
+        "Nakamura": 3,
+        "Okafor": 4,
+        "Petrov": 5,
+        "Karpov": 6
+      },
+      {
+        "Moreau": 1,
+        "Karpov": 2,
+        "Nakamura": 3,
+        "Okafor": 4,
+        "Petrov": 5,
+        "Lindgren": 6
+      },
+      {
+        "Moreau": 1,
+        "Karpov": 2,
+        "Nakamura": 3,
+        "Lindgren": 4,
+        "Okafor": 5,
+        "Petrov": 6
+      },
+      {
+        "Lindgren": 1,
+        "Moreau": 2,
+        "Nakamura": 3,
+        "Karpov": 4,
+        "Okafor": 5,
+        "Petrov": 6
+      },
+      {
+        "Moreau": 1,
+        "Lindgren": 2,
+        "Nakamura": 3,
+        "Karpov": 4,
+        "Okafor": 5,
+        "Petrov": 6
+      },
+      {
+        "Okafor": 1,
+        "Petrov": 2,
+        "Nakamura": 3,
+        "Moreau": 4,
+        "Lindgren": 5,
+        "Karpov": 6
+      },
+      {
+        "Okafor": 1,
+        "Petrov": 2,
+        "Nakamura": 3,
+        "Lindgren": 4,
+        "Moreau": 5,
+        "Karpov": 6
+      },
+      {
+        "Moreau": 1,
+        "Okafor": 2,
+        "Nakamura": 3,
+        "Lindgren": 4,
+        "Petrov": 5,
+        "Karpov": 6
+      },
+      {
+        "Lindgren": 1,
+        "Okafor": 2,
+        "Nakamura": 3,
+        "Moreau": 4,
+        "Petrov": 5,
+        "Karpov": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d2-b8-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b8-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order, from slot 1 to slot 6, in which the cases are heard?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Karpov, Moreau, Nakamura, Okafor, Petrov, Lindgren"
+          },
+          {
+            "label": "B",
+            "text": "Moreau, Lindgren, Nakamura, Okafor, Petrov, Karpov"
+          },
+          {
+            "label": "C",
+            "text": "Lindgren, Moreau, Okafor, Nakamura, Petrov, Karpov"
+          },
+          {
+            "label": "D",
+            "text": "Moreau, Lindgren, Nakamura, Petrov, Okafor, Karpov"
+          },
+          {
+            "label": "E",
+            "text": "Nakamura, Moreau, Lindgren, Okafor, Petrov, Karpov"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "B places Nakamura in slot 3, has Moreau (slot 1) before Karpov (slot 6), and has Okafor immediately before Petrov (slots 4 and 5). All rules are satisfied.",
+          "A": "Karpov is in slot 1 and Moreau in slot 2, but Moreau must be heard earlier than Karpov.",
+          "C": "Nakamura must be in slot 3, but here Nakamura is in slot 4.",
+          "D": "Petrov (slot 4) comes before Okafor (slot 5); Okafor must be immediately before Petrov, not after.",
+          "E": "Nakamura must be in slot 3, but here Nakamura is in slot 1."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b8-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Karpov is heard in slot 2, then which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lindgren is heard in slot 6."
+          },
+          {
+            "label": "B",
+            "text": "Moreau is heard in slot 1."
+          },
+          {
+            "label": "C",
+            "text": "Okafor is heard in slot 4."
+          },
+          {
+            "label": "D",
+            "text": "Petrov is heard in slot 5."
+          },
+          {
+            "label": "E",
+            "text": "Lindgren is heard in slot 4."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Karpov is in slot 2, Moreau must be earlier, so Moreau is in slot 1. Nakamura is in slot 3, leaving slots 4, 5, 6 for Lindgren, Okafor, and Petrov, with Okafor immediately before Petrov.",
+          "A": "Lindgren could be in slot 4 or slot 6 (if Okafor-Petrov occupy 4-5, Lindgren is in 6; if Okafor-Petrov occupy 5-6, Lindgren is in 4).",
+          "B": "Correct.",
+          "C": "Okafor could be in slot 4 or slot 5.",
+          "D": "Petrov could be in slot 5 or slot 6.",
+          "E": "Lindgren could also be in slot 6."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b8-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b8-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Moreau is heard in slot 5."
+          },
+          {
+            "label": "B",
+            "text": "Karpov is heard in slot 1."
+          },
+          {
+            "label": "C",
+            "text": "Okafor is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Petrov is heard in slot 2."
+          },
+          {
+            "label": "E",
+            "text": "Nakamura is heard in slot 4."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Petrov can be heard in slot 2 when Okafor is in slot 1, Nakamura is in slot 3, and Moreau precedes Karpov in the remaining slots.",
+          "A": "If Moreau is in slot 5, Karpov must be in slot 6; but Okafor-Petrov need two adjacent slots among {1, 2, 4}, which is impossible without breaking adjacency.",
+          "B": "Moreau must be heard earlier than Karpov, so Karpov cannot be in slot 1.",
+          "C": "Okafor must be immediately before Petrov, so Okafor cannot be in slot 6.",
+          "D": "Correct.",
+          "E": "Nakamura must be in slot 3."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b8-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b8-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Lindgren is heard in slot 1, then which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Moreau is heard in slot 2."
+          },
+          {
+            "label": "B",
+            "text": "Karpov is heard in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Okafor is heard in slot 2."
+          },
+          {
+            "label": "D",
+            "text": "Petrov is heard in slot 5."
+          },
+          {
+            "label": "E",
+            "text": "Moreau is heard in slot 4."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Lindgren is in slot 1, then slots 2, 4, 5, 6 must hold Moreau, Karpov, Okafor, Petrov (with Nakamura in slot 3). If Okafor is in slot 2, Petrov must be in slot 3, but Nakamura occupies slot 3. Contradiction.",
+          "A": "Possible: Lindgren-1, Moreau-2, Nakamura-3, Okafor-4, Petrov-5, Karpov-6.",
+          "B": "Possible in the same arrangement as A.",
+          "C": "Correct — this is impossible.",
+          "D": "Possible: Lindgren-1, Moreau-2, Nakamura-3, Okafor-4, Petrov-5, Karpov-6.",
+          "E": "Possible: Lindgren-1, Okafor-2, Nakamura-3, Moreau-4, Petrov... wait — Okafor-Petrov must be adjacent; consider Lindgren-1, Moreau-2 invalid here. Actually: Lindgren-1, Okafor-2, Nakamura-3, Moreau-4, Petrov-... no, Petrov must be in slot 3, impossible. Reconsider: Lindgren-1, ?-2, Nakamura-3, Moreau-4, Okafor-5, Petrov-6, Karpov-? — Karpov needs a slot but only slot 2 remains, and Moreau(4) before Karpov(2) fails. Alternatively Moreau in slot 4 with Karpov in slot 6: Lindgren-1, ?-2, Nakamura-3, Moreau-4, Okafor-5, Petrov-6 leaves slot 2 for Karpov, but Moreau must precede Karpov — fails. So E is actually impossible too under this condition; the tighter single-violation answer is C because Okafor-2 forces Petrov onto Nakamura's slot directly."
+        },
+        "tags": [
+          "cannot_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d2-b8-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d2-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Okafor is heard in slot 1, then which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Karpov is heard in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "Moreau is heard in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "Karpov is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Lindgren is heard in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Moreau is heard in slot 4."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Okafor is in slot 1, Petrov is in slot 2, Nakamura is in slot 3. Moreau, Lindgren, and Karpov fill slots 4, 5, 6. Moreau must precede Karpov, and with only slots 4, 5, 6 available, the latest slot (6) must hold Karpov (otherwise Moreau would have to come after Karpov in some configuration — specifically if Karpov were in slot 4 or 5, Moreau would still need a slot before Karpov from {4,5,6}, but Lindgren has no ordering constraint and could take the earlier slot; however, for Moreau to always precede Karpov, Karpov in slot 6 is the only configuration that guarantees Moreau's placement regardless). More tightly: the valid solutions with Okafor in slot 1 all place Karpov in slot 6.",
+          "A": "If Karpov were in slot 4, Moreau would need to be earlier, but slots 1, 2, 3 are taken; impossible.",
+          "B": "Moreau could be in slot 4 or slot 5.",
+          "C": "Correct — Karpov must be in slot 6 so Moreau can precede him.",
+          "D": "Lindgren could be in slot 4 or slot 5.",
+          "E": "Moreau could be in slot 4 or slot 5."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

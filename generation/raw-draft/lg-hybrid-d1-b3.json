@@ -4,175 +4,219 @@
     "section": "LG",
     "family": "hybrid",
     "difficulty": 1,
-    "scenario": "A boutique hotel is organizing a wine tasting event across three consecutive evenings — Thursday, Friday, and Saturday. Five wines — Cabernet, Dornfelder, Gewürztraminer, Riesling, and Sauvignon Blanc — will be showcased, with exactly one wine featured as the \"signature\" selection on each evening. Each wine is assigned to exactly one evening. The tasting order on each evening is fixed: the signature wine is served last on that evening, and a second wine (if any) is served first. The event is constrained by the following conditions:",
+    "scenario": "A community center will display exactly six ceramic sculptures — Finch, Garnet, Heron, Iris, Juniper, and Kestrel — on a single shelf with six positions numbered 1 through 6 from left to right. Each sculpture was made by exactly one of two potters, Park or Quinn, and exactly three sculptures were made by each potter. The display is subject to the following conditions: Finch is displayed at position 1. Heron was made by Quinn. Garnet and Heron were made by the same potter. Iris was made by Park. Finch is displayed somewhere to the left of Iris. Kestrel is displayed immediately to the right of Juniper.",
     "entities": [
-      "Cabernet",
-      "Dornfelder",
-      "Gewürztraminer",
-      "Riesling",
-      "Sauvignon Blanc"
+      "Finch",
+      "Garnet",
+      "Heron",
+      "Iris",
+      "Juniper",
+      "Kestrel"
     ],
     "positions": [
-      "Thursday_first",
-      "Thursday_last",
-      "Friday_first",
-      "Friday_last",
-      "Saturday_last"
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
     ],
     "rules": [
       {
-        "type": "exactly_one_of",
-        "entities": [
-          "Cabernet",
-          "Dornfelder"
-        ],
-        "position": "Thursday_last"
-      },
-      {
         "type": "at",
-        "entity": "Gewürztraminer",
-        "position": "Friday_first"
+        "entity": "Finch",
+        "position": 1
       },
       {
-        "type": "conditional",
-        "ifRule": {
-          "type": "at",
-          "entity": "Riesling",
-          "position": "Thursday_last"
-        },
-        "thenRule": {
-          "type": "at",
-          "entity": "Sauvignon Blanc",
-          "position": "Saturday_last"
-        }
-      },
-      {
-        "type": "not_adjacent",
-        "position1": "Thursday_first",
-        "position2": "Thursday_last"
+        "type": "same_group",
+        "a": "Garnet",
+        "b": "Heron"
       },
       {
         "type": "before",
-        "position1": "Thursday_last",
-        "position2": "Friday_first"
+        "a": "Finch",
+        "b": "Iris"
+      },
+      {
+        "type": "adjacent",
+        "a": "Juniper",
+        "b": "Kestrel"
+      },
+      {
+        "type": "before",
+        "a": "Juniper",
+        "b": "Kestrel"
       }
     ],
     "verifiedSolutions": [
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Friday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Thursday_first",
-        "Sauvignon Blanc": "Saturday_last"
+        "Finch": 1,
+        "Garnet": 2,
+        "Heron": 3,
+        "Iris": 4,
+        "Juniper": 5,
+        "Kestrel": 6
       },
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Saturday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Thursday_first",
-        "Sauvignon Blanc": "Friday_last"
+        "Finch": 1,
+        "Garnet": 2,
+        "Heron": 3,
+        "Juniper": 4,
+        "Kestrel": 5,
+        "Iris": 6
       },
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Thursday_first",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Friday_last",
-        "Sauvignon Blanc": "Saturday_last"
+        "Finch": 1,
+        "Garnet": 2,
+        "Juniper": 3,
+        "Kestrel": 4,
+        "Heron": 5,
+        "Iris": 6
       },
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Thursday_first",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Saturday_last",
-        "Sauvignon Blanc": "Friday_last"
+        "Finch": 1,
+        "Garnet": 2,
+        "Iris": 3,
+        "Juniper": 4,
+        "Kestrel": 5,
+        "Heron": 6
       },
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Friday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Saturday_last",
-        "Sauvignon Blanc": "Thursday_first"
+        "Finch": 1,
+        "Heron": 2,
+        "Garnet": 3,
+        "Iris": 4,
+        "Juniper": 5,
+        "Kestrel": 6
       },
       {
-        "Cabernet": "Thursday_last",
-        "Dornfelder": "Saturday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Friday_last",
-        "Sauvignon Blanc": "Thursday_first"
+        "Finch": 1,
+        "Heron": 2,
+        "Garnet": 3,
+        "Juniper": 4,
+        "Kestrel": 5,
+        "Iris": 6
       },
       {
-        "Cabernet": "Friday_last",
-        "Dornfelder": "Thursday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Thursday_first",
-        "Sauvignon Blanc": "Saturday_last"
+        "Finch": 1,
+        "Heron": 2,
+        "Juniper": 3,
+        "Kestrel": 4,
+        "Garnet": 5,
+        "Iris": 6
       },
       {
-        "Cabernet": "Friday_last",
-        "Dornfelder": "Thursday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Saturday_last",
-        "Sauvignon Blanc": "Thursday_first"
+        "Finch": 1,
+        "Heron": 2,
+        "Iris": 3,
+        "Juniper": 4,
+        "Kestrel": 5,
+        "Garnet": 6
       },
       {
-        "Cabernet": "Saturday_last",
-        "Dornfelder": "Thursday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Thursday_first",
-        "Sauvignon Blanc": "Friday_last"
+        "Finch": 1,
+        "Iris": 2,
+        "Garnet": 3,
+        "Heron": 4,
+        "Juniper": 5,
+        "Kestrel": 6
       },
       {
-        "Cabernet": "Friday_last",
-        "Dornfelder": "Thursday_last",
-        "Gewürztraminer": "Friday_first",
-        "Riesling": "Thursday_first",
-        "Sauvignon Blanc": "Thursday_first"
+        "Finch": 1,
+        "Iris": 2,
+        "Heron": 3,
+        "Garnet": 4,
+        "Juniper": 5,
+        "Kestrel": 6
+      },
+      {
+        "Finch": 1,
+        "Iris": 2,
+        "Juniper": 3,
+        "Kestrel": 4,
+        "Garnet": 5,
+        "Heron": 6
+      },
+      {
+        "Finch": 1,
+        "Iris": 2,
+        "Juniper": 3,
+        "Kestrel": 4,
+        "Heron": 5,
+        "Garnet": 6
+      },
+      {
+        "Finch": 1,
+        "Juniper": 2,
+        "Kestrel": 3,
+        "Garnet": 4,
+        "Heron": 5,
+        "Iris": 6
+      },
+      {
+        "Finch": 1,
+        "Juniper": 2,
+        "Kestrel": 3,
+        "Heron": 4,
+        "Garnet": 5,
+        "Iris": 6
+      },
+      {
+        "Finch": 1,
+        "Juniper": 2,
+        "Kestrel": 3,
+        "Iris": 4,
+        "Garnet": 5,
+        "Heron": 6
+      },
+      {
+        "Finch": 1,
+        "Juniper": 2,
+        "Kestrel": 3,
+        "Iris": 4,
+        "Heron": 5,
+        "Garnet": 6
       }
     ],
     "questions": [
       {
-        "id": "lg-gen-hybrid-d1-b3-01-q1",
+        "id": "lg-gen-hybrid-d1-b3-1-q1",
         "section": "LG",
         "gameId": "lg-game-gen-hybrid-d1-b3-01",
         "questionType": "orientation_question",
         "difficulty": 1,
-        "questionStem": "Which one of the following could be a complete assignment of wines to tasting positions across the three evenings?",
-        "localRules": [],
+        "questionStem": "Which one of the following could be the order of sculptures on the shelf, from position 1 to position 6?",
         "choices": [
           {
             "label": "A",
-            "text": "Thursday: Riesling first, Cabernet last; Friday: Gewürztraminer first, Dornfelder last; Saturday: Sauvignon Blanc last"
+            "text": "Garnet, Finch, Heron, Iris, Juniper, Kestrel"
           },
           {
             "label": "B",
-            "text": "Thursday: Cabernet first, Dornfelder last; Friday: Gewürztraminer first, Riesling last; Saturday: Sauvignon Blanc last"
+            "text": "Finch, Garnet, Heron, Iris, Kestrel, Juniper"
           },
           {
             "label": "C",
-            "text": "Thursday: Gewürztraminer first, Cabernet last; Friday: Dornfelder first, Riesling last; Saturday: Sauvignon Blanc last"
+            "text": "Finch, Iris, Juniper, Kestrel, Heron, Garnet"
           },
           {
             "label": "D",
-            "text": "Thursday: Sauvignon Blanc first, Riesling last; Friday: Gewürztraminer first, Cabernet last; Saturday: Dornfelder last"
+            "text": "Finch, Heron, Garnet, Juniper, Iris, Kestrel"
           },
           {
             "label": "E",
-            "text": "Thursday: Riesling first, Sauvignon Blanc last; Friday: Gewürztraminer first, Dornfelder last; Saturday: Cabernet last"
+            "text": "Finch, Juniper, Iris, Kestrel, Garnet, Heron"
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "C",
         "explanations": {
-          "correct": "This assignment satisfies all constraints: Cabernet is Thursday's signature (satisfies rule 1 — exactly one of {Cabernet, Dornfelder}). Gewürztraminer is Friday's opening wine (rule 2). Riesling is Thursday's signature, so Sauvignon Blanc must be Saturday's signature per rule 3 — satisfied. Thursday's first (Riesling, position 0) and last (Cabernet, position 1) are adjacent but rule 4 forbids adjacent positions in a single compound position structure; re-read: the rule forbids positions indexed as adjacent. This assignment works.",
-          "A": "Correct.",
-          "B": "Cabernet is first on Thursday, not last. Also, rule 1 requires exactly one of {Cabernet, Dornfelder} to be Thursday's signature (last); here Dornfelder is last but it is not the signature. Violates rule 1.",
-          "C": "Gewürztraminer cannot be Thursday's opening; rule 2 fixes it at Friday's opening. Violates rule 2.",
-          "D": "Sauvignon Blanc cannot be Thursday's opening when Riesling is not Thursday's signature, and rule 3 is not satisfied in the opposite direction. Additionally, Dornfelder as Saturday's signature would require Riesling to be Thursday's signature per rule 3, but here Riesling is Thursday's last and Sauvignon Blanc is not Saturday's last. Violates rule 3.",
-          "E": "Riesling is Thursday's last, so rule 3 requires Sauvignon Blanc to be Saturday's last. Here Cabernet is Saturday's last. Violates rule 3."
+          "correct": "C places Finch at 1, keeps Finch left of Iris, and makes Juniper (3) immediately left of Kestrel (4). All rules are satisfied.",
+          "A": "Finch must be at position 1, not position 2. This violates the first rule.",
+          "B": "Kestrel must be immediately to the right of Juniper, but here Juniper (6) is to the right of Kestrel (5).",
+          "C": "Correct.",
+          "D": "Juniper (4) and Iris (5) are adjacent, but Juniper must be immediately to the left of Kestrel; here Kestrel is at 6, so Juniper and Kestrel are not adjacent.",
+          "E": "Juniper (2) and Kestrel (4) are not adjacent; Iris is between them, violating the adjacency rule."
         },
-        "tags": [
-          "orientation_question",
-          "hybrid"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -182,55 +226,43 @@
         }
       },
       {
-        "id": "lg-gen-hybrid-d1-b3-01-q2",
+        "id": "lg-gen-hybrid-d1-b3-1-q2",
         "section": "LG",
         "gameId": "lg-game-gen-hybrid-d1-b3-01",
         "questionType": "must_be_true",
         "difficulty": 1,
-        "questionStem": "If Riesling is the signature wine on Thursday, then which one of the following must be true?",
-        "localRules": [
-          {
-            "type": "at",
-            "entity": "Riesling",
-            "position": "Thursday_last"
-          }
-        ],
+        "questionStem": "Which one of the following must be true?",
         "choices": [
           {
             "label": "A",
-            "text": "Cabernet is the signature wine on Friday"
+            "text": "Iris is displayed at position 2."
           },
           {
             "label": "B",
-            "text": "Dornfelder is the signature wine on Friday or Saturday"
+            "text": "Garnet was made by Quinn."
           },
           {
             "label": "C",
-            "text": "Sauvignon Blanc is the signature wine on Saturday"
+            "text": "Kestrel was made by Park."
           },
           {
             "label": "D",
-            "text": "Gewürztraminer is the signature wine on Friday"
+            "text": "Juniper is displayed to the left of Iris."
           },
           {
             "label": "E",
-            "text": "Sauvignon Blanc is the opening wine on Thursday"
+            "text": "Heron is displayed at position 3."
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanations": {
-          "correct": "Rule 3 states: if Riesling is Thursday's signature, then Sauvignon Blanc must be Saturday's signature. The local rule pins Riesling at Thursday_last, triggering the conditional. Sauvignon Blanc must be Saturday_last.",
-          "A": "Cabernet is constrained by rule 1 to be Thursday or Friday's signature (last). Since Riesling is Thursday's signature here, Cabernet could be Friday's signature, but it could also be Friday's opening or a non-signature position. Not necessarily true.",
-          "B": "Dornfelder could be any remaining signature slot (Friday or Saturday), but rule 3 forces Sauvignon Blanc to Saturday, so Dornfelder could be Friday's signature. Not necessarily true in this strong form.",
-          "C": "Correct. Rule 3 directly implies this.",
-          "D": "Gewürztraminer is pinned to Friday's opening (rule 2), not Friday's signature. This is true but less compelling than C; C is the direct logical consequence.",
-          "E": "Sauvignon Blanc's first assignment depends on the full solution space under the local rule. It is not forced to Thursday's opening."
+          "correct": "Heron was made by Quinn, and Garnet was made by the same potter as Heron. Therefore Garnet was made by Quinn.",
+          "A": "Iris need not be at position 2; for example, Iris can be at 6.",
+          "B": "Correct.",
+          "C": "Kestrel's potter is not fixed. Since Quinn made Heron and Garnet, Quinn's third sculpture could be Juniper or Kestrel, so Kestrel could be Park's or Quinn's.",
+          "D": "Juniper could appear to the right of Iris (e.g., Iris at 2, Juniper at 3).",
+          "E": "Heron's position is not fixed; Heron could be at position 2, 3, 4, 5, or 6."
         },
-        "tags": [
-          "must_be_true",
-          "hybrid",
-          "conditional"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -240,48 +272,50 @@
         }
       },
       {
-        "id": "lg-gen-hybrid-d1-b3-01-q3",
+        "id": "lg-gen-hybrid-d1-b3-1-q3",
         "section": "LG",
         "gameId": "lg-game-gen-hybrid-d1-b3-01",
         "questionType": "could_be_true",
         "difficulty": 1,
-        "questionStem": "Which one of the following could be true?",
-        "localRules": [],
+        "questionStem": "If Iris is displayed at position 2, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Iris",
+            "position": 2
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "Gewürztraminer is the signature wine on Friday"
+            "text": "Heron is displayed at position 2."
           },
           {
             "label": "B",
-            "text": "Dornfelder is the opening wine on Friday"
+            "text": "Juniper is displayed at position 6."
           },
           {
             "label": "C",
-            "text": "Riesling is the signature wine on Saturday"
+            "text": "Kestrel is displayed at position 4."
           },
           {
             "label": "D",
-            "text": "Sauvignon Blanc is the signature wine on Thursday"
+            "text": "Finch is displayed at position 3."
           },
           {
             "label": "E",
-            "text": "Cabernet is the opening wine on Friday"
+            "text": "Garnet is displayed at position 5, and Heron at position 6, with both made by Park."
           }
         ],
         "correctAnswer": "C",
         "explanations": {
-          "correct": "Riesling could be the signature wine on Saturday. In solution {Cabernet: Thursday_last, Dornfelder: Friday_last, Gewürztraminer: Friday_first, Riesling: Saturday_last, Sauvignon Blanc: Thursday_first}, Riesling is Saturday's signature. This satisfies all rules: rule 1 (Cabernet is Thursday's signature), rule 2 (Gewürztraminer is Friday's opening), rule 3's contrapositive (Riesling is not Thursday's signature, so the conditional is satisfied regardless), and rule 4-5 (ordering preserved).",
-          "A": "Gewürztraminer is pinned to Friday's opening by rule 2, never Friday's signature. Cannot be true.",
-          "B": "Friday's opening is Gewürztraminer (rule 2), not Dornfelder. Cannot be true.",
-          "C": "Correct. Solution exists (see explanation).",
-          "D": "Sauvignon Blanc's signature slot must be paired with Riesling's presence on Thursday (rule 3). If Sauvignon Blanc is Thursday's signature, then Riesling cannot be Thursday's signature (only one signature per evening), so the conditional in rule 3 is not triggered and could allow Sauvignon Blanc elsewhere. However, checking the solution space: Cabernet or Dornfelder must be Thursday's signature (rule 1), so Sauvignon Blanc cannot be. Cannot be true.",
-          "E": "Friday's opening is Gewürztraminer, not Cabernet. Cannot be true."
+          "correct": "With Finch at 1 and Iris at 2, Juniper-Kestrel must occupy one adjacent pair among {3-4, 4-5, 5-6}. Placing Juniper at 3 and Kestrel at 4 leaves positions 5 and 6 for Garnet and Heron. This is consistent with all rules.",
+          "A": "Heron cannot be at 2 because Iris is fixed at 2 by the local rule.",
+          "B": "If Juniper is at 6, there is no position 7 for Kestrel to be immediately to its right — and Juniper must be to the left of Kestrel.",
+          "C": "Correct.",
+          "D": "Finch is at position 1, not position 3.",
+          "E": "Heron was made by Quinn, not Park, per the second setup rule."
         },
-        "tags": [
-          "could_be_true",
-          "hybrid"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -291,48 +325,43 @@
         }
       },
       {
-        "id": "lg-gen-hybrid-d1-b3-01-q4",
+        "id": "lg-gen-hybrid-d1-b3-1-q4",
         "section": "LG",
         "gameId": "lg-game-gen-hybrid-d1-b3-01",
         "questionType": "cannot_be_true",
         "difficulty": 1,
         "questionStem": "Which one of the following CANNOT be true?",
-        "localRules": [],
         "choices": [
           {
             "label": "A",
-            "text": "Cabernet is the opening wine on Thursday"
+            "text": "Juniper is displayed at position 2."
           },
           {
             "label": "B",
-            "text": "Dornfelder is the opening wine on Thursday"
+            "text": "Garnet is displayed at position 6."
           },
           {
             "label": "C",
-            "text": "Sauvignon Blanc is the opening wine on Thursday"
+            "text": "Heron is displayed at position 2."
           },
           {
             "label": "D",
-            "text": "Riesling is the opening wine on Thursday"
+            "text": "Kestrel is displayed at position 2."
           },
           {
             "label": "E",
-            "text": "Gewürztraminer is the opening wine on Thursday"
+            "text": "Iris is displayed at position 6."
           }
         ],
-        "correctAnswer": "E",
+        "correctAnswer": "D",
         "explanations": {
-          "correct": "Gewürztraminer is fixed at Friday's opening by rule 2. It cannot be Thursday's opening. Cannot be true.",
-          "A": "Possible. Cabernet could be Thursday's first (opening) or last (signature). Multiple solutions place another wine at Thursday_first.",
-          "B": "Possible. Dornfelder could be Thursday's opening in some solutions.",
-          "C": "Possible. Sauvignon Blanc could be Thursday's opening in some solutions.",
-          "D": "Possible. Riesling could be Thursday's opening in multiple solutions.",
-          "E": "Correct. Rule 2 pins Gewürztraminer to Friday_first."
+          "correct": "Kestrel must be immediately to the right of Juniper, so Kestrel cannot be at position 2 unless Juniper is at position 1. But Finch is at position 1. Therefore Kestrel cannot be at position 2.",
+          "A": "Juniper at 2 with Kestrel at 3 is permitted (e.g., Finch, Juniper, Kestrel, Iris, Garnet, Heron).",
+          "B": "Garnet at 6 is permitted (e.g., Finch, Iris, Juniper, Kestrel, Heron, Garnet).",
+          "C": "Heron at 2 is permitted (e.g., Finch, Heron, Garnet, Iris, Juniper, Kestrel).",
+          "D": "Correct.",
+          "E": "Iris at 6 is permitted (e.g., Finch, Garnet, Heron, Juniper, Kestrel, Iris)."
         },
-        "tags": [
-          "cannot_be_true",
-          "hybrid"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -342,48 +371,50 @@
         }
       },
       {
-        "id": "lg-gen-hybrid-d1-b3-01-q5",
+        "id": "lg-gen-hybrid-d1-b3-1-q5",
         "section": "LG",
         "gameId": "lg-game-gen-hybrid-d1-b3-01",
-        "questionType": "must_be_false",
+        "questionType": "must_be_true",
         "difficulty": 1,
-        "questionStem": "Which one of the following must be false?",
-        "localRules": [],
+        "questionStem": "If Juniper is displayed at position 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Juniper",
+            "position": 2
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "Cabernet is the opening wine on Friday"
+            "text": "Iris is displayed at position 4."
           },
           {
             "label": "B",
-            "text": "Dornfelder is the signature wine on Thursday"
+            "text": "Kestrel is displayed at position 3."
           },
           {
             "label": "C",
-            "text": "Riesling is the signature wine on Saturday"
+            "text": "Heron is displayed at position 5."
           },
           {
             "label": "D",
-            "text": "Sauvignon Blanc is the signature wine on Saturday"
+            "text": "Garnet is displayed at position 6."
           },
           {
             "label": "E",
-            "text": "Gewürztraminer is the opening wine on Friday"
+            "text": "Iris is displayed at position 5."
           }
         ],
         "correctAnswer": "B",
         "explanations": {
-          "correct": "Rule 1 requires exactly one of {Cabernet, Dornfelder} to be Thursday's signature. This means Dornfelder cannot be both Thursday's signature and not Thursday's signature — but the rule means only one of the pair can hold Thursday_last. If Dornfelder is Thursday's signature (last), then Cabernet is not. The constraint is satisfied. Re-reading: the rule says exactly one of the two must be at Thursday_last (the signature slot). So Dornfelder could be Thursday's last. Actually, upon re-read of rule 1, it says exactly one of {Cabernet, Dornfelder} must be at Thursday_last, meaning one and only one must occupy that position. So both could theoretically be in that position (impossible) or neither. The rule guarantees one is there. Dornfelder COULD be Thursday's signature. Let me reconsider: In solution 7 (Cabernet: Friday_last, Dornfelder: Thursday_last, ...), Dornfelder IS Thursday's signature. So this is possible, not false. Let me recheck the rules and solutions more carefully. Ah — I misread. Let me verify against the verifiedSolutions provided: solution 1 has Dornfelder at Friday_last (not Thursday_last). Solution 3 has Dornfelder at Thursday_first. So in all solutions where Dornfelder appears Thursday, it is Thursday_first (opening), not Thursday_last (signature). Rule 1 says exactly one of {Cabernet, Dornfelder} must be Thursday_last. Cabernet must be Thursday_last in all solutions (checking: yes, all 10 solutions have Cabernet at Thursday_last). So Dornfelder cannot be Thursday_last. Dornfelder cannot be Thursday's signature. Must be false.",
-          "A": "Cabernet could be Friday's opening (opening position on Friday, which may exist in some interpretations). However, Friday's structure is Friday_first and Friday_last. Friday_first is Gewürztraminer. So Cabernet is not Friday_first. It could be Friday_last (signature). So Cabernet cannot be Friday's opening. Wait — Friday has only two slots: first and last. Cabernet cannot be Friday_first (that is Gewürztraminer). It could be Friday_last or not appear on Friday. If Cabernet is not on Friday, it is on Thursday or Saturday. If on Thursday, it is Thursday_last. If on Saturday, it is Saturday_last. So Cabernet cannot be Friday_first (opening). Actually, the scenario says each evening has an opening and a signature (last). But we have 5 wines and 3 evenings. So not every evening has both slots filled. Friday has Gewürztraminer as opening (Friday_first) and one of the remaining wines as Friday_last. Cabernet could be Friday_last, but cannot be Friday_first. So A is asking if Cabernet can be Friday's opening. No, it cannot. So A must be false. But wait, let me re-read the scenario. It says \"the signature wine is served last on that evening, and a second wine (if any) is served first.\" So each evening has exactly one signature and at most one opening. Thursday has both (2 wines). Friday and Saturday have 1 wine each. Oh wait — we have 5 wines total and 3 evenings. If each evening has a signature, that is 3 wines. So 2 wines are leftover. They must be openings. So Thursday has 2 wines (opening + signature), and Friday and Saturday each have 1 wine (signature only, no opening). Wait, that is only 4 wines. We need 5. Let me recount: if Thursday has opening + signature (2), Friday has opening + signature (2), and Saturday has only signature (1), that is 5 total. So Friday DOES have an opening. And that opening is Gewürztraminer. So Friday's opening is Gewürztraminer, and Cabernet cannot be Friday's opening. A must be false. But the correct answer is stated as B. Let me recheck the rules. Rule 1 says exactly one of {Cabernet, Dornfelder} must be at Thursday_last. Looking at all 10 verifiedSolutions: all have Cabernet at Thursday_last. So Dornfelder is never at Thursday_last. Dornfelder must be at Thursday_first, Friday_last, Saturday_last, or Friday_first. But Friday_first is Gewürztraminer. So Dornfelder is at Thursday_first, Friday_last, or Saturday_last. In the solutions, Dornfelder is at Friday_last (solutions 1, 2, 5, 6) or Thursday_first (solutions 3, 4) or Saturday_last (solutions 2, 6, 9). Wait, solution 2 has Dornfelder at Saturday_last and Friday_last — that violates the \"exactly one evening\" constraint. Let me re-read the setup: \"Each wine is assigned to exactly one evening.\" So each wine appears on exactly one evening. So Dornfelder cannot be both Friday_last and Saturday_last. Let me recount solution 2: {Cabernet: Thursday_last, Dornfelder: Saturday_last, Gewürztraminer: Friday_first, Riesling: Friday_last, Sauvignon Blanc: Thursday_first}. Dornfelder is only at Saturday_last. This is consistent. So Dornfelder's possible positions are Friday_last, Saturday_last, or Thursday_first (opening on Thursday). It is never at Thursday_last (the signature). So B (Dornfelder is the signature wine on Thursday) must be false. This matches the stated correct answer.",
-          "B": "Correct. Rule 1 guarantees Cabernet or Dornfelder is Thursday's signature, and all solutions have Cabernet at Thursday_last. Dornfelder is never at Thursday_last in any solution. Must be false.",
-          "C": "Riesling is the signature on Saturday in solution 2 (and others). Could be true.",
-          "D": "Sauvignon Blanc is the signature on Saturday in multiple solutions (e.g., solution 1). Could be true.",
-          "E": "Gewürztraminer is the opening on Friday in all solutions (rule 2). Must be true, not false."
+          "correct": "Kestrel must be immediately to the right of Juniper. With Juniper at 2, Kestrel must be at position 3.",
+          "A": "Iris could be at 4, 5, or 6; the position is not forced.",
+          "B": "Correct.",
+          "C": "Heron could be at 4, 5, or 6.",
+          "D": "Garnet could be at 4, 5, or 6; the position is not forced.",
+          "E": "Iris is not forced to position 5; for example Iris can be at 4 with Garnet and Heron at 5 and 6."
         },
-        "tags": [
-          "must_be_false",
-          "hybrid"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",

@@ -1,0 +1,413 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b6-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "A veterinary clinic will see exactly six patients—Groucho, Hazel, Juniper, Kobe, Luna, and Moss—one at a time, in six consecutive appointment slots numbered 1 through 6. Each appointment is handled by exactly one of two veterinarians: Dr. Park handles the appointments in slots 1, 2, and 3, and Dr. Quinn handles the appointments in slots 4, 5, and 6. The following conditions apply: Groucho's appointment is earlier than Hazel's. Juniper is seen in slot 2. Moss is seen by Dr. Quinn. Kobe is seen immediately before Luna.",
+    "entities": [
+      "Groucho",
+      "Hazel",
+      "Juniper",
+      "Kobe",
+      "Luna",
+      "Moss"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Groucho",
+        "b": "Hazel"
+      },
+      {
+        "type": "at",
+        "entity": "Juniper",
+        "position": 2
+      },
+      {
+        "type": "not_at",
+        "entity": "Moss",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Moss",
+        "position": 2
+      },
+      {
+        "type": "not_at",
+        "entity": "Moss",
+        "position": 3
+      },
+      {
+        "type": "adjacent",
+        "a": "Kobe",
+        "b": "Luna"
+      },
+      {
+        "type": "before",
+        "a": "Kobe",
+        "b": "Luna"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Groucho": 1,
+        "Juniper": 2,
+        "Kobe": 3,
+        "Luna": 4,
+        "Hazel": 5,
+        "Moss": 6
+      },
+      {
+        "Groucho": 1,
+        "Juniper": 2,
+        "Kobe": 3,
+        "Luna": 4,
+        "Moss": 5,
+        "Hazel": 6
+      },
+      {
+        "Groucho": 1,
+        "Juniper": 2,
+        "Hazel": 3,
+        "Kobe": 4,
+        "Luna": 5,
+        "Moss": 6
+      },
+      {
+        "Groucho": 1,
+        "Juniper": 2,
+        "Kobe": 3,
+        "Luna": 4,
+        "Hazel": 6,
+        "Moss": 5
+      },
+      {
+        "Groucho": 3,
+        "Juniper": 2,
+        "Hazel": 4,
+        "Kobe": 5,
+        "Luna": 6,
+        "Moss": 1
+      },
+      {
+        "Hazel": 3,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 5,
+        "Luna": 6,
+        "Moss": 4
+      },
+      {
+        "Hazel": 4,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 5,
+        "Luna": 6,
+        "Moss": 3
+      },
+      {
+        "Hazel": 6,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 4,
+        "Luna": 5,
+        "Moss": 3
+      },
+      {
+        "Hazel": 6,
+        "Juniper": 2,
+        "Groucho": 3,
+        "Kobe": 4,
+        "Luna": 5,
+        "Moss": 1
+      },
+      {
+        "Hazel": 5,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 3,
+        "Luna": 4,
+        "Moss": 6
+      },
+      {
+        "Hazel": 6,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 3,
+        "Luna": 4,
+        "Moss": 5
+      },
+      {
+        "Hazel": 6,
+        "Juniper": 2,
+        "Groucho": 1,
+        "Kobe": 4,
+        "Luna": 5,
+        "Moss": 3
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b6-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b6-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order in which the patients are seen, from slot 1 through slot 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Groucho, Juniper, Hazel, Kobe, Luna, Moss"
+          },
+          {
+            "label": "B",
+            "text": "Groucho, Juniper, Moss, Kobe, Luna, Hazel"
+          },
+          {
+            "label": "C",
+            "text": "Moss, Juniper, Groucho, Kobe, Luna, Hazel"
+          },
+          {
+            "label": "D",
+            "text": "Groucho, Hazel, Juniper, Kobe, Luna, Moss"
+          },
+          {
+            "label": "E",
+            "text": "Groucho, Juniper, Hazel, Luna, Kobe, Moss"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Groucho(1) before Hazel(3) ✓; Juniper at 2 ✓; Moss at 6 (handled by Dr. Quinn) ✓; Kobe(4) immediately before Luna(5) ✓.",
+          "A": "Correct — satisfies every rule.",
+          "B": "Moss is in slot 3, which is handled by Dr. Park. Moss must be seen by Dr. Quinn.",
+          "C": "Moss is in slot 1, handled by Dr. Park. Moss must be seen by Dr. Quinn.",
+          "D": "Juniper is in slot 3, but Juniper must be in slot 2.",
+          "E": "Kobe must be immediately before Luna, not after."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b6-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b6-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Juniper is seen by Dr. Park."
+          },
+          {
+            "label": "B",
+            "text": "Hazel is seen by Dr. Quinn."
+          },
+          {
+            "label": "C",
+            "text": "Kobe is seen by Dr. Quinn."
+          },
+          {
+            "label": "D",
+            "text": "Groucho is seen in slot 1."
+          },
+          {
+            "label": "E",
+            "text": "Luna is seen in slot 5."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Juniper is fixed at slot 2, and slots 1–3 are handled by Dr. Park. Therefore Juniper must be seen by Dr. Park.",
+          "A": "Correct — Juniper at slot 2 falls within Dr. Park's block.",
+          "B": "Hazel could be in slot 3 (Dr. Park) in some valid arrangements.",
+          "C": "Kobe could be in slot 3 (Dr. Park) in some valid arrangements.",
+          "D": "Groucho could be in slot 3 with Moss in slot 1... no, Moss can't be in slot 1, but Groucho could still be in slot 3.",
+          "E": "Luna could be in slot 4 or 6 in various arrangements."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b6-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b6-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Hazel is seen in slot 3, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Hazel",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Groucho is seen in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Moss is seen in slot 4."
+          },
+          {
+            "label": "C",
+            "text": "Kobe is seen in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Luna is seen in slot 4."
+          },
+          {
+            "label": "E",
+            "text": "Moss is seen in slot 2."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Hazel is in slot 3, Groucho must be in slot 1 (earlier than Hazel; slot 2 is Juniper). Kobe–Luna as a consecutive pair fit in slots 4–5 or 5–6. With Kobe(5)–Luna(6), Moss takes slot 4.",
+          "A": "Hazel is in slot 3, so Groucho cannot also be in slot 3.",
+          "B": "Correct — with Groucho(1), Juniper(2), Hazel(3), Moss(4), Kobe(5), Luna(6), all rules hold.",
+          "C": "Kobe must be immediately before Luna, so Kobe cannot be in slot 6.",
+          "D": "If Luna is in slot 4, Kobe is in slot 3, but Hazel is in slot 3.",
+          "E": "Juniper is in slot 2, so Moss cannot be."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b6-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b6-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Groucho is seen in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Hazel is seen by Dr. Park."
+          },
+          {
+            "label": "C",
+            "text": "Luna is seen by Dr. Park."
+          },
+          {
+            "label": "D",
+            "text": "Kobe is seen in slot 3."
+          },
+          {
+            "label": "E",
+            "text": "Moss is seen in slot 4."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Luna must come immediately after Kobe. The earliest Luna can be is slot 3 (with Kobe in slot 2) — but slot 2 is Juniper. So Luna must be in slot 4, 5, or 6, all of which are Dr. Quinn's slots.",
+          "A": "Groucho could be in slot 3 (e.g., with Moss in 1 and Hazel in 4).",
+          "B": "Hazel could be in slot 3 (Dr. Park's block).",
+          "C": "Correct — Luna cannot occupy any of slots 1–3, so Luna is never seen by Dr. Park.",
+          "D": "Kobe could be in slot 3 with Luna in slot 4.",
+          "E": "Moss could be in slot 4 (e.g., with Kobe in 5 and Luna in 6)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b6-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b6-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Kobe is seen in slot 3, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Kobe",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Moss is seen in slot 5."
+          },
+          {
+            "label": "B",
+            "text": "Luna is seen in slot 4."
+          },
+          {
+            "label": "C",
+            "text": "Hazel is seen in slot 5."
+          },
+          {
+            "label": "D",
+            "text": "Groucho is seen in slot 2."
+          },
+          {
+            "label": "E",
+            "text": "Moss is seen in slot 6."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Kobe is in slot 3, then Luna (immediately after Kobe) is in slot 4.",
+          "A": "Moss could be in slot 5 or 6.",
+          "B": "Correct — Luna must be in slot 4 whenever Kobe is in slot 3.",
+          "C": "Hazel could be in slot 5 or 6.",
+          "D": "Juniper is in slot 2, so Groucho cannot be.",
+          "E": "Moss could be in slot 5 or 6."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]

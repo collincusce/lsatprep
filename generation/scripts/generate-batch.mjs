@@ -23,8 +23,12 @@ function readEnv() {
 const env = readEnv();
 const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 
-function pickModel(difficulty) {
-  return difficulty === 1 ? 'claude-haiku-4-5-20251001' : 'claude-sonnet-4-6';
+function pickModel(difficulty, section) {
+  // Opus for LG — needs strongest reasoning to emit solver-valid rules + solutions.
+  // Haiku for 1★ LR/RC. Sonnet for everything else.
+  if (section === 'LG') return 'claude-opus-4-7';
+  if (difficulty === 1) return 'claude-haiku-4-5-20251001';
+  return 'claude-sonnet-4-6';
 }
 
 const DOMAINS = [
@@ -160,9 +164,29 @@ function rcTool(slot, difficulty, batchIdx, count) {
 }
 
 function lgTool(slot, difficulty, batchIdx, count) {
+  // Discriminated rule schemas — force Sonnet into canonical solver shapes.
+  const ruleOneOf = {
+    oneOf: [
+      { type: 'object', required: ['type', 'entity', 'position'], properties: { type: { const: 'at' }, entity: { type: 'string' }, position: { type: 'integer' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'entity', 'position'], properties: { type: { const: 'not_at' }, entity: { type: 'string' }, position: { type: 'integer' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'before' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'after' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'adjacent' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'not_adjacent' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'same_group' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'a', 'b'], properties: { type: { const: 'different_group' }, a: { type: 'string' }, b: { type: 'string' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'entities', 'position'], properties: { type: { const: 'exactly_one_of' }, entities: { type: 'array', items: { type: 'string' } }, position: { type: 'integer' } }, additionalProperties: false },
+      { type: 'object', required: ['type', 'group', 'n'], properties: { type: { const: 'exactly_n_in_group' }, group: { type: ['string', 'integer'] }, n: { type: 'integer' } }, additionalProperties: false }
+    ]
+  };
+  const solutionSchema = {
+    type: 'object',
+    description: 'Flat entity→position map. Each entity maps to ONE integer position. Keys are entity names (no _track / _color suffixes).',
+    additionalProperties: { type: 'integer' }
+  };
   return {
     name: 'submit_games',
-    description: `Submit exactly ${count} LG ${slot} games at difficulty ${difficulty}, each with 5 questions and verifiedSolutions.`,
+    description: `Submit exactly ${count} LG ${slot} games at difficulty ${difficulty}, each with 5 questions and solver-compatible verifiedSolutions.`,
     input_schema: {
       type: 'object',
       required: ['games'],
@@ -179,10 +203,10 @@ function lgTool(slot, difficulty, batchIdx, count) {
               family: { const: slot },
               difficulty: { const: difficulty },
               scenario: { type: 'string' },
-              entities: { type: 'array', items: { type: 'string' } },
-              positions: { type: 'array', items: { type: 'integer' } },
-              rules: { type: 'array', items: { type: 'object' } },
-              verifiedSolutions: { type: 'array', items: { type: 'object' }, minItems: 1 },
+              entities: { type: 'array', items: { type: 'string' }, minItems: 3 },
+              positions: { type: 'array', items: { type: 'integer' }, minItems: 3 },
+              rules: { type: 'array', items: ruleOneOf, minItems: 2 },
+              verifiedSolutions: { type: 'array', items: solutionSchema, minItems: 1 },
               questions: {
                 type: 'array',
                 minItems: 5, maxItems: 5,
@@ -227,7 +251,43 @@ function buildSystem(section, slot) {
     ? `\n## Question types (for nested RC questions)\n\n${readFileSync(rubricPath('RC', 'question_types'), 'utf8')}\n`
     : '';
   const solverBlock = section === 'LG'
-    ? `\n## Solver rule vocabulary (strict)\n\nSupported rule types: at, not_at, before, after, adjacent, not_adjacent, same_group, different_group, conditional (with ifRule/thenRule — NOT if/then), exactly_one_of, exactly_n_in_group. Positions MUST be integers for before/after/adjacent. NO between. NO range counts. Every game includes verifiedSolutions whose entries satisfy all rules.\n`
+    ? `\n## Solver rule vocabulary (STRICT — this is the ONLY shape that works)
+
+Rules must use EXACTLY these shapes. Any other shape causes the game to be rejected.
+
+### Binary ordering (integer positions only)
+- \`{ "type": "before", "a": "Alice", "b": "Bob" }\`   — Alice's position < Bob's
+- \`{ "type": "after", "a": "Alice", "b": "Bob" }\`    — Alice's position > Bob's
+- \`{ "type": "adjacent", "a": "Alice", "b": "Bob" }\`     — |posA - posB| = 1
+- \`{ "type": "not_adjacent", "a": "Alice", "b": "Bob" }\` — |posA - posB| != 1
+
+### Fixed assignment
+- \`{ "type": "at", "entity": "Alice", "position": 3 }\`
+- \`{ "type": "not_at", "entity": "Alice", "position": 3 }\`
+
+### Grouping (positions are groups)
+- \`{ "type": "same_group", "a": "Alice", "b": "Bob" }\`
+- \`{ "type": "different_group", "a": "Alice", "b": "Bob" }\`
+- \`{ "type": "exactly_n_in_group", "group": "Red", "n": 3 }\`
+
+### Disjunction
+- \`{ "type": "exactly_one_of", "entities": ["Alice","Bob","Carol"], "position": 1 }\`
+
+### FORBIDDEN
+- NO \`entity\` + \`relativeTo\` fields — use \`a\` and \`b\` for binary rules.
+- NO \`description\` field inside rules.
+- NO rule types other than the list above.
+- NO between — decompose as before + after.
+- NO compound suffixes in verifiedSolutions keys (e.g. "Alice_track") — solution keys are JUST entity names, values are integers.
+
+### verifiedSolutions shape
+
+Each solution is a flat map \`{ "Alice": 1, "Bob": 2, "Carol": 3, ... }\`. Every entity appears once; values are integers from the positions array. No nested objects.
+
+### Pre-emission self-check (do this mentally)
+
+For each claimed solution, verify EVERY rule holds. If ANY rule is violated in ANY claimed solution, revise the rules or solutions before emitting.
+`
     : '';
   return `You are an expert LSAT question writer. Produce authentic LSAT content that could pass for real published LSAC material.
 
@@ -275,7 +335,7 @@ function buildUser(section, slot, difficulty, count, batchIdx) {
 }
 
 async function generate({ section, slot, difficulty, count, batchIdx }) {
-  const model = pickModel(difficulty);
+  const model = pickModel(difficulty, section);
   const system = buildSystem(section, slot);
   const tool = toolFor(section, slot, difficulty, batchIdx, count);
   const userMsg = buildUser(section, slot, difficulty, count, batchIdx);

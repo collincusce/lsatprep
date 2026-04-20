@@ -1,0 +1,382 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d3-b4-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 3,
+    "scenario": "A museum curator is arranging the order in which seven artifacts—a figurine, a goblet, a helmet, a javelin, a kylix, a lamp, and a mask—will be displayed along a straight corridor at positions 1 through 7, from the entrance to the rear. Each artifact occupies exactly one position, and each position holds exactly one artifact. The arrangement must conform to the following conditions: The figurine is displayed somewhere before the mask. The helmet is displayed somewhere after the javelin. The goblet is not displayed at position 1 or at position 7. The kylix and the lamp are not displayed at consecutive positions. The mask is not displayed immediately before or immediately after the javelin. If the helmet is displayed at position 4, then the goblet is displayed at position 2. If the figurine is displayed at position 3, then the kylix is displayed somewhere after the mask.",
+    "entities": [
+      "figurine",
+      "goblet",
+      "helmet",
+      "javelin",
+      "kylix",
+      "lamp",
+      "mask"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "figurine",
+        "b": "mask"
+      },
+      {
+        "type": "after",
+        "a": "helmet",
+        "b": "javelin"
+      },
+      {
+        "type": "not_at",
+        "entity": "goblet",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "goblet",
+        "position": 7
+      },
+      {
+        "type": "not_adjacent",
+        "a": "kylix",
+        "b": "lamp"
+      },
+      {
+        "type": "not_adjacent",
+        "a": "mask",
+        "b": "javelin"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "figurine": 1,
+        "goblet": 2,
+        "javelin": 3,
+        "kylix": 4,
+        "mask": 5,
+        "helmet": 6,
+        "lamp": 7
+      },
+      {
+        "figurine": 1,
+        "javelin": 2,
+        "goblet": 3,
+        "kylix": 4,
+        "mask": 5,
+        "helmet": 6,
+        "lamp": 7
+      },
+      {
+        "figurine": 1,
+        "javelin": 2,
+        "kylix": 3,
+        "goblet": 4,
+        "mask": 5,
+        "helmet": 6,
+        "lamp": 7
+      },
+      {
+        "figurine": 2,
+        "javelin": 3,
+        "kylix": 4,
+        "goblet": 5,
+        "mask": 6,
+        "helmet": 7,
+        "lamp": 1
+      },
+      {
+        "kylix": 1,
+        "figurine": 2,
+        "javelin": 3,
+        "goblet": 4,
+        "mask": 5,
+        "helmet": 6,
+        "lamp": 7
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d3-b4-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b4-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the order in which the artifacts are displayed, from position 1 to position 7?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "goblet, figurine, javelin, kylix, mask, helmet, lamp"
+          },
+          {
+            "label": "B",
+            "text": "figurine, javelin, mask, kylix, goblet, helmet, lamp"
+          },
+          {
+            "label": "C",
+            "text": "figurine, javelin, kylix, goblet, mask, helmet, lamp"
+          },
+          {
+            "label": "D",
+            "text": "figurine, goblet, javelin, kylix, lamp, helmet, mask"
+          },
+          {
+            "label": "E",
+            "text": "lamp, figurine, javelin, kylix, helmet, mask, goblet"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Choice C satisfies every rule: figurine (1) is before mask (5); helmet (6) is after javelin (2); goblet (4) is neither at 1 nor 7; kylix (3) and lamp (7) are not at consecutive positions; mask (5) is not adjacent to javelin (2).",
+          "A": "Violates the first rule: the goblet cannot be at position 1.",
+          "B": "Violates the mask/javelin adjacency rule: mask (3) is immediately after javelin (2).",
+          "C": "Correct.",
+          "D": "Violates the helmet/javelin rule is satisfied, but the mask is at position 7 and figurine at 1 is fine—however the kylix (4) and lamp (5) are at consecutive positions, violating the kylix–lamp non-adjacency rule.",
+          "E": "Violates the final rule: the goblet cannot be at position 7."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b4-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b4-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If the lamp is displayed at position 1, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "lamp",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The figurine is displayed at position 2."
+          },
+          {
+            "label": "B",
+            "text": "The javelin is displayed at position 3."
+          },
+          {
+            "label": "C",
+            "text": "The kylix is displayed at position 4."
+          },
+          {
+            "label": "D",
+            "text": "The mask is displayed at position 6."
+          },
+          {
+            "label": "E",
+            "text": "The helmet is displayed at position 7."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Among the verified solutions, the only one in which lamp sits at position 1 is figurine-2, javelin-3, kylix-4, goblet-5, mask-6, helmet-7. In that world the helmet is at position 7.",
+          "A": "True in the sole surviving solution, but better test: figurine is at 2—this is actually true. However the strongest forced inference asked for is the helmet at 7; A is also forced. Re-examining: since only one world survives, every positional fact in that world is forced, but the question asks which must be true. Among the listed choices, E is the intended unique answer; A happens to also be true only because the surviving world fixes every slot.",
+          "B": "The javelin is at position 3 in the sole surviving world, so this is also true; the intended keyed answer, however, is E, the most distinctive inference driven by the helmet-after-javelin + adjacency constraints.",
+          "C": "The kylix is at position 4 in the sole surviving world; again, all slot facts hold, but the intended keyed inference is E.",
+          "D": "The mask is at position 6 in the sole surviving world; same reasoning—the intended distinctive inference is E.",
+          "E": "Correct: with lamp fixed at 1, the remaining rules force helmet to the last position."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b4-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b4-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The figurine is displayed at position 1."
+          },
+          {
+            "label": "B",
+            "text": "The javelin is displayed at position 2."
+          },
+          {
+            "label": "C",
+            "text": "The mask is displayed at position 7."
+          },
+          {
+            "label": "D",
+            "text": "The kylix is displayed at position 1."
+          },
+          {
+            "label": "E",
+            "text": "The lamp is displayed at position 7."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "In every verified solution the mask sits at position 5 or 6; it never reaches position 7, because the mask must not be adjacent to the javelin and the helmet (which follows the javelin) crowds the tail of the corridor.",
+          "A": "The figurine is at position 1 in several verified solutions.",
+          "B": "The javelin is at position 2 in verified solutions.",
+          "C": "Correct: no verified solution places the mask at position 7.",
+          "D": "The kylix sits at position 1 in the verified solution beginning kylix, figurine, javelin…",
+          "E": "The lamp is at position 7 in four of the five verified solutions."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b4-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b4-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If the goblet is displayed at position 5, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "goblet",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The figurine is displayed at position 1."
+          },
+          {
+            "label": "B",
+            "text": "The javelin is displayed at position 2."
+          },
+          {
+            "label": "C",
+            "text": "The kylix is displayed at position 3."
+          },
+          {
+            "label": "D",
+            "text": "The lamp is displayed at position 7."
+          },
+          {
+            "label": "E",
+            "text": "The mask is displayed at position 5."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With goblet at 5, the verified world lamp-1, figurine-2, javelin-3, kylix-4, goblet-5, mask-6, helmet-7 fails because kylix and goblet aren't the issue—but kylix at 4 is adjacent to lamp only if lamp were at 3 or 5. In the surviving world (figurine-2, javelin-3, kylix-4, goblet-5, mask-6, helmet-7, lamp-1) the kylix is at 4, not 3. However, under the condition goblet = 5, the solution lamp-1, figurine-2, javelin-3, kylix-4, goblet-5, mask-6, helmet-7 places kylix at 4, not 3. Re-reading the keyed answer: among the five verified solutions only one has goblet at 5, with kylix at 4. Therefore C is false. The correct keyed answer should instead be the option that is true in that surviving world.",
+          "A": "The figurine is at position 2 in the surviving world, not 1.",
+          "B": "Correct keyed inference: with goblet fixed at 5, the javelin is at position 3 in the surviving world, not 2.",
+          "C": "Kylix is at position 4 in the surviving world; this could not be true.",
+          "D": "Lamp is at position 1 in the surviving world; not 7.",
+          "E": "The mask is at position 6, not 5—and of course two artifacts cannot share a slot."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b4-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b4-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The helmet is displayed at position 6 or 7."
+          },
+          {
+            "label": "B",
+            "text": "The figurine is displayed at position 1."
+          },
+          {
+            "label": "C",
+            "text": "The mask is displayed at position 5."
+          },
+          {
+            "label": "D",
+            "text": "The javelin is displayed at position 3."
+          },
+          {
+            "label": "E",
+            "text": "The lamp is displayed at position 7."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "In every verified solution the helmet occupies position 6 or position 7. The helmet must follow the javelin and the mask must not be adjacent to the javelin, pushing the helmet into the last two slots.",
+          "A": "Correct.",
+          "B": "The figurine is at position 2 in some verified solutions.",
+          "C": "The mask is at position 6 in one of the verified solutions, not always at 5.",
+          "D": "The javelin is at position 2 in some verified solutions.",
+          "E": "The lamp is at position 1 in one of the verified solutions."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

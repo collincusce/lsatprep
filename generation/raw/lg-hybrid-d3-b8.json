@@ -1,0 +1,412 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d3-b8-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A regional courthouse will hear exactly seven cases — Farris, Gutman, Hollis, Ingram, Jurado, Kessler, and Lowe — in seven consecutive time slots numbered 1 through 7. Each case is assigned to exactly one of two judges, Ramirez or Soto. Ramirez hears exactly four cases and Soto hears exactly three, and each judge's cases are heard in the order of their slot numbers. The schedule is governed by the following conditions: Farris is heard earlier than Gutman, and Gutman is heard earlier than Hollis. Ingram and Jurado are heard by the same judge. Kessler is heard by Soto. Farris and Kessler are heard in consecutive slots. Hollis is heard by Ramirez. Exactly one of Gutman and Ingram is heard in slot 4. Lowe is not heard in slot 1 or slot 7.",
+    "entities": [
+      "Farris",
+      "Gutman",
+      "Hollis",
+      "Ingram",
+      "Jurado",
+      "Kessler",
+      "Lowe"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Farris",
+        "b": "Gutman"
+      },
+      {
+        "type": "before",
+        "a": "Gutman",
+        "b": "Hollis"
+      },
+      {
+        "type": "adjacent",
+        "a": "Farris",
+        "b": "Kessler"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Gutman",
+          "Ingram"
+        ],
+        "position": 4
+      },
+      {
+        "type": "not_at",
+        "entity": "Lowe",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Lowe",
+        "position": 7
+      },
+      {
+        "type": "not_at",
+        "entity": "Farris",
+        "position": 7
+      },
+      {
+        "type": "not_at",
+        "entity": "Hollis",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Hollis",
+        "position": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Farris": 1,
+        "Kessler": 2,
+        "Ingram": 3,
+        "Gutman": 4,
+        "Jurado": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Farris": 1,
+        "Kessler": 2,
+        "Jurado": 3,
+        "Gutman": 4,
+        "Ingram": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Farris": 2,
+        "Kessler": 3,
+        "Gutman": 4,
+        "Ingram": 5,
+        "Jurado": 6,
+        "Hollis": 7,
+        "Lowe": 5
+      },
+      {
+        "Ingram": 1,
+        "Farris": 2,
+        "Kessler": 3,
+        "Gutman": 4,
+        "Jurado": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Ingram": 1,
+        "Jurado": 2,
+        "Farris": 3,
+        "Gutman": 4,
+        "Kessler": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Jurado": 1,
+        "Farris": 2,
+        "Kessler": 3,
+        "Gutman": 4,
+        "Ingram": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Jurado": 1,
+        "Ingram": 2,
+        "Farris": 3,
+        "Gutman": 4,
+        "Kessler": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      },
+      {
+        "Ingram": 1,
+        "Jurado": 2,
+        "Kessler": 3,
+        "Farris": 4,
+        "Gutman": 5,
+        "Lowe": 6,
+        "Hollis": 7
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d3-b8-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b8-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be an accurate order of the seven cases, from slot 1 to slot 7?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Farris, Kessler, Ingram, Gutman, Jurado, Lowe, Hollis"
+          },
+          {
+            "label": "B",
+            "text": "Lowe, Farris, Kessler, Gutman, Ingram, Jurado, Hollis"
+          },
+          {
+            "label": "C",
+            "text": "Ingram, Jurado, Farris, Gutman, Kessler, Lowe, Hollis"
+          },
+          {
+            "label": "D",
+            "text": "Farris, Gutman, Kessler, Ingram, Jurado, Lowe, Hollis"
+          },
+          {
+            "label": "E",
+            "text": "Jurado, Ingram, Farris, Kessler, Hollis, Lowe, Gutman"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "(A) places Farris-Gutman-Hollis in order (1,4,7), Farris and Kessler adjacent (1,2), Gutman in slot 4 with Ingram elsewhere, and Lowe in slot 6 — all rules satisfied.",
+          "A": "Correct.",
+          "B": "Lowe cannot occupy slot 1.",
+          "C": "Kessler and Farris are not in consecutive slots (Farris in 3, Kessler in 5).",
+          "D": "Kessler and Farris must be adjacent; here Farris is 1 and Kessler is 3.",
+          "E": "Gutman must come before Hollis, but Hollis is slot 5 while Gutman is slot 7."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b8-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hollis is heard in slot 7."
+          },
+          {
+            "label": "B",
+            "text": "Gutman is heard in slot 4."
+          },
+          {
+            "label": "C",
+            "text": "Lowe is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Farris is heard before Ingram."
+          },
+          {
+            "label": "E",
+            "text": "Kessler is heard in an odd-numbered slot."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hollis must follow Gutman, who must follow Farris, and Hollis cannot be in slots 1 or 2. Given Lowe is barred from slot 7 and the adjacency and position-4 constraints force Hollis into slot 7 across every world, Hollis is always in slot 7.",
+          "A": "Correct — every verified world places Hollis in slot 7.",
+          "B": "In one world Farris sits in slot 4 with Gutman in slot 5; Gutman need not be in slot 4.",
+          "C": "Lowe could be in slot 5 instead of slot 6 in some worlds.",
+          "D": "Ingram can occupy slot 1, placing Ingram before Farris.",
+          "E": "Kessler can be heard in slot 2 (even) in several valid arrangements."
+        },
+        "tags": [
+          "must_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b8-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b8-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Ingram is heard in slot 1, then which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Farris is heard in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "Jurado is heard in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Kessler is heard in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Gutman is heard in slot 5."
+          },
+          {
+            "label": "E",
+            "text": "Lowe is heard in slot 3."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Ingram in slot 1, Gutman need not be in slot 4 (the exactly-one constraint is already satisfied by Ingram's absence). Farris can occupy slot 4 with Kessler in slot 3 or 5; for instance, Jurado-Ingram not applicable here, but Ingram(1), Jurado(2), Kessler(3), Farris(4), Gutman(5), Lowe(6), Hollis(7) satisfies every rule.",
+          "A": "Correct — the world Ingram(1), Jurado(2), Kessler(3), Farris(4), Gutman(5), Lowe(6), Hollis(7) works.",
+          "B": "With Ingram at slot 1, Jurado must still precede Lowe and Hollis; Jurado in slot 6 would push Lowe out of slots 2–6, leaving no legal home.",
+          "C": "Kessler in slot 6 forces Farris into slot 5 or 7; slot 7 is barred and slot 5 leaves no room for Gutman before Hollis at 7 with Lowe somewhere in 2–6.",
+          "D": "Gutman in slot 5 with Ingram in slot 1 means the exactly-one-of {Gutman, Ingram} at slot 4 rule is unsatisfied — neither would be there.",
+          "E": "Lowe in slot 3 breaks Farris-Kessler adjacency combined with Gutman-before-Hollis ordering in every completion."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b8-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b8-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Farris is heard in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Kessler is heard in slot 2."
+          },
+          {
+            "label": "C",
+            "text": "Gutman is heard in slot 5."
+          },
+          {
+            "label": "D",
+            "text": "Lowe is heard in slot 2."
+          },
+          {
+            "label": "E",
+            "text": "Jurado is heard in slot 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Lowe cannot be in slot 2. Slot 2 is always occupied by Kessler, Farris, Jurado, or Ingram in every verified world — the Farris/Kessler adjacency pair and the Ingram/Jurado same-judge pairing leave no legal configuration with Lowe at slot 2 once Hollis (slot 7) and the slot-4 constraint are honored.",
+          "A": "Farris is in slot 3 in multiple worlds (e.g., Jurado, Ingram, Farris, Gutman, Kessler, Lowe, Hollis).",
+          "B": "Kessler is in slot 2 in the world Farris, Kessler, Ingram, Gutman, Jurado, Lowe, Hollis.",
+          "C": "Gutman can be in slot 5 (e.g., Ingram, Jurado, Kessler, Farris, Gutman, Lowe, Hollis).",
+          "D": "Correct — no valid world places Lowe in slot 2.",
+          "E": "Jurado is in slot 5 in the world Farris, Kessler, Ingram, Gutman, Jurado, Lowe, Hollis."
+        },
+        "tags": [
+          "cannot_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b8-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b8-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Gutman is heard in slot 4, then which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ingram is heard in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "Farris is heard in slot 1 or slot 2."
+          },
+          {
+            "label": "C",
+            "text": "Kessler is heard in slot 3."
+          },
+          {
+            "label": "D",
+            "text": "Lowe is heard in slot 5."
+          },
+          {
+            "label": "E",
+            "text": "Jurado is heard before Kessler."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Gutman in slot 4, Hollis must be in slot 7, and Farris must precede Gutman and be adjacent to Kessler. The Farris-Kessler block fits only in slots 1-2, 2-3, or 3-? (but Kessler in slot 4 is taken). Examining all worlds with Gutman at 4, Farris always occupies slot 1 or slot 2.",
+          "A": "Ingram need not be in slot 1; Ingram could occupy slot 3, 5, or elsewhere.",
+          "B": "Correct — in every world where Gutman is in slot 4, Farris is either in slot 1 (paired with Kessler at 2) or slot 2 (paired with Kessler at 3), since Farris must precede Gutman and sit adjacent to Kessler.",
+          "C": "Kessler could be in slot 2 if Farris is in slot 1.",
+          "D": "Lowe is typically in slot 5 or 6; in some worlds Lowe is in slot 6 with Ingram/Jurado at 5.",
+          "E": "Jurado could follow Kessler if, e.g., Farris-Kessler occupy slots 1-2 and Jurado is at slot 5."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

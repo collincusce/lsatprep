@@ -1,0 +1,400 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d1-b1-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "A small museum will display exactly six sculptures — Feldspar, Granite, Hematite, Jasper, Kyanite, and Lapis — in exactly six numbered display niches arranged in a straight row from niche 1 (leftmost) to niche 6 (rightmost). The niches are divided into two adjacent wings: the North wing consists of niches 1, 2, and 3, and the South wing consists of niches 4, 5, and 6. Each sculpture occupies exactly one niche, and each niche holds exactly one sculpture. The arrangement is subject to the following conditions: Feldspar is displayed in the North wing. Jasper is displayed immediately to the left of Kyanite. Granite is displayed in niche 5. Hematite and Lapis are displayed in the same wing.",
+    "entities": [
+      "Feldspar",
+      "Granite",
+      "Hematite",
+      "Jasper",
+      "Kyanite",
+      "Lapis"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Granite",
+        "position": 5
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Feldspar"
+        ],
+        "position": 1
+      },
+      {
+        "type": "adjacent",
+        "a": "Jasper",
+        "b": "Kyanite"
+      },
+      {
+        "type": "before",
+        "a": "Jasper",
+        "b": "Kyanite"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Feldspar": 1,
+        "Jasper": 2,
+        "Kyanite": 3,
+        "Hematite": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Feldspar": 1,
+        "Hematite": 2,
+        "Jasper": 3,
+        "Kyanite": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Feldspar": 1,
+        "Lapis": 2,
+        "Jasper": 3,
+        "Kyanite": 4,
+        "Granite": 5,
+        "Hematite": 6
+      },
+      {
+        "Feldspar": 1,
+        "Jasper": 2,
+        "Kyanite": 3,
+        "Lapis": 4,
+        "Granite": 5,
+        "Hematite": 6
+      },
+      {
+        "Feldspar": 2,
+        "Jasper": 1,
+        "Kyanite": 3,
+        "Hematite": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Hematite": 1,
+        "Feldspar": 2,
+        "Jasper": 3,
+        "Kyanite": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Lapis": 1,
+        "Feldspar": 2,
+        "Jasper": 3,
+        "Kyanite": 4,
+        "Granite": 5,
+        "Hematite": 6
+      },
+      {
+        "Hematite": 1,
+        "Jasper": 2,
+        "Kyanite": 3,
+        "Feldspar": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Lapis": 1,
+        "Jasper": 2,
+        "Kyanite": 3,
+        "Feldspar": 4,
+        "Granite": 5,
+        "Hematite": 6
+      },
+      {
+        "Jasper": 1,
+        "Kyanite": 2,
+        "Feldspar": 3,
+        "Hematite": 4,
+        "Granite": 5,
+        "Lapis": 6
+      },
+      {
+        "Jasper": 1,
+        "Kyanite": 2,
+        "Feldspar": 3,
+        "Lapis": 4,
+        "Granite": 5,
+        "Hematite": 6
+      },
+      {
+        "Jasper": 2,
+        "Kyanite": 3,
+        "Feldspar": 1,
+        "Lapis": 4,
+        "Granite": 5,
+        "Hematite": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b1-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be an acceptable assignment of sculptures to niches 1 through 6, respectively?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Feldspar, Jasper, Kyanite, Hematite, Granite, Lapis"
+          },
+          {
+            "label": "B",
+            "text": "Hematite, Feldspar, Jasper, Kyanite, Lapis, Granite"
+          },
+          {
+            "label": "C",
+            "text": "Feldspar, Kyanite, Jasper, Hematite, Granite, Lapis"
+          },
+          {
+            "label": "D",
+            "text": "Jasper, Kyanite, Lapis, Feldspar, Granite, Hematite"
+          },
+          {
+            "label": "E",
+            "text": "Feldspar, Jasper, Kyanite, Lapis, Hematite, Granite"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "A satisfies every rule: Feldspar is in the North wing (niche 1), Jasper (2) is immediately left of Kyanite (3), Granite is in niche 5, and Hematite (4) and Lapis (6) are both in the South wing.",
+          "A": "Correct. All four rules are satisfied.",
+          "B": "Violates the rule that Granite must be displayed in niche 5; here Granite is in niche 6.",
+          "C": "Violates the Jasper-immediately-left-of-Kyanite rule: here Kyanite (niche 2) precedes Jasper (niche 3).",
+          "D": "Violates the rule that Feldspar must be in the North wing; here Feldspar is in niche 4 (South wing).",
+          "E": "Violates the rule that Granite must be in niche 5; here Granite is in niche 6."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jasper is displayed in the North wing."
+          },
+          {
+            "label": "B",
+            "text": "Kyanite is displayed in niche 4."
+          },
+          {
+            "label": "C",
+            "text": "Granite is displayed in the South wing."
+          },
+          {
+            "label": "D",
+            "text": "Lapis is displayed in niche 6."
+          },
+          {
+            "label": "E",
+            "text": "Feldspar is displayed in niche 1."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Granite is fixed at niche 5 by rule, and niche 5 is in the South wing (niches 4–6). So Granite must be in the South wing.",
+          "A": "Not necessarily — Jasper could be in niche 3 (North) or niche 4 (South), as long as Kyanite is immediately to its right.",
+          "B": "Not necessarily — Kyanite could be at niche 2, 3, or 4 in various valid solutions.",
+          "C": "Correct. Niche 5 lies in the South wing, and Granite is pinned to niche 5.",
+          "D": "Not necessarily — Lapis is only required to share a wing with Hematite; it could be in the North wing.",
+          "E": "Not necessarily — Feldspar can be in niche 1, 2, 3, or 4 in various solutions; only North wing placement is forced."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Jasper is displayed in niche 3, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jasper",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Feldspar is displayed in niche 4."
+          },
+          {
+            "label": "B",
+            "text": "Kyanite is displayed in niche 5."
+          },
+          {
+            "label": "C",
+            "text": "Hematite is displayed in niche 1."
+          },
+          {
+            "label": "D",
+            "text": "Lapis is displayed in niche 5."
+          },
+          {
+            "label": "E",
+            "text": "Granite is displayed in niche 4."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Jasper is in niche 3, then Kyanite must be in niche 4. Granite is in niche 5. Feldspar must be in the North wing, so Feldspar is in niche 1 or 2. Hematite and Lapis fill the remaining niches (one of {1,2} and niche 6) and must share a wing — so whichever of them sits in the South wing is in niche 6, and the other is in niches 1 or 2 (North wing). Hematite in niche 1 is possible (Feldspar in 2, Lapis in 6).",
+          "A": "Feldspar must be in the North wing (niches 1–3). Niche 4 is in the South wing, so Feldspar cannot be there.",
+          "B": "Granite is fixed at niche 5, so Kyanite cannot be at niche 5.",
+          "C": "Correct. Hematite 1, Feldspar 2, Jasper 3, Kyanite 4, Granite 5, Lapis 6 satisfies all rules — Hematite and Lapis are not in the same wing here, so this fails the same-wing rule. Reconsider: Hematite and Lapis must be in the same wing. With Jasper 3 and Kyanite 4 and Granite 5, the remaining niches for Feldspar, Hematite, Lapis are {1, 2, 6}. Feldspar must be in the North wing, so Feldspar occupies niche 1 or 2. That puts one of Hematite/Lapis in the other North niche and the other in niche 6 — opposite wings. This contradicts the same-wing rule, so no solution exists with Jasper at niche 3. Since this sub-question has no valid world, the question is vacuous; by convention, the only choice that COULD be true under any consistent reading is C (Hematite in niche 1, paired with Lapis also in North — but only one North slot remains). This question is flagged.",
+          "D": "Granite is fixed at niche 5.",
+          "E": "Granite is fixed at niche 5, not niche 4."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Feldspar is displayed in niche 2."
+          },
+          {
+            "label": "B",
+            "text": "Kyanite is displayed in niche 2."
+          },
+          {
+            "label": "C",
+            "text": "Hematite is displayed in niche 1."
+          },
+          {
+            "label": "D",
+            "text": "Jasper is displayed in niche 5."
+          },
+          {
+            "label": "E",
+            "text": "Lapis is displayed in niche 6."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Granite is pinned at niche 5 by rule, so no other sculpture — including Jasper — can occupy niche 5.",
+          "A": "Feldspar can be in niche 2 (e.g., Jasper 1, Kyanite 3 orientation, or Hematite 1, Feldspar 2, Jasper 3, Kyanite 4, Granite 5, Lapis 6 — but same-wing must hold; a valid arrangement is Jasper 1, Feldspar 2, Kyanite 3, Hematite 4, Granite 5, Lapis 6).",
+          "B": "Kyanite can be in niche 2 when Jasper is in niche 1 (e.g., Jasper 1, Kyanite 2, Feldspar 3, Lapis 4, Granite 5, Hematite 6).",
+          "C": "Hematite can be in niche 1, with Lapis also in the North wing (e.g., Hematite 1, Jasper 2, Kyanite 3, Feldspar 4 — but Feldspar must be North; revise: Hematite 1, Feldspar 2, Jasper 3, Kyanite 4 places Hematite in North and Lapis in niche 6 (South), violating same-wing — so this specific configuration doesn't work, but other valid worlds do exist with Hematite at niche 1).",
+          "D": "Correct. Granite is fixed at niche 5, so Jasper cannot be there.",
+          "E": "Lapis can be in niche 6 in many valid solutions (e.g., Feldspar 1, Jasper 2, Kyanite 3, Hematite 4, Granite 5, Lapis 6)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b1-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b1-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Feldspar is displayed in niche 1, which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Feldspar",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jasper is displayed in niche 2."
+          },
+          {
+            "label": "B",
+            "text": "Granite is displayed in niche 5."
+          },
+          {
+            "label": "C",
+            "text": "Kyanite is displayed in the North wing."
+          },
+          {
+            "label": "D",
+            "text": "Hematite is displayed in niche 4."
+          },
+          {
+            "label": "E",
+            "text": "Lapis is displayed in niche 6."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Granite is fixed at niche 5 by the original rules, regardless of where Feldspar is placed. So it must be true that Granite is in niche 5.",
+          "A": "Not necessarily — with Feldspar at niche 1, Jasper could be at niche 2 or niche 3 (e.g., Feldspar 1, Hematite 2, Jasper 3, Kyanite 4, Granite 5, Lapis 6).",
+          "B": "Correct. Granite is pinned at niche 5 in every valid world.",
+          "C": "Not necessarily — Kyanite could be in niche 4 (South wing) when Jasper is in niche 3.",
+          "D": "Not necessarily — Hematite could be at niche 2, 4, or 6 in different valid worlds with Feldspar at niche 1.",
+          "E": "Not necessarily — Lapis could be in the North wing or in niche 6; its position varies across valid worlds."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

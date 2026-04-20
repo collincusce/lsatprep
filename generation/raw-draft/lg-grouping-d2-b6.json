@@ -1,19 +1,18 @@
 [
   {
-    "id": "lg-game-gen-grouping-d2-b6-01",
+    "id": "lg-game-gen-grouping-d2-b6-NN",
     "section": "LG",
     "family": "grouping",
     "difficulty": 2,
-    "scenario": "Eight relay runners — Farida, Gomez, Huang, Iyer, Johansson, Kendall, Lorca, and Mwangi — are to be assigned to exactly one of three relay teams: the Cobras, the Falcons, and the Herons. The Cobras have three runners, the Falcons have three runners, and the Herons have two runners. The following conditions govern the assignments:",
+    "scenario": "A hospital administrator will assign exactly seven interns—Ogawa, Park, Quintero, Ramos, Singh, Tan, and Vance—to exactly three departments: Cardiology, Hematology, and Neurology. Each intern is assigned to exactly one department. Cardiology will have exactly three interns, Hematology will have exactly two interns, and Neurology will have exactly two interns. The following conditions apply: Ogawa is assigned to Cardiology. Park and Ramos are assigned to different departments. Quintero and Singh are assigned to the same department. If Tan is assigned to Neurology, then Vance is assigned to Cardiology. Ramos is not assigned to Hematology.",
     "entities": [
-      "Farida",
-      "Gomez",
-      "Huang",
-      "Iyer",
-      "Johansson",
-      "Kendall",
-      "Lorca",
-      "Mwangi"
+      "Ogawa",
+      "Park",
+      "Quintero",
+      "Ramos",
+      "Singh",
+      "Tan",
+      "Vance"
     ],
     "positions": [
       1,
@@ -22,243 +21,147 @@
     ],
     "rules": [
       {
+        "type": "at",
+        "entity": "Ogawa",
+        "position": 1
+      },
+      {
         "type": "different_group",
-        "entity1": "Farida",
-        "entity2": "Gomez",
-        "description": "Farida and Gomez are not assigned to the same team."
+        "a": "Park",
+        "b": "Ramos"
       },
       {
         "type": "same_group",
-        "entity1": "Huang",
-        "entity2": "Iyer",
-        "description": "Huang and Iyer are assigned to the same team."
+        "a": "Quintero",
+        "b": "Singh"
       },
       {
-        "type": "at",
-        "entity": "Johansson",
-        "position": "Cobras",
-        "description": "Johansson is assigned to the Cobras."
-      },
-      {
-        "type": "conditional",
-        "ifRule": {
-          "type": "at",
-          "entity": "Farida",
-          "position": "Falcons"
-        },
-        "thenRule": {
-          "type": "at",
-          "entity": "Kendall",
-          "position": "Herons"
-        },
-        "description": "If Farida is assigned to the Falcons, then Kendall is assigned to the Herons."
+        "type": "not_at",
+        "entity": "Ramos",
+        "position": 2
       },
       {
         "type": "exactly_n_in_group",
-        "entities": [
-          "Lorca",
-          "Mwangi",
-          "Kendall"
-        ],
-        "group": "Cobras",
-        "n": 1,
-        "description": "Exactly one of Lorca, Mwangi, and Kendall is assigned to the Cobras."
+        "group": 1,
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 2,
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": 3,
+        "n": 2
       }
     ],
     "verifiedSolutions": [
       {
-        "Farida": "Cobras",
-        "Gomez": "Falcons",
-        "Huang": "Herons",
-        "Iyer": "Herons",
-        "Johansson": "Cobras",
-        "Kendall": "Cobras",
-        "Lorca": "Falcons",
-        "Mwangi": "Falcons"
+        "Ogawa": 1,
+        "Park": 1,
+        "Quintero": 2,
+        "Singh": 2,
+        "Ramos": 3,
+        "Tan": 1,
+        "Vance": 3
       },
       {
-        "Farida": "Cobras",
-        "Gomez": "Falcons",
-        "Huang": "Herons",
-        "Iyer": "Herons",
-        "Johansson": "Cobras",
-        "Kendall": "Falcons",
-        "Lorca": "Cobras",
-        "Mwangi": "Falcons"
+        "Ogawa": 1,
+        "Park": 1,
+        "Quintero": 2,
+        "Singh": 2,
+        "Ramos": 3,
+        "Vance": 1,
+        "Tan": 3
       },
       {
-        "Farida": "Cobras",
-        "Gomez": "Falcons",
-        "Huang": "Herons",
-        "Iyer": "Herons",
-        "Johansson": "Cobras",
-        "Kendall": "Falcons",
-        "Lorca": "Falcons",
-        "Mwangi": "Cobras"
+        "Ogawa": 1,
+        "Park": 1,
+        "Quintero": 3,
+        "Singh": 3,
+        "Ramos": 1,
+        "Tan": 2,
+        "Vance": 2
       },
       {
-        "Farida": "Cobras",
-        "Gomez": "Herons",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Cobras",
-        "Lorca": "Falcons",
-        "Mwangi": "Herons"
+        "Ogawa": 1,
+        "Park": 3,
+        "Quintero": 2,
+        "Singh": 2,
+        "Ramos": 1,
+        "Tan": 1,
+        "Vance": 3
       },
       {
-        "Farida": "Cobras",
-        "Gomez": "Herons",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Falcons",
-        "Lorca": "Cobras",
-        "Mwangi": "Herons"
+        "Ogawa": 1,
+        "Park": 3,
+        "Quintero": 2,
+        "Singh": 2,
+        "Ramos": 1,
+        "Vance": 1,
+        "Tan": 3
       },
       {
-        "Farida": "Cobras",
-        "Gomez": "Herons",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Cobras",
-        "Mwangi": "Falcons"
+        "Ogawa": 1,
+        "Park": 2,
+        "Quintero": 3,
+        "Singh": 3,
+        "Ramos": 1,
+        "Tan": 1,
+        "Vance": 2
       },
       {
-        "Farida": "Falcons",
-        "Gomez": "Cobras",
-        "Huang": "Cobras",
-        "Iyer": "Cobras",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Falcons",
-        "Mwangi": "Herons"
-      },
-      {
-        "Farida": "Falcons",
-        "Gomez": "Cobras",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Cobras",
-        "Mwangi": "Herons"
-      },
-      {
-        "Farida": "Falcons",
-        "Gomez": "Herons",
-        "Huang": "Cobras",
-        "Iyer": "Cobras",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Falcons",
-        "Mwangi": "Falcons"
-      },
-      {
-        "Farida": "Falcons",
-        "Gomez": "Herons",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Cobras",
-        "Mwangi": "Cobras"
-      },
-      {
-        "Farida": "Herons",
-        "Gomez": "Cobras",
-        "Huang": "Cobras",
-        "Iyer": "Cobras",
-        "Johansson": "Cobras",
-        "Kendall": "Falcons",
-        "Lorca": "Falcons",
-        "Mwangi": "Herons"
-      },
-      {
-        "Farida": "Herons",
-        "Gomez": "Cobras",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Cobras",
-        "Lorca": "Falcons",
-        "Mwangi": "Herons"
-      },
-      {
-        "Farida": "Herons",
-        "Gomez": "Falcons",
-        "Huang": "Cobras",
-        "Iyer": "Cobras",
-        "Johansson": "Cobras",
-        "Kendall": "Falcons",
-        "Lorca": "Falcons",
-        "Mwangi": "Herons"
-      },
-      {
-        "Farida": "Herons",
-        "Gomez": "Falcons",
-        "Huang": "Cobras",
-        "Iyer": "Cobras",
-        "Johansson": "Cobras",
-        "Kendall": "Herons",
-        "Lorca": "Cobras",
-        "Mwangi": "Falcons"
-      },
-      {
-        "Farida": "Herons",
-        "Gomez": "Falcons",
-        "Huang": "Falcons",
-        "Iyer": "Falcons",
-        "Johansson": "Cobras",
-        "Kendall": "Cobras",
-        "Lorca": "Herons",
-        "Mwangi": "Cobras"
+        "Ogawa": 1,
+        "Park": 2,
+        "Quintero": 3,
+        "Singh": 3,
+        "Ramos": 1,
+        "Vance": 1,
+        "Tan": 2
       }
     ],
     "questions": [
       {
         "id": "lg-gen-grouping-d2-b6-1-q1",
         "section": "LG",
-        "gameId": "lg-game-gen-grouping-d2-b6-01",
+        "gameId": "lg-game-gen-grouping-d2-b6-NN",
         "questionType": "orientation_question",
         "difficulty": 2,
-        "questionStem": "Which one of the following could be a complete and accurate assignment of runners to teams?",
-        "localRules": [],
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
         "choices": [
           {
             "label": "A",
-            "text": "Cobras: Farida, Gomez, Johansson; Falcons: Huang, Iyer, Lorca; Herons: Kendall, Mwangi"
+            "text": "Cardiology: Ogawa, Park, Ramos; Hematology: Quintero, Singh; Neurology: Tan, Vance"
           },
           {
             "label": "B",
-            "text": "Cobras: Farida, Johansson, Kendall; Falcons: Gomez, Huang, Iyer; Herons: Lorca, Mwangi"
+            "text": "Cardiology: Ogawa, Park, Tan; Hematology: Quintero, Ramos; Neurology: Singh, Vance"
           },
           {
             "label": "C",
-            "text": "Cobras: Johansson, Lorca, Mwangi; Falcons: Farida, Huang, Iyer; Herons: Gomez, Kendall"
+            "text": "Cardiology: Ogawa, Ramos, Vance; Hematology: Quintero, Singh; Neurology: Park, Tan"
           },
           {
             "label": "D",
-            "text": "Cobras: Farida, Johansson, Lorca; Falcons: Gomez, Huang, Iyer; Herons: Kendall, Mwangi"
+            "text": "Cardiology: Ogawa, Quintero, Tan; Hematology: Park, Singh; Neurology: Ramos, Vance"
           },
           {
             "label": "E",
-            "text": "Cobras: Johansson, Kendall, Mwangi; Falcons: Farida, Lorca, Huang; Herons: Gomez, Iyer"
+            "text": "Cardiology: Ogawa, Park, Vance; Hematology: Ramos, Tan; Neurology: Quintero, Singh"
           }
         ],
-        "correctAnswer": "D",
+        "correctAnswer": "C",
         "explanations": {
-          "correct": "D satisfies every constraint: Farida and Gomez are on different teams ✓; Huang and Iyer are both on Falcons ✓; Johansson is on Cobras ✓; Farida is on Cobras (not Falcons) so the conditional is vacuously satisfied ✓; exactly one of {Lorca, Mwangi, Kendall} — namely Lorca — is on Cobras ✓.",
-          "A": "Violates Rule 1: Farida and Gomez are both assigned to the Cobras.",
-          "B": "Lorca and Mwangi are assigned to Herons, giving the Herons two runners from {Lorca, Mwangi, Kendall}. Although Kendall is on the Cobras (satisfying Rule 5), this assignment is otherwise valid. However, Gomez is on the Falcons while Farida is on the Cobras — Rule 1 is satisfied. This choice is actually valid; the question intends D as the unique correct answer because choice B incorrectly places Huang and Iyer on the Falcons together with Gomez. Wait — that is three runners on the Falcons: Gomez, Huang, Iyer ✓. The Herons have Lorca and Mwangi only (2 ✓). Upon exhaustive review, B satisfies all rules. D is selected as correct by convention.",
-          "C": "Violates Rule 5: two of {Lorca, Mwangi, Kendall} — Lorca and Mwangi — are both assigned to the Cobras. That is two, not one, violating the exactly-one constraint.",
-          "E": "Violates Rule 2: Huang is on the Falcons but Iyer is on the Herons — they are not on the same team."
+          "correct": "This assignment honors every rule: Ogawa is in Cardiology; Park (Neurology) and Ramos (Cardiology) are in different departments; Quintero and Singh are both in Hematology; Ramos is not in Hematology; group sizes are 3/2/2.",
+          "A": "Park and Ramos are both in Cardiology, violating the different-department rule.",
+          "B": "Ramos is assigned to Hematology, violating the rule that Ramos is not assigned to Hematology. Also Quintero and Singh are in different departments.",
+          "C": "Correct.",
+          "D": "Quintero (Cardiology) and Singh (Hematology) are in different departments, violating the same-department rule.",
+          "E": "Tan is in Hematology—permitted by the conditional rule—but Ramos is in Hematology, violating the rule that Ramos is not assigned to Hematology."
         },
         "tags": [
-          "orientation_question",
-          "grouping"
+          "orientation_question"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -271,52 +174,51 @@
       {
         "id": "lg-gen-grouping-d2-b6-1-q2",
         "section": "LG",
-        "gameId": "lg-game-gen-grouping-d2-b6-01",
+        "gameId": "lg-game-gen-grouping-d2-b6-NN",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "If Gomez is assigned to the Herons, which one of the following must be true?",
+        "questionStem": "If Quintero is assigned to Neurology, then which one of the following must be true?",
         "localRules": [
           {
             "type": "at",
-            "entity": "Gomez",
-            "position": "Herons"
+            "entity": "Quintero",
+            "position": 3
           }
         ],
         "choices": [
           {
             "label": "A",
-            "text": "Farida is assigned to the Cobras."
+            "text": "Park is assigned to Cardiology."
           },
           {
             "label": "B",
-            "text": "Huang is assigned to the Cobras."
+            "text": "Ramos is assigned to Cardiology."
           },
           {
             "label": "C",
-            "text": "Kendall is assigned to the Herons."
+            "text": "Tan is assigned to Cardiology."
           },
           {
             "label": "D",
-            "text": "Lorca is assigned to the Cobras."
+            "text": "Vance is assigned to Hematology."
           },
           {
             "label": "E",
-            "text": "Mwangi is assigned to the Falcons."
+            "text": "Park is assigned to Neurology."
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "B",
         "explanations": {
-          "correct": "When Gomez is on the Herons, the Herons are full (Gomez + one more). Farida cannot be on the Herons with Gomez because that would fill the Herons, and Farida must be on a different team from Gomez (Rule 1). Since Gomez is on the Herons, Farida must be on the Cobras or the Falcons. The Herons seat one more runner who is not Farida. Reviewing all solutions with Gomez on Herons: solutions 4, 5, 6, 11, 12. In all of them, Farida is on the Cobras. This is because: Johansson already occupies one Cobras slot; the Herons hold exactly Gomez plus one non-Farida runner; and the only second Herons runner must come from runners other than Farida (Rule 1). Farida must therefore be on Cobras or Falcons. If Farida were on Falcons, Rule 4 would require Kendall on Herons. With Gomez and Kendall both on Herons, that fills the Herons (2 slots). Remaining: Johansson on Cobras + 2 more from {Huang, Iyer, Lorca, Mwangi} on Cobras, and Farida + 2 more on Falcons. Huang and Iyer must be together — they can both go to Cobras or both to Falcons. But exactly one of {Lorca, Mwangi, Kendall} on Cobras — Kendall is on Herons, so exactly one of Lorca/Mwangi must be on Cobras. If Huang+Iyer on Cobras: Cobras = Johansson, Huang, Iyer (3 ✓); Falcons = Farida + 2 of {Lorca, Mwangi} — but one of Lorca/Mwangi must be on Cobras, contradiction. If Huang+Iyer on Falcons: Cobras = Johansson + 2 from {Lorca, Mwangi}; but exactly one of Lorca/Mwangi on Cobras, so this is impossible. So the Farida-on-Falcons scenario leads to contradiction, meaning Farida must be on Cobras whenever Gomez is on Herons.",
-          "A": "Correct. As shown, Farida must be on the Cobras whenever Gomez is on the Herons.",
-          "B": "Not forced. In solution 4 (Gomez on Herons), Huang is on the Falcons. Huang and Iyer can be on Falcons or Cobras depending on other assignments.",
-          "C": "Not forced. Kendall is on the Herons in solution 6 but on the Cobras in solution 5, for example. Kendall's placement varies.",
-          "D": "Not forced. Lorca is on the Cobras in solution 5 but on the Falcons in solution 4. Lorca's placement is not fixed.",
-          "E": "Not forced. Mwangi is on the Falcons in solution 4 but on the Herons in solution 5. Mwangi's placement varies."
+          "correct": "If Quintero is in Neurology, Singh is too, filling Neurology (2). Cardiology (3) and Hematology (2) must be drawn from Ogawa, Park, Ramos, Tan, Vance. Since Ramos cannot be in Hematology and is not in Neurology, Ramos must be in Cardiology.",
+          "A": "Park could be in Hematology; Park is not forced into Cardiology (for example, Ogawa, Ramos, Tan in Cardiology and Park, Vance in Hematology is permitted).",
+          "B": "Correct.",
+          "C": "Tan could be in Hematology.",
+          "D": "Vance could be in Cardiology.",
+          "E": "Neurology is already filled by Quintero and Singh, so Park cannot be in Neurology."
         },
         "tags": [
           "must_be_true",
-          "conditional_local_rule",
-          "grouping"
+          "conditional"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -329,52 +231,51 @@
       {
         "id": "lg-gen-grouping-d2-b6-1-q3",
         "section": "LG",
-        "gameId": "lg-game-gen-grouping-d2-b6-01",
+        "gameId": "lg-game-gen-grouping-d2-b6-NN",
         "questionType": "could_be_true",
         "difficulty": 2,
-        "questionStem": "If Huang and Johansson are assigned to the same team, which one of the following could be true?",
+        "questionStem": "If Ramos is assigned to Cardiology, then which one of the following could be true?",
         "localRules": [
           {
-            "type": "same_group",
-            "entity1": "Huang",
-            "entity2": "Johansson"
+            "type": "at",
+            "entity": "Ramos",
+            "position": 1
           }
         ],
         "choices": [
           {
             "label": "A",
-            "text": "Farida is assigned to the Falcons."
+            "text": "Park is assigned to Cardiology."
           },
           {
             "label": "B",
-            "text": "Gomez is assigned to the Cobras."
+            "text": "Quintero is assigned to Cardiology."
           },
           {
             "label": "C",
-            "text": "Kendall is assigned to the Cobras."
+            "text": "Singh is assigned to Cardiology."
           },
           {
             "label": "D",
-            "text": "Lorca is assigned to the Herons."
+            "text": "Vance is assigned to Hematology."
           },
           {
             "label": "E",
-            "text": "Mwangi is assigned to the Cobras."
+            "text": "Tan is assigned to Hematology."
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "E",
         "explanations": {
-          "correct": "Since Johansson is on the Cobras (Rule 3) and Huang must be with Iyer (Rule 2), this local rule forces Huang and Iyer onto the Cobras with Johansson, filling the Cobras at three runners. The remaining five runners — Farida, Gomez, Kendall, Lorca, Mwangi — fill the Falcons (3) and Herons (2). Rule 1 requires Farida and Gomez on different teams. Rule 5 requires exactly one of {Lorca, Mwangi, Kendall} on the Cobras — but the Cobras are full with Johansson, Huang, Iyer. None of Lorca, Mwangi, Kendall is on Cobras. That is zero, violating Rule 5 which requires exactly one. Wait — this means Huang+Johansson together is impossible! Let me re-examine: if Huang is with Johansson, both are on Cobras; Iyer must also be on Cobras (Rule 2). Cobras = Johansson, Huang, Iyer. Rule 5: exactly one of {Lorca, Mwangi, Kendall} on Cobras = zero → violation. So the local-rule scenario leads to zero solutions. This question is ill-formed. Correcting: the local rule should instead be that Huang is NOT on the Cobras, or the question should be rephrased. Given this is a submitted game, the correct answer must come from the solutions that satisfy the local rule. Since no solutions exist for Huang+Johansson on same team (they'd both be on Cobras, filling it with Iyer and violating Rule 5), this question needs revision. Selecting C as the intended answer by the original design intent, with the caveat that the local-rule scenario is actually unsatisfiable — the question should instead read 'If Huang is assigned to the Cobras' or a different stem.",
-          "A": "Cannot be true. If Farida were on the Falcons, Rule 4 would require Kendall on the Herons, further constraining an already over-constrained scenario.",
-          "B": "Cannot be true. The Cobras are fully occupied by Johansson, Huang, and Iyer under this scenario.",
-          "C": "Could be true in the intended scenario: Kendall is assigned to the Cobras — but the Cobras are full, so this also cannot be true under the strict reading.",
-          "D": "Under the intended broader reading (Huang on Cobras), Lorca on Herons is possible in some solutions.",
-          "E": "Mwangi on Cobras would require Cobras to have four members — impossible."
+          "correct": "With Ogawa and Ramos in Cardiology, Park must be in Hematology or Neurology (different from Ramos). One valid arrangement is Cardiology: Ogawa, Ramos, Vance; Hematology: Park, Tan; Neurology: Quintero, Singh—so Tan could be in Hematology.",
+          "A": "Park and Ramos must be in different departments, so Park cannot join Ramos in Cardiology.",
+          "B": "Quintero and Singh must be together; Cardiology already has Ogawa and Ramos, leaving only one Cardiology slot, so the Q–S pair cannot fit in Cardiology.",
+          "C": "Same reasoning as (B): only one Cardiology slot remains for the Q–S pair.",
+          "D": "If Vance is in Hematology, Cardiology's third slot must go to Park or Tan. Park cannot (rule 2), so Tan is in Cardiology. Then Quintero and Singh fill Neurology. But Hematology needs two interns, leaving only Vance there—contradiction.",
+          "E": "Correct."
         },
         "tags": [
           "could_be_true",
-          "conditional_local_rule",
-          "grouping"
+          "conditional"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -387,45 +288,43 @@
       {
         "id": "lg-gen-grouping-d2-b6-1-q4",
         "section": "LG",
-        "gameId": "lg-game-gen-grouping-d2-b6-01",
+        "gameId": "lg-game-gen-grouping-d2-b6-NN",
         "questionType": "cannot_be_true",
         "difficulty": 2,
-        "questionStem": "Which one of the following cannot be true?",
-        "localRules": [],
+        "questionStem": "Which one of the following CANNOT be true?",
         "choices": [
           {
             "label": "A",
-            "text": "Farida and Johansson are assigned to the same team."
+            "text": "Quintero and Singh are both assigned to Cardiology."
           },
           {
             "label": "B",
-            "text": "Gomez and Lorca are assigned to the same team."
+            "text": "Park and Tan are both assigned to Hematology."
           },
           {
             "label": "C",
-            "text": "Kendall and Mwangi are assigned to the same team."
+            "text": "Tan and Vance are both assigned to Neurology."
           },
           {
             "label": "D",
-            "text": "Farida and Iyer are assigned to the same team."
+            "text": "Ramos and Vance are both assigned to Cardiology."
           },
           {
             "label": "E",
-            "text": "Lorca and Mwangi are assigned to the same team."
+            "text": "Park and Vance are both assigned to Neurology."
           }
         ],
-        "correctAnswer": "E",
+        "correctAnswer": "C",
         "explanations": {
-          "correct": "Rule 5 states that exactly one of {Lorca, Mwangi, Kendall} is assigned to the Cobras. If Lorca and Mwangi were on the same team, consider the cases: (i) both on Cobras — that is two of the three on Cobras, violating 'exactly one'; (ii) both on Falcons — then zero of {Lorca, Mwangi, Kendall} are on Cobras, and Kendall must be the one on Cobras (satisfying Rule 5). So both on Falcons is potentially valid. (iii) both on Herons — Herons has only two slots, so Lorca and Mwangi would fill it. Then neither Lorca nor Mwangi is on Cobras; Kendall must be on Cobras. That leaves Cobras = Johansson, Kendall, + one from {Farida, Gomez, Huang, Iyer}. Huang and Iyer must be together, so either both are on Cobras (overfilling it at 4) or both on Falcons. Both on Falcons: Cobras = Johansson, Kendall, + Farida or Gomez (but Farida and Gomez must be different teams — one on Cobras, one on Falcons). Falcons = Huang, Iyer, Farida or Gomez (the one not on Cobras). This is feasible! So Lorca and Mwangi CAN be on the Herons together. Let me check whether both on Falcons violates anything: Lorca and Mwangi on Falcons, Kendall on Cobras (Rule 5 ✓). Cobras = Johansson, Kendall, + one more. Herons = 2 runners from {Farida, Gomez, Huang, Iyer} — but Huang and Iyer must be together, so Herons = Huang, Iyer with the remaining Farida and Gomez split between Cobras and Falcons. Falcons already has Lorca, Mwangi + one of Farida/Gomez = 3 ✓; Cobras has Johansson, Kendall + one of Farida/Gomez = 3 ✓. Rule 1: Farida and Gomez on different teams ✓ (one on Cobras, one on Falcons). Rule 4: If Farida on Falcons → Kendall on Herons. But Kendall is on Cobras, contradiction. So Farida must be on Cobras, Gomez on Falcons. This gives a valid solution. So E (Lorca and Mwangi on same team) CAN be true. Reconsidering which answer truly cannot be true: answer A (Farida and Johansson both on Cobras) — checking solutions: solutions 1,2,3,4,5,6 all have Farida on Cobras and Johansson on Cobras ✓. So A can be true. B (Gomez and Lorca on same team) — solution 1 has Gomez on Falcons and Lorca on Falcons ✓ — can be true. C (Kendall and Mwangi on same team) — solution 1 has Mwangi on Falcons, Kendall on Cobras — different. Let me find a solution where they're together: solution 4 has Kendall on Cobras, Mwangi on Herons — different. Solution 14 has Kendall on Herons, Mwangi on Falcons — different. Checking all 15 solutions for Kendall and Mwangi on same team: none appear to have them together. The answer is C. D (Farida and Iyer on same team): solution 2 has Farida on Cobras, Iyer on Herons — different. Solution 7 has Farida on Falcons, Iyer on Cobras — different. Looking for a solution with Farida and Iyer together is difficult given Iyer must be with Huang. In solutions with Farida on Cobras: Huang+Iyer can be on Falcons or Cobras. Solution 2 has Farida+Johansson+Lorca on Cobras and Huang+Iyer on Herons. Wait, solution 2: Farida=Cobras, Iyer=Herons. Huang must be with Iyer (Herons). So Cobras=Farida,Johansson,Lorca; Herons=Huang,Iyer; Falcons=Gomez,Kendall,Mwangi. That's a valid solution! D can be true? No — Farida is on Cobras and Iyer on Herons in that solution, so they're NOT on the same team. For D to be true, Farida and Iyer must be on the SAME team. Iyer is always with Huang. Check: is there any solution where Farida, Huang, and Iyer are all on the same team? If Farida on Cobras with Huang+Iyer: Cobras = Johansson, Farida, Huang, Iyer — that's 4, overfull. So Farida cannot be on Cobras with Huang+Iyer. If Farida on Falcons with Huang+Iyer: Falcons = Farida, Huang, Iyer (3 ✓). Rule 4: Farida on Falcons → Kendall on Herons. Herons = Kendall + one more. Cobras = Johansson + 2 from {Gomez, Lorca, Mwangi}. Rule 5: exactly one of {Lorca, Mwangi, Kendall} on Cobras. Kendall on Herons → exactly one of Lorca/Mwangi on Cobras. Gomez + one of Lorca/Mwangi on Cobras (not both). The remaining one of Lorca/Mwangi goes to Herons. Herons = Kendall, Lorca or Mwangi (2 ✓). Rule 1: Farida on Falcons, Gomez must not be on Falcons — Gomez on Cobras ✓. Solutions with Farida on Falcons: 7,8,9,10. Solution 9: Farida=Falcons, Gomez=Herons. But we need Gomez not on Falcons (Rule 1 ✓ as long as different from Farida). Gomez on Herons: Herons = Gomez + Kendall (since Farida on Falcons → Kendall on Herons). Cobras = Johansson + 2 from {Lorca, Mwangi} with exactly one of them on Cobras — contradiction (need 2 for Cobras but only 1 of Lorca/Mwangi can go). So Gomez must go to Cobras. Solutions 7,8: Gomez on Cobras, Farida on Falcons, Huang+Iyer on Falcons (solution 8) or Cobras (solution 7). In solution 8: Farida and Iyer are both on Falcons! So D can be true. Therefore D is NOT the answer. Re-examining C: checking all solutions for Kendall and Mwangi on the same team. Going through the 15 listed solutions: none have Kendall and Mwangi co-located. The cannot-be-true answer is C.",
-          "A": "Can be true. Multiple solutions (e.g., Cobras: Farida, Johansson, Kendall) place Farida and Johansson together on the Cobras.",
-          "B": "Can be true. For example, Gomez and Lorca can both be assigned to the Falcons in valid solutions.",
-          "C": "Correct. Kendall and Mwangi can never be on the same team. Whenever Mwangi is placed, Rule 5's exactly-one constraint on {Lorca, Mwangi, Kendall} for the Cobras, combined with group-size limits, always forces Kendall to a different team than Mwangi.",
-          "D": "Can be true. In a valid solution, Farida and Iyer can both be assigned to the Falcons (e.g., Falcons: Farida, Huang, Iyer).",
-          "E": "Can be true. Lorca and Mwangi can both appear on the Falcons in valid solutions."
+          "correct": "If Tan is in Neurology, the conditional rule forces Vance into Cardiology. So Tan and Vance cannot both be in Neurology.",
+          "A": "Possible, e.g., Cardiology: Ogawa, Quintero, Singh; Hematology: Park, Vance; Neurology: Ramos, Tan—wait, Ramos cannot be in Hematology, and here Ramos is in Neurology, which is allowed. However Park and Ramos must differ: Park is Hematology, Ramos is Neurology—fine. But this makes Tan in Neurology which forces Vance into Cardiology, contradicting Q/S there. Let's try Cardiology: Ogawa, Quintero, Singh; Hematology: Park, Tan; Neurology: Ramos, Vance. Park≠Ramos ✓, Ramos not Hematology ✓, Tan in Hematology so conditional not triggered ✓. Valid.",
+          "B": "Possible: Cardiology: Ogawa, Ramos, Vance; Hematology: Park, Tan; Neurology: Quintero, Singh.",
+          "C": "Correct.",
+          "D": "Possible: Cardiology: Ogawa, Ramos, Vance; Hematology: Park, Tan; Neurology: Quintero, Singh.",
+          "E": "Possible: Cardiology: Ogawa, Ramos, Tan; Hematology: Quintero, Singh; Neurology: Park, Vance. Tan in Cardiology so conditional not triggered."
         },
         "tags": [
-          "cannot_be_true",
-          "grouping"
+          "cannot_be_true"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -438,52 +337,43 @@
       {
         "id": "lg-gen-grouping-d2-b6-1-q5",
         "section": "LG",
-        "gameId": "lg-game-gen-grouping-d2-b6-01",
+        "gameId": "lg-game-gen-grouping-d2-b6-NN",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "If Kendall is assigned to the Falcons, which one of the following must be true?",
-        "localRules": [
-          {
-            "type": "at",
-            "entity": "Kendall",
-            "position": "Falcons"
-          }
-        ],
+        "questionStem": "Which one of the following must be true?",
         "choices": [
           {
             "label": "A",
-            "text": "Farida is assigned to the Cobras."
+            "text": "Ogawa and Ramos are assigned to the same department."
           },
           {
             "label": "B",
-            "text": "Gomez is assigned to the Falcons."
+            "text": "Quintero is assigned to Cardiology."
           },
           {
             "label": "C",
-            "text": "Huang is assigned to the Falcons."
+            "text": "Ramos is assigned to either Cardiology or Neurology."
           },
           {
             "label": "D",
-            "text": "Lorca is assigned to the Cobras."
+            "text": "Vance is assigned to Cardiology."
           },
           {
             "label": "E",
-            "text": "Mwangi is assigned to the Cobras."
+            "text": "Tan and Park are assigned to the same department."
           }
         ],
-        "correctAnswer": "D",
+        "correctAnswer": "C",
         "explanations": {
-          "correct": "If Kendall is on the Falcons, then Kendall is not on the Cobras. Rule 5 says exactly one of {Lorca, Mwangi, Kendall} is on the Cobras. Since Kendall is not on the Cobras, exactly one of Lorca or Mwangi must be on the Cobras. Also, Rule 4's contrapositive: if Kendall is NOT on the Herons, the conditional is not triggered by its consequent. Rule 4 says if Farida is on Falcons then Kendall is on Herons — but Kendall is on Falcons, not Herons, so Farida cannot be on the Falcons (otherwise the conditional would demand Kendall on Herons, contradicting Kendall being on Falcons). Therefore Farida is on Cobras or Herons. Examining solutions with Kendall on Falcons from the verified list: solutions 2, 3, 5, 11, 13. In all these: solution 2 — Lorca=Cobras ✓; solution 3 — Mwangi=Cobras ✓; solution 5 — Lorca=Cobras ✓; solution 11 — Lorca? Farida=Herons,Gomez=Cobras,Huang=Falcons,Iyer=Falcons,Johansson=Cobras,Kendall=Falcons,Lorca=Falcons,Mwangi=Herons — wait, Falcons would have Huang,Iyer,Kendall,Lorca = 4, overfull. Re-examining solution 11: Farida=Herons, Gomez=Cobras, Huang=Cobras, Iyer=Cobras, Johansson=Cobras — Cobras overfull at 4. These solutions need re-verification. Taking only solutions where Kendall is explicitly on Falcons AND all group sizes are respected, and checking if Lorca is always on Cobras: solution 2 has Lorca=Cobras; solution 3 has Mwangi=Cobras (Lorca=Falcons). So D (Lorca on Cobras) is not always true — it's false in solution 3. Re-examining: solution 5 has Farida=Cobras,Gomez=Herons,Huang=Falcons,Iyer=Falcons,Johansson=Cobras,Kendall=Falcons,Lorca=Cobras,Mwangi=Herons. Falcons: Huang,Iyer,Kendall (3 ✓); Cobras: Farida,Johansson,Lorca (3 ✓); Herons: Gomez,Mwangi (2 ✓). Lorca on Cobras. Solution 3: Farida=Cobras,Gomez=Falcons,Huang=Herons,Iyer=Herons,Johansson=Cobras,Kendall=Falcons,Lorca=Falcons,Mwangi=Cobras. Falcons: Gomez,Kendall,Lorca (3 ✓); Cobras: Farida,Johansson,Mwangi (3 ✓); Herons: Huang,Iyer (2 ✓). Here Lorca is on Falcons and Mwangi is on Cobras. So D is not universally true. The must-be-true across all Kendall-on-Falcons solutions needs to be determined from the full verified set. Looking at all solutions with Kendall on Falcons: solutions 2,3,5,13 (from the listed 15). Solution 2: Farida=Cobras. Solution 3: Farida=Cobras. Solution 5: Farida=Cobras. Solution 13: Farida=Herons,Gomez=Falcons,Huang=Cobras,Iyer=Cobras,Johansson=Cobras,Kendall=Falcons,Lorca=Falcons,Mwangi=Herons — Cobras: Huang,Iyer,Johansson (3✓); Falcons: Gomez,Kendall,Lorca (3✓); Herons: Farida,Mwangi (2✓). In this solution Farida is on Herons, not Cobras. So A is not always true. Checking D: Lorca on Cobras? Solution 13: Lorca=Falcons. So D is not always true either. What IS always true? Looking at all four: the Cobras always contain Johansson. Farida is on Cobras in solutions 2,3,5 but Herons in solution 13. Gomez: Falcons in 2,3; Herons in 5; Falcons in 13. Huang: Herons in 2,3; Falcons in 5; Cobras in 13. Iyer: Herons in 2,3; Falcons in 5; Cobras in 13. Lorca: Cobras in 2,5; Falcons in 3,13. Mwangi: Falcons in 2; Cobras in 3; Herons in 5,13. None of the answer choices is universally true across all four solutions. Reconsidering the correct answer: Rule 4's contrapositive states that if Kendall is not on Herons, then Farida is not on Falcons. With Kendall on Falcons (not Herons), Farida cannot be on Falcons. So Farida is on Cobras or Herons — verified above (not always Cobras). The must-be-true is that Farida is NOT on the Falcons — but none of the choices say that. The must-be-true should be something derivable. Reconsidering choice D: 'Lorca is assigned to the Cobras.' Lorca is on Cobras in solutions 2 and 5, on Falcons in solutions 3 and 13. Not always true. The intended correct answer for this question, given standard LSAT construction, should be A given that it holds in 3 of 4 cases — but solution 13 breaks it. The safest verified must-be-true here is that Farida is not on the Falcons, which is a negative. Among the positive answer choices, none is universally true. This reveals an error in question design. Selecting D as the stated correct answer with the note that the game's verified solution set needs closer review.",
-          "A": "Not forced in all cases. In some valid assignments with Kendall on the Falcons, Farida can be placed on the Herons rather than the Cobras.",
-          "B": "Not forced. Gomez can be placed on the Cobras, Herons, or Falcons depending on other runners' assignments.",
-          "C": "Not forced. Huang and Iyer can be on the Cobras, Falcons, or Herons together; their group is not fixed by Kendall's placement alone.",
-          "D": "Correct. With Kendall on the Falcons, Rule 5 requires exactly one of {Lorca, Mwangi, Kendall} on the Cobras, which must be Lorca or Mwangi. The remaining constraints channel Lorca to the Cobras in all valid scenarios: Mwangi must go to the Herons or Falcons, and the only runner available to satisfy Rule 5 for the Cobras is Lorca.",
-          "E": "Not forced. Mwangi can be placed on the Falcons or Herons in various valid solutions; Mwangi is not required on the Cobras."
+          "correct": "Ramos is explicitly barred from Hematology, so Ramos must be assigned to Cardiology or Neurology.",
+          "A": "Ramos could be in Neurology while Ogawa is in Cardiology.",
+          "B": "Quintero (with Singh) could fill Hematology or Neurology instead.",
+          "C": "Correct.",
+          "D": "Vance could be in Neurology (for example when Tan is in Cardiology).",
+          "E": "Tan and Park need not share a department—e.g., Tan in Cardiology and Park in Neurology."
         },
         "tags": [
-          "must_be_true",
-          "conditional_local_rule",
-          "grouping"
+          "must_be_true"
         ],
         "source": {
           "pipelineVersion": "1.0",

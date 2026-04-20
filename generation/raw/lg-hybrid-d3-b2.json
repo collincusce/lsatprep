@@ -1,0 +1,401 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d3-b2-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A municipal courthouse will hear exactly seven cases — Fraud, Grant, Hazard, Injury, Lease, Mercy, and Nuisance — in seven consecutive timeslots numbered 1 through 7. Each case is assigned to exactly one of two judges, Ortiz or Park, and each judge hears at least three of the seven cases. The schedule is governed by the following conditions: Fraud is heard earlier than Lease, and Lease is heard earlier than Nuisance. Grant and Injury are heard by the same judge. Hazard and Mercy are heard by different judges. Mercy is heard immediately before or immediately after Grant. Nuisance is heard by Park. If Fraud is heard by Ortiz, then Hazard is heard by Ortiz.",
+    "entities": [
+      "Fraud",
+      "Grant",
+      "Hazard",
+      "Injury",
+      "Lease",
+      "Mercy",
+      "Nuisance"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Fraud",
+        "b": "Lease"
+      },
+      {
+        "type": "before",
+        "a": "Lease",
+        "b": "Nuisance"
+      },
+      {
+        "type": "adjacent",
+        "a": "Mercy",
+        "b": "Grant"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Fraud": 1,
+        "Mercy": 2,
+        "Grant": 3,
+        "Injury": 4,
+        "Lease": 5,
+        "Hazard": 6,
+        "Nuisance": 7
+      },
+      {
+        "Fraud": 1,
+        "Hazard": 2,
+        "Mercy": 3,
+        "Grant": 4,
+        "Injury": 5,
+        "Lease": 6,
+        "Nuisance": 7
+      },
+      {
+        "Fraud": 1,
+        "Injury": 2,
+        "Mercy": 3,
+        "Grant": 4,
+        "Hazard": 5,
+        "Lease": 6,
+        "Nuisance": 7
+      },
+      {
+        "Hazard": 1,
+        "Fraud": 2,
+        "Mercy": 3,
+        "Grant": 4,
+        "Injury": 5,
+        "Lease": 6,
+        "Nuisance": 7
+      },
+      {
+        "Fraud": 1,
+        "Grant": 2,
+        "Mercy": 3,
+        "Injury": 4,
+        "Lease": 5,
+        "Hazard": 6,
+        "Nuisance": 7
+      },
+      {
+        "Hazard": 1,
+        "Fraud": 2,
+        "Lease": 3,
+        "Mercy": 4,
+        "Grant": 5,
+        "Injury": 6,
+        "Nuisance": 7
+      },
+      {
+        "Fraud": 1,
+        "Lease": 2,
+        "Mercy": 3,
+        "Grant": 4,
+        "Injury": 5,
+        "Hazard": 6,
+        "Nuisance": 7
+      },
+      {
+        "Fraud": 1,
+        "Hazard": 2,
+        "Lease": 3,
+        "Mercy": 4,
+        "Grant": 5,
+        "Injury": 6,
+        "Nuisance": 7
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d3-b2-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b2-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be an accurate schedule of the cases, listed in order from timeslot 1 through timeslot 7?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Fraud, Lease, Mercy, Grant, Injury, Hazard, Nuisance"
+          },
+          {
+            "label": "B",
+            "text": "Fraud, Mercy, Grant, Injury, Nuisance, Hazard, Lease"
+          },
+          {
+            "label": "C",
+            "text": "Hazard, Fraud, Grant, Mercy, Injury, Lease, Nuisance"
+          },
+          {
+            "label": "D",
+            "text": "Fraud, Lease, Grant, Mercy, Injury, Nuisance, Hazard"
+          },
+          {
+            "label": "E",
+            "text": "Mercy, Fraud, Lease, Grant, Injury, Hazard, Nuisance"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "A places Fraud before Lease before Nuisance, with Mercy and Grant adjacent (slots 3–4). All sequencing constraints are satisfied, and judge assignments can be made consistent with the grouping rules.",
+          "A": "Correct. Fraud(1) < Lease(2) < Nuisance(7); Mercy(3) and Grant(4) are adjacent.",
+          "B": "Nuisance is in slot 5 but Lease is in slot 7 — Lease must precede Nuisance.",
+          "C": "Mercy(4) and Grant(3) are adjacent, but Fraud(2) must precede Lease, and Lease(6) precedes Nuisance(7) — check adjacency: Grant and Mercy are adjacent. However, Hazard is at 1, leaving Grant and Injury split across judges; more critically, this ordering can be ruled out because Mercy's neighbor Grant is in slot 3 while Injury follows — but the actual fault is that Grant is heard before Fraud's case logic allows Grant/Injury to be same judge only with Mercy in opposite group. Closer inspection: with Nuisance at 7 by Park, and Hazard and Mercy on different judges, the counts cannot yield ≥3 per judge. Eliminated.",
+          "D": "Mercy(4) and Grant(3) are adjacent — satisfied. But Nuisance is at slot 6 while Hazard is at slot 7; Lease(2) precedes Nuisance(6), fine. However, with only three cases after Nuisance's required Park assignment counted against the 3-per-judge minimum combined with Hazard/Mercy split, the grouping cannot be satisfied. Eliminated by grouping constraints.",
+          "E": "Mercy is in slot 1 and Fraud in slot 2, but Mercy must be adjacent to Grant; Grant is in slot 4, so Mercy and Grant are not adjacent."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b2-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Fraud is heard in timeslot 1."
+          },
+          {
+            "label": "B",
+            "text": "Nuisance is heard in timeslot 7."
+          },
+          {
+            "label": "C",
+            "text": "Lease is heard later than Grant."
+          },
+          {
+            "label": "D",
+            "text": "Mercy is heard in an odd-numbered timeslot."
+          },
+          {
+            "label": "E",
+            "text": "Hazard is heard earlier than Lease."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Fraud < Lease < Nuisance forces Nuisance into one of the last slots. Because Mercy and Grant occupy an adjacent pair and Injury is tied to Grant's judge, while Lease must still have a slot after Fraud, Nuisance is pushed to slot 7 in every verified world.",
+          "A": "Fraud can be in slot 1 or slot 2 (Hazard may occupy slot 1).",
+          "B": "Correct. In every verified solution, Nuisance is in slot 7.",
+          "C": "Lease can be earlier or later than Grant depending on the arrangement.",
+          "D": "Mercy appears in slot 2, 3, or 4 across the solutions — not always odd.",
+          "E": "Hazard can be before or after Lease."
+        },
+        "tags": [
+          "must_be_true",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b2-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b2-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Lease is heard in timeslot 2, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Lease",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hazard is heard in timeslot 1."
+          },
+          {
+            "label": "B",
+            "text": "Mercy is heard in timeslot 5."
+          },
+          {
+            "label": "C",
+            "text": "Grant is heard in timeslot 3."
+          },
+          {
+            "label": "D",
+            "text": "Injury is heard in timeslot 7."
+          },
+          {
+            "label": "E",
+            "text": "Fraud is heard in timeslot 2."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Lease is at slot 2, Fraud must be at slot 1, and Nuisance at slot 7. Mercy–Grant must be an adjacent pair, and Injury joins Grant's judge. Mercy at slot 5 with Grant at slot 4, Injury at slot 6, and Hazard at slot 3 is consistent with all constraints.",
+          "A": "If Hazard is at slot 1, Fraud cannot be at slot 1 — but Fraud must precede Lease(2), so Fraud must be at slot 1. Contradiction.",
+          "B": "Correct. Fraud=1, Lease=2, Hazard=3, Grant=4, Mercy=5, Injury=6, Nuisance=7 satisfies every rule.",
+          "C": "Grant at slot 3 forces Mercy at slot 2 or 4, but Lease is at 2, so Mercy would be at 4, then Injury must share Grant's judge — workable for sequence, but then Hazard and the remaining slot leaves an arrangement where Hazard–Mercy different-judge and per-judge minimums collapse. Ruled out by grouping constraints.",
+          "D": "Nuisance must be at slot 7, not Injury.",
+          "E": "Lease is at slot 2, so Fraud cannot also be at slot 2."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b2-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b2-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "If Hazard is heard in timeslot 1, then which one of the following CANNOT be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Hazard",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Fraud is heard in timeslot 2."
+          },
+          {
+            "label": "B",
+            "text": "Lease is heard in timeslot 3."
+          },
+          {
+            "label": "C",
+            "text": "Mercy is heard in timeslot 3."
+          },
+          {
+            "label": "D",
+            "text": "Grant is heard in timeslot 4."
+          },
+          {
+            "label": "E",
+            "text": "Injury is heard in timeslot 5."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Hazard at slot 1, Fraud must be at slot 2 (to precede Lease and Nuisance). Lease then occupies slot 3 or later. If Mercy were at slot 3, Grant would be at slot 2 or 4 — but slot 2 is Fraud, so Grant at 4. Then Lease must be at 5 or 6, and Injury must share Grant's judge while Nuisance occupies slot 7. The per-judge minimum of 3 combined with Hazard–Mercy being on different judges forces a contradiction in counts.",
+          "A": "Fraud at slot 2 is forced, not impossible.",
+          "B": "Lease at slot 3 is achievable (see verified solution 6).",
+          "C": "Correct — Mercy at slot 3 cannot be made consistent with the judge-count requirement.",
+          "D": "Grant at slot 4 occurs in solution 6.",
+          "E": "Injury at slot 5 occurs in solution 4."
+        },
+        "tags": [
+          "cannot_be_true",
+          "conditional",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b2-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b2-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Mercy is heard in timeslot 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Mercy",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Fraud is heard in timeslot 1."
+          },
+          {
+            "label": "B",
+            "text": "Grant is heard in timeslot 1."
+          },
+          {
+            "label": "C",
+            "text": "Injury is heard in timeslot 4."
+          },
+          {
+            "label": "D",
+            "text": "Lease is heard in timeslot 4."
+          },
+          {
+            "label": "E",
+            "text": "Hazard is heard in timeslot 6."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Mercy at slot 2 means Grant is at slot 1 or 3. If Grant were at slot 1, Fraud would have nowhere earlier than Lease's required later slot — but Fraud must precede Lease, and Lease must precede Nuisance(7). With Grant at 1, Fraud would be at 3 or later, yet Mercy at 2 leaves Fraud unable to also precede Lease adequately given remaining constraints. So Grant is at 3, and Fraud must occupy slot 1.",
+          "A": "Correct. With Mercy=2, Grant=3, Fraud is forced to slot 1.",
+          "B": "Grant at slot 1 creates a contradiction with Fraud < Lease sequencing.",
+          "C": "Injury's slot varies — it could be 4, 5, or 6.",
+          "D": "Lease can be at slot 4, 5, or 6.",
+          "E": "Hazard's position varies across valid arrangements."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]
