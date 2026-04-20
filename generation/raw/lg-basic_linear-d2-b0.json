@@ -1,0 +1,548 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d2-b0-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 2,
+    "scenario": "A delivery truck must make exactly one stop in each of six towns — Ashford, Bellbrook, Carver, Denton, Easton, and Franklin — in some order, first through sixth. The route is constrained as follows. The stop at Ashford occurs at some point before the stop at Denton. The stop at Bellbrook occurs either immediately before or immediately after the stop at Carver. Easton is neither the first stop nor the sixth stop. The stop at Franklin occurs at some point before the stop at Easton. Ashford and Franklin are not stopped at consecutively. If Franklin is the second stop, then Ashford is the first stop.",
+    "entities": ["Ashford", "Bellbrook", "Carver", "Denton", "Easton", "Franklin"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "rules": [
+      { "type": "before", "a": "Ashford", "b": "Denton" },
+      { "type": "adjacent", "a": "Bellbrook", "b": "Carver" },
+      { "type": "not_at", "entity": "Easton", "position": 1 },
+      { "type": "not_at", "entity": "Easton", "position": 6 },
+      { "type": "before", "a": "Franklin", "b": "Easton" },
+      { "type": "not_adjacent", "a": "Ashford", "b": "Franklin" },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Franklin", "position": 2 }, "thenRule": { "type": "at", "entity": "Ashford", "position": 1 } }
+    ],
+    "verifiedSolutions": [
+      { "Ashford": 1, "Bellbrook": 2, "Carver": 3, "Denton": 6, "Easton": 5, "Franklin": 4 },
+      { "Ashford": 1, "Bellbrook": 3, "Carver": 2, "Denton": 6, "Easton": 5, "Franklin": 4 },
+      { "Ashford": 1, "Bellbrook": 5, "Carver": 6, "Denton": 2, "Easton": 4, "Franklin": 3 },
+      { "Ashford": 1, "Bellbrook": 6, "Carver": 5, "Denton": 2, "Easton": 4, "Franklin": 3 },
+      { "Ashford": 3, "Bellbrook": 4, "Carver": 5, "Denton": 6, "Easton": 2, "Franklin": 1 },
+      { "Ashford": 3, "Bellbrook": 5, "Carver": 4, "Denton": 6, "Easton": 2, "Franklin": 1 },
+      { "Ashford": 3, "Bellbrook": 5, "Carver": 6, "Denton": 4, "Easton": 2, "Franklin": 1 },
+      { "Ashford": 3, "Bellbrook": 6, "Carver": 5, "Denton": 4, "Easton": 2, "Franklin": 1 },
+      { "Ashford": 4, "Bellbrook": 2, "Carver": 3, "Denton": 6, "Easton": 5, "Franklin": 1 },
+      { "Ashford": 4, "Bellbrook": 3, "Carver": 2, "Denton": 6, "Easton": 5, "Franklin": 1 },
+      { "Ashford": 5, "Bellbrook": 1, "Carver": 2, "Denton": 6, "Easton": 4, "Franklin": 3 },
+      { "Ashford": 5, "Bellbrook": 2, "Carver": 1, "Denton": 6, "Easton": 4, "Franklin": 3 },
+      { "Ashford": 5, "Bellbrook": 2, "Carver": 3, "Denton": 6, "Easton": 4, "Franklin": 1 },
+      { "Ashford": 5, "Bellbrook": 3, "Carver": 2, "Denton": 6, "Easton": 4, "Franklin": 1 },
+      { "Ashford": 5, "Bellbrook": 3, "Carver": 4, "Denton": 6, "Easton": 2, "Franklin": 1 },
+      { "Ashford": 5, "Bellbrook": 4, "Carver": 3, "Denton": 6, "Easton": 2, "Franklin": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d2-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order in which the truck stops at the towns, from first to sixth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ashford, Bellbrook, Carver, Franklin, Easton, Denton" },
+          { "label": "B", "text": "Denton, Bellbrook, Carver, Franklin, Easton, Ashford" },
+          { "label": "C", "text": "Bellbrook, Ashford, Carver, Franklin, Easton, Denton" },
+          { "label": "D", "text": "Ashford, Bellbrook, Carver, Franklin, Denton, Easton" },
+          { "label": "E", "text": "Ashford, Franklin, Bellbrook, Carver, Easton, Denton" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ashford(1) is before Denton(6); Bellbrook(2) and Carver(3) are consecutive; Easton(5) is neither first nor sixth; Franklin(4) is before Easton(5); Ashford(1) and Franklin(4) are not consecutive; Franklin is not at position 2 so the conditional is vacuously satisfied. All rules hold.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Denton is first and Ashford is sixth, so Ashford is not before Denton. Violates the Ashford-before-Denton rule.",
+          "C": "Bellbrook is first and Carver is third, so Bellbrook and Carver are not in consecutive positions. Violates the Bellbrook-Carver adjacency rule.",
+          "D": "Easton is sixth, which the rules forbid.",
+          "E": "Ashford is first and Franklin is second, putting them in consecutive positions. Violates the rule that Ashford and Franklin are not stopped at consecutively."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Franklin is the third stop, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Franklin", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ashford is the first stop." },
+          { "label": "B", "text": "Ashford is the fifth stop." },
+          { "label": "C", "text": "Denton is the sixth stop." },
+          { "label": "D", "text": "Easton is the fourth stop." },
+          { "label": "E", "text": "Bellbrook is the fifth stop." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "With Franklin at 3, the not-adjacent rule forces Ashford into 1 or 5. Franklin(3) must come before Easton, and Easton cannot be at 1 or 6, so Easton is at 4, 5, or 6. Positions 5 and 6 must be populated without violating any rule; enumerating shows Easton is pinned at 4 in every admissible assignment.",
+          "A": "Ashford can be at either 1 or 5; it is not forced to position 1.",
+          "B": "Ashford can be at either 1 or 5; it is not forced to position 5.",
+          "C": "Denton can be at 6 (when Ashford is at 1 or 5) but also at 2 in the Ashford-at-1 worlds, so it is not forced.",
+          "D": "Correct. Every arrangement with Franklin at 3 places Easton at 4.",
+          "E": "Bellbrook can occupy several positions (including 1, 2, 5, or 6) given the Bellbrook-Carver block; it is not forced to 5."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Easton is the second stop, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Easton", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ashford is the third stop." },
+          { "label": "B", "text": "Franklin is the first stop." },
+          { "label": "C", "text": "Denton is the sixth stop." },
+          { "label": "D", "text": "Bellbrook is the fifth stop." },
+          { "label": "E", "text": "Carver is the fourth stop." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Franklin must come before Easton, so Franklin is at 1. (Franklin cannot be at 2 since Easton is at 2.) The contrapositive of the conditional matters as well: Franklin being at 2 would require Ashford at 1, but Franklin is not at 2 here, leaving Franklin forced into position 1.",
+          "A": "Ashford can be at 3 or 5; not forced.",
+          "B": "Correct. Franklin must precede Easton, and only position 1 remains available.",
+          "C": "Denton can be at 4 or 6; not forced.",
+          "D": "Bellbrook has several possible positions (3, 4, 5, or 6); not forced.",
+          "E": "Carver has several possible positions and is not forced to 4."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Denton is the sixth stop." },
+          { "label": "B", "text": "Franklin is not the second stop." },
+          { "label": "C", "text": "Easton is the fifth stop." },
+          { "label": "D", "text": "Ashford is the first stop." },
+          { "label": "E", "text": "Bellbrook is the third stop." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Suppose Franklin were at 2. The conditional rule would force Ashford to position 1. But then Ashford and Franklin would be at 1 and 2 — consecutive positions — violating the not-adjacent rule. Therefore Franklin cannot be at 2.",
+          "A": "Denton could be at 6 (most arrangements) but can also be at 2 or 4; not forced.",
+          "B": "Correct. Franklin at 2 triggers Ashford to 1, which contradicts the not-adjacent rule.",
+          "C": "Easton can be at 2, 4, or 5; not forced to 5.",
+          "D": "Ashford can be at 3, 4, or 5 as well; not forced to 1.",
+          "E": "Bellbrook can occupy many positions; not forced to 3."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-01",
+        "questionType": "must_be_false",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Bellbrook is the second stop." },
+          { "label": "B", "text": "Carver is the sixth stop." },
+          { "label": "C", "text": "Easton is the fourth stop." },
+          { "label": "D", "text": "Denton is the second stop." },
+          { "label": "E", "text": "Ashford is the second stop." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Ashford were at 2, Franklin would have to lie elsewhere and still precede Easton while not being adjacent to Ashford. That forces Franklin to position 4, 5, or 6, but Franklin must also come before Easton and Easton cannot be at 1 or 6. Testing all possibilities shows no valid arrangement places Ashford at 2.",
+          "A": "Bellbrook at 2 with Carver at 3 is realized (e.g., Ashford(1), Bellbrook(2), Carver(3), Franklin(4), Easton(5), Denton(6)).",
+          "B": "Carver at 6 with Bellbrook at 5 is realized (e.g., Ashford(1), Denton(2), Franklin(3), Easton(4), Bellbrook(5), Carver(6)).",
+          "C": "Easton at 4 is realized in several arrangements (e.g., Ashford(5), Bellbrook(1), Carver(2), Franklin(3), Easton(4), Denton(6)).",
+          "D": "Denton at 2 is realized when Ashford is at 1 (e.g., Ashford(1), Denton(2), Franklin(3), Easton(4), Bellbrook(5), Carver(6)).",
+          "E": "Correct. No assignment satisfies all rules with Ashford at 2."
+        },
+        "tags": ["could_be_true_except", "cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d2-b0-02",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 2,
+    "scenario": "A museum docent will lead visitors past exactly seven exhibits — glass, helmets, icons, jade, kites, lanterns, and masks — one at a time, in an order numbered first through seventh. The order must conform to the following constraints. The glass exhibit is visited at some point before the masks exhibit. The helmets exhibit and the icons exhibit are visited in immediately consecutive positions. The jade exhibit is not the fourth exhibit visited. The lanterns exhibit is visited at some point after the kites exhibit. The jade exhibit is visited at some point before the kites exhibit. The glass and jade exhibits are not visited in immediately consecutive positions. The helmets exhibit is visited at some point before the lanterns exhibit. The kites exhibit is not the second exhibit visited. If the kites exhibit is the third exhibit visited, then the masks exhibit is the seventh.",
+    "entities": ["glass", "helmets", "icons", "jade", "kites", "lanterns", "masks"],
+    "positions": [1, 2, 3, 4, 5, 6, 7],
+    "rules": [
+      { "type": "before", "a": "glass", "b": "masks" },
+      { "type": "adjacent", "a": "helmets", "b": "icons" },
+      { "type": "not_at", "entity": "jade", "position": 4 },
+      { "type": "after", "a": "lanterns", "b": "kites" },
+      { "type": "before", "a": "jade", "b": "kites" },
+      { "type": "not_adjacent", "a": "glass", "b": "jade" },
+      { "type": "before", "a": "helmets", "b": "lanterns" },
+      { "type": "not_at", "entity": "kites", "position": 2 },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "kites", "position": 3 }, "thenRule": { "type": "at", "entity": "masks", "position": 7 } }
+    ],
+    "verifiedSolutions": [
+      { "glass": 1, "helmets": 2, "icons": 3, "jade": 5, "kites": 6, "lanterns": 7, "masks": 4 },
+      { "glass": 1, "helmets": 3, "icons": 2, "jade": 5, "kites": 6, "lanterns": 7, "masks": 4 },
+      { "glass": 1, "helmets": 3, "icons": 4, "jade": 5, "kites": 6, "lanterns": 7, "masks": 2 },
+      { "glass": 1, "helmets": 4, "icons": 3, "jade": 5, "kites": 6, "lanterns": 7, "masks": 2 },
+      { "glass": 1, "helmets": 4, "icons": 5, "jade": 3, "kites": 6, "lanterns": 7, "masks": 2 },
+      { "glass": 1, "helmets": 5, "icons": 4, "jade": 3, "kites": 6, "lanterns": 7, "masks": 2 },
+      { "glass": 1, "helmets": 5, "icons": 6, "jade": 3, "kites": 4, "lanterns": 7, "masks": 2 },
+      { "glass": 1, "helmets": 6, "icons": 5, "jade": 3, "kites": 4, "lanterns": 7, "masks": 2 },
+      { "glass": 3, "helmets": 1, "icons": 2, "jade": 5, "kites": 6, "lanterns": 7, "masks": 4 },
+      { "glass": 3, "helmets": 2, "icons": 1, "jade": 5, "kites": 6, "lanterns": 7, "masks": 4 },
+      { "glass": 4, "helmets": 2, "icons": 3, "jade": 1, "kites": 5, "lanterns": 6, "masks": 7 },
+      { "glass": 4, "helmets": 2, "icons": 3, "jade": 1, "kites": 5, "lanterns": 7, "masks": 6 },
+      { "glass": 4, "helmets": 2, "icons": 3, "jade": 1, "kites": 6, "lanterns": 7, "masks": 5 },
+      { "glass": 4, "helmets": 3, "icons": 2, "jade": 1, "kites": 5, "lanterns": 6, "masks": 7 },
+      { "glass": 4, "helmets": 3, "icons": 2, "jade": 1, "kites": 5, "lanterns": 7, "masks": 6 },
+      { "glass": 4, "helmets": 3, "icons": 2, "jade": 1, "kites": 6, "lanterns": 7, "masks": 5 },
+      { "glass": 5, "helmets": 1, "icons": 2, "jade": 3, "kites": 4, "lanterns": 6, "masks": 7 },
+      { "glass": 5, "helmets": 1, "icons": 2, "jade": 3, "kites": 4, "lanterns": 7, "masks": 6 },
+      { "glass": 5, "helmets": 2, "icons": 1, "jade": 3, "kites": 4, "lanterns": 6, "masks": 7 },
+      { "glass": 5, "helmets": 2, "icons": 1, "jade": 3, "kites": 4, "lanterns": 7, "masks": 6 },
+      { "glass": 5, "helmets": 2, "icons": 3, "jade": 1, "kites": 4, "lanterns": 6, "masks": 7 },
+      { "glass": 5, "helmets": 2, "icons": 3, "jade": 1, "kites": 4, "lanterns": 7, "masks": 6 },
+      { "glass": 5, "helmets": 3, "icons": 2, "jade": 1, "kites": 4, "lanterns": 6, "masks": 7 },
+      { "glass": 5, "helmets": 3, "icons": 2, "jade": 1, "kites": 4, "lanterns": 7, "masks": 6 },
+      { "glass": 6, "helmets": 1, "icons": 2, "jade": 3, "kites": 4, "lanterns": 5, "masks": 7 },
+      { "glass": 6, "helmets": 2, "icons": 1, "jade": 3, "kites": 4, "lanterns": 5, "masks": 7 },
+      { "glass": 6, "helmets": 2, "icons": 3, "jade": 1, "kites": 4, "lanterns": 5, "masks": 7 },
+      { "glass": 6, "helmets": 3, "icons": 2, "jade": 1, "kites": 4, "lanterns": 5, "masks": 7 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d2-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order in which the exhibits are visited, from first to seventh?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "glass, helmets, icons, masks, jade, kites, lanterns" },
+          { "label": "B", "text": "masks, helmets, icons, glass, jade, kites, lanterns" },
+          { "label": "C", "text": "glass, helmets, jade, icons, masks, kites, lanterns" },
+          { "label": "D", "text": "glass, helmets, icons, jade, masks, kites, lanterns" },
+          { "label": "E", "text": "glass, helmets, icons, masks, jade, lanterns, kites" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "glass(1) is before masks(4); helmets(2) and icons(3) are consecutive; jade is at 5, not 4; lanterns(7) is after kites(6); jade(5) is before kites(6); glass(1) and jade(5) are not consecutive; helmets(2) is before lanterns(7); kites is at 6, not 2; kites is not at 3 so the conditional is vacuous.",
+          "A": "Correct. All rules are satisfied.",
+          "B": "masks is first and glass is fourth, so glass is not before masks. Violates the glass-before-masks rule.",
+          "C": "helmets is at 2 and icons is at 4, so they are not in consecutive positions. Violates the helmets-icons adjacency rule.",
+          "D": "jade is the fourth exhibit, which the rules forbid.",
+          "E": "lanterns is at 6 and kites is at 7, so lanterns is not after kites. Violates the lanterns-after-kites rule."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If glass is the third exhibit visited, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "glass", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "masks is the second exhibit visited." },
+          { "label": "B", "text": "jade is the first exhibit visited." },
+          { "label": "C", "text": "lanterns is the seventh exhibit visited." },
+          { "label": "D", "text": "kites is the fourth exhibit visited." },
+          { "label": "E", "text": "helmets is the fourth exhibit visited." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Glass at 3 makes jade unable to sit at 2 or 4 (jade cannot be adjacent to glass, and jade cannot be at 4). Jade must precede kites, and the remaining slots force jade to 5, kites to 6, lanterns to 7, and masks to 4. Helmets and icons share positions 1 and 2 in either order.",
+          "A": "Masks lands at 4, not 2.",
+          "B": "Jade lands at 5, not 1.",
+          "C": "Correct. With glass at 3, every valid arrangement places lanterns at 7.",
+          "D": "Kites lands at 6, not 4.",
+          "E": "Helmets lands at 1 or 2, not 4."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If jade is the first exhibit visited, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "jade", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "glass is the third exhibit visited." },
+          { "label": "B", "text": "kites is the fourth exhibit visited." },
+          { "label": "C", "text": "helmets is the first exhibit visited." },
+          { "label": "D", "text": "lanterns is the fourth exhibit visited." },
+          { "label": "E", "text": "masks is the third exhibit visited." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With jade at 1, glass cannot be at 2 (glass-jade not adjacent). The helmets-icons block plus jade-before-kites and helmets-before-lanterns admit arrangements in which kites sits at 4, 5, or 6. At least one admissible arrangement places kites at 4 (e.g., jade 1, helmets 2, icons 3, kites 4, glass 5, lanterns 6, masks 7).",
+          "A": "Glass cannot be at 3 while jade is at 1, because jade-kites ordering together with the remaining constraints leave glass at 4, 5, or 6.",
+          "B": "Correct. Kites at 4 is realized (e.g., jade 1, helmets 2, icons 3, kites 4, glass 5, lanterns 6, masks 7).",
+          "C": "With jade at 1, helmets cannot occupy position 1.",
+          "D": "Lanterns must come after kites and after helmets, and is always at position 5, 6, or 7 when jade is at 1; it never lands at 4.",
+          "E": "Masks cannot be at 3 while jade is at 1; glass must precede masks and the remaining slots leave masks at 5 or later."
+        },
+        "tags": ["could_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "kites is the sixth exhibit visited." },
+          { "label": "B", "text": "glass is the first exhibit visited." },
+          { "label": "C", "text": "jade is visited at some point before lanterns." },
+          { "label": "D", "text": "masks is the seventh exhibit visited." },
+          { "label": "E", "text": "jade is the fifth exhibit visited." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Jade must precede kites (given), and lanterns must be after kites (given). By transitivity, jade is before kites is before lanterns, so jade precedes lanterns in every valid arrangement.",
+          "A": "Kites can sit at 4, 5, or 6, not only 6.",
+          "B": "Glass can sit at 1, 3, 4, 5, or 6; not forced to 1.",
+          "C": "Correct. Derived from jade-before-kites and kites-before-lanterns.",
+          "D": "Masks can sit at several positions including 2, 4, 5, 6, or 7; not forced to 7.",
+          "E": "Jade can sit at 1, 3, or 5; not forced to 5."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-02",
+        "questionType": "must_be_false",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "kites is the fourth exhibit visited." },
+          { "label": "B", "text": "glass is the third exhibit visited." },
+          { "label": "C", "text": "helmets is the first exhibit visited." },
+          { "label": "D", "text": "masks is the fifth exhibit visited." },
+          { "label": "E", "text": "kites is the third exhibit visited." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If kites were third, the conditional rule would force masks to 7. But jade must precede kites, so jade sits at 1 or 2. Jade at 2 makes jade adjacent to glass (glass would be at 1), violating the glass-jade non-adjacency rule; jade at 1 leaves positions 2 available only for helmets or icons, and then the helmets-before-lanterns and glass-before-masks constraints leave no valid seat for glass without creating another violation. No arrangement places kites at 3.",
+          "A": "Kites at 4 is realized (e.g., glass 5, helmets 2, icons 3, jade 1, kites 4, lanterns 6, masks 7).",
+          "B": "Glass at 3 is realized (e.g., glass 3, helmets 1, icons 2, jade 5, kites 6, lanterns 7, masks 4).",
+          "C": "Helmets at 1 is realized (e.g., helmets 1, icons 2, jade 3, kites 4, glass 5, lanterns 6, masks 7).",
+          "D": "Masks at 5 is realized (e.g., jade 1, helmets 3, icons 2, glass 4, kites 6, lanterns 7, masks 5).",
+          "E": "Correct. No assignment satisfies all rules with kites at 3."
+        },
+        "tags": ["could_be_true_except", "cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d2-b0-03",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 2,
+    "scenario": "Six runners — Patel, Quinn, Reyes, Sato, Tran, and Uman — will finish a relay training course in some order, first through sixth, with no two runners finishing in the same position. The finishing order conforms to the following conditions. Patel finishes at some point before Quinn. Reyes finishes at some point before Sato. Tran and Uman finish in immediately consecutive positions. Patel does not finish first. Quinn does not finish sixth. If Tran finishes third, then Reyes finishes first.",
+    "entities": ["Patel", "Quinn", "Reyes", "Sato", "Tran", "Uman"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "rules": [
+      { "type": "before", "a": "Patel", "b": "Quinn" },
+      { "type": "before", "a": "Reyes", "b": "Sato" },
+      { "type": "adjacent", "a": "Tran", "b": "Uman" },
+      { "type": "not_at", "entity": "Patel", "position": 1 },
+      { "type": "not_at", "entity": "Quinn", "position": 6 },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Tran", "position": 3 }, "thenRule": { "type": "at", "entity": "Reyes", "position": 1 } }
+    ],
+    "verifiedSolutions": [
+      { "Patel": 2, "Quinn": 3, "Reyes": 1, "Sato": 4, "Tran": 5, "Uman": 6 },
+      { "Patel": 2, "Quinn": 3, "Reyes": 1, "Sato": 4, "Tran": 6, "Uman": 5 },
+      { "Patel": 2, "Quinn": 3, "Reyes": 1, "Sato": 6, "Tran": 4, "Uman": 5 },
+      { "Patel": 2, "Quinn": 3, "Reyes": 1, "Sato": 6, "Tran": 5, "Uman": 4 },
+      { "Patel": 2, "Quinn": 4, "Reyes": 1, "Sato": 3, "Tran": 5, "Uman": 6 },
+      { "Patel": 2, "Quinn": 4, "Reyes": 1, "Sato": 3, "Tran": 6, "Uman": 5 },
+      { "Patel": 2, "Quinn": 5, "Reyes": 1, "Sato": 6, "Tran": 3, "Uman": 4 },
+      { "Patel": 2, "Quinn": 5, "Reyes": 1, "Sato": 6, "Tran": 4, "Uman": 3 },
+      { "Patel": 3, "Quinn": 4, "Reyes": 1, "Sato": 2, "Tran": 5, "Uman": 6 },
+      { "Patel": 3, "Quinn": 4, "Reyes": 1, "Sato": 2, "Tran": 6, "Uman": 5 },
+      { "Patel": 3, "Quinn": 4, "Reyes": 5, "Sato": 6, "Tran": 1, "Uman": 2 },
+      { "Patel": 3, "Quinn": 4, "Reyes": 5, "Sato": 6, "Tran": 2, "Uman": 1 },
+      { "Patel": 3, "Quinn": 5, "Reyes": 4, "Sato": 6, "Tran": 1, "Uman": 2 },
+      { "Patel": 3, "Quinn": 5, "Reyes": 4, "Sato": 6, "Tran": 2, "Uman": 1 },
+      { "Patel": 4, "Quinn": 5, "Reyes": 1, "Sato": 6, "Tran": 2, "Uman": 3 },
+      { "Patel": 4, "Quinn": 5, "Reyes": 1, "Sato": 6, "Tran": 3, "Uman": 2 },
+      { "Patel": 4, "Quinn": 5, "Reyes": 3, "Sato": 6, "Tran": 1, "Uman": 2 },
+      { "Patel": 4, "Quinn": 5, "Reyes": 3, "Sato": 6, "Tran": 2, "Uman": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d2-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the finishing order of the runners, from first to sixth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Reyes, Patel, Quinn, Sato, Tran, Uman" },
+          { "label": "B", "text": "Reyes, Quinn, Patel, Sato, Tran, Uman" },
+          { "label": "C", "text": "Sato, Patel, Quinn, Reyes, Tran, Uman" },
+          { "label": "D", "text": "Reyes, Tran, Patel, Quinn, Uman, Sato" },
+          { "label": "E", "text": "Reyes, Patel, Sato, Tran, Uman, Quinn" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Patel(2) is before Quinn(3); Reyes(1) is before Sato(4); Tran(5) and Uman(6) are consecutive; Patel is not first; Quinn is not sixth; Tran is not at 3 so the conditional is vacuous. All rules hold.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Quinn is second and Patel is third, so Patel is not before Quinn. Violates the Patel-before-Quinn rule.",
+          "C": "Sato is first and Reyes is fourth, so Reyes is not before Sato. Violates the Reyes-before-Sato rule.",
+          "D": "Tran is second and Uman is fifth, so they are not in consecutive positions. Violates the Tran-Uman adjacency rule.",
+          "E": "Quinn is sixth, which the rules forbid."
+        },
+        "tags": ["orientation_question", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Tran finishes first, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Tran", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Patel finishes second." },
+          { "label": "B", "text": "Reyes finishes first." },
+          { "label": "C", "text": "Sato finishes sixth." },
+          { "label": "D", "text": "Quinn finishes fourth." },
+          { "label": "E", "text": "Uman finishes third." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Tran is first, Uman is second (Tran-Uman adjacency). The remaining runners — Patel, Quinn, Reyes, Sato — fill positions 3–6. Patel cannot be first (already taken) and must precede Quinn, and Reyes must precede Sato. Every admissible filling of 3–6 places Sato at position 6.",
+          "A": "Patel can finish at 3 or 4; not forced.",
+          "B": "Tran is first, so Reyes is not first.",
+          "C": "Correct. Every arrangement with Tran first places Sato at 6.",
+          "D": "Quinn can finish at 4 or 5; not forced to 4.",
+          "E": "Uman is at 2, not 3."
+        },
+        "tags": ["must_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Quinn finishes third, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "Quinn", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Sato finishes fourth." },
+          { "label": "B", "text": "Tran finishes first." },
+          { "label": "C", "text": "Patel finishes third." },
+          { "label": "D", "text": "Uman finishes first." },
+          { "label": "E", "text": "Reyes finishes fourth." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Quinn at 3 and Patel before Quinn, Patel is at 2 (Patel is not at 1). Reyes then takes 1 (so Reyes precedes Sato), and Sato, Tran, and Uman occupy 4, 5, 6 with Tran-Uman consecutive. Sato at 4 is realized (e.g., Reyes 1, Patel 2, Quinn 3, Sato 4, Tran 5, Uman 6).",
+          "A": "Correct. Sato at 4 is realized (e.g., Reyes 1, Patel 2, Quinn 3, Sato 4, Tran 5, Uman 6).",
+          "B": "With Reyes forced to 1, Tran cannot finish first.",
+          "C": "Patel is forced to 2 (Patel not at 1, Patel before Quinn at 3), so Patel is not at 3.",
+          "D": "With Reyes forced to 1, Uman cannot finish first.",
+          "E": "Reyes is forced to 1, not 4."
+        },
+        "tags": ["could_be_true", "conditional", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Reyes finishes first." },
+          { "label": "B", "text": "Uman finishes second." },
+          { "label": "C", "text": "Tran finishes before Patel." },
+          { "label": "D", "text": "Sato finishes sixth." },
+          { "label": "E", "text": "Reyes does not finish sixth." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Reyes must finish before Sato, so Reyes cannot be last. Therefore Reyes never finishes sixth.",
+          "A": "Reyes can finish at 1, 3, 4, or 5; not forced to 1.",
+          "B": "Uman can finish at several positions (1, 2, 3, 4, 5, or 6 depending on Tran); not forced.",
+          "C": "Tran can finish before or after Patel; not forced.",
+          "D": "Sato often finishes sixth but can also finish at 2, 3, or 4; not forced.",
+          "E": "Correct. Reyes must precede Sato, so Reyes cannot be at 6."
+        },
+        "tags": ["must_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b0-03",
+        "questionType": "must_be_false",
+        "difficulty": 2,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Patel finishes fourth." },
+          { "label": "B", "text": "Uman finishes first." },
+          { "label": "C", "text": "Tran finishes third." },
+          { "label": "D", "text": "Sato finishes second." },
+          { "label": "E", "text": "Reyes finishes second." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Reyes finished second, then either Patel takes 1 (forbidden) or someone else takes 1 while Patel is at 3, 4, or 5 — but Reyes must precede Sato, and with Patel blocked from 1 and Reyes at 2, Tran/Uman would need to span position 1 (Tran-Uman adjacent), leaving Sato, Quinn, and Patel for the remaining slots. Testing all such fillings shows every candidate violates either the Patel-before-Quinn rule, the Quinn-not-at-6 rule, or the Tran-at-3 conditional. No valid arrangement places Reyes at 2.",
+          "A": "Patel at 4 is realized (e.g., Reyes 1, Tran 2, Uman 3, Patel 4, Quinn 5, Sato 6).",
+          "B": "Uman at 1 is realized (e.g., Uman 1, Tran 2, Patel 3, Quinn 4, Reyes 5, Sato 6).",
+          "C": "Tran at 3 is realized when Reyes is at 1 (e.g., Reyes 1, Patel 2, Tran 3, Uman 4, Quinn 5, Sato 6).",
+          "D": "Sato at 2 is realized (e.g., Reyes 1, Sato 2, Patel 3, Quinn 4, Tran 5, Uman 6).",
+          "E": "Correct. No assignment satisfies all rules with Reyes at 2."
+        },
+        "tags": ["could_be_true_except", "cannot_be_true", "basic_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-basic_linear.json"] }
+      }
+    ]
+  }
+]
