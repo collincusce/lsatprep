@@ -1,0 +1,548 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b0-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "Exactly five university lectures — Ames, Boyd, Chen, Diaz, and Elkin — will be delivered one after another in five consecutive time slots numbered first through fifth. Each lecture is given in either the morning session or the afternoon session. The first three slots are in the morning; the last two slots are in the afternoon. The schedule must satisfy the following constraints. The Boyd lecture is given before the Chen lecture. The Diaz lecture and the Elkin lecture are given in immediately consecutive slots. The Ames lecture is not the fifth lecture.",
+    "entities": ["Ames", "Boyd", "Chen", "Diaz", "Elkin"],
+    "positions": [1, 2, 3, 4, 5],
+    "attributeDimension": {
+      "name": "half_of_day",
+      "values": ["morning", "afternoon"],
+      "slotMap": { "1": "morning", "2": "morning", "3": "morning", "4": "afternoon", "5": "afternoon" }
+    },
+    "rules": [
+      { "type": "before", "a": "Boyd", "b": "Chen" },
+      { "type": "adjacent", "a": "Diaz", "b": "Elkin" },
+      { "type": "not_at", "entity": "Ames", "position": 5 },
+      { "type": "cross_dim", "description": "The first three slots are in the morning." },
+      { "type": "cross_dim", "description": "The last two slots are in the afternoon." }
+    ],
+    "verifiedSolutions": [
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 2, "half_of_day": "morning" }, "Chen": { "position": 3, "half_of_day": "morning" }, "Diaz": { "position": 4, "half_of_day": "afternoon" }, "Elkin": { "position": 5, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 2, "half_of_day": "morning" }, "Chen": { "position": 3, "half_of_day": "morning" }, "Diaz": { "position": 5, "half_of_day": "afternoon" }, "Elkin": { "position": 4, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 2, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 3, "half_of_day": "morning" }, "Elkin": { "position": 4, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 2, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 4, "half_of_day": "afternoon" }, "Elkin": { "position": 3, "half_of_day": "morning" } },
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 4, "half_of_day": "afternoon" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 2, "half_of_day": "morning" }, "Elkin": { "position": 3, "half_of_day": "morning" } },
+      { "Ames": { "position": 1, "half_of_day": "morning" }, "Boyd": { "position": 4, "half_of_day": "afternoon" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 3, "half_of_day": "morning" }, "Elkin": { "position": 2, "half_of_day": "morning" } },
+      { "Ames": { "position": 2, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 3, "half_of_day": "morning" }, "Diaz": { "position": 4, "half_of_day": "afternoon" }, "Elkin": { "position": 5, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 2, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 3, "half_of_day": "morning" }, "Diaz": { "position": 5, "half_of_day": "afternoon" }, "Elkin": { "position": 4, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 2, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 3, "half_of_day": "morning" }, "Elkin": { "position": 4, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 2, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 4, "half_of_day": "afternoon" }, "Elkin": { "position": 3, "half_of_day": "morning" } },
+      { "Ames": { "position": 3, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 2, "half_of_day": "morning" }, "Diaz": { "position": 4, "half_of_day": "afternoon" }, "Elkin": { "position": 5, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 3, "half_of_day": "morning" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 2, "half_of_day": "morning" }, "Diaz": { "position": 5, "half_of_day": "afternoon" }, "Elkin": { "position": 4, "half_of_day": "afternoon" } },
+      { "Ames": { "position": 3, "half_of_day": "morning" }, "Boyd": { "position": 4, "half_of_day": "afternoon" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 1, "half_of_day": "morning" }, "Elkin": { "position": 2, "half_of_day": "morning" } },
+      { "Ames": { "position": 3, "half_of_day": "morning" }, "Boyd": { "position": 4, "half_of_day": "afternoon" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 2, "half_of_day": "morning" }, "Elkin": { "position": 1, "half_of_day": "morning" } },
+      { "Ames": { "position": 4, "half_of_day": "afternoon" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 2, "half_of_day": "morning" }, "Elkin": { "position": 3, "half_of_day": "morning" } },
+      { "Ames": { "position": 4, "half_of_day": "afternoon" }, "Boyd": { "position": 1, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 3, "half_of_day": "morning" }, "Elkin": { "position": 2, "half_of_day": "morning" } },
+      { "Ames": { "position": 4, "half_of_day": "afternoon" }, "Boyd": { "position": 3, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 1, "half_of_day": "morning" }, "Elkin": { "position": 2, "half_of_day": "morning" } },
+      { "Ames": { "position": 4, "half_of_day": "afternoon" }, "Boyd": { "position": 3, "half_of_day": "morning" }, "Chen": { "position": 5, "half_of_day": "afternoon" }, "Diaz": { "position": 2, "half_of_day": "morning" }, "Elkin": { "position": 1, "half_of_day": "morning" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the complete schedule of lectures, listed as slot(lecture, half-of-day) from first to fifth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Ames, morning), 2(Boyd, morning), 3(Chen, morning), 4(Diaz, afternoon), 5(Elkin, afternoon)" },
+          { "label": "B", "text": "1(Ames, morning), 2(Chen, morning), 3(Boyd, morning), 4(Diaz, afternoon), 5(Elkin, afternoon)" },
+          { "label": "C", "text": "1(Diaz, morning), 2(Elkin, morning), 3(Boyd, morning), 4(Chen, afternoon), 5(Ames, afternoon)" },
+          { "label": "D", "text": "1(Diaz, morning), 2(Ames, morning), 3(Boyd, morning), 4(Elkin, afternoon), 5(Chen, afternoon)" },
+          { "label": "E", "text": "1(Ames, afternoon), 2(Boyd, morning), 3(Chen, morning), 4(Diaz, afternoon), 5(Elkin, afternoon)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Boyd(2) is before Chen(3); Diaz(4) and Elkin(5) are in immediately consecutive slots; Ames(1) is not fifth; slots 1-3 are labeled morning and slots 4-5 are labeled afternoon. All constraints are satisfied.",
+          "A": "Correct. Every constraint holds.",
+          "B": "Boyd is in slot 3 and Chen is in slot 2, so Boyd is not before Chen.",
+          "C": "Ames is in slot 5, violating the rule that Ames is not the fifth lecture.",
+          "D": "Diaz is in slot 1 and Elkin is in slot 4; they are not in immediately consecutive slots.",
+          "E": "Slot 1 is labeled afternoon, but the first three slots must be in the morning."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Chen lecture is given in slot 2, slot 3, or slot 5." },
+          { "label": "B", "text": "The Boyd lecture is given in the morning." },
+          { "label": "C", "text": "The Ames lecture is the first lecture." },
+          { "label": "D", "text": "The Diaz lecture is given in the morning." },
+          { "label": "E", "text": "The Elkin lecture is the fifth lecture." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Chen must come after Boyd, so Chen cannot be first. Enumerating the 18 verified worlds, Chen appears only in slot 2, slot 3, or slot 5 — never in slot 1 or slot 4.",
+          "A": "Correct. Chen occupies slot 2, 3, or 5 in every verified world.",
+          "B": "Boyd can be in slot 4 (afternoon) in some worlds, so Boyd is not forced into the morning.",
+          "C": "Ames appears in slots 1, 2, 3, or 4 across the verified worlds; not forced to 1.",
+          "D": "Diaz can be in slot 4 or 5 in some worlds, so Diaz is not forced into the morning.",
+          "E": "Elkin appears in slots 1-5 across verified worlds; not forced to slot 5."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the Chen lecture is given in slot 3, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Chen", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Boyd lecture is given in slot 1 or slot 2." },
+          { "label": "B", "text": "The Ames lecture is given in slot 1." },
+          { "label": "C", "text": "The Diaz lecture is given in slot 4." },
+          { "label": "D", "text": "The Elkin lecture is given in slot 5." },
+          { "label": "E", "text": "The Boyd lecture is given in slot 1." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Chen is at slot 3, then Boyd must precede Chen, so Boyd is in slot 1 or slot 2. Verification: all 4 worlds with Chen=3 place Boyd at 1 or 2.",
+          "A": "Correct. In every Chen-at-3 world Boyd occupies slot 1 or 2.",
+          "B": "Ames is at slot 1 in 2 of the 4 Chen-at-3 worlds and at slot 2 in the other 2; not forced.",
+          "C": "Diaz is at slot 4 in 2 of the 4 Chen-at-3 worlds and at slot 5 in the other 2; not forced.",
+          "D": "Elkin is at slot 4 or 5 with equal frequency; not forced to 5.",
+          "E": "Boyd is at slot 1 in only 2 of the 4 Chen-at-3 worlds; not forced to 1."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the Elkin lecture is the first lecture, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Elkin", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Diaz lecture is the second lecture." },
+          { "label": "B", "text": "The Ames lecture is the third lecture." },
+          { "label": "C", "text": "The Boyd lecture is given in the morning." },
+          { "label": "D", "text": "The Chen lecture is given in slot 3." },
+          { "label": "E", "text": "The Boyd lecture is given in slot 3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Elkin is at slot 1, Diaz must be adjacent to Elkin, so Diaz is at slot 2. Both Elkin=1 worlds confirm Diaz=2.",
+          "A": "Correct. Diaz is at slot 2 in every Elkin-at-1 world.",
+          "B": "Ames is at slot 3 in one Elkin-at-1 world and at slot 4 in the other; not forced.",
+          "C": "Boyd is at slot 3 (morning) in one world and slot 4 (afternoon) in the other; not forced.",
+          "D": "Chen is at slot 5 in both Elkin-at-1 worlds, so Chen at slot 3 is false — this is not forced-true.",
+          "E": "Boyd is at slot 3 in one Elkin-at-1 world and at slot 4 in the other; not forced."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Boyd lecture is given in slot 3." },
+          { "label": "B", "text": "The Chen lecture is the first lecture." },
+          { "label": "C", "text": "The Diaz lecture is given in slot 3." },
+          { "label": "D", "text": "The Ames lecture is given in slot 4." },
+          { "label": "E", "text": "The Elkin lecture is the fifth lecture." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Boyd must be given before Chen, so Chen cannot be first. Chen never appears in slot 1 in any verified world.",
+          "A": "Boyd is at slot 3 in 2 verified worlds (e.g., Ames=4 afternoon, Boyd=3 morning, Chen=5, Diaz=2, Elkin=1).",
+          "B": "Correct. Chen is never first because Boyd must precede Chen.",
+          "C": "Diaz is at slot 3 in 4 verified worlds (e.g., Ames=1, Boyd=2, Chen=5, Diaz=3, Elkin=4).",
+          "D": "Ames is at slot 4 in 4 verified worlds (e.g., Ames=4, Boyd=1, Chen=5, Diaz=2, Elkin=3).",
+          "E": "Elkin is at slot 5 in 3 verified worlds (e.g., Ames=1, Boyd=2, Chen=3, Diaz=4, Elkin=5)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b0-02",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "At an orchestra rehearsal, exactly five musicians — Park, Quan, Rios, Sato, and Toma — will occupy five chairs arranged in a row and numbered first through fifth. The chairs alternate in color: chairs 1, 3, and 5 are red, and chairs 2 and 4 are blue. The seating must satisfy the following constraints. Park sits in some chair before Sato. Quan does not sit in chair 1. Rios sits in a chair immediately adjacent to Sato's chair.",
+    "entities": ["Park", "Quan", "Rios", "Sato", "Toma"],
+    "positions": [1, 2, 3, 4, 5],
+    "attributeDimension": {
+      "name": "chair_color",
+      "values": ["red", "blue"],
+      "slotMap": { "1": "red", "2": "blue", "3": "red", "4": "blue", "5": "red" }
+    },
+    "rules": [
+      { "type": "before", "a": "Park", "b": "Sato" },
+      { "type": "not_at", "entity": "Quan", "position": 1 },
+      { "type": "adjacent", "a": "Rios", "b": "Sato" },
+      { "type": "cross_dim", "description": "Chairs 1, 3, and 5 are red." },
+      { "type": "cross_dim", "description": "Chairs 2 and 4 are blue." }
+    ],
+    "verifiedSolutions": [
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 3, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 5, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 3, "chair_color": "red" }, "Toma": { "position": 5, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 5, "chair_color": "red" }, "Toma": { "position": 3, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 5, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 3, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 3, "chair_color": "red" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 5, "chair_color": "red" }, "Toma": { "position": 2, "chair_color": "blue" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 3, "chair_color": "red" }, "Rios": { "position": 5, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 2, "chair_color": "blue" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 4, "chair_color": "blue" }, "Rios": { "position": 2, "chair_color": "blue" }, "Sato": { "position": 3, "chair_color": "red" }, "Toma": { "position": 5, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 4, "chair_color": "blue" }, "Rios": { "position": 3, "chair_color": "red" }, "Sato": { "position": 2, "chair_color": "blue" }, "Toma": { "position": 5, "chair_color": "red" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 2, "chair_color": "blue" }, "Sato": { "position": 3, "chair_color": "red" }, "Toma": { "position": 4, "chair_color": "blue" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 3, "chair_color": "red" }, "Sato": { "position": 2, "chair_color": "blue" }, "Toma": { "position": 4, "chair_color": "blue" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 3, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 2, "chair_color": "blue" } },
+      { "Park": { "position": 1, "chair_color": "red" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 3, "chair_color": "red" }, "Toma": { "position": 2, "chair_color": "blue" } },
+      { "Park": { "position": 2, "chair_color": "blue" }, "Quan": { "position": 3, "chair_color": "red" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 5, "chair_color": "red" }, "Toma": { "position": 1, "chair_color": "red" } },
+      { "Park": { "position": 2, "chair_color": "blue" }, "Quan": { "position": 3, "chair_color": "red" }, "Rios": { "position": 5, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 1, "chair_color": "red" } },
+      { "Park": { "position": 2, "chair_color": "blue" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 3, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 1, "chair_color": "red" } },
+      { "Park": { "position": 2, "chair_color": "blue" }, "Quan": { "position": 5, "chair_color": "red" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 3, "chair_color": "red" }, "Toma": { "position": 1, "chair_color": "red" } },
+      { "Park": { "position": 3, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 4, "chair_color": "blue" }, "Sato": { "position": 5, "chair_color": "red" }, "Toma": { "position": 1, "chair_color": "red" } },
+      { "Park": { "position": 3, "chair_color": "red" }, "Quan": { "position": 2, "chair_color": "blue" }, "Rios": { "position": 5, "chair_color": "red" }, "Sato": { "position": 4, "chair_color": "blue" }, "Toma": { "position": 1, "chair_color": "red" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the complete seating arrangement, listed as chair(musician, color) from first to fifth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Park, red), 2(Quan, blue), 3(Rios, red), 4(Sato, blue), 5(Toma, red)" },
+          { "label": "B", "text": "1(Toma, red), 2(Quan, blue), 3(Rios, red), 4(Sato, blue), 5(Park, red)" },
+          { "label": "C", "text": "1(Quan, red), 2(Park, blue), 3(Rios, red), 4(Sato, blue), 5(Toma, red)" },
+          { "label": "D", "text": "1(Park, red), 2(Rios, blue), 3(Quan, red), 4(Sato, blue), 5(Toma, red)" },
+          { "label": "E", "text": "1(Park, blue), 2(Quan, blue), 3(Rios, red), 4(Sato, blue), 5(Toma, red)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Park(1) is before Sato(4); Quan(2) is not in chair 1; Rios(3) is adjacent to Sato(4); chairs 1, 3, 5 are red and chairs 2, 4 are blue. All constraints hold.",
+          "A": "Correct. Every constraint holds.",
+          "B": "Park is in chair 5 and Sato is in chair 4, so Park is not before Sato.",
+          "C": "Quan is in chair 1, violating the rule that Quan does not sit in chair 1.",
+          "D": "Rios is in chair 2 and Sato is in chair 4, so Rios is not immediately adjacent to Sato.",
+          "E": "Chair 1 is listed blue, but chair 1 must be red."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Park sits in chair 1, chair 2, or chair 3." },
+          { "label": "B", "text": "Sato sits in a blue chair." },
+          { "label": "C", "text": "Toma sits in chair 5." },
+          { "label": "D", "text": "Quan sits in a red chair." },
+          { "label": "E", "text": "Rios sits in chair 3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Because Park must precede Sato, and Rios must be adjacent to Sato, Park cannot be at chair 4 or 5. Across all 18 verified worlds Park occupies chair 1, 2, or 3.",
+          "A": "Correct. Park appears only in chair 1, 2, or 3 across every verified world.",
+          "B": "Sato is in chair 3 (red) in many worlds; not forced to a blue chair.",
+          "C": "Toma is in chair 1, 2, 3, 4, or 5 across the worlds; not forced to 5.",
+          "D": "Quan sits in chair 2 or 4 (blue) in some worlds, so Quan is not forced to red.",
+          "E": "Rios appears in chairs 2, 3, 4, and 5 across the worlds; not forced to 3."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Sato sits in chair 3, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Sato", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Rios sits in chair 2 or chair 4." },
+          { "label": "B", "text": "Park sits in chair 1." },
+          { "label": "C", "text": "Toma sits in a red chair." },
+          { "label": "D", "text": "Quan sits in chair 5." },
+          { "label": "E", "text": "Park sits in chair 2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Rios must be immediately adjacent to Sato. With Sato at chair 3, Rios must be at chair 2 or chair 4. Verified across all 5 Sato-at-3 worlds.",
+          "A": "Correct. Rios occupies chair 2 or chair 4 in every Sato-at-3 world.",
+          "B": "Park is at chair 1 in 4 of 5 Sato-at-3 worlds and at chair 2 in the other; not forced.",
+          "C": "Toma wears red in only 3 of 5 Sato-at-3 worlds; not forced.",
+          "D": "Quan is in chair 4 or 5 in Sato-at-3 worlds; not forced to 5.",
+          "E": "Park is in chair 2 in only 1 of 5 Sato-at-3 worlds; not forced."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Toma sits in chair 1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Toma", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Park sits in chair 2 or chair 3." },
+          { "label": "B", "text": "Quan sits in chair 3." },
+          { "label": "C", "text": "Rios sits in chair 4." },
+          { "label": "D", "text": "Sato sits in chair 5." },
+          { "label": "E", "text": "Park sits in a blue chair." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Toma is at chair 1, then Park — who must precede Sato and cannot be at chair 4 or 5 — must be at chair 2 or chair 3. Verified across all 6 Toma-at-1 worlds.",
+          "A": "Correct. Park occupies chair 2 or 3 in every Toma-at-1 world.",
+          "B": "Quan is in chair 3 or 5 when Toma=1; not forced to 3.",
+          "C": "Rios appears in chairs 3, 4, or 5 when Toma=1; not forced to 4.",
+          "D": "Sato is at chair 3, 4, or 5 when Toma=1; not forced to 5.",
+          "E": "Park is in chair 2 (blue) in some worlds and chair 3 (red) in others; not forced to blue."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Park sits in chair 2." },
+          { "label": "B", "text": "Toma sits in chair 1." },
+          { "label": "C", "text": "Sato sits in chair 5." },
+          { "label": "D", "text": "Park sits in chair 4." },
+          { "label": "E", "text": "Sato sits in chair 2." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Park must be before Sato, and because Rios must be adjacent to Sato, Sato cannot be later than chair 5 and Park cannot occupy chair 4 (no Sato slot left). Park never appears in chair 4 across the verified worlds.",
+          "A": "Park is at chair 2 in 4 worlds (e.g., Toma=1, Park=2, Quan=3, Rios=4, Sato=5).",
+          "B": "Toma is at chair 1 in 6 worlds (e.g., Toma=1, Park=2, Quan=3, Rios=4, Sato=5).",
+          "C": "Sato is at chair 5 in 4 worlds (e.g., Park=1, Quan=3, Toma=2, Rios=4, Sato=5).",
+          "D": "Correct. Park is never in chair 4 because Sato must come after Park and Sato is at most chair 5, which would leave no room for Rios adjacent to Sato with Park at 4.",
+          "E": "Sato is at chair 2 in 2 worlds (e.g., Park=1, Sato=2, Rios=3, Quan=4, Toma=5)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d1-b0-03",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 1,
+    "scenario": "A bicycle courier will make exactly five deliveries — to Harris, Ingram, Jolen, Kato, and Lund — one after another, in order from first through fifth. The route zigzags between the north side of the street and the south side of the street: the first, third, and fifth stops are on the north side, and the second and fourth stops are on the south side. The route must satisfy the following constraints. The Harris delivery is made before the Ingram delivery. The Jolen delivery and the Kato delivery are made at immediately consecutive stops. The Lund delivery is not the first stop.",
+    "entities": ["Harris", "Ingram", "Jolen", "Kato", "Lund"],
+    "positions": [1, 2, 3, 4, 5],
+    "attributeDimension": {
+      "name": "street_side",
+      "values": ["north", "south"],
+      "slotMap": { "1": "north", "2": "south", "3": "north", "4": "south", "5": "north" }
+    },
+    "rules": [
+      { "type": "before", "a": "Harris", "b": "Ingram" },
+      { "type": "adjacent", "a": "Jolen", "b": "Kato" },
+      { "type": "not_at", "entity": "Lund", "position": 1 },
+      { "type": "cross_dim", "description": "Stops 1, 3, and 5 are on the north side." },
+      { "type": "cross_dim", "description": "Stops 2 and 4 are on the south side." }
+    ],
+    "verifiedSolutions": [
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 2, "street_side": "south" }, "Jolen": { "position": 3, "street_side": "north" }, "Kato": { "position": 4, "street_side": "south" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 2, "street_side": "south" }, "Jolen": { "position": 4, "street_side": "south" }, "Kato": { "position": 3, "street_side": "north" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 2, "street_side": "south" }, "Jolen": { "position": 4, "street_side": "south" }, "Kato": { "position": 5, "street_side": "north" }, "Lund": { "position": 3, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 2, "street_side": "south" }, "Jolen": { "position": 5, "street_side": "north" }, "Kato": { "position": 4, "street_side": "south" }, "Lund": { "position": 3, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 3, "street_side": "north" }, "Jolen": { "position": 4, "street_side": "south" }, "Kato": { "position": 5, "street_side": "north" }, "Lund": { "position": 2, "street_side": "south" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 3, "street_side": "north" }, "Jolen": { "position": 5, "street_side": "north" }, "Kato": { "position": 4, "street_side": "south" }, "Lund": { "position": 2, "street_side": "south" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 4, "street_side": "south" }, "Jolen": { "position": 2, "street_side": "south" }, "Kato": { "position": 3, "street_side": "north" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 4, "street_side": "south" }, "Jolen": { "position": 3, "street_side": "north" }, "Kato": { "position": 2, "street_side": "south" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 2, "street_side": "south" }, "Kato": { "position": 3, "street_side": "north" }, "Lund": { "position": 4, "street_side": "south" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 3, "street_side": "north" }, "Kato": { "position": 2, "street_side": "south" }, "Lund": { "position": 4, "street_side": "south" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 3, "street_side": "north" }, "Kato": { "position": 4, "street_side": "south" }, "Lund": { "position": 2, "street_side": "south" } },
+      { "Harris": { "position": 1, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 4, "street_side": "south" }, "Kato": { "position": 3, "street_side": "north" }, "Lund": { "position": 2, "street_side": "south" } },
+      { "Harris": { "position": 3, "street_side": "north" }, "Ingram": { "position": 4, "street_side": "south" }, "Jolen": { "position": 1, "street_side": "north" }, "Kato": { "position": 2, "street_side": "south" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 3, "street_side": "north" }, "Ingram": { "position": 4, "street_side": "south" }, "Jolen": { "position": 2, "street_side": "south" }, "Kato": { "position": 1, "street_side": "north" }, "Lund": { "position": 5, "street_side": "north" } },
+      { "Harris": { "position": 3, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 1, "street_side": "north" }, "Kato": { "position": 2, "street_side": "south" }, "Lund": { "position": 4, "street_side": "south" } },
+      { "Harris": { "position": 3, "street_side": "north" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 2, "street_side": "south" }, "Kato": { "position": 1, "street_side": "north" }, "Lund": { "position": 4, "street_side": "south" } },
+      { "Harris": { "position": 4, "street_side": "south" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 1, "street_side": "north" }, "Kato": { "position": 2, "street_side": "south" }, "Lund": { "position": 3, "street_side": "north" } },
+      { "Harris": { "position": 4, "street_side": "south" }, "Ingram": { "position": 5, "street_side": "north" }, "Jolen": { "position": 2, "street_side": "south" }, "Kato": { "position": 1, "street_side": "north" }, "Lund": { "position": 3, "street_side": "north" } }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the complete delivery route, listed as stop(recipient, side) from first to fifth?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "1(Harris, north), 2(Ingram, south), 3(Jolen, north), 4(Kato, south), 5(Lund, north)" },
+          { "label": "B", "text": "1(Ingram, north), 2(Harris, south), 3(Jolen, north), 4(Kato, south), 5(Lund, north)" },
+          { "label": "C", "text": "1(Jolen, north), 2(Harris, south), 3(Kato, north), 4(Ingram, south), 5(Lund, north)" },
+          { "label": "D", "text": "1(Lund, north), 2(Harris, south), 3(Ingram, north), 4(Jolen, south), 5(Kato, north)" },
+          { "label": "E", "text": "1(Harris, south), 2(Ingram, south), 3(Jolen, north), 4(Kato, south), 5(Lund, north)" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Harris(1) is before Ingram(2); Jolen(3) and Kato(4) are at immediately consecutive stops; Lund(5) is not the first stop; stops 1, 3, 5 are north and stops 2, 4 are south. All constraints hold.",
+          "A": "Correct. Every constraint holds.",
+          "B": "Harris is at stop 2 and Ingram is at stop 1, so Harris is not before Ingram.",
+          "C": "Jolen is at stop 1 and Kato is at stop 3; they are not at immediately consecutive stops.",
+          "D": "Lund is at the first stop, violating the rule that Lund is not the first stop.",
+          "E": "Stop 1 is labeled south, but the first stop must be on the north side."
+        },
+        "tags": ["orientation_question", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Harris delivery is at stop 1, stop 3, or stop 4." },
+          { "label": "B", "text": "The Ingram delivery is at stop 5." },
+          { "label": "C", "text": "The Lund delivery is at stop 5." },
+          { "label": "D", "text": "The Jolen delivery is on the north side." },
+          { "label": "E", "text": "The Kato delivery is at stop 2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Harris must precede Ingram, so Harris cannot be at stop 5. Moreover, Harris cannot be at stop 2 (which would block adjacency for Jolen/Kato given Lund ≠ 1). Across all 18 verified worlds Harris appears only at stop 1, stop 3, or stop 4.",
+          "A": "Correct. Harris occupies stop 1, 3, or 4 in every verified world.",
+          "B": "Ingram appears at stops 2, 3, 4, or 5; not forced to 5.",
+          "C": "Lund appears at stops 2, 3, 4, or 5; not forced to 5.",
+          "D": "Jolen sits on the south side (stop 2 or 4) in several worlds; not forced to north.",
+          "E": "Kato appears at stops 1, 2, 3, 4, or 5; not forced to 2."
+        },
+        "tags": ["must_be_true", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the Lund delivery is the fifth stop, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Lund", "position": 5 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Harris delivery is at stop 1 or stop 3." },
+          { "label": "B", "text": "The Harris delivery is at stop 1." },
+          { "label": "C", "text": "The Ingram delivery is at stop 2." },
+          { "label": "D", "text": "The Jolen delivery is on the north side." },
+          { "label": "E", "text": "The Kato delivery is at stop 3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Lund at stop 5, Harris must still precede Ingram and Jolen/Kato must be adjacent. Enumerating the 6 Lund-at-5 worlds, Harris occupies stop 1 or stop 3 in every one.",
+          "A": "Correct. Harris appears only at stop 1 or stop 3 when Lund is at stop 5.",
+          "B": "Harris is at stop 1 in 4 of the 6 Lund-at-5 worlds and at stop 3 in the other 2; not forced.",
+          "C": "Ingram is at stop 2, 3, or 4 when Lund=5; not forced to 2.",
+          "D": "Jolen is on the south side in some Lund-at-5 worlds (e.g., Jolen=2); not forced to north.",
+          "E": "Kato is at stop 2, 3, or 4 when Lund=5; not forced to 3."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the Harris delivery is the fourth stop, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Harris", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "The Ingram delivery is the fifth stop." },
+          { "label": "B", "text": "The Lund delivery is on the south side." },
+          { "label": "C", "text": "The Jolen delivery is at stop 2." },
+          { "label": "D", "text": "The Kato delivery is at stop 1." },
+          { "label": "E", "text": "The Harris delivery is on the north side." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Harris is at stop 4, Ingram must be after Harris, leaving only stop 5 for Ingram. Lund must not be first, so Lund takes stop 3; Jolen and Kato must be adjacent and so fill stops 1 and 2. Every Harris-at-4 world places Ingram at stop 5.",
+          "A": "Correct. Ingram is at stop 5 in every Harris-at-4 world.",
+          "B": "Lund is at stop 3 (north) in every Harris-at-4 world; Lund is not on the south side.",
+          "C": "Jolen is at stop 1 or stop 2 when Harris=4; not forced to 2.",
+          "D": "Kato is at stop 1 or stop 2 when Harris=4; not forced to 1.",
+          "E": "Harris at stop 4 is on the south side by the slot-map, not the north side; this statement is false, not forced-true."
+        },
+        "tags": ["must_be_true", "conditional", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d1-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d1-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "The Kato delivery is at stop 4." },
+          { "label": "B", "text": "The Ingram delivery is at stop 2." },
+          { "label": "C", "text": "The Lund delivery is the first stop." },
+          { "label": "D", "text": "The Lund delivery is at stop 2." },
+          { "label": "E", "text": "The Jolen delivery is at stop 5." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "The rules explicitly forbid Lund from being the first stop. Lund never appears at stop 1 in any verified world.",
+          "A": "Kato is at stop 4 in 4 verified worlds (e.g., Harris=1, Ingram=2, Jolen=3, Kato=4, Lund=5).",
+          "B": "Ingram is at stop 2 in 4 verified worlds (e.g., Harris=1, Ingram=2, Jolen=3, Kato=4, Lund=5).",
+          "C": "Correct. Lund cannot be the first stop by the explicit rule.",
+          "D": "Lund is at stop 2 in 4 verified worlds (e.g., Harris=1, Ingram=3, Jolen=4, Kato=5, Lund=2).",
+          "E": "Jolen is at stop 5 in 2 verified worlds (e.g., Harris=1, Ingram=2, Jolen=5, Kato=4, Lund=3)."
+        },
+        "tags": ["cannot_be_true", "could_be_true_except", "advanced_linear"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-advanced_linear.json"] }
+      }
+    ]
+  }
+]

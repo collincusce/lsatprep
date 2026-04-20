@@ -1,0 +1,693 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d3-b0-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 3,
+    "scenario": "Exactly nine interns — Asano, Bello, Choi, Diaz, Ellis, Fadel, Gur, Huang, and Imura — will be assigned to exactly one of three hospital departments: Cardiology, Dermatology, and ER. Each department is assigned exactly three interns. The assignment must satisfy the following conditions. Asano is assigned to Cardiology. Bello and Choi are assigned to different departments. Diaz and Ellis are assigned to the same department. Choi is not assigned to ER. Fadel is not assigned to ER. If Fadel is assigned to Cardiology, then Gur is assigned to ER. If Gur is assigned to Dermatology, then Huang is assigned to Cardiology. If Imura is assigned to Cardiology, then Diaz is assigned to ER. Exactly one of Bello, Huang, and Imura is assigned to Dermatology.",
+    "entities": [
+      "Asano",
+      "Bello",
+      "Choi",
+      "Diaz",
+      "Ellis",
+      "Fadel",
+      "Gur",
+      "Huang",
+      "Imura"
+    ],
+    "groups": [
+      "Cardiology",
+      "Dermatology",
+      "ER"
+    ],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "Asano", "position": "Cardiology" },
+      { "type": "different_group", "a": "Bello", "b": "Choi" },
+      { "type": "same_group", "a": "Diaz", "b": "Ellis" },
+      { "type": "not_at", "entity": "Choi", "position": "ER" },
+      { "type": "not_at", "entity": "Fadel", "position": "ER" },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Fadel", "position": "Cardiology" },
+        "thenRule": { "type": "at", "entity": "Gur", "position": "ER" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Gur", "position": "Dermatology" },
+        "thenRule": { "type": "at", "entity": "Huang", "position": "Cardiology" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Imura", "position": "Cardiology" },
+        "thenRule": { "type": "at", "entity": "Diaz", "position": "ER" }
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": ["Bello", "Huang", "Imura"],
+        "group": "Dermatology",
+        "n": 1
+      }
+    ],
+    "verifiedSolutions": [
+      { "Asano": "Cardiology", "Bello": "Cardiology", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Cardiology", "Huang": "Dermatology", "Imura": "ER" },
+      { "Asano": "Cardiology", "Bello": "Cardiology", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Cardiology", "Huang": "ER", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "Cardiology", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "ER", "Huang": "Cardiology", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "Cardiology", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "ER", "Huang": "Dermatology", "Imura": "Cardiology" },
+      { "Asano": "Cardiology", "Bello": "Dermatology", "Choi": "Cardiology", "Diaz": "Dermatology", "Ellis": "Dermatology", "Fadel": "Cardiology", "Gur": "ER", "Huang": "ER", "Imura": "ER" },
+      { "Asano": "Cardiology", "Bello": "Dermatology", "Choi": "Cardiology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Dermatology", "Huang": "Cardiology", "Imura": "ER" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Cardiology", "Diaz": "Dermatology", "Ellis": "Dermatology", "Fadel": "Cardiology", "Gur": "ER", "Huang": "Dermatology", "Imura": "ER" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Cardiology", "Diaz": "Dermatology", "Ellis": "Dermatology", "Fadel": "Cardiology", "Gur": "ER", "Huang": "ER", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Cardiology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Dermatology", "Huang": "Cardiology", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Dermatology", "Diaz": "Cardiology", "Ellis": "Cardiology", "Fadel": "Dermatology", "Gur": "ER", "Huang": "Dermatology", "Imura": "ER" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Dermatology", "Diaz": "Cardiology", "Ellis": "Cardiology", "Fadel": "Dermatology", "Gur": "ER", "Huang": "ER", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Cardiology", "Huang": "Cardiology", "Imura": "Dermatology" },
+      { "Asano": "Cardiology", "Bello": "ER", "Choi": "Dermatology", "Diaz": "ER", "Ellis": "ER", "Fadel": "Dermatology", "Gur": "Cardiology", "Huang": "Dermatology", "Imura": "Cardiology" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d3-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Cardiology: Asano, Bello, Gur; Dermatology: Choi, Fadel, Huang; ER: Diaz, Ellis, Imura" },
+          { "label": "B", "text": "Cardiology: Asano, Gur, Huang; Dermatology: Bello, Choi, Fadel; ER: Diaz, Ellis, Imura" },
+          { "label": "C", "text": "Cardiology: Asano, Bello, Diaz; Dermatology: Choi, Fadel, Huang; ER: Ellis, Gur, Imura" },
+          { "label": "D", "text": "Cardiology: Asano, Fadel, Huang; Dermatology: Choi, Gur, Imura; ER: Bello, Diaz, Ellis" },
+          { "label": "E", "text": "Cardiology: Asano, Choi, Gur; Dermatology: Bello, Fadel, Huang; ER: Diaz, Ellis, Imura" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Asano is in Cardiology. Bello (Cardiology) and Choi (Dermatology) are in different departments. Diaz and Ellis are both in ER. Choi is not in ER; Fadel is not in ER. Fadel is in Dermatology, not Cardiology, so the Fadel-Cardiology conditional is vacuous. Gur is in Cardiology, not Dermatology, so the Gur-Dermatology conditional is vacuous. Imura is in ER, not Cardiology, so the Imura-Cardiology conditional is vacuous. Exactly one of {Bello (Cardiology), Huang (Dermatology), Imura (ER)} — Huang — is in Dermatology. Every department has exactly three interns.",
+          "A": "Correct.",
+          "B": "Bello and Choi are both in Dermatology. Violates the rule that Bello and Choi are in different departments.",
+          "C": "Diaz is in Cardiology and Ellis is in ER. Violates the rule that Diaz and Ellis are in the same department.",
+          "D": "Fadel is in Cardiology but Gur is in Dermatology, not ER. Violates the rule that if Fadel is in Cardiology then Gur is in ER.",
+          "E": "Bello and Huang are both in Dermatology. Violates the rule that exactly one of Bello, Huang, and Imura is in Dermatology."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Fadel is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Fadel", "position": "Cardiology" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to Dermatology." },
+          { "label": "B", "text": "Diaz is assigned to Dermatology." },
+          { "label": "C", "text": "Huang is assigned to Dermatology." },
+          { "label": "D", "text": "Imura is assigned to Cardiology." },
+          { "label": "E", "text": "Choi is assigned to Dermatology." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Fadel is in Cardiology, then Gur is in ER. Asano is already in Cardiology, and since Fadel joins Cardiology, Cardiology holds Asano, Fadel, and one more. Exactly one of Bello, Huang, Imura is in Dermatology. Testing the remaining distribution and Bello/Choi being split, every valid assignment places Diaz and Ellis together in Dermatology (because ER already holds Gur plus at most two non-Bello/Huang/Imura slots, and Cardiology needs Choi to accompany Fadel so that Bello is free to be in Dermatology or ER without violating the exactly-one rule). Verification across the three satisfying assignments confirms Diaz is in Dermatology in every case.",
+          "A": "Bello could be in Dermatology or ER.",
+          "B": "Correct.",
+          "C": "Huang could be in Dermatology or ER.",
+          "D": "Imura could be in Dermatology or ER.",
+          "E": "Choi must be in Cardiology (to fill the Cardiology slots alongside Asano and Fadel)."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Gur is assigned to Dermatology, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Gur", "position": "Dermatology" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to Cardiology." },
+          { "label": "B", "text": "Choi is assigned to Dermatology." },
+          { "label": "C", "text": "Huang is assigned to Cardiology." },
+          { "label": "D", "text": "Imura is assigned to Cardiology." },
+          { "label": "E", "text": "Fadel is assigned to Cardiology." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Gur is in Dermatology, then by the Gur-Dermatology conditional Huang is in Cardiology. The other deductions cascade: Fadel must be in Dermatology (Fadel can't be in ER, and placing Fadel in Cardiology would force Gur into ER, contradicting Gur in Dermatology), Choi must be in Cardiology (Choi can't be in ER, and exactly one of Bello/Huang/Imura must be in Dermatology — Huang is in Cardiology, so Bello or Imura must be in Dermatology, placing Choi in Cardiology). In every satisfying assignment, Huang is in Cardiology.",
+          "A": "Bello is in Dermatology or ER.",
+          "B": "Choi is in Cardiology in every valid case.",
+          "C": "Correct.",
+          "D": "Imura could be in Dermatology or ER.",
+          "E": "If Fadel were in Cardiology, then Gur would have to be in ER, contradicting the given condition."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Imura is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Imura", "position": "Cardiology" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to Cardiology." },
+          { "label": "B", "text": "Choi is assigned to Cardiology." },
+          { "label": "C", "text": "Gur is assigned to Dermatology." },
+          { "label": "D", "text": "Huang is assigned to Dermatology." },
+          { "label": "E", "text": "Fadel is assigned to Cardiology." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Imura is in Cardiology, then by the Imura-Cardiology conditional Diaz is in ER (and Ellis with Diaz in ER). Exactly one of {Bello, Huang, Imura} must be in Dermatology; since Imura is in Cardiology, Bello or Huang must be in Dermatology. Fadel (not in ER, and placing Fadel in Cardiology would require Gur in ER — possible but forces further constraints) and the Bello/Choi split work out so that in every valid scenario Huang ends up in Dermatology and Bello ends up in ER. Verification shows Huang is in Dermatology in all satisfying assignments.",
+          "A": "Bello must be in ER (to fill the ER slots alongside Diaz and Ellis) in every valid case.",
+          "B": "Choi is in Dermatology in every valid case.",
+          "C": "Gur is in Cardiology in every valid case.",
+          "D": "Correct.",
+          "E": "Fadel must be in Dermatology in every valid case."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to Dermatology." },
+          { "label": "B", "text": "Huang is assigned to ER." },
+          { "label": "C", "text": "Gur is assigned to ER and Fadel is assigned to Cardiology." },
+          { "label": "D", "text": "Diaz is assigned to Cardiology and Imura is assigned to Cardiology." },
+          { "label": "E", "text": "Imura is assigned to Cardiology." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Suppose Diaz and Imura are both in Cardiology. Then Ellis is in Cardiology too (Diaz and Ellis are in the same department), filling Cardiology with Asano, Diaz, Ellis, Imura — four interns, one too many. So the combination is impossible.",
+          "A": "Possible — e.g., Cardiology: Asano, Choi, Fadel; Dermatology: Bello, Diaz, Ellis; ER: Gur, Huang, Imura.",
+          "B": "Possible — e.g., Cardiology: Asano, Bello, Gur; Dermatology: Choi, Fadel, Imura; ER: Diaz, Ellis, Huang.",
+          "C": "Possible — e.g., Cardiology: Asano, Choi, Fadel; Dermatology: Bello, Diaz, Ellis; ER: Gur, Huang, Imura.",
+          "D": "Correct — cannot be true.",
+          "E": "Possible — e.g., Cardiology: Asano, Gur, Imura; Dermatology: Choi, Fadel, Huang; ER: Bello, Diaz, Ellis."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d3-b0-02",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 3,
+    "scenario": "A farmers-market vendor will arrange exactly nine produce items — apples, basil, carrots, dill, eggplant, fennel, garlic, herbs, and jicama — among three stalls: Front, Middle, and Rear. Each stall contains exactly three items. The arrangement must satisfy the following conditions. Apples are placed in the Front stall. Basil is not placed in the Rear stall. Basil and carrots are placed in different stalls. Dill and fennel are placed in the same stall. If dill is placed in the Front stall, then eggplant is placed in the Middle stall. If fennel is placed in the Rear stall, then garlic is placed in the Front stall. If carrots are placed in the Middle stall, then herbs are placed in the Front stall. Exactly two of herbs, jicama, and eggplant are placed in the Rear stall.",
+    "entities": [
+      "apples",
+      "basil",
+      "carrots",
+      "dill",
+      "eggplant",
+      "fennel",
+      "garlic",
+      "herbs",
+      "jicama"
+    ],
+    "groups": [
+      "Front",
+      "Middle",
+      "Rear"
+    ],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "apples", "position": "Front" },
+      { "type": "not_at", "entity": "basil", "position": "Rear" },
+      { "type": "different_group", "a": "basil", "b": "carrots" },
+      { "type": "same_group", "a": "dill", "b": "fennel" },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "dill", "position": "Front" },
+        "thenRule": { "type": "at", "entity": "eggplant", "position": "Middle" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "fennel", "position": "Rear" },
+        "thenRule": { "type": "at", "entity": "garlic", "position": "Front" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "carrots", "position": "Middle" },
+        "thenRule": { "type": "at", "entity": "herbs", "position": "Front" }
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": ["herbs", "jicama", "eggplant"],
+        "group": "Rear",
+        "n": 2
+      }
+    ],
+    "verifiedSolutions": [
+      { "apples": "Front", "basil": "Front", "carrots": "Middle", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Rear", "herbs": "Front", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Front", "fennel": "Middle", "garlic": "Middle", "herbs": "Rear", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Middle", "fennel": "Middle", "garlic": "Front", "herbs": "Rear", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Front", "herbs": "Middle", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Front", "herbs": "Rear", "jicama": "Middle" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Middle", "herbs": "Front", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Front", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Middle", "herbs": "Rear", "jicama": "Front" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Front", "dill": "Middle", "eggplant": "Front", "fennel": "Middle", "garlic": "Rear", "herbs": "Rear", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Front", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Rear", "herbs": "Front", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Front", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Rear", "herbs": "Rear", "jicama": "Front" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Rear", "dill": "Front", "eggplant": "Middle", "fennel": "Front", "garlic": "Middle", "herbs": "Rear", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Rear", "dill": "Middle", "eggplant": "Front", "fennel": "Middle", "garlic": "Front", "herbs": "Rear", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Front", "herbs": "Front", "jicama": "Rear" },
+      { "apples": "Front", "basil": "Middle", "carrots": "Rear", "dill": "Middle", "eggplant": "Rear", "fennel": "Middle", "garlic": "Front", "herbs": "Rear", "jicama": "Front" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d3-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate arrangement of produce items among the stalls?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Front: apples, basil, herbs; Middle: dill, fennel, garlic; Rear: carrots, eggplant, jicama" },
+          { "label": "B", "text": "Front: basil, garlic, herbs; Middle: apples, dill, fennel; Rear: carrots, eggplant, jicama" },
+          { "label": "C", "text": "Front: apples, basil, carrots; Middle: dill, fennel, herbs; Rear: eggplant, garlic, jicama" },
+          { "label": "D", "text": "Front: apples, basil, fennel; Middle: dill, garlic, herbs; Rear: carrots, eggplant, jicama" },
+          { "label": "E", "text": "Front: apples, basil, jicama; Middle: dill, fennel, herbs; Rear: carrots, eggplant, garlic" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Apples are in Front. Basil (Front) is not in Rear. Basil (Front) and carrots (Rear) are in different stalls. Dill and fennel are both in Middle. Dill is in Middle, not Front, so the dill-Front conditional is vacuous. Fennel is in Middle, not Rear, so the fennel-Rear conditional is vacuous. Carrots are in Rear, not Middle, so the carrots-Middle conditional is vacuous. Of {herbs (Front), jicama (Rear), eggplant (Rear)}, exactly two are in Rear. Each stall has exactly three items.",
+          "A": "Correct.",
+          "B": "Apples are in Middle, violating the rule that apples are in Front.",
+          "C": "Basil and carrots are both in Front, violating the rule that basil and carrots are in different stalls.",
+          "D": "Dill is in Middle and fennel is in Front, violating the rule that dill and fennel are in the same stall.",
+          "E": "Only eggplant among {herbs, jicama, eggplant} is in Rear, violating the rule that exactly two of these three items are in Rear."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If carrots are placed in the Middle stall, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "carrots", "position": "Middle" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Basil is placed in the Middle stall." },
+          { "label": "B", "text": "Dill is placed in the Front stall." },
+          { "label": "C", "text": "Eggplant is placed in the Rear stall." },
+          { "label": "D", "text": "Garlic is placed in the Middle stall." },
+          { "label": "E", "text": "Jicama is placed in the Middle stall." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If carrots are in Middle, then herbs are in Front (by the carrots-Middle conditional). Basil must be in Front (basil is not in Rear and must differ from carrots, who are in Middle). Apples are in Front, basil is in Front, herbs are in Front — Front is full. Dill and fennel must be in the same stall; since Front is full, they are both in Middle or both in Rear. If dill and fennel are in Rear, then fennel in Rear forces garlic into Front (but Front is full) — contradiction. So dill and fennel are in Middle, joining carrots — Middle is full. That forces eggplant, jicama, and garlic into Rear. Exactly two of {herbs (Front), jicama (Rear), eggplant (Rear)} are in Rear ✓. So eggplant must be in Rear.",
+          "A": "Basil must be in Front.",
+          "B": "Dill must be in Middle.",
+          "C": "Correct.",
+          "D": "Garlic must be in Rear.",
+          "E": "Jicama must be in Rear."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If jicama is placed in the Front stall, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "jicama", "position": "Front" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Basil is placed in the Front stall." },
+          { "label": "B", "text": "Carrots are placed in the Rear stall." },
+          { "label": "C", "text": "Dill is placed in the Middle stall." },
+          { "label": "D", "text": "Garlic is placed in the Front stall." },
+          { "label": "E", "text": "Herbs are placed in the Middle stall." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If jicama is in Front, then among {herbs, jicama, eggplant} only herbs and eggplant can fill the required two Rear slots. So herbs and eggplant are both in Rear. Dill and fennel are in the same stall. If dill and fennel are in Front, then dill-Front forces eggplant into Middle, contradicting eggplant in Rear. So dill and fennel are both in Middle (they can't both fit in Rear alongside herbs and eggplant). Therefore dill is in Middle.",
+          "A": "Basil could be in Front or Middle.",
+          "B": "Carrots could be in different stalls (verification shows carrots in Front or Rear among satisfying cases).",
+          "C": "Correct.",
+          "D": "Garlic could be in Front, Middle, or Rear.",
+          "E": "Herbs must be in Rear, not Middle."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If herbs are placed in the Front stall, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "herbs", "position": "Front" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Basil is placed in the Middle stall." },
+          { "label": "B", "text": "Dill is placed in the Middle stall." },
+          { "label": "C", "text": "Eggplant is placed in the Middle stall." },
+          { "label": "D", "text": "Garlic is placed in the Middle stall." },
+          { "label": "E", "text": "Jicama is placed in the Front stall." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Exactly two of {herbs, jicama, eggplant} must be in Rear. If herbs are in Front, then both jicama and eggplant must be in Rear. Dill and fennel must be in the same stall; if dill is in Front, then eggplant must be in Middle (contradicting eggplant in Rear). If dill and fennel are in Rear, then fennel in Rear forces garlic into Front, and dill-Rear + fennel-Rear + (jicama or eggplant)-Rear already puts at least three items in Rear, leaving no room. So dill and fennel must both be in Middle.",
+          "A": "Basil could be in Front or Middle.",
+          "B": "Correct.",
+          "C": "Eggplant must be in Rear.",
+          "D": "Garlic could be in Front, Middle, or Rear.",
+          "E": "Jicama must be in Rear."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Basil is placed in the Middle stall." },
+          { "label": "B", "text": "Carrots are placed in the Front stall." },
+          { "label": "C", "text": "Eggplant is placed in the Middle stall." },
+          { "label": "D", "text": "Fennel is placed in the Rear stall." },
+          { "label": "E", "text": "Herbs are placed in the Middle stall." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Suppose fennel is in Rear. Then dill is in Rear (same stall), and garlic must be in Front (by the fennel-Rear conditional). Exactly two of {herbs, jicama, eggplant} must be in Rear — but Rear already holds dill and fennel, plus at least one of {herbs, jicama, eggplant}, for a total of at least three. Adding a second of {herbs, jicama, eggplant} to Rear would make four. Rear can hold only three items total, so at most one of {herbs, jicama, eggplant} can be in Rear — contradicting the exactly-two rule. Therefore fennel cannot be in Rear.",
+          "A": "Possible — e.g., Front: apples, carrots, eggplant; Middle: basil, dill, fennel; Rear: garlic, herbs, jicama.",
+          "B": "Possible — e.g., Front: apples, carrots, eggplant; Middle: basil, dill, fennel; Rear: garlic, herbs, jicama.",
+          "C": "Possible — e.g., Front: apples, basil, garlic; Middle: dill, eggplant, fennel; Rear: carrots, herbs, jicama.",
+          "D": "Correct — cannot be true.",
+          "E": "Possible — e.g., Front: apples, basil, garlic; Middle: dill, fennel, herbs; Rear: carrots, eggplant, jicama."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d3-b0-03",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 3,
+    "scenario": "Exactly nine relay runners — Ames, Brio, Cruz, Dao, Eng, Fox, Gill, Han, and Ivy — will be assigned to exactly one of three teams: Red, Blue, and Green. Each team is assigned exactly three runners. The assignment must satisfy the following conditions. Cruz is on the Red team. Ivy is not on the Red team. Ames and Brio are on the same team. Dao and Eng are on different teams. If Fox is on the Blue team, then Gill is on the Green team. If Han is on the Red team, then Ivy is on the Blue team. If Eng is on the Green team, then Ames is on the Red team. Exactly one of Dao, Fox, and Han is on the Red team.",
+    "entities": [
+      "Ames",
+      "Brio",
+      "Cruz",
+      "Dao",
+      "Eng",
+      "Fox",
+      "Gill",
+      "Han",
+      "Ivy"
+    ],
+    "groups": [
+      "Red",
+      "Blue",
+      "Green"
+    ],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "Cruz", "position": "Red" },
+      { "type": "not_at", "entity": "Ivy", "position": "Red" },
+      { "type": "same_group", "a": "Ames", "b": "Brio" },
+      { "type": "different_group", "a": "Dao", "b": "Eng" },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Fox", "position": "Blue" },
+        "thenRule": { "type": "at", "entity": "Gill", "position": "Green" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Han", "position": "Red" },
+        "thenRule": { "type": "at", "entity": "Ivy", "position": "Blue" }
+      },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Eng", "position": "Green" },
+        "thenRule": { "type": "at", "entity": "Ames", "position": "Red" }
+      },
+      {
+        "type": "exactly_n_in_group",
+        "entities": ["Dao", "Fox", "Han"],
+        "group": "Red",
+        "n": 1
+      }
+    ],
+    "verifiedSolutions": [
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Red", "Eng": "Blue", "Fox": "Green", "Gill": "Red", "Han": "Green", "Ivy": "Green" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Red", "Gill": "Green", "Han": "Green", "Ivy": "Green" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Green", "Eng": "Red", "Fox": "Red", "Gill": "Blue", "Han": "Green", "Ivy": "Green" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Green", "Eng": "Red", "Fox": "Red", "Gill": "Green", "Han": "Blue", "Ivy": "Green" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Green", "Eng": "Red", "Fox": "Red", "Gill": "Green", "Han": "Green", "Ivy": "Blue" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Green", "Eng": "Red", "Fox": "Green", "Gill": "Green", "Han": "Red", "Ivy": "Blue" },
+      { "Ames": "Blue", "Brio": "Blue", "Cruz": "Red", "Dao": "Green", "Eng": "Blue", "Fox": "Red", "Gill": "Red", "Han": "Green", "Ivy": "Green" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Red", "Eng": "Blue", "Fox": "Green", "Gill": "Red", "Han": "Blue", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Red", "Gill": "Blue", "Han": "Blue", "Ivy": "Green" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Red", "Gill": "Blue", "Han": "Green", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Red", "Gill": "Green", "Han": "Blue", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Blue", "Gill": "Green", "Han": "Red", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Blue", "Eng": "Red", "Fox": "Green", "Gill": "Blue", "Han": "Red", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Green", "Eng": "Red", "Fox": "Red", "Gill": "Blue", "Han": "Blue", "Ivy": "Blue" },
+      { "Ames": "Green", "Brio": "Green", "Cruz": "Red", "Dao": "Green", "Eng": "Blue", "Fox": "Red", "Gill": "Red", "Han": "Blue", "Ivy": "Blue" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d3-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of runners to teams?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Red: Cruz, Dao, Gill; Blue: Ames, Brio, Eng; Green: Fox, Han, Ivy" },
+          { "label": "B", "text": "Red: Ames, Brio, Dao; Blue: Cruz, Eng, Fox; Green: Gill, Han, Ivy" },
+          { "label": "C", "text": "Red: Ames, Cruz, Dao; Blue: Brio, Eng, Fox; Green: Gill, Han, Ivy" },
+          { "label": "D", "text": "Red: Cruz, Dao, Gill; Blue: Eng, Fox, Han; Green: Ames, Brio, Ivy" },
+          { "label": "E", "text": "Red: Cruz, Dao, Fox; Blue: Ames, Brio, Eng; Green: Gill, Han, Ivy" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Cruz is on Red. Ivy (Green) is not on Red. Ames and Brio are both on Blue. Dao (Red) and Eng (Blue) are on different teams. Fox is on Green, not Blue, so the Fox-Blue conditional is vacuous. Han is on Green, not Red, so the Han-Red conditional is vacuous. Eng is on Blue, not Green, so the Eng-Green conditional is vacuous. Of {Dao (Red), Fox (Green), Han (Green)}, exactly one — Dao — is on Red. Each team has exactly three runners.",
+          "A": "Correct.",
+          "B": "Cruz is on Blue, violating the rule that Cruz is on Red.",
+          "C": "Ames is on Red and Brio is on Blue, violating the rule that Ames and Brio are on the same team.",
+          "D": "Fox is on Blue but Gill is on Red, violating the rule that if Fox is on Blue then Gill is on Green.",
+          "E": "Both Dao and Fox are on Red, violating the rule that exactly one of Dao, Fox, and Han is on Red."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Han is on the Red team, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Han", "position": "Red" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ames is on the Blue team." },
+          { "label": "B", "text": "Dao is on the Blue team." },
+          { "label": "C", "text": "Eng is on the Red team." },
+          { "label": "D", "text": "Fox is on the Green team." },
+          { "label": "E", "text": "Gill is on the Blue team." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Han is on Red, then Ivy is on Blue (by the Han-Red conditional). Exactly one of {Dao, Fox, Han} is on Red — since Han occupies that slot, Dao and Fox are not on Red. Dao and Eng are on different teams; if Eng were on Green, Ames would have to be on Red (by the Eng-Green conditional), but then Ames and Brio would both be on Red, joined by Cruz and Han — four on Red, too many. So Eng is not on Green. Eng is not on Blue either in this scenario (Blue already has Ivy and Ames/Brio would have to land somewhere consistent) — running the cases, Eng must be on Red to complete Red (Cruz, Han, Eng). Therefore Eng is on the Red team.",
+          "A": "Ames could be on Blue or Green.",
+          "B": "Dao could be on Blue or Green.",
+          "C": "Correct.",
+          "D": "Fox could be on Blue or Green.",
+          "E": "Gill could be on Red, Blue, or Green."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Dao is on the Red team, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Dao", "position": "Red" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ames is on the Blue team." },
+          { "label": "B", "text": "Fox is on the Blue team." },
+          { "label": "C", "text": "Gill is on the Red team." },
+          { "label": "D", "text": "Han is on the Blue team." },
+          { "label": "E", "text": "Ivy is on the Blue team." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Dao is on Red, then by the exactly-one rule Fox and Han are not on Red. Dao and Eng are on different teams; if Eng were on Green the Eng-Green conditional would force Ames onto Red and therefore Brio onto Red, making Red hold four runners (Cruz, Dao, Ames, Brio) — impossible. So Eng is on Blue. Since Red already holds Cruz and Dao and Fox/Han can't fill the third Red slot, one other runner must be on Red. Eng is on Blue, Ames/Brio are together (so can't split to fill the slot alone), and Ivy can't be on Red — leaving Gill as the only option. Therefore Gill is on the Red team in every valid assignment.",
+          "A": "Ames could be on Blue or Green (depending on whether Ames/Brio land on Blue or Green).",
+          "B": "Fox cannot be on Blue — Fox is on Green in every valid assignment here.",
+          "C": "Correct.",
+          "D": "Han could be on Blue or Green.",
+          "E": "Ivy could be on Blue or Green."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Fox is on the Blue team, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Fox", "position": "Blue" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ames is on the Blue team." },
+          { "label": "B", "text": "Dao is on the Green team." },
+          { "label": "C", "text": "Eng is on the Red team." },
+          { "label": "D", "text": "Gill is on the Red team." },
+          { "label": "E", "text": "Han is on the Green team." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Fox is on Blue, then Gill is on Green (by the Fox-Blue conditional). Exactly one of {Dao, Fox, Han} is on Red — since Fox is on Blue, either Dao or Han is on Red. If Han is on Red, Ivy is on Blue (by the Han-Red conditional); Dao is not on Red. Dao and Eng are on different teams. Running the deductions, this scenario produces exactly one valid assignment in which Eng ends up on Red together with Cruz and Han. Therefore Eng is on the Red team.",
+          "A": "Ames is on Green in the unique satisfying assignment.",
+          "B": "Dao is on Blue in the unique satisfying assignment.",
+          "C": "Correct.",
+          "D": "Gill is on Green, not Red.",
+          "E": "Han is on Red, not Green."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ames is on the Green team." },
+          { "label": "B", "text": "Dao is on the Red team." },
+          { "label": "C", "text": "Eng is on the Green team." },
+          { "label": "D", "text": "Gill is on the Blue team." },
+          { "label": "E", "text": "Ivy is on the Green team." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Suppose Eng is on Green. Then by the Eng-Green conditional Ames is on Red, and since Ames and Brio are on the same team, Brio is on Red too. Red already contains Cruz, so Red would hold Cruz, Ames, Brio — that's three, which is fine for group size. But then exactly one of {Dao, Fox, Han} must also be on Red, bringing Red to four. Contradiction — Red can hold only three runners. Therefore Eng cannot be on Green.",
+          "A": "Possible — e.g., Red: Cruz, Fox, Eng; Blue: Dao, Gill, Ivy; Green: Ames, Brio, Han.",
+          "B": "Possible — e.g., Red: Cruz, Dao, Gill; Blue: Ames, Brio, Eng; Green: Fox, Han, Ivy.",
+          "C": "Correct — cannot be true.",
+          "D": "Possible — e.g., Red: Cruz, Fox, Eng; Blue: Ames, Brio, Gill; Green: Dao, Han, Ivy.",
+          "E": "Possible — e.g., Red: Cruz, Dao, Gill; Blue: Ames, Brio, Eng; Green: Fox, Han, Ivy."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  }
+]

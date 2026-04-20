@@ -1,0 +1,635 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d3-b0-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A town parade features exactly seven floats — Aster, Bluebell, Calla, Daisy, Edelweiss, Foxglove, and Gentian — assembled into two district contingents: District A and District B. District A contains exactly four floats, arranged in marching order from A-1 (first to pass the reviewing stand) through A-4, and District B contains exactly three floats, arranged in order from B-1 through B-3. Reading A-1, A-2, A-3, A-4, B-1, B-2, B-3 as a single early-to-late sequence, each float occupies exactly one slot. The arrangement is subject to the following conditions. Aster is in District A. Calla is in District A. Bluebell is in District B. Daisy is in District B. Aster marches at A-1. Bluebell marches earlier than Daisy. Calla marches earlier than Edelweiss. If Foxglove marches in District A, then Gentian marches in District B. If Gentian marches at A-1, then Edelweiss marches at A-3.",
+    "entities": ["Aster", "Bluebell", "Calla", "Daisy", "Edelweiss", "Foxglove", "Gentian"],
+    "positions": [1, 2, 3, 4, 5, 6, 7],
+    "positionLabels": {
+      "1": "A-1",
+      "2": "A-2",
+      "3": "A-3",
+      "4": "A-4",
+      "5": "B-1",
+      "6": "B-2",
+      "7": "B-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Aster", "position": 5 },
+      { "type": "not_at", "entity": "Aster", "position": 6 },
+      { "type": "not_at", "entity": "Aster", "position": 7 },
+      { "type": "not_at", "entity": "Bluebell", "position": 1 },
+      { "type": "not_at", "entity": "Bluebell", "position": 2 },
+      { "type": "not_at", "entity": "Bluebell", "position": 3 },
+      { "type": "not_at", "entity": "Bluebell", "position": 4 },
+      { "type": "not_at", "entity": "Calla", "position": 5 },
+      { "type": "not_at", "entity": "Calla", "position": 6 },
+      { "type": "not_at", "entity": "Calla", "position": 7 },
+      { "type": "not_at", "entity": "Daisy", "position": 1 },
+      { "type": "not_at", "entity": "Daisy", "position": 2 },
+      { "type": "not_at", "entity": "Daisy", "position": 3 },
+      { "type": "not_at", "entity": "Daisy", "position": 4 },
+      { "type": "at", "entity": "Aster", "position": 1 },
+      { "type": "before", "a": "Bluebell", "b": "Daisy" },
+      { "type": "before", "a": "Calla", "b": "Edelweiss" },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Foxglove", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Gentian", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Gentian", "position": 1 }, "thenRule": { "type": "at", "entity": "Edelweiss", "position": 3 } }
+    ],
+    "verifiedSolutions": [
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 6, "Edelweiss": 3, "Foxglove": 4, "Gentian": 7 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 6, "Edelweiss": 3, "Foxglove": 7, "Gentian": 4 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 6, "Edelweiss": 4, "Foxglove": 3, "Gentian": 7 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 6, "Edelweiss": 4, "Foxglove": 7, "Gentian": 3 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 7, "Edelweiss": 3, "Foxglove": 4, "Gentian": 6 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 7, "Edelweiss": 3, "Foxglove": 6, "Gentian": 4 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 7, "Edelweiss": 4, "Foxglove": 3, "Gentian": 6 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 2, "Daisy": 7, "Edelweiss": 4, "Foxglove": 6, "Gentian": 3 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 3, "Daisy": 6, "Edelweiss": 4, "Foxglove": 2, "Gentian": 7 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 3, "Daisy": 6, "Edelweiss": 4, "Foxglove": 7, "Gentian": 2 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 3, "Daisy": 7, "Edelweiss": 4, "Foxglove": 2, "Gentian": 6 },
+      { "Aster": 1, "Bluebell": 5, "Calla": 3, "Daisy": 7, "Edelweiss": 4, "Foxglove": 6, "Gentian": 2 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 2, "Daisy": 7, "Edelweiss": 3, "Foxglove": 4, "Gentian": 5 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 2, "Daisy": 7, "Edelweiss": 3, "Foxglove": 5, "Gentian": 4 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 2, "Daisy": 7, "Edelweiss": 4, "Foxglove": 3, "Gentian": 5 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 2, "Daisy": 7, "Edelweiss": 4, "Foxglove": 5, "Gentian": 3 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 3, "Daisy": 7, "Edelweiss": 4, "Foxglove": 2, "Gentian": 5 },
+      { "Aster": 1, "Bluebell": 6, "Calla": 3, "Daisy": 7, "Edelweiss": 4, "Foxglove": 5, "Gentian": 2 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d3-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate list of the floats marching at A-1, A-2, A-3, A-4, B-1, B-2, and B-3, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Aster, Calla, Edelweiss, Foxglove, Bluebell, Daisy, Gentian" },
+          { "label": "B", "text": "Calla, Aster, Edelweiss, Foxglove, Bluebell, Daisy, Gentian" },
+          { "label": "C", "text": "Aster, Edelweiss, Calla, Foxglove, Bluebell, Daisy, Gentian" },
+          { "label": "D", "text": "Aster, Calla, Edelweiss, Foxglove, Daisy, Bluebell, Gentian" },
+          { "label": "E", "text": "Aster, Calla, Edelweiss, Bluebell, Foxglove, Daisy, Gentian" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Aster at A-1 (rule), Calla at A-2 (District A), Edelweiss at A-3 (Calla-before-Edelweiss satisfied), Foxglove at A-4 (District A). Because Foxglove is in District A, the conditional requires Gentian in District B — Gentian is at B-3. Bluebell at B-1 and Daisy at B-2 satisfy Bluebell-before-Daisy.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Aster is at A-2 — but Aster must march at A-1.",
+          "C": "Edelweiss is at A-2 and Calla is at A-3, so Calla does not march earlier than Edelweiss — violates the Calla-before-Edelweiss rule.",
+          "D": "Daisy is at B-1 and Bluebell is at B-2, so Bluebell does not march earlier than Daisy — violates the Bluebell-before-Daisy rule.",
+          "E": "Bluebell is at A-4 — but Bluebell must march in District B."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Foxglove marches at A-2, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Foxglove", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Edelweiss marches at A-4." },
+          { "label": "B", "text": "Bluebell marches at B-1." },
+          { "label": "C", "text": "Gentian marches at B-1." },
+          { "label": "D", "text": "Daisy marches at B-2." },
+          { "label": "E", "text": "Calla marches at A-4." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Foxglove at A-2 (District A), the conditional forces Gentian into District B. Aster is at A-1, so A-3 and A-4 must go to Calla and Edelweiss. Because Calla must march earlier than Edelweiss, Calla takes A-3 and Edelweiss takes A-4 in every one of the three surviving worlds.",
+          "A": "Correct. Edelweiss is forced to A-4 in all three surviving worlds.",
+          "B": "Bluebell could be at B-1 or B-2; not forced.",
+          "C": "Gentian could be at B-1, B-2, or B-3; not forced.",
+          "D": "Daisy could be at B-2 or B-3; not forced.",
+          "E": "Calla is forced to A-3, not A-4."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Daisy marches at B-1." },
+          { "label": "B", "text": "Foxglove marches at B-1." },
+          { "label": "C", "text": "Gentian marches at A-2." },
+          { "label": "D", "text": "Edelweiss marches at A-3." },
+          { "label": "E", "text": "Calla marches at A-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Bluebell must march earlier than Daisy, and both are in District B. Bluebell must therefore occupy a District B slot earlier than Daisy, so Daisy cannot be the first District B float (B-1).",
+          "A": "Correct. Bluebell must precede Daisy within District B, so Daisy at B-1 is impossible.",
+          "B": "Foxglove at B-1 (position 5) occurs in several valid worlds (e.g., Foxglove=5, Gentian=4).",
+          "C": "Gentian at A-2 occurs in valid worlds (e.g., Calla=3, Edelweiss=4, Foxglove=6 or 7, Gentian=2).",
+          "D": "Edelweiss at A-3 occurs in many valid worlds (e.g., Calla=2, Edelweiss=3).",
+          "E": "Calla at A-3 occurs in several valid worlds (e.g., Calla=3, Edelweiss=4, Foxglove=2)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Gentian marches at A-2, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "Gentian", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Edelweiss marches at A-3." },
+          { "label": "B", "text": "Foxglove marches at B-1." },
+          { "label": "C", "text": "Calla marches at A-2." },
+          { "label": "D", "text": "Daisy marches at B-1." },
+          { "label": "E", "text": "Aster marches at A-2." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Gentian at A-2 (District A), the Foxglove conditional contrapositive tells us Foxglove cannot be in District A (otherwise Gentian would have to be in District B). So Foxglove is in District B. In the surviving worlds Foxglove takes B-1, B-2, or B-3 depending on Bluebell and Daisy. In particular, Foxglove at B-1 occurs in a valid surviving world (Bluebell=B-2, Daisy=B-3, Foxglove=B-1).",
+          "A": "Edelweiss is forced to A-4: with Aster at A-1 and Gentian at A-2, Calla and Edelweiss must fill A-3 and A-4, and Calla must precede Edelweiss, so Edelweiss is at A-4.",
+          "B": "Correct. Foxglove at B-1 occurs in a valid surviving world.",
+          "C": "Calla is forced to A-3; Calla at A-2 is impossible because Gentian occupies A-2.",
+          "D": "Bluebell must precede Daisy within District B, so Daisy cannot be at B-1.",
+          "E": "Aster is pinned to A-1 by rule; Aster cannot be at A-2."
+        },
+        "tags": ["could_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Edelweiss marches in District A." },
+          { "label": "B", "text": "Foxglove marches in District A." },
+          { "label": "C", "text": "Gentian marches in District B." },
+          { "label": "D", "text": "Calla marches at A-2." },
+          { "label": "E", "text": "Daisy marches at B-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Aster is at A-1 and Bluebell and Daisy fill two of the three District B slots. That leaves five floats (Calla, Edelweiss, Foxglove, Gentian, and one of {Bluebell/Daisy's B-slot mate}) to fill three District A slots and one District B slot. Because Calla is in District A and Calla must march earlier than Edelweiss, Edelweiss must be at a position later than Calla. Solver enumeration of all valid worlds confirms that Edelweiss always lands at A-3 or A-4 — never in District B.",
+          "A": "Correct. Edelweiss is in District A in every one of the 18 valid worlds.",
+          "B": "Foxglove is in District B in multiple valid worlds (e.g., Foxglove=5, 6, or 7).",
+          "C": "Gentian is in District A in multiple valid worlds (e.g., Gentian=2, 3, or 4).",
+          "D": "Calla is at A-3 in several valid worlds, not always A-2.",
+          "E": "Daisy is at B-2 in some valid worlds, not always B-3."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d3-b0-02",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A one-day academic conference features exactly seven talks — given by Patel, Quon, Rao, Silva, Torres, Udo, and Vega — split between two tracks: Morning and Afternoon. The Morning track holds exactly four talks, ordered from M-1 (earliest) through M-4 (latest), and the Afternoon track holds exactly three talks, ordered from A-1 (earliest) through A-3 (latest). Reading M-1, M-2, M-3, M-4, A-1, A-2, A-3 as a single early-to-late sequence, each speaker gives exactly one talk. The schedule is subject to the following conditions. Patel, Silva, and Torres all present in the Morning track. Quon and Rao both present in the Afternoon track. Silva presents earlier than Torres. Patel presents earlier than Silva. Quon presents earlier than Rao. Torres presents at M-4. If Udo presents in the Morning track, then Vega presents in the Afternoon track. If Vega presents at M-1, then Rao presents at A-3.",
+    "entities": ["Patel", "Quon", "Rao", "Silva", "Torres", "Udo", "Vega"],
+    "positions": [1, 2, 3, 4, 5, 6, 7],
+    "positionLabels": {
+      "1": "M-1",
+      "2": "M-2",
+      "3": "M-3",
+      "4": "M-4",
+      "5": "A-1",
+      "6": "A-2",
+      "7": "A-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Patel", "position": 5 },
+      { "type": "not_at", "entity": "Patel", "position": 6 },
+      { "type": "not_at", "entity": "Patel", "position": 7 },
+      { "type": "not_at", "entity": "Quon", "position": 1 },
+      { "type": "not_at", "entity": "Quon", "position": 2 },
+      { "type": "not_at", "entity": "Quon", "position": 3 },
+      { "type": "not_at", "entity": "Quon", "position": 4 },
+      { "type": "not_at", "entity": "Rao", "position": 1 },
+      { "type": "not_at", "entity": "Rao", "position": 2 },
+      { "type": "not_at", "entity": "Rao", "position": 3 },
+      { "type": "not_at", "entity": "Rao", "position": 4 },
+      { "type": "not_at", "entity": "Silva", "position": 5 },
+      { "type": "not_at", "entity": "Silva", "position": 6 },
+      { "type": "not_at", "entity": "Silva", "position": 7 },
+      { "type": "not_at", "entity": "Torres", "position": 5 },
+      { "type": "not_at", "entity": "Torres", "position": 6 },
+      { "type": "not_at", "entity": "Torres", "position": 7 },
+      { "type": "before", "a": "Silva", "b": "Torres" },
+      { "type": "before", "a": "Patel", "b": "Silva" },
+      { "type": "before", "a": "Quon", "b": "Rao" },
+      { "type": "at", "entity": "Torres", "position": 4 },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 3 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Udo", "position": 4 }, "thenRule": { "type": "not_at", "entity": "Vega", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Vega", "position": 1 }, "thenRule": { "type": "at", "entity": "Rao", "position": 7 } }
+    ],
+    "verifiedSolutions": [
+      { "Patel": 1, "Quon": 5, "Rao": 6, "Silva": 2, "Torres": 4, "Udo": 3, "Vega": 7 },
+      { "Patel": 1, "Quon": 5, "Rao": 6, "Silva": 2, "Torres": 4, "Udo": 7, "Vega": 3 },
+      { "Patel": 1, "Quon": 5, "Rao": 6, "Silva": 3, "Torres": 4, "Udo": 2, "Vega": 7 },
+      { "Patel": 1, "Quon": 5, "Rao": 6, "Silva": 3, "Torres": 4, "Udo": 7, "Vega": 2 },
+      { "Patel": 1, "Quon": 5, "Rao": 7, "Silva": 2, "Torres": 4, "Udo": 3, "Vega": 6 },
+      { "Patel": 1, "Quon": 5, "Rao": 7, "Silva": 2, "Torres": 4, "Udo": 6, "Vega": 3 },
+      { "Patel": 1, "Quon": 5, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 2, "Vega": 6 },
+      { "Patel": 1, "Quon": 5, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 6, "Vega": 2 },
+      { "Patel": 1, "Quon": 6, "Rao": 7, "Silva": 2, "Torres": 4, "Udo": 3, "Vega": 5 },
+      { "Patel": 1, "Quon": 6, "Rao": 7, "Silva": 2, "Torres": 4, "Udo": 5, "Vega": 3 },
+      { "Patel": 1, "Quon": 6, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 2, "Vega": 5 },
+      { "Patel": 1, "Quon": 6, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 5, "Vega": 2 },
+      { "Patel": 2, "Quon": 5, "Rao": 6, "Silva": 3, "Torres": 4, "Udo": 1, "Vega": 7 },
+      { "Patel": 2, "Quon": 5, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 1, "Vega": 6 },
+      { "Patel": 2, "Quon": 5, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 6, "Vega": 1 },
+      { "Patel": 2, "Quon": 6, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 1, "Vega": 5 },
+      { "Patel": 2, "Quon": 6, "Rao": 7, "Silva": 3, "Torres": 4, "Udo": 5, "Vega": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d3-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate list of the speakers presenting at M-1, M-2, M-3, M-4, A-1, A-2, and A-3, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Patel, Silva, Udo, Torres, Quon, Rao, Vega" },
+          { "label": "B", "text": "Patel, Silva, Udo, Torres, Rao, Quon, Vega" },
+          { "label": "C", "text": "Silva, Patel, Udo, Torres, Quon, Rao, Vega" },
+          { "label": "D", "text": "Vega, Patel, Silva, Torres, Quon, Rao, Udo" },
+          { "label": "E", "text": "Patel, Silva, Torres, Udo, Quon, Rao, Vega" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Patel at M-1 (Morning, earlier than Silva), Silva at M-2 (Morning, earlier than Torres), Udo at M-3 (Udo in Morning, so conditional forces Vega to Afternoon — Vega at A-3 satisfies that), Torres at M-4 (rule), Quon at A-1 (earlier than Rao), Rao at A-2, Vega at A-3. Every rule is satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Rao is at A-1 and Quon is at A-2, so Quon does not present earlier than Rao — violates the Quon-before-Rao rule.",
+          "C": "Silva is at M-1 and Patel is at M-2, so Patel does not present earlier than Silva — violates the Patel-before-Silva rule.",
+          "D": "Vega is at M-1 but Rao is at A-2 — the conditional 'If Vega presents at M-1, then Rao presents at A-3' is violated.",
+          "E": "Torres is at M-3 — but Torres must present at M-4."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Udo presents at M-3, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Udo", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Silva presents at M-2." },
+          { "label": "B", "text": "Vega presents at A-3." },
+          { "label": "C", "text": "Quon presents at A-1." },
+          { "label": "D", "text": "Rao presents at A-2." },
+          { "label": "E", "text": "Patel presents at M-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Udo at M-3 and Torres at M-4, the remaining Morning slots (M-1 and M-2) must go to Patel and Silva. Patel must present earlier than Silva, so Patel occupies M-1 and Silva occupies M-2 in every surviving world.",
+          "A": "Correct. Silva is at M-2 in all three surviving worlds.",
+          "B": "Vega could be at A-1, A-2, or A-3 across the three surviving worlds; not forced.",
+          "C": "Quon could be at A-1 or A-2 in the surviving worlds; not forced.",
+          "D": "Rao could be at A-2 or A-3 in the surviving worlds; not forced.",
+          "E": "Patel is forced to M-1, not M-2 (Silva occupies M-2)."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Quon presents at A-3." },
+          { "label": "B", "text": "Udo presents at M-1." },
+          { "label": "C", "text": "Vega presents at A-1." },
+          { "label": "D", "text": "Silva presents at M-3." },
+          { "label": "E", "text": "Rao presents at A-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Quon must present earlier than Rao, and both are in the Afternoon track. The Afternoon track has only three slots (A-1, A-2, A-3). For Quon to be earlier than Rao, Quon cannot occupy A-3 (the last Afternoon slot) — otherwise there would be no later slot for Rao.",
+          "A": "Correct. Quon at A-3 would leave no later Afternoon slot for Rao.",
+          "B": "Udo at M-1 occurs in several valid worlds (e.g., Patel=2, Udo=1).",
+          "C": "Vega at A-1 (position 5) occurs in several valid worlds (e.g., Udo=6, Vega=5, Patel=2).",
+          "D": "Silva at M-3 occurs in many valid worlds (e.g., Patel=1 or 2, Silva=3).",
+          "E": "Rao at A-2 (position 6) occurs in many valid worlds."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Vega presents at M-1." },
+          { "label": "B", "text": "Udo presents in the Morning track and Vega presents in the Morning track." },
+          { "label": "C", "text": "Patel presents at M-3." },
+          { "label": "D", "text": "Silva presents in the Afternoon track." },
+          { "label": "E", "text": "Torres presents at M-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Vega at M-1 (position 1) occurs in two valid worlds (e.g., Patel=2, Quon=5, Rao=7, Silva=3, Torres=4, Udo=6, Vega=1). When Vega is at M-1 the second conditional forces Rao to A-3, which is consistent with the other rules.",
+          "A": "Correct. Vega at M-1 is realized in valid worlds.",
+          "B": "If Udo is in Morning, the first conditional forces Vega to Afternoon — they cannot both be in Morning.",
+          "C": "Patel must present earlier than Silva, and Torres is pinned at M-4. If Patel were at M-3, Silva would need a later Morning slot, but M-4 is Torres's. Impossible.",
+          "D": "Silva must present in the Morning track by rule.",
+          "E": "Torres is pinned to M-4 by rule."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "If Vega presents at M-2, then which one of the following CANNOT be true?",
+        "localRules": [
+          { "type": "at", "entity": "Vega", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Silva presents at M-2." },
+          { "label": "B", "text": "Udo presents at A-1." },
+          { "label": "C", "text": "Quon presents at A-1." },
+          { "label": "D", "text": "Rao presents at A-3." },
+          { "label": "E", "text": "Silva presents at M-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Vega at M-2, Vega occupies M-2 exclusively. Silva cannot also be at M-2. Moreover, Patel must precede Silva and Torres is at M-4, so Silva is forced to M-3 in every surviving world.",
+          "A": "Correct. Vega occupies M-2, so Silva cannot be at M-2.",
+          "B": "Udo at A-1 (position 5) occurs in one surviving world (Patel=1, Quon=6, Rao=7, Silva=3, Udo=5, Vega=2).",
+          "C": "Quon at A-1 occurs in surviving worlds (e.g., Patel=1, Quon=5, Rao=6 or 7).",
+          "D": "Rao at A-3 occurs in surviving worlds (e.g., Patel=1, Quon=5, Rao=7, Udo=6, Vega=2).",
+          "E": "Silva at M-3 is in fact forced in every surviving world — so it must be true (and therefore could be true)."
+        },
+        "tags": ["cannot_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d3-b0-03",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A small library is reshelving exactly six books — Aurora, Bronte, Clio, Delphi, Eureka, and Fermi — across three wings: the Fiction wing (exactly two books, shelved left-to-right as F-1 and F-2), the History wing (exactly two books, shelved left-to-right as H-1 and H-2), and the Science wing (exactly two books, shelved left-to-right as S-1 and S-2). Reading F-1, F-2, H-1, H-2, S-1, S-2 as a single left-to-right sequence, each book occupies exactly one slot. The reshelving is subject to the following conditions. Aurora is in the Fiction wing. Clio is in the History wing. Fermi is in the Science wing. Bronte is shelved somewhere to the left of Eureka in the overall left-to-right sequence. If Bronte is in the Fiction wing, then Delphi is in the Science wing. If Delphi is at F-1, then Eureka is at S-1.",
+    "entities": ["Aurora", "Bronte", "Clio", "Delphi", "Eureka", "Fermi"],
+    "positions": [1, 2, 3, 4, 5, 6],
+    "positionLabels": {
+      "1": "F-1",
+      "2": "F-2",
+      "3": "H-1",
+      "4": "H-2",
+      "5": "S-1",
+      "6": "S-2"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Aurora", "position": 3 },
+      { "type": "not_at", "entity": "Aurora", "position": 4 },
+      { "type": "not_at", "entity": "Aurora", "position": 5 },
+      { "type": "not_at", "entity": "Aurora", "position": 6 },
+      { "type": "not_at", "entity": "Clio", "position": 1 },
+      { "type": "not_at", "entity": "Clio", "position": 2 },
+      { "type": "not_at", "entity": "Clio", "position": 5 },
+      { "type": "not_at", "entity": "Clio", "position": 6 },
+      { "type": "not_at", "entity": "Fermi", "position": 1 },
+      { "type": "not_at", "entity": "Fermi", "position": 2 },
+      { "type": "not_at", "entity": "Fermi", "position": 3 },
+      { "type": "not_at", "entity": "Fermi", "position": 4 },
+      { "type": "before", "a": "Bronte", "b": "Eureka" },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 1 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 1 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 2 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 3 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Bronte", "position": 2 }, "thenRule": { "type": "not_at", "entity": "Delphi", "position": 4 } },
+      { "type": "conditional", "ifRule": { "type": "at", "entity": "Delphi", "position": 1 }, "thenRule": { "type": "at", "entity": "Eureka", "position": 5 } }
+    ],
+    "verifiedSolutions": [
+      { "Aurora": 1, "Bronte": 2, "Clio": 3, "Delphi": 5, "Eureka": 4, "Fermi": 6 },
+      { "Aurora": 1, "Bronte": 2, "Clio": 3, "Delphi": 6, "Eureka": 4, "Fermi": 5 },
+      { "Aurora": 1, "Bronte": 2, "Clio": 4, "Delphi": 5, "Eureka": 3, "Fermi": 6 },
+      { "Aurora": 1, "Bronte": 2, "Clio": 4, "Delphi": 6, "Eureka": 3, "Fermi": 5 },
+      { "Aurora": 1, "Bronte": 3, "Clio": 4, "Delphi": 2, "Eureka": 5, "Fermi": 6 },
+      { "Aurora": 1, "Bronte": 3, "Clio": 4, "Delphi": 2, "Eureka": 6, "Fermi": 5 },
+      { "Aurora": 1, "Bronte": 4, "Clio": 3, "Delphi": 2, "Eureka": 5, "Fermi": 6 },
+      { "Aurora": 1, "Bronte": 4, "Clio": 3, "Delphi": 2, "Eureka": 6, "Fermi": 5 },
+      { "Aurora": 2, "Bronte": 1, "Clio": 3, "Delphi": 5, "Eureka": 4, "Fermi": 6 },
+      { "Aurora": 2, "Bronte": 1, "Clio": 3, "Delphi": 6, "Eureka": 4, "Fermi": 5 },
+      { "Aurora": 2, "Bronte": 1, "Clio": 4, "Delphi": 5, "Eureka": 3, "Fermi": 6 },
+      { "Aurora": 2, "Bronte": 1, "Clio": 4, "Delphi": 6, "Eureka": 3, "Fermi": 5 },
+      { "Aurora": 2, "Bronte": 3, "Clio": 4, "Delphi": 1, "Eureka": 5, "Fermi": 6 },
+      { "Aurora": 2, "Bronte": 4, "Clio": 3, "Delphi": 1, "Eureka": 5, "Fermi": 6 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d3-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate list of the books shelved at F-1, F-2, H-1, H-2, S-1, and S-2, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Aurora, Bronte, Clio, Eureka, Delphi, Fermi" },
+          { "label": "B", "text": "Aurora, Clio, Bronte, Eureka, Delphi, Fermi" },
+          { "label": "C", "text": "Aurora, Eureka, Clio, Bronte, Delphi, Fermi" },
+          { "label": "D", "text": "Aurora, Bronte, Clio, Fermi, Delphi, Eureka" },
+          { "label": "E", "text": "Aurora, Bronte, Delphi, Clio, Eureka, Fermi" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Aurora at F-1 (Fiction), Bronte at F-2 (Fiction — so the conditional requires Delphi in Science, and Delphi is at S-1: satisfied), Clio at H-1 (History), Eureka at H-2 (Bronte at position 2 is left of Eureka at position 4), Delphi at S-1 (Delphi not at F-1, so the second conditional is vacuous), Fermi at S-2 (Science).",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Clio is at F-2 — but Clio must be shelved in the History wing.",
+          "C": "Bronte is at H-2 (position 4) and Eureka is at F-2 (position 2), so Bronte is not shelved to the left of Eureka — violates the Bronte-before-Eureka rule.",
+          "D": "Fermi is at H-2 — but Fermi must be shelved in the Science wing.",
+          "E": "Bronte is in Fiction (F-2) but Delphi is at H-1, not in Science — violates the conditional 'If Bronte is in Fiction, then Delphi is in Science.'"
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Bronte is shelved at F-2, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Bronte", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Aurora is shelved at F-1." },
+          { "label": "B", "text": "Clio is shelved at H-1." },
+          { "label": "C", "text": "Eureka is shelved at H-1." },
+          { "label": "D", "text": "Delphi is shelved at S-1." },
+          { "label": "E", "text": "Fermi is shelved at S-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Bronte at F-2, the only remaining Fiction slot is F-1, and Aurora must be in the Fiction wing — so Aurora must be at F-1 in every surviving world.",
+          "A": "Correct. Aurora is at F-1 in all four surviving worlds.",
+          "B": "Clio could be at H-1 or H-2 across the surviving worlds; not forced.",
+          "C": "Eureka could be at H-1 or H-2; not forced.",
+          "D": "Delphi could be at S-1 or S-2 (both Science); not forced.",
+          "E": "Fermi could be at S-1 or S-2; not forced."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Delphi is shelved at F-1, then which one of the following could be true?",
+        "localRules": [
+          { "type": "at", "entity": "Delphi", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Eureka is shelved at S-2." },
+          { "label": "B", "text": "Clio is shelved at H-1." },
+          { "label": "C", "text": "Aurora is shelved at F-1." },
+          { "label": "D", "text": "Bronte is shelved at F-2." },
+          { "label": "E", "text": "Fermi is shelved at S-1." }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Delphi at F-1, the second conditional forces Eureka to S-1 (position 5). Aurora must be in Fiction and F-1 is taken, so Aurora is at F-2. Fermi must be in Science and S-1 is taken, so Fermi is at S-2. Bronte must be left of Eureka (position 5), so Bronte is at position 3 or 4 (History). Clio must be in History and takes whichever History slot Bronte leaves. In one of the two surviving worlds Bronte is at H-2 (position 4) and Clio is at H-1 (position 3), which realizes choice B.",
+          "A": "Eureka is forced to S-1 (position 5) by the conditional; Eureka at S-2 is impossible in this case.",
+          "B": "Correct. Clio at H-1 occurs in one of the two surviving worlds.",
+          "C": "Aurora is forced to F-2 (Delphi occupies F-1); Aurora at F-1 is impossible.",
+          "D": "Bronte must be at position 3 or 4 (History wing) in the surviving worlds; Bronte at F-2 is impossible.",
+          "E": "Fermi is forced to S-2 (Eureka occupies S-1); Fermi at S-1 is impossible."
+        },
+        "tags": ["could_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Fermi is shelved at H-1." },
+          { "label": "B", "text": "Delphi is shelved at F-1." },
+          { "label": "C", "text": "Bronte is shelved at H-2." },
+          { "label": "D", "text": "Eureka is shelved at H-1." },
+          { "label": "E", "text": "Aurora is shelved at F-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Fermi must be shelved in the Science wing (S-1 or S-2) by rule, so Fermi at H-1 is impossible.",
+          "A": "Correct. Fermi must be in the Science wing.",
+          "B": "Delphi at F-1 occurs in valid worlds (e.g., Delphi=1, Eureka=5).",
+          "C": "Bronte at H-2 occurs in valid worlds (e.g., Bronte=4, Clio=3, Delphi=2).",
+          "D": "Eureka at H-1 (position 3) occurs in valid worlds (e.g., Clio=4, Eureka=3).",
+          "E": "Aurora at F-2 occurs in valid worlds (e.g., Aurora=2, Bronte=1)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d3-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Eureka is shelved at H-1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Eureka", "position": 3 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Clio is shelved at H-2." },
+          { "label": "B", "text": "Bronte is shelved at F-1." },
+          { "label": "C", "text": "Delphi is shelved at S-1." },
+          { "label": "D", "text": "Fermi is shelved at S-2." },
+          { "label": "E", "text": "Aurora is shelved at F-1." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Eureka at H-1 (position 3), Clio must still be in the History wing. The only other History slot is H-2, so Clio must be at H-2 in every surviving world.",
+          "A": "Correct. Clio is forced to H-2 in all four surviving worlds.",
+          "B": "Bronte could be at F-1 or F-2 in the surviving worlds; not forced.",
+          "C": "Delphi could be at S-1 or S-2; not forced.",
+          "D": "Fermi could be at S-1 or S-2; not forced.",
+          "E": "Aurora could be at F-1 or F-2; not forced."
+        },
+        "tags": ["must_be_true", "conditional", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  }
+]

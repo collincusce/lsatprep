@@ -1,0 +1,1703 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d3-b0-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 3,
+    "scenario": "Seven runners — Ortiz, Park, Quinn, Rao, Santos, Tyler, and Unger — finish a marathon in positions first through seventh, with exactly one runner in each position. The finishing order is constrained as follows. Park finishes immediately before Quinn. Rao and Santos finish in consecutive positions, in either order. Tyler finishes before Park. Ortiz finishes after Quinn. Unger does not finish fourth. Tyler and Unger do not finish in consecutive positions. If Park finishes third, then Rao finishes sixth. If Rao finishes before Tyler, then Ortiz finishes seventh.",
+    "entities": [
+      "Ortiz",
+      "Park",
+      "Quinn",
+      "Rao",
+      "Santos",
+      "Tyler",
+      "Unger"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "rules": [
+      {
+        "type": "adjacent",
+        "a": "Park",
+        "b": "Quinn"
+      },
+      {
+        "type": "before",
+        "a": "Park",
+        "b": "Quinn"
+      },
+      {
+        "type": "adjacent",
+        "a": "Rao",
+        "b": "Santos"
+      },
+      {
+        "type": "before",
+        "a": "Tyler",
+        "b": "Park"
+      },
+      {
+        "type": "after",
+        "a": "Ortiz",
+        "b": "Quinn"
+      },
+      {
+        "type": "not_at",
+        "entity": "Unger",
+        "position": 4
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Tyler",
+        "b": "Unger"
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Park",
+          "position": 3
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Rao",
+          "position": 6
+        }
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "before",
+          "a": "Rao",
+          "b": "Tyler"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Ortiz",
+          "position": 7
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ortiz": 4,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 5,
+        "Santos": 6,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 4,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 6,
+        "Santos": 5,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 4,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 6,
+        "Santos": 7,
+        "Tyler": 1,
+        "Unger": 5
+      },
+      {
+        "Ortiz": 4,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 7,
+        "Santos": 6,
+        "Tyler": 1,
+        "Unger": 5
+      },
+      {
+        "Ortiz": 6,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 4,
+        "Santos": 5,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 6,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 5,
+        "Santos": 4,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 6,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 2,
+        "Santos": 3,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 6,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 3,
+        "Santos": 2,
+        "Tyler": 1,
+        "Unger": 7
+      },
+      {
+        "Ortiz": 7,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 4,
+        "Santos": 5,
+        "Tyler": 1,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 2,
+        "Quinn": 3,
+        "Rao": 5,
+        "Santos": 4,
+        "Tyler": 1,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 1,
+        "Santos": 2,
+        "Tyler": 3,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 2,
+        "Santos": 1,
+        "Tyler": 3,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 2,
+        "Santos": 3,
+        "Tyler": 1,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 4,
+        "Quinn": 5,
+        "Rao": 3,
+        "Santos": 2,
+        "Tyler": 1,
+        "Unger": 6
+      },
+      {
+        "Ortiz": 7,
+        "Park": 5,
+        "Quinn": 6,
+        "Rao": 2,
+        "Santos": 3,
+        "Tyler": 4,
+        "Unger": 1
+      },
+      {
+        "Ortiz": 7,
+        "Park": 5,
+        "Quinn": 6,
+        "Rao": 3,
+        "Santos": 2,
+        "Tyler": 4,
+        "Unger": 1
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d3-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the order in which the runners finish, from first to seventh?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Tyler, Park, Quinn, Ortiz, Rao, Santos, Unger"
+          },
+          {
+            "label": "B",
+            "text": "Tyler, Park, Rao, Santos, Quinn, Ortiz, Unger"
+          },
+          {
+            "label": "C",
+            "text": "Tyler, Park, Quinn, Rao, Unger, Santos, Ortiz"
+          },
+          {
+            "label": "D",
+            "text": "Tyler, Park, Quinn, Unger, Rao, Santos, Ortiz"
+          },
+          {
+            "label": "E",
+            "text": "Unger, Tyler, Rao, Santos, Park, Quinn, Ortiz"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Tyler,Park,Quinn,Ortiz,Rao,Santos,Unger satisfies every rule: Park@2 immediately before Quinn@3; Rao@5 and Santos@6 are consecutive; Tyler@1 is before Park@2; Ortiz@4 is after Quinn@3; Unger@7 is not fourth; Tyler@1 and Unger@7 are not consecutive; Park is not third so the first conditional is vacuous; Rao@5 is after Tyler@1 so the second conditional is vacuous.",
+          "A": "Correct.",
+          "B": "Quinn is fifth and Park is second, so they are not in consecutive positions. Violates Park-immediately-before-Quinn.",
+          "C": "Rao is fourth and Santos is sixth, so they are not consecutive. Violates the Rao-Santos adjacency rule.",
+          "D": "Unger is fourth, which the rules forbid.",
+          "E": "Tyler is second and Unger is first, so they are in consecutive positions. Violates the Tyler-Unger not-consecutive rule."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Ortiz finishes fourth, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ortiz",
+            "position": 4
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Tyler finishes first."
+          },
+          {
+            "label": "B",
+            "text": "Rao finishes fifth."
+          },
+          {
+            "label": "C",
+            "text": "Unger finishes seventh."
+          },
+          {
+            "label": "D",
+            "text": "Santos finishes sixth."
+          },
+          {
+            "label": "E",
+            "text": "Unger finishes fifth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Ortiz fourth, Park and Quinn (a consecutive block) must occur before Ortiz, and Tyler precedes Park. The only way to fit the Tyler-then-Park-then-Quinn chain in positions 1, 2, and 3 is Tyler first, Park second, Quinn third. The Rao-Santos block and Unger fill positions 5-7 in various orders consistent with the Tyler-Unger non-adjacency, but Tyler is always first.",
+          "A": "Correct. Tyler must be first.",
+          "B": "Rao can be fifth, sixth, or seventh; not forced.",
+          "C": "Unger can be fifth or seventh; not forced.",
+          "D": "Santos can occupy fifth, sixth, or seventh; not forced.",
+          "E": "Unger can be fifth or seventh; not forced."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Unger finishes first, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Unger",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Rao finishes second."
+          },
+          {
+            "label": "B",
+            "text": "Santos finishes second."
+          },
+          {
+            "label": "C",
+            "text": "Ortiz finishes seventh."
+          },
+          {
+            "label": "D",
+            "text": "Tyler finishes third."
+          },
+          {
+            "label": "E",
+            "text": "Park finishes fourth."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Unger is first, Tyler cannot be second (Tyler-Unger non-adjacent). Tyler must still be before Park, so the Rao-Santos block must occupy two of positions 2 and 3 (they are consecutive). That forces Tyler into position 4, Park into 5, Quinn into 6, and Ortiz into 7. The second conditional (Rao before Tyler triggers Ortiz seventh) is also triggered here.",
+          "A": "Rao can be at position 2 or 3 (Rao-Santos block in either order).",
+          "B": "Santos can be at position 2 or 3.",
+          "C": "Correct. Ortiz must finish seventh.",
+          "D": "Tyler must be fourth, not third.",
+          "E": "Park must be fifth, not fourth."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Santos finishes first."
+          },
+          {
+            "label": "B",
+            "text": "Rao finishes third."
+          },
+          {
+            "label": "C",
+            "text": "Tyler finishes second."
+          },
+          {
+            "label": "D",
+            "text": "Quinn finishes fifth."
+          },
+          {
+            "label": "E",
+            "text": "Unger finishes seventh."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Tyler must precede Park, and Park is immediately before Quinn. If Tyler were second, Park would need to be at least third and Quinn at least fourth; moreover, position 1 would have to hold an entity other than Tyler, Park, or Quinn, and the Rao-Santos block could not begin at position 1 without being split. Enumerating shows no admissible arrangement places Tyler second.",
+          "A": "Santos can finish first (e.g., Santos, Rao, Tyler, Park, Quinn, Unger, Ortiz).",
+          "B": "Rao can finish third (e.g., Tyler, Santos, Rao, Park, Quinn, Ortiz, Unger).",
+          "C": "Correct. Tyler cannot be second.",
+          "D": "Quinn can finish fifth when Park is fourth (e.g., Tyler, Rao, Santos, Park, Quinn, Ortiz, Unger).",
+          "E": "Unger can finish seventh (e.g., Tyler, Park, Quinn, Ortiz, Rao, Santos, Unger)."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "If Tyler finishes third, then each of the following could be true EXCEPT:",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Tyler",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Rao finishes first."
+          },
+          {
+            "label": "B",
+            "text": "Santos finishes second."
+          },
+          {
+            "label": "C",
+            "text": "Park finishes fourth."
+          },
+          {
+            "label": "D",
+            "text": "Ortiz finishes sixth."
+          },
+          {
+            "label": "E",
+            "text": "Santos finishes first."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Tyler is third, the Rao-Santos block must occupy positions 1 and 2 (the only remaining consecutive pair before Tyler that avoids violating Tyler-Unger non-adjacency). That forces Park@4, Quinn@5, Unger@6, Ortiz@7. Hence Ortiz finishes seventh, never sixth.",
+          "A": "Rao can finish first (Rao, Santos, Tyler, Park, Quinn, Unger, Ortiz).",
+          "B": "Santos can finish second (Rao, Santos, Tyler, Park, Quinn, Unger, Ortiz).",
+          "C": "Park must finish fourth (it is in fact forced), so this could be true.",
+          "D": "Correct. Ortiz is forced to seventh when Tyler is third; Ortiz cannot be sixth.",
+          "E": "Santos can finish first (Santos, Rao, Tyler, Park, Quinn, Unger, Ortiz)."
+        },
+        "tags": [
+          "cannot_be_true",
+          "except",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d3-b0-02",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 3,
+    "scenario": "A museum audio tour visits exactly eight exhibits — Baroque, Cubism, Dada, Expressionism, Futurism, Gothic, Impressionism, and Japonisme — one exhibit at a time, in positions first through eighth. The sequence is constrained as follows. Cubism is visited immediately before Dada. Gothic is visited immediately before Baroque. Futurism is neither first nor eighth. Impressionism is visited at some point after Dada. Japonisme and Expressionism are not visited in consecutive positions. Gothic is visited before Futurism. Cubism is visited before Futurism. Japonisme is not visited first. Expressionism is not visited eighth. If Cubism is second, then Baroque is sixth. If Expressionism is visited before Gothic, then Impressionism is visited before Baroque.",
+    "entities": [
+      "Baroque",
+      "Cubism",
+      "Dada",
+      "Expressionism",
+      "Futurism",
+      "Gothic",
+      "Impressionism",
+      "Japonisme"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rules": [
+      {
+        "type": "adjacent",
+        "a": "Cubism",
+        "b": "Dada"
+      },
+      {
+        "type": "before",
+        "a": "Cubism",
+        "b": "Dada"
+      },
+      {
+        "type": "adjacent",
+        "a": "Gothic",
+        "b": "Baroque"
+      },
+      {
+        "type": "before",
+        "a": "Gothic",
+        "b": "Baroque"
+      },
+      {
+        "type": "not_at",
+        "entity": "Futurism",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Futurism",
+        "position": 8
+      },
+      {
+        "type": "after",
+        "a": "Impressionism",
+        "b": "Dada"
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Japonisme",
+        "b": "Expressionism"
+      },
+      {
+        "type": "before",
+        "a": "Gothic",
+        "b": "Futurism"
+      },
+      {
+        "type": "before",
+        "a": "Cubism",
+        "b": "Futurism"
+      },
+      {
+        "type": "not_at",
+        "entity": "Japonisme",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Expressionism",
+        "position": 8
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Cubism",
+          "position": 2
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Baroque",
+          "position": 6
+        }
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "before",
+          "a": "Expressionism",
+          "b": "Gothic"
+        },
+        "thenRule": {
+          "type": "before",
+          "a": "Impressionism",
+          "b": "Baroque"
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 5,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 7,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 5,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 7
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 5,
+        "Futurism": 7,
+        "Gothic": 1,
+        "Impressionism": 6,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 6,
+        "Futurism": 5,
+        "Gothic": 1,
+        "Impressionism": 7,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 6,
+        "Futurism": 7,
+        "Gothic": 1,
+        "Impressionism": 5,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 3,
+        "Dada": 4,
+        "Expressionism": 7,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 5
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 3,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 7,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 3,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 7
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 3,
+        "Futurism": 7,
+        "Gothic": 1,
+        "Impressionism": 6,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 3,
+        "Futurism": 7,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 6
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 6,
+        "Futurism": 7,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 3
+      },
+      {
+        "Baroque": 2,
+        "Cubism": 4,
+        "Dada": 5,
+        "Expressionism": 7,
+        "Futurism": 6,
+        "Gothic": 1,
+        "Impressionism": 8,
+        "Japonisme": 3
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 5,
+        "Futurism": 6,
+        "Gothic": 3,
+        "Impressionism": 7,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 5,
+        "Futurism": 6,
+        "Gothic": 3,
+        "Impressionism": 8,
+        "Japonisme": 7
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 5,
+        "Futurism": 7,
+        "Gothic": 3,
+        "Impressionism": 6,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 6,
+        "Futurism": 5,
+        "Gothic": 3,
+        "Impressionism": 7,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 6,
+        "Futurism": 7,
+        "Gothic": 3,
+        "Impressionism": 5,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 4,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 7,
+        "Futurism": 6,
+        "Gothic": 3,
+        "Impressionism": 8,
+        "Japonisme": 5
+      },
+      {
+        "Baroque": 5,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 6,
+        "Futurism": 7,
+        "Gothic": 4,
+        "Impressionism": 3,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 5,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 6,
+        "Futurism": 7,
+        "Gothic": 4,
+        "Impressionism": 8,
+        "Japonisme": 3
+      },
+      {
+        "Baroque": 5,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 7,
+        "Futurism": 6,
+        "Gothic": 4,
+        "Impressionism": 8,
+        "Japonisme": 3
+      },
+      {
+        "Baroque": 6,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 3,
+        "Futurism": 7,
+        "Gothic": 5,
+        "Impressionism": 4,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 6,
+        "Cubism": 1,
+        "Dada": 2,
+        "Expressionism": 4,
+        "Futurism": 7,
+        "Gothic": 5,
+        "Impressionism": 3,
+        "Japonisme": 8
+      },
+      {
+        "Baroque": 6,
+        "Cubism": 2,
+        "Dada": 3,
+        "Expressionism": 1,
+        "Futurism": 7,
+        "Gothic": 5,
+        "Impressionism": 4,
+        "Japonisme": 8
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d3-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the order in which the exhibits are visited, from first to eighth?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gothic, Baroque, Cubism, Dada, Expressionism, Futurism, Impressionism, Japonisme"
+          },
+          {
+            "label": "B",
+            "text": "Cubism, Dada, Gothic, Expressionism, Baroque, Futurism, Impressionism, Japonisme"
+          },
+          {
+            "label": "C",
+            "text": "Gothic, Baroque, Cubism, Dada, Expressionism, Impressionism, Japonisme, Futurism"
+          },
+          {
+            "label": "D",
+            "text": "Gothic, Baroque, Dada, Cubism, Expressionism, Futurism, Impressionism, Japonisme"
+          },
+          {
+            "label": "E",
+            "text": "Gothic, Baroque, Cubism, Dada, Japonisme, Expressionism, Futurism, Impressionism"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Gothic@1 immediately before Baroque@2; Cubism@3 immediately before Dada@4; Futurism@6 is neither first nor eighth; Impressionism@7 is after Dada@4; Japonisme@8 and Expressionism@5 are not adjacent; Gothic and Cubism both precede Futurism; Japonisme is not first; Expressionism is not eighth. Neither conditional is triggered.",
+          "A": "Correct.",
+          "B": "Gothic is third and Baroque is fifth, so Gothic is not immediately before Baroque.",
+          "C": "Futurism is eighth, which the rules forbid.",
+          "D": "Dada is third and Cubism is fourth, so Cubism is not before Dada.",
+          "E": "Japonisme is fifth and Expressionism is sixth, so they are visited in consecutive positions."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Cubism is visited first, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Cubism",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Dada is visited second."
+          },
+          {
+            "label": "B",
+            "text": "Gothic is visited third."
+          },
+          {
+            "label": "C",
+            "text": "Baroque is visited fourth."
+          },
+          {
+            "label": "D",
+            "text": "Futurism is visited sixth."
+          },
+          {
+            "label": "E",
+            "text": "Impressionism is visited eighth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Since Cubism is immediately before Dada, placing Cubism at 1 forces Dada into position 2.",
+          "A": "Correct. Dada must be second.",
+          "B": "Gothic can be at 3, 4, or 5 depending on where the Gothic-Baroque block fits.",
+          "C": "Baroque can be fourth, fifth, or sixth.",
+          "D": "Futurism is in {5, 6, 7}; it is not forced to 6.",
+          "E": "Impressionism can be anywhere after Dada; it is not forced to 8."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Expressionism is visited first, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Expressionism",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cubism is visited second."
+          },
+          {
+            "label": "B",
+            "text": "Gothic is visited third."
+          },
+          {
+            "label": "C",
+            "text": "Impressionism is visited fifth."
+          },
+          {
+            "label": "D",
+            "text": "Futurism is visited sixth."
+          },
+          {
+            "label": "E",
+            "text": "Japonisme is visited seventh."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Expressionism first triggers the second conditional: Expressionism before Gothic implies Impressionism before Baroque. With Expressionism at 1, the Cubism-Dada block and the Gothic-Baroque block each occupy two consecutive slots; pinning Impressionism before Baroque forces the unique arrangement Expressionism, Cubism, Dada, Impressionism, Gothic, Baroque, Futurism, Japonisme.",
+          "A": "Correct. Cubism must be second.",
+          "B": "Gothic is fifth in the forced arrangement, not third.",
+          "C": "Impressionism is fourth in the forced arrangement, not fifth.",
+          "D": "Futurism is seventh in the forced arrangement, not sixth.",
+          "E": "Japonisme is eighth in the forced arrangement, not seventh."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Baroque is visited second."
+          },
+          {
+            "label": "B",
+            "text": "Gothic is visited fifth."
+          },
+          {
+            "label": "C",
+            "text": "Futurism is visited fourth."
+          },
+          {
+            "label": "D",
+            "text": "Expressionism is visited third."
+          },
+          {
+            "label": "E",
+            "text": "Japonisme is visited sixth."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Futurism must come after both Cubism and Gothic, each of which heads a two-exhibit block. The earliest that Futurism can appear, once both blocks precede it, is position 5. Thus Futurism cannot be at position 4.",
+          "A": "Baroque can be second (Gothic first, Baroque second).",
+          "B": "Gothic can be fifth when it heads the Gothic-Baroque block in positions 5-6.",
+          "C": "Correct. Futurism cannot be fourth.",
+          "D": "Expressionism can be third (e.g., Gothic, Baroque, Expressionism, Cubism, Dada, Futurism, Impressionism, Japonisme).",
+          "E": "Japonisme can be sixth in multiple arrangements."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Gothic is visited third, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gothic",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Baroque is visited fourth."
+          },
+          {
+            "label": "B",
+            "text": "Expressionism is visited fifth."
+          },
+          {
+            "label": "C",
+            "text": "Futurism is visited sixth."
+          },
+          {
+            "label": "D",
+            "text": "Impressionism is visited seventh."
+          },
+          {
+            "label": "E",
+            "text": "Japonisme is visited eighth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Gothic immediately before Baroque forces Baroque into the position immediately after Gothic; with Gothic at 3, Baroque must be at 4.",
+          "A": "Correct. Baroque must be fourth.",
+          "B": "Expressionism can be at 5, 6, or 7.",
+          "C": "Futurism can be 5, 6, or 7.",
+          "D": "Impressionism can be anywhere from 5 through 8.",
+          "E": "Japonisme can be 5, 7, or 8."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-basic_linear-d3-b0-03",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 3,
+    "scenario": "Exactly seven floats — Lions, Mariners, Nomads, Oaks, Phoenix, Raptors, and Sentinels — pass a reviewing stand in positions first through seventh, with exactly one float in each position. The order is constrained as follows. Nomads passes immediately before Oaks. Lions passes at some point before Mariners. Lions passes at some point before Nomads. Oaks passes at some point before Mariners. Phoenix is neither third nor fifth. Raptors and Sentinels do not pass in consecutive positions. If Lions is first, then Sentinels is fourth. If Phoenix passes before Lions, then Raptors is seventh.",
+    "entities": [
+      "Lions",
+      "Mariners",
+      "Nomads",
+      "Oaks",
+      "Phoenix",
+      "Raptors",
+      "Sentinels"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "rules": [
+      {
+        "type": "adjacent",
+        "a": "Nomads",
+        "b": "Oaks"
+      },
+      {
+        "type": "before",
+        "a": "Nomads",
+        "b": "Oaks"
+      },
+      {
+        "type": "before",
+        "a": "Lions",
+        "b": "Mariners"
+      },
+      {
+        "type": "before",
+        "a": "Lions",
+        "b": "Nomads"
+      },
+      {
+        "type": "not_at",
+        "entity": "Phoenix",
+        "position": 3
+      },
+      {
+        "type": "not_at",
+        "entity": "Phoenix",
+        "position": 5
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Raptors",
+        "b": "Sentinels"
+      },
+      {
+        "type": "before",
+        "a": "Oaks",
+        "b": "Mariners"
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "at",
+          "entity": "Lions",
+          "position": 1
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Sentinels",
+          "position": 4
+        }
+      },
+      {
+        "type": "conditional",
+        "ifRule": {
+          "type": "before",
+          "a": "Phoenix",
+          "b": "Lions"
+        },
+        "thenRule": {
+          "type": "at",
+          "entity": "Raptors",
+          "position": 7
+        }
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Lions": 1,
+        "Mariners": 5,
+        "Nomads": 2,
+        "Oaks": 3,
+        "Phoenix": 6,
+        "Raptors": 7,
+        "Sentinels": 4
+      },
+      {
+        "Lions": 1,
+        "Mariners": 5,
+        "Nomads": 2,
+        "Oaks": 3,
+        "Phoenix": 7,
+        "Raptors": 6,
+        "Sentinels": 4
+      },
+      {
+        "Lions": 2,
+        "Mariners": 5,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 6,
+        "Raptors": 1,
+        "Sentinels": 7
+      },
+      {
+        "Lions": 2,
+        "Mariners": 5,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 6,
+        "Raptors": 7,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 5,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 7,
+        "Raptors": 1,
+        "Sentinels": 6
+      },
+      {
+        "Lions": 2,
+        "Mariners": 5,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 7,
+        "Raptors": 6,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 1,
+        "Raptors": 7,
+        "Sentinels": 5
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 7,
+        "Raptors": 1,
+        "Sentinels": 5
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 7,
+        "Raptors": 5,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 1,
+        "Raptors": 7,
+        "Sentinels": 3
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 7,
+        "Raptors": 1,
+        "Sentinels": 3
+      },
+      {
+        "Lions": 2,
+        "Mariners": 6,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 7,
+        "Raptors": 3,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 6,
+        "Raptors": 1,
+        "Sentinels": 5
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 3,
+        "Oaks": 4,
+        "Phoenix": 6,
+        "Raptors": 5,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 6,
+        "Raptors": 1,
+        "Sentinels": 3
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 6,
+        "Raptors": 3,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 5,
+        "Oaks": 6,
+        "Phoenix": 4,
+        "Raptors": 1,
+        "Sentinels": 3
+      },
+      {
+        "Lions": 2,
+        "Mariners": 7,
+        "Nomads": 5,
+        "Oaks": 6,
+        "Phoenix": 4,
+        "Raptors": 3,
+        "Sentinels": 1
+      },
+      {
+        "Lions": 3,
+        "Mariners": 6,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 1,
+        "Raptors": 7,
+        "Sentinels": 2
+      },
+      {
+        "Lions": 3,
+        "Mariners": 6,
+        "Nomads": 4,
+        "Oaks": 5,
+        "Phoenix": 2,
+        "Raptors": 7,
+        "Sentinels": 1
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d3-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the order in which the floats pass the reviewing stand, from first to seventh?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lions, Nomads, Oaks, Sentinels, Mariners, Phoenix, Raptors"
+          },
+          {
+            "label": "B",
+            "text": "Sentinels, Raptors, Lions, Nomads, Oaks, Mariners, Phoenix"
+          },
+          {
+            "label": "C",
+            "text": "Sentinels, Lions, Mariners, Nomads, Oaks, Phoenix, Raptors"
+          },
+          {
+            "label": "D",
+            "text": "Raptors, Lions, Phoenix, Nomads, Oaks, Mariners, Sentinels"
+          },
+          {
+            "label": "E",
+            "text": "Lions, Nomads, Oaks, Phoenix, Sentinels, Mariners, Raptors"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Nomads@2 immediately before Oaks@3; Lions@1 precedes Mariners@5, Nomads@2, and (via Oaks) the rest; Oaks@3 precedes Mariners@5; Phoenix@6 is neither third nor fifth; Raptors@7 and Sentinels@4 are not consecutive; Lions@1 triggers cond1 which forces Sentinels@4, satisfied.",
+          "A": "Correct.",
+          "B": "Raptors is second and Sentinels is first, so they pass in consecutive positions.",
+          "C": "Oaks is fifth and Mariners is third, so Oaks is not before Mariners.",
+          "D": "Phoenix is third, which the rules forbid.",
+          "E": "Lions is first but Sentinels is fifth, not fourth, violating the Lions-first conditional."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Phoenix passes first, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Phoenix",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lions passes second."
+          },
+          {
+            "label": "B",
+            "text": "Raptors passes seventh."
+          },
+          {
+            "label": "C",
+            "text": "Sentinels passes fifth."
+          },
+          {
+            "label": "D",
+            "text": "Oaks passes fourth."
+          },
+          {
+            "label": "E",
+            "text": "Nomads passes third."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Phoenix first means Phoenix is before Lions, triggering the second conditional: Raptors must be seventh.",
+          "A": "Lions can be second or third.",
+          "B": "Correct. Raptors must be seventh.",
+          "C": "Sentinels can be second, third, or fifth.",
+          "D": "Oaks can be fourth or fifth.",
+          "E": "Nomads can be third or fourth."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Raptors passes first, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Raptors",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lions passes second."
+          },
+          {
+            "label": "B",
+            "text": "Nomads passes third."
+          },
+          {
+            "label": "C",
+            "text": "Phoenix passes sixth."
+          },
+          {
+            "label": "D",
+            "text": "Sentinels passes third."
+          },
+          {
+            "label": "E",
+            "text": "Mariners passes fifth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Raptors first forces Lions into position 2: Lions must precede Nomads and Mariners, so Lions is in {1,2,3}; but Raptors@1 blocks position 1, and Lions cannot be at 3 (which would require Nomads@4 and leave no valid non-adjacent place for Sentinels given the other constraints). Enumerating the solutions confirms Lions is always second.",
+          "A": "Correct. Lions must pass second.",
+          "B": "Nomads can be third, fourth, or fifth.",
+          "C": "Phoenix can be at 4, 6, or 7.",
+          "D": "Sentinels can be at 3, 4, 5, or 6.",
+          "E": "Mariners can be fifth, sixth, or seventh."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Sentinels passes first."
+          },
+          {
+            "label": "B",
+            "text": "Raptors passes third."
+          },
+          {
+            "label": "C",
+            "text": "Lions passes fourth."
+          },
+          {
+            "label": "D",
+            "text": "Oaks passes fifth."
+          },
+          {
+            "label": "E",
+            "text": "Phoenix passes seventh."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Lions must precede Nomads, Oaks, and Mariners, pinning Lions into one of the first three positions. Lions at 4 would leave only three later slots for Nomads, Oaks, and Mariners; but Nomads-Oaks is a block and must itself precede Mariners, which is impossible in three slots when Lions also sits at 4. So Lions at 4 is unreachable.",
+          "A": "Sentinels can be first.",
+          "B": "Raptors can be third.",
+          "C": "Correct. Lions cannot pass fourth.",
+          "D": "Oaks can be fifth.",
+          "E": "Phoenix can be seventh."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d3-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Nomads passes fifth, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Nomads",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lions passes first."
+          },
+          {
+            "label": "B",
+            "text": "Raptors passes first."
+          },
+          {
+            "label": "C",
+            "text": "Mariners passes seventh."
+          },
+          {
+            "label": "D",
+            "text": "Sentinels passes third."
+          },
+          {
+            "label": "E",
+            "text": "Phoenix passes sixth."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Nomads@5 forces Oaks@6 (adjacency) and Mariners@7 (since Oaks precedes Mariners and only position 7 remains after 5-6 are taken). Lions@2 also follows because Lions must precede Nomads and Phoenix is not first (Phoenix first would trigger cond2 and place Raptors@7, conflict); but Mariners@7 is the one forced across all worlds.",
+          "A": "Lions is second in both arrangements where Nomads is fifth, not first.",
+          "B": "Raptors can be first or third depending on Sentinels placement.",
+          "C": "Correct. Mariners must pass seventh.",
+          "D": "Sentinels can be first or third.",
+          "E": "Phoenix is fourth when Nomads is fifth, not sixth."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,553 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d1-b0-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "Exactly six chefs \u2014 Alvarez, Bello, Chen, Dufresne, Engel, and Fiori \u2014 will each be assigned to exactly one of two shifts at a restaurant: Brunch and Dinner. Each shift is assigned exactly three chefs. The assignment must satisfy the following conditions. Alvarez is assigned to the Brunch shift. Bello and Chen are assigned to different shifts.",
+    "entities": ["Alvarez", "Bello", "Chen", "Dufresne", "Engel", "Fiori"],
+    "groups": ["Brunch", "Dinner"],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "Alvarez", "position": "Brunch" },
+      { "type": "different_group", "a": "Bello", "b": "Chen" }
+    ],
+    "verifiedSolutions": [
+      { "Alvarez": "Brunch", "Bello": "Brunch", "Chen": "Dinner", "Dufresne": "Brunch", "Engel": "Dinner", "Fiori": "Dinner" },
+      { "Alvarez": "Brunch", "Bello": "Brunch", "Chen": "Dinner", "Dufresne": "Dinner", "Engel": "Brunch", "Fiori": "Dinner" },
+      { "Alvarez": "Brunch", "Bello": "Brunch", "Chen": "Dinner", "Dufresne": "Dinner", "Engel": "Dinner", "Fiori": "Brunch" },
+      { "Alvarez": "Brunch", "Bello": "Dinner", "Chen": "Brunch", "Dufresne": "Brunch", "Engel": "Dinner", "Fiori": "Dinner" },
+      { "Alvarez": "Brunch", "Bello": "Dinner", "Chen": "Brunch", "Dufresne": "Dinner", "Engel": "Brunch", "Fiori": "Dinner" },
+      { "Alvarez": "Brunch", "Bello": "Dinner", "Chen": "Brunch", "Dufresne": "Dinner", "Engel": "Dinner", "Fiori": "Brunch" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of chefs to shifts?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Brunch: Alvarez, Bello, Dufresne; Dinner: Chen, Engel, Fiori" },
+          { "label": "B", "text": "Brunch: Bello, Chen, Fiori; Dinner: Alvarez, Dufresne, Engel" },
+          { "label": "C", "text": "Brunch: Alvarez, Bello, Chen; Dinner: Dufresne, Engel, Fiori" },
+          { "label": "D", "text": "Brunch: Alvarez, Dufresne; Dinner: Bello, Chen, Engel, Fiori" },
+          { "label": "E", "text": "Brunch: Alvarez, Fiori, Dufresne; Dinner: Bello, Chen, Engel" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Alvarez is assigned to Brunch. Bello (Brunch) and Chen (Dinner) are assigned to different shifts. Each shift has exactly three chefs.",
+          "A": "Correct.",
+          "B": "Alvarez is assigned to Dinner, violating the rule that Alvarez is assigned to Brunch.",
+          "C": "Bello and Chen are both assigned to Brunch, violating the rule that they are assigned to different shifts.",
+          "D": "Brunch has only two chefs and Dinner has four, violating the requirement that each shift has exactly three chefs.",
+          "E": "Bello and Chen are both assigned to Dinner, violating the rule that they are assigned to different shifts."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Bello is assigned to the Dinner shift, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Bello", "position": "Dinner" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Chen is assigned to the Brunch shift." },
+          { "label": "B", "text": "Dufresne is assigned to the Brunch shift." },
+          { "label": "C", "text": "Engel is assigned to the Dinner shift." },
+          { "label": "D", "text": "Fiori is assigned to the Dinner shift." },
+          { "label": "E", "text": "Chen is assigned to the Dinner shift." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Bello and Chen must be assigned to different shifts. If Bello is assigned to Dinner, then Chen must be assigned to Brunch.",
+          "A": "Correct.",
+          "B": "Dufresne could be assigned to either shift.",
+          "C": "Engel could be assigned to either shift.",
+          "D": "Fiori could be assigned to either shift.",
+          "E": "Chen must be assigned to Brunch because Bello is assigned to Dinner."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Fiori is assigned to the Brunch shift, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Fiori", "position": "Brunch" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to the Brunch shift." },
+          { "label": "B", "text": "Chen is assigned to the Brunch shift." },
+          { "label": "C", "text": "Dufresne is assigned to the Dinner shift." },
+          { "label": "D", "text": "Engel is assigned to the Brunch shift." },
+          { "label": "E", "text": "Chen is assigned to the Dinner shift." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Alvarez and Fiori are both assigned to Brunch. Brunch must hold exactly three chefs, so exactly one of Bello or Chen fills the remaining Brunch slot; the other joins Dufresne and Engel on Dinner. Because Dinner must hold three chefs and already must contain one of {Bello, Chen}, both Dufresne and Engel must be assigned to Dinner.",
+          "A": "Bello could be assigned to Brunch or Dinner.",
+          "B": "Chen could be assigned to Brunch or Dinner.",
+          "C": "Correct.",
+          "D": "Engel must be assigned to Dinner.",
+          "E": "Chen could be assigned to Brunch or Dinner."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Alvarez is assigned to the Dinner shift." },
+          { "label": "B", "text": "Bello and Chen are both assigned to the Dinner shift." },
+          { "label": "C", "text": "Dufresne and Engel are both assigned to the Dinner shift." },
+          { "label": "D", "text": "Bello and Chen are both assigned to the Brunch shift." },
+          { "label": "E", "text": "Bello, Chen, and Fiori are all assigned to the Brunch shift." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "For example, the assignment Brunch: Alvarez, Bello, Fiori; Dinner: Chen, Dufresne, Engel satisfies every rule: Alvarez is on Brunch, Bello and Chen are on different shifts, and each shift has three chefs.",
+          "A": "Alvarez is required to be assigned to Brunch.",
+          "B": "Bello and Chen must be assigned to different shifts.",
+          "C": "Correct.",
+          "D": "Bello and Chen must be assigned to different shifts.",
+          "E": "Bello and Chen must be assigned to different shifts, so they cannot both be on Brunch."
+        },
+        "tags": ["could_be_true", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Bello is assigned to the Brunch shift." },
+          { "label": "B", "text": "Dufresne is assigned to the Brunch shift." },
+          { "label": "C", "text": "Fiori is assigned to the Brunch shift." },
+          { "label": "D", "text": "Bello and Chen are assigned to the same shift." },
+          { "label": "E", "text": "Chen is assigned to the Dinner shift." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Bello and Chen are required to be assigned to different shifts, so they can never be assigned to the same shift.",
+          "A": "Possible \u2014 e.g., Brunch: Alvarez, Bello, Dufresne; Dinner: Chen, Engel, Fiori.",
+          "B": "Possible \u2014 e.g., Brunch: Alvarez, Bello, Dufresne; Dinner: Chen, Engel, Fiori.",
+          "C": "Possible \u2014 e.g., Brunch: Alvarez, Bello, Fiori; Dinner: Chen, Dufresne, Engel.",
+          "D": "Correct \u2014 this cannot be true.",
+          "E": "Possible \u2014 e.g., Brunch: Alvarez, Bello, Dufresne; Dinner: Chen, Engel, Fiori."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d1-b0-02",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "Exactly six employees \u2014 Hart, Ibarra, Jung, Kapoor, Lemoine, and Mora \u2014 will each serve on exactly one of two committees: Finance and Marketing. Each committee has exactly three members. The assignment must satisfy the following conditions. Hart serves on the Finance committee. Mora serves on the Marketing committee. Kapoor and Lemoine serve on different committees.",
+    "entities": ["Hart", "Ibarra", "Jung", "Kapoor", "Lemoine", "Mora"],
+    "groups": ["Finance", "Marketing"],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "Hart", "position": "Finance" },
+      { "type": "at", "entity": "Mora", "position": "Marketing" },
+      { "type": "different_group", "a": "Kapoor", "b": "Lemoine" }
+    ],
+    "verifiedSolutions": [
+      { "Hart": "Finance", "Ibarra": "Finance", "Jung": "Marketing", "Kapoor": "Finance", "Lemoine": "Marketing", "Mora": "Marketing" },
+      { "Hart": "Finance", "Ibarra": "Finance", "Jung": "Marketing", "Kapoor": "Marketing", "Lemoine": "Finance", "Mora": "Marketing" },
+      { "Hart": "Finance", "Ibarra": "Marketing", "Jung": "Finance", "Kapoor": "Finance", "Lemoine": "Marketing", "Mora": "Marketing" },
+      { "Hart": "Finance", "Ibarra": "Marketing", "Jung": "Finance", "Kapoor": "Marketing", "Lemoine": "Finance", "Mora": "Marketing" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate list of the members of each committee?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Finance: Hart, Ibarra, Kapoor; Marketing: Jung, Lemoine, Mora" },
+          { "label": "B", "text": "Finance: Ibarra, Jung, Kapoor; Marketing: Hart, Lemoine, Mora" },
+          { "label": "C", "text": "Finance: Hart, Ibarra, Mora; Marketing: Jung, Kapoor, Lemoine" },
+          { "label": "D", "text": "Finance: Hart, Kapoor, Lemoine; Marketing: Ibarra, Jung, Mora" },
+          { "label": "E", "text": "Finance: Hart, Ibarra, Jung, Kapoor; Marketing: Lemoine, Mora" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hart serves on Finance. Mora serves on Marketing. Kapoor (Finance) and Lemoine (Marketing) serve on different committees. Each committee has exactly three members.",
+          "A": "Correct.",
+          "B": "Hart serves on Marketing, violating the rule that Hart serves on Finance.",
+          "C": "Mora serves on Finance, violating the rule that Mora serves on Marketing.",
+          "D": "Kapoor and Lemoine both serve on Finance, violating the rule that they serve on different committees.",
+          "E": "Finance has four members and Marketing has two, violating the requirement that each committee has exactly three members."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Kapoor serves on the Finance committee, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Kapoor", "position": "Finance" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ibarra serves on the Finance committee." },
+          { "label": "B", "text": "Jung serves on the Marketing committee." },
+          { "label": "C", "text": "Lemoine serves on the Marketing committee." },
+          { "label": "D", "text": "Ibarra serves on the Marketing committee." },
+          { "label": "E", "text": "Jung serves on the Finance committee." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Kapoor and Lemoine serve on different committees. If Kapoor is on Finance, Lemoine is on Marketing.",
+          "A": "Ibarra could serve on either committee.",
+          "B": "Jung could serve on either committee.",
+          "C": "Correct.",
+          "D": "Ibarra could serve on either committee.",
+          "E": "Jung could serve on either committee."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Ibarra serves on the Marketing committee, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Ibarra", "position": "Marketing" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Jung serves on the Finance committee." },
+          { "label": "B", "text": "Kapoor serves on the Finance committee." },
+          { "label": "C", "text": "Lemoine serves on the Marketing committee." },
+          { "label": "D", "text": "Mora serves on the Finance committee." },
+          { "label": "E", "text": "Jung serves on the Marketing committee." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hart is on Finance and Mora is on Marketing. Marketing already contains Mora and Ibarra; its third member must be whichever of Kapoor or Lemoine is assigned to Marketing. That leaves Finance with Hart plus the other of Kapoor/Lemoine plus Jung. So Jung must serve on Finance.",
+          "A": "Correct.",
+          "B": "Kapoor could serve on either committee.",
+          "C": "Lemoine could serve on either committee.",
+          "D": "Mora is required to serve on Marketing.",
+          "E": "Jung must serve on Finance."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Mora serves on the Finance committee." },
+          { "label": "B", "text": "Kapoor and Lemoine both serve on the Marketing committee." },
+          { "label": "C", "text": "Ibarra and Jung both serve on the Finance committee." },
+          { "label": "D", "text": "Jung serves on the Finance committee." },
+          { "label": "E", "text": "Hart serves on the Marketing committee." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "For example, the assignment Finance: Hart, Jung, Kapoor; Marketing: Ibarra, Lemoine, Mora satisfies every rule.",
+          "A": "Mora is required to serve on Marketing.",
+          "B": "Kapoor and Lemoine serve on different committees.",
+          "C": "Finance would then hold Hart, Ibarra, Jung plus whichever of Kapoor/Lemoine lands in Finance, giving four members. Finance can hold only three.",
+          "D": "Correct.",
+          "E": "Hart is required to serve on Finance."
+        },
+        "tags": ["could_be_true", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ibarra serves on the Finance committee." },
+          { "label": "B", "text": "Jung serves on the Finance committee." },
+          { "label": "C", "text": "Kapoor serves on the Finance committee." },
+          { "label": "D", "text": "Lemoine serves on the Finance committee." },
+          { "label": "E", "text": "Kapoor and Lemoine both serve on the Finance committee." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Kapoor and Lemoine are required to serve on different committees, so they can never both serve on Finance.",
+          "A": "Possible \u2014 e.g., Finance: Hart, Ibarra, Kapoor; Marketing: Jung, Lemoine, Mora.",
+          "B": "Possible \u2014 e.g., Finance: Hart, Jung, Kapoor; Marketing: Ibarra, Lemoine, Mora.",
+          "C": "Possible \u2014 e.g., Finance: Hart, Ibarra, Kapoor; Marketing: Jung, Lemoine, Mora.",
+          "D": "Possible \u2014 e.g., Finance: Hart, Ibarra, Lemoine; Marketing: Jung, Kapoor, Mora.",
+          "E": "Correct \u2014 this cannot be true."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-grouping-d1-b0-03",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "Exactly six students \u2014 Park, Qiu, Reyes, Sousa, Tran, and Udo \u2014 will each be placed in exactly one of two sections of a chemistry course: Lab and Seminar. Each section contains exactly three students. The placement must satisfy the following conditions. Park is placed in the Lab section. Qiu and Reyes are placed in different sections. If Sousa is placed in the Seminar section, then Tran is placed in the Lab section.",
+    "entities": ["Park", "Qiu", "Reyes", "Sousa", "Tran", "Udo"],
+    "groups": ["Lab", "Seminar"],
+    "groupSize": 3,
+    "rules": [
+      { "type": "at", "entity": "Park", "position": "Lab" },
+      { "type": "different_group", "a": "Qiu", "b": "Reyes" },
+      {
+        "type": "conditional",
+        "ifRule": { "type": "at", "entity": "Sousa", "position": "Seminar" },
+        "thenRule": { "type": "at", "entity": "Tran", "position": "Lab" }
+      }
+    ],
+    "verifiedSolutions": [
+      { "Park": "Lab", "Qiu": "Lab", "Reyes": "Seminar", "Sousa": "Lab", "Tran": "Seminar", "Udo": "Seminar" },
+      { "Park": "Lab", "Qiu": "Lab", "Reyes": "Seminar", "Sousa": "Seminar", "Tran": "Lab", "Udo": "Seminar" },
+      { "Park": "Lab", "Qiu": "Seminar", "Reyes": "Lab", "Sousa": "Lab", "Tran": "Seminar", "Udo": "Seminar" },
+      { "Park": "Lab", "Qiu": "Seminar", "Reyes": "Lab", "Sousa": "Seminar", "Tran": "Lab", "Udo": "Seminar" }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate placement of students in sections?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Lab: Park, Qiu, Sousa; Seminar: Reyes, Tran, Udo" },
+          { "label": "B", "text": "Lab: Qiu, Reyes, Sousa; Seminar: Park, Tran, Udo" },
+          { "label": "C", "text": "Lab: Park, Qiu, Reyes; Seminar: Sousa, Tran, Udo" },
+          { "label": "D", "text": "Lab: Park, Reyes, Udo; Seminar: Qiu, Sousa, Tran" },
+          { "label": "E", "text": "Lab: Park, Qiu, Sousa, Tran; Seminar: Reyes, Udo" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Park is in Lab. Qiu (Lab) and Reyes (Seminar) are in different sections. Sousa is in Lab, so the conditional's antecedent is false and the conditional is vacuously satisfied. Each section contains exactly three students.",
+          "A": "Correct.",
+          "B": "Park is placed in Seminar, violating the rule that Park is placed in Lab.",
+          "C": "Qiu and Reyes are both placed in Lab, violating the rule that they are placed in different sections.",
+          "D": "Sousa is placed in Seminar but Tran is also placed in Seminar, violating the rule that if Sousa is in Seminar then Tran is in Lab.",
+          "E": "Lab contains four students and Seminar contains two, violating the requirement that each section contains exactly three students."
+        },
+        "tags": ["orientation_question", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Qiu is placed in the Lab section, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Qiu", "position": "Lab" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Reyes is placed in the Seminar section." },
+          { "label": "B", "text": "Sousa is placed in the Lab section." },
+          { "label": "C", "text": "Tran is placed in the Lab section." },
+          { "label": "D", "text": "Udo is placed in the Lab section." },
+          { "label": "E", "text": "Sousa is placed in the Seminar section." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Qiu and Reyes must be placed in different sections. If Qiu is in Lab, Reyes is in Seminar.",
+          "A": "Correct.",
+          "B": "Sousa could be in either section.",
+          "C": "Tran could be in either section.",
+          "D": "Udo must be in Seminar in every valid placement.",
+          "E": "Sousa could be in either section."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Sousa is placed in the Seminar section, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Sousa", "position": "Seminar" }
+        ],
+        "choices": [
+          { "label": "A", "text": "Qiu is placed in the Lab section." },
+          { "label": "B", "text": "Reyes is placed in the Seminar section." },
+          { "label": "C", "text": "Tran is placed in the Lab section." },
+          { "label": "D", "text": "Udo is placed in the Lab section." },
+          { "label": "E", "text": "Tran is placed in the Seminar section." }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "The conditional states that if Sousa is in Seminar, then Tran is in Lab. So Tran must be in Lab.",
+          "A": "Qiu could be in either section.",
+          "B": "Reyes could be in either section.",
+          "C": "Correct.",
+          "D": "Lab contains Park, Tran, and exactly one of Qiu or Reyes \u2014 Udo cannot fit.",
+          "E": "The conditional forces Tran into Lab, not Seminar."
+        },
+        "tags": ["must_be_true", "conditional", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Qiu is placed in the Lab section." },
+          { "label": "B", "text": "Reyes is placed in the Seminar section." },
+          { "label": "C", "text": "Sousa is placed in the Lab section." },
+          { "label": "D", "text": "Tran is placed in the Seminar section." },
+          { "label": "E", "text": "Udo is placed in the Seminar section." }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Park is in Lab, and exactly one of Qiu or Reyes is in Lab (they are in different sections). That accounts for two of Lab's three slots; the third Lab slot is filled by Sousa or Tran, whichever is forced in by the conditional. In every valid placement, Udo ends up in Seminar because Lab's three slots are always taken by Park, one of {Qiu, Reyes}, and one of {Sousa, Tran}.",
+          "A": "Qiu could be in either section.",
+          "B": "Reyes could be in either section.",
+          "C": "Sousa could be in either section.",
+          "D": "Tran could be in either section.",
+          "E": "Correct."
+        },
+        "tags": ["must_be_true", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Qiu is placed in the Seminar section." },
+          { "label": "B", "text": "Sousa is placed in the Seminar section." },
+          { "label": "C", "text": "Tran is placed in the Lab section." },
+          { "label": "D", "text": "Sousa and Tran are placed in the same section." },
+          { "label": "E", "text": "Reyes is placed in the Lab section." }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Lab has three slots: Park, one of {Qiu, Reyes}, and exactly one of {Sousa, Tran}. Udo is always in Seminar. So the last Lab slot holds Sousa xor Tran \u2014 the two cannot share a section. If Sousa is in Seminar, the conditional forces Tran to Lab; if Sousa is in Lab, then Lab is full and Tran goes to Seminar. Either way, Sousa and Tran are in different sections.",
+          "A": "Possible \u2014 e.g., Lab: Park, Reyes, Sousa; Seminar: Qiu, Tran, Udo.",
+          "B": "Possible \u2014 e.g., Lab: Park, Qiu, Tran; Seminar: Reyes, Sousa, Udo.",
+          "C": "Possible \u2014 e.g., Lab: Park, Qiu, Tran; Seminar: Reyes, Sousa, Udo.",
+          "D": "Correct \u2014 this cannot be true.",
+          "E": "Possible \u2014 e.g., Lab: Park, Reyes, Sousa; Seminar: Qiu, Tran, Udo."
+        },
+        "tags": ["cannot_be_true", "except", "grouping"],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": ["lg-grouping.json"]
+        }
+      }
+    ]
+  }
+]

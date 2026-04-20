@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d3-b0-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 3,
+    "scenario": "A bakery produces exactly six specialty pastries — Almond, Brioche, Cruller, Danish, Eclair, and Florentine — one at a time, in six consecutive slots numbered first through sixth. Each pastry is baked in either the deck oven or the convection oven, with exactly three pastries baked in each oven. The schedule must satisfy the following constraints. The Almond is baked at some point before the Florentine. The Brioche is baked at some point before the Danish. The Cruller and the Eclair are baked in immediately consecutive slots. The Almond is not in slot 1. The Florentine is not in slot 6. The Almond and the Brioche are baked in the same oven. The Cruller and the Eclair are baked in different ovens. The pastry in slot 1 is baked in the deck oven. The Danish is baked in the convection oven. If the Almond is in slot 2, then the Florentine is baked in the deck oven. If the Cruller is baked in the deck oven, then the Brioche is in slot 3.",
+    "entities": [
+      "Almond",
+      "Brioche",
+      "Cruller",
+      "Danish",
+      "Eclair",
+      "Florentine"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "attributeDimension": {
+      "name": "oven",
+      "values": [
+        "deck",
+        "convection"
+      ],
+      "groupSize": 3
+    },
+    "rules": [
+      {
+        "type": "before",
+        "a": "Almond",
+        "b": "Florentine"
+      },
+      {
+        "type": "before",
+        "a": "Brioche",
+        "b": "Danish"
+      },
+      {
+        "type": "adjacent",
+        "a": "Cruller",
+        "b": "Eclair"
+      },
+      {
+        "type": "not_at",
+        "entity": "Almond",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Florentine",
+        "position": 6
+      },
+      {
+        "type": "same_group",
+        "a": "Almond",
+        "b": "Brioche",
+        "note": "oven"
+      },
+      {
+        "type": "different_group",
+        "a": "Cruller",
+        "b": "Eclair",
+        "note": "oven"
+      },
+      {
+        "type": "cross_dim",
+        "description": "The pastry in slot 1 is baked in the deck oven."
+      },
+      {
+        "type": "cross_dim",
+        "description": "The Danish is baked in the convection oven."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If the Almond is in slot 2, then the Florentine is baked in the deck oven."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If the Cruller is baked in the deck oven, then the Brioche is in slot 3."
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Almond": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 5,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 6,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 4,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 5,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 4,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 4,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 5,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 5,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 4,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 4,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 5,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 4,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 3,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 2,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 5,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 4,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Florentine": {
+          "position": 5,
+          "attribute": "convection"
+        }
+      },
+      {
+        "Almond": {
+          "position": 4,
+          "attribute": "deck"
+        },
+        "Brioche": {
+          "position": 3,
+          "attribute": "deck"
+        },
+        "Cruller": {
+          "position": 2,
+          "attribute": "convection"
+        },
+        "Danish": {
+          "position": 6,
+          "attribute": "convection"
+        },
+        "Eclair": {
+          "position": 1,
+          "attribute": "deck"
+        },
+        "Florentine": {
+          "position": 5,
+          "attribute": "convection"
+        }
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of pastries to slots and ovens, listed as slot(pastry, oven) from first to sixth?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "1(Brioche, deck), 2(Eclair, deck), 3(Cruller, convection), 4(Almond, deck), 5(Florentine, convection), 6(Danish, convection)"
+          },
+          {
+            "label": "B",
+            "text": "1(Almond, deck), 2(Brioche, deck), 3(Cruller, deck), 4(Eclair, convection), 5(Florentine, convection), 6(Danish, convection)"
+          },
+          {
+            "label": "C",
+            "text": "1(Brioche, deck), 2(Danish, convection), 3(Almond, deck), 4(Cruller, convection), 5(Eclair, deck), 6(Florentine, convection)"
+          },
+          {
+            "label": "D",
+            "text": "1(Brioche, convection), 2(Danish, convection), 3(Almond, deck), 4(Florentine, convection), 5(Cruller, convection), 6(Eclair, deck)"
+          },
+          {
+            "label": "E",
+            "text": "1(Eclair, deck), 2(Cruller, convection), 3(Almond, deck), 4(Danish, convection), 5(Brioche, deck), 6(Florentine, convection)"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Brioche(1, deck): slot 1 is deck ✓; Almond and Brioche same oven (both deck) ✓. Cruller(3, convection) and Eclair(2, deck): adjacent ✓, different ovens ✓. Almond(4, deck), Florentine(5, convection), Danish(6, convection). Almond before Florentine ✓; Brioche before Danish ✓; Almond not at 1 ✓; Florentine not at 6 ✓; Danish convection ✓. Almond not at 2 so that conditional is vacuously satisfied; Cruller is convection so the Cruller-deck conditional is vacuously satisfied.",
+          "A": "Correct. Every ordinal, attribute, and cross-dimensional rule is satisfied.",
+          "B": "Almond is in slot 1, violating the rule that Almond is not in slot 1.",
+          "C": "Florentine is in slot 6, violating the rule that Florentine is not in slot 6.",
+          "D": "Almond and Brioche must be in the same oven (Brioche is convection, Almond is deck), and the slot-1 pastry (Brioche) must be deck, not convection.",
+          "E": "Brioche is before Danish is required; here Brioche is in slot 5 and Danish is in slot 4, so Brioche is after Danish — violation."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The Almond is in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "The Florentine is baked in the convection oven."
+          },
+          {
+            "label": "C",
+            "text": "The Brioche is in slot 1."
+          },
+          {
+            "label": "D",
+            "text": "The Danish is in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "The Eclair is baked in the deck oven."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Florentine is convection in every verified world. Since Almond and Brioche share an oven and Almond is always deck, the three deck slots are {Almond, Brioche, one of Cruller/Eclair}. That forces Danish and Florentine (plus the other of Cruller/Eclair) into convection.",
+          "A": "Almond can be at slot 3 or slot 4 across the verified worlds; not forced to slot 3.",
+          "B": "Correct. Florentine is baked in the convection oven in all 8 verified worlds.",
+          "C": "Brioche can be at slots 1, 3, 4, or 5 across verified worlds; not forced to slot 1.",
+          "D": "Danish is at slot 2 in some verified worlds and slot 6 in others; not forced.",
+          "E": "Eclair is deck in some worlds and convection in others; not forced."
+        },
+        "tags": [
+          "must_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If the Cruller is baked in the deck oven, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "attribute_is",
+            "entity": "Cruller",
+            "attribute": "deck"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The Brioche is in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "The Almond is in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "The Eclair is in slot 1."
+          },
+          {
+            "label": "D",
+            "text": "The Florentine is baked in the deck oven."
+          },
+          {
+            "label": "E",
+            "text": "The Danish is in slot 2."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Cruller is baked in the deck oven, the conditional \"If Cruller is deck, then Brioche is in slot 3\" fires. In the resulting world Cruller=1 deck, Eclair=2 convection, Brioche=3 deck, Almond=4 deck, Florentine=5 convection, Danish=6 convection. So Brioche is in slot 3.",
+          "A": "Correct. The chained conditional forces Brioche into slot 3.",
+          "B": "Almond is in slot 4 when Cruller is deck; not slot 3.",
+          "C": "Eclair is in slot 2 when Cruller is deck; not slot 1.",
+          "D": "Florentine is always baked in the convection oven; it is never deck.",
+          "E": "Danish is in slot 6 when Cruller is deck; not slot 2."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If the Danish is in slot 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Danish",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The Cruller is in slot 5."
+          },
+          {
+            "label": "B",
+            "text": "The Eclair is in slot 5."
+          },
+          {
+            "label": "C",
+            "text": "The Cruller is baked in the deck oven."
+          },
+          {
+            "label": "D",
+            "text": "The Brioche is in slot 1."
+          },
+          {
+            "label": "E",
+            "text": "The Florentine is in slot 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Danish is in slot 2, Brioche must be in slot 1 (Brioche precedes Danish). In both verified Danish=2 worlds, Brioche is in slot 1, Almond is in slot 3, Florentine is in slot 4, and the Cruller/Eclair pair occupies slots 5 and 6 in some order.",
+          "A": "Cruller occupies slot 5 in one Danish=2 world and slot 6 in the other. Not forced to 5.",
+          "B": "Eclair occupies slot 5 in one Danish=2 world and slot 6 in the other. Not forced to 5.",
+          "C": "Cruller is convection in both Danish=2 worlds; never deck in this case.",
+          "D": "Correct. Brioche must precede Danish, and slot 2 is Danish, so Brioche is in slot 1.",
+          "E": "Florentine is in slot 4 in both Danish=2 worlds, not slot 5."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The Almond is in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "The Danish is in slot 2."
+          },
+          {
+            "label": "C",
+            "text": "The Brioche is in slot 2."
+          },
+          {
+            "label": "D",
+            "text": "The Eclair is in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "The Cruller is in slot 1."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Brioche must be baked in the deck oven (same oven as Almond, which is always deck), and slot 2 must be baked in the convection oven in every verified world (since slot 1 is deck and Brioche is deck and Almond is deck — three deck pastries force slot 2 to convection when Danish occupies slot 2, or when the Cruller-Eclair pair straddles slot 2). Enumeration confirms Brioche is never at slot 2.",
+          "A": "Almond is at slot 4 in several verified worlds (e.g., W5: 1Brioche-d, 2Cruller-c, 3Eclair-d, 4Almond-d, 5Florentine-c, 6Danish-c).",
+          "B": "Danish is at slot 2 in some verified worlds (e.g., W1: 1Brioche-d, 2Danish-c, 3Almond-d, 4Florentine-c, 5Cruller-c, 6Eclair-d).",
+          "C": "Correct. Brioche is never at slot 2 across all 8 verified worlds.",
+          "D": "Eclair is at slot 6 in some verified worlds (e.g., W1).",
+          "E": "Cruller is at slot 1 in one verified world (W7: 1Cruller-d, 2Eclair-c, 3Brioche-d, 4Almond-d, 5Florentine-c, 6Danish-c)."
+        },
+        "tags": [
+          "cannot_be_true",
+          "could_be_true_except",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d3-b0-02",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 3,
+    "scenario": "A museum will present exactly seven lectures — by Aquino, Bosch, Cayetano, Delgado, Espino, Faure, and Gallego — in seven consecutive slots numbered first through seventh. Each lecture is delivered either upstairs or downstairs, with exactly four upstairs and exactly three downstairs. The schedule must satisfy the following constraints. Aquino lectures at some point before Espino. Bosch lectures at some point before Faure, and Faure lectures at some point before Gallego. Cayetano lectures at some point before Delgado. Delgado and Espino lecture in immediately consecutive slots. Aquino and Bosch do not lecture in immediately consecutive slots. Cayetano is not in slot 7. Aquino is not in slot 7. Aquino and Bosch lecture on different floors. Delgado and Espino lecture on different floors. Faure and Gallego lecture on different floors. The lecture in slot 1 is upstairs. The lecture in slot 3 is downstairs. The lecture in slot 7 is upstairs. Gallego lectures downstairs. If Cayetano is in slot 4, then Faure lectures upstairs. If Bosch lectures downstairs, then Aquino is in slot 1 or slot 2.",
+    "entities": [
+      "Aquino",
+      "Bosch",
+      "Cayetano",
+      "Delgado",
+      "Espino",
+      "Faure",
+      "Gallego"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "attributeDimension": {
+      "name": "floor",
+      "values": [
+        "upstairs",
+        "downstairs"
+      ],
+      "groupSize": null,
+      "counts": {
+        "upstairs": 4,
+        "downstairs": 3
+      }
+    },
+    "rules": [
+      {
+        "type": "before",
+        "a": "Aquino",
+        "b": "Espino"
+      },
+      {
+        "type": "before",
+        "a": "Bosch",
+        "b": "Faure"
+      },
+      {
+        "type": "before",
+        "a": "Faure",
+        "b": "Gallego"
+      },
+      {
+        "type": "before",
+        "a": "Cayetano",
+        "b": "Delgado"
+      },
+      {
+        "type": "adjacent",
+        "a": "Delgado",
+        "b": "Espino"
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Aquino",
+        "b": "Bosch"
+      },
+      {
+        "type": "not_at",
+        "entity": "Cayetano",
+        "position": 7
+      },
+      {
+        "type": "not_at",
+        "entity": "Aquino",
+        "position": 7
+      },
+      {
+        "type": "different_group",
+        "a": "Aquino",
+        "b": "Bosch",
+        "note": "floor"
+      },
+      {
+        "type": "different_group",
+        "a": "Delgado",
+        "b": "Espino",
+        "note": "floor"
+      },
+      {
+        "type": "different_group",
+        "a": "Faure",
+        "b": "Gallego",
+        "note": "floor"
+      },
+      {
+        "type": "cross_dim",
+        "description": "Exactly four lectures are delivered upstairs and exactly three are delivered downstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "The lecture in slot 1 is delivered upstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "The lecture in slot 3 is delivered downstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "The lecture in slot 7 is delivered upstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "Gallego lectures downstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If Cayetano is in slot 4, then Faure lectures upstairs."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If Bosch lectures downstairs, then Aquino is in slot 1 or slot 2."
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Aquino": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Bosch": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Cayetano": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Bosch": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Cayetano": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 5,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 5,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 4,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 3,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 5,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 4,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 4,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 5,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 3,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 4,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 5,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 3,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 5,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Espino": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 3,
+          "attribute": "downstairs"
+        }
+      },
+      {
+        "Aquino": {
+          "position": 5,
+          "attribute": "downstairs"
+        },
+        "Bosch": {
+          "position": 1,
+          "attribute": "upstairs"
+        },
+        "Cayetano": {
+          "position": 4,
+          "attribute": "upstairs"
+        },
+        "Delgado": {
+          "position": 7,
+          "attribute": "upstairs"
+        },
+        "Espino": {
+          "position": 6,
+          "attribute": "downstairs"
+        },
+        "Faure": {
+          "position": 2,
+          "attribute": "upstairs"
+        },
+        "Gallego": {
+          "position": 3,
+          "attribute": "downstairs"
+        }
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the complete schedule of lectures, listed as slot(lecturer, floor) from first to seventh?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "1(Aquino, upstairs), 2(Cayetano, upstairs), 3(Bosch, downstairs), 4(Faure, upstairs), 5(Gallego, downstairs), 6(Delgado, downstairs), 7(Espino, upstairs)"
+          },
+          {
+            "label": "B",
+            "text": "1(Bosch, upstairs), 2(Aquino, upstairs), 3(Gallego, downstairs), 4(Cayetano, upstairs), 5(Faure, upstairs), 6(Espino, downstairs), 7(Delgado, upstairs)"
+          },
+          {
+            "label": "C",
+            "text": "1(Aquino, upstairs), 2(Faure, upstairs), 3(Bosch, downstairs), 4(Cayetano, upstairs), 5(Gallego, downstairs), 6(Delgado, downstairs), 7(Espino, upstairs)"
+          },
+          {
+            "label": "D",
+            "text": "1(Bosch, upstairs), 2(Cayetano, upstairs), 3(Aquino, downstairs), 4(Faure, upstairs), 5(Gallego, downstairs), 6(Delgado, downstairs), 7(Espino, downstairs)"
+          },
+          {
+            "label": "E",
+            "text": "1(Aquino, upstairs), 2(Cayetano, upstairs), 3(Gallego, downstairs), 4(Faure, upstairs), 5(Bosch, upstairs), 6(Delgado, downstairs), 7(Espino, upstairs)"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Checking (A) against every rule: Aquino(1) before Espino(7) ✓; Bosch(3) before Faure(4) before Gallego(5) ✓; Cayetano(2) before Delgado(6) ✓; Delgado(6) and Espino(7) adjacent ✓; Aquino(1) and Bosch(3) not adjacent ✓; Cayetano not at 7 ✓; Aquino not at 7 ✓; Aquino and Bosch on different floors (up vs. down) ✓; Delgado and Espino different (dn vs. up) ✓; Faure and Gallego different (up vs. dn) ✓; 4 upstairs {Aquino, Cayetano, Faure, Espino} and 3 downstairs {Bosch, Gallego, Delgado} ✓; slot-1 upstairs ✓; slot-3 downstairs ✓; slot-7 upstairs ✓; Gallego downstairs ✓.",
+          "A": "Correct. All rules hold.",
+          "B": "Aquino(2) and Bosch(1) are in immediately consecutive slots, violating the not-adjacent rule for Aquino and Bosch. Also slot 3 (Gallego) is downstairs (OK) but this places Gallego before Faure, and there is no Faure-before-Gallego violation check needed; however the Aquino-Bosch adjacency alone kills this choice.",
+          "C": "Bosch is in slot 3, but Faure is in slot 2 and the rule requires Bosch before Faure — violated.",
+          "D": "Slot 7 (Espino) is marked downstairs, but the rule requires slot 7 to be upstairs.",
+          "E": "Bosch is in slot 5 and Faure is in slot 4, violating the rule that Bosch is before Faure."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cayetano is in slot 2."
+          },
+          {
+            "label": "B",
+            "text": "Bosch is in slot 1."
+          },
+          {
+            "label": "C",
+            "text": "Espino lectures downstairs."
+          },
+          {
+            "label": "D",
+            "text": "Faure lectures upstairs."
+          },
+          {
+            "label": "E",
+            "text": "Aquino is in slot 1."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Faure is always upstairs. Faure and Gallego are on different floors, and Gallego is always downstairs, so Faure must be upstairs in every verified world.",
+          "A": "Cayetano is at slot 2, 4, or 5 across the verified worlds; not forced to 2.",
+          "B": "Bosch is at slot 1 in some worlds and slot 3 in others; not forced.",
+          "C": "Espino is at slot 6 or 7; when at slot 7, Espino is upstairs. So Espino is not always downstairs.",
+          "D": "Correct. Faure is always upstairs because Faure and Gallego differ on floor and Gallego is always downstairs.",
+          "E": "Aquino is at slots 1, 3, 4, or 5 across verified worlds; not forced."
+        },
+        "tags": [
+          "must_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Bosch is in slot 1, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Bosch",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Aquino lectures downstairs."
+          },
+          {
+            "label": "B",
+            "text": "Cayetano is in slot 2."
+          },
+          {
+            "label": "C",
+            "text": "Gallego is in slot 3."
+          },
+          {
+            "label": "D",
+            "text": "Espino is in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Delgado is in slot 7."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Bosch at slot 1 means Bosch is upstairs (slot-1 rule). Aquino and Bosch are on different floors, so Aquino lectures downstairs.",
+          "A": "Correct. Aquino and Bosch differ on floor; slot-1 (Bosch) is upstairs, so Aquino is downstairs.",
+          "B": "When Bosch=1, Cayetano can be at slot 2 or slot 4 across verified worlds; not forced.",
+          "C": "Gallego can be at slot 3 or slot 5 in Bosch=1 worlds; not forced.",
+          "D": "Espino can be at slot 6 or slot 7 in Bosch=1 worlds; not forced.",
+          "E": "Delgado can be at slot 6 or slot 7 in Bosch=1 worlds; not forced."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cayetano lectures downstairs."
+          },
+          {
+            "label": "B",
+            "text": "Gallego is in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "Cayetano is in slot 7."
+          },
+          {
+            "label": "D",
+            "text": "Faure is in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Aquino is in slot 7."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Gallego can be in slot 3 when Bosch and Aquino occupy slots 1 and 2 in some order. Several verified worlds place Gallego at slot 3 (e.g., W9: 1Bosch-up, 2Faure-up, 3Gallego-dn, 4Aquino-dn, 5Cayetano-up, 6Delgado-dn, 7Espino-up).",
+          "A": "Cayetano is always upstairs in every verified world, so this cannot be true.",
+          "B": "Correct. Gallego is in slot 3 in several verified worlds.",
+          "C": "Cayetano is in slots 2, 4, or 5 — never in slot 7 (and explicit rule forbids 7).",
+          "D": "Faure is in slots 2 or 4 — never in slot 6.",
+          "E": "Aquino is never in slot 7 (explicit rule)."
+        },
+        "tags": [
+          "could_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Aquino is in slot 1."
+          },
+          {
+            "label": "B",
+            "text": "Delgado is in slot 6."
+          },
+          {
+            "label": "C",
+            "text": "Espino is in slot 6."
+          },
+          {
+            "label": "D",
+            "text": "Faure is in slot 3."
+          },
+          {
+            "label": "E",
+            "text": "Gallego is in slot 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Faure lectures upstairs (forced); slot 3 lectures downstairs (forced). Therefore Faure cannot be in slot 3.",
+          "A": "Aquino is in slot 1 in some verified worlds (e.g., 1Aquino, 2Cayetano, 3Bosch ...).",
+          "B": "Delgado is in slot 6 in several verified worlds.",
+          "C": "Espino is in slot 6 in several verified worlds.",
+          "D": "Correct. Slot 3 must be downstairs and Faure must be upstairs — contradiction.",
+          "E": "Gallego is in slot 5 in several verified worlds."
+        },
+        "tags": [
+          "cannot_be_true",
+          "could_be_true_except",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-advanced_linear-d3-b0-03",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 3,
+    "scenario": "A symposium features exactly six talks — by Hadley, Ichiro, Jurek, Kaplan, Leung, and Moreno — scheduled in six consecutive slots numbered first through sixth. Each talk is held in either the red room or the blue room, with exactly three talks in each room. The schedule must satisfy the following constraints. Hadley speaks at some point before Moreno. Jurek speaks at some point before Leung. Ichiro and Kaplan speak in immediately consecutive slots. Hadley is not in slot 6. Leung is not in slot 1. Moreno is not in slot 1. Hadley and Jurek speak in the same room. Ichiro and Kaplan speak in different rooms. Leung and Moreno speak in the same room. The talk in slot 1 is held in the red room. The talk in slot 6 is held in the blue room. If Kaplan is in slot 3, then Moreno speaks in the red room. If Leung speaks in the blue room, then Hadley is in slot 2.",
+    "entities": [
+      "Hadley",
+      "Ichiro",
+      "Jurek",
+      "Kaplan",
+      "Leung",
+      "Moreno"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "attributeDimension": {
+      "name": "room",
+      "values": [
+        "red",
+        "blue"
+      ],
+      "groupSize": 3
+    },
+    "rules": [
+      {
+        "type": "before",
+        "a": "Hadley",
+        "b": "Moreno"
+      },
+      {
+        "type": "before",
+        "a": "Jurek",
+        "b": "Leung"
+      },
+      {
+        "type": "adjacent",
+        "a": "Ichiro",
+        "b": "Kaplan"
+      },
+      {
+        "type": "not_at",
+        "entity": "Hadley",
+        "position": 6
+      },
+      {
+        "type": "not_at",
+        "entity": "Leung",
+        "position": 1
+      },
+      {
+        "type": "not_at",
+        "entity": "Moreno",
+        "position": 1
+      },
+      {
+        "type": "same_group",
+        "a": "Hadley",
+        "b": "Jurek",
+        "note": "room"
+      },
+      {
+        "type": "different_group",
+        "a": "Ichiro",
+        "b": "Kaplan",
+        "note": "room"
+      },
+      {
+        "type": "same_group",
+        "a": "Leung",
+        "b": "Moreno",
+        "note": "room"
+      },
+      {
+        "type": "cross_dim",
+        "description": "The talk in slot 1 is held in the red room."
+      },
+      {
+        "type": "cross_dim",
+        "description": "The talk in slot 6 is held in the blue room."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If Kaplan is in slot 3, then Moreno speaks in the red room."
+      },
+      {
+        "type": "cross_dim",
+        "description": "If Leung speaks in the blue room, then Hadley is in slot 2."
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 3,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 3,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 5,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 5,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 6,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 4,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 4,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Leung": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 3,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 4,
+          "attribute": "blue"
+        }
+      },
+      {
+        "Hadley": {
+          "position": 2,
+          "attribute": "red"
+        },
+        "Ichiro": {
+          "position": 6,
+          "attribute": "blue"
+        },
+        "Jurek": {
+          "position": 1,
+          "attribute": "red"
+        },
+        "Kaplan": {
+          "position": 5,
+          "attribute": "red"
+        },
+        "Leung": {
+          "position": 4,
+          "attribute": "blue"
+        },
+        "Moreno": {
+          "position": 3,
+          "attribute": "blue"
+        }
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be the complete schedule of talks, listed as slot(speaker, room) from first to sixth?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "1(Jurek, red), 2(Hadley, red), 3(Ichiro, red), 4(Kaplan, blue), 5(Leung, blue), 6(Moreno, blue)"
+          },
+          {
+            "label": "B",
+            "text": "1(Hadley, red), 2(Jurek, red), 3(Leung, blue), 4(Ichiro, red), 5(Kaplan, blue), 6(Moreno, blue)"
+          },
+          {
+            "label": "C",
+            "text": "1(Jurek, red), 2(Hadley, red), 3(Moreno, blue), 4(Ichiro, red), 5(Kaplan, blue), 6(Leung, red)"
+          },
+          {
+            "label": "D",
+            "text": "1(Jurek, red), 2(Hadley, blue), 3(Leung, blue), 4(Ichiro, red), 5(Kaplan, blue), 6(Moreno, blue)"
+          },
+          {
+            "label": "E",
+            "text": "1(Jurek, red), 2(Hadley, red), 3(Ichiro, red), 4(Leung, blue), 5(Kaplan, red), 6(Moreno, blue)"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Jurek(1, red): slot 1 red ✓. Hadley(2, red): Hadley-Jurek same room ✓. Ichiro(3, red) and Kaplan(4, blue): adjacent ✓, different rooms ✓. Leung(5, blue), Moreno(6, blue): Leung-Moreno same ✓, Jurek before Leung ✓, Hadley before Moreno ✓, slot 6 blue ✓, room counts red={Jurek, Hadley, Ichiro}=3 and blue={Kaplan, Leung, Moreno}=3. The conditional \"If Leung is blue, Hadley is at slot 2\": Leung is blue and Hadley is at slot 2 ✓. The conditional \"If Kaplan is at slot 3, then Moreno is red\" is vacuously satisfied (Kaplan is not at slot 3).",
+          "A": "Correct. All ordinal, attribute, and cross-dimensional rules are satisfied.",
+          "B": "Ichiro(4) and Kaplan(5) adjacent ✓, but Leung is in slot 3 and Jurek is in slot 2 — so Jurek is before Leung ✓. However Hadley is in slot 1 and the cross-dim rule \"If Leung is blue, then Hadley is at slot 2\" fires (Leung is blue in this choice) and requires Hadley at slot 2 — violated.",
+          "C": "Slot 6 is Leung in the red room, violating the rule that slot 6 is blue.",
+          "D": "Hadley and Jurek must be in the same room. Jurek is red (slot 1) but Hadley is blue — violation.",
+          "E": "Ichiro(3) and Kaplan(5) are not adjacent — violated. Also Kaplan is red in slot 5 but Leung/Moreno occupy remaining positions; red count would exceed 3."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hadley speaks in the red room."
+          },
+          {
+            "label": "B",
+            "text": "Ichiro is in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "Kaplan speaks in the blue room."
+          },
+          {
+            "label": "D",
+            "text": "Moreno is in slot 6."
+          },
+          {
+            "label": "E",
+            "text": "Leung is in slot 3."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hadley is in the red room in every verified world. Since Leung is always blue (same room as Moreno, who is always blue via the slot-6 forcing chain), the Leung-blue conditional fires and forces Hadley=2. Hadley/Jurek same room and Jurek=1 (red) forces Hadley=red.",
+          "A": "Correct. Hadley speaks in the red room in all 16 verified worlds.",
+          "B": "Ichiro can be in slot 3, 4, 5, or 6 across verified worlds; not forced.",
+          "C": "Kaplan speaks in blue in some worlds and red in others; not forced.",
+          "D": "Moreno is in slot 3, 4, 5, or 6 across verified worlds; not forced to 6.",
+          "E": "Leung is in slot 3, 4, 5, or 6 across verified worlds; not forced to 3."
+        },
+        "tags": [
+          "must_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Ichiro is in slot 3, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ichiro",
+            "position": 3
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Kaplan is in slot 4."
+          },
+          {
+            "label": "B",
+            "text": "Kaplan speaks in the blue room."
+          },
+          {
+            "label": "C",
+            "text": "Ichiro speaks in the red room."
+          },
+          {
+            "label": "D",
+            "text": "Leung is in slot 5."
+          },
+          {
+            "label": "E",
+            "text": "Moreno is in slot 6."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Ichiro is in slot 3, Kaplan must be adjacent to Ichiro. Slots 1 and 2 are occupied by Jurek and Hadley, so Kaplan must be in slot 4.",
+          "A": "Correct. Kaplan must be adjacent to Ichiro; slots 1 and 2 are taken, so Kaplan is in slot 4.",
+          "B": "Kaplan can be blue or red in Ichiro=3 worlds (Ichiro and Kaplan differ, and Ichiro can be red or blue).",
+          "C": "Ichiro can be red (slot 3 is red in some worlds) or blue (in others); not forced.",
+          "D": "Leung can be in slot 5 or slot 6 in Ichiro=3 worlds; not forced.",
+          "E": "Moreno can be in slot 5 or slot 6 in Ichiro=3 worlds; not forced."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Moreno is in slot 3."
+          },
+          {
+            "label": "B",
+            "text": "Kaplan is in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "Leung speaks in the red room."
+          },
+          {
+            "label": "D",
+            "text": "Jurek speaks in the blue room."
+          },
+          {
+            "label": "E",
+            "text": "Hadley is in slot 3."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Moreno can be in slot 3 — for example when Ichiro and Kaplan fill slots 4 and 5, Leung occupies slot 6, and Moreno takes slot 3. Several verified worlds place Moreno at slot 3 (e.g., W7: 1Jurek-r, 2Hadley-r, 3Moreno-b, 4Ichiro-r, 5Kaplan-b, 6Leung-b).",
+          "A": "Correct. Moreno is in slot 3 in multiple verified worlds.",
+          "B": "Kaplan is always in slot 4, 5, or 6; never in slot 3 (Ichiro-Kaplan adjacency plus slots 1,2 being occupied keeps the pair later).",
+          "C": "Leung is blue in every verified world (same room as Moreno, who is always blue in every world).",
+          "D": "Jurek speaks in the red room in every verified world (slot 1 is always red, and Jurek is always slot 1).",
+          "E": "Hadley is always in slot 2, never slot 3."
+        },
+        "tags": [
+          "could_be_true",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d3-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d3-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Each of the following could be true EXCEPT:",
+        "localRules": [],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ichiro is in slot 6."
+          },
+          {
+            "label": "B",
+            "text": "Leung is in slot 3."
+          },
+          {
+            "label": "C",
+            "text": "Kaplan speaks in the red room."
+          },
+          {
+            "label": "D",
+            "text": "Moreno speaks in the red room."
+          },
+          {
+            "label": "E",
+            "text": "Leung is in slot 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Moreno is blue in every verified world. Slot 6 is blue; Leung-Moreno same room; and across the base rules and cross-dim constraints, Moreno is forced blue.",
+          "A": "Ichiro is in slot 6 in some verified worlds (e.g., W15-16 where Kaplan is in slot 5 or 6).",
+          "B": "Leung is in slot 3 in multiple verified worlds.",
+          "C": "Kaplan speaks in red in some worlds (when Ichiro is blue, Kaplan is red).",
+          "D": "Correct. Moreno is always blue — slot 6 is blue and Moreno is in the blue group with Leung; the chained conditional \"If Leung blue, Hadley=2\" is always satisfied because Leung is always blue.",
+          "E": "Leung is in slot 5 in several verified worlds."
+        },
+        "tags": [
+          "cannot_be_true",
+          "could_be_true_except",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "claude-code-subagent",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ]
+  }
+]

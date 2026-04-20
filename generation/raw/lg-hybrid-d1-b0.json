@@ -1,0 +1,553 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d1-b0-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "A small museum will display exactly five sculptures — Agate, Basalt, Coral, Drift, and Ember — across two consecutive wings: the North wing and the South wing. The North wing holds exactly two sculptures and the South wing holds exactly three sculptures. Within each wing the sculptures are arranged in a visible left-to-right order, so the positions are North-1, North-2, South-1, South-2, and South-3, read as a single left-to-right sequence. Each sculpture occupies exactly one position. The display is subject to the following conditions. Agate is displayed in the North wing. Ember is displayed in the South wing. Basalt is displayed somewhere to the left of Coral.",
+    "entities": ["Agate", "Basalt", "Coral", "Drift", "Ember"],
+    "positions": [1, 2, 3, 4, 5],
+    "positionLabels": {
+      "1": "North-1",
+      "2": "North-2",
+      "3": "South-1",
+      "4": "South-2",
+      "5": "South-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Agate", "position": 3 },
+      { "type": "not_at", "entity": "Agate", "position": 4 },
+      { "type": "not_at", "entity": "Agate", "position": 5 },
+      { "type": "not_at", "entity": "Ember", "position": 1 },
+      { "type": "not_at", "entity": "Ember", "position": 2 },
+      { "type": "before", "a": "Basalt", "b": "Coral" }
+    ],
+    "verifiedSolutions": [
+      { "Agate": 1, "Basalt": 2, "Coral": 3, "Drift": 4, "Ember": 5 },
+      { "Agate": 1, "Basalt": 2, "Coral": 3, "Drift": 5, "Ember": 4 },
+      { "Agate": 1, "Basalt": 2, "Coral": 4, "Drift": 3, "Ember": 5 },
+      { "Agate": 1, "Basalt": 2, "Coral": 4, "Drift": 5, "Ember": 3 },
+      { "Agate": 1, "Basalt": 2, "Coral": 5, "Drift": 3, "Ember": 4 },
+      { "Agate": 1, "Basalt": 2, "Coral": 5, "Drift": 4, "Ember": 3 },
+      { "Agate": 1, "Basalt": 3, "Coral": 4, "Drift": 2, "Ember": 5 },
+      { "Agate": 1, "Basalt": 3, "Coral": 5, "Drift": 2, "Ember": 4 },
+      { "Agate": 1, "Basalt": 4, "Coral": 5, "Drift": 2, "Ember": 3 },
+      { "Agate": 2, "Basalt": 1, "Coral": 3, "Drift": 4, "Ember": 5 },
+      { "Agate": 2, "Basalt": 1, "Coral": 3, "Drift": 5, "Ember": 4 },
+      { "Agate": 2, "Basalt": 1, "Coral": 4, "Drift": 3, "Ember": 5 },
+      { "Agate": 2, "Basalt": 1, "Coral": 4, "Drift": 5, "Ember": 3 },
+      { "Agate": 2, "Basalt": 1, "Coral": 5, "Drift": 3, "Ember": 4 },
+      { "Agate": 2, "Basalt": 1, "Coral": 5, "Drift": 4, "Ember": 3 },
+      { "Agate": 2, "Basalt": 3, "Coral": 4, "Drift": 1, "Ember": 5 },
+      { "Agate": 2, "Basalt": 3, "Coral": 5, "Drift": 1, "Ember": 4 },
+      { "Agate": 2, "Basalt": 4, "Coral": 5, "Drift": 1, "Ember": 3 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b0-01-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate list of the sculptures displayed at North-1, North-2, South-1, South-2, and South-3, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Agate, Basalt, Coral, Drift, Ember" },
+          { "label": "B", "text": "Drift, Basalt, Agate, Coral, Ember" },
+          { "label": "C", "text": "Ember, Agate, Basalt, Coral, Drift" },
+          { "label": "D", "text": "Agate, Coral, Basalt, Drift, Ember" },
+          { "label": "E", "text": "Agate, Ember, Basalt, Coral, Drift" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Agate is at North-1 (North wing, OK); Ember is at South-3 (South wing, OK); Basalt (pos 2) is displayed to the left of Coral (pos 3), satisfying the before-rule. Every rule is satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Agate is at South-1 — but the rules require Agate to be displayed in the North wing.",
+          "C": "Ember is at North-1 — but the rules require Ember to be displayed in the South wing.",
+          "D": "Coral is at North-2 (pos 2) and Basalt is at South-1 (pos 3), so Basalt is not displayed to the left of Coral — violates the Basalt-before-Coral rule.",
+          "E": "Ember is at North-2 — but the rules require Ember to be displayed in the South wing."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-01-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Agate is displayed somewhere to the left of Coral." },
+          { "label": "B", "text": "Basalt is displayed at North-1." },
+          { "label": "C", "text": "Drift is displayed at South-1." },
+          { "label": "D", "text": "Coral is displayed at South-1." },
+          { "label": "E", "text": "Ember is displayed at South-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Agate must be in the North wing (positions 1-2) and Coral must be to the right of Basalt. Since Basalt cannot be Coral's equal, Coral must occupy position 3 or later (South wing). Agate is always at pos 1 or 2, Coral is always at pos 3 or later, so Agate is always displayed to the left of Coral.",
+          "A": "Correct. Agate is always at pos 1 or 2 while Coral is always at pos 3, 4, or 5.",
+          "B": "Basalt can be at North-1, North-2, South-1, or South-2 depending on the world; not forced.",
+          "C": "Drift's position varies across worlds; not forced.",
+          "D": "Coral can be at South-1, South-2, or South-3; not forced to South-1.",
+          "E": "Ember can be at South-1, South-2, or South-3; not forced to South-3."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-01-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Drift is displayed at North-1, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Drift", "position": 1 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Agate is displayed at North-2." },
+          { "label": "B", "text": "Basalt is displayed at South-1." },
+          { "label": "C", "text": "Coral is displayed at South-3." },
+          { "label": "D", "text": "Ember is displayed at South-1." },
+          { "label": "E", "text": "Basalt is displayed at North-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Drift at North-1, the other North slot (North-2) must be filled by Agate, since Agate is the only other sculpture required to be in the North wing and Ember is required to be in the South wing.",
+          "A": "Correct. Agate must occupy North-2 once Drift takes North-1.",
+          "B": "Basalt could be at South-1, South-2, or North-2 in some surviving worlds; not forced.",
+          "C": "Coral could be at South-1, South-2, or South-3 in surviving worlds; not forced.",
+          "D": "Ember could be anywhere in the South wing; not forced to South-1.",
+          "E": "Basalt is at North-2 only in some surviving worlds (where Basalt is in the North wing); not forced — Basalt can also be at South-1 or South-2."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-01-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Coral is displayed at North-1." },
+          { "label": "B", "text": "Basalt is displayed at North-1." },
+          { "label": "C", "text": "Drift is displayed at North-2." },
+          { "label": "D", "text": "Coral is displayed at South-3." },
+          { "label": "E", "text": "Ember is displayed at South-1." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Coral must be displayed to the right of Basalt. If Coral were at North-1 (the leftmost position), there would be no slot to the left of Coral for Basalt.",
+          "A": "Correct. Coral at North-1 would violate the Basalt-before-Coral rule.",
+          "B": "Basalt at North-1 occurs in many valid worlds (e.g., Agate=2, Basalt=1, Coral=3, Drift=4, Ember=5).",
+          "C": "Drift at North-2 occurs in several valid worlds (e.g., Agate=1, Basalt=3, Coral=4, Drift=2, Ember=5).",
+          "D": "Coral at South-3 (pos 5) is realized in many valid worlds.",
+          "E": "Ember at South-1 is realized in several valid worlds (e.g., Agate=1, Basalt=2, Coral=4, Drift=5, Ember=3)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-01-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Drift is displayed at North-1." },
+          { "label": "B", "text": "Ember is displayed at North-1." },
+          { "label": "C", "text": "Agate is displayed at South-3." },
+          { "label": "D", "text": "Coral is displayed to the left of Basalt." },
+          { "label": "E", "text": "Basalt is displayed at South-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Drift is unconstrained by wing; it can be displayed at any of the five positions. For example, Agate=2, Basalt=3, Coral=5, Drift=1, Ember=4 places Drift at North-1.",
+          "A": "Correct. Several valid worlds place Drift at North-1.",
+          "B": "Ember must be in the South wing; North-1 is excluded.",
+          "C": "Agate must be in the North wing; South-3 is excluded.",
+          "D": "The rules require Basalt to be to the left of Coral, not the reverse.",
+          "E": "If Basalt were at South-3 (the rightmost slot), there would be no position to the right of Basalt for Coral — violating the before-rule."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d1-b0-02",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "At a small track meet, exactly five runners — Park, Quinn, Ruiz, Singh, and Tate — will be divided between two relay teams, Blue and Gold. The Blue team has exactly two runners (running leg 1 then leg 2), and the Gold team has exactly three runners (running leg 1, leg 2, then leg 3). The five roster slots are therefore Blue-leg-1, Blue-leg-2, Gold-leg-1, Gold-leg-2, and Gold-leg-3, read as a single early-to-late sequence. Each runner fills exactly one slot. The assignment is subject to the following conditions. Park runs for Blue. Tate runs for Gold. Quinn runs an earlier leg than Ruiz.",
+    "entities": ["Park", "Quinn", "Ruiz", "Singh", "Tate"],
+    "positions": [1, 2, 3, 4, 5],
+    "positionLabels": {
+      "1": "Blue-leg-1",
+      "2": "Blue-leg-2",
+      "3": "Gold-leg-1",
+      "4": "Gold-leg-2",
+      "5": "Gold-leg-3"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Park", "position": 3 },
+      { "type": "not_at", "entity": "Park", "position": 4 },
+      { "type": "not_at", "entity": "Park", "position": 5 },
+      { "type": "not_at", "entity": "Tate", "position": 1 },
+      { "type": "not_at", "entity": "Tate", "position": 2 },
+      { "type": "before", "a": "Quinn", "b": "Ruiz" }
+    ],
+    "verifiedSolutions": [
+      { "Park": 1, "Quinn": 2, "Ruiz": 3, "Singh": 4, "Tate": 5 },
+      { "Park": 1, "Quinn": 2, "Ruiz": 3, "Singh": 5, "Tate": 4 },
+      { "Park": 1, "Quinn": 2, "Ruiz": 4, "Singh": 3, "Tate": 5 },
+      { "Park": 1, "Quinn": 2, "Ruiz": 4, "Singh": 5, "Tate": 3 },
+      { "Park": 1, "Quinn": 2, "Ruiz": 5, "Singh": 3, "Tate": 4 },
+      { "Park": 1, "Quinn": 2, "Ruiz": 5, "Singh": 4, "Tate": 3 },
+      { "Park": 1, "Quinn": 3, "Ruiz": 4, "Singh": 2, "Tate": 5 },
+      { "Park": 1, "Quinn": 3, "Ruiz": 5, "Singh": 2, "Tate": 4 },
+      { "Park": 1, "Quinn": 4, "Ruiz": 5, "Singh": 2, "Tate": 3 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 3, "Singh": 4, "Tate": 5 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 3, "Singh": 5, "Tate": 4 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 4, "Singh": 3, "Tate": 5 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 4, "Singh": 5, "Tate": 3 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 5, "Singh": 3, "Tate": 4 },
+      { "Park": 2, "Quinn": 1, "Ruiz": 5, "Singh": 4, "Tate": 3 },
+      { "Park": 2, "Quinn": 3, "Ruiz": 4, "Singh": 1, "Tate": 5 },
+      { "Park": 2, "Quinn": 3, "Ruiz": 5, "Singh": 1, "Tate": 4 },
+      { "Park": 2, "Quinn": 4, "Ruiz": 5, "Singh": 1, "Tate": 3 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b0-02-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-02",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the assignment of runners to Blue-leg-1, Blue-leg-2, Gold-leg-1, Gold-leg-2, and Gold-leg-3, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Park, Quinn, Ruiz, Singh, Tate" },
+          { "label": "B", "text": "Tate, Quinn, Ruiz, Singh, Park" },
+          { "label": "C", "text": "Park, Tate, Ruiz, Singh, Quinn" },
+          { "label": "D", "text": "Park, Ruiz, Quinn, Singh, Tate" },
+          { "label": "E", "text": "Singh, Quinn, Ruiz, Park, Tate" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Park at Blue-leg-1 (Blue, OK); Quinn at Blue-leg-2 and Ruiz at Gold-leg-1, so Quinn (pos 2) runs an earlier leg than Ruiz (pos 3); Tate at Gold-leg-3 (Gold, OK). All rules satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Park is at Gold-leg-3 — but the rules require Park to run for Blue.",
+          "C": "Tate is at Blue-leg-2 — but the rules require Tate to run for Gold.",
+          "D": "Ruiz is at Blue-leg-2 (pos 2) and Quinn is at Gold-leg-1 (pos 3), so Quinn does not run an earlier leg than Ruiz — violates the Quinn-before-Ruiz rule.",
+          "E": "Park is at Gold-leg-2 — but the rules require Park to run for Blue."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-02-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Park runs an earlier leg than Tate." },
+          { "label": "B", "text": "Park runs Blue-leg-1." },
+          { "label": "C", "text": "Quinn runs Gold-leg-1." },
+          { "label": "D", "text": "Tate runs Gold-leg-3." },
+          { "label": "E", "text": "Singh runs an earlier leg than Tate." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Park must run for Blue (positions 1 or 2), and Tate must run for Gold (positions 3, 4, or 5). Since every Blue slot is earlier than every Gold slot, Park always runs an earlier leg than Tate.",
+          "A": "Correct. Park is always at pos 1 or 2 while Tate is always at pos 3, 4, or 5.",
+          "B": "Park runs for Blue but could be at Blue-leg-1 or Blue-leg-2; not forced.",
+          "C": "Quinn can be at Blue-leg-1, Blue-leg-2, Gold-leg-1, or Gold-leg-2 in various worlds; not forced.",
+          "D": "Tate runs for Gold but could be at any Gold leg; not forced to Gold-leg-3.",
+          "E": "Singh can run for either team; Singh could run Gold-leg-3 while Tate runs Gold-leg-1, making Singh later than Tate."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-02-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-02",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Quinn runs Gold-leg-2, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Quinn", "position": 4 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Ruiz runs Gold-leg-3." },
+          { "label": "B", "text": "Park runs Blue-leg-1." },
+          { "label": "C", "text": "Singh runs Blue-leg-1." },
+          { "label": "D", "text": "Park runs Blue-leg-2." },
+          { "label": "E", "text": "Tate runs Gold-leg-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Quinn must run an earlier leg than Ruiz. With Quinn at Gold-leg-2 (pos 4), Ruiz must be at a position later than pos 4. The only such slot is Gold-leg-3 (pos 5). So Ruiz must run Gold-leg-3.",
+          "A": "Correct. Ruiz must occupy the slot later than Quinn; only Gold-leg-3 qualifies.",
+          "B": "Park runs for Blue but could be at Blue-leg-1 or Blue-leg-2; not forced.",
+          "C": "Singh could be at Blue-leg-1 or Blue-leg-2 in surviving worlds; not forced.",
+          "D": "Park could be at Blue-leg-2 but could also be at Blue-leg-1; not forced.",
+          "E": "Tate must be at Gold-leg-1 (pos 3) in every surviving world, not Gold-leg-3."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-02-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-02",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Quinn runs Gold-leg-1." },
+          { "label": "B", "text": "Park runs Gold-leg-1." },
+          { "label": "C", "text": "Tate runs Blue-leg-1." },
+          { "label": "D", "text": "Ruiz runs Blue-leg-1." },
+          { "label": "E", "text": "Quinn runs Gold-leg-3." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Quinn can run for either team. In worlds where Quinn is at Gold-leg-1 (pos 3), Ruiz must be at Gold-leg-2 or Gold-leg-3. Example: Park=1, Quinn=3, Ruiz=4, Singh=2, Tate=5.",
+          "A": "Correct. Several valid worlds place Quinn at Gold-leg-1.",
+          "B": "Park must run for Blue; Gold-leg-1 is excluded.",
+          "C": "Tate must run for Gold; Blue-leg-1 is excluded.",
+          "D": "Ruiz at Blue-leg-1 (pos 1) would require Quinn to be earlier than pos 1 — impossible.",
+          "E": "Quinn at Gold-leg-3 (pos 5) would require Ruiz to be later than pos 5 — impossible."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-02-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-02",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Tate runs Blue-leg-1." },
+          { "label": "B", "text": "Tate runs Gold-leg-1." },
+          { "label": "C", "text": "Quinn runs Blue-leg-1." },
+          { "label": "D", "text": "Singh runs Gold-leg-3." },
+          { "label": "E", "text": "Park runs Blue-leg-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Tate must run for Gold; Blue-leg-1 is a Blue slot, so Tate cannot run it.",
+          "A": "Correct. Tate is required to be on Gold.",
+          "B": "Tate at Gold-leg-1 is realized in multiple valid worlds (e.g., Park=1, Quinn=4, Ruiz=5, Singh=2, Tate=3).",
+          "C": "Quinn at Blue-leg-1 is realized in multiple valid worlds (e.g., Park=2, Quinn=1, Ruiz=3, Singh=4, Tate=5).",
+          "D": "Singh at Gold-leg-3 is realized in several worlds (e.g., Park=1, Quinn=2, Ruiz=4, Singh=5, Tate=3).",
+          "E": "Park at Blue-leg-2 is realized in many worlds (e.g., Park=2, Quinn=1, Ruiz=3, Singh=4, Tate=5)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  },
+  {
+    "id": "lg-game-gen-hybrid-d1-b0-03",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "A small library will shelve exactly five books — Finch, Grove, Hale, Ivory, and Juno — across two shelves in a reading room: the Upper shelf (which holds exactly three books) and the Lower shelf (which holds exactly two books). Within each shelf the books are arranged in a strict left-to-right order, so the positions are Upper-1, Upper-2, Upper-3, Lower-1, and Lower-2, read as a single left-to-right sequence. Each book occupies exactly one position. The shelving is subject to the following conditions. Finch is shelved on the Upper shelf. Hale is shelved on the Upper shelf. Ivory is shelved on the Lower shelf. Finch is shelved somewhere to the left of Grove.",
+    "entities": ["Finch", "Grove", "Hale", "Ivory", "Juno"],
+    "positions": [1, 2, 3, 4, 5],
+    "positionLabels": {
+      "1": "Upper-1",
+      "2": "Upper-2",
+      "3": "Upper-3",
+      "4": "Lower-1",
+      "5": "Lower-2"
+    },
+    "rules": [
+      { "type": "not_at", "entity": "Finch", "position": 4 },
+      { "type": "not_at", "entity": "Finch", "position": 5 },
+      { "type": "not_at", "entity": "Hale", "position": 4 },
+      { "type": "not_at", "entity": "Hale", "position": 5 },
+      { "type": "not_at", "entity": "Ivory", "position": 1 },
+      { "type": "not_at", "entity": "Ivory", "position": 2 },
+      { "type": "not_at", "entity": "Ivory", "position": 3 },
+      { "type": "before", "a": "Finch", "b": "Grove" }
+    ],
+    "verifiedSolutions": [
+      { "Finch": 1, "Grove": 2, "Hale": 3, "Ivory": 4, "Juno": 5 },
+      { "Finch": 1, "Grove": 2, "Hale": 3, "Ivory": 5, "Juno": 4 },
+      { "Finch": 1, "Grove": 3, "Hale": 2, "Ivory": 4, "Juno": 5 },
+      { "Finch": 1, "Grove": 3, "Hale": 2, "Ivory": 5, "Juno": 4 },
+      { "Finch": 1, "Grove": 4, "Hale": 2, "Ivory": 5, "Juno": 3 },
+      { "Finch": 1, "Grove": 4, "Hale": 3, "Ivory": 5, "Juno": 2 },
+      { "Finch": 1, "Grove": 5, "Hale": 2, "Ivory": 4, "Juno": 3 },
+      { "Finch": 1, "Grove": 5, "Hale": 3, "Ivory": 4, "Juno": 2 },
+      { "Finch": 2, "Grove": 3, "Hale": 1, "Ivory": 4, "Juno": 5 },
+      { "Finch": 2, "Grove": 3, "Hale": 1, "Ivory": 5, "Juno": 4 },
+      { "Finch": 2, "Grove": 4, "Hale": 1, "Ivory": 5, "Juno": 3 },
+      { "Finch": 2, "Grove": 4, "Hale": 3, "Ivory": 5, "Juno": 1 },
+      { "Finch": 2, "Grove": 5, "Hale": 1, "Ivory": 4, "Juno": 3 },
+      { "Finch": 2, "Grove": 5, "Hale": 3, "Ivory": 4, "Juno": 1 },
+      { "Finch": 3, "Grove": 4, "Hale": 1, "Ivory": 5, "Juno": 2 },
+      { "Finch": 3, "Grove": 4, "Hale": 2, "Ivory": 5, "Juno": 1 },
+      { "Finch": 3, "Grove": 5, "Hale": 1, "Ivory": 4, "Juno": 2 },
+      { "Finch": 3, "Grove": 5, "Hale": 2, "Ivory": 4, "Juno": 1 }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b0-03-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-03",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate list of the books shelved at Upper-1, Upper-2, Upper-3, Lower-1, and Lower-2, respectively?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Finch, Grove, Hale, Ivory, Juno" },
+          { "label": "B", "text": "Finch, Ivory, Hale, Grove, Juno" },
+          { "label": "C", "text": "Grove, Finch, Hale, Ivory, Juno" },
+          { "label": "D", "text": "Finch, Grove, Juno, Hale, Ivory" },
+          { "label": "E", "text": "Finch, Hale, Ivory, Grove, Juno" }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Finch at Upper-1 (Upper, OK); Hale at Upper-3 (Upper, OK); Ivory at Lower-1 (Lower, OK); Finch (pos 1) shelved to the left of Grove (pos 2) — OK. All rules satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Ivory is at Upper-2 — but the rules require Ivory to be shelved on the Lower shelf.",
+          "C": "Finch is at Upper-2 (pos 2) and Grove is at Upper-1 (pos 1), so Finch is not shelved to the left of Grove — violates the Finch-before-Grove rule.",
+          "D": "Hale is at Lower-1 — but the rules require Hale to be shelved on the Upper shelf.",
+          "E": "Ivory is at Upper-3 — but the rules require Ivory to be shelved on the Lower shelf."
+        },
+        "tags": ["orientation_question", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-03-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Hale is shelved somewhere to the left of Ivory." },
+          { "label": "B", "text": "Finch is shelved at Upper-1." },
+          { "label": "C", "text": "Grove is shelved at Upper-3." },
+          { "label": "D", "text": "Ivory is shelved at Lower-1." },
+          { "label": "E", "text": "Juno is shelved at Lower-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Hale must be on the Upper shelf (positions 1-3) and Ivory must be on the Lower shelf (positions 4-5). So Hale is always at a position less than Ivory's, i.e., Hale is always to the left of Ivory.",
+          "A": "Correct. Hale is always at pos 1, 2, or 3 while Ivory is always at pos 4 or 5.",
+          "B": "Finch can be at Upper-1, Upper-2, or Upper-3; not forced to Upper-1.",
+          "C": "Grove can be at Upper-2, Upper-3, Lower-1, or Lower-2; not forced.",
+          "D": "Ivory can be at Lower-1 or Lower-2; not forced to Lower-1.",
+          "E": "Juno can be on either shelf; not forced."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-03-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-03",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Grove is shelved at Upper-2, then which one of the following must be true?",
+        "localRules": [
+          { "type": "at", "entity": "Grove", "position": 2 }
+        ],
+        "choices": [
+          { "label": "A", "text": "Finch is shelved at Upper-1." },
+          { "label": "B", "text": "Hale is shelved at Upper-1." },
+          { "label": "C", "text": "Juno is shelved at Lower-1." },
+          { "label": "D", "text": "Ivory is shelved at Lower-2." },
+          { "label": "E", "text": "Juno is shelved at Lower-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Grove is at Upper-2 (pos 2), then Finch must be to the left of Grove. The only position to the left of Upper-2 is Upper-1, so Finch must be at Upper-1.",
+          "A": "Correct. Finch must occupy Upper-1 once Grove is at Upper-2.",
+          "B": "Hale could be at Upper-3 (the remaining Upper slot after Finch and Grove); not forced to Upper-1.",
+          "C": "Juno could be at Lower-1 or Lower-2; not forced.",
+          "D": "Ivory could be at Lower-1 or Lower-2; not forced.",
+          "E": "Juno could be at Lower-1 or Lower-2; not forced."
+        },
+        "tags": ["must_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-03-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-03",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Ivory is shelved at Upper-1." },
+          { "label": "B", "text": "Finch is shelved at Upper-3." },
+          { "label": "C", "text": "Hale is shelved at Upper-1." },
+          { "label": "D", "text": "Juno is shelved at Upper-3." },
+          { "label": "E", "text": "Grove is shelved at Lower-2." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ivory must be shelved on the Lower shelf; Upper-1 is an Upper slot, so Ivory cannot be there.",
+          "A": "Correct. Ivory is required to be on the Lower shelf.",
+          "B": "Finch at Upper-3 is realized in some valid worlds (e.g., Finch=3, Grove=4, Hale=1, Ivory=5, Juno=2).",
+          "C": "Hale at Upper-1 is realized in many valid worlds (e.g., Finch=2, Grove=3, Hale=1, Ivory=4, Juno=5).",
+          "D": "Juno at Upper-3 is realized in several valid worlds (e.g., Finch=1, Grove=4, Hale=2, Ivory=5, Juno=3).",
+          "E": "Grove at Lower-2 is realized in several valid worlds (e.g., Finch=1, Grove=5, Hale=2, Ivory=4, Juno=3)."
+        },
+        "tags": ["cannot_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b0-03-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b0-03",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be true?",
+        "localRules": [],
+        "choices": [
+          { "label": "A", "text": "Juno is shelved at Upper-1." },
+          { "label": "B", "text": "Grove is shelved at Upper-1." },
+          { "label": "C", "text": "Ivory is shelved at Upper-3." },
+          { "label": "D", "text": "Finch is shelved at Lower-2." },
+          { "label": "E", "text": "Grove is shelved somewhere to the left of Finch." }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Juno is unconstrained by shelf, so it can be at any position. For example, Finch=2, Grove=4, Hale=3, Ivory=5, Juno=1 places Juno at Upper-1.",
+          "A": "Correct. Several valid worlds place Juno at Upper-1.",
+          "B": "If Grove were at Upper-1 (the leftmost slot), there would be no position to the left of Grove for Finch.",
+          "C": "Ivory must be on the Lower shelf; Upper-3 is excluded.",
+          "D": "Finch must be on the Upper shelf; Lower-2 is excluded.",
+          "E": "The rules require Finch to be to the left of Grove, not the reverse."
+        },
+        "tags": ["could_be_true", "hybrid"],
+        "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["lg-hybrid.json"] }
+      }
+    ]
+  }
+]
