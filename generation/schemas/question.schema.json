@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "lsatprep://question.schema.json",
+  "title": "LSAT question",
+  "oneOf": [
+    { "$ref": "#/definitions/lrQuestion" },
+    { "$ref": "#/definitions/rcQuestion" },
+    { "$ref": "#/definitions/lgQuestion" }
+  ],
+  "definitions": {
+    "choice": {
+      "type": "object",
+      "required": ["label", "text"],
+      "properties": {
+        "label": { "type": "string", "enum": ["A", "B", "C", "D", "E"] },
+        "text": { "type": "string" }
+      }
+    },
+    "explanations": {
+      "type": "object",
+      "required": ["correct"],
+      "properties": {
+        "correct": { "type": "string" },
+        "A": { "type": "string" },
+        "B": { "type": "string" },
+        "C": { "type": "string" },
+        "D": { "type": "string" },
+        "E": { "type": "string" }
+      }
+    },
+    "criticNotes": {
+      "type": "object",
+      "properties": {
+        "authenticityScore": { "type": "number", "minimum": 0, "maximum": 5 },
+        "trapQuality": { "type": "number", "minimum": 0, "maximum": 5 },
+        "flagsRaised": { "type": "array", "items": { "type": "string" } },
+        "verifiedAt": { "type": "string", "format": "date-time" },
+        "generationPass": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "pipelineVersion": { "type": "string" },
+        "generator": { "type": "string" },
+        "fewShotRefs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "lrQuestion": {
+      "type": "object",
+      "required": ["id", "section", "subtype", "difficulty", "stimulus", "questionStem", "choices", "correctAnswer", "explanations"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^lr-[0-9]{4,}$" },
+        "section": { "const": "LR" },
+        "subtype": { "type": "string" },
+        "difficulty": { "type": "integer", "enum": [1, 2, 3] },
+        "difficultyReason": { "type": "string" },
+        "stimulus": { "type": "string" },
+        "questionStem": { "type": "string" },
+        "choices": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/definitions/choice" } },
+        "correctAnswer": { "type": "string", "enum": ["A", "B", "C", "D", "E"] },
+        "explanations": { "$ref": "#/definitions/explanations" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "criticNotes": { "$ref": "#/definitions/criticNotes" },
+        "source": { "$ref": "#/definitions/source" }
+      }
+    },
+    "rcQuestion": {
+      "type": "object",
+      "required": ["id", "section", "passageId", "questionType", "difficulty", "questionStem", "choices", "correctAnswer", "explanations"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^rc-[0-9]{4,}$" },
+        "section": { "const": "RC" },
+        "passageId": { "type": "string" },
+        "questionType": { "type": "string" },
+        "difficulty": { "type": "integer", "enum": [1, 2, 3] },
+        "questionStem": { "type": "string" },
+        "choices": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/definitions/choice" } },
+        "correctAnswer": { "type": "string", "enum": ["A", "B", "C", "D", "E"] },
+        "explanations": { "$ref": "#/definitions/explanations" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "criticNotes": { "$ref": "#/definitions/criticNotes" },
+        "source": { "$ref": "#/definitions/source" }
+      }
+    },
+    "lgQuestion": {
+      "type": "object",
+      "required": ["id", "section", "gameId", "questionType", "difficulty", "questionStem", "choices", "correctAnswer", "explanations"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^lg-[0-9]{4,}$" },
+        "section": { "const": "LG" },
+        "gameId": { "type": "string" },
+        "questionType": { "type": "string", "enum": ["orientation_question", "could_be_true", "must_be_true", "cannot_be_true", "must_be_false", "rule_substitution", "equivalent"] },
+        "difficulty": { "type": "integer", "enum": [1, 2, 3] },
+        "questionStem": { "type": "string" },
+        "localRules": { "type": "array" },
+        "choices": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/definitions/choice" } },
+        "correctAnswer": { "type": "string", "enum": ["A", "B", "C", "D", "E"] },
+        "explanations": { "$ref": "#/definitions/explanations" },
+        "verifiedAssertion": { "type": "object" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "criticNotes": { "$ref": "#/definitions/criticNotes" },
+        "source": { "$ref": "#/definitions/source" }
+      }
+    }
+  }
+}

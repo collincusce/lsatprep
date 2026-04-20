@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "lsatprep://critic-report.schema.json",
+  "type": "object",
+  "required": ["cell", "reviewedAt", "items"],
+  "properties": {
+    "cell": {
+      "type": "object",
+      "required": ["section"],
+      "properties": {
+        "section": { "type": "string", "enum": ["LR", "RC", "LG"] },
+        "subtype": { "type": "string" },
+        "genre": { "type": "string" },
+        "family": { "type": "string" },
+        "difficulty": { "type": "integer" }
+      }
+    },
+    "reviewedAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["questionId", "authenticityScore", "trapQuality", "difficultyVerdict"],
+        "properties": {
+          "questionId": { "type": "string" },
+          "authenticityScore": { "type": "number", "minimum": 0, "maximum": 5 },
+          "trapQuality": { "type": "number", "minimum": 0, "maximum": 5 },
+          "difficultyVerdict": { "type": "string", "enum": ["matches", "too_easy", "too_hard"] },
+          "flagsRaised": { "type": "array", "items": { "type": "string" } },
+          "comment": { "type": "string" },
+          "solverVerified": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
