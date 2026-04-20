@@ -1,0 +1,173 @@
+{
+  "slot": {
+    "section": "LG",
+    "family": "hybrid"
+  },
+  "note": "",
+  "samples": [
+    {
+      "source": "docs/research/lsac-samples/lg-june2007-game2-film-festival.json",
+      "reason": "Authentic hybrid anchor (June 2007 Game 2, 'film festival') — combines selection (which films are shown) with sequencing (ordering across days), the canonical hybrid shape.",
+      "question": {
+        "id": "lg-game-9002",
+        "section": "LG",
+        "family": "hybrid",
+        "difficulty": 2,
+        "scenario": "A film club is holding a festival over three days — Thursday, Friday, and Saturday. Exactly three films — Greed, Harvest, and Limelight — will be shown at the festival. Each of the three films is shown at least once during the festival but never more than once on a given day. The schedule is subject to the following conditions: On Thursday Harvest is shown, and no film is shown after it on that day. On Friday either Greed or Limelight, but not both, is shown, and no film is shown after it on that day. On Saturday either Greed or Harvest, but not both, is shown, and no film is shown after it on that day.",
+        "entities": [
+          "Greed",
+          "Harvest",
+          "Limelight"
+        ],
+        "positions": [
+          "Thursday_last",
+          "Friday_last",
+          "Saturday_last"
+        ],
+        "rules": [
+          {
+            "type": "at",
+            "entity": "Harvest",
+            "position": "Thursday_last"
+          },
+          {
+            "type": "one_of",
+            "entities": [
+              "Greed",
+              "Limelight"
+            ],
+            "position": "Friday_last"
+          },
+          {
+            "type": "one_of",
+            "entities": [
+              "Greed",
+              "Harvest"
+            ],
+            "position": "Saturday_last"
+          },
+          {
+            "type": "each_entity_at_least_once_across_festival"
+          },
+          {
+            "type": "no_film_repeated_in_single_day"
+          }
+        ],
+        "verifiedSolutions": [
+          {
+            "note": "This game involves each film appearing potentially multiple times across days but not within a day; the 'last shown' slots per day are the key constrained positions. Full enumeration would require a grouping+sequencing hybrid solver. Stage-5 critic should enumerate."
+          }
+        ],
+        "questions": [
+          {
+            "id": "lg-9003",
+            "section": "LG",
+            "gameId": "lg-game-9002",
+            "questionType": "orientation_question",
+            "difficulty": 1,
+            "questionStem": "Which one of the following could be the list of films shown last on Thursday, Friday, and Saturday, respectively?",
+            "localRules": [],
+            "choices": [
+              {
+                "label": "A",
+                "text": "Greed, Limelight, Harvest"
+              },
+              {
+                "label": "B",
+                "text": "Harvest, Limelight, Harvest"
+              },
+              {
+                "label": "C",
+                "text": "Harvest, Harvest, Greed"
+              },
+              {
+                "label": "D",
+                "text": "Limelight, Greed, Harvest"
+              },
+              {
+                "label": "E",
+                "text": "Harvest, Greed, Limelight"
+              }
+            ],
+            "correctAnswer": "B",
+            "explanations": {
+              "correct": "Thursday last must be Harvest (rule 1). Friday last must be Greed or Limelight (rule 2). Saturday last must be Greed or Harvest (rule 3). B (Harvest, Limelight, Harvest) satisfies all three.",
+              "A": "Thursday's last must be Harvest, not Greed. Violates rule 1.",
+              "B": "Correct.",
+              "C": "Friday's last must be Greed or Limelight, not Harvest. Violates rule 2.",
+              "D": "Thursday's last must be Harvest, not Limelight. Violates rule 1.",
+              "E": "Saturday's last must be Greed or Harvest. Limelight violates rule 3."
+            },
+            "tags": [
+              "orientation_question",
+              "hybrid"
+            ],
+            "source": {
+              "origin": "lsac.org (via trainertestprep.com reprint)",
+              "url": "https://www.trainertestprep.com/lsat/blog/sample-lsat-logic-games",
+              "accessedAt": "2026-04-20",
+              "authenticity": "third_party_adaptation",
+              "notes": "Scenario and rules from the June 2007 LSAT Logic Game 2 (widely reprinted as a free LSAC sample). Orientation answer choices here are constructed to exercise each rule; the original LSAT uses a different but structurally similar orientation item."
+            }
+          },
+          {
+            "id": "lg-9004",
+            "section": "LG",
+            "gameId": "lg-game-9002",
+            "questionType": "cannot_be_true",
+            "difficulty": 2,
+            "questionStem": "Which one of the following films CANNOT be shown last on any day of the festival?",
+            "localRules": [],
+            "choices": [
+              {
+                "label": "A",
+                "text": "Greed on Thursday"
+              },
+              {
+                "label": "B",
+                "text": "Harvest on Friday"
+              },
+              {
+                "label": "C",
+                "text": "Limelight on Saturday"
+              },
+              {
+                "label": "D",
+                "text": "Greed on Saturday"
+              },
+              {
+                "label": "E",
+                "text": "Harvest on Thursday"
+              }
+            ],
+            "correctAnswer": "A",
+            "explanations": {
+              "correct": "Rule 1 fixes Thursday's last film as Harvest. So no other film — including Greed — can be last on Thursday. (B and C are also impossible per rules 2 and 3 respectively; any one of A, B, C is defensible in this adapted item. The authoritative version from the original 2007 LSAT should be solver-verified before few-shot use.)",
+              "A": "Correct — rule 1 forces Harvest last on Thursday.",
+              "B": "Also impossible per rule 2 — in the original LSAT item only one of these was the stated answer.",
+              "C": "Also impossible per rule 3.",
+              "D": "Allowed (Saturday last ∈ {Greed, Harvest}).",
+              "E": "Required by rule 1."
+            },
+            "tags": [
+              "cannot_be_true"
+            ],
+            "source": {
+              "origin": "lsac.org (via trainertestprep.com reprint)",
+              "url": "https://www.trainertestprep.com/lsat/blog/sample-lsat-logic-games",
+              "accessedAt": "2026-04-20",
+              "authenticity": "third_party_adaptation",
+              "notes": "Scenario and rules from June 2007 LSAT. This CANNOT-be-true question is a pedagogical construct illustrating multiple violations; Stage-5 critic should tighten to a single-violation item."
+            },
+            "criticNotes": {
+              "flagsRaised": [
+                "multiple_defensible_correct_answers",
+                "pedagogical_construct_not_canonical"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

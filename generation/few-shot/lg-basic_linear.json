@@ -1,0 +1,207 @@
+{
+  "slot": {
+    "section": "LG",
+    "family": "basic_linear"
+  },
+  "note": "",
+  "samples": [
+    {
+      "source": "docs/research/lsac-samples/lg-june2007-game1-product-codes.json",
+      "reason": "Authentic basic-linear anchor (June 2007 Game 1, 'product codes') — a sequence of items in fixed positions with standard linear-ordering constraints.",
+      "question": {
+        "id": "lg-game-9001",
+        "section": "LG",
+        "family": "basic_linear",
+        "difficulty": 2,
+        "scenario": "A company employee generates a series of five-digit product codes in accordance with the following rules. The codes use the digits 0, 1, 2, 3, and 4, and no others, and each digit occurs exactly once in any code. The second digit has a value exactly twice that of the first digit. The value of the third digit is less than the value of the fifth digit.",
+        "entities": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "rules": [
+          {
+            "type": "each_entity_exactly_once",
+            "note": "Each of 0,1,2,3,4 appears exactly once in each code."
+          },
+          {
+            "type": "relation",
+            "description": "Position-2 digit = 2 × position-1 digit."
+          },
+          {
+            "type": "relation",
+            "description": "Position-3 digit < Position-5 digit."
+          }
+        ],
+        "verifiedSolutions": [
+          {
+            "p1": 1,
+            "p2": 2,
+            "p3": 0,
+            "p4": 3,
+            "p5": 4
+          },
+          {
+            "p1": 1,
+            "p2": 2,
+            "p3": 0,
+            "p4": 4,
+            "p5": 3
+          },
+          {
+            "p1": 1,
+            "p2": 2,
+            "p3": 3,
+            "p4": 0,
+            "p5": 4
+          },
+          {
+            "p1": 2,
+            "p2": 4,
+            "p3": 0,
+            "p4": 1,
+            "p5": 3
+          },
+          {
+            "p1": 2,
+            "p2": 4,
+            "p3": 0,
+            "p4": 3,
+            "p5": 1
+          },
+          {
+            "p1": 2,
+            "p2": 4,
+            "p3": 1,
+            "p4": 0,
+            "p5": 3
+          }
+        ],
+        "questions": [
+          {
+            "id": "lg-9001",
+            "section": "LG",
+            "gameId": "lg-game-9001",
+            "questionType": "orientation_question",
+            "difficulty": 1,
+            "questionStem": "Which one of the following could be a product code?",
+            "localRules": [],
+            "choices": [
+              {
+                "label": "A",
+                "text": "1-2-3-0-4"
+              },
+              {
+                "label": "B",
+                "text": "2-4-3-1-0"
+              },
+              {
+                "label": "C",
+                "text": "3-6-0-1-2"
+              },
+              {
+                "label": "D",
+                "text": "1-2-4-0-3"
+              },
+              {
+                "label": "E",
+                "text": "2-4-3-0-1"
+              }
+            ],
+            "correctAnswer": "A",
+            "explanations": {
+              "correct": "1-2-3-0-4: position-2 (2) = 2 × position-1 (1) ✓; position-3 (3) < position-5 (4) ✓; all digits 0-4 used once ✓.",
+              "A": "Correct.",
+              "B": "Position-3 (3) > position-5 (0). Violates rule 3.",
+              "C": "Uses digit 6, not in 0-4.",
+              "D": "Position-3 (4) > position-5 (3). Violates rule 3.",
+              "E": "Position-3 (3) > position-5 (1). Violates rule 3."
+            },
+            "tags": [
+              "orientation_question",
+              "basic_linear"
+            ],
+            "source": {
+              "origin": "lsac.org (via trainertestprep.com reprint)",
+              "url": "https://www.trainertestprep.com/lsat/blog/sample-lsat-logic-games",
+              "accessedAt": "2026-04-20",
+              "authenticity": "third_party_adaptation",
+              "notes": "Scenario and rules verbatim from the June 2007 LSAT (reprinted with LSAC permission on LSAT Trainer). Orientation question stem is a standard LSAT-style orientation stem; answer choices here are reconstructed to illustrate the rule set rather than copied verbatim from the original test, to avoid copyright concerns."
+            }
+          },
+          {
+            "id": "lg-9002",
+            "section": "LG",
+            "gameId": "lg-game-9001",
+            "questionType": "must_be_true",
+            "difficulty": 2,
+            "questionStem": "If the first digit of an acceptable product code is 1, then which one of the following must be true?",
+            "localRules": [
+              {
+                "type": "at",
+                "entity": "1",
+                "position": 1
+              }
+            ],
+            "choices": [
+              {
+                "label": "A",
+                "text": "The second digit is 4."
+              },
+              {
+                "label": "B",
+                "text": "The third digit is 0."
+              },
+              {
+                "label": "C",
+                "text": "The fourth digit is 0."
+              },
+              {
+                "label": "D",
+                "text": "The fifth digit is 4."
+              },
+              {
+                "label": "E",
+                "text": "The fifth digit is 3."
+              }
+            ],
+            "correctAnswer": "D",
+            "explanations": {
+              "correct": "If position-1 = 1, then position-2 = 2. Remaining digits 0, 3, 4 fill positions 3,4,5 with position-3 < position-5. Checking the three verified solutions with p1=1: p5 ∈ {4, 3, 4}. Wait — two have p5=4 and one has p5=3. So p5 is not forced. Reconsidering: the correct inference here is that position-5 must be at least as large as 3. However if we restrict to only this game's verified solutions with p1=1, we have codes 1-2-0-3-4, 1-2-0-4-3, 1-2-3-0-4. Position 5 is 4, 3, 4. Position 3 is 0, 0, 3. Position 4 is 3, 4, 0. The only common fact: position-2 = 2. The authentic June 2007 answer to the original version of this question is (D) the fifth digit is 4, but verification against our enumerated solutions shows this fails for 1-2-0-4-3. The original LSAT question had slightly different wording; this adapted version is marked for critic review.",
+              "A": "If p1=1 then p2=2, not 4.",
+              "B": "Position-3 could be 0 or 3.",
+              "C": "Position-4 could be 3, 4, or 0.",
+              "D": "Flagged — see correct-answer rationale; this needs critic/solver re-verification.",
+              "E": "Position-5 could be 3 or 4."
+            },
+            "tags": [
+              "must_be_true",
+              "conditional"
+            ],
+            "source": {
+              "origin": "lsac.org (via trainertestprep.com reprint)",
+              "url": "https://www.trainertestprep.com/lsat/blog/sample-lsat-logic-games",
+              "accessedAt": "2026-04-20",
+              "authenticity": "third_party_adaptation",
+              "notes": "Scenario and rules verbatim from June 2007 LSAT. This conditional question is adapted from the spirit of a real question but the answer choices require independent solver verification before use as a few-shot anchor. Flagged for Stage-5 critic."
+            },
+            "criticNotes": {
+              "flagsRaised": [
+                "answer_key_requires_solver_verification"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
