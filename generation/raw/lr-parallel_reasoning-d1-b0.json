@@ -1,0 +1,272 @@
+[
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-01",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Textbook modus ponens at the 1-star anchor: a single conditional premise plus its antecedent yielding the consequent. Only one answer choice instantiates modus ponens; the others are modus tollens, affirming-the-consequent, or a disjunctive syllogism.",
+    "stimulus": "If the library's roof leaks during a heavy rain, then the rare manuscripts will be moved to the basement vault. The roof leaked during yesterday's storm. Therefore, the rare manuscripts were moved to the basement vault.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      { "label": "A", "text": "If the bakery sells out of sourdough, the baker makes a fresh batch overnight. The baker did not make a fresh batch overnight, so the bakery did not sell out of sourdough." },
+      { "label": "B", "text": "If a patient has the flu, the patient will have a fever. This patient has a fever, so this patient has the flu." },
+      { "label": "C", "text": "If the trail is muddy, hikers wear waterproof boots. The trail is muddy today. Therefore, hikers are wearing waterproof boots." },
+      { "label": "D", "text": "Either the concert is held indoors or it is canceled. The concert was not canceled, so it was held indoors." },
+      { "label": "E", "text": "Most lawyers who pass the bar exam on the first try studied in a formal course, so any lawyer who studied in a formal course probably passed on the first try." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus: A -> B; A; therefore B. That is modus ponens. (C) has the same structure: muddy trail -> waterproof boots; trail is muddy; therefore boots are being worn.",
+      "A": "Modus tollens (A -> B; not B; therefore not A), not modus ponens.",
+      "B": "Affirms the consequent (A -> B; B; therefore A) — an invalid form and not parallel to the valid stimulus.",
+      "C": "Correct.",
+      "D": "Disjunctive syllogism (A or B; not B; therefore A), a different valid form.",
+      "E": "Reverses a 'most' generalization; not a conditional chain at all."
+    },
+    "tags": ["parallel_reasoning", "modus_ponens"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-02",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Simple universal-to-particular instantiation. One premise is a universal statement, the second places an individual in the subject category, and the conclusion applies the predicate. Only one answer choice follows this shape.",
+    "stimulus": "Every member of the Montrose Chamber Orchestra has performed at Carnegie Hall. Yuki is a member of the Montrose Chamber Orchestra. Therefore, Yuki has performed at Carnegie Hall.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      { "label": "A", "text": "Most professional chefs own at least one copper saucepan. Andre owns a copper saucepan, so Andre is probably a professional chef." },
+      { "label": "B", "text": "All licensed pharmacists have passed the national board exam. Priya is a licensed pharmacist. Therefore, Priya has passed the national board exam." },
+      { "label": "C", "text": "If a building is on the historic register, it cannot be demolished. The Flint Theater was demolished last year, so it was not on the historic register." },
+      { "label": "D", "text": "No reptiles are warm-blooded. Some pets are reptiles. Therefore, some pets are not warm-blooded." },
+      { "label": "E", "text": "Either Hassan is in Lisbon or he is in Porto. Hassan is not in Lisbon, so he is in Porto." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Stimulus: All A are B; x is A; therefore x is B. (B) has the identical universal-to-particular instantiation: all licensed pharmacists have passed the board; Priya is one; therefore she has passed.",
+      "A": "Uses 'most' and reverses direction, concluding an individual is probably in the category from the predicate. Different structure, and weaker modal force.",
+      "B": "Correct.",
+      "C": "Contrapositive reasoning (A -> not B; B; therefore not A), not universal instantiation.",
+      "D": "Quantified syllogism with 'some'; the stimulus has no existential premise.",
+      "E": "Disjunctive syllogism — different form."
+    },
+    "tags": ["parallel_reasoning", "universal_instantiation"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-03",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Clean disjunctive syllogism: two disjuncts, one eliminated, the other affirmed. Wrong answers use modus ponens, modus tollens, or content-matched lures.",
+    "stimulus": "The office printer is jammed because either the paper tray is empty or the toner cartridge is out of ink. The paper tray is not empty. Therefore, the toner cartridge is out of ink.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      { "label": "A", "text": "Whenever the alarm sounds, the front door is unlocked. The alarm is sounding, so the front door is unlocked." },
+      { "label": "B", "text": "If the cat is hungry, she meows at the refrigerator. The cat is not meowing, so she is not hungry." },
+      { "label": "C", "text": "Either the flight was delayed by weather or it was delayed by a mechanical issue. The flight was not delayed by a mechanical issue. Therefore, it was delayed by weather." },
+      { "label": "D", "text": "All experienced pilots know how to read weather radar. Captain Olvera is an experienced pilot, so he knows how to read weather radar." },
+      { "label": "E", "text": "Most drivers who commute on the expressway listen to podcasts. Lila listens to podcasts, so she probably commutes on the expressway." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus: A or B; not A; therefore B. (C) is the same disjunctive syllogism with a different topic: weather or mechanical; not mechanical; therefore weather.",
+      "A": "Modus ponens, not a disjunction.",
+      "B": "Modus tollens with a single conditional.",
+      "C": "Correct.",
+      "D": "Universal-to-particular instantiation.",
+      "E": "Reversed 'most' generalization, a content lure — printers, cars, and commuting are all everyday settings but the logical form is different."
+    },
+    "tags": ["parallel_reasoning", "disjunctive_syllogism"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-04",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Basic contrapositive (modus tollens): one conditional, the denial of its consequent, and the denial of its antecedent. Only one choice exhibits modus tollens.",
+    "stimulus": "If Senator Rhee had supported the transit bill, the bill would have passed. The bill did not pass. Therefore, Senator Rhee did not support the transit bill.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      { "label": "A", "text": "If a wine is aged in oak, it acquires a vanilla note. This wine has a vanilla note, so it was aged in oak." },
+      { "label": "B", "text": "If the soil is properly drained, the tulips will bloom. The tulips did bloom, so the soil is properly drained." },
+      { "label": "C", "text": "If the archivist had cataloged the letters, the exhibit would have opened on time. The exhibit did not open on time. Therefore, the archivist did not catalog the letters." },
+      { "label": "D", "text": "Every accredited program requires a capstone project. This program is accredited, so it requires a capstone project." },
+      { "label": "E", "text": "Either the server is overloaded or the database is offline. The server is not overloaded. Therefore, the database is offline." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus: A -> B; not B; therefore not A. (C) has the same modus tollens structure: if cataloged -> opened; not opened; therefore not cataloged.",
+      "A": "Affirms the consequent — invalid, so not parallel to the valid stimulus.",
+      "B": "Affirms the consequent.",
+      "C": "Correct.",
+      "D": "Universal instantiation (modus ponens in categorical dress).",
+      "E": "Disjunctive syllogism."
+    },
+    "tags": ["parallel_reasoning", "modus_tollens"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-05",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Two-link conditional chain (hypothetical syllogism): A -> B; B -> C; therefore A -> C. Distractors include modus ponens, contrapositive, and a reversed-chain lure.",
+    "stimulus": "If a company adopts a four-day workweek, employee retention improves. If employee retention improves, recruiting costs decline. Therefore, if a company adopts a four-day workweek, its recruiting costs decline.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      { "label": "A", "text": "If a river is dammed, downstream flooding decreases. The Kestrel River has been dammed, so downstream flooding has decreased." },
+      { "label": "B", "text": "If a reef is bleached, fish populations decline. If fish populations decline, local fisheries lose revenue. Therefore, if a reef is bleached, local fisheries lose revenue." },
+      { "label": "C", "text": "If a statute is unconstitutional, courts will strike it down. The statute was not struck down, so it was not unconstitutional." },
+      { "label": "D", "text": "If interest rates fall, housing prices rise. Housing prices have risen, so interest rates must have fallen." },
+      { "label": "E", "text": "Every software patch requires a restart. This update is a software patch, so it requires a restart." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Stimulus is a hypothetical syllogism: A -> B; B -> C; therefore A -> C. (B) mirrors it exactly: bleached -> fish decline; fish decline -> revenue lost; therefore bleached -> revenue lost.",
+      "A": "Modus ponens with a single conditional, not a chain.",
+      "B": "Correct.",
+      "C": "Modus tollens.",
+      "D": "Affirms the consequent — invalid.",
+      "E": "Universal instantiation."
+    },
+    "tags": ["parallel_reasoning", "hypothetical_syllogism"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-06",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Another textbook modus ponens in an environmental-science setting. Traps include a same-topic modus tollens (B) and an affirming-the-consequent lure (E).",
+    "stimulus": "If the wetland's water level drops below one meter, the resident herons will relocate to the river delta. The water level dropped below one meter last week. Therefore, the resident herons relocated to the river delta.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      { "label": "A", "text": "Every licensed electrician carries liability insurance. Marcus is a licensed electrician. Therefore, Marcus carries liability insurance." },
+      { "label": "B", "text": "If the wetland's pH rises above eight, the frog population declines. The frog population has not declined. Therefore, the pH has not risen above eight." },
+      { "label": "C", "text": "If the train is on schedule, the 7:15 departure leaves from platform two. The train is on schedule today. Therefore, the 7:15 departure leaves from platform two." },
+      { "label": "D", "text": "Either the greenhouse vent is open or the temperature will exceed 90 degrees. The temperature did not exceed 90 degrees. Therefore, the vent was open." },
+      { "label": "E", "text": "If a meadow is grazed, wildflowers become more abundant. The meadow's wildflowers are more abundant, so the meadow has been grazed." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus: A -> B; A; therefore B. (C) matches: on-schedule -> platform two; on schedule; therefore platform two.",
+      "A": "Universal instantiation — categorical rather than propositional. While close in spirit, the stimulus is explicitly conditional; (C) is a cleaner match.",
+      "B": "Same wetland topic but modus tollens, not modus ponens. Classic same-topic trap.",
+      "C": "Correct.",
+      "D": "Disjunctive syllogism.",
+      "E": "Affirms the consequent — invalid."
+    },
+    "tags": ["parallel_reasoning", "modus_ponens"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-07",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Universal instantiation in an economics setting. Distractors include a 'most' generalization and a disjunctive syllogism.",
+    "stimulus": "All currencies pegged to the dollar fluctuate with U.S. monetary policy. The Beltran peso is pegged to the dollar. Therefore, the Beltran peso fluctuates with U.S. monetary policy.",
+    "questionStem": "The pattern of reasoning in which one of the following is most parallel to that in the argument above?",
+    "choices": [
+      { "label": "A", "text": "Most countries that run trade surpluses accumulate foreign reserves. Valoria accumulates foreign reserves, so it probably runs a trade surplus." },
+      { "label": "B", "text": "Every bridge built after 1980 in this province uses prestressed concrete. The Ormond Bridge was built in 1994 in this province. Therefore, the Ormond Bridge uses prestressed concrete." },
+      { "label": "C", "text": "If a bond is rated below investment grade, institutional funds will not buy it. This bond is rated below investment grade, so institutional funds will not buy it." },
+      { "label": "D", "text": "Either the exchange rate is fixed or it is floating. The Beltran peso is not floating, so it is fixed." },
+      { "label": "E", "text": "If consumer spending rises, GDP rises. GDP did not rise, so consumer spending did not rise." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Stimulus: All A are B; x is A; therefore x is B. (B) is the same universal-to-particular instantiation with bridges: all post-1980 provincial bridges use prestressed concrete; Ormond is one; therefore it does.",
+      "A": "Uses 'most' and reverses direction — weaker modal force and different shape.",
+      "B": "Correct.",
+      "C": "Modus ponens with an explicit conditional. Close but not universal instantiation.",
+      "D": "Disjunctive syllogism; same topic (Beltran peso) is the lure.",
+      "E": "Modus tollens."
+    },
+    "tags": ["parallel_reasoning", "universal_instantiation"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-08",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Contrapositive (modus tollens) in a historical setting. Traps include a same-topic modus ponens and an affirming-the-consequent lure.",
+    "stimulus": "If General Hargrove had arrived before dawn, the garrison would have surrendered without a fight. The garrison did not surrender without a fight. Therefore, General Hargrove did not arrive before dawn.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      { "label": "A", "text": "If the treaty had been ratified by both assemblies, the border would have been redrawn. The border was redrawn, so the treaty was ratified by both assemblies." },
+      { "label": "B", "text": "If a compound contains sulfur, it will tarnish silver. This compound does not tarnish silver. Therefore, this compound does not contain sulfur." },
+      { "label": "C", "text": "If General Hargrove marches at first light, the supply lines will hold. General Hargrove marched at first light. Therefore, the supply lines held." },
+      { "label": "D", "text": "Every cavalry officer trained at the academy learned dead-reckoning navigation. Colonel Vance trained at the academy. Therefore, Colonel Vance learned dead-reckoning." },
+      { "label": "E", "text": "Either the siege was broken or the city fell. The siege was broken, so the city did not fall." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Stimulus: A -> B; not B; therefore not A — modus tollens. (B) matches: sulfur -> tarnishes silver; does not tarnish; therefore no sulfur.",
+      "A": "Same historical topic but affirms the consequent — invalid and so not parallel to the valid stimulus.",
+      "B": "Correct.",
+      "C": "Same topic but modus ponens. A same-topic trap.",
+      "D": "Universal instantiation, not conditional contrapositive.",
+      "E": "Disjunctive syllogism."
+    },
+    "tags": ["parallel_reasoning", "modus_tollens"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-09",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Disjunctive syllogism in a linguistics setting. Distractors include same-topic conditionals of other forms.",
+    "stimulus": "A verb in Old Karnish must take either the accusative suffix or the dative suffix. The verb 'velmir' does not take the accusative suffix. Therefore, 'velmir' takes the dative suffix.",
+    "questionStem": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+    "choices": [
+      { "label": "A", "text": "If a noun in Old Karnish ends in a consonant, it is masculine. The noun 'dran' ends in a consonant, so it is masculine." },
+      { "label": "B", "text": "Every vowel in the Karnish script represents a single phoneme. The symbol 'a' is a vowel in the Karnish script. Therefore, 'a' represents a single phoneme." },
+      { "label": "C", "text": "On any given weekday, the Mendez family eats either fish or poultry for dinner. Last Tuesday, the Mendez family did not eat poultry. Therefore, they ate fish." },
+      { "label": "D", "text": "If a verb is irregular, it does not follow the standard suffix rules. The verb 'velmir' is not irregular, so it follows the standard suffix rules." },
+      { "label": "E", "text": "Most verbs in Old Karnish take the accusative suffix. 'Velmir' is an Old Karnish verb, so it probably takes the accusative suffix." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "Stimulus: A or B; not A; therefore B. (C) is the same disjunctive syllogism in a domestic setting: fish or poultry; not poultry; therefore fish.",
+      "A": "Modus ponens, not a disjunction.",
+      "B": "Universal instantiation.",
+      "C": "Correct.",
+      "D": "Modus tollens with a same-topic lure.",
+      "E": "Statistical generalization with 'most' and a probabilistic conclusion."
+    },
+    "tags": ["parallel_reasoning", "disjunctive_syllogism"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  },
+  {
+    "id": "lr-gen-parallel_reasoning-d1-b0-10",
+    "section": "LR",
+    "subtype": "parallel_reasoning",
+    "difficulty": 1,
+    "difficultyReason": "Two-link conditional chain in a technology context. Only one answer choice exhibits a hypothetical syllogism; the rest are single-conditional variants or a disjunctive syllogism.",
+    "stimulus": "If a smartphone's battery degrades below 80 percent capacity, the operating system throttles processor speed. If the operating system throttles processor speed, app launch times become noticeably slower. Therefore, if a smartphone's battery degrades below 80 percent capacity, app launch times become noticeably slower.",
+    "questionStem": "The reasoning in the argument above is most similar to the reasoning in which one of the following?",
+    "choices": [
+      { "label": "A", "text": "If a smartphone is dropped in water, its speakers will malfunction. This phone was dropped in water, so its speakers will malfunction." },
+      { "label": "B", "text": "If a bicycle chain is not lubricated, it rusts. If a bicycle chain rusts, pedaling becomes harder. Therefore, if a bicycle chain is not lubricated, pedaling becomes harder." },
+      { "label": "C", "text": "Every laptop in the teaching lab has 16 gigabytes of memory. This machine is in the teaching lab, so it has 16 gigabytes of memory." },
+      { "label": "D", "text": "Either the router is offline or the cable has been unplugged. The cable has not been unplugged, so the router is offline." },
+      { "label": "E", "text": "If a file is encrypted, it cannot be read without the key. This file can be read without the key, so it is not encrypted." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Stimulus is a hypothetical syllogism: A -> B; B -> C; therefore A -> C. (B) has the identical chain: unlubricated -> rust; rust -> harder pedaling; therefore unlubricated -> harder pedaling.",
+      "A": "Modus ponens with one conditional, not a chain. Same-domain lure.",
+      "B": "Correct.",
+      "C": "Universal instantiation.",
+      "D": "Disjunctive syllogism.",
+      "E": "Modus tollens."
+    },
+    "tags": ["parallel_reasoning", "hypothetical_syllogism"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["parallel_reasoning.json"] }
+  }
+]

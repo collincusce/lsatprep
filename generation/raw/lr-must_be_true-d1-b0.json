@@ -1,0 +1,312 @@
+[
+  {
+    "id": "lr-gen-must_be_true-d1-b0-01",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "Two simple categorical facts with a single transitive step; the credited inference follows directly from substituting one set into the other.",
+    "stimulus": "All licensed pharmacists in the province are required to complete thirty hours of continuing education annually. Every employee at Harbor Drug whose nametag reads 'RPh' is a licensed pharmacist in the province.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "Every employee at Harbor Drug is required to complete thirty hours of continuing education annually."},
+      {"label": "B", "text": "Every Harbor Drug employee whose nametag reads 'RPh' is required to complete thirty hours of continuing education annually."},
+      {"label": "C", "text": "Most licensed pharmacists in the province work at Harbor Drug."},
+      {"label": "D", "text": "Any employee who completes thirty hours of continuing education is a licensed pharmacist."},
+      {"label": "E", "text": "The province requires more continuing education of pharmacists than of other medical professionals."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Every 'RPh' employee is a licensed pharmacist, and every licensed pharmacist must complete thirty hours of continuing education. By transitivity, every 'RPh' employee has the same requirement.",
+      "A": "Too strong — the stimulus only places the 'RPh' employees in the pharmacist category, not all Harbor Drug staff.",
+      "B": "Correct.",
+      "C": "Not supported — the stimulus says nothing about the share of the province's pharmacists that Harbor Drug employs.",
+      "D": "Reversal — completing the education is necessary for licensure, not sufficient for it.",
+      "E": "Out of scope — the stimulus says nothing about requirements for other medical professionals."
+    },
+    "tags": ["must_be_true", "transitive_inference", "medicine"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-02",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "Single conditional plus a factual assertion about one individual; the credited inference is a straightforward modus ponens.",
+    "stimulus": "If a cargo container at the port weighs more than eight metric tons, it must be inspected by a customs officer before release. The blue container that arrived on Tuesday's shipment weighs nine metric tons.",
+    "questionStem": "Which one of the following must be true if the statements above are true?",
+    "choices": [
+      {"label": "A", "text": "No container lighter than eight metric tons is inspected by a customs officer."},
+      {"label": "B", "text": "Every container on Tuesday's shipment weighs more than eight metric tons."},
+      {"label": "C", "text": "The blue container must be inspected by a customs officer before it is released."},
+      {"label": "D", "text": "The blue container will not be released on Tuesday."},
+      {"label": "E", "text": "Most containers at the port weigh more than eight metric tons."}
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "The conditional's antecedent is satisfied — the container weighs more than eight metric tons — so its consequent applies: it must be inspected before release.",
+      "A": "Negation error — the rule says nothing about whether lighter containers are inspected.",
+      "B": "Unsupported generalization — only the blue container's weight is given.",
+      "C": "Correct.",
+      "D": "Unsupported — the timing of release is not addressed by the stimulus.",
+      "E": "Out of scope — the stimulus gives no information about the weight distribution at the port."
+    },
+    "tags": ["must_be_true", "conditional_modus_ponens", "law"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-03",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "Two facts about two overlapping groups support a single existential inference; the logical step is one application of the pigeonhole-style overlap.",
+    "stimulus": "Every student in Professor Halden's seminar has read Kant's Groundwork. At least one student in Professor Halden's seminar has never studied philosophy formally before.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "Most students who read Kant's Groundwork have studied philosophy formally before."},
+      {"label": "B", "text": "At least one person who has read Kant's Groundwork has never studied philosophy formally before."},
+      {"label": "C", "text": "Professor Halden requires every student to read Kant's Groundwork."},
+      {"label": "D", "text": "Every student who has read Kant's Groundwork has never studied philosophy formally before."},
+      {"label": "E", "text": "Anyone who has studied philosophy formally has read Kant's Groundwork."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The philosophy-novice student in the seminar has read the Groundwork, because every student in the seminar has. That student is a person who has read the Groundwork and has not studied philosophy formally before.",
+      "A": "Unsupported — the stimulus provides no information about students outside this seminar.",
+      "B": "Correct.",
+      "C": "Causal inference beyond the text — requiring isn't stated, only that each has read it.",
+      "D": "Too strong — 'every' student reads it, but only 'at least one' is a newcomer.",
+      "E": "Reversal and scope shift — the stimulus concerns seminar readers, not all formal philosophy students."
+    },
+    "tags": ["must_be_true", "existential_overlap", "arts"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-04",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "A conditional plus the denial of its consequent invites a single-step contrapositive inference.",
+    "stimulus": "If the township's general fund finishes the year with a surplus, the library's evening hours will be extended in January. The township's council has just confirmed that the library's evening hours will not be extended in January.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      {"label": "A", "text": "The township's general fund did not finish the year with a surplus."},
+      {"label": "B", "text": "The township's general fund finished the year with a deficit of a significant size."},
+      {"label": "C", "text": "The council opposes extending the library's evening hours under any circumstances."},
+      {"label": "D", "text": "The library will extend its evening hours later in the year instead of in January."},
+      {"label": "E", "text": "Any future surplus will be used to extend the library's hours."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "By contrapositive: if a surplus would guarantee extended hours and extended hours will not happen, then there was no surplus.",
+      "A": "Correct.",
+      "B": "Too strong — absence of a surplus does not entail a deficit, let alone a significant one.",
+      "C": "Unsupported — the council's general stance on library hours is not stated.",
+      "D": "Unsupported — the stimulus says nothing about later in the year.",
+      "E": "Unsupported — no claim is made about future surpluses."
+    },
+    "tags": ["must_be_true", "contrapositive", "policy"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-05",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "A short conditional chain with two links collapses into a single transitive conclusion.",
+    "stimulus": "Whenever the coastal radar records a squall line moving east faster than forty kilometers per hour, the harbor office issues a small-craft warning. Whenever the harbor office issues a small-craft warning, the fishing fleet at Port Alden remains in dock.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "The fishing fleet at Port Alden remains in dock only when a small-craft warning is in effect."},
+      {"label": "B", "text": "Whenever the coastal radar records a squall line moving east faster than forty kilometers per hour, the fishing fleet at Port Alden remains in dock."},
+      {"label": "C", "text": "The coastal radar records squall lines more often in winter than in summer."},
+      {"label": "D", "text": "Whenever the fishing fleet at Port Alden is in dock, the coastal radar has recorded a fast-moving squall line."},
+      {"label": "E", "text": "Small-craft warnings cause squall lines to intensify."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Chaining the two conditionals: fast east-moving squall line -> small-craft warning -> fleet in dock. So any fast east-moving squall line entails the fleet's being in dock.",
+      "A": "Reversal — the stimulus gives a sufficient condition for the fleet's staying in dock, not a necessary one.",
+      "B": "Correct.",
+      "C": "Out of scope — seasonal frequency is not addressed.",
+      "D": "Reversal — the fleet could remain in dock for other reasons.",
+      "E": "Causal overreach — the stimulus describes procedural responses, not atmospheric causation."
+    },
+    "tags": ["must_be_true", "conditional_chain", "environmental_science"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-06",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "Two numerical statements about exhaustive and overlapping groups support a minimal-count inference via a pigeonhole-style argument.",
+    "stimulus": "Forty employees work at the Linden branch of Cresta Bank. Every employee at the Linden branch is either a teller or a loan officer, and some are both. Eighteen of the branch's employees are tellers, and twenty-nine are loan officers.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      {"label": "A", "text": "More than half of the branch's employees are tellers."},
+      {"label": "B", "text": "At least seven employees at the branch are both tellers and loan officers."},
+      {"label": "C", "text": "Exactly three employees are only loan officers."},
+      {"label": "D", "text": "No employee at the branch is only a teller."},
+      {"label": "E", "text": "The branch employs more loan officers than it would if it had fewer tellers."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Eighteen plus twenty-nine equals forty-seven role-slots filled by only forty employees. Since everyone fills at least one role, the seven-slot surplus must come from employees who hold both roles. So at least seven employees are both.",
+      "A": "Contradicts the stimulus — only eighteen of the forty employees are tellers, less than half.",
+      "B": "Correct.",
+      "C": "Unsupported as exact — the count of loan-officer-only employees depends on the overlap, which need not equal three.",
+      "D": "Unsupported — the stimulus permits, but does not require, the existence of teller-only employees.",
+      "E": "Out of scope — the stimulus makes no counterfactual comparison."
+    },
+    "tags": ["must_be_true", "pigeonhole_counting", "economics"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-07",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "A rule plus a specific labeling fact produce a one-step categorical inference.",
+    "stimulus": "Any package labeled 'Priority Express' by the Northern Postal Service is guaranteed delivery within two business days. The parcel that Arun mailed to Ines yesterday afternoon was labeled 'Priority Express' by the Northern Postal Service.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "Ines will receive Arun's parcel within two business days of yesterday afternoon."},
+      {"label": "B", "text": "Arun's parcel is guaranteed delivery within two business days."},
+      {"label": "C", "text": "No parcel not labeled 'Priority Express' is delivered within two business days."},
+      {"label": "D", "text": "The Northern Postal Service only guarantees delivery for 'Priority Express' parcels."},
+      {"label": "E", "text": "Arun paid more to mail the parcel as 'Priority Express' than he would have for standard service."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Arun's parcel belongs to the class of 'Priority Express' items, and every such item is guaranteed delivery within two business days. Therefore his parcel carries that guarantee.",
+      "A": "Shift from guarantee to actual delivery — guarantees can fail in individual cases; the stimulus only asserts the guarantee.",
+      "B": "Correct.",
+      "C": "Negation error — the stimulus does not rule out quick delivery of other parcels.",
+      "D": "Scope shift — 'only' is not supported; other services may also carry guarantees.",
+      "E": "Out of scope — pricing is not mentioned."
+    },
+    "tags": ["must_be_true", "categorical_application", "technology"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-08",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "A disjunction combined with the denial of one disjunct yields a one-step disjunctive syllogism.",
+    "stimulus": "The winning entry in this year's Veldt Short Fiction Prize was submitted either by a novelist who has previously published with Veldt or by a first-time contributor. Investigation has revealed that the winning entry was not submitted by any novelist who has previously published with Veldt.",
+    "questionStem": "Which one of the following must be true if the statements above are true?",
+    "choices": [
+      {"label": "A", "text": "The winning entry was submitted by an author whose work has never appeared in any journal."},
+      {"label": "B", "text": "The winning entry was submitted by a first-time contributor to Veldt."},
+      {"label": "C", "text": "Most previous Veldt Prize winners were first-time contributors."},
+      {"label": "D", "text": "First-time contributors produce stronger short fiction than returning contributors do."},
+      {"label": "E", "text": "The judges preferred to award the prize to a newcomer this year."}
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Given the either/or premise and the denial of the first disjunct, the remaining disjunct holds: the winner was a first-time contributor.",
+      "A": "Too strong — 'first-time contributor to Veldt' does not entail never having published anywhere else.",
+      "B": "Correct.",
+      "C": "Unsupported — past years are not addressed.",
+      "D": "Unsupported evaluative claim — the stimulus does not compare quality.",
+      "E": "Unsupported — the judges' preferences are not stated."
+    },
+    "tags": ["must_be_true", "disjunctive_syllogism", "arts"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-09",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "Two conditionals chain through a shared middle term to produce a one-step transitive inference about a named individual.",
+    "stimulus": "Every treaty ratified by the Federal Assembly takes legal effect on the first day of the following month. Every law taking legal effect in the country must be published in the Official Gazette within fourteen days of taking effect. The Saldano Trade Treaty was ratified by the Federal Assembly last week.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "The Saldano Trade Treaty will be published in the Official Gazette within fourteen days of the first day of next month."},
+      {"label": "B", "text": "No law takes legal effect without being ratified by the Federal Assembly."},
+      {"label": "C", "text": "The Saldano Trade Treaty was the only treaty ratified by the Federal Assembly last week."},
+      {"label": "D", "text": "The Official Gazette publishes all treaties before they take legal effect."},
+      {"label": "E", "text": "Any treaty published in the Official Gazette has been ratified by the Federal Assembly."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The treaty, as a ratified treaty, takes effect on the first of next month; every law taking effect must then appear in the Gazette within fourteen days of that effective date. So publication must occur within fourteen days of the first of next month.",
+      "A": "Correct.",
+      "B": "Reversal — the stimulus doesn't exclude other paths to legal effect.",
+      "C": "Unsupported — uniqueness is not stated.",
+      "D": "Contradicts the stimulus — publication follows, not precedes, legal effect.",
+      "E": "Reversal — the stimulus requires Gazette publication for laws, not the converse."
+    },
+    "tags": ["must_be_true", "conditional_chain", "law"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  },
+  {
+    "id": "lr-gen-must_be_true-d1-b0-10",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 1,
+    "difficultyReason": "A rule-plus-exception pattern supports a single-step contrapositive-style inference about a named case.",
+    "stimulus": "In the Panzar language, every verb that ends in the suffix '-eko' takes its past tense by adding '-ta'. The only exceptions are verbs whose stem ends in a vowel; those instead take '-nta'. The Panzar verb 'sareko' has a stem ending in the consonant 'r'.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      {"label": "A", "text": "The past tense of 'sareko' is formed by adding '-ta'."},
+      {"label": "B", "text": "Most Panzar verbs end in the suffix '-eko'."},
+      {"label": "C", "text": "No Panzar verb ending in '-eko' has a stem ending in a vowel."},
+      {"label": "D", "text": "Any Panzar verb taking '-nta' in the past tense ends in '-eko'."},
+      {"label": "E", "text": "The past tense of 'sareko' is 'sareko-nta'."}
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "'sareko' ends in '-eko' and its stem ends in a consonant, so it does not fall under the vowel-stem exception. Therefore it follows the default rule: add '-ta'.",
+      "A": "Correct.",
+      "B": "Unsupported — the stimulus gives no information about the relative frequency of '-eko' verbs.",
+      "C": "Contradicts the stimulus — the exception clause asserts that some '-eko' verbs do have vowel-final stems.",
+      "D": "Reversal — '-nta' applies to vowel-stem '-eko' verbs, not uniquely so as far as the stimulus tells us.",
+      "E": "Contradicts the inference — 'sareko' has a consonant stem, so it takes '-ta', not '-nta'."
+    },
+    "tags": ["must_be_true", "rule_plus_exception", "linguistics"],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "claude-code-subagent",
+      "fewShotRefs": ["must_be_true.json"]
+    }
+  }
+]

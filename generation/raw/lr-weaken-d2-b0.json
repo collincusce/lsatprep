@@ -1,0 +1,272 @@
+[
+  {
+    "id": "lr-gen-weaken-d2-b0-01",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Two-step causal chain in a medical context: drug lowers cholesterol, and lowered cholesterol reduces cardiac events. Weakener exposes a non-obvious alternative cause operating on the second link. Trap (B) strengthens by ruling out a different confound; trap (E) attacks a premise but not the conclusion.",
+    "stimulus": "A five-year clinical study found that patients who took the cholesterol-lowering drug lovastin experienced 30 percent fewer cardiac events than patients who took a placebo. Lovastin is known to reduce blood cholesterol, and elevated cholesterol is a well-established risk factor for cardiac events. The study's authors concluded that lovastin's cholesterol-lowering action is what prevented the cardiac events among patients taking the drug.",
+    "questionStem": "Which one of the following, if true, most weakens the argument?",
+    "choices": [
+      { "label": "A", "text": "Lovastin also produces a previously undocumented anti-inflammatory effect in blood vessel walls, and vascular inflammation independently contributes to cardiac events." },
+      { "label": "B", "text": "Patients in the two groups were matched for age, sex, smoking status, and family history of heart disease." },
+      { "label": "C", "text": "Cardiac events occurred in both groups at roughly the rates researchers had projected before the study began." },
+      { "label": "D", "text": "Lovastin is more expensive than several other cholesterol-lowering drugs currently on the market." },
+      { "label": "E", "text": "Some patients in the lovastin group discontinued the drug before the study concluded." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The authors attribute the drop in cardiac events specifically to cholesterol reduction. (A) introduces a non-obvious alternative cause — an anti-inflammatory effect that independently prevents cardiac events — so the benefit may have flowed from a mechanism other than cholesterol lowering. The second link in the causal chain is undermined.",
+      "A": "Correct.",
+      "B": "Strengthens, if anything — matching across known confounders makes the correlation more reliable.",
+      "C": "Irrelevant — projection accuracy says nothing about which mechanism produced the outcome.",
+      "D": "Out of scope — price has no bearing on whether the drug's effect is due to cholesterol reduction.",
+      "E": "Attacks a minor feature of the trial's execution without touching the causal claim about the patients who did take the drug."
+    },
+    "tags": ["weaken", "alternative_cause"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-02",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Predictive economic argument extrapolating from one quarter's data. Weakener denies a load-bearing background assumption about seasonality. Trap (C) strengthens; trap (D) is out-of-scope comparative.",
+    "stimulus": "Analyst: In the first quarter after Morven Motors redesigned its flagship sedan, sales of that model rose by 22 percent over the same quarter last year, while sales of the company's other models were flat. Morven's executives have therefore announced that the redesign will produce sustained sales growth for the sedan throughout the coming year.",
+    "questionStem": "Which one of the following, if true, most undermines the executives' prediction?",
+    "choices": [
+      { "label": "A", "text": "Morven has not redesigned any of its other sedan models in the past five years." },
+      { "label": "B", "text": "Morven historically offers its largest rebates on the flagship sedan during the first quarter, and this year's rebates were unusually generous." },
+      { "label": "C", "text": "Automotive reviewers gave the redesigned sedan higher marks than they gave the previous version." },
+      { "label": "D", "text": "A competitor of Morven's reported flat sales of its comparable sedan this quarter." },
+      { "label": "E", "text": "Morven spent more on its first-quarter advertising campaign than in any previous first quarter." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The executives infer sustained growth from a single quarter's increase, assuming the jump reflects the redesign. (B) identifies an alternative cause peculiar to the first quarter — unusually large rebates — that will not be in place during later quarters, so the growth is unlikely to persist.",
+      "A": "Irrelevant — what happened with other models doesn't speak to whether this sedan's increase will continue.",
+      "B": "Correct.",
+      "C": "Strengthens, if anything — favorable reviews support continued demand.",
+      "D": "Out of scope — a competitor's flat sales don't tell us whether Morven's jump will endure.",
+      "E": "This is a confound for the first-quarter spike but weakens less than (B); heavy advertising that matches past campaigns could easily be sustained. (B) names a factor the executives cannot continue — the rebate was already described as unusually generous."
+    },
+    "tags": ["weaken", "alternative_cause"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-03",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Analogical argument from one municipality to another. Weakener denies the background assumption that the baseline conditions in the two cities are comparable. Trap (D) strengthens via a surface-similarity cue; trap (A) attacks a subsidiary claim.",
+    "stimulus": "After the city of Dunsbridge installed protected bicycle lanes on its six busiest commercial streets, reported collisions involving cyclists fell by 40 percent within two years. The city council of neighboring Harrow has now approved similar protected lanes on its own busiest streets, confident that Harrow will see a comparable decline in cyclist collisions.",
+    "questionStem": "Which one of the following, if true, most seriously undermines the council's expectation?",
+    "choices": [
+      { "label": "A", "text": "Dunsbridge's reporting of minor cycling collisions has historically been less thorough than Harrow's." },
+      { "label": "B", "text": "Harrow's commercial streets carry roughly the same volume of motor-vehicle traffic as Dunsbridge's did before the lanes were installed." },
+      { "label": "C", "text": "Protected bicycle lanes are more expensive to install than painted bicycle lanes." },
+      { "label": "D", "text": "Dunsbridge and Harrow have comparable proportions of experienced cyclists among their residents." },
+      { "label": "E", "text": "In Dunsbridge, the vast majority of cycling collisions before the lanes were installed involved cyclists being struck while turning left across oncoming traffic, a maneuver that remains legal and unaltered in Harrow." }
+    ],
+    "correctAnswer": "E",
+    "explanations": {
+      "correct": "The council assumes the lanes will address the kinds of collisions Harrow faces. (E) reveals that the pre-lane collisions in Dunsbridge were dominated by a left-turn conflict unaffected by protected lanes. If the same maneuver is unaltered in Harrow, the lanes there should not produce a comparable drop — the claimed benefit depended on a cause the lanes don't actually address.",
+      "A": "Attacks a subsidiary point — the reliability of the Dunsbridge count — without touching Harrow's expected outcome.",
+      "B": "Strengthens, if anything — matched traffic volume supports the analogy.",
+      "C": "Out of scope — cost has no bearing on whether collisions will fall.",
+      "D": "Strengthens — comparable rider experience supports the analogy.",
+      "E": "Correct."
+    },
+    "tags": ["weaken", "disanalogy"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-04",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Environmental causal argument with an appealing mechanism. Weakener reveals reversed causation: the correlation runs the other direction. Trap (A) is an opposite answer; trap (C) attacks a minor premise.",
+    "stimulus": "A team of ecologists surveyed 200 streams in a large river basin and found that streams with dense populations of freshwater mussels had, on average, markedly clearer water than streams with sparse mussel populations. Because mussels filter particulates from the water as they feed, the ecologists concluded that the mussels are the primary reason the clear-water streams are clear.",
+    "questionStem": "Which one of the following, if true, most weakens the ecologists' conclusion?",
+    "choices": [
+      { "label": "A", "text": "In laboratory tanks, individual freshwater mussels can filter several liters of water per hour." },
+      { "label": "B", "text": "Freshwater mussels cannot survive in streams whose water is already murky from suspended particulates, because their gills become clogged." },
+      { "label": "C", "text": "Some of the ecologists' survey measurements were taken during a week of unusually heavy rainfall." },
+      { "label": "D", "text": "A different invertebrate present in many of the surveyed streams also filters particulates but on a smaller scale." },
+      { "label": "E", "text": "Freshwater mussel populations throughout the basin have declined over the past two decades." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The ecologists infer that mussels cause the clarity. (B) reverses the causal direction: mussels can't live in already-murky water, so clear water is a precondition for dense mussel populations rather than a consequence of them. The correlation is explained in the opposite direction from the one the ecologists proposed.",
+      "A": "Opposite answer — confirming filtering capacity strengthens the mussel-causes-clarity claim.",
+      "B": "Correct.",
+      "C": "Attacks a subsidiary point about measurement conditions without directly challenging the correlation or its causal interpretation.",
+      "D": "Too narrow — a smaller-scale additional filterer doesn't explain away the mussels' contribution.",
+      "E": "Out of scope — basin-wide decline over two decades doesn't bear on the cross-sectional comparison among today's streams."
+    },
+    "tags": ["weaken", "reversed_causation"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-05",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Technology causal argument with a plausible productivity story. Weakener denies a load-bearing assumption about the comparison baseline — the tasks assigned differed. Trap (E) strengthens; trap (D) is out-of-scope.",
+    "stimulus": "Journalist: A software firm recently gave half of its junior engineers an AI coding assistant and asked the other half to continue working without one. After six months, engineers with the assistant had closed 35 percent more support tickets than engineers without it. The firm's chief technology officer has therefore concluded that the AI assistant makes junior engineers substantially more productive.",
+    "questionStem": "Which one of the following, if true, most calls the chief technology officer's conclusion into question?",
+    "choices": [
+      { "label": "A", "text": "A minority of the engineers assigned an AI assistant reported that they rarely used it." },
+      { "label": "B", "text": "The engineers given the AI assistant were systematically routed the firm's simpler, more self-contained support tickets, while the other engineers handled tickets requiring extended investigation." },
+      { "label": "C", "text": "At other firms that have deployed similar AI assistants, senior engineers have reported mixed opinions about their utility." },
+      { "label": "D", "text": "The AI assistant's annual license fee is substantial." },
+      { "label": "E", "text": "Independent code reviewers judged the work produced by engineers with the assistant to be of comparable quality to the work of those without it." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Closed-ticket counts are only a meaningful productivity measure if the two groups handled comparable work. (B) shows the assisted group drew simpler tickets, which would inflate their count regardless of the assistant. The higher ticket-closure rate can be explained by a different, non-obvious cause: task assignment.",
+      "A": "Attacks a minor execution detail; even so, most engineers in the group presumably did use the tool, and (A) doesn't explain why that group closed more tickets.",
+      "B": "Correct.",
+      "C": "Out of scope — senior engineers at other firms are a different population with different work.",
+      "D": "Irrelevant — cost has no bearing on whether productivity rose.",
+      "E": "Strengthens, if anything — equal quality with higher volume supports a productivity gain."
+    },
+    "tags": ["weaken", "confounding_variable"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-06",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Linguistic generalization from a sample. Weakener exposes a sampling flaw — the compared corpora are not contemporaneous. Trap (A) strengthens; trap (C) is out-of-scope.",
+    "stimulus": "Linguist: A recent computational study compared two corpora of English prose: one drawn from personal letters written between 1850 and 1900, the other from email and text messages written between 2010 and 2020. The study found that the average sentence in the modern corpus was 38 percent shorter than the average sentence in the nineteenth-century corpus. The linguist responsible for the study concluded that English speakers today favor dramatically shorter sentences than their nineteenth-century counterparts did.",
+    "questionStem": "Which one of the following, if true, most weakens the linguist's conclusion?",
+    "choices": [
+      { "label": "A", "text": "The nineteenth-century corpus and the modern corpus were of roughly equal total word count." },
+      { "label": "B", "text": "Personal letters of the nineteenth century typically used longer, more elaborated sentences than any other kind of writing produced in that period, while email and text messages today typically use shorter sentences than any other modern written form." },
+      { "label": "C", "text": "Some of the nineteenth-century letters were originally composed in languages other than English and translated." },
+      { "label": "D", "text": "Most of the modern messages in the study were composed on mobile phones." },
+      { "label": "E", "text": "The linguist measured sentence length by counting words between punctuation marks." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The conclusion generalizes to English speakers today versus those of the nineteenth century. (B) shows the two samples were each drawn from outliers of their own era — the longest genre in 1850–1900 and the shortest genre in 2010–2020 — inflating any apparent gap. The sampling flaw undermines the generalization.",
+      "A": "Strengthens, if anything — equal corpus size supports the comparability of the statistics, not their representativeness.",
+      "B": "Correct.",
+      "C": "Too narrow — a handful of translated letters wouldn't move the average enough to explain a 38 percent gap.",
+      "D": "Out of scope — the composition device doesn't bear on whether the sentences represent English usage generally.",
+      "E": "Attacks a methodological detail that applies equally to both corpora and so cannot account for the gap between them."
+    },
+    "tags": ["weaken", "sampling_flaw"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-07",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Historical causal argument attributing a cultural shift to a specific policy. Weakener introduces a prior alternative cause whose effects coincided with the policy. Trap (B) strengthens; trap (D) attacks a subsidiary claim.",
+    "stimulus": "Historian: In the Kingdom of Valoria, the rate at which commoners learned to read more than doubled in the three decades following King Edric's 1472 decree that every parish maintain a school open to all children. Edric's decree is therefore the principal cause of the dramatic rise in literacy among Valorian commoners during this period.",
+    "questionStem": "Which one of the following, if true, most weakens the historian's argument?",
+    "choices": [
+      { "label": "A", "text": "Edric's decree included provisions imposing modest fines on parishes that failed to maintain the required schools." },
+      { "label": "B", "text": "Surviving records indicate that most of the parish schools founded under Edric's decree employed clergy as teachers." },
+      { "label": "C", "text": "Literacy rates among Valorian nobles also rose during the three decades following the decree, though less sharply." },
+      { "label": "D", "text": "Some parishes did not comply with Edric's decree until several years after its issuance." },
+      { "label": "E", "text": "A process for producing inexpensive printed books arrived in Valoria in 1470, and by 1500 Valorian towns were filled with cheap printed material of the sort commoners could acquire and use to teach themselves to read." }
+    ],
+    "correctAnswer": "E",
+    "explanations": {
+      "correct": "The historian credits Edric's decree with the surge in commoner literacy. (E) supplies a prior, independent cause — the arrival of cheap printed books two years before the decree — that plausibly explains the same rise. The correlation between the decree and the literacy rise is equally consistent with this competing cause, so the historian's attribution no longer follows.",
+      "A": "Strengthens, if anything — an enforcement mechanism makes it more likely that the decree was implemented and thereby produced its effect.",
+      "B": "Strengthens, if anything — identifies a plausible mechanism (clergy teaching) by which the decree operated.",
+      "C": "Out of scope — rising noble literacy doesn't explain away the commoners' rise.",
+      "D": "Attacks a subsidiary point about compliance timing without displacing the decree as primary cause.",
+      "E": "Correct."
+    },
+    "tags": ["weaken", "alternative_cause"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-08",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Policy causal argument from aggregate data. Weakener exposes a confounder that explains the correlation. Trap (A) strengthens; trap (E) is a strengthener disguised as criticism.",
+    "stimulus": "Public-health official: Over the past five years, our county's 15 elementary schools have progressively adopted a new nutrition program that replaces fried side dishes with steamed vegetables in school lunches. During that same period, the proportion of elementary-school students in our county classified as overweight has fallen from 24 percent to 18 percent. The nutrition program is clearly responsible for the drop in childhood overweight in our county.",
+    "questionStem": "Which one of the following, if true, most seriously weakens the official's argument?",
+    "choices": [
+      { "label": "A", "text": "Schools that adopted the nutrition program earlier in the five-year period saw the largest drops in the proportion of students classified as overweight." },
+      { "label": "B", "text": "During the same five-year period, the county opened six new public parks and required each elementary school to add 90 minutes per week of physical-education activity, changes unrelated to the nutrition program." },
+      { "label": "C", "text": "Some students in the county bring their own lunches to school rather than eating the lunches the nutrition program provides." },
+      { "label": "D", "text": "The nutrition program is more expensive per meal than the lunch program it replaced." },
+      { "label": "E", "text": "National surveys show that the proportion of elementary-school students classified as overweight has remained steady nationwide over the past five years." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The official credits the nutrition program with the weight drop. (B) introduces a concurrent, independent cause — mandated physical-education increases and new parks — that could plausibly explain the same drop, so the correlation no longer singles out the nutrition program.",
+      "A": "Strengthens — a dose-response pattern supports the causal attribution.",
+      "B": "Correct.",
+      "C": "Too narrow — some students opting out doesn't explain why the county-wide rate fell, and if anything makes the program's contribution harder, not easier, to credit.",
+      "D": "Out of scope — cost has no bearing on whether the program caused the weight drop.",
+      "E": "Strengthens — a stable national rate makes the county's drop harder to attribute to a general trend and thus easier to attribute to a local change like the program."
+    },
+    "tags": ["weaken", "alternative_cause"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-09",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Arts causal argument from attendance data. Weakener reveals a sampling flaw: attendance was inflated by a short-term event. Trap (A) strengthens; trap (D) attacks a subsidiary point.",
+    "stimulus": "Museum director: When the Pelham Gallery reopened last year after a two-year renovation, daily attendance in its first three months was 40 percent higher than the average daily attendance in the three years before the closure. Critics doubted that the renovation, which preserved the original floor plan, would draw additional visitors. But these attendance figures show that the renovation has substantially increased the gallery's appeal to the public.",
+    "questionStem": "Which one of the following, if true, most undermines the museum director's argument?",
+    "choices": [
+      { "label": "A", "text": "During the three months following its reopening, the Pelham Gallery charged the same admission fee that it had charged before the renovation." },
+      { "label": "B", "text": "For the three months following its reopening, the Pelham Gallery hosted a rare traveling exhibition of Renaissance drawings that attracted unusually large crowds wherever it was shown." },
+      { "label": "C", "text": "Several other galleries in the same city undertook renovations during the Pelham's closure." },
+      { "label": "D", "text": "The Pelham Gallery's renovation cost significantly more than its director had initially projected." },
+      { "label": "E", "text": "Some visitors to the Pelham Gallery reported that they preferred the gallery's prior appearance." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The director attributes the attendance jump to the renovation's increased appeal. (B) offers a non-obvious alternative cause — a rare traveling exhibition present during exactly the measurement window — that would draw crowds regardless of the renovation. The data no longer support the renovation-as-cause claim.",
+      "A": "Strengthens, if anything — an unchanged admission fee rules out price as an alternative explanation.",
+      "B": "Correct.",
+      "C": "Too narrow — simultaneous renovations elsewhere don't, by themselves, explain why the Pelham's attendance rose.",
+      "D": "Attacks a subsidiary point about cost, not about whether the renovation increased appeal.",
+      "E": "Too narrow — a few dissenting visitors don't account for the 40 percent increase."
+    },
+    "tags": ["weaken", "alternative_cause"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  },
+  {
+    "id": "lr-gen-weaken-d2-b0-10",
+    "section": "LR",
+    "subtype": "weaken",
+    "difficulty": 2,
+    "difficultyReason": "Legal analogical argument from one jurisdiction to another. Weakener denies the load-bearing assumption that the jurisdictions' enforcement regimes are comparable. Trap (B) strengthens; trap (A) attacks a subsidiary point.",
+    "stimulus": "Attorney: The state of Arlen enacted a law requiring all commercial truck drivers to install electronic logging devices that automatically record driving hours. Within two years, the rate of accidents involving Arlen commercial trucks had dropped by nearly a quarter. The state of Brennan has now enacted an identical logging-device requirement; Brennan should expect a similarly sharp reduction in its own rate of accidents involving commercial trucks.",
+    "questionStem": "Which one of the following, if true, most weakens the attorney's argument?",
+    "choices": [
+      { "label": "A", "text": "Arlen's commercial trucking fleet is, on average, slightly older than Brennan's." },
+      { "label": "B", "text": "The two states have comparable highway systems and similar weather conditions throughout the year." },
+      { "label": "C", "text": "At the same time as it enacted the logging-device requirement, Arlen also tripled the number of state inspectors assigned to review commercial-truck records and hired a specialized prosecutorial unit to pursue hours-of-service violations; Brennan has taken no such enforcement steps." },
+      { "label": "D", "text": "The electronic logging devices used in Arlen were manufactured by several different companies, some of which sell their devices at a premium." },
+      { "label": "E", "text": "A few Arlen trucking firms complained that the logging devices were initially unreliable." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "The attorney infers that Brennan will see a similar drop because it enacted the same law. (C) reveals that Arlen paired the law with a major enforcement expansion — tripled inspectors and a dedicated prosecutorial unit — that Brennan has not matched. The analogy collapses once the true cause is identified as the enforcement regime, not the law alone.",
+      "A": "Attacks a subsidiary point about fleet age that, if anything, predicts more accidents in Arlen and so doesn't explain away Arlen's decline.",
+      "B": "Strengthens — comparable roads and weather support the analogy.",
+      "C": "Correct.",
+      "D": "Out of scope — device pricing has no bearing on accident reduction.",
+      "E": "Too narrow — complaints from a few firms about early reliability don't undermine the two-year outcome."
+    },
+    "tags": ["weaken", "disanalogy"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["weaken.json"] }
+  }
+]

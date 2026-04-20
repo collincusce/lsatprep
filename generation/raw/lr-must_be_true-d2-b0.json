@@ -1,0 +1,272 @@
+[
+  {
+    "id": "lr-gen-must_be_true-d2-b0-01",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires chaining a universal conditional with an existential claim and applying the contrapositive. Trap (A) inverts the conditional; trap (D) converts 'some' into 'most.'",
+    "stimulus": "Every drug that has received expedited regulatory review in the past decade has been developed by a company with in-house clinical trial capacity. Some drugs developed by companies with in-house clinical trial capacity have later been withdrawn from the market because of safety concerns. No drug that was developed exclusively by an outside contract research organization has received expedited review.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "Any drug developed by a company with in-house clinical trial capacity has received expedited regulatory review." },
+      { "label": "B", "text": "Most drugs that have received expedited regulatory review have been withdrawn from the market because of safety concerns." },
+      { "label": "C", "text": "At least some drugs developed by companies with in-house clinical trial capacity have been withdrawn from the market because of safety concerns." },
+      { "label": "D", "text": "Most drugs developed exclusively by outside contract research organizations have been withdrawn from the market." },
+      { "label": "E", "text": "No drug that has been withdrawn for safety concerns has received expedited regulatory review." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "The second sentence states directly that some drugs developed by companies with in-house trial capacity have been withdrawn for safety concerns. (C) simply restates that existential claim using the hedged 'at least some,' which follows trivially.",
+      "A": "Inverts the conditional. 'Every expedited drug has in-house capacity' does not entail that every in-house drug received expedited review.",
+      "B": "Collapses 'some' into 'most.' The stimulus supports only that some withdrawals came from in-house developers, not that most expedited drugs were withdrawn.",
+      "C": "Correct.",
+      "D": "Out of scope and overreaching — the stimulus says nothing about the fate of drugs developed exclusively by contract research organizations.",
+      "E": "Could be true but not must. Some in-house-developed expedited drugs may have been withdrawn for safety reasons; the passage does not preclude that."
+    },
+    "tags": ["must_be_true", "some_to_most_trap"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-02",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires chaining two conditionals and applying the contrapositive of the second. Trap (B) is the converse error; trap (E) overreaches to a universal.",
+    "stimulus": "All of the paintings in the Harwell Gallery's permanent collection were acquired before 1950. Any painting acquired before 1950 that has been exhibited in the last ten years has undergone conservation treatment. The gallery's painting 'Marsh at Dusk' has not undergone conservation treatment. 'Marsh at Dusk' is part of the gallery's permanent collection.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      { "label": "A", "text": "'Marsh at Dusk' has not been exhibited in the last ten years." },
+      { "label": "B", "text": "Any painting in the gallery's permanent collection that has undergone conservation treatment has been exhibited in the last ten years." },
+      { "label": "C", "text": "'Marsh at Dusk' was acquired after 1950." },
+      { "label": "D", "text": "Most paintings in the permanent collection have been exhibited in the last ten years." },
+      { "label": "E", "text": "Every painting acquired before 1950 has undergone conservation treatment." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "Because 'Marsh at Dusk' is in the permanent collection, it was acquired before 1950. The conditional then says any such painting that has been exhibited in the last ten years has been conserved. By contrapositive, a pre-1950 painting that has not been conserved has not been exhibited in the last ten years. That applies to 'Marsh at Dusk.'",
+      "A": "Correct.",
+      "B": "Inverts the conditional. The rule goes from 'exhibited' to 'conserved,' not the other way.",
+      "C": "Contradicted by the stimulus — permanent-collection paintings were all acquired before 1950.",
+      "D": "Could be true but not must. The stimulus gives no distribution of exhibited vs. unexhibited works.",
+      "E": "Overreach. The conditional applies only to pre-1950 paintings that have been exhibited in the last ten years, not all pre-1950 paintings."
+    },
+    "tags": ["must_be_true", "contrapositive_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-03",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires combining a universal claim with a most-statement to derive a guaranteed existential overlap. Trap (C) collapses 'most' into 'all'; trap (D) is a could-be-true.",
+    "stimulus": "Every member of the Riverton Medical Society holds an active license to practice medicine in the state. Most members of the Riverton Medical Society have completed a residency in internal medicine. A few members of the society practice exclusively in rural clinics outside Riverton.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "Most licensed physicians in the state are members of the Riverton Medical Society." },
+      { "label": "B", "text": "At least some members of the society who completed an internal medicine residency hold an active state medical license." },
+      { "label": "C", "text": "All members of the society have completed a residency in internal medicine." },
+      { "label": "D", "text": "Some members of the society who practice in rural clinics have completed a residency in internal medicine." },
+      { "label": "E", "text": "No member of the society who lacks an internal medicine residency practices in a rural clinic." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Every member of the society holds an active license. Most members have completed an internal medicine residency — those members are also members, so they also hold the license. Hence at least some (in fact all) members who completed the residency hold a license.",
+      "A": "Out of scope. The stimulus doesn't address what share of state physicians belong to the society.",
+      "B": "Correct.",
+      "C": "Collapses 'most' into 'all.' The stimulus supports only that most, not all, members completed an internal medicine residency.",
+      "D": "Could be true but not must. 'Most' and 'a few' can overlap, but the stimulus does not force overlap.",
+      "E": "Could be true but not must. Nothing forbids a rural-clinic member who did not complete an internal medicine residency."
+    },
+    "tags": ["must_be_true", "most_plus_universal"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-04",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires applying the contrapositive of a two-variable conditional and rejecting a converse trap. Trap (A) affirms the consequent; trap (E) is too strong.",
+    "stimulus": "If a manufacturing firm in this region has reduced its energy costs by more than 20 percent over the past five years, then it has either installed on-site solar generation or switched to a regional renewable electricity supplier. The Farley Plant has neither installed on-site solar generation nor switched to a regional renewable electricity supplier. Every manufacturing firm in this region that has switched to a regional renewable electricity supplier has signed a long-term fixed-rate contract.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "Any manufacturing firm in the region that has installed on-site solar generation has reduced its energy costs by more than 20 percent over the past five years." },
+      { "label": "B", "text": "The Farley Plant has not reduced its energy costs by more than 20 percent over the past five years." },
+      { "label": "C", "text": "The Farley Plant has signed a long-term fixed-rate contract." },
+      { "label": "D", "text": "Most manufacturing firms in the region have reduced their energy costs by more than 20 percent." },
+      { "label": "E", "text": "No manufacturing firm in the region has reduced its energy costs without switching to a regional renewable electricity supplier." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The first sentence says a firm with greater-than-20% cost reduction must have done one of the two listed things. By contrapositive, a firm that has done neither cannot have reduced its costs by more than 20%. That's the Farley Plant.",
+      "A": "Affirms the consequent. The conditional runs from cost reduction to action, not from action to cost reduction.",
+      "B": "Correct.",
+      "C": "Could be true but not must. The fixed-rate rule applies only to firms that switched suppliers, and Farley did not.",
+      "D": "Unsupported. The stimulus gives no distributional claim about manufacturing firms generally.",
+      "E": "Overreach — the first sentence lists two alternatives, so cost reduction doesn't require supplier switching specifically."
+    },
+    "tags": ["must_be_true", "contrapositive_disjunction"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-05",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires reading 'unless' correctly and chaining it with a second conditional. Trap (B) is a temporal-confusion overreach; trap (E) collapses 'some' into 'all.'",
+    "stimulus": "No historical monograph published by the Brindle University Press is accepted for publication unless it has been reviewed by at least two outside specialists. Some historical monographs that have been reviewed by at least two outside specialists are rejected on grounds of insufficient archival evidence. Every historical monograph that is rejected on grounds of insufficient archival evidence can be resubmitted after further archival research.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "At least some historical monographs that have been reviewed by two outside specialists can be resubmitted after further archival research." },
+      { "label": "B", "text": "No historical monograph submitted to the Brindle University Press is rejected for any reason other than insufficient archival evidence." },
+      { "label": "C", "text": "Any historical monograph that is reviewed by at least two outside specialists is eventually accepted for publication." },
+      { "label": "D", "text": "All historical monographs published by the Brindle University Press have been resubmitted at least once." },
+      { "label": "E", "text": "Every historical monograph submitted to the press has been reviewed by at least two outside specialists." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The stimulus says some monographs reviewed by two or more specialists are rejected for insufficient archival evidence, and every such rejected monograph can be resubmitted. Chaining these yields: some monographs reviewed by two or more specialists can be resubmitted.",
+      "A": "Correct.",
+      "B": "Out of scope. The stimulus lists one ground for rejection but does not say it is the only one.",
+      "C": "Contradicted by the stimulus — some reviewed monographs are rejected.",
+      "D": "Overreach. The stimulus permits resubmission but does not claim published monographs were in fact resubmitted.",
+      "E": "Inverts the 'unless' clause. The rule says reviewing is necessary for acceptance, not for submission."
+    },
+    "tags": ["must_be_true", "unless_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-06",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires chaining a universal with a most-claim via a common subject to guarantee existential overlap. Trap (D) is the converse; trap (C) is too strong.",
+    "stimulus": "All tenured professors at Kirchner College serve on at least one standing committee. Most tenured professors at Kirchner College are also members of the Faculty Senate. Every member of the Faculty Senate has voting privileges on curricular matters.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      { "label": "A", "text": "Every tenured professor at Kirchner College has voting privileges on curricular matters." },
+      { "label": "B", "text": "At least some tenured professors at Kirchner College who serve on a standing committee have voting privileges on curricular matters." },
+      { "label": "C", "text": "All members of the Faculty Senate are tenured professors at Kirchner College." },
+      { "label": "D", "text": "Any professor at Kirchner College who has voting privileges on curricular matters is a tenured professor." },
+      { "label": "E", "text": "Most members of the Faculty Senate serve on more than one standing committee." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "Most tenured professors are Faculty Senate members (so at least some exist); every such Senate member has curricular voting privileges; and every tenured professor serves on at least one standing committee. Therefore at least some tenured professors who serve on a standing committee have curricular voting privileges.",
+      "A": "Overreach — only the tenured professors who are Senate members are guaranteed voting privileges, and 'most' is not 'all.'",
+      "B": "Correct.",
+      "C": "Converse error — Senate members need not be tenured professors.",
+      "D": "Converse error — curricular voting privileges may extend to non-tenured Senate members.",
+      "E": "Unsupported. The stimulus says nothing about how many committees Senate members serve on."
+    },
+    "tags": ["must_be_true", "most_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-07",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires pairing a universal claim with a specific instance to derive a conditional about a named subject. Trap (A) overreaches by generalizing to all soils; trap (E) introduces scope shift.",
+    "stimulus": "Any agricultural soil in the Mendris Valley with a pH below 5.8 has measurable concentrations of aluminum that inhibit wheat root development. Soils that inhibit wheat root development cannot support commercially viable wheat yields without amendment. The east parcel of the Dahl farm has an agricultural soil in the Mendris Valley with a pH of 5.4.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "All agricultural soils in the Mendris Valley require amendment to support commercially viable wheat yields." },
+      { "label": "B", "text": "The soil on the east parcel of the Dahl farm cannot support commercially viable wheat yields without amendment." },
+      { "label": "C", "text": "Most farms in the Mendris Valley have soils with a pH below 5.8." },
+      { "label": "D", "text": "If a soil's pH is above 5.8, it will support commercially viable wheat yields without amendment." },
+      { "label": "E", "text": "The east parcel of the Dahl farm has the lowest soil pH in the Mendris Valley." }
+    ],
+    "correctAnswer": "B",
+    "explanations": {
+      "correct": "The east parcel's soil has pH 5.4, below 5.8. By the first conditional, it inhibits wheat root development. By the second, it cannot support commercially viable wheat yields without amendment.",
+      "A": "Overreach — the rule applies only to Mendris Valley soils with pH below 5.8, not all valley soils.",
+      "B": "Correct.",
+      "C": "Unsupported — the stimulus gives no distribution of valley soil pH.",
+      "D": "Negates the antecedent — a pH above 5.8 doesn't guarantee viability, since other amendments may still be needed.",
+      "E": "Scope shift — the stimulus does not compare pH across parcels."
+    },
+    "tags": ["must_be_true", "applied_conditional_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-08",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires combining two universals about overlapping groups to force an existential intersection. Trap (A) is the converse; trap (B) is could-be-true.",
+    "stimulus": "Every person who serves on the city's zoning board must also hold membership in the local bar association. Some members of the local bar association have represented clients in disputes before the zoning board. No person who has represented a client in a dispute before the zoning board in the past two years may serve on the zoning board.",
+    "questionStem": "If the statements above are true, which one of the following must also be true?",
+    "choices": [
+      { "label": "A", "text": "Every member of the local bar association is eligible to serve on the city's zoning board." },
+      { "label": "B", "text": "Some members of the local bar association who have represented clients before the zoning board are currently serving on it." },
+      { "label": "C", "text": "No member of the zoning board has represented a client in a dispute before the board in the past two years." },
+      { "label": "D", "text": "Most members of the local bar association have represented clients in disputes before the zoning board." },
+      { "label": "E", "text": "Anyone who has ever represented a client in a dispute before the zoning board is barred from the bar association." }
+    ],
+    "correctAnswer": "C",
+    "explanations": {
+      "correct": "The third sentence states that no one who has represented a client before the board in the past two years may serve on it. Since current board members serve on it, none of them can fall in that class.",
+      "A": "Converse error — the rule is that board members must be bar members, not that every bar member is eligible.",
+      "B": "Contradicted by the stimulus — recent representation disqualifies service.",
+      "C": "Correct.",
+      "D": "Collapses 'some' into 'most.' The stimulus supports only that some bar members have represented such clients.",
+      "E": "Overreach — the stimulus bars certain representers from the zoning board, not from the bar association itself."
+    },
+    "tags": ["must_be_true", "disqualification_chain"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-09",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires chaining an 'only if' conditional with a contrapositive applied to a specific device. Trap (D) is the converse; trap (E) overreaches on distribution.",
+    "stimulus": "A consumer electronics device is certified as energy efficient by the Vadren Standards Board only if it consumes less than 0.5 watts in standby mode. Any device that consumes less than 0.5 watts in standby mode uses a modern low-leakage power supply. The Luma-7 home router consumes 1.2 watts in standby mode.",
+    "questionStem": "Which one of the following must be true?",
+    "choices": [
+      { "label": "A", "text": "The Luma-7 home router is not certified as energy efficient by the Vadren Standards Board." },
+      { "label": "B", "text": "The Luma-7 home router does not use a modern low-leakage power supply." },
+      { "label": "C", "text": "Any device that uses a modern low-leakage power supply is certified as energy efficient by the Vadren Standards Board." },
+      { "label": "D", "text": "Any device that consumes less than 0.5 watts in standby mode is certified as energy efficient by the Vadren Standards Board." },
+      { "label": "E", "text": "Most home routers are not certified as energy efficient by the Vadren Standards Board." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "'Certified only if consumes less than 0.5 watts' means certification requires sub-0.5-watt standby. The Luma-7 consumes 1.2 watts — above the threshold — so by contrapositive it is not certified.",
+      "A": "Correct.",
+      "B": "Could be true but not must. The second rule tells us sub-0.5-watt devices use low-leakage supplies; it doesn't tell us that above-0.5-watt devices can't.",
+      "C": "Converse error — low-leakage supply doesn't guarantee certification.",
+      "D": "Affirms the necessary condition as if it were sufficient. Sub-0.5-watt standby is necessary for certification but not stated to be sufficient.",
+      "E": "Unsupported. The stimulus gives no distribution over home routers."
+    },
+    "tags": ["must_be_true", "only_if_contrapositive"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  },
+  {
+    "id": "lr-gen-must_be_true-d2-b0-10",
+    "section": "LR",
+    "subtype": "must_be_true",
+    "difficulty": 2,
+    "difficultyReason": "Requires applying the contrapositive to a conjunctive consequent, recognizing that failure of one conjunct suffices. Trap (C) is a converse error; trap (E) is could-be-true.",
+    "stimulus": "Any language that develops a grammatical case system also develops a corresponding set of morphological markers and a stable word order. Proto-Lerian had a well-documented set of morphological markers but no stable word order. Every language descended from Proto-Lerian inherited at least some of its morphological markers.",
+    "questionStem": "Which one of the following must be true on the basis of the statements above?",
+    "choices": [
+      { "label": "A", "text": "Proto-Lerian did not develop a grammatical case system." },
+      { "label": "B", "text": "No language descended from Proto-Lerian has a grammatical case system." },
+      { "label": "C", "text": "Any language with a stable word order and morphological markers develops a grammatical case system." },
+      { "label": "D", "text": "Most languages descended from Proto-Lerian have a stable word order." },
+      { "label": "E", "text": "Proto-Lerian's morphological markers originated in an earlier language with a grammatical case system." }
+    ],
+    "correctAnswer": "A",
+    "explanations": {
+      "correct": "The first sentence requires that a language with a grammatical case system have both morphological markers and a stable word order. Proto-Lerian lacks the latter, so by contrapositive it did not develop a grammatical case system.",
+      "A": "Correct.",
+      "B": "Overreach. The stimulus is silent on whether descendant languages have developed stable word order and case systems of their own.",
+      "C": "Converse error — the conditional runs from case system to the two features, not the other way.",
+      "D": "Unsupported. The stimulus says descendants inherited some morphological markers, not that they have stable word order.",
+      "E": "Could be true but not must. Nothing in the stimulus establishes how Proto-Lerian's markers originated."
+    },
+    "tags": ["must_be_true", "conjunctive_contrapositive"],
+    "source": { "pipelineVersion": "1.0", "generator": "claude-code-subagent", "fewShotRefs": ["must_be_true.json"] }
+  }
+]
