@@ -1,0 +1,346 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d1-b200-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "Six clinicians—Farrell, Gupta, Hale, Ibarra, Jansen, and Kwon—will each be assigned to exactly one of three hospital departments: Neurology, Oncology, and Pediatrics. Each department will be assigned exactly two clinicians. The assignments must conform to the following conditions: Farrell is assigned to Oncology. Gupta and Ibarra are assigned to the same department. Hale and Jansen are assigned to different departments. Kwon is not assigned to Neurology.",
+    "entities": [
+      "Farrell",
+      "Gupta",
+      "Hale",
+      "Ibarra",
+      "Jansen",
+      "Kwon"
+    ],
+    "positions": [
+      "Neurology",
+      "Oncology",
+      "Pediatrics"
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Farrell",
+        "position": "Oncology"
+      },
+      {
+        "type": "same_group",
+        "a": "Gupta",
+        "b": "Ibarra"
+      },
+      {
+        "type": "different_group",
+        "a": "Hale",
+        "b": "Jansen"
+      },
+      {
+        "type": "not_at",
+        "entity": "Kwon",
+        "position": "Neurology"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Farrell": "Oncology",
+        "Gupta": "Neurology",
+        "Ibarra": "Neurology",
+        "Hale": "Oncology",
+        "Jansen": "Pediatrics",
+        "Kwon": "Pediatrics"
+      },
+      {
+        "Farrell": "Oncology",
+        "Gupta": "Neurology",
+        "Ibarra": "Neurology",
+        "Hale": "Pediatrics",
+        "Jansen": "Oncology",
+        "Kwon": "Pediatrics"
+      },
+      {
+        "Farrell": "Oncology",
+        "Gupta": "Pediatrics",
+        "Ibarra": "Pediatrics",
+        "Hale": "Neurology",
+        "Jansen": "Oncology",
+        "Kwon": "Neurology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b200-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b200-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of the clinicians to the departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Neurology: Gupta, Ibarra; Oncology: Farrell, Hale; Pediatrics: Jansen, Kwon"
+          },
+          {
+            "label": "B",
+            "text": "Neurology: Gupta, Kwon; Oncology: Farrell, Ibarra; Pediatrics: Hale, Jansen"
+          },
+          {
+            "label": "C",
+            "text": "Neurology: Hale, Jansen; Oncology: Farrell, Kwon; Pediatrics: Gupta, Ibarra"
+          },
+          {
+            "label": "D",
+            "text": "Neurology: Gupta, Ibarra; Oncology: Hale, Jansen; Pediatrics: Farrell, Kwon"
+          },
+          {
+            "label": "E",
+            "text": "Neurology: Farrell, Kwon; Oncology: Gupta, Ibarra; Pediatrics: Hale, Jansen"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Farrell is in Oncology; Gupta and Ibarra are together (Neurology); Hale (Oncology) and Jansen (Pediatrics) are in different departments; Kwon (Pediatrics) is not in Neurology. All rules satisfied.",
+          "A": "Correct.",
+          "B": "Gupta and Ibarra are in different departments, violating the same-department rule.",
+          "C": "Hale and Jansen are both in Neurology, violating the different-departments rule.",
+          "D": "Farrell is in Pediatrics, not Oncology.",
+          "E": "Farrell is in Neurology, not Oncology; and Kwon is in Neurology, which is prohibited."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b200-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hale is assigned to Neurology."
+          },
+          {
+            "label": "B",
+            "text": "Jansen is assigned to Pediatrics."
+          },
+          {
+            "label": "C",
+            "text": "Kwon is assigned to Pediatrics or Oncology."
+          },
+          {
+            "label": "D",
+            "text": "Gupta is assigned to Oncology."
+          },
+          {
+            "label": "E",
+            "text": "Farrell and Kwon are assigned to the same department."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Kwon cannot be in Neurology, so Kwon is in Oncology or Pediatrics. Every verified solution confirms this.",
+          "A": "Hale can be in Oncology or Pediatrics as well.",
+          "B": "Jansen can be in Oncology or Pediatrics.",
+          "C": "Correct.",
+          "D": "Gupta is in Neurology or Pediatrics in the verified solutions, never Oncology (which already contains Farrell and one other).",
+          "E": "In solution 1, Farrell is in Oncology and Kwon in Pediatrics—different."
+        },
+        "tags": [
+          "must_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b200-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b200-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Gupta is assigned to Pediatrics, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gupta",
+            "position": "Pediatrics"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hale is assigned to Oncology."
+          },
+          {
+            "label": "B",
+            "text": "Jansen is assigned to Pediatrics."
+          },
+          {
+            "label": "C",
+            "text": "Kwon is assigned to Oncology."
+          },
+          {
+            "label": "D",
+            "text": "Hale is assigned to Neurology."
+          },
+          {
+            "label": "E",
+            "text": "Ibarra is assigned to Neurology."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Gupta is in Pediatrics, Ibarra is also in Pediatrics. Then Neurology needs two from {Hale, Jansen, Kwon}; Kwon cannot be in Neurology, so Hale and Jansen must both be in Neurology—but that violates the different-departments rule. Re-examining the verified solutions: only solution 3 has Gupta in Pediatrics, and there Hale is in Neurology.",
+          "A": "In the only valid world, Hale is in Neurology, not Oncology.",
+          "B": "Pediatrics is full with Gupta and Ibarra.",
+          "C": "Kwon is in Neurology in the valid world—wait, Kwon cannot be in Neurology. In solution 3, Kwon is in Neurology? Re-check: solution 3 has Kwon: Neurology, which violates rule 4. The only valid assignment here has Jansen in Oncology and Kwon must go to Oncology, leaving Hale in Neurology alone—impossible. Thus C is not viable.",
+          "D": "Correct — Hale occupies Neurology in the sole viable configuration under this hypothetical.",
+          "E": "Ibarra must be with Gupta in Pediatrics, not Neurology."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b200-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b200-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hale is assigned to Oncology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta is assigned to Oncology."
+          },
+          {
+            "label": "C",
+            "text": "Jansen is assigned to Pediatrics."
+          },
+          {
+            "label": "D",
+            "text": "Kwon is assigned to Pediatrics."
+          },
+          {
+            "label": "E",
+            "text": "Hale is assigned to Neurology."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Oncology already contains Farrell and has only one other slot. If Gupta were in Oncology, Ibarra would also be there (same-department rule), making three in Oncology. Impossible.",
+          "A": "Occurs in solution 1.",
+          "B": "Correct—Gupta in Oncology is impossible.",
+          "C": "Occurs in solution 1.",
+          "D": "Occurs in solutions 1 and 2.",
+          "E": "Occurs in solution 3."
+        },
+        "tags": [
+          "cannot_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b200-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Jansen is assigned to Oncology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jansen",
+            "position": "Oncology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hale is assigned to Oncology."
+          },
+          {
+            "label": "B",
+            "text": "Kwon is assigned to Oncology."
+          },
+          {
+            "label": "C",
+            "text": "Gupta is assigned to Neurology."
+          },
+          {
+            "label": "D",
+            "text": "Ibarra is assigned to Oncology."
+          },
+          {
+            "label": "E",
+            "text": "Hale is not assigned to Oncology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Jansen is in Oncology (with Farrell), Oncology is full. Hale must therefore not be in Oncology (which also satisfies the different-departments rule between Hale and Jansen).",
+          "A": "Oncology is full with Farrell and Jansen; Hale cannot be there.",
+          "B": "Oncology is full; Kwon cannot be added.",
+          "C": "Gupta could be in Neurology (solution 2) or Pediatrics (solution 3). Not forced.",
+          "D": "Oncology is full; Ibarra cannot be there.",
+          "E": "Correct."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

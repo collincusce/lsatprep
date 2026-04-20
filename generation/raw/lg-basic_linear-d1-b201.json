@@ -1,0 +1,356 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d1-b201-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 1,
+    "scenario": "A delivery truck makes exactly six stops — at Fairview, Greendale, Hillcrest, Ivyton, Jasper, and Kenmore — one after another along a single route. The order of the stops is consistent with the following conditions: The truck stops at Hillcrest first. The truck stops at Greendale at some point before it stops at Jasper. The truck stops at Fairview immediately before or immediately after it stops at Kenmore. The truck stops at Ivyton fifth.",
+    "entities": [
+      "Fairview",
+      "Greendale",
+      "Hillcrest",
+      "Ivyton",
+      "Jasper",
+      "Kenmore"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Hillcrest",
+        "position": 1
+      },
+      {
+        "type": "before",
+        "a": "Greendale",
+        "b": "Jasper"
+      },
+      {
+        "type": "adjacent",
+        "a": "Fairview",
+        "b": "Kenmore"
+      },
+      {
+        "type": "at",
+        "entity": "Ivyton",
+        "position": 5
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Fairview": 2,
+        "Greendale": 4,
+        "Hillcrest": 1,
+        "Ivyton": 5,
+        "Jasper": 6,
+        "Kenmore": 3
+      },
+      {
+        "Fairview": 3,
+        "Greendale": 2,
+        "Hillcrest": 1,
+        "Ivyton": 5,
+        "Jasper": 6,
+        "Kenmore": 4
+      },
+      {
+        "Fairview": 3,
+        "Greendale": 4,
+        "Hillcrest": 1,
+        "Ivyton": 5,
+        "Jasper": 6,
+        "Kenmore": 2
+      },
+      {
+        "Fairview": 4,
+        "Greendale": 2,
+        "Hillcrest": 1,
+        "Ivyton": 5,
+        "Jasper": 6,
+        "Kenmore": 3
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d1-b201-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b201-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the order of the truck's stops, from first to last?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hillcrest, Fairview, Kenmore, Greendale, Ivyton, Jasper"
+          },
+          {
+            "label": "B",
+            "text": "Hillcrest, Greendale, Jasper, Fairview, Ivyton, Kenmore"
+          },
+          {
+            "label": "C",
+            "text": "Greendale, Hillcrest, Fairview, Kenmore, Ivyton, Jasper"
+          },
+          {
+            "label": "D",
+            "text": "Hillcrest, Jasper, Fairview, Kenmore, Ivyton, Greendale"
+          },
+          {
+            "label": "E",
+            "text": "Hillcrest, Fairview, Greendale, Kenmore, Jasper, Ivyton"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "(A) places Hillcrest first, Ivyton fifth, Fairview and Kenmore adjacent (stops 2 and 3), and Greendale (stop 4) before Jasper (stop 6). All four rules are satisfied.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Violates the adjacency rule: Fairview (stop 4) is not immediately next to Kenmore (stop 6).",
+          "C": "Violates the rule that Hillcrest must be first; here Greendale is first.",
+          "D": "Violates the rule that Greendale must come before Jasper; Jasper is at stop 2 and Greendale is at stop 6.",
+          "E": "Violates the rule that Ivyton must be fifth; here Ivyton is sixth."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b201-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b201-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The truck stops at Fairview second."
+          },
+          {
+            "label": "B",
+            "text": "The truck stops at Jasper sixth."
+          },
+          {
+            "label": "C",
+            "text": "The truck stops at Greendale third."
+          },
+          {
+            "label": "D",
+            "text": "The truck stops at Kenmore fourth."
+          },
+          {
+            "label": "E",
+            "text": "The truck stops at Fairview immediately before Greendale."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Hillcrest fixed at 1 and Ivyton fixed at 5, Jasper must come after Greendale. The only position available for Jasper that is after Greendale while leaving room for the Fairview/Kenmore block is position 6.",
+          "A": "Fairview could be at position 2, 3, or 4.",
+          "B": "Correct. In every valid ordering, Jasper is sixth.",
+          "C": "Greendale could be at position 2 or 4.",
+          "D": "Kenmore could be at position 2, 3, or 4.",
+          "E": "Fairview is not always immediately before Greendale; in several orderings Greendale precedes the Fairview–Kenmore block."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b201-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b201-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the truck stops at Greendale second, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Greendale",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The truck stops at Fairview third."
+          },
+          {
+            "label": "B",
+            "text": "The truck stops at Kenmore fourth."
+          },
+          {
+            "label": "C",
+            "text": "The truck stops at Jasper sixth."
+          },
+          {
+            "label": "D",
+            "text": "The truck stops at Fairview fourth."
+          },
+          {
+            "label": "E",
+            "text": "The truck stops at Kenmore third."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Hillcrest at 1, Greendale at 2, and Ivyton at 5, Jasper must come after Greendale. Positions 3 and 4 are taken by the Fairview/Kenmore block, so Jasper is at 6.",
+          "A": "Fairview could be at 3 or 4.",
+          "B": "Kenmore could be at 3 or 4.",
+          "C": "Correct. Jasper must occupy position 6.",
+          "D": "Fairview could be at 3 instead.",
+          "E": "Kenmore could be at 4 instead."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b201-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b201-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The truck stops at Fairview second."
+          },
+          {
+            "label": "B",
+            "text": "The truck stops at Kenmore second."
+          },
+          {
+            "label": "C",
+            "text": "The truck stops at Greendale fourth."
+          },
+          {
+            "label": "D",
+            "text": "The truck stops at Jasper fourth."
+          },
+          {
+            "label": "E",
+            "text": "The truck stops at Fairview fourth."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Jasper must follow Greendale, and Ivyton is fixed at position 5, so Jasper must be at position 6. Jasper cannot be at position 4.",
+          "A": "Fairview is second in at least one valid ordering.",
+          "B": "Kenmore is second in at least one valid ordering.",
+          "C": "Greendale is fourth in two valid orderings.",
+          "D": "Correct. Jasper is forced to position 6 in every valid ordering.",
+          "E": "Fairview is fourth in at least one valid ordering."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d1-b201-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d1-b201-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If the truck stops at Fairview immediately before Kenmore, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "before",
+            "a": "Fairview",
+            "b": "Kenmore"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The truck stops at Greendale second."
+          },
+          {
+            "label": "B",
+            "text": "The truck stops at Kenmore second."
+          },
+          {
+            "label": "C",
+            "text": "The truck stops at Jasper second."
+          },
+          {
+            "label": "D",
+            "text": "The truck stops at Ivyton second."
+          },
+          {
+            "label": "E",
+            "text": "The truck stops at Fairview fourth."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Fairview immediately before Kenmore, the valid orderings become Hillcrest–Fairview–Kenmore–Greendale–Ivyton–Jasper and Hillcrest–Greendale–Fairview–Kenmore–Ivyton–Jasper. In the second, Greendale is second.",
+          "A": "Correct. Greendale can be at position 2.",
+          "B": "Kenmore must follow Fairview, so Kenmore cannot be second (Hillcrest is first, so Fairview would have to be before position 2).",
+          "C": "Jasper must come after Greendale; with Hillcrest first, Jasper cannot be second.",
+          "D": "Ivyton is fixed at position 5, not 2.",
+          "E": "With Fairview immediately before Kenmore, Fairview at 4 would put Kenmore at 5, but Ivyton is at 5."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

@@ -1,0 +1,416 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d1-b200-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 1,
+    "scenario": "A municipal parade features exactly six floats — Fanfare, Glimmer, Harbor, Ivy, Jubilee, and Kite — that will march in a single file from position 1 (at the front) through position 6 (at the rear). Each float is sponsored by exactly one of two districts: Northside or Southside. The floats' order and district assignments are subject to the following conditions: Exactly three floats are sponsored by Northside. Fanfare marches immediately ahead of Glimmer. Harbor marches somewhere ahead of Ivy. Fanfare and Harbor are sponsored by the same district. Jubilee is sponsored by Southside. Kite marches in position 6.",
+    "entities": [
+      "Fanfare",
+      "Glimmer",
+      "Harbor",
+      "Ivy",
+      "Jubilee",
+      "Kite"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "adjacent",
+        "a": "Fanfare",
+        "b": "Glimmer"
+      },
+      {
+        "type": "before",
+        "a": "Fanfare",
+        "b": "Glimmer"
+      },
+      {
+        "type": "before",
+        "a": "Harbor",
+        "b": "Ivy"
+      },
+      {
+        "type": "at",
+        "entity": "Kite",
+        "position": 6
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Fanfare": 1,
+        "Glimmer": 2,
+        "Harbor": 3,
+        "Ivy": 4,
+        "Jubilee": 5,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 1,
+        "Glimmer": 2,
+        "Harbor": 3,
+        "Ivy": 5,
+        "Jubilee": 4,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 1,
+        "Glimmer": 2,
+        "Harbor": 4,
+        "Ivy": 5,
+        "Jubilee": 3,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 2,
+        "Glimmer": 3,
+        "Harbor": 1,
+        "Ivy": 4,
+        "Jubilee": 5,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 2,
+        "Glimmer": 3,
+        "Harbor": 1,
+        "Ivy": 5,
+        "Jubilee": 4,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 2,
+        "Glimmer": 3,
+        "Harbor": 4,
+        "Ivy": 5,
+        "Jubilee": 1,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 3,
+        "Glimmer": 4,
+        "Harbor": 1,
+        "Ivy": 2,
+        "Jubilee": 5,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 3,
+        "Glimmer": 4,
+        "Harbor": 1,
+        "Ivy": 5,
+        "Jubilee": 2,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 3,
+        "Glimmer": 4,
+        "Harbor": 2,
+        "Ivy": 5,
+        "Jubilee": 1,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 4,
+        "Glimmer": 5,
+        "Harbor": 1,
+        "Ivy": 2,
+        "Jubilee": 3,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 4,
+        "Glimmer": 5,
+        "Harbor": 1,
+        "Ivy": 3,
+        "Jubilee": 2,
+        "Kite": 6
+      },
+      {
+        "Fanfare": 4,
+        "Glimmer": 5,
+        "Harbor": 2,
+        "Ivy": 3,
+        "Jubilee": 1,
+        "Kite": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-hybrid-d1-b200-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b200-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be the complete order of the floats, from position 1 to position 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Fanfare, Glimmer, Harbor, Ivy, Jubilee, Kite"
+          },
+          {
+            "label": "B",
+            "text": "Glimmer, Fanfare, Harbor, Ivy, Jubilee, Kite"
+          },
+          {
+            "label": "C",
+            "text": "Fanfare, Glimmer, Ivy, Harbor, Jubilee, Kite"
+          },
+          {
+            "label": "D",
+            "text": "Fanfare, Glimmer, Harbor, Ivy, Kite, Jubilee"
+          },
+          {
+            "label": "E",
+            "text": "Harbor, Fanfare, Ivy, Glimmer, Jubilee, Kite"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "A satisfies every rule: Fanfare is immediately ahead of Glimmer, Harbor is ahead of Ivy, and Kite is in position 6.",
+          "A": "Correct. All four positioning rules are satisfied.",
+          "B": "Fanfare must be immediately ahead of Glimmer, but here Glimmer is ahead of Fanfare.",
+          "C": "Harbor must be ahead of Ivy, but here Ivy is in position 3 and Harbor is in position 4.",
+          "D": "Kite must be in position 6, but here Jubilee occupies position 6.",
+          "E": "Fanfare must be immediately ahead of Glimmer, but here Fanfare is in position 2 and Glimmer is in position 4."
+        },
+        "tags": [
+          "orientation_question",
+          "hybrid"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b200-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor marches in position 1."
+          },
+          {
+            "label": "B",
+            "text": "Kite marches in position 6."
+          },
+          {
+            "label": "C",
+            "text": "Jubilee marches in position 5."
+          },
+          {
+            "label": "D",
+            "text": "Ivy marches immediately behind Harbor."
+          },
+          {
+            "label": "E",
+            "text": "Fanfare marches in position 1."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "The rule 'Kite marches in position 6' directly establishes that Kite must occupy position 6.",
+          "A": "Harbor need not be in position 1 — Harbor could be in positions 2, 3, or 4 across valid arrangements.",
+          "B": "Correct. This is stated directly as a rule.",
+          "C": "Jubilee could be in positions 1, 2, 3, 4, or 5 — it need not be position 5.",
+          "D": "Ivy need only be somewhere behind Harbor, not immediately behind.",
+          "E": "Fanfare could be in several positions, not necessarily position 1."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b200-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b200-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Harbor marches in position 1, which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Harbor",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Glimmer marches in position 2."
+          },
+          {
+            "label": "B",
+            "text": "Ivy marches in position 1."
+          },
+          {
+            "label": "C",
+            "text": "Fanfare marches in position 6."
+          },
+          {
+            "label": "D",
+            "text": "Jubilee marches in position 3."
+          },
+          {
+            "label": "E",
+            "text": "Kite marches in position 5."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "With Harbor in position 1, a valid arrangement is Harbor, Jubilee, Ivy, Fanfare, Glimmer, Kite. Here Jubilee is in position 3.",
+          "A": "If Harbor is in position 1, then position 2 cannot be Glimmer, because Fanfare must be immediately before Glimmer and position 1 is filled by Harbor.",
+          "B": "Harbor is in position 1, so Ivy cannot also be in position 1.",
+          "C": "Kite is fixed at position 6, so Fanfare cannot be in position 6.",
+          "D": "Correct. This arrangement is consistent with all rules.",
+          "E": "Kite is fixed at position 6, not position 5."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b200-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b200-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Harbor marches in position 1."
+          },
+          {
+            "label": "B",
+            "text": "Fanfare marches in position 4."
+          },
+          {
+            "label": "C",
+            "text": "Glimmer marches in position 6."
+          },
+          {
+            "label": "D",
+            "text": "Jubilee marches in position 1."
+          },
+          {
+            "label": "E",
+            "text": "Ivy marches in position 5."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Kite must march in position 6, so no other float — including Glimmer — can occupy position 6.",
+          "A": "Harbor can march in position 1 (for example, Harbor, Jubilee, Ivy, Fanfare, Glimmer, Kite).",
+          "B": "Fanfare can march in position 4 (for example, Harbor, Ivy, Jubilee, Fanfare, Glimmer, Kite).",
+          "C": "Correct. Kite occupies position 6, so Glimmer cannot.",
+          "D": "Jubilee can march in position 1 (for example, Jubilee, Harbor, Ivy, Fanfare, Glimmer, Kite).",
+          "E": "Ivy can march in position 5 (for example, Fanfare, Glimmer, Harbor, Jubilee, Ivy, Kite)."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-hybrid-d1-b200-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-hybrid-d1-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Fanfare marches in position 1, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Fanfare",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Glimmer marches in position 2."
+          },
+          {
+            "label": "B",
+            "text": "Harbor marches in position 3."
+          },
+          {
+            "label": "C",
+            "text": "Ivy marches in position 4."
+          },
+          {
+            "label": "D",
+            "text": "Jubilee marches in position 5."
+          },
+          {
+            "label": "E",
+            "text": "Harbor marches in position 5."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Fanfare must be immediately ahead of Glimmer. If Fanfare is in position 1, Glimmer must be in position 2.",
+          "A": "Correct. The adjacency-and-order rule forces Glimmer into position 2.",
+          "B": "Harbor could be in position 3, 4, or 5 — it need not be position 3.",
+          "C": "Ivy could occupy multiple positions depending on Harbor and Jubilee.",
+          "D": "Jubilee could march in several positions, not necessarily position 5.",
+          "E": "Harbor need not be in position 5; multiple valid placements exist."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-hybrid.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

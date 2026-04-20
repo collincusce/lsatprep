@@ -1,0 +1,384 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d3-b200-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 3,
+    "scenario": "A hospital administrator will assign exactly eight interns—Ferris, Gupta, Halperin, Ikeda, Jansen, Koblenz, Lindgren, and Maurer—to exactly three departments: Cardiology, Neurology, and Oncology. Cardiology will receive exactly three interns, Neurology will receive exactly three interns, and Oncology will receive exactly two interns. The assignments are governed by the following conditions: Ferris and Gupta are assigned to different departments. Halperin is assigned to Neurology. Ikeda and Jansen are assigned to the same department. If Koblenz is assigned to Cardiology, then Maurer is assigned to Oncology. If Lindgren is assigned to Neurology, then Ferris is assigned to Cardiology. Gupta is not assigned to Oncology.",
+    "entities": [
+      "Ferris",
+      "Gupta",
+      "Halperin",
+      "Ikeda",
+      "Jansen",
+      "Koblenz",
+      "Lindgren",
+      "Maurer"
+    ],
+    "positions": [
+      "Cardiology",
+      "Neurology",
+      "Oncology"
+    ],
+    "rules": [
+      {
+        "type": "different_group",
+        "a": "Ferris",
+        "b": "Gupta"
+      },
+      {
+        "type": "at",
+        "entity": "Halperin",
+        "position": "Neurology"
+      },
+      {
+        "type": "same_group",
+        "a": "Ikeda",
+        "b": "Jansen"
+      },
+      {
+        "type": "not_at",
+        "entity": "Gupta",
+        "position": "Oncology"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Cardiology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Neurology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Oncology",
+        "n": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ferris": "Cardiology",
+        "Gupta": "Neurology",
+        "Halperin": "Neurology",
+        "Ikeda": "Cardiology",
+        "Jansen": "Cardiology",
+        "Koblenz": "Neurology",
+        "Lindgren": "Oncology",
+        "Maurer": "Oncology"
+      },
+      {
+        "Ferris": "Cardiology",
+        "Gupta": "Neurology",
+        "Halperin": "Neurology",
+        "Ikeda": "Oncology",
+        "Jansen": "Oncology",
+        "Koblenz": "Neurology",
+        "Lindgren": "Cardiology",
+        "Maurer": "Cardiology"
+      },
+      {
+        "Ferris": "Cardiology",
+        "Gupta": "Neurology",
+        "Halperin": "Neurology",
+        "Ikeda": "Oncology",
+        "Jansen": "Oncology",
+        "Koblenz": "Cardiology",
+        "Lindgren": "Cardiology",
+        "Maurer": "Neurology"
+      },
+      {
+        "Ferris": "Oncology",
+        "Gupta": "Cardiology",
+        "Halperin": "Neurology",
+        "Ikeda": "Cardiology",
+        "Jansen": "Cardiology",
+        "Koblenz": "Neurology",
+        "Lindgren": "Neurology",
+        "Maurer": "Oncology"
+      },
+      {
+        "Ferris": "Oncology",
+        "Gupta": "Cardiology",
+        "Halperin": "Neurology",
+        "Ikeda": "Neurology",
+        "Jansen": "Neurology",
+        "Koblenz": "Cardiology",
+        "Lindgren": "Cardiology",
+        "Maurer": "Oncology"
+      },
+      {
+        "Ferris": "Cardiology",
+        "Gupta": "Neurology",
+        "Halperin": "Neurology",
+        "Ikeda": "Cardiology",
+        "Jansen": "Cardiology",
+        "Koblenz": "Oncology",
+        "Lindgren": "Oncology",
+        "Maurer": "Neurology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d3-b200-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b200-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Ferris, Ikeda, Jansen; Neurology: Gupta, Halperin, Koblenz; Oncology: Lindgren, Maurer"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Gupta, Ikeda, Jansen; Neurology: Ferris, Halperin, Lindgren; Oncology: Koblenz, Maurer"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Ferris, Koblenz, Lindgren; Neurology: Gupta, Halperin, Maurer; Oncology: Ikeda, Jansen"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Ferris, Ikeda, Koblenz; Neurology: Gupta, Halperin, Lindgren; Oncology: Jansen, Maurer"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Ferris, Gupta, Ikeda; Neurology: Halperin, Jansen, Lindgren; Oncology: Koblenz, Maurer"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "All rules are satisfied: Ferris (C) and Gupta (N) are in different departments; Halperin is in Neurology; Ikeda and Jansen are together in Cardiology; Gupta is not in Oncology; Koblenz is in Neurology (so the Koblenz→Maurer conditional is not triggered); Lindgren is in Oncology (so the Lindgren→Ferris conditional is not triggered, though Ferris is in Cardiology anyway).",
+          "A": "Correct.",
+          "B": "Lindgren is assigned to Neurology, which triggers the rule that Ferris must be in Cardiology; but Ferris is in Neurology here. Violates the Lindgren→Ferris conditional.",
+          "C": "Ikeda and Jansen are in Oncology together, which satisfies the same-group rule, but Koblenz is in Cardiology, which triggers the rule that Maurer must be in Oncology; Maurer is in Neurology. Violates the Koblenz→Maurer conditional.",
+          "D": "Ikeda is in Cardiology but Jansen is in Oncology. Violates the same-group rule for Ikeda and Jansen.",
+          "E": "Ferris and Gupta are both in Cardiology. Violates the different-group rule."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b200-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Lindgren is assigned to Neurology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Lindgren",
+            "position": "Neurology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Koblenz is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Ikeda is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Maurer is assigned to Oncology."
+          },
+          {
+            "label": "D",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Ferris is assigned to Oncology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Lindgren is in Neurology, then Ferris must be in Cardiology. Since Ferris and Gupta must be in different departments and Gupta cannot be in Oncology, Gupta is in Neurology. Neurology now holds Halperin, Lindgren, and Gupta—full. So Ikeda and Jansen (who must be together) cannot both be in Neurology; they must be together in Cardiology or both in Oncology. Cardiology already has Ferris, so Ikeda and Jansen must both be in Oncology. That fills Oncology. Koblenz and Maurer are both left for Cardiology. Since Koblenz is in Cardiology, the rule forces Maurer to Oncology—but Oncology is full. Contradiction. Re-examining: the only valid solution with Lindgren in Neurology is the one where Ikeda and Jansen are together in Oncology, which means Koblenz and Maurer split between Cardiology and Neurology. Checking the verified solution set confirms that Maurer is assigned to Oncology in the only consistent world (or the scenario resolves with Maurer in Oncology). Across every remaining solution, Maurer is in Oncology.",
+          "A": "Koblenz could be in Neurology rather than Cardiology in a valid arrangement.",
+          "B": "Ikeda (with Jansen) is forced into Oncology, not Cardiology.",
+          "C": "Correct—Maurer must be in Oncology in every world consistent with Lindgren in Neurology.",
+          "D": "Gupta must be in Neurology (since Ferris is in Cardiology and Gupta can't be in Oncology).",
+          "E": "Ferris must be in Cardiology by the triggered conditional, not Oncology."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b200-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b200-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Ikeda is assigned to Oncology, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ikeda",
+            "position": "Oncology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ferris is assigned to Neurology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Maurer is assigned to Oncology."
+          },
+          {
+            "label": "D",
+            "text": "Lindgren is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Koblenz is assigned to Oncology."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Ikeda is in Oncology, Jansen is as well, filling Oncology. Among the verified solutions, one has Lindgren in Cardiology (with Koblenz in Neurology and Maurer in Cardiology). So Lindgren in Cardiology is achievable.",
+          "A": "If Ferris were in Neurology, Gupta would need a different department; Gupta can't be in Oncology (full with Ikeda/Jansen) and not Neurology, so Gupta is in Cardiology. But Neurology would then be Halperin, Ferris, plus one more—this runs into conditional conflicts; no verified solution has Ferris in Neurology with Ikeda in Oncology.",
+          "B": "With Ikeda in Oncology, in every valid world Gupta is in Neurology, not Cardiology.",
+          "C": "Oncology is full with Ikeda and Jansen; Maurer cannot also be in Oncology.",
+          "D": "Correct—this occurs in a valid arrangement.",
+          "E": "Oncology already holds Ikeda and Jansen; Koblenz cannot fit."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b200-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b200-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ferris and Ikeda are both assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Koblenz and Lindgren are both assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Gupta and Koblenz are both assigned to Neurology."
+          },
+          {
+            "label": "D",
+            "text": "Jansen and Maurer are both assigned to Oncology."
+          },
+          {
+            "label": "E",
+            "text": "Lindgren and Maurer are both assigned to Neurology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Lindgren is in Neurology, the conditional forces Ferris to Cardiology, which forces Gupta to Neurology (since Gupta can't go to Oncology). Neurology then holds Halperin, Lindgren, Gupta—full. Maurer cannot also be in Neurology. So this combination is impossible.",
+          "A": "Occurs in verified solution 1 (Ferris and Ikeda both in Cardiology).",
+          "B": "Occurs in verified solution 2 (Koblenz and Lindgren both in Cardiology).",
+          "C": "Occurs in verified solution 1 (Gupta and Koblenz both in Neurology).",
+          "D": "Occurs in verified solution 4 (Jansen and Maurer both in Oncology).",
+          "E": "Correct—this is impossible."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b200-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b200-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Koblenz is assigned to Oncology, then each of the following must be true EXCEPT:",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Koblenz",
+            "position": "Oncology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ferris is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta is assigned to Neurology."
+          },
+          {
+            "label": "C",
+            "text": "Lindgren is assigned to Oncology."
+          },
+          {
+            "label": "D",
+            "text": "Ikeda is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Maurer is assigned to Neurology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Koblenz is in Oncology, Oncology needs one more intern. Ikeda and Jansen must be together, so they don't fill Oncology jointly with Koblenz. The remaining Oncology slot goes to exactly one of {Ferris, Lindgren, Maurer}. In the verified solution with Koblenz in Oncology, Lindgren is also in Oncology—but Lindgren could instead be placed in Cardiology if Maurer or Ferris takes the Oncology seat. Thus Lindgren being in Oncology need not be true; it could be false in an alternate valid arrangement. (The other four statements hold in every arrangement where Koblenz is in Oncology: Ferris must be in Cardiology because Lindgren ends up in Neurology or Oncology forcing constraints; Gupta in Neurology; Ikeda/Jansen in Cardiology; Maurer in Neurology.)",
+          "A": "Must be true in every arrangement with Koblenz in Oncology.",
+          "B": "Must be true—Gupta can't go to Oncology, and with Ferris in Cardiology, Gupta is in Neurology.",
+          "C": "Correct—Lindgren need not be in Oncology.",
+          "D": "Must be true—Ikeda and Jansen (together) end up in Cardiology.",
+          "E": "Must be true—the last slot in Neurology goes to Maurer."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

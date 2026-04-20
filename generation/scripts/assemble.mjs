@@ -120,13 +120,16 @@ function assembleRc() {
   for (const key of keys) {
     const target = CELL_TARGETS[key] || Infinity;
     let questionTally = 0;
+    // Keep passages/games until we meet/cross the cell target. Allow one final
+    // bundle to overshoot by up to (bundle_size - 1). Strict no-overshoot
+    // leaves cells permanently short whenever target isn't an exact multiple
+    // of bundle size (e.g. target 62 with 7-Q passages caps at 56). A small
+    // overshoot is much preferable to an unfillable gap.
     for (const passage of buckets[key]) {
+      if (questionTally >= target) break;
       const qCount = passage.questions?.length || 0;
-      // Only accept the passage/game if adding it won't overshoot the cell target.
-      if (questionTally + qCount > target) continue;
       kept.push(passage);
       questionTally += qCount;
-      if (questionTally >= target) break;
     }
   }
 
