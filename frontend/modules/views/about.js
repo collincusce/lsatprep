@@ -3,37 +3,37 @@
 const BASE = window.location.pathname.includes('/lsatprep/') ? '/lsatprep' : '';
 
 const LR_SUBTYPES = [
-  ['Assumption — Necessary',      240, '80 / 120 / 40'],
-  ['Assumption — Sufficient',     120, '40 / 60 / 20'],
-  ['Strengthen',                  240, '80 / 120 / 40'],
-  ['Weaken',                      240, '80 / 120 / 40'],
-  ['Flaw',                        200, '60 / 100 / 40'],
-  ['Parallel Reasoning',          120, '20 / 60 / 40'],
-  ['Parallel Flaw',               100, '20 / 60 / 20'],
-  ['Method of Reasoning',         100, '40 / 40 / 20'],
-  ['Role in Argument',            120, '40 / 60 / 20'],
-  ['Point at Issue',              100, '40 / 40 / 20'],
-  ['Main Point',                  100, '60 / 40 / 0'],
-  ['Must Be True',                140, '40 / 80 / 20'],
-  ['Most Strongly Supported',     120, '40 / 60 / 20'],
-  ['Principle — Conform',          60, '20 / 30 / 10'],
-  ['Principle — Justify',          60, '20 / 30 / 10'],
-  ['Paradox / Resolve',            60, '20 / 20 / 20']
+  ['Assumption — Necessary',      159, '38 / 70 / 51'],
+  ['Assumption — Sufficient',     147, '32 / 64 / 51'],
+  ['Strengthen',                  192, '51 / 90 / 51'],
+  ['Weaken',                      191, '51 / 89 / 51'],
+  ['Flaw',                        166, '38 / 77 / 51'],
+  ['Parallel Reasoning',          115, '26 / 51 / 38'],
+  ['Parallel Flaw',                89, '19 / 38 / 32'],
+  ['Method of Reasoning',         103, '26 / 45 / 32'],
+  ['Role in Argument',            103, '26 / 45 / 32'],
+  ['Point at Issue',               83, '19 / 38 / 26'],
+  ['Main Point',                   83, '26 / 38 / 19'],
+  ['Must Be True',                128, '32 / 58 / 38'],
+  ['Most Strongly Supported',     115, '32 / 51 / 32'],
+  ['Principle — Conform',         103, '26 / 45 / 32'],
+  ['Principle — Justify',          83, '19 / 38 / 26'],
+  ['Paradox / Resolve',           140, '38 / 64 / 38']
 ];
 
 const RC_GENRES = [
-  ['Humanities',           280, '40 passages'],
-  ['Social Sciences',      280, '40 passages'],
-  ['Natural Science',      280, '40 passages'],
-  ['Law',                  140, '20 passages'],
-  ['Comparative Reading',  120, '20 passages — paired']
+  ['Humanities',           247, '62 / 116 / 69'],
+  ['Social Sciences',      238, '54 / 115 / 69'],
+  ['Natural Science',      231, '54 / 108 / 69'],
+  ['Law',                  215, '46 / 100 / 69'],
+  ['Comparative Reading',  169, '38 / 85 / 46 — paired']
 ];
 
 const LG_FAMILIES = [
-  ['Basic Linear',     200, '30 games'],
-  ['Advanced Linear',  260, '40 games'],
-  ['Grouping',         240, '40 games'],
-  ['Hybrid',           220, '30 games']
+  ['Basic Linear',     225, '71 / 103 / 51'],
+  ['Advanced Linear',  212, '45 / 96 / 71'],
+  ['Grouping',         237, '58 / 115 / 64'],
+  ['Hybrid',           226, '39 / 116 / 71']
 ];
 
 function row(cells, opts = {}) {
@@ -46,15 +46,15 @@ function row(cells, opts = {}) {
 }
 
 function matrixTable() {
-  const head = row(['Section / Type', 'Count', 'Notes (by difficulty 1 / 2 / 3 or count)'], { header: true });
+  const head = row(['Section / Type', 'Count', 'By difficulty 1 / 2 / 3'], { header: true });
   const body = [
-    row(['<strong>Logical Reasoning</strong>', '~2,000', '16 subtypes × difficulty'], { sectionHead: true }),
+    row(['<strong>Logical Reasoning</strong>', '<strong>2,000</strong>', '16 subtypes × difficulty'], { sectionHead: true }),
     ...LR_SUBTYPES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Reading Comprehension</strong>', '~1,100', '~160 passages × ~7 Q'], { sectionHead: true }),
+    row(['<strong>Reading Comprehension</strong>', '<strong>1,100</strong>', '~157 passages × ~7 Q'], { sectionHead: true }),
     ...RC_GENRES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Logic Games</strong>', '~900', '~140 games × ~6–7 Q'], { sectionHead: true }),
+    row(['<strong>Logic Games</strong>', '<strong>900</strong>', '~138 games × ~6–7 Q'], { sectionHead: true }),
     ...LG_FAMILIES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Grand total</strong>', '<strong>~4,000</strong>', ''], { sectionHead: true })
+    row(['<strong>Grand total</strong>', '<strong>4,000</strong>', ''], { sectionHead: true })
   ].join('');
   return `
     <div class="matrix-wrap">
@@ -85,7 +85,7 @@ export function renderAbout(mainEl) {
 
     <section class="card">
       <h2>Coverage matrix</h2>
-      <p class="muted">The 4,000 questions are stratified across section, subtype, and difficulty. Counts below are planning targets; the generation report documents the actual delivered distribution.</p>
+      <p class="muted">The 4,000 questions are stratified across section, subtype, and difficulty per <code>generation/coverage-matrix.json</code> — the same file the Phase 4 generator subagents fan out on. Counts below are exact targets; the per-run generation report records the actual delivered distribution after any drops or backfills.</p>
       ${matrixTable()}
       <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-3)">Difficulty 1 ≈ 80–100% of real LSAT takers get it right · 2 ≈ 50–79% · 3 ≈ under 50%. Calibration anchors extrapolated from LSAC percentile data and public 7sage / LSAT Hacks commentary — our mapping, not an official LSAC curve.</p>
     </section>
