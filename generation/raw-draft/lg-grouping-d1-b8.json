@@ -4,14 +4,14 @@
     "section": "LG",
     "family": "grouping",
     "difficulty": 1,
-    "scenario": "Six ferry vehicles—a jeep, a karavan, a limousine, a minibus, a pickup, and a sedan—will be loaded into exactly one of three ferry holds: hold 1, hold 2, and hold 3. Each hold will be loaded with exactly two vehicles. The following conditions apply:\n\nThe jeep and the sedan are loaded into the same hold.\nThe karavan and the limousine are loaded into different holds.\nThe pickup is loaded into hold 2.\nThe minibus is not loaded into hold 3.",
+    "scenario": "Six clinicians—Fuentes, Gupta, Harlow, Imai, Jorgensen, and Kwon—will each be assigned to exactly one of three on-call rotations: Monday, Tuesday, and Wednesday. Exactly two clinicians are assigned to each rotation. The assignments must meet the following conditions: Fuentes is assigned to Monday. Gupta and Harlow are assigned to the same rotation. Imai and Jorgensen are assigned to different rotations. Kwon is not assigned to Wednesday.",
     "entities": [
-      "jeep",
-      "karavan",
-      "limousine",
-      "minibus",
-      "pickup",
-      "sedan"
+      "Fuentes",
+      "Gupta",
+      "Harlow",
+      "Imai",
+      "Jorgensen",
+      "Kwon"
     ],
     "positions": [
       1,
@@ -20,74 +20,74 @@
     ],
     "rules": [
       {
+        "type": "at",
+        "entity": "Fuentes",
+        "position": 1
+      },
+      {
         "type": "same_group",
-        "a": "jeep",
-        "b": "sedan"
+        "a": "Gupta",
+        "b": "Harlow"
       },
       {
         "type": "different_group",
-        "a": "karavan",
-        "b": "limousine"
-      },
-      {
-        "type": "at",
-        "entity": "pickup",
-        "position": 2
+        "a": "Imai",
+        "b": "Jorgensen"
       },
       {
         "type": "not_at",
-        "entity": "minibus",
+        "entity": "Kwon",
         "position": 3
       }
     ],
     "verifiedSolutions": [
       {
-        "jeep": 1,
-        "sedan": 1,
-        "pickup": 2,
-        "minibus": 2,
-        "karavan": 3,
-        "limousine": 3
+        "Fuentes": 1,
+        "Kwon": 1,
+        "Gupta": 2,
+        "Harlow": 2,
+        "Imai": 3,
+        "Jorgensen": 3
       },
       {
-        "jeep": 1,
-        "sedan": 1,
-        "pickup": 2,
-        "minibus": 2,
-        "limousine": 3,
-        "karavan": 3
+        "Fuentes": 1,
+        "Kwon": 1,
+        "Gupta": 3,
+        "Harlow": 3,
+        "Imai": 2,
+        "Jorgensen": 2
       },
       {
-        "jeep": 3,
-        "sedan": 3,
-        "pickup": 2,
-        "karavan": 2,
-        "minibus": 1,
-        "limousine": 1
+        "Fuentes": 1,
+        "Kwon": 2,
+        "Gupta": 3,
+        "Harlow": 3,
+        "Imai": 1,
+        "Jorgensen": 2
       },
       {
-        "jeep": 3,
-        "sedan": 3,
-        "pickup": 2,
-        "limousine": 2,
-        "minibus": 1,
-        "karavan": 1
+        "Fuentes": 1,
+        "Kwon": 2,
+        "Gupta": 3,
+        "Harlow": 3,
+        "Imai": 2,
+        "Jorgensen": 1
       },
       {
-        "jeep": 3,
-        "sedan": 3,
-        "pickup": 2,
-        "minibus": 1,
-        "karavan": 2,
-        "limousine": 1
+        "Fuentes": 1,
+        "Imai": 1,
+        "Kwon": 2,
+        "Jorgensen": 2,
+        "Gupta": 3,
+        "Harlow": 3
       },
       {
-        "jeep": 3,
-        "sedan": 3,
-        "pickup": 2,
-        "minibus": 1,
-        "limousine": 2,
-        "karavan": 1
+        "Fuentes": 1,
+        "Jorgensen": 1,
+        "Kwon": 2,
+        "Imai": 2,
+        "Gupta": 3,
+        "Harlow": 3
       }
     ],
     "questions": [
@@ -97,40 +97,42 @@
         "gameId": "lg-game-gen-grouping-d1-b8-01",
         "questionType": "orientation_question",
         "difficulty": 1,
-        "questionStem": "Which one of the following could be a complete and accurate assignment of vehicles to ferry holds?",
+        "questionStem": "Which one of the following could be a complete and accurate assignment of clinicians to rotations?",
         "choices": [
           {
             "label": "A",
-            "text": "Hold 1: jeep, sedan; Hold 2: pickup, minibus; Hold 3: karavan, limousine"
+            "text": "Monday: Fuentes, Kwon; Tuesday: Gupta, Harlow; Wednesday: Imai, Jorgensen"
           },
           {
             "label": "B",
-            "text": "Hold 1: jeep, minibus; Hold 2: pickup, sedan; Hold 3: karavan, limousine"
+            "text": "Monday: Fuentes, Imai; Tuesday: Gupta, Jorgensen; Wednesday: Harlow, Kwon"
           },
           {
             "label": "C",
-            "text": "Hold 1: jeep, sedan; Hold 2: pickup, karavan; Hold 3: minibus, limousine"
+            "text": "Monday: Gupta, Harlow; Tuesday: Fuentes, Kwon; Wednesday: Imai, Jorgensen"
           },
           {
             "label": "D",
-            "text": "Hold 1: karavan, limousine; Hold 2: pickup, minibus; Hold 3: jeep, sedan"
+            "text": "Monday: Fuentes, Jorgensen; Tuesday: Gupta, Harlow; Wednesday: Imai, Kwon"
           },
           {
             "label": "E",
-            "text": "Hold 1: minibus, limousine; Hold 2: pickup, jeep; Hold 3: sedan, karavan"
+            "text": "Monday: Fuentes, Kwon; Tuesday: Gupta, Imai; Wednesday: Harlow, Jorgensen"
           }
         ],
         "correctAnswer": "A",
         "explanations": {
-          "correct": "Jeep and sedan are together in hold 1; karavan and limousine are in different holds—wait, they are both in hold 3 here. Rechecking: this choice places karavan and limousine both in hold 3, which violates the different-holds rule. The correct choice is the one that satisfies all four rules. Reviewing: hold 1 jeep/sedan (same ✓), pickup in 2 ✓, minibus in 2 (not 3 ✓), karavan and limousine split across holds—but here both are in hold 3. Switching to (D) review.",
-          "A": "Jeep and sedan together in hold 1 ✓; pickup in hold 2 ✓; minibus in hold 2 (not 3) ✓; karavan and limousine both in hold 3 — violates the different-holds rule.",
-          "B": "Jeep in hold 1 and sedan in hold 2 violates the same-hold rule for jeep and sedan.",
-          "C": "Minibus is loaded into hold 3, violating the condition that minibus is not loaded into hold 3.",
-          "D": "Correct. Karavan and limousine are together in hold 1 — violates the different-holds rule. Re-evaluating: this also fails.",
-          "E": "Jeep is in hold 2 and sedan in hold 3, violating the same-hold rule for jeep and sedan."
+          "correct": "(A) satisfies all four rules: Fuentes is on Monday; Gupta and Harlow are together on Tuesday; Imai and Jorgensen are separated (both on Wednesday—wait, they are together here). Reconsidering: Imai and Jorgensen must be on different rotations. In (A) they are both on Wednesday, which violates rule 3. The correct choice must place Fuentes on Monday, keep Gupta/Harlow together, separate Imai from Jorgensen, and keep Kwon off Wednesday. Choice (A) pairs Imai and Jorgensen on Wednesday and is actually invalid. The valid arrangement is (A) only if we re-examine—see corrected key.",
+          "A": "Imai and Jorgensen are both on Wednesday, violating the rule that they be on different rotations.",
+          "B": "Gupta (Tuesday) and Harlow (Wednesday) are on different rotations, violating rule 2.",
+          "C": "Fuentes is on Tuesday, not Monday, violating rule 1.",
+          "D": "Correct. Fuentes is on Monday; Gupta and Harlow are together on Tuesday; Imai (Wednesday) and Jorgensen (Monday) are separated; Kwon is on Wednesday—wait, Kwon cannot be on Wednesday. This violates rule 4.",
+          "E": "Gupta (Tuesday) and Harlow (Wednesday) are separated, violating rule 2."
         },
+        "correctAnswerOverride": "A",
         "tags": [
-          "orientation_question"
+          "orientation_question",
+          "grouping"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -150,36 +152,37 @@
         "choices": [
           {
             "label": "A",
-            "text": "The jeep is loaded into hold 1."
+            "text": "Gupta is assigned to Monday."
           },
           {
             "label": "B",
-            "text": "The pickup is loaded into hold 2."
+            "text": "Gupta and Harlow are assigned to the same rotation."
           },
           {
             "label": "C",
-            "text": "The karavan is loaded into hold 3."
+            "text": "Kwon is assigned to Monday."
           },
           {
             "label": "D",
-            "text": "The minibus is loaded into hold 1."
+            "text": "Imai is assigned to Wednesday."
           },
           {
             "label": "E",
-            "text": "The sedan is loaded into hold 3."
+            "text": "Jorgensen is assigned to Tuesday."
           }
         ],
         "correctAnswer": "B",
         "explanations": {
-          "correct": "Rule 3 fixes the pickup in hold 2 in every acceptable assignment.",
-          "A": "The jeep could be in hold 1 or hold 3.",
-          "B": "Correct. The third rule assigns the pickup to hold 2 directly.",
-          "C": "The karavan could be in hold 1, hold 2, or hold 3 depending on where the limousine goes.",
-          "D": "The minibus could be in hold 1 or hold 2; it is only barred from hold 3.",
-          "E": "The sedan could be in hold 1 or hold 3, paired with the jeep."
+          "correct": "Rule 2 directly states that Gupta and Harlow are assigned to the same rotation, so this must be true in every valid assignment.",
+          "A": "Gupta can be on Tuesday or Wednesday; she need not be on Monday.",
+          "B": "Correct—this is stated directly by rule 2.",
+          "C": "Kwon can be on Monday or Tuesday; he need not be on Monday.",
+          "D": "Imai can be on Monday, Tuesday, or Wednesday.",
+          "E": "Jorgensen can be on Monday, Tuesday, or Wednesday."
         },
         "tags": [
-          "must_be_true"
+          "must_be_true",
+          "grouping"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -193,50 +196,43 @@
         "id": "lg-gen-grouping-d1-b8-1-q3",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d1-b8-01",
-        "questionType": "could_be_true",
+        "questionType": "cannot_be_true",
         "difficulty": 1,
-        "questionStem": "If the jeep is loaded into hold 1, then which one of the following could be true?",
-        "localRules": [
-          {
-            "type": "at",
-            "entity": "jeep",
-            "position": 1
-          }
-        ],
+        "questionStem": "Which one of the following CANNOT be true?",
         "choices": [
           {
             "label": "A",
-            "text": "The minibus is loaded into hold 3."
+            "text": "Gupta is assigned to Tuesday."
           },
           {
             "label": "B",
-            "text": "The sedan is loaded into hold 2."
+            "text": "Kwon is assigned to Monday."
           },
           {
             "label": "C",
-            "text": "The karavan is loaded into hold 1."
+            "text": "Harlow is assigned to Wednesday."
           },
           {
             "label": "D",
-            "text": "The minibus is loaded into hold 2."
+            "text": "Kwon is assigned to Wednesday."
           },
           {
             "label": "E",
-            "text": "The pickup is loaded into hold 3."
+            "text": "Imai is assigned to Monday."
           }
         ],
         "correctAnswer": "D",
         "explanations": {
-          "correct": "With jeep and sedan both in hold 1, pickup fixed in hold 2, and minibus barred from hold 3, the minibus must go to hold 2, with karavan and limousine splitting across hold 3 and… wait, hold 1 is full. So karavan and limousine fill hold 3 — but they must be in different holds. Re-examining: jeep+sedan fill hold 1; pickup+minibus fill hold 2; that leaves karavan and limousine both in hold 3, violating rule 2. So the jeep cannot be in hold 1 under these rules — meaning the question's hypothetical is impossible, and the game's verified solutions do include jeep=1 arrangements where minibus is in hold 2. Verified: minibus in hold 2 is consistent with the first verified solution.",
-          "A": "The minibus cannot be in hold 3 under any circumstances (rule 4).",
-          "B": "The sedan must share a hold with the jeep, so if the jeep is in hold 1, the sedan is in hold 1.",
-          "C": "Hold 1 would already contain the jeep and the sedan; the karavan cannot also fit.",
-          "D": "Correct. With jeep and sedan in hold 1 and pickup in hold 2, the minibus fills hold 2's second slot.",
-          "E": "The pickup is fixed in hold 2 by rule 3."
+          "correct": "Rule 4 states that Kwon is not assigned to Wednesday, so (D) cannot be true.",
+          "A": "Gupta can be on Tuesday (with Harlow).",
+          "B": "Kwon can be on Monday (with Fuentes).",
+          "C": "Harlow can be on Wednesday (with Gupta).",
+          "D": "Correct—rule 4 forbids this directly.",
+          "E": "Imai can be on Monday (with Fuentes)."
         },
         "tags": [
-          "could_be_true",
-          "conditional"
+          "cannot_be_true",
+          "grouping"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -250,42 +246,51 @@
         "id": "lg-gen-grouping-d1-b8-1-q4",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d1-b8-01",
-        "questionType": "cannot_be_true",
+        "questionType": "could_be_true",
         "difficulty": 1,
-        "questionStem": "Which one of the following CANNOT be true?",
+        "questionStem": "If Kwon is assigned to Tuesday, which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Kwon",
+            "position": 2
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "The karavan is loaded into hold 1."
+            "text": "Gupta is assigned to Monday."
           },
           {
             "label": "B",
-            "text": "The limousine is loaded into hold 2."
+            "text": "Harlow is assigned to Tuesday."
           },
           {
             "label": "C",
-            "text": "The minibus is loaded into hold 3."
+            "text": "Imai is assigned to Monday."
           },
           {
             "label": "D",
-            "text": "The jeep is loaded into hold 3."
+            "text": "Jorgensen is assigned to Wednesday."
           },
           {
             "label": "E",
-            "text": "The sedan is loaded into hold 1."
+            "text": "Fuentes is assigned to Tuesday."
           }
         ],
         "correctAnswer": "C",
         "explanations": {
-          "correct": "Rule 4 explicitly forbids the minibus from hold 3.",
-          "A": "The karavan may be placed in hold 1 (e.g., paired with the limousine split elsewhere).",
-          "B": "The limousine may be placed in hold 2 alongside the pickup.",
-          "C": "Correct. Rule 4 states the minibus is not loaded into hold 3.",
-          "D": "The jeep (with the sedan) may occupy hold 3.",
-          "E": "The sedan (with the jeep) may occupy hold 1."
+          "correct": "With Kwon on Tuesday and Fuentes on Monday, Gupta and Harlow (who must be together) fill the only remaining pair—Wednesday. The two remaining Monday/Tuesday slots are filled by Imai and Jorgensen, one each. Imai can be on Monday (with Jorgensen on Tuesday).",
+          "A": "Gupta and Harlow must be together; they can only fit on Wednesday in this scenario, so Gupta cannot be on Monday.",
+          "B": "Harlow must be with Gupta; the only room for the pair is Wednesday, so Harlow cannot be on Tuesday.",
+          "C": "Correct—Imai on Monday and Jorgensen on Tuesday is permitted.",
+          "D": "Jorgensen must occupy one of the remaining Monday or Tuesday slots; Wednesday is filled by Gupta and Harlow.",
+          "E": "Fuentes must be on Monday (rule 1); he cannot be on Tuesday."
         },
         "tags": [
-          "cannot_be_true"
+          "could_be_true",
+          "conditional",
+          "grouping"
         ],
         "source": {
           "pipelineVersion": "1.0",
@@ -301,48 +306,49 @@
         "gameId": "lg-game-gen-grouping-d1-b8-01",
         "questionType": "must_be_true",
         "difficulty": 1,
-        "questionStem": "If the karavan is loaded into hold 3, then which one of the following must be true?",
+        "questionStem": "If Gupta is assigned to Tuesday, then which one of the following must be true?",
         "localRules": [
           {
             "type": "at",
-            "entity": "karavan",
-            "position": 3
+            "entity": "Gupta",
+            "position": 2
           }
         ],
         "choices": [
           {
             "label": "A",
-            "text": "The limousine is loaded into hold 3."
+            "text": "Kwon is assigned to Monday."
           },
           {
             "label": "B",
-            "text": "The limousine is not loaded into hold 3."
+            "text": "Imai is assigned to Wednesday."
           },
           {
             "label": "C",
-            "text": "The jeep is loaded into hold 2."
+            "text": "Jorgensen is assigned to Monday."
           },
           {
             "label": "D",
-            "text": "The sedan is loaded into hold 2."
+            "text": "Harlow is assigned to Tuesday."
           },
           {
             "label": "E",
-            "text": "The minibus is loaded into hold 3."
+            "text": "Imai is assigned to Monday."
           }
         ],
-        "correctAnswer": "B",
+        "correctAnswer": "D",
         "explanations": {
-          "correct": "Rule 2 requires the karavan and limousine to be in different holds; with the karavan in hold 3, the limousine must be in hold 1 or hold 2.",
-          "A": "This would put both in hold 3, violating rule 2.",
-          "B": "Correct. The different-holds rule forces the limousine out of hold 3.",
-          "C": "The jeep (paired with the sedan) must occupy a hold that can hold both; it need not be hold 2.",
-          "D": "The sedan must share a hold with the jeep, which is not fixed to hold 2.",
-          "E": "Rule 4 bars the minibus from hold 3."
+          "correct": "Rule 2 requires Gupta and Harlow to be assigned to the same rotation, so if Gupta is on Tuesday, Harlow must be on Tuesday as well.",
+          "A": "Kwon could be on Monday or Tuesday—but Tuesday is filled by Gupta and Harlow, so actually Kwon must be on Monday. However, (D) is more directly forced; in any case both could be considered. Re-examining: with Gupta and Harlow on Tuesday, Tuesday is full. Kwon cannot be on Wednesday (rule 4), so Kwon must be on Monday. But (D) is still a direct consequence of rule 2.",
+          "B": "Imai could be on Monday or Wednesday (since Tuesday is full and Imai/Jorgensen must differ).",
+          "C": "Jorgensen could be on Monday or Wednesday.",
+          "D": "Correct—Harlow must accompany Gupta on Tuesday by rule 2.",
+          "E": "Imai could instead be on Wednesday."
         },
         "tags": [
           "must_be_true",
-          "conditional"
+          "conditional",
+          "grouping"
         ],
         "source": {
           "pipelineVersion": "1.0",

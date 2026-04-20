@@ -1,0 +1,385 @@
+[
+  {
+    "id": "lg-game-gen-basic_linear-d2-b18-01",
+    "section": "LG",
+    "family": "basic_linear",
+    "difficulty": 2,
+    "scenario": "A curator is arranging exactly six audio-tour stations—Ceramics, Drawings, Engravings, Frescoes, Glassware, and Heraldry—along a single corridor, one station at each of six consecutive stops numbered 1 through 6. The placement of the stations is constrained as follows: Engravings is at an earlier stop than Ceramics. Frescoes is at stop 3. Glassware and Heraldry are at consecutive stops. Drawings is not at stop 6. Ceramics is not immediately before or immediately after Frescoes.",
+    "entities": [
+      "Ceramics",
+      "Drawings",
+      "Engravings",
+      "Frescoes",
+      "Glassware",
+      "Heraldry"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Engravings",
+        "b": "Ceramics"
+      },
+      {
+        "type": "at",
+        "entity": "Frescoes",
+        "position": 3
+      },
+      {
+        "type": "adjacent",
+        "a": "Glassware",
+        "b": "Heraldry"
+      },
+      {
+        "type": "not_at",
+        "entity": "Drawings",
+        "position": 6
+      },
+      {
+        "type": "not_adjacent",
+        "a": "Ceramics",
+        "b": "Frescoes"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Engravings": 1,
+        "Drawings": 2,
+        "Frescoes": 3,
+        "Glassware": 4,
+        "Heraldry": 5,
+        "Ceramics": 6
+      },
+      {
+        "Engravings": 1,
+        "Drawings": 2,
+        "Frescoes": 3,
+        "Heraldry": 4,
+        "Glassware": 5,
+        "Ceramics": 6
+      },
+      {
+        "Drawings": 1,
+        "Engravings": 2,
+        "Frescoes": 3,
+        "Glassware": 4,
+        "Heraldry": 5,
+        "Ceramics": 6
+      },
+      {
+        "Drawings": 1,
+        "Engravings": 2,
+        "Frescoes": 3,
+        "Heraldry": 4,
+        "Glassware": 5,
+        "Ceramics": 6
+      },
+      {
+        "Engravings": 1,
+        "Glassware": 2,
+        "Frescoes": 3,
+        "Drawings": 5,
+        "Heraldry": 4,
+        "Ceramics": 6
+      },
+      {
+        "Engravings": 1,
+        "Heraldry": 2,
+        "Frescoes": 3,
+        "Drawings": 5,
+        "Glassware": 4,
+        "Ceramics": 6
+      },
+      {
+        "Drawings": 1,
+        "Glassware": 2,
+        "Frescoes": 3,
+        "Heraldry": 4,
+        "Ceramics": 5,
+        "Engravings": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-basic_linear-d2-b18-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b18-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the order in which the curator places the six stations, from stop 1 through stop 6?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Drawings, Engravings, Frescoes, Glassware, Heraldry, Ceramics"
+          },
+          {
+            "label": "B",
+            "text": "Engravings, Drawings, Frescoes, Ceramics, Glassware, Heraldry"
+          },
+          {
+            "label": "C",
+            "text": "Engravings, Glassware, Heraldry, Frescoes, Drawings, Ceramics"
+          },
+          {
+            "label": "D",
+            "text": "Ceramics, Drawings, Frescoes, Glassware, Heraldry, Engravings"
+          },
+          {
+            "label": "E",
+            "text": "Drawings, Engravings, Frescoes, Glassware, Ceramics, Heraldry"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Choice (A) places Engravings before Ceramics, Frescoes at 3, Glassware and Heraldry adjacent (stops 4–5), Drawings not at 6, and Ceramics not adjacent to Frescoes.",
+          "A": "Correct. Every rule is satisfied.",
+          "B": "Ceramics is at stop 4, immediately after Frescoes at stop 3. Violates the Ceramics/Frescoes non-adjacency rule.",
+          "C": "Frescoes is at stop 4, not stop 3. Violates the Frescoes placement rule.",
+          "D": "Ceramics is at stop 1 and Engravings at stop 6, so Engravings is not before Ceramics.",
+          "E": "Glassware is at stop 4 and Heraldry at stop 6; the two are not at consecutive stops."
+        },
+        "tags": [
+          "orientation_question",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b18-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b18-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Drawings is at an earlier stop than Frescoes."
+          },
+          {
+            "label": "B",
+            "text": "Engravings is at an earlier stop than Glassware."
+          },
+          {
+            "label": "C",
+            "text": "Ceramics is at stop 6."
+          },
+          {
+            "label": "D",
+            "text": "Ceramics is at an earlier stop than Drawings."
+          },
+          {
+            "label": "E",
+            "text": "Heraldry is at an earlier stop than Ceramics."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Heraldry must occupy stop 2, 4, or 5 in every valid arrangement, and Ceramics must occupy stop 5 or 6 (it is after Engravings and not adjacent to Frescoes). Reviewing the verified solutions, Heraldry is always at an earlier stop than Ceramics.",
+          "A": "Could be false: in one valid order Drawings is at stop 5 and Frescoes at stop 3.",
+          "B": "Could be false: Glassware can be at stop 2 while Engravings is at stop 6 (solution 7 has Engravings at 6, Glassware at 2).",
+          "C": "Could be false: in the last verified solution Ceramics is at stop 5 and Engravings at stop 6.",
+          "D": "Could be false: in the first solution Drawings is at stop 2 and Ceramics at stop 6.",
+          "E": "Correct. In every arrangement satisfying all five rules, Heraldry precedes Ceramics."
+        },
+        "tags": [
+          "must_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b18-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b18-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Drawings is at stop 1, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Drawings",
+            "position": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Engravings is at stop 6."
+          },
+          {
+            "label": "B",
+            "text": "Heraldry is at stop 2."
+          },
+          {
+            "label": "C",
+            "text": "Ceramics is at stop 4."
+          },
+          {
+            "label": "D",
+            "text": "Glassware is at stop 6."
+          },
+          {
+            "label": "E",
+            "text": "Engravings is at stop 5."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "When Drawings is at stop 1, one valid arrangement is Drawings–Glassware–Frescoes–Heraldry–Ceramics–Engravings, placing Engravings at stop 6.",
+          "A": "Correct. This arrangement satisfies every rule.",
+          "B": "If Drawings is at 1, stop 2 must be Engravings, Glassware, or Heraldry; but Heraldry at 2 with Frescoes at 3 means Glassware must be adjacent to Heraldry, forcing Glassware to 1—contradicting Drawings at 1.",
+          "C": "Ceramics at stop 4 is immediately after Frescoes at 3, violating the non-adjacency rule.",
+          "D": "With Drawings at 1 and Frescoes at 3, Glassware at 6 leaves Heraldry unable to be adjacent to Glassware (stop 5 would need Heraldry, but then Engravings/Ceramics cannot both fit with Engravings before Ceramics).",
+          "E": "If Engravings is at 5, Ceramics must be at 6, but then stop 2 and stop 4 would hold Glassware and Heraldry non-adjacently—violating the adjacency rule."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b18-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b18-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Engravings is at stop 6."
+          },
+          {
+            "label": "B",
+            "text": "Drawings is at stop 5."
+          },
+          {
+            "label": "C",
+            "text": "Ceramics is at stop 4."
+          },
+          {
+            "label": "D",
+            "text": "Glassware is at stop 2."
+          },
+          {
+            "label": "E",
+            "text": "Heraldry is at stop 5."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Ceramics at stop 4 would place it immediately after Frescoes at stop 3, violating the rule that Ceramics and Frescoes are not adjacent.",
+          "A": "Could be true: solution 7 has Engravings at stop 6.",
+          "B": "Could be true: solutions 5 and 6 have Drawings at stop 5.",
+          "C": "Correct. Stop 4 is adjacent to Frescoes at stop 3, which is forbidden.",
+          "D": "Could be true: solutions 5 and 7 have Glassware at stop 2.",
+          "E": "Could be true: solutions 1 and 3 have Heraldry at stop 5."
+        },
+        "tags": [
+          "cannot_be_true",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-basic_linear-d2-b18-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-basic_linear-d2-b18-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Engravings is at stop 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Engravings",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ceramics is at stop 6."
+          },
+          {
+            "label": "B",
+            "text": "Heraldry is at stop 5."
+          },
+          {
+            "label": "C",
+            "text": "Glassware is at stop 4."
+          },
+          {
+            "label": "D",
+            "text": "Drawings is at stop 5."
+          },
+          {
+            "label": "E",
+            "text": "Heraldry is at stop 4."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Engravings at stop 2 and Frescoes at stop 3, Ceramics cannot be at stops 1, 2, 3, or 4 (earlier than Engravings or adjacent to Frescoes). Ceramics at stop 5 leaves stops 4 and 6 for Drawings, Glassware, Heraldry—but Drawings cannot be at 6 and Glassware/Heraldry must be adjacent, which fails. So Ceramics must be at stop 6.",
+          "A": "Correct. Stop 6 is the only remaining slot that satisfies both 'after Engravings' and 'not adjacent to Frescoes' when Engravings is at 2.",
+          "B": "Could be false: with Engravings at 2, Heraldry could be at stop 4 (with Glassware at 5).",
+          "C": "Could be false: Glassware could be at stop 5 with Heraldry at stop 4.",
+          "D": "Could be false: Drawings could be at stop 1.",
+          "E": "Could be false: Heraldry could be at stop 5."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "basic_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-basic_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-basic_linear.json"
+      ]
+    }
+  }
+]

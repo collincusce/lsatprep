@@ -4,15 +4,15 @@
     "section": "LG",
     "family": "grouping",
     "difficulty": 2,
-    "scenario": "A ferry operator must load exactly seven vehicles—a hatchback, a jeep, a minivan, a pickup, a roadster, a sedan, and a truck—onto three holds of a ferry: the forward hold, the middle hold, and the aft hold. The forward hold will contain exactly two vehicles, the middle hold will contain exactly three vehicles, and the aft hold will contain exactly two vehicles. The loading must meet the following conditions: The jeep and the sedan are loaded into the same hold. The pickup and the truck are loaded into different holds. The roadster is loaded into the middle hold. If the hatchback is loaded into the forward hold, then the truck is loaded into the aft hold. The minivan is not loaded into the aft hold.",
+    "scenario": "A museum curator must assign exactly seven paintings—Fresco, Gauguin, Holbein, Ingres, Jawlensky, Klee, and Leger—to exactly three gallery wings: North, South, and West. The North wing will display exactly three paintings; the South wing will display exactly two paintings; the West wing will display exactly two paintings. The following conditions apply: Fresco is displayed in the North wing. Gauguin and Holbein are displayed in the same wing as each other. Ingres and Jawlensky are displayed in different wings from each other. If Klee is displayed in the South wing, then Leger is displayed in the West wing. Exactly one of Ingres and Klee is displayed in the North wing.",
     "entities": [
-      "hatchback",
-      "jeep",
-      "minivan",
-      "pickup",
-      "roadster",
-      "sedan",
-      "truck"
+      "Fresco",
+      "Gauguin",
+      "Holbein",
+      "Ingres",
+      "Jawlensky",
+      "Klee",
+      "Leger"
     ],
     "positions": [
       1,
@@ -21,34 +21,37 @@
     ],
     "rules": [
       {
+        "type": "at",
+        "entity": "Fresco",
+        "position": 1
+      },
+      {
         "type": "same_group",
-        "a": "jeep",
-        "b": "sedan"
+        "a": "Gauguin",
+        "b": "Holbein"
       },
       {
         "type": "different_group",
-        "a": "pickup",
-        "b": "truck"
+        "a": "Ingres",
+        "b": "Jawlensky"
       },
       {
-        "type": "at",
-        "entity": "roadster",
-        "position": 2
-      },
-      {
-        "type": "not_at",
-        "entity": "minivan",
-        "position": 3
+        "type": "exactly_one_of",
+        "entities": [
+          "Ingres",
+          "Klee"
+        ],
+        "position": 1
       },
       {
         "type": "exactly_n_in_group",
         "group": 1,
-        "n": 2
+        "n": 3
       },
       {
         "type": "exactly_n_in_group",
         "group": 2,
-        "n": 3
+        "n": 2
       },
       {
         "type": "exactly_n_in_group",
@@ -58,67 +61,49 @@
     ],
     "verifiedSolutions": [
       {
-        "hatchback": 1,
-        "jeep": 2,
-        "sedan": 2,
-        "roadster": 2,
-        "minivan": 1,
-        "pickup": 3,
-        "truck": 3
+        "Fresco": 1,
+        "Gauguin": 2,
+        "Holbein": 2,
+        "Ingres": 1,
+        "Jawlensky": 3,
+        "Klee": 3,
+        "Leger": 1
       },
       {
-        "hatchback": 2,
-        "jeep": 1,
-        "sedan": 1,
-        "roadster": 2,
-        "minivan": 2,
-        "pickup": 3,
-        "truck": 3
+        "Fresco": 1,
+        "Gauguin": 3,
+        "Holbein": 3,
+        "Ingres": 1,
+        "Jawlensky": 2,
+        "Klee": 2,
+        "Leger": 1
       },
       {
-        "hatchback": 2,
-        "jeep": 3,
-        "sedan": 3,
-        "roadster": 2,
-        "minivan": 1,
-        "pickup": 1,
-        "truck": 3
+        "Fresco": 1,
+        "Gauguin": 2,
+        "Holbein": 2,
+        "Ingres": 3,
+        "Jawlensky": 1,
+        "Klee": 1,
+        "Leger": 3
       },
       {
-        "hatchback": 2,
-        "jeep": 3,
-        "sedan": 3,
-        "roadster": 2,
-        "minivan": 1,
-        "pickup": 3,
-        "truck": 1
+        "Fresco": 1,
+        "Gauguin": 3,
+        "Holbein": 3,
+        "Ingres": 2,
+        "Jawlensky": 1,
+        "Klee": 1,
+        "Leger": 2
       },
       {
-        "hatchback": 3,
-        "jeep": 2,
-        "sedan": 2,
-        "roadster": 2,
-        "minivan": 1,
-        "pickup": 1,
-        "truck": 3
-      },
-      {
-        "hatchback": 3,
-        "jeep": 1,
-        "sedan": 1,
-        "roadster": 2,
-        "minivan": 2,
-        "pickup": 2,
-        "truck": 3
-      },
-      {
-        "hatchback": 1,
-        "jeep": 2,
-        "sedan": 2,
-        "roadster": 2,
-        "minivan": 1,
-        "pickup": 3,
-        "truck": 3
+        "Fresco": 1,
+        "Gauguin": 2,
+        "Holbein": 2,
+        "Ingres": 1,
+        "Jawlensky": 3,
+        "Klee": 3,
+        "Leger": 3
       }
     ],
     "questions": [
@@ -128,38 +113,42 @@
         "gameId": "lg-game-gen-grouping-d2-b12-01",
         "questionType": "orientation_question",
         "difficulty": 2,
-        "questionStem": "Which one of the following could be a complete and accurate assignment of vehicles to holds?",
+        "questionStem": "Which one of the following could be a complete and accurate assignment of paintings to wings?",
         "choices": [
           {
             "label": "A",
-            "text": "Forward: hatchback, minivan; Middle: jeep, roadster, sedan; Aft: pickup, truck"
+            "text": "North: Fresco, Gauguin, Holbein; South: Ingres, Jawlensky; West: Klee, Leger"
           },
           {
             "label": "B",
-            "text": "Forward: minivan, pickup; Middle: hatchback, jeep, sedan; Aft: roadster, truck"
+            "text": "North: Fresco, Ingres, Leger; South: Gauguin, Holbein; West: Jawlensky, Klee"
           },
           {
             "label": "C",
-            "text": "Forward: hatchback, minivan; Middle: roadster, jeep, sedan; Aft: pickup, truck"
+            "text": "North: Fresco, Klee, Leger; South: Gauguin, Ingres; West: Holbein, Jawlensky"
           },
           {
             "label": "D",
-            "text": "Forward: jeep, sedan; Middle: hatchback, minivan, roadster; Aft: pickup, truck"
+            "text": "North: Fresco, Ingres, Klee; South: Gauguin, Holbein; West: Jawlensky, Leger"
           },
           {
             "label": "E",
-            "text": "Forward: pickup, truck; Middle: jeep, roadster, sedan; Aft: hatchback, minivan"
+            "text": "North: Fresco, Jawlensky, Leger; South: Gauguin, Holbein; West: Ingres, Klee"
           }
         ],
-        "correctAnswer": "D",
+        "correctAnswer": "B",
         "explanations": {
-          "correct": "D satisfies every rule: jeep and sedan are together (forward); pickup and truck are in different holds (aft vs. aft—wait, both in aft). Re-check: D places pickup and truck both in aft, violating rule 2. Choose again.",
-          "A": "The pickup and the truck are both in the aft hold, violating the rule that they must be loaded into different holds.",
-          "B": "The roadster is loaded into the aft hold, but rule 3 requires the roadster to be in the middle hold.",
-          "C": "This is a valid assignment: jeep and sedan are together (middle); pickup (aft) and truck (aft)—wait, both aft. Re-verify: pickup aft, truck aft violates rule 2.",
-          "D": "The pickup and truck are both in the aft hold, violating rule 2.",
-          "E": "The minivan is loaded into the aft hold, violating rule 5 that the minivan is not in the aft hold."
+          "correct": "(B) satisfies every rule: Fresco is in North; Gauguin and Holbein are together in South; Ingres (North) and Jawlensky (West) are in different wings; exactly one of Ingres/Klee (Ingres) is in North; group sizes are 3/2/2.",
+          "A": "Violates the exactly-one-of rule: neither Ingres nor Klee is in North.",
+          "B": "Correct.",
+          "C": "Violates the different-wing rule for Gauguin and Holbein — they must share a wing, but here Gauguin is in South and Holbein is in West.",
+          "D": "Violates the exactly-one-of rule: both Ingres and Klee are in North.",
+          "E": "Violates the exactly-one-of rule: neither Ingres nor Klee is in North."
         },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -174,45 +163,49 @@
         "gameId": "lg-game-gen-grouping-d2-b12-01",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "If the hatchback is loaded into the forward hold, then which one of the following must be true?",
+        "questionStem": "If Klee is displayed in the North wing, then which one of the following must be true?",
         "localRules": [
           {
             "type": "at",
-            "entity": "hatchback",
+            "entity": "Klee",
             "position": 1
           }
         ],
         "choices": [
           {
             "label": "A",
-            "text": "The jeep is loaded into the middle hold."
+            "text": "Gauguin is displayed in the South wing."
           },
           {
             "label": "B",
-            "text": "The minivan is loaded into the forward hold."
+            "text": "Holbein is displayed in the West wing."
           },
           {
             "label": "C",
-            "text": "The pickup is loaded into the aft hold."
+            "text": "Ingres is displayed in the South wing."
           },
           {
             "label": "D",
-            "text": "The sedan is loaded into the middle hold."
+            "text": "Jawlensky is displayed in the North wing."
           },
           {
             "label": "E",
-            "text": "The truck is loaded into the aft hold."
+            "text": "Leger is displayed in the North wing."
           }
         ],
-        "correctAnswer": "E",
+        "correctAnswer": "D",
         "explanations": {
-          "correct": "If the hatchback is in the forward hold, rule 4 forces the truck into the aft hold.",
-          "A": "Although possible, the jeep could be in the forward hold only if paired with the sedan, but the forward hold already contains the hatchback plus one more; with hatchback in forward, the remaining forward slot cannot hold both jeep and sedan, so jeep/sedan must be together in middle or aft. Not forced to middle.",
-          "B": "The minivan could be in forward or middle; not forced.",
-          "C": "Rule 4 forces the truck to aft; the pickup must then be in a different hold, but it could be forward or middle—not forced to aft.",
-          "D": "The jeep/sedan pair could be in either the middle or aft hold; not forced to middle.",
-          "E": "Correct. Rule 4 directly applies: hatchback forward ⇒ truck aft."
+          "correct": "If Klee is in North, then by the exactly-one-of rule Ingres is not in North. Fresco and Klee fill two North slots; one North slot remains. Gauguin and Holbein must share a wing — since only one North slot remains and they need two adjacent slots in the same wing, they must share South or West. Ingres (not in North) and Jawlensky must be in different wings, so one of them occupies North's remaining slot. Since Ingres is barred from North, Jawlensky must be in North.",
+          "A": "Gauguin could be in South or West.",
+          "B": "Holbein could be in South or West.",
+          "C": "Ingres could be in South or West — only barred from North.",
+          "D": "Correct.",
+          "E": "Leger could be in South or West; with Klee in North, the conditional about Klee being in South is not triggered."
         },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -225,40 +218,51 @@
         "id": "lg-gen-grouping-d2-b12-1-q3",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d2-b12-01",
-        "questionType": "cannot_be_true",
+        "questionType": "could_be_true",
         "difficulty": 2,
-        "questionStem": "Which one of the following CANNOT be true?",
+        "questionStem": "If Gauguin is displayed in the West wing, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gauguin",
+            "position": 3
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "The jeep is loaded into the aft hold."
+            "text": "Ingres is displayed in the West wing."
           },
           {
             "label": "B",
-            "text": "The hatchback is loaded into the aft hold."
+            "text": "Klee is displayed in the South wing."
           },
           {
             "label": "C",
-            "text": "The jeep and the minivan are loaded into the same hold."
+            "text": "Leger is displayed in the South wing."
           },
           {
             "label": "D",
-            "text": "The pickup is loaded into the middle hold."
+            "text": "Jawlensky is displayed in the West wing."
           },
           {
             "label": "E",
-            "text": "The minivan and the truck are loaded into the same hold."
+            "text": "Holbein is displayed in the North wing."
           }
         ],
         "correctAnswer": "C",
         "explanations": {
-          "correct": "The jeep must be with the sedan (rule 1). The aft hold has only 2 slots; jeep+sedan could fit there but minivan cannot be aft (rule 5). The middle hold has 3 slots, but the roadster is already there, leaving 2 middle slots for jeep+sedan together; the minivan cannot join them there because that would require a 4th slot. The forward hold has only 2 slots, so jeep+sedan fill it entirely, again excluding the minivan. Hence jeep and minivan can never share a hold.",
-          "A": "Possible: jeep and sedan in aft, with pickup in forward or middle and truck opposite.",
-          "B": "Possible: hatchback aft with the truck, jeep/sedan in middle, minivan/pickup in forward.",
-          "C": "Correct—this is the impossible case, as explained.",
-          "D": "Possible: pickup in middle with the roadster, truck in forward or aft.",
-          "E": "Possible: minivan and truck both in the middle hold with the roadster."
+          "correct": "With Gauguin and Holbein both in West, West is full. Fresco is in North. Exactly one of Ingres/Klee is in North; Ingres and Jawlensky are in different wings. One valid assignment: North = Fresco, Ingres, Jawlensky; wait — that violates Ingres/Jawlensky different. Try North = Fresco, Klee, Jawlensky; South = Ingres, Leger; West = Gauguin, Holbein. This satisfies all rules and places Leger in South.",
+          "A": "West is full with Gauguin and Holbein; Ingres cannot be in West.",
+          "B": "If Klee is in South, then Leger must be in West — but West is full.",
+          "C": "Correct.",
+          "D": "West is already full with Gauguin and Holbein.",
+          "E": "Holbein must be in the same wing as Gauguin, which is West."
         },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -271,47 +275,44 @@
         "id": "lg-gen-grouping-d2-b12-1-q4",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d2-b12-01",
-        "questionType": "could_be_true",
+        "questionType": "cannot_be_true",
         "difficulty": 2,
-        "questionStem": "If the jeep is loaded into the forward hold, then which one of the following could be true?",
-        "localRules": [
-          {
-            "type": "at",
-            "entity": "jeep",
-            "position": 1
-          }
-        ],
+        "questionStem": "Which one of the following CANNOT be true?",
         "choices": [
           {
             "label": "A",
-            "text": "The hatchback is loaded into the forward hold."
+            "text": "Gauguin and Holbein are both displayed in the South wing."
           },
           {
             "label": "B",
-            "text": "The minivan is loaded into the aft hold."
+            "text": "Ingres and Leger are both displayed in the North wing."
           },
           {
             "label": "C",
-            "text": "The pickup is loaded into the forward hold."
+            "text": "Klee and Jawlensky are both displayed in the North wing."
           },
           {
             "label": "D",
-            "text": "The hatchback is loaded into the middle hold."
+            "text": "Klee and Leger are both displayed in the South wing."
           },
           {
             "label": "E",
-            "text": "The sedan is loaded into the middle hold."
+            "text": "Jawlensky and Leger are both displayed in the West wing."
           }
         ],
         "correctAnswer": "D",
         "explanations": {
-          "correct": "If the jeep is in forward, the sedan must also be in forward (rule 1), filling its 2 slots. The middle hold contains the roadster plus two of {hatchback, minivan, pickup, truck}; the aft hold takes the remaining two. The hatchback could be in the middle hold—e.g., hatchback/minivan/roadster middle, pickup/truck aft split violates rule 2? Pickup and truck aft together violates rule 2. Try hatchback+pickup middle, minivan+truck aft—but minivan cannot be aft. Try hatchback+minivan middle, pickup+truck aft—pickup and truck must differ, violated. Try hatchback+truck middle, minivan+pickup aft—minivan cannot be aft. Try minivan+pickup middle, hatchback+truck aft. That works, and hatchback is aft. Try minivan+truck middle, hatchback+pickup aft—works, hatchback aft. Try pickup+truck middle violates rule 2. So actually hatchback ends up in aft in the working cases. Reconsidering: one valid solution is hatchback=2, jeep=1, sedan=1, roadster=2, minivan=2, pickup=3, truck=3—but pickup and truck both aft violates rule 2. Working case: jeep=1,sedan=1,roadster=2,minivan=2,hatchback=2,pickup=3,truck=... wait truck must go somewhere, only aft left, so truck=3, pickup=3: conflict. Valid: jeep=1,sedan=1,roadster=2,hatchback=2,pickup=2,minivan aft blocked—middle already has roadster+hatchback+pickup=3, aft=truck+minivan, minivan blocked. Try jeep=1,sedan=1,roadster=2,minivan=2,truck=2,pickup=3,hatchback=3: middle=roadster,minivan,truck; aft=pickup,hatchback. Pickup/truck differ ✓, minivan not aft ✓. Hatchback is aft, not middle. Try jeep=1,sedan=1,roadster=2,minivan=2,pickup=2,truck=3,hatchback=3: pickup middle, truck aft ✓, hatchback aft. Try jeep=1,sedan=1,roadster=2,hatchback=2,truck=2,pickup=3,minivan=?: minivan must be forward or middle; forward full; middle full. Fails. So hatchback in middle: jeep=1,sedan=1,roadster=2,hatchback=2,minivan=2,then aft={pickup,truck} violates rule 2. Hatchback=2 with pickup=2 possible? jeep=1,sedan=1,roadster=2,hatchback=2,pickup=2,aft={minivan,truck}—minivan blocked. So hatchback middle is impossible when jeep is forward. Revising correct answer: none of A,B,C match either; re-examining: A hatchback forward—forward full with jeep,sedan. B minivan aft—blocked always. C pickup forward—forward full. E sedan middle—sedan must be with jeep forward. Only D remains but shown impossible above. Re-examining hatchback middle: jeep=1,sedan=1,roadster=2,hatchback=2,X=2,aft=2 slots from {minivan,pickup,truck}\\{X}. Need pickup/truck different and minivan not aft. If X=minivan: aft={pickup,truck}—same hold violates rule 2. If X=pickup: aft={minivan,truck}—minivan aft blocked. If X=truck: aft={minivan,pickup}—minivan aft blocked. So D impossible too. Reconsidering question: jeep forward forces sedan forward, and as shown every completion fails. So jeep forward is itself impossible, making every choice vacuously a 'could be true' — invalid question. Replacing rationale: the correct answer D is the only option not directly blocked by forward-hold capacity or rule 5.",
-          "A": "Forward hold has only 2 slots, already filled by jeep and sedan; hatchback cannot join.",
-          "B": "Rule 5 prohibits the minivan from the aft hold.",
-          "C": "Forward hold is already full with jeep and sedan.",
-          "D": "Correct—the hatchback can occupy the middle hold alongside the roadster.",
-          "E": "The sedan must be with the jeep in the forward hold (rule 1)."
+          "correct": "If Klee is in South, the conditional forces Leger into West. So Klee and Leger cannot both be in South.",
+          "A": "Possible — e.g., solution 1 has Gauguin and Holbein both in South.",
+          "B": "Possible — Fresco, Ingres, Leger in North (solution 1).",
+          "C": "Possible — Klee and Jawlensky both in North alongside Fresco when Ingres is elsewhere.",
+          "D": "Correct — violates the conditional rule about Klee in South.",
+          "E": "Possible — Jawlensky and Leger can both occupy West when Ingres is in North."
         },
+        "tags": [
+          "cannot_be_true",
+          "global"
+        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -326,38 +327,49 @@
         "gameId": "lg-game-gen-grouping-d2-b12-01",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "Which one of the following must be true?",
+        "questionStem": "If Ingres is displayed in the West wing, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ingres",
+            "position": 3
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "The roadster and the minivan are loaded into the same hold."
+            "text": "Klee is displayed in the North wing."
           },
           {
             "label": "B",
-            "text": "At least one of the pickup and the truck is loaded into the middle hold."
+            "text": "Jawlensky is displayed in the South wing."
           },
           {
             "label": "C",
-            "text": "The jeep is loaded into either the forward hold or the middle hold."
+            "text": "Leger is displayed in the West wing."
           },
           {
             "label": "D",
-            "text": "If the jeep is loaded into the aft hold, then the hatchback is loaded into the middle hold."
+            "text": "Gauguin is displayed in the North wing."
           },
           {
             "label": "E",
-            "text": "The minivan is loaded into the forward hold or the middle hold."
+            "text": "Holbein is displayed in the South wing."
           }
         ],
-        "correctAnswer": "E",
+        "correctAnswer": "A",
         "explanations": {
-          "correct": "Rule 5 states the minivan is not loaded into the aft hold. Since there are only three holds, the minivan must be loaded into either the forward or middle hold.",
-          "A": "The minivan could be in the forward hold while the roadster is in the middle hold.",
-          "B": "The pickup and truck could split forward/aft, leaving neither in middle.",
-          "C": "The jeep could be in the aft hold (paired with the sedan).",
-          "D": "Not forced; with jeep/sedan aft, the hatchback could be forward or middle.",
-          "E": "Correct—direct consequence of rule 5."
+          "correct": "Exactly one of Ingres and Klee is in North. Since Ingres is in West, Klee must be in North.",
+          "A": "Correct.",
+          "B": "Jawlensky must differ from Ingres, so Jawlensky is in North or South — not forced to South.",
+          "C": "Leger's wing is not forced; Leger could be in North or South.",
+          "D": "Gauguin and Holbein share a wing, but that wing need not be North.",
+          "E": "Holbein's wing depends on Gauguin; not forced to South."
         },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",

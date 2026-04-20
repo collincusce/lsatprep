@@ -19,14 +19,11 @@ export function verifySharedSecret(event) {
 }
 
 export function corsHeaders() {
-  const origin = process.env.ALLOWED_ORIGIN || '*';
-  return {
-    'Access-Control-Allow-Origin': origin,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'content-type, x-lsatprep-token',
-    'Access-Control-Max-Age': '600',
-    'Vary': 'Origin'
-  };
+  // CORS Allow-Origin/Methods/Headers are added by the Lambda Function URL
+  // itself (see its Cors config). If we ALSO add them here the browser sees
+  // two Access-Control-Allow-Origin headers and rejects the response. We only
+  // emit Vary: Origin so caches handle origin-varying responses correctly.
+  return { 'Vary': 'Origin' };
 }
 
 // In AWS Lambda (streamifyResponse), the response stream has no writeHead —

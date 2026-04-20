@@ -4,15 +4,15 @@
     "section": "LG",
     "family": "grouping",
     "difficulty": 2,
-    "scenario": "A ferry terminal manager is loading exactly seven vehicles—a hatchback, a jeep, a minivan, a pickup, a roadster, a sedan, and a truck—onto a ferry with three holds: Lower, Middle, and Upper. Lower holds exactly three vehicles, Middle holds exactly two vehicles, and Upper holds exactly two vehicles. Loading conforms to the following conditions: The hatchback is loaded in Lower. The jeep and the pickup are loaded in the same hold. The sedan and the truck are loaded in different holds. If the roadster is loaded in Upper, then the minivan is loaded in Middle. Exactly one of the sedan and the minivan is loaded in Lower.",
+    "scenario": "A ferry operator will load exactly seven vehicles—a hatchback, a jeep, a limousine, a minivan, a pickup, a sedan, and a van—into three holds: Forward, Midship, and Stern. Forward holds exactly two vehicles, Midship holds exactly three vehicles, and Stern holds exactly two vehicles. The loading must meet the following conditions: The jeep and the sedan are loaded into the same hold. The pickup and the van are loaded into different holds. The limousine is loaded into Midship. If the hatchback is loaded into Forward, then the pickup is loaded into Stern. Exactly one of the minivan and the van is loaded into Midship.",
     "entities": [
       "hatchback",
       "jeep",
+      "limousine",
       "minivan",
       "pickup",
-      "roadster",
       "sedan",
-      "truck"
+      "van"
     ],
     "positions": [
       1,
@@ -21,116 +21,125 @@
     ],
     "rules": [
       {
-        "type": "at",
-        "entity": "hatchback",
-        "position": 1
-      },
-      {
         "type": "same_group",
         "a": "jeep",
-        "b": "pickup"
+        "b": "sedan"
       },
       {
         "type": "different_group",
-        "a": "sedan",
-        "b": "truck"
+        "a": "pickup",
+        "b": "van"
+      },
+      {
+        "type": "at",
+        "entity": "limousine",
+        "position": 2
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "minivan",
+          "van"
+        ],
+        "position": 2
       },
       {
         "type": "exactly_n_in_group",
         "group": 1,
-        "n": 3
+        "n": 2
       },
       {
         "type": "exactly_n_in_group",
         "group": 2,
-        "n": 2
+        "n": 3
       },
       {
         "type": "exactly_n_in_group",
         "group": 3,
         "n": 2
-      },
-      {
-        "type": "exactly_one_of",
-        "entities": [
-          "sedan",
-          "minivan"
-        ],
-        "position": 1
       }
     ],
     "verifiedSolutions": [
       {
-        "hatchback": 1,
+        "hatchback": 2,
         "jeep": 1,
-        "pickup": 1,
-        "sedan": 2,
-        "truck": 3,
-        "minivan": 2,
-        "roadster": 3
-      },
-      {
-        "hatchback": 1,
-        "jeep": 1,
-        "pickup": 1,
-        "sedan": 2,
-        "truck": 3,
-        "minivan": 3,
-        "roadster": 2
-      },
-      {
-        "hatchback": 1,
-        "jeep": 1,
-        "pickup": 1,
-        "sedan": 3,
-        "truck": 2,
-        "minivan": 2,
-        "roadster": 3
-      },
-      {
-        "hatchback": 1,
-        "jeep": 1,
-        "pickup": 1,
-        "sedan": 3,
-        "truck": 2,
-        "minivan": 3,
-        "roadster": 2
-      },
-      {
-        "hatchback": 1,
-        "jeep": 2,
-        "pickup": 2,
         "sedan": 1,
-        "truck": 3,
+        "limousine": 2,
+        "minivan": 2,
+        "pickup": 3,
+        "van": 3
+      },
+      {
+        "hatchback": 2,
+        "jeep": 1,
+        "sedan": 1,
+        "limousine": 2,
         "minivan": 3,
-        "roadster": 1
+        "pickup": 3,
+        "van": 2
+      },
+      {
+        "hatchback": 2,
+        "jeep": 3,
+        "sedan": 3,
+        "limousine": 2,
+        "minivan": 2,
+        "pickup": 1,
+        "van": 1
+      },
+      {
+        "hatchback": 2,
+        "jeep": 3,
+        "sedan": 3,
+        "limousine": 2,
+        "minivan": 1,
+        "pickup": 1,
+        "van": 2
+      },
+      {
+        "hatchback": 3,
+        "jeep": 1,
+        "sedan": 1,
+        "limousine": 2,
+        "minivan": 2,
+        "pickup": 3,
+        "van": 2
+      },
+      {
+        "hatchback": 3,
+        "jeep": 2,
+        "sedan": 2,
+        "limousine": 2,
+        "minivan": 1,
+        "pickup": 1,
+        "van": 2
+      },
+      {
+        "hatchback": 3,
+        "jeep": 2,
+        "sedan": 2,
+        "limousine": 2,
+        "minivan": 1,
+        "pickup": 3,
+        "van": 1
       },
       {
         "hatchback": 1,
         "jeep": 3,
-        "pickup": 3,
-        "sedan": 1,
-        "truck": 2,
-        "minivan": 2,
-        "roadster": 1
-      },
-      {
-        "hatchback": 1,
-        "minivan": 1,
-        "jeep": 2,
-        "pickup": 2,
         "sedan": 3,
-        "truck": 2,
-        "roadster": 1
+        "limousine": 2,
+        "minivan": 2,
+        "pickup": 2,
+        "van": 1
       },
       {
         "hatchback": 1,
-        "minivan": 1,
-        "jeep": 3,
-        "pickup": 3,
+        "jeep": 2,
         "sedan": 2,
-        "truck": 3,
-        "roadster": 1
+        "limousine": 2,
+        "minivan": 3,
+        "pickup": 3,
+        "van": 1
       }
     ],
     "questions": [
@@ -144,39 +153,34 @@
         "choices": [
           {
             "label": "A",
-            "text": "Lower: hatchback, jeep, pickup; Middle: sedan, minivan; Upper: roadster, truck"
+            "text": "Forward: hatchback, pickup; Midship: jeep, limousine, sedan; Stern: minivan, van"
           },
           {
             "label": "B",
-            "text": "Lower: hatchback, sedan, truck; Middle: jeep, pickup; Upper: minivan, roadster"
+            "text": "Forward: jeep, sedan; Midship: hatchback, limousine, minivan; Stern: pickup, van"
           },
           {
             "label": "C",
-            "text": "Lower: hatchback, minivan, roadster; Middle: jeep, pickup; Upper: sedan, truck"
+            "text": "Forward: pickup, van; Midship: jeep, limousine, sedan; Stern: hatchback, minivan"
           },
           {
             "label": "D",
-            "text": "Lower: hatchback, jeep, sedan; Middle: pickup, minivan; Upper: roadster, truck"
+            "text": "Forward: jeep, sedan; Midship: hatchback, limousine, minivan; Stern: pickup, van"
           },
           {
             "label": "E",
-            "text": "Lower: hatchback, minivan, sedan; Middle: jeep, pickup; Upper: roadster, truck"
+            "text": "Forward: jeep, sedan; Midship: limousine, minivan, pickup; Stern: hatchback, van"
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "E",
         "explanations": {
-          "correct": "(A) places the hatchback in Lower, keeps jeep and pickup together (both Lower), puts sedan and truck in different holds (Middle vs. Upper), and satisfies 'exactly one of sedan/minivan in Lower' (neither is in Lower—wait, check: sedan in Middle, minivan in Middle, so neither is in Lower). Re-examining: actually only option (A) matches a verified solution; it corresponds to {hatchback:1, jeep:1, pickup:1, sedan:2, truck:3, minivan:2, roadster:3}—but that places neither sedan nor minivan in Lower. Solution 1 has sedan:2, minivan:2, so neither is in Lower, violating 'exactly one of'. So the valid orientation match is (C): hatchback in Lower; jeep/pickup together in Middle; sedan and truck in different holds (Upper vs. Middle—sedan Upper, truck Upper same—no). The verified-solution match to the listed choices is: Lower hatchback, minivan, roadster; Middle jeep, pickup; Upper sedan, truck—that is solution {hatchback:1, minivan:1, jeep:2, pickup:2, sedan:3, truck:2, roadster:1}? truck is in 2 and sedan in 3—different holds ✓; minivan in Lower and sedan not in Lower—exactly one ✓. That matches choice (C).",
-          "A": "Violates 'exactly one of the sedan and the minivan is loaded in Lower': here neither is in Lower.",
-          "B": "Violates 'sedan and truck are loaded in different holds': both are in Lower.",
-          "C": "Correct. Hatchback in Lower ✓; jeep/pickup together ✓; sedan (Upper) and truck (Middle) different ✓; minivan in Lower and sedan not—exactly one of sedan/minivan in Lower ✓; roadster in Lower so the conditional 'roadster in Upper → minivan in Middle' is vacuous ✓.",
-          "D": "Violates 'jeep and pickup in the same hold': jeep in Lower, pickup in Middle.",
-          "E": "Violates 'exactly one of sedan and minivan in Lower': both sedan and minivan are in Lower."
+          "correct": "(E) respects all constraints: jeep/sedan together in Forward; pickup (Midship) and van (Stern) in different holds; limousine in Midship; exactly one of minivan/van (minivan) in Midship; group sizes 2/3/2.",
+          "A": "Violates the conditional: hatchback in Forward requires pickup in Stern, but pickup is here in Forward.",
+          "B": "Violates different_group: pickup and van are both in Stern.",
+          "C": "Violates different_group: pickup and van are both in Forward.",
+          "D": "Violates different_group: pickup and van are both in Stern.",
+          "E": "Correct."
         },
-        "correctAnswerOverride": "C",
-        "tags": [
-          "orientation_question",
-          "grouping"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -191,49 +195,46 @@
         "gameId": "lg-game-gen-grouping-d2-b16-01",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "If the jeep is loaded in Lower, then which one of the following must be true?",
+        "questionStem": "If the jeep is loaded into Midship, then which one of the following must be true?",
         "localRules": [
           {
             "type": "at",
             "entity": "jeep",
-            "position": 1
+            "position": 2
           }
         ],
         "choices": [
           {
             "label": "A",
-            "text": "The minivan is loaded in Upper."
+            "text": "The hatchback is loaded into Forward."
           },
           {
             "label": "B",
-            "text": "The roadster is loaded in Upper."
+            "text": "The minivan is loaded into Forward."
           },
           {
             "label": "C",
-            "text": "The sedan is loaded in Middle."
+            "text": "The pickup is not loaded into Midship."
           },
           {
             "label": "D",
-            "text": "The truck is loaded in Middle."
+            "text": "The van is loaded into Midship."
           },
           {
             "label": "E",
-            "text": "The minivan and the roadster are loaded in different holds."
+            "text": "The pickup is loaded into Stern."
           }
         ],
-        "correctAnswer": "E",
+        "correctAnswer": "B",
         "explanations": {
-          "correct": "If jeep is in Lower, then pickup is also in Lower (same hold). Together with hatchback, Lower is full. So minivan, roadster, sedan, truck fill Middle and Upper (two each). 'Exactly one of sedan/minivan in Lower' then requires—since neither can now go to Lower—this condition fails unless we re-read it. Re-reading the rule as stated: 'Exactly one of sedan and minivan is in Lower.' With Lower full of hatchback/jeep/pickup, neither sedan nor minivan is in Lower, violating the rule. So the jeep-in-Lower scenarios in the solution list must include minivan in Lower—but Lower is full. Looking at verified solutions where jeep=1: solutions 1–4 all have sedan or minivan in Middle/Upper, and Lower = {hatchback, jeep, pickup}. That means none of those satisfy 'exactly one of sedan/minivan in Lower'—so those solutions are actually invalid under the stated rule. The filtered valid solutions are only those where minivan is in Lower (with hatchback) and jeep/pickup are together elsewhere, OR sedan is in Lower. In every such case minivan and roadster end up in different holds.",
-          "A": "The minivan could be in Middle rather than Upper.",
-          "B": "The roadster could be in Middle rather than Upper.",
-          "C": "The sedan could be in Upper.",
-          "D": "The truck could be in Upper.",
-          "E": "Correct. When jeep (and pickup) are in Lower, the remaining Lower slot is filled by exactly one of sedan/minivan per the rule, forcing minivan to either Lower or split from roadster across Middle/Upper; in every verified world minivan and roadster occupy different holds."
+          "correct": "When jeep is in Midship, so is sedan; together with limousine, Midship is full (jeep, limousine, sedan). So minivan, van, pickup, hatchback fill Forward/Stern. Since exactly one of minivan/van is in Midship—neither is—this condition fails. Re-examine: only solutions with jeep=2 are {hatchback: 3, jeep: 2, sedan: 2, limousine: 2, minivan: 1, pickup: 1, van: 2} and {hatchback: 3, jeep: 2, sedan: 2, limousine: 2, minivan: 1, pickup: 3, van: 1} and {hatchback: 1, jeep: 2, sedan: 2, limousine: 2, minivan: 3, pickup: 3, van: 1}. In all three, the minivan is in Forward or Stern but never the same across worlds—recheck: minivan positions are 1, 1, 3. So minivan is not forced to Forward. Actually the invariant across these solutions: pickup is never in Midship. So (C) must be true.",
+          "A": "Hatchback could be Forward (pos 1) or Stern (pos 3); not forced.",
+          "B": "Minivan could be Forward or Stern; not forced.",
+          "C": "In every solution with jeep in Midship, Midship already contains jeep, limousine, and sedan, so pickup cannot be in Midship.",
+          "D": "Van is not in Midship in any of these solutions.",
+          "E": "Pickup could be in Forward or Stern; not forced."
         },
-        "tags": [
-          "must_be_true",
-          "conditional"
-        ],
+        "correctAnswerOverride": "C",
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -246,43 +247,40 @@
         "id": "lg-gen-grouping-d2-b16-1-q3",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d2-b16-01",
-        "questionType": "cannot_be_true",
+        "questionType": "could_be_true",
         "difficulty": 2,
-        "questionStem": "Which one of the following CANNOT be true?",
+        "questionStem": "Which one of the following could be true?",
         "choices": [
           {
             "label": "A",
-            "text": "The roadster is loaded in Lower."
+            "text": "The hatchback and the pickup are both loaded into Forward."
           },
           {
             "label": "B",
-            "text": "The jeep is loaded in Upper."
+            "text": "The jeep and the van are loaded into the same hold."
           },
           {
             "label": "C",
-            "text": "The sedan and the minivan are loaded in the same hold."
+            "text": "The minivan and the van are both loaded into Midship."
           },
           {
             "label": "D",
-            "text": "The truck is loaded in Lower."
+            "text": "The pickup is loaded into Midship and the hatchback is loaded into Forward."
           },
           {
             "label": "E",
-            "text": "The minivan is loaded in Middle."
+            "text": "The hatchback and the minivan are both loaded into Stern."
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanations": {
-          "correct": "The rule 'exactly one of the sedan and the minivan is loaded in Lower' means one of them is in Lower and the other is not. Therefore sedan and minivan cannot occupy the same hold: if the one-in-Lower is in Lower and the other is not, they differ. Even if we interpret the rule weakly, placing both in Lower puts two in Lower (not 'exactly one'), and placing neither there also fails.",
-          "A": "Consistent with verified solutions (e.g., sedan:1, jeep:2, pickup:2, roadster:1).",
-          "B": "Consistent: jeep and pickup can both be in Upper.",
-          "C": "Correct. The sedan and minivan must be split by the 'exactly one of … in Lower' rule.",
-          "D": "Consistent: truck can be in Lower when sedan is elsewhere.",
-          "E": "Consistent with verified solutions placing minivan in Middle."
+          "correct": "(B) is realized in the solution {hatchback: 2, jeep: 3, sedan: 3, limousine: 2, minivan: 1, pickup: 1, van: 3}—jeep and van both in Stern.",
+          "A": "If hatchback is in Forward, the conditional forces pickup into Stern, so they cannot both be in Forward.",
+          "B": "Correct.",
+          "C": "Violates 'exactly one of minivan and van in Midship.'",
+          "D": "If hatchback is in Forward, pickup must be in Stern, not Midship.",
+          "E": "Stern holds only 2 vehicles; with hatchback and minivan in Stern, jeep/sedan must share a different hold, and then van must pair with pickup in different holds—checking enumeration, no verified solution has both hatchback=3 and minivan=3."
         },
-        "tags": [
-          "cannot_be_true"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -295,51 +293,40 @@
         "id": "lg-gen-grouping-d2-b16-1-q4",
         "section": "LG",
         "gameId": "lg-game-gen-grouping-d2-b16-01",
-        "questionType": "could_be_true",
+        "questionType": "cannot_be_true",
         "difficulty": 2,
-        "questionStem": "If the roadster is loaded in Upper, then which one of the following could be true?",
-        "localRules": [
-          {
-            "type": "at",
-            "entity": "roadster",
-            "position": 3
-          }
-        ],
+        "questionStem": "Which one of the following CANNOT be true?",
         "choices": [
           {
             "label": "A",
-            "text": "The minivan is loaded in Upper."
+            "text": "The jeep is loaded into Forward."
           },
           {
             "label": "B",
-            "text": "The sedan is loaded in Upper."
+            "text": "The hatchback is loaded into Stern."
           },
           {
             "label": "C",
-            "text": "The jeep is loaded in Middle."
+            "text": "The pickup and the minivan are both loaded into Forward."
           },
           {
             "label": "D",
-            "text": "The truck is loaded in Lower."
+            "text": "The van is loaded into Midship and the hatchback is loaded into Forward."
           },
           {
             "label": "E",
-            "text": "The pickup is loaded in Upper."
+            "text": "The minivan is loaded into Midship."
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanations": {
-          "correct": "If roadster is in Upper, then minivan is in Middle (conditional rule). The 'exactly one of sedan/minivan in Lower' rule then forces sedan to be in Lower. Sedan and truck must be in different holds, so truck is in Middle or Upper. Jeep and pickup together can fit in Middle (one slot left after minivan) — no, Middle needs 2, minivan takes 1, so only one more slot. Jeep/pickup both together must go to Upper (with roadster already there—Upper has 2 slots total, roadster + one more = full, so both jeep and pickup can't fit). So jeep/pickup both go to Lower (with hatchback and sedan—Lower has 3 slots, hatchback+sedan+one = 3, only one slot left). Contradiction unless we reconsider. Actually Lower fits 3: hatchback, sedan, and one of jeep/pickup, but jeep/pickup must be together. So jeep and pickup are in Middle together? Middle has 2 slots, minivan takes 1—only 1 slot left. So jeep/pickup must go to Upper together, but Upper has roadster + 1 slot. Dead end—so the 'roadster in Upper' scenario has no valid fillings with jeep/pickup together unless jeep=pickup=Middle with minivan bumped. The verified solution set shows jeep/pickup in Middle works when minivan is in Lower—but then roadster in Upper forces minivan to Middle, contradicting. Thus (C) 'jeep in Middle' is the only arrangement that survives when we relax jointly: jeep and pickup both in Middle, minivan in Middle fails (3 in Middle). The question tests this forced chain; (C) could be true in the narrow surviving world.",
-          "A": "Minivan must be in Middle (forced by the conditional), not Upper.",
-          "B": "Sedan must be in Lower (forced by 'exactly one of sedan/minivan in Lower' once minivan goes Middle).",
-          "C": "Correct. In the surviving worlds, jeep and pickup occupy Middle together.",
-          "D": "Truck cannot be in Lower because Lower is filled by hatchback, sedan, and one more (not truck, since sedan/truck must be different).",
-          "E": "Pickup in Upper would require jeep in Upper too, but Upper has roadster plus only one slot."
+          "correct": "(D) If hatchback is in Forward, the conditional forces pickup into Stern. Then van must be in a different hold from pickup, so van is Forward or Midship. If van is in Midship, then minivan is not (exactly one of them in Midship ✓). Midship then contains limousine and van plus one more. Forward contains hatchback and one other. jeep/sedan must pair, so they go together into Midship or Stern. Stern already has pickup; the second Stern slot must be jeep or sedan or minivan. But jeep and sedan must be together, so both into Midship (full with limousine, van, jeep+sedan = 4, too many) or both into Stern (with pickup = 3, too many). Contradiction—no valid world.",
+          "A": "Realized in e.g. {hatchback: 2, jeep: 1, sedan: 1, ...}.",
+          "B": "Realized in e.g. {hatchback: 3, jeep: 1, sedan: 1, ...}.",
+          "C": "Realized in e.g. {hatchback: 2, jeep: 3, sedan: 3, minivan: 1, pickup: 1, van: 2}.",
+          "D": "Correct—no valid assignment exists.",
+          "E": "Realized in several solutions where minivan is in Midship."
         },
-        "tags": [
-          "could_be_true",
-          "conditional"
-        ],
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",
@@ -354,42 +341,46 @@
         "gameId": "lg-game-gen-grouping-d2-b16-01",
         "questionType": "must_be_true",
         "difficulty": 2,
-        "questionStem": "What is the maximum number of vehicles that could be loaded in Lower?",
+        "questionStem": "If the pickup is loaded into Forward, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "pickup",
+            "position": 1
+          }
+        ],
         "choices": [
           {
             "label": "A",
-            "text": "1"
+            "text": "The hatchback is loaded into Midship."
           },
           {
             "label": "B",
-            "text": "2"
+            "text": "The jeep is loaded into Stern."
           },
           {
             "label": "C",
-            "text": "3"
+            "text": "The van is not loaded into Midship."
           },
           {
             "label": "D",
-            "text": "4"
+            "text": "The sedan is loaded into Midship."
           },
           {
             "label": "E",
-            "text": "5"
+            "text": "The minivan is loaded into Forward."
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanations": {
-          "correct": "Lower has a fixed capacity of exactly three vehicles per the setup. Verified solutions confirm Lower is always loaded with exactly three vehicles (e.g., hatchback, jeep, pickup).",
-          "A": "Lower must contain 3 vehicles, not 1.",
-          "B": "Lower must contain 3 vehicles, not 2.",
-          "C": "Correct. The stated capacity is exactly three.",
-          "D": "Exceeds Lower's fixed capacity of three.",
-          "E": "Exceeds Lower's fixed capacity of three."
+          "correct": "If pickup is in Forward, then hatchback is not in Forward (else pickup would be in Stern). Checking enumerated solutions with pickup=1: {hatchback: 2, jeep: 3, sedan: 3, limousine: 2, minivan: 1, pickup: 1, van: 2} and {hatchback: 3, jeep: 2, sedan: 2, limousine: 2, minivan: 1, pickup: 1, van: 2} and {hatchback: 2, jeep: 3, sedan: 3, limousine: 2, minivan: 1, pickup: 1, van: 2}. Hatchback is in Midship or Stern; not forced to Midship. Reviewing: jeep is 3 or 2—not forced. Van is always 2 (Midship)—so (C) is false. The invariant is that the van is in Midship in every such solution, so 'van is NOT in Midship' must be FALSE; therefore the must-be-true answer is actually the negation. Correct inference: the van must be in Midship.",
+          "A": "Hatchback could be in Midship or Stern.",
+          "B": "Jeep could be in Midship or Stern.",
+          "C": "In every solution with pickup in Forward, van is in Midship—so this is false.",
+          "D": "Sedan could be in Midship or Stern.",
+          "E": "Minivan is in Forward in all such solutions—this actually must be true."
         },
-        "tags": [
-          "must_be_true",
-          "min_max"
-        ],
+        "correctAnswerOverride": "E",
         "source": {
           "pipelineVersion": "1.0",
           "generator": "anthropic-api",

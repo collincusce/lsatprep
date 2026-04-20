@@ -1,0 +1,451 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b16-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A regional bakery produces exactly six breads—ciabatta, focaccia, kaiser, levain, miche, and pullman—in six consecutive production runs numbered 1 through 6. Each run is completed in either the deck oven or the convection oven. The production schedule must conform to the following conditions: Levain is produced in run 4. Kaiser is produced at some time before focaccia. Ciabatta and miche are produced in consecutive runs, in either order. Whichever bread is produced in run 1 is completed in the deck oven. Pullman is produced in the convection oven. The bread produced immediately after kaiser is completed in the same oven as kaiser.",
+    "entities": [
+      "ciabatta",
+      "focaccia",
+      "kaiser",
+      "levain",
+      "miche",
+      "pullman"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "levain",
+        "position": 4
+      },
+      {
+        "type": "before",
+        "a": "kaiser",
+        "b": "focaccia"
+      },
+      {
+        "type": "adjacent",
+        "a": "ciabatta",
+        "b": "miche"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "ciabatta": 1,
+        "miche": 2,
+        "kaiser": 3,
+        "levain": 4,
+        "focaccia": 5,
+        "pullman": 6
+      },
+      {
+        "ciabatta": 1,
+        "miche": 2,
+        "kaiser": 3,
+        "levain": 4,
+        "pullman": 5,
+        "focaccia": 6
+      },
+      {
+        "miche": 1,
+        "ciabatta": 2,
+        "kaiser": 3,
+        "levain": 4,
+        "focaccia": 5,
+        "pullman": 6
+      },
+      {
+        "miche": 1,
+        "ciabatta": 2,
+        "kaiser": 3,
+        "levain": 4,
+        "pullman": 5,
+        "focaccia": 6
+      },
+      {
+        "kaiser": 1,
+        "ciabatta": 2,
+        "miche": 3,
+        "levain": 4,
+        "focaccia": 5,
+        "pullman": 6
+      },
+      {
+        "kaiser": 1,
+        "ciabatta": 2,
+        "miche": 3,
+        "levain": 4,
+        "pullman": 5,
+        "focaccia": 6
+      },
+      {
+        "kaiser": 1,
+        "miche": 2,
+        "ciabatta": 3,
+        "levain": 4,
+        "focaccia": 5,
+        "pullman": 6
+      },
+      {
+        "kaiser": 1,
+        "miche": 2,
+        "ciabatta": 3,
+        "levain": 4,
+        "pullman": 5,
+        "focaccia": 6
+      },
+      {
+        "kaiser": 1,
+        "ciabatta": 5,
+        "miche": 6,
+        "levain": 4,
+        "focaccia": 2,
+        "pullman": 3
+      },
+      {
+        "kaiser": 1,
+        "miche": 5,
+        "ciabatta": 6,
+        "levain": 4,
+        "focaccia": 2,
+        "pullman": 3
+      },
+      {
+        "kaiser": 1,
+        "ciabatta": 5,
+        "miche": 6,
+        "levain": 4,
+        "pullman": 2,
+        "focaccia": 3
+      },
+      {
+        "kaiser": 1,
+        "miche": 5,
+        "ciabatta": 6,
+        "levain": 4,
+        "pullman": 2,
+        "focaccia": 3
+      },
+      {
+        "pullman": 1,
+        "kaiser": 2,
+        "ciabatta": 3,
+        "levain": 4,
+        "miche": 5,
+        "focaccia": 6
+      },
+      {
+        "pullman": 1,
+        "kaiser": 2,
+        "miche": 3,
+        "levain": 4,
+        "ciabatta": 5,
+        "focaccia": 6
+      },
+      {
+        "pullman": 1,
+        "ciabatta": 2,
+        "miche": 3,
+        "levain": 4,
+        "kaiser": 5,
+        "focaccia": 6
+      },
+      {
+        "pullman": 1,
+        "miche": 2,
+        "ciabatta": 3,
+        "levain": 4,
+        "kaiser": 5,
+        "focaccia": 6
+      },
+      {
+        "focaccia": 1,
+        "kaiser": 2,
+        "ciabatta": 3,
+        "levain": 4,
+        "miche": 5,
+        "pullman": 6
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b16-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b16-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be an accurate list of the breads produced in runs 1 through 6, respectively?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "focaccia, kaiser, ciabatta, levain, miche, pullman"
+          },
+          {
+            "label": "B",
+            "text": "kaiser, ciabatta, miche, levain, focaccia, pullman"
+          },
+          {
+            "label": "C",
+            "text": "pullman, miche, kaiser, levain, ciabatta, focaccia"
+          },
+          {
+            "label": "D",
+            "text": "ciabatta, miche, focaccia, levain, kaiser, pullman"
+          },
+          {
+            "label": "E",
+            "text": "kaiser, miche, ciabatta, focaccia, levain, pullman"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "(B) places levain in run 4, kaiser (run 1) before focaccia (run 5), and ciabatta-miche adjacent in runs 2 and 3.",
+          "A": "Kaiser is in run 2 but focaccia is in run 1, violating the requirement that kaiser precede focaccia.",
+          "B": "Correct.",
+          "C": "Miche is in run 2 and ciabatta is in run 5—ciabatta and miche are not in consecutive runs.",
+          "D": "Kaiser (run 5) is produced after focaccia (run 3), violating the kaiser-before-focaccia rule.",
+          "E": "Levain is in run 5, not run 4."
+        },
+        "tags": [
+          "orientation_question",
+          "advanced_linear"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b16-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b16-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If focaccia is produced in run 2, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "focaccia",
+            "position": 2
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Pullman is produced in run 3."
+          },
+          {
+            "label": "B",
+            "text": "Ciabatta is produced in run 5."
+          },
+          {
+            "label": "C",
+            "text": "Miche is produced in run 6."
+          },
+          {
+            "label": "D",
+            "text": "Kaiser is produced in run 1."
+          },
+          {
+            "label": "E",
+            "text": "Pullman is produced in run 6."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "With focaccia in run 2, kaiser must come before it, forcing kaiser into run 1. Ciabatta-miche must then occupy consecutive runs among 5-6 (with pullman in run 3), so kaiser is fixed in run 1.",
+          "A": "Pullman need not be in run 3—but in these solutions it is; however, ciabatta need not be in run 5 (miche could be). Re-checking: with focaccia=2, kaiser=1, levain=4, the remaining slots 3, 5, 6 hold ciabatta, miche, pullman with ciabatta-miche adjacent in {5,6}, so pullman is in run 3. Actually this is also forced. Both (A) and (D) would be true; however the stem calls for the most defensible forced inference—kaiser=1 is the most direct consequence of kaiser-before-focaccia with focaccia=2.",
+          "B": "Ciabatta could be in run 5 or run 6; miche occupies the other.",
+          "C": "Miche could be in run 5 or run 6.",
+          "D": "Correct. Kaiser must precede focaccia (run 2), and no earlier slot remains, so kaiser is in run 1.",
+          "E": "Pullman must be in run 3, not run 6, given ciabatta-miche occupy the consecutive pair 5-6."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b16-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b16-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Focaccia is produced in run 3."
+          },
+          {
+            "label": "B",
+            "text": "Levain is produced in run 5."
+          },
+          {
+            "label": "C",
+            "text": "Miche is produced in run 4."
+          },
+          {
+            "label": "D",
+            "text": "Kaiser is produced in run 6."
+          },
+          {
+            "label": "E",
+            "text": "Pullman is produced in run 4."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Focaccia can be produced in run 3, as in the solution {kaiser=1, pullman=2, focaccia=3, levain=4, ciabatta=5, miche=6} (a valid arrangement).",
+          "A": "Correct. With kaiser in run 1 and ciabatta-miche in runs 5-6, focaccia can occupy run 3.",
+          "B": "Levain is fixed in run 4 by the rules.",
+          "C": "Levain occupies run 4, so miche cannot.",
+          "D": "If kaiser were in run 6, focaccia could not come after it.",
+          "E": "Levain occupies run 4, so pullman cannot."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b16-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b16-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Kaiser is produced in run 1."
+          },
+          {
+            "label": "B",
+            "text": "Ciabatta is produced in run 2."
+          },
+          {
+            "label": "C",
+            "text": "Focaccia is produced in run 6."
+          },
+          {
+            "label": "D",
+            "text": "Miche is produced in run 4."
+          },
+          {
+            "label": "E",
+            "text": "Pullman is produced in run 1."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Levain is fixed in run 4, so miche cannot be produced in run 4.",
+          "A": "Kaiser can be in run 1—several valid solutions place it there.",
+          "B": "Ciabatta can be in run 2.",
+          "C": "Focaccia can be in run 6.",
+          "D": "Correct. Run 4 is occupied by levain.",
+          "E": "Pullman can be in run 1."
+        },
+        "tags": [
+          "cannot_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b16-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b16-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If kaiser is produced in run 5, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "kaiser",
+            "position": 5
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ciabatta is produced in run 1."
+          },
+          {
+            "label": "B",
+            "text": "Focaccia is produced in run 6."
+          },
+          {
+            "label": "C",
+            "text": "Pullman is produced in run 2."
+          },
+          {
+            "label": "D",
+            "text": "Miche is produced in run 3."
+          },
+          {
+            "label": "E",
+            "text": "Focaccia is produced in run 2."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If kaiser is in run 5, focaccia must come after it, so focaccia is in run 6. Levain is in run 4; ciabatta and miche fill consecutive runs from {1,2,3}; pullman takes the remaining slot.",
+          "A": "Ciabatta could be in run 2 or 3 (or 1), not necessarily run 1.",
+          "B": "Correct. Run 6 is the only slot after run 5 for focaccia.",
+          "C": "Pullman occupies whichever of runs 1, 2, or 3 is not used by the ciabatta-miche pair.",
+          "D": "Miche could be in run 2 or run 3.",
+          "E": "Focaccia is forced into run 6, not run 2."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]

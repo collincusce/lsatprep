@@ -1,0 +1,59 @@
+[
+  {
+    "id": "lg-game-gen-hybrid-d3-b11-01",
+    "section": "LG",
+    "family": "hybrid",
+    "difficulty": 3,
+    "scenario": "A municipal courthouse will hear exactly six cases — Frazier, Gómez, Hillard, Imamura, Jantzen, and Kowal — over three consecutive hearing slots on a single day: morning, midday, and afternoon. Each case is heard in exactly one slot, and each slot contains exactly two cases, which are heard in a definite order (first and second) within that slot. The schedule must meet the following conditions: Frazier is heard earlier in the day than Hillard. Gómez is heard in the morning. Imamura and Jantzen are heard in the same slot. Kowal is heard second in whichever slot Kowal is heard in. Hillard is heard first in its slot. If Imamura is heard in the afternoon, then Frazier is heard in the morning.",
+    "entities": [
+      "Frazier",
+      "Gomez",
+      "Hillard",
+      "Imamura",
+      "Jantzen",
+      "Kowal"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rules": [
+      {
+        "type": "before",
+        "a": "Frazier",
+        "b": "Hillard"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Gomez"
+        ],
+        "position": 1
+      },
+      {
+        "type": "adjacent",
+        "a": "Imamura",
+        "b": "Jantzen"
+      },
+      {
+        "type": "not_at",
+        "Kowal_placeholder": "ignored",
+        "entity": "Kowal",
+        "position": 1
+      }
+    ],
+    "verifiedSolutions": [],
+    "questions": [],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-hybrid.json"
+      ]
+    }
+  }
+]

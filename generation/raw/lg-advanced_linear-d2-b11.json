@@ -1,0 +1,343 @@
+[
+  {
+    "id": "lg-game-gen-advanced_linear-d2-b11-01",
+    "section": "LG",
+    "family": "advanced_linear",
+    "difficulty": 2,
+    "scenario": "A museum will present exactly six lectures—on Ceramics, Drawings, Etchings, Frescoes, Glassware, and Heraldry—one per day from Monday through Saturday. Each lecture is delivered either upstairs or downstairs, and exactly three of the six lectures are delivered upstairs. The schedule must meet the following conditions: The lecture on Ceramics is delivered earlier in the week than the lecture on Heraldry. The lecture on Drawings is delivered on Tuesday. The lecture on Frescoes is delivered immediately before the lecture on Glassware. Whoever lectures on Monday lectures upstairs. The lecture on Etchings and the lecture on Frescoes are delivered in the same location as each other. The lecture on Heraldry is delivered downstairs.",
+    "entities": [
+      "Ceramics-up",
+      "Ceramics-dn",
+      "Drawings-up",
+      "Drawings-dn",
+      "Etchings-up",
+      "Etchings-dn",
+      "Frescoes-up",
+      "Frescoes-dn",
+      "Glassware-up",
+      "Glassware-dn",
+      "Heraldry-up",
+      "Heraldry-dn"
+    ],
+    "positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "rules": [
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Ceramics-up",
+          "Ceramics-dn"
+        ],
+        "position": 1
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Drawings-up",
+          "Drawings-dn"
+        ],
+        "position": 2
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Etchings-up",
+          "Etchings-dn"
+        ],
+        "position": 3
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Frescoes-up",
+          "Frescoes-dn"
+        ],
+        "position": 4
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Glassware-up",
+          "Glassware-dn"
+        ],
+        "position": 5
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Heraldry-up",
+          "Heraldry-dn"
+        ],
+        "position": 6
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ceramics-up": 1,
+        "Drawings-up": 2,
+        "Frescoes-up": 3,
+        "Glassware-dn": 4,
+        "Etchings-dn": 5,
+        "Heraldry-dn": 6,
+        "Ceramics-dn": 7,
+        "Drawings-dn": 8,
+        "Etchings-up": 9,
+        "Frescoes-dn": 10,
+        "Glassware-up": 11,
+        "Heraldry-up": 12
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-advanced_linear-d2-b11-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b11-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be the complete schedule of lectures, from Monday to Saturday, along with the location of each?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ceramics (upstairs), Drawings (upstairs), Frescoes (upstairs), Glassware (downstairs), Etchings (downstairs), Heraldry (downstairs)"
+          },
+          {
+            "label": "B",
+            "text": "Etchings (downstairs), Drawings (upstairs), Ceramics (upstairs), Frescoes (upstairs), Glassware (upstairs), Heraldry (downstairs)"
+          },
+          {
+            "label": "C",
+            "text": "Ceramics (downstairs), Drawings (upstairs), Etchings (upstairs), Frescoes (upstairs), Glassware (upstairs), Heraldry (downstairs)"
+          },
+          {
+            "label": "D",
+            "text": "Ceramics (upstairs), Drawings (downstairs), Etchings (upstairs), Frescoes (upstairs), Glassware (downstairs), Heraldry (downstairs)"
+          },
+          {
+            "label": "E",
+            "text": "Ceramics (upstairs), Drawings (upstairs), Etchings (upstairs), Heraldry (downstairs), Frescoes (downstairs), Glassware (downstairs)"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "Ceramics on Monday (upstairs, satisfying the Monday-upstairs rule), Drawings on Tuesday, Frescoes on Wednesday immediately followed by Glassware on Thursday, Etchings downstairs matching Frescoes... wait — Etchings must match Frescoes' location. Here Frescoes is upstairs, so Etchings must be upstairs. Checking (A): Frescoes upstairs, Etchings downstairs — that violates the same-location rule. Correct choice re-examined: only (A) places Ceramics before Heraldry, Drawings on Tuesday, Frescoes immediately before Glassware, Monday upstairs, Heraldry downstairs; but same-location fails. The intended correct answer is (A) under the reading that Etchings and Frescoes share location upstairs... Actually (A) is flawed. Re-reading (A): Frescoes (upstairs), Etchings (downstairs). Same-location rule violated. So (A) is wrong.",
+          "A": "Etchings is downstairs but Frescoes is upstairs, violating the same-location rule.",
+          "B": "Ceramics (Wednesday) is not earlier than... actually Ceramics Wed, Heraldry Sat — that's fine. But the Monday lecturer is Etchings downstairs, violating the Monday-upstairs rule.",
+          "C": "Correct. Ceramics Mon upstairs (Monday upstairs satisfied), Drawings Tue, Etchings Wed upstairs, Frescoes Thu upstairs immediately before Glassware Fri upstairs, Heraldry Sat downstairs. Ceramics before Heraldry ✓. Etchings and Frescoes both upstairs ✓. Exactly three upstairs? Ceramics, Etchings, Frescoes, Glassware — that's four upstairs. Violates the three-upstairs rule.",
+          "D": "Drawings is on Tuesday downstairs, but Tuesday's location isn't constrained — however the Monday lecturer Ceramics is upstairs ✓. Frescoes Thu immediately before Glassware Fri ✓. But Frescoes upstairs and Glassware downstairs — fine. Etchings upstairs matches Frescoes upstairs ✓. Upstairs count: Ceramics, Etchings, Frescoes = 3 ✓. Ceramics before Heraldry ✓. Heraldry downstairs ✓. This satisfies every rule.",
+          "E": "Frescoes is on Friday and Glassware on Saturday — but Heraldry is on Thursday, so Heraldry is not last, and Ceramics (Mon) is before Heraldry (Thu) ✓. However Frescoes downstairs and Etchings upstairs violates the same-location rule."
+        },
+        "correctAnswerOverride": "D",
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b11-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b11-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The lecture on Drawings is delivered upstairs."
+          },
+          {
+            "label": "B",
+            "text": "The lecture on Ceramics is delivered upstairs."
+          },
+          {
+            "label": "C",
+            "text": "The lecture on Glassware is delivered downstairs."
+          },
+          {
+            "label": "D",
+            "text": "The lecture on Etchings is delivered upstairs."
+          },
+          {
+            "label": "E",
+            "text": "The lecture on Frescoes is delivered on Wednesday."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Ceramics must be earlier than Heraldry, and Drawings occupies Tuesday. The Frescoes–Glassware block and the Ceramics-before-Heraldry rule combine to force Ceramics to Monday in every valid schedule, and the Monday lecturer must be upstairs.",
+          "A": "Drawings is on Tuesday, whose location is not constrained.",
+          "B": "Correct — Ceramics is always on Monday, which is always upstairs.",
+          "C": "Glassware's location varies across valid solutions.",
+          "D": "Etchings matches Frescoes' location, which can be either upstairs or downstairs.",
+          "E": "Frescoes could be on Wednesday, Thursday, or Friday depending on placement of the FG block."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b11-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b11-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If the lecture on Etchings is delivered downstairs, then which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The lecture on Frescoes is delivered upstairs."
+          },
+          {
+            "label": "B",
+            "text": "The lecture on Glassware is delivered on Wednesday."
+          },
+          {
+            "label": "C",
+            "text": "The lecture on Heraldry is delivered on Friday."
+          },
+          {
+            "label": "D",
+            "text": "The lecture on Ceramics is delivered on Tuesday."
+          },
+          {
+            "label": "E",
+            "text": "The lecture on Drawings is delivered downstairs."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Etchings is downstairs, Frescoes must also be downstairs (same location). Heraldry is downstairs too. The three downstairs slots are taken by Etchings, Frescoes, and Heraldry, so Glassware, Ceramics, and Drawings are upstairs. Heraldry on Friday is possible when the FG block occupies Wed–Thu and Etchings is on Saturday — wait, Ceramics must be before Heraldry. With Ceramics Mon, Drawings Tue, FG block Wed–Thu, Heraldry Fri, Etchings Sat — all rules satisfied.",
+          "A": "Contradicts the same-location rule: if Etchings is downstairs, Frescoes must be too.",
+          "B": "Glassware on Wednesday would put Frescoes on Tuesday, but Drawings is on Tuesday.",
+          "C": "Correct — possible with Ceramics Mon, Drawings Tue, Frescoes Wed, Glassware Thu, Heraldry Fri, Etchings Sat.",
+          "D": "Drawings is fixed on Tuesday; Ceramics cannot be on Tuesday.",
+          "E": "Drawings must be upstairs in this scenario, since the three downstairs slots are already taken by Etchings, Frescoes, and Heraldry."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b11-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b11-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The lecture on Heraldry is delivered on Saturday."
+          },
+          {
+            "label": "B",
+            "text": "The lecture on Etchings is delivered on Wednesday."
+          },
+          {
+            "label": "C",
+            "text": "The lecture on Frescoes is delivered on Friday."
+          },
+          {
+            "label": "D",
+            "text": "The lecture on Glassware is delivered on Thursday."
+          },
+          {
+            "label": "E",
+            "text": "The lecture on Ceramics is delivered on Tuesday."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Drawings is fixed on Tuesday, so Ceramics cannot also be on Tuesday.",
+          "A": "Heraldry on Saturday is consistent with many valid schedules.",
+          "B": "Etchings could be on Wednesday if the FG block occupies Thu–Fri or Fri–Sat.",
+          "C": "Frescoes on Friday places Glassware on Saturday, with Heraldry earlier — possible.",
+          "D": "Glassware on Thursday places Frescoes on Wednesday — possible.",
+          "E": "Correct — Drawings occupies Tuesday, so Ceramics cannot."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-advanced_linear-d2-b11-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-advanced_linear-d2-b11-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If the lecture on Frescoes is delivered upstairs, then which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The lecture on Glassware is delivered downstairs."
+          },
+          {
+            "label": "B",
+            "text": "The lecture on Etchings is delivered upstairs."
+          },
+          {
+            "label": "C",
+            "text": "The lecture on Drawings is delivered downstairs."
+          },
+          {
+            "label": "D",
+            "text": "The lecture on Heraldry is delivered on Saturday."
+          },
+          {
+            "label": "E",
+            "text": "The lecture on Ceramics is delivered downstairs."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "The same-location rule requires Etchings and Frescoes to share a location; if Frescoes is upstairs, Etchings is upstairs.",
+          "A": "Glassware's location is independent and can be upstairs or downstairs.",
+          "B": "Correct — Etchings must match Frescoes.",
+          "C": "Drawings' location is not forced.",
+          "D": "Heraldry can be on any day after Ceramics, including Thursday or Friday.",
+          "E": "Ceramics is on Monday and must be upstairs (Monday-upstairs rule)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-advanced_linear.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-advanced_linear.json"
+      ]
+    }
+  }
+]
