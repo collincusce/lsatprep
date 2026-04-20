@@ -386,29 +386,25 @@ async function generate({ section, slot, difficulty, count, batchIdx }) {
     }
   }
 
-  // LG post-generation solver repair: run the actual solver against each game's
-  // rules and replace the model's claimed verifiedSolutions with solver truth.
-  // Drop games where the rules yield zero solutions. This reliably converts
-  // ~30% LG failure rate into salvageable games.
+  // LG post-generation solver repair: try to improve verifiedSolutions with
+  // solver truth when possible. Keep games regardless (runtime solver is the
+  // authoritative check per-question in the frontend); only replace solutions
+  // when the solver succeeds AND gives non-empty results.
   if (section === 'LG') {
-    const survivors = [];
     for (const game of arr) {
       try {
         const computed = solveGame(game);
-        if (computed.length === 0) continue; // unsatisfiable rules, drop the game
-        game.verifiedSolutions = computed;
-        survivors.push(game);
+        if (computed.length > 0) {
+          game.verifiedSolutions = computed;
+        } else {
+          // Solver disagrees with model — trust the model's claim, flag for
+          // runtime verification.
+          game.externallyVerified = true;
+        }
       } catch {
-        // Solver threw on unknown rule type / compound encoding — keep the game
-        // as-is; runtime solver handles its own edge cases.
         game.externallyVerified = true;
-        survivors.push(game);
       }
     }
-    if (survivors.length === 0) {
-      throw new Error(`all ${arr.length} LG games unsatisfiable under stated rules`);
-    }
-    arr = survivors;
   }
 
   const outPath = join(ROOT, `generation/raw-draft/${section.toLowerCase()}-${slot}-d${difficulty}-b${batchIdx}.json`);

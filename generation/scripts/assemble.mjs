@@ -121,12 +121,12 @@ function assembleRc() {
     const target = CELL_TARGETS[key] || Infinity;
     let questionTally = 0;
     for (const passage of buckets[key]) {
-      if (questionTally >= target) break;
       const qCount = passage.questions?.length || 0;
-      // Keep the passage if we haven't hit target yet — even if it pushes us
-      // over by a few questions (we don't split passages).
+      // Only accept the passage/game if adding it won't overshoot the cell target.
+      if (questionTally + qCount > target) continue;
       kept.push(passage);
       questionTally += qCount;
+      if (questionTally >= target) break;
     }
   }
 
@@ -173,9 +173,11 @@ function assembleLg() {
     const target = CELL_TARGETS[key] || Infinity;
     let questionTally = 0;
     for (const game of buckets[key]) {
-      if (questionTally >= target) break;
+      const qCount = game.questions?.length || 0;
+      if (questionTally + qCount > target) continue;
       kept.push(game);
-      questionTally += game.questions?.length || 0;
+      questionTally += qCount;
+      if (questionTally >= target) break;
     }
   }
 

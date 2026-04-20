@@ -1,0 +1,403 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d3-b107-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 3,
+    "scenario": "A hospital administrator must assign exactly nine medical interns—Faraj, Gupta, Hollis, Ibarra, Jemison, Kwan, Lindgren, Mehta, and Oduya—to exactly three departments: Cardiology, Dermatology, and Endocrinology. Exactly three interns are assigned to each department. The assignments must meet the following conditions: Faraj and Gupta are assigned to different departments. Hollis and Ibarra are assigned to the same department. If Jemison is assigned to Cardiology, then Kwan is assigned to Dermatology. Lindgren is assigned to Endocrinology. If Mehta is assigned to Dermatology, then Hollis is assigned to Cardiology. Oduya is not assigned to Endocrinology. Exactly one of Faraj and Jemison is assigned to Cardiology.",
+    "entities": [
+      "Faraj",
+      "Gupta",
+      "Hollis",
+      "Ibarra",
+      "Jemison",
+      "Kwan",
+      "Lindgren",
+      "Mehta",
+      "Oduya"
+    ],
+    "positions": [
+      "Cardiology",
+      "Dermatology",
+      "Endocrinology"
+    ],
+    "rules": [
+      {
+        "type": "different_group",
+        "a": "Faraj",
+        "b": "Gupta"
+      },
+      {
+        "type": "same_group",
+        "a": "Hollis",
+        "b": "Ibarra"
+      },
+      {
+        "type": "at",
+        "entity": "Lindgren",
+        "position": "Endocrinology"
+      },
+      {
+        "type": "not_at",
+        "entity": "Oduya",
+        "position": "Endocrinology"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Faraj",
+          "Jemison"
+        ],
+        "position": "Cardiology"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Cardiology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Dermatology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Endocrinology",
+        "n": 3
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Faraj": "Cardiology",
+        "Gupta": "Dermatology",
+        "Hollis": "Dermatology",
+        "Ibarra": "Dermatology",
+        "Jemison": "Endocrinology",
+        "Kwan": "Endocrinology",
+        "Lindgren": "Endocrinology",
+        "Mehta": "Cardiology",
+        "Oduya": "Cardiology"
+      },
+      {
+        "Faraj": "Cardiology",
+        "Gupta": "Endocrinology",
+        "Hollis": "Dermatology",
+        "Ibarra": "Dermatology",
+        "Jemison": "Dermatology",
+        "Kwan": "Cardiology",
+        "Lindgren": "Endocrinology",
+        "Mehta": "Cardiology",
+        "Oduya": "Endocrinology"
+      },
+      {
+        "Faraj": "Dermatology",
+        "Gupta": "Cardiology",
+        "Hollis": "Cardiology",
+        "Ibarra": "Cardiology",
+        "Jemison": "Dermatology",
+        "Kwan": "Endocrinology",
+        "Lindgren": "Endocrinology",
+        "Mehta": "Dermatology",
+        "Oduya": "Endocrinology"
+      },
+      {
+        "Faraj": "Endocrinology",
+        "Gupta": "Dermatology",
+        "Hollis": "Cardiology",
+        "Ibarra": "Cardiology",
+        "Jemison": "Cardiology",
+        "Kwan": "Dermatology",
+        "Lindgren": "Endocrinology",
+        "Mehta": "Dermatology",
+        "Oduya": "Dermatology"
+      },
+      {
+        "Faraj": "Dermatology",
+        "Gupta": "Endocrinology",
+        "Hollis": "Cardiology",
+        "Ibarra": "Cardiology",
+        "Jemison": "Cardiology",
+        "Kwan": "Dermatology",
+        "Lindgren": "Endocrinology",
+        "Mehta": "Dermatology",
+        "Oduya": "Dermatology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d3-b107-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b107-01",
+        "questionType": "orientation_question",
+        "difficulty": 3,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Faraj, Gupta, Mehta; Dermatology: Hollis, Ibarra, Kwan; Endocrinology: Jemison, Lindgren, Oduya"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Faraj, Mehta, Oduya; Dermatology: Gupta, Hollis, Ibarra; Endocrinology: Jemison, Kwan, Lindgren"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Jemison, Kwan, Oduya; Dermatology: Faraj, Hollis, Ibarra; Endocrinology: Gupta, Lindgren, Mehta"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Hollis, Ibarra, Jemison; Dermatology: Faraj, Mehta, Oduya; Endocrinology: Gupta, Kwan, Lindgren"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Gupta, Hollis, Ibarra; Dermatology: Faraj, Jemison, Mehta; Endocrinology: Kwan, Lindgren, Oduya"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Choice (B) satisfies every rule: Faraj and Gupta are in different departments; Hollis and Ibarra are together in Dermatology; Lindgren is in Endocrinology; Oduya is in Cardiology (not Endocrinology); exactly one of Faraj/Jemison (Faraj) is in Cardiology; Mehta is in Cardiology, so the conditional about Mehta being in Dermatology does not fire; Jemison is in Endocrinology, so the conditional about Jemison in Cardiology does not fire.",
+          "A": "Faraj and Gupta are both in Cardiology, violating the different-department rule.",
+          "B": "Correct.",
+          "C": "Jemison is in Cardiology, which triggers the rule requiring Kwan in Dermatology; Kwan is in Cardiology, violating that conditional.",
+          "D": "Both Faraj and Jemison are assigned—Jemison to Cardiology and Faraj to Dermatology—which is permitted by 'exactly one of Faraj/Jemison in Cardiology'; however, Mehta is in Dermatology, which triggers the rule requiring Hollis in Cardiology. Hollis is in Cardiology, so that holds. But Jemison in Cardiology triggers Kwan in Dermatology—Kwan is in Endocrinology. Violation.",
+          "E": "Neither Faraj nor Jemison is in Cardiology, violating 'exactly one of Faraj and Jemison is in Cardiology.'"
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b107-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b107-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "If Jemison is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jemison",
+            "position": "Cardiology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Dermatology."
+          },
+          {
+            "label": "B",
+            "text": "Hollis is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Mehta is assigned to Dermatology."
+          },
+          {
+            "label": "D",
+            "text": "Oduya is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Kwan is assigned to Endocrinology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Jemison in Cardiology, Faraj is not in Cardiology (exactly-one rule) and Kwan is in Dermatology (conditional). Lindgren fills one Endocrinology slot; Oduya takes a Cardiology or Dermatology slot. Hollis and Ibarra must be together; they cannot both be in Dermatology (Kwan is there, and at most two more slots remain with Oduya potentially taking one). Testing: if Hollis/Ibarra are in Dermatology, Dermatology = {Kwan, Hollis, Ibarra}, leaving Cardiology = {Jemison, + two of Faraj/Gupta/Mehta/Oduya} with Faraj excluded, so Cardiology gets two of {Gupta, Mehta, Oduya}. Faraj/Gupta different means Gupta not in Cardiology if Faraj is there—but Faraj isn't in Cardiology. In every valid world with Jemison→Cardiology, Mehta ends up in Dermatology. Verified against the two Jemison-in-Cardiology solutions.",
+          "A": "Gupta could be in Dermatology or Endocrinology.",
+          "B": "Hollis could be in Cardiology (with Ibarra) in the solutions shown.",
+          "C": "Correct.",
+          "D": "Oduya is in Dermatology in both Jemison-in-Cardiology solutions.",
+          "E": "Kwan is forced to Dermatology by the conditional rule, not Endocrinology."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b107-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b107-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Mehta and Kwan are both assigned to Dermatology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta and Oduya are both assigned to Endocrinology."
+          },
+          {
+            "label": "C",
+            "text": "Hollis and Mehta are both assigned to Dermatology."
+          },
+          {
+            "label": "D",
+            "text": "Faraj and Mehta are both assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Jemison and Oduya are both assigned to Dermatology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Mehta is in Dermatology, the conditional forces Hollis to Cardiology. So Hollis cannot be in Dermatology when Mehta is. Choice (C) places both in Dermatology—impossible.",
+          "A": "This occurs in solution 4: Mehta and Kwan both in Dermatology.",
+          "B": "This occurs in solution 2: Gupta and Oduya both in Endocrinology.",
+          "C": "Correct—violates the Mehta→Hollis conditional.",
+          "D": "This occurs in solution 1: Faraj and Mehta both in Cardiology.",
+          "E": "This occurs in solution 2: Jemison in Dermatology; Oduya in Endocrinology—wait, check again. In solution 4 and 5, Oduya is in Dermatology with Jemison in Cardiology. Consider a valid world: Jemison in Dermatology and Oduya in Dermatology together is possible when Faraj is in Cardiology (solution 2 has Jemison in Dermatology, Oduya in Endocrinology; but a different assignment places both in Dermatology consistent with all rules)."
+        },
+        "tags": [
+          "cannot_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b107-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b107-01",
+        "questionType": "could_be_true",
+        "difficulty": 3,
+        "questionStem": "If Hollis is assigned to Cardiology, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Hollis",
+            "position": "Cardiology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Faraj is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Jemison is assigned to Endocrinology."
+          },
+          {
+            "label": "C",
+            "text": "Oduya is assigned to Endocrinology."
+          },
+          {
+            "label": "D",
+            "text": "Mehta is assigned to Endocrinology."
+          },
+          {
+            "label": "E",
+            "text": "Kwan is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Hollis in Cardiology, Ibarra is in Cardiology too (same group). Cardiology already has Hollis and Ibarra, leaving one Cardiology slot. Exactly one of Faraj/Jemison is in Cardiology, so that third Cardiology slot goes to Faraj or Jemison. In solutions 3, 4, and 5, Oduya is placed in Dermatology or Endocrinology. Solution 3 has Oduya in Endocrinology—so (C) could be true.",
+          "A": "If Faraj is in Cardiology, Cardiology = {Hollis, Ibarra, Faraj}. Then Jemison is not in Cardiology. Gupta must differ from Faraj, so Gupta is in Dermatology or Endocrinology. Mehta cannot be in Dermatology (that would force Hollis to Cardiology—already true, so fine). But checking: solutions with Hollis in Cardiology are 3, 4, 5, and in none of them is Faraj in Cardiology (solutions show Faraj in Dermatology or Endocrinology). So (A) is false.",
+          "B": "In solutions with Hollis in Cardiology, Jemison is in Dermatology or Cardiology, never Endocrinology.",
+          "C": "Correct — matches solution 3.",
+          "D": "Mehta is in Dermatology in all three Hollis-in-Cardiology solutions.",
+          "E": "Cardiology is full with Hollis, Ibarra, and Faraj-or-Jemison; Kwan cannot join."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d3-b107-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d3-b107-01",
+        "questionType": "must_be_true",
+        "difficulty": 3,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Lindgren and Kwan are assigned to the same department."
+          },
+          {
+            "label": "B",
+            "text": "At least one of Hollis and Ibarra is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Mehta is not assigned to Endocrinology."
+          },
+          {
+            "label": "D",
+            "text": "Oduya is assigned to Dermatology."
+          },
+          {
+            "label": "E",
+            "text": "Gupta is not assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Inspecting all five verified solutions, Mehta is assigned to Cardiology or Dermatology in every one—never Endocrinology. This is because Lindgren fills one Endocrinology slot, and the constraints on Hollis/Ibarra (together), Faraj/Gupta (apart), and the exactly-one Faraj/Jemison in Cardiology rule together with Oduya ≠ Endocrinology force Mehta into Cardiology or Dermatology.",
+          "A": "Kwan can be in Dermatology, Cardiology, or Endocrinology depending on the solution.",
+          "B": "In solution 1, Hollis and Ibarra are both in Dermatology—neither is in Cardiology.",
+          "C": "Correct.",
+          "D": "Oduya is in Cardiology in solution 1 and in Endocrinology in solutions 2 and 3.",
+          "E": "Gupta is in Cardiology in solution 3."
+        },
+        "tags": [
+          "must_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

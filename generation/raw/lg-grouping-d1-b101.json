@@ -1,0 +1,348 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d1-b101-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "A community garden coordinator must assign exactly six volunteers—Ferran, Gupta, Haas, Iyer, Jansen, and Kwon—to work in exactly one of three plots: the Rose plot, the Squash plot, or the Tomato plot. Each plot is worked by exactly two volunteers. The assignments must conform to the following conditions: Ferran works in the Rose plot. Gupta and Haas do not work in the same plot. Iyer and Kwon work in the same plot. Jansen does not work in the Squash plot.",
+    "entities": [
+      "Ferran",
+      "Gupta",
+      "Haas",
+      "Iyer",
+      "Jansen",
+      "Kwon"
+    ],
+    "positions": [
+      "Rose",
+      "Squash",
+      "Tomato"
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Ferran",
+        "position": "Rose"
+      },
+      {
+        "type": "different_group",
+        "a": "Gupta",
+        "b": "Haas"
+      },
+      {
+        "type": "same_group",
+        "a": "Iyer",
+        "b": "Kwon"
+      },
+      {
+        "type": "not_at",
+        "entity": "Jansen",
+        "position": "Squash"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ferran": "Rose",
+        "Gupta": "Rose",
+        "Haas": "Squash",
+        "Iyer": "Tomato",
+        "Jansen": "Tomato",
+        "Kwon": "Tomato"
+      },
+      {
+        "Ferran": "Rose",
+        "Gupta": "Rose",
+        "Haas": "Tomato",
+        "Iyer": "Squash",
+        "Jansen": "Tomato",
+        "Kwon": "Squash"
+      },
+      {
+        "Ferran": "Rose",
+        "Gupta": "Squash",
+        "Haas": "Rose",
+        "Iyer": "Tomato",
+        "Jansen": "Tomato",
+        "Kwon": "Tomato"
+      },
+      {
+        "Ferran": "Rose",
+        "Gupta": "Tomato",
+        "Haas": "Rose",
+        "Iyer": "Squash",
+        "Jansen": "Tomato",
+        "Kwon": "Squash"
+      },
+      {
+        "Ferran": "Rose",
+        "Gupta": "Tomato",
+        "Haas": "Squash",
+        "Iyer": "Squash",
+        "Jansen": "Rose",
+        "Kwon": "Squash"
+      },
+      {
+        "Ferran": "Rose",
+        "Gupta": "Squash",
+        "Haas": "Tomato",
+        "Iyer": "Squash",
+        "Jansen": "Rose",
+        "Kwon": "Squash"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b101-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b101-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of volunteers to plots?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Rose: Ferran, Gupta; Squash: Haas, Iyer; Tomato: Jansen, Kwon"
+          },
+          {
+            "label": "B",
+            "text": "Rose: Ferran, Haas; Squash: Iyer, Kwon; Tomato: Gupta, Jansen"
+          },
+          {
+            "label": "C",
+            "text": "Rose: Ferran, Jansen; Squash: Gupta, Haas; Tomato: Iyer, Kwon"
+          },
+          {
+            "label": "D",
+            "text": "Rose: Gupta, Haas; Squash: Jansen, Kwon; Tomato: Ferran, Iyer"
+          },
+          {
+            "label": "E",
+            "text": "Rose: Ferran, Iyer; Squash: Jansen, Haas; Tomato: Gupta, Kwon"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Ferran is in Rose; Gupta (Tomato) and Haas (Rose) are in different plots; Iyer and Kwon are both in Squash; Jansen is in Tomato, not Squash. All rules satisfied.",
+          "A": "Iyer and Kwon are separated (Iyer in Squash, Kwon in Tomato), violating the rule that they must work in the same plot.",
+          "B": "Correct.",
+          "C": "Gupta and Haas are both in Squash, violating the different-plot rule.",
+          "D": "Ferran is assigned to Tomato, not Rose.",
+          "E": "Iyer and Kwon are separated (Iyer in Rose, Kwon in Tomato)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b101-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b101-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta works in the Rose plot."
+          },
+          {
+            "label": "B",
+            "text": "Haas works in the Squash plot."
+          },
+          {
+            "label": "C",
+            "text": "Jansen does not work in the Squash plot."
+          },
+          {
+            "label": "D",
+            "text": "Iyer works in the Tomato plot."
+          },
+          {
+            "label": "E",
+            "text": "Kwon works in the Rose plot."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Rule 4 directly states that Jansen is not assigned to Squash.",
+          "A": "Gupta could be in Rose, Squash, or Tomato across valid solutions.",
+          "B": "Haas could be in Rose, Squash, or Tomato.",
+          "C": "Correct.",
+          "D": "Iyer could be in Squash or Tomato.",
+          "E": "Kwon is never in Rose (Ferran occupies one Rose seat, and if Kwon were in Rose, Iyer would also have to be in Rose, making three)."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b101-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b101-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If Jansen works in the Rose plot, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jansen",
+            "position": "Rose"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta works in the Rose plot."
+          },
+          {
+            "label": "B",
+            "text": "Haas works in the Rose plot."
+          },
+          {
+            "label": "C",
+            "text": "Iyer works in the Tomato plot."
+          },
+          {
+            "label": "D",
+            "text": "Kwon works in the Squash plot."
+          },
+          {
+            "label": "E",
+            "text": "Ferran works in the Tomato plot."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Jansen is in Rose, then Rose = {Ferran, Jansen}. Iyer and Kwon must share a plot, and the only way to place them together (given Rose is full) is to put both in Squash or both in Tomato. Gupta and Haas must be split across the remaining slots. In the valid solution Jansen=Rose, Iyer=Squash, Kwon=Squash, Gupta=Tomato, Haas=Squash—wait, that gives Squash three. The valid solutions with Jansen in Rose place Iyer and Kwon together in Squash, so Kwon in Squash could be true.",
+          "A": "Rose is filled by Ferran and Jansen, so Gupta cannot be in Rose.",
+          "B": "Rose is filled by Ferran and Jansen, so Haas cannot be in Rose.",
+          "C": "If Iyer were in Tomato, Kwon would also be in Tomato, but then Squash would need two of Gupta/Haas, violating the different-plot rule for Gupta and Haas.",
+          "D": "Correct.",
+          "E": "Ferran must work in the Rose plot."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b101-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b101-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta works in the Tomato plot."
+          },
+          {
+            "label": "B",
+            "text": "Haas works in the Rose plot."
+          },
+          {
+            "label": "C",
+            "text": "Iyer works in the Rose plot."
+          },
+          {
+            "label": "D",
+            "text": "Jansen works in the Tomato plot."
+          },
+          {
+            "label": "E",
+            "text": "Kwon works in the Squash plot."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Ferran occupies one of the two Rose slots. If Iyer were in Rose, Kwon would also have to be in Rose (same-plot rule), giving Rose three volunteers—exceeding its size of two.",
+          "A": "Gupta in Tomato occurs in valid solutions.",
+          "B": "Haas in Rose occurs in valid solutions.",
+          "C": "Correct.",
+          "D": "Jansen in Tomato occurs in valid solutions.",
+          "E": "Kwon in Squash occurs in valid solutions."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b101-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b101-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If Iyer works in the Squash plot, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Iyer",
+            "position": "Squash"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta works in the Rose plot."
+          },
+          {
+            "label": "B",
+            "text": "Haas works in the Tomato plot."
+          },
+          {
+            "label": "C",
+            "text": "Jansen works in the Tomato plot."
+          },
+          {
+            "label": "D",
+            "text": "Kwon works in the Squash plot."
+          },
+          {
+            "label": "E",
+            "text": "Ferran works in the Squash plot."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "Iyer and Kwon must be in the same plot. If Iyer is in Squash, Kwon must also be in Squash.",
+          "A": "Gupta could be in Rose, Squash, or Tomato given the constraint.",
+          "B": "Haas could be in Rose, Squash, or Tomato.",
+          "C": "Jansen could be in Rose or Tomato.",
+          "D": "Correct.",
+          "E": "Ferran must be in Rose."
+        },
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

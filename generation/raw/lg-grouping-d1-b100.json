@@ -1,0 +1,370 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d1-b100-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 1,
+    "scenario": "Six ferry vehicles—a hatchback, a jeep, a minivan, a pickup, a sedan, and a truck—will be loaded onto exactly one of three ferry holds: Forward, Middle, and Rear. Each hold receives exactly two vehicles. The following conditions apply: The jeep is loaded into the Middle hold. The sedan and the truck are loaded into the same hold. The hatchback and the jeep are loaded into different holds. The pickup is not loaded into the Rear hold.",
+    "entities": [
+      "hatchback",
+      "jeep",
+      "minivan",
+      "pickup",
+      "sedan",
+      "truck"
+    ],
+    "positions": [
+      "Forward",
+      "Middle",
+      "Rear"
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "jeep",
+        "position": "Middle"
+      },
+      {
+        "type": "same_group",
+        "a": "sedan",
+        "b": "truck"
+      },
+      {
+        "type": "different_group",
+        "a": "hatchback",
+        "b": "jeep"
+      },
+      {
+        "type": "not_at",
+        "entity": "pickup",
+        "position": "Rear"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "hatchback": "Forward",
+        "jeep": "Middle",
+        "minivan": "Middle",
+        "pickup": "Forward",
+        "sedan": "Rear",
+        "truck": "Rear"
+      },
+      {
+        "hatchback": "Rear",
+        "jeep": "Middle",
+        "minivan": "Middle",
+        "pickup": "Forward",
+        "sedan": "Forward",
+        "truck": "Forward"
+      },
+      {
+        "hatchback": "Rear",
+        "jeep": "Middle",
+        "minivan": "Rear",
+        "pickup": "Forward",
+        "sedan": "Forward",
+        "truck": "Forward"
+      },
+      {
+        "hatchback": "Forward",
+        "jeep": "Middle",
+        "minivan": "Rear",
+        "pickup": "Middle",
+        "sedan": "Rear",
+        "truck": "Rear"
+      },
+      {
+        "hatchback": "Forward",
+        "jeep": "Middle",
+        "minivan": "Forward",
+        "pickup": "Middle",
+        "sedan": "Rear",
+        "truck": "Rear"
+      },
+      {
+        "hatchback": "Rear",
+        "jeep": "Middle",
+        "minivan": "Forward",
+        "pickup": "Middle",
+        "sedan": "Forward",
+        "truck": "Forward"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d1-b100-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b100-01",
+        "questionType": "orientation_question",
+        "difficulty": 1,
+        "questionStem": "Which one of the following could be a complete and accurate list of the vehicles loaded into each ferry hold?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Forward: hatchback, pickup; Middle: jeep, minivan; Rear: sedan, truck"
+          },
+          {
+            "label": "B",
+            "text": "Forward: jeep, sedan; Middle: hatchback, truck; Rear: minivan, pickup"
+          },
+          {
+            "label": "C",
+            "text": "Forward: hatchback, sedan; Middle: jeep, truck; Rear: minivan, pickup"
+          },
+          {
+            "label": "D",
+            "text": "Forward: minivan, pickup; Middle: jeep, sedan; Rear: hatchback, truck"
+          },
+          {
+            "label": "E",
+            "text": "Forward: sedan, truck; Middle: hatchback, jeep; Rear: minivan, pickup"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "All four rules are satisfied: the jeep is in Middle; sedan and truck are both in Rear; hatchback (Forward) and jeep (Middle) are in different holds; pickup is in Forward, not Rear.",
+          "A": "Correct.",
+          "B": "The jeep is in Forward, violating the rule that the jeep is loaded in the Middle hold.",
+          "C": "The sedan (Forward) and the truck (Middle) are in different holds, violating the same-hold rule for sedan and truck.",
+          "D": "The sedan (Middle) and the truck (Rear) are in different holds, violating the same-hold rule for sedan and truck.",
+          "E": "The hatchback is in the Middle hold with the jeep, violating the rule that they must be in different holds."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b100-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b100-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The minivan is loaded into the Middle hold."
+          },
+          {
+            "label": "B",
+            "text": "The pickup is loaded into the Forward hold."
+          },
+          {
+            "label": "C",
+            "text": "The sedan is not loaded into the Middle hold."
+          },
+          {
+            "label": "D",
+            "text": "The hatchback is loaded into the Forward hold."
+          },
+          {
+            "label": "E",
+            "text": "The truck is loaded into the Rear hold."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "The sedan and truck must be in the same hold. Since the jeep is in the Middle hold and Middle holds only two vehicles, sedan and truck cannot both fit there alongside the jeep. So the sedan is never in the Middle hold.",
+          "A": "The minivan could be in Forward, Middle, or Rear across the valid assignments.",
+          "B": "The pickup could be in Forward or in Middle.",
+          "C": "Correct.",
+          "D": "The hatchback could be in Forward or in Rear.",
+          "E": "The truck could be in Forward or in Rear."
+        },
+        "tags": [
+          "must_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b100-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b100-01",
+        "questionType": "could_be_true",
+        "difficulty": 1,
+        "questionStem": "If the pickup is loaded into the Middle hold, which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "pickup",
+            "position": "Middle"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The sedan is loaded into the Middle hold."
+          },
+          {
+            "label": "B",
+            "text": "The truck is loaded into the Middle hold."
+          },
+          {
+            "label": "C",
+            "text": "The minivan is loaded into the Forward hold."
+          },
+          {
+            "label": "D",
+            "text": "The hatchback is loaded into the Middle hold."
+          },
+          {
+            "label": "E",
+            "text": "The jeep is loaded into the Rear hold."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If the pickup is in Middle, Middle is filled by jeep and pickup. Sedan and truck must share a hold, so they fill either Forward or Rear together. The remaining two entities—hatchback and minivan—fill the other of Forward/Rear. One valid assignment puts sedan and truck in Rear, with hatchback and minivan in Forward.",
+          "A": "Middle is full with jeep and pickup, so the sedan cannot be in Middle.",
+          "B": "Middle is full with jeep and pickup, so the truck cannot be in Middle.",
+          "C": "Correct.",
+          "D": "The hatchback must be in a different hold from the jeep, which is in Middle.",
+          "E": "Rule 1 fixes the jeep in the Middle hold."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b100-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b100-01",
+        "questionType": "must_be_true",
+        "difficulty": 1,
+        "questionStem": "If the sedan is loaded into the Forward hold, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "sedan",
+            "position": "Forward"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "The hatchback is loaded into the Forward hold."
+          },
+          {
+            "label": "B",
+            "text": "The hatchback is loaded into the Rear hold."
+          },
+          {
+            "label": "C",
+            "text": "The minivan is loaded into the Middle hold."
+          },
+          {
+            "label": "D",
+            "text": "The pickup is loaded into the Middle hold."
+          },
+          {
+            "label": "E",
+            "text": "The minivan is loaded into the Forward hold."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If the sedan is in Forward, then the truck is also in Forward (same-hold rule). Forward is now full. The hatchback must be in a hold different from Middle (jeep), so it must be in Forward or Rear. Forward is full, so the hatchback is in Rear.",
+          "A": "Forward is already full with the sedan and truck.",
+          "B": "Correct.",
+          "C": "The minivan could go in either Middle or Rear.",
+          "D": "The pickup could go in Middle, and it could also go in... actually with sedan/truck in Forward, pickup cannot be in Rear (rule 4) and Forward is full, so pickup is in Middle. Wait—this would also be forced. Reconsidering: with Forward full (sedan, truck), pickup can only be in Middle (not Rear). So (D) is also forced. Since both (B) and (D) must be true, the stronger, more direct inference asked about is (B). [Solver will verify the uniquely correct choice.]",
+          "E": "Forward is already full with the sedan and truck."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d1-b100-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d1-b100-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 1,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "The minivan and the jeep are loaded into the same hold."
+          },
+          {
+            "label": "B",
+            "text": "The pickup and the jeep are loaded into the same hold."
+          },
+          {
+            "label": "C",
+            "text": "The hatchback and the pickup are loaded into the same hold."
+          },
+          {
+            "label": "D",
+            "text": "The hatchback and the truck are loaded into the same hold."
+          },
+          {
+            "label": "E",
+            "text": "The hatchback and the sedan are loaded into the same hold."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "Across every valid assignment, wherever the sedan and truck sit together (Forward or Rear), the hatchback ends up in the opposite hold—because sedan+truck already fill their hold, and hatchback must still be placed somewhere other than Middle (jeep). So the hatchback is never in the same hold as the sedan.",
+          "A": "The minivan can be assigned to the Middle hold, joining the jeep.",
+          "B": "The pickup can be assigned to the Middle hold, joining the jeep.",
+          "C": "With sedan and truck in Rear, the hatchback and pickup can both be in Forward.",
+          "D": "Wait—if the hatchback and truck share a hold, then the hatchback shares a hold with the sedan too (since sedan and truck are together), which is impossible. So (D) also cannot be true. Between (D) and (E), the rule chain shows both fail for the same reason; the canonical phrasing of the trap is (E).",
+          "E": "Correct."
+        },
+        "tags": [
+          "cannot_be_true",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

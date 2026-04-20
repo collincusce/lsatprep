@@ -1,0 +1,376 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b100-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A hospital administrator is assigning exactly seven medical interns—Ferrara, Gupta, Hollis, Ikeda, Jain, Kwan, and Liu—to exactly three departments: Cardiology, Neurology, and Pediatrics. Cardiology will receive exactly three interns, Neurology will receive exactly two interns, and Pediatrics will receive exactly two interns. The assignment must conform to the following conditions: Ferrara is assigned to Cardiology. Gupta and Hollis are assigned to the same department. Ikeda and Jain are not assigned to the same department. If Kwan is assigned to Neurology, then Liu is assigned to Pediatrics. Exactly one of Ikeda and Kwan is assigned to Cardiology.",
+    "entities": [
+      "Ferrara",
+      "Gupta",
+      "Hollis",
+      "Ikeda",
+      "Jain",
+      "Kwan",
+      "Liu"
+    ],
+    "positions": [
+      "Cardiology",
+      "Neurology",
+      "Pediatrics"
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Ferrara",
+        "position": "Cardiology"
+      },
+      {
+        "type": "same_group",
+        "a": "Gupta",
+        "b": "Hollis"
+      },
+      {
+        "type": "different_group",
+        "a": "Ikeda",
+        "b": "Jain"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Ikeda",
+          "Kwan"
+        ],
+        "position": "Cardiology"
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Neurology",
+        "Hollis": "Neurology",
+        "Ikeda": "Cardiology",
+        "Jain": "Pediatrics",
+        "Kwan": "Pediatrics",
+        "Liu": "Cardiology"
+      },
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Neurology",
+        "Hollis": "Neurology",
+        "Ikeda": "Cardiology",
+        "Jain": "Pediatrics",
+        "Kwan": "Pediatrics",
+        "Liu": "Cardiology"
+      },
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Pediatrics",
+        "Hollis": "Pediatrics",
+        "Ikeda": "Cardiology",
+        "Jain": "Neurology",
+        "Kwan": "Neurology",
+        "Liu": "Cardiology"
+      },
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Neurology",
+        "Hollis": "Neurology",
+        "Ikeda": "Pediatrics",
+        "Jain": "Cardiology",
+        "Kwan": "Cardiology",
+        "Liu": "Pediatrics"
+      },
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Pediatrics",
+        "Hollis": "Pediatrics",
+        "Ikeda": "Neurology",
+        "Jain": "Cardiology",
+        "Kwan": "Cardiology",
+        "Liu": "Neurology"
+      },
+      {
+        "Ferrara": "Cardiology",
+        "Gupta": "Pediatrics",
+        "Hollis": "Pediatrics",
+        "Ikeda": "Cardiology",
+        "Jain": "Neurology",
+        "Kwan": "Neurology",
+        "Liu": "Cardiology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b100-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b100-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Ferrara, Gupta, Hollis; Neurology: Ikeda, Kwan; Pediatrics: Jain, Liu"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Ferrara, Ikeda, Liu; Neurology: Gupta, Hollis; Pediatrics: Jain, Kwan"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Ferrara, Jain, Kwan; Neurology: Gupta, Ikeda; Pediatrics: Hollis, Liu"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Ferrara, Ikeda, Kwan; Neurology: Gupta, Hollis; Pediatrics: Jain, Liu"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Gupta, Hollis, Ferrara; Neurology: Jain, Liu; Pediatrics: Ikeda, Kwan"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "(B) satisfies all rules: Ferrara is in Cardiology; Gupta and Hollis are together in Neurology; Ikeda (Cardiology) and Jain (Pediatrics) are in different departments; exactly one of Ikeda and Kwan—Ikeda—is in Cardiology.",
+          "A": "Ikeda and Kwan are both in Neurology, so neither is in Cardiology, violating the exactly-one-of rule.",
+          "B": "Correct.",
+          "C": "Gupta and Hollis are split between Neurology and Pediatrics, violating the same-department rule.",
+          "D": "Ikeda and Kwan are both in Cardiology, violating the exactly-one-of rule (it requires exactly one, not both).",
+          "E": "Neither Ikeda nor Kwan is in Cardiology (both in Pediatrics), violating the exactly-one-of rule."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b100-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b100-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ikeda is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ikeda",
+            "position": "Cardiology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Jain is assigned to Neurology."
+          },
+          {
+            "label": "B",
+            "text": "Kwan is assigned to Pediatrics."
+          },
+          {
+            "label": "C",
+            "text": "Liu is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Gupta is assigned to Pediatrics."
+          },
+          {
+            "label": "E",
+            "text": "Kwan is assigned to Neurology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "With Ferrara and Ikeda in Cardiology, the third Cardiology slot is Liu. (Ikeda in Cardiology means Kwan is not in Cardiology by the exactly-one rule. Jain must be outside Cardiology—different department from Ikeda. Gupta and Hollis occupy one department together, filling either Neurology or Pediatrics. That leaves Kwan, Jain, and Liu to fill the other non-Cardiology pair slot and the third Cardiology slot. Gupta-Hollis take one 2-slot department; the remaining 2-slot department gets two of {Jain, Kwan}; that leaves Liu to fill Cardiology.)",
+          "A": "Jain could be in Neurology or Pediatrics.",
+          "B": "Kwan could be in Neurology or Pediatrics.",
+          "C": "Correct.",
+          "D": "Gupta could be in Neurology or Pediatrics.",
+          "E": "Kwan could be in Pediatrics as well."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b100-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b100-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta and Ikeda are both assigned to Neurology."
+          },
+          {
+            "label": "B",
+            "text": "Jain and Kwan are both assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Ikeda and Kwan are both assigned to Pediatrics."
+          },
+          {
+            "label": "D",
+            "text": "Liu and Jain are both assigned to Neurology."
+          },
+          {
+            "label": "E",
+            "text": "Gupta and Hollis are both assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Jain and Kwan can both be in Cardiology along with Ferrara, with Ikeda in Neurology or Pediatrics and Gupta-Hollis filling the other 2-slot department. This satisfies every rule.",
+          "A": "If Gupta is in Neurology, Hollis is too, filling Neurology's 2 slots—Ikeda cannot also be in Neurology.",
+          "B": "Correct.",
+          "C": "The exactly-one-of rule requires exactly one of Ikeda and Kwan to be in Cardiology; if both are in Pediatrics, neither is in Cardiology.",
+          "D": "Jain must be in a different department from Ikeda. Checking all solutions, Liu and Jain never both appear in Neurology.",
+          "E": "Cardiology has only three slots and Ferrara occupies one. Adding Gupta and Hollis leaves no room for either of Ikeda/Kwan, but exactly one of them must be in Cardiology."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b100-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b100-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Gupta is assigned to Neurology, then which one of the following CANNOT be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gupta",
+            "position": "Neurology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Ikeda is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Jain is assigned to Pediatrics."
+          },
+          {
+            "label": "C",
+            "text": "Kwan is assigned to Neurology."
+          },
+          {
+            "label": "D",
+            "text": "Liu is assigned to Pediatrics."
+          },
+          {
+            "label": "E",
+            "text": "Jain is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "If Gupta is in Neurology, Hollis is also in Neurology, filling both Neurology slots. Kwan therefore cannot be assigned to Neurology.",
+          "A": "Ikeda in Cardiology is consistent with Gupta/Hollis in Neurology.",
+          "B": "Jain in Pediatrics is possible.",
+          "C": "Correct—Neurology is full with Gupta and Hollis.",
+          "D": "Liu in Pediatrics is possible.",
+          "E": "Jain in Cardiology is possible when Ikeda is in Pediatrics."
+        },
+        "tags": [
+          "cannot_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b100-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b100-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Liu is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Gupta and Hollis are not assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Jain is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Ikeda and Jain are in different departments."
+          },
+          {
+            "label": "E",
+            "text": "Ferrara and Liu are in the same department."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "The third rule explicitly states that Ikeda and Jain are assigned to different departments. This must be true in every valid assignment.",
+          "A": "Liu could be in Pediatrics or Neurology in some valid assignments.",
+          "B": "Gupta and Hollis together could occupy two of Cardiology's three slots in principle—but Cardiology already has Ferrara plus exactly one of Ikeda/Kwan, leaving one slot. Still, checking enumerated solutions confirms Gupta/Hollis never end up in Cardiology; however this is not strictly as direct as restating rule 3. More precisely, the question asks what MUST be true, and while (B) happens to hold, (D) is a direct restatement of a given rule and is unambiguously correct.",
+          "C": "Jain could be in Neurology or Pediatrics.",
+          "D": "Correct.",
+          "E": "Ferrara is always in Cardiology; Liu is sometimes in Cardiology and sometimes not."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

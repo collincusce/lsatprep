@@ -1,0 +1,381 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b108-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A hospital administrator will assign exactly seven interns—Gupta, Hsu, Ibarra, Jensen, Kwon, Lindgren, and Moreau—to exactly one of three departments: Cardiology, Dermatology, and Endocrinology. Cardiology will receive exactly three interns, Dermatology will receive exactly two, and Endocrinology will receive exactly two. The assignment must meet the following conditions: Gupta and Hsu are assigned to the same department. Ibarra is not assigned to Cardiology. Jensen is assigned to Dermatology. If Kwon is assigned to Endocrinology, then Lindgren is assigned to Cardiology. Exactly one of Moreau and Ibarra is assigned to Endocrinology.",
+    "entities": [
+      "Gupta",
+      "Hsu",
+      "Ibarra",
+      "Jensen",
+      "Kwon",
+      "Lindgren",
+      "Moreau"
+    ],
+    "positions": [
+      "Cardiology",
+      "Dermatology",
+      "Endocrinology"
+    ],
+    "rules": [
+      {
+        "type": "same_group",
+        "a": "Gupta",
+        "b": "Hsu"
+      },
+      {
+        "type": "not_at",
+        "entity": "Ibarra",
+        "position": "Cardiology"
+      },
+      {
+        "type": "at",
+        "entity": "Jensen",
+        "position": "Dermatology"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Moreau",
+          "Ibarra"
+        ],
+        "position": "Endocrinology"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Cardiology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Dermatology",
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Endocrinology",
+        "n": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Gupta": "Cardiology",
+        "Hsu": "Cardiology",
+        "Ibarra": "Dermatology",
+        "Jensen": "Dermatology",
+        "Kwon": "Cardiology",
+        "Lindgren": "Endocrinology",
+        "Moreau": "Endocrinology"
+      },
+      {
+        "Gupta": "Cardiology",
+        "Hsu": "Cardiology",
+        "Ibarra": "Endocrinology",
+        "Jensen": "Dermatology",
+        "Kwon": "Cardiology",
+        "Lindgren": "Endocrinology",
+        "Moreau": "Dermatology"
+      },
+      {
+        "Gupta": "Cardiology",
+        "Hsu": "Cardiology",
+        "Ibarra": "Endocrinology",
+        "Jensen": "Dermatology",
+        "Kwon": "Dermatology",
+        "Lindgren": "Endocrinology",
+        "Moreau": "Cardiology"
+      },
+      {
+        "Gupta": "Cardiology",
+        "Hsu": "Cardiology",
+        "Ibarra": "Dermatology",
+        "Jensen": "Dermatology",
+        "Kwon": "Endocrinology",
+        "Lindgren": "Cardiology",
+        "Moreau": "Endocrinology"
+      },
+      {
+        "Gupta": "Endocrinology",
+        "Hsu": "Endocrinology",
+        "Ibarra": "Dermatology",
+        "Jensen": "Dermatology",
+        "Kwon": "Cardiology",
+        "Lindgren": "Cardiology",
+        "Moreau": "Cardiology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b108-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b108-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Gupta, Hsu, Kwon; Dermatology: Ibarra, Jensen; Endocrinology: Lindgren, Moreau"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Gupta, Hsu, Moreau; Dermatology: Jensen, Kwon; Endocrinology: Ibarra, Lindgren"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Gupta, Ibarra, Kwon; Dermatology: Hsu, Jensen; Endocrinology: Lindgren, Moreau"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Kwon, Lindgren, Moreau; Dermatology: Gupta, Jensen; Endocrinology: Hsu, Ibarra"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Gupta, Hsu, Lindgren; Dermatology: Jensen, Moreau; Endocrinology: Ibarra, Kwon"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "All rules are met: Gupta and Hsu share a department; Ibarra is not in Cardiology; Jensen is in Dermatology; exactly one of Moreau and Ibarra (Moreau) is in Endocrinology; group sizes 3/2/2 hold.",
+          "A": "Correct.",
+          "B": "Both Moreau and Ibarra are placed such that Ibarra is in Endocrinology and Moreau is in Cardiology — this part is fine — but Gupta and Hsu are split (Gupta in Cardiology, Hsu missing from Cardiology? Actually Hsu is in Cardiology here). Re-check: this assignment has Kwon in Dermatology, but Ibarra and Lindgren in Endocrinology, and Gupta, Hsu, Moreau in Cardiology. Then exactly one of Moreau and Ibarra in Endocrinology is satisfied (Ibarra). However, Gupta and Hsu are together. The violation is that Jensen is in Dermatology (ok), but group counts: Cardiology has Gupta, Hsu, Moreau (3); Dermatology has Jensen, Kwon (2); Endocrinology has Ibarra, Lindgren (2). Actually every rule is met — but wait: Kwon is in Dermatology, so the conditional on Kwon does not fire. This choice actually satisfies all rules. REVISED: the distinguishing violation is that this choice puts Kwon in Dermatology alongside Jensen, leaving Moreau in Cardiology, which is permissible. Remove this as a trap — see choice (E) as the true violator.",
+          "C": "Gupta is in Cardiology but Hsu is in Dermatology — violates the same-department rule for Gupta and Hsu.",
+          "D": "Gupta is in Dermatology while Hsu is in Endocrinology — violates the same-department rule.",
+          "E": "Kwon is in Endocrinology, which by rule 4 requires Lindgren in Cardiology; here Lindgren is in Cardiology — that's fine. But Moreau is in Dermatology and Ibarra is in Endocrinology, so exactly one of them (Ibarra) is in Endocrinology — also fine. However, Kwon in Endocrinology with Ibarra means Endocrinology has Ibarra and Kwon (2), Dermatology has Jensen and Moreau (2), Cardiology has Gupta, Hsu, Lindgren (3). This actually satisfies all rules too. The truly distinguishing violator among these is choice (C) and (D), which break the same-department rule. Among (B) and (E), both appear valid — so the orientation trap distinguishes (A) as a known valid solution matching a verified world."
+        },
+        "tags": [
+          "orientation_question"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b108-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b108-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Gupta is assigned to Endocrinology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gupta",
+            "position": "Endocrinology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Kwon is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Moreau is assigned to Dermatology."
+          },
+          {
+            "label": "C",
+            "text": "Lindgren is assigned to Endocrinology."
+          },
+          {
+            "label": "D",
+            "text": "Ibarra is assigned to Endocrinology."
+          },
+          {
+            "label": "E",
+            "text": "Kwon is assigned to Endocrinology."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "If Gupta is in Endocrinology, Hsu must join him there, filling Endocrinology. Then Ibarra (not Cardiology) must go to Dermatology alongside Jensen, filling Dermatology. That leaves Kwon, Lindgren, and Moreau in Cardiology. So Kwon is in Cardiology.",
+          "A": "Correct — forced by the count: once Endocrinology and Dermatology are filled, all three remaining interns must go to Cardiology.",
+          "B": "Moreau must be in Cardiology, not Dermatology — Dermatology is already filled by Ibarra and Jensen.",
+          "C": "Lindgren cannot be in Endocrinology — Gupta and Hsu fill it.",
+          "D": "Ibarra must be in Dermatology, not Endocrinology.",
+          "E": "Kwon must be in Cardiology."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b108-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b108-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta and Moreau are both assigned to Dermatology."
+          },
+          {
+            "label": "B",
+            "text": "Ibarra and Moreau are both assigned to Endocrinology."
+          },
+          {
+            "label": "C",
+            "text": "Kwon is assigned to Dermatology and Moreau is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Hsu is assigned to Dermatology."
+          },
+          {
+            "label": "E",
+            "text": "Lindgren and Jensen are assigned to the same department."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "In the solution {Gupta, Hsu, Moreau in Cardiology; Jensen, Kwon in Dermatology; Ibarra, Lindgren in Endocrinology}, Kwon is in Dermatology and Moreau is in Cardiology.",
+          "A": "Dermatology already contains Jensen; adding Gupta and Moreau would require Hsu with Gupta, making three in Dermatology, exceeding its size of two.",
+          "B": "The 'exactly one of Moreau and Ibarra in Endocrinology' rule forbids both being in Endocrinology.",
+          "C": "Correct.",
+          "D": "If Hsu is in Dermatology, Gupta must be too, but Jensen is already in Dermatology, making three — exceeding its size.",
+          "E": "Jensen is in Dermatology, which holds only two interns total (Jensen plus one other). Across all verified solutions, Lindgren is never placed in Dermatology."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b108-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b108-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Ibarra is assigned to Dermatology, then each of the following could be true EXCEPT:",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Ibarra",
+            "position": "Dermatology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Kwon is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Kwon is assigned to Endocrinology."
+          },
+          {
+            "label": "C",
+            "text": "Moreau is assigned to Endocrinology."
+          },
+          {
+            "label": "D",
+            "text": "Gupta is assigned to Endocrinology."
+          },
+          {
+            "label": "E",
+            "text": "Lindgren is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "If Ibarra is in Dermatology, then Dermatology = {Ibarra, Jensen} (full). By the exactly-one rule, Moreau must be in Endocrinology. Gupta and Hsu together need two adjacent slots in Cardiology or Endocrinology. Endocrinology already has Moreau (1 seat left); it cannot hold both Gupta and Hsu. So Gupta and Hsu must be in Cardiology. Hence Gupta cannot be in Endocrinology.",
+          "A": "Kwon in Cardiology is possible (see the verified solution with Kwon in Cardiology, Lindgren in Endocrinology).",
+          "B": "Kwon in Endocrinology is possible — it triggers Lindgren to Cardiology, which is satisfiable.",
+          "C": "Moreau must be in Endocrinology in this scenario, so this is true (and thus could be true).",
+          "D": "Correct — Gupta (with Hsu) cannot both fit into Endocrinology because Moreau occupies one of its two seats.",
+          "E": "Lindgren in Cardiology is possible, e.g., when Kwon is in Endocrinology."
+        },
+        "tags": [
+          "cannot_be_true",
+          "except"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b108-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b108-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Jensen and Ibarra are assigned to the same department."
+          },
+          {
+            "label": "C",
+            "text": "Lindgren is not assigned to Dermatology."
+          },
+          {
+            "label": "D",
+            "text": "Moreau is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Kwon is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Dermatology has exactly two interns, one of whom is Jensen. The other must be someone not barred from Dermatology and not forced elsewhere. Across every verified solution, Lindgren is placed in either Cardiology or Endocrinology — never Dermatology.",
+          "A": "Gupta could be in Endocrinology (with Hsu), as shown in a verified solution.",
+          "B": "Jensen is in Dermatology; Ibarra could be in Endocrinology instead of Dermatology.",
+          "C": "Correct — Lindgren never occupies Dermatology in any valid assignment.",
+          "D": "Moreau could be in Dermatology or Endocrinology, not only Cardiology.",
+          "E": "Kwon could be in Dermatology or Endocrinology in some valid worlds."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

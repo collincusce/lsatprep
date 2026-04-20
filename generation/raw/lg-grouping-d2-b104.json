@@ -1,0 +1,406 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b104-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A hospital administrator will assign exactly seven interns—Quade, Reilly, Suarez, Tam, Ueda, Vance, and Wynn—to exactly one of three departments: Cardiology, Hematology, and Nephrology. Cardiology will receive exactly three interns, Hematology will receive exactly two interns, and Nephrology will receive exactly two interns. The assignment must meet the following conditions: Quade is assigned to Cardiology. Reilly and Suarez are not assigned to the same department. Tam is assigned to the same department as Ueda. If Vance is assigned to Hematology, then Wynn is assigned to Nephrology. Suarez is not assigned to Nephrology.",
+    "entities": [
+      "Quade",
+      "Reilly",
+      "Suarez",
+      "Tam",
+      "Ueda",
+      "Vance",
+      "Wynn"
+    ],
+    "positions": [
+      "Cardiology",
+      "Hematology",
+      "Nephrology"
+    ],
+    "rules": [
+      {
+        "type": "at",
+        "entity": "Quade",
+        "position": "Cardiology"
+      },
+      {
+        "type": "different_group",
+        "a": "Reilly",
+        "b": "Suarez"
+      },
+      {
+        "type": "same_group",
+        "a": "Tam",
+        "b": "Ueda"
+      },
+      {
+        "type": "not_at",
+        "entity": "Suarez",
+        "position": "Nephrology"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Cardiology",
+        "n": 3
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Hematology",
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Nephrology",
+        "n": 2
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Cardiology",
+        "Suarez": "Hematology",
+        "Tam": "Nephrology",
+        "Ueda": "Nephrology",
+        "Vance": "Cardiology",
+        "Wynn": "Hematology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Cardiology",
+        "Suarez": "Hematology",
+        "Tam": "Nephrology",
+        "Ueda": "Nephrology",
+        "Vance": "Hematology",
+        "Wynn": "Cardiology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Nephrology",
+        "Suarez": "Cardiology",
+        "Tam": "Hematology",
+        "Ueda": "Hematology",
+        "Vance": "Cardiology",
+        "Wynn": "Nephrology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Nephrology",
+        "Suarez": "Cardiology",
+        "Tam": "Hematology",
+        "Ueda": "Hematology",
+        "Vance": "Nephrology",
+        "Wynn": "Cardiology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Nephrology",
+        "Suarez": "Hematology",
+        "Tam": "Cardiology",
+        "Ueda": "Cardiology",
+        "Vance": "Nephrology",
+        "Wynn": "Hematology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Cardiology",
+        "Suarez": "Hematology",
+        "Tam": "Cardiology",
+        "Ueda": "Cardiology",
+        "Vance": "Nephrology",
+        "Wynn": "Nephrology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Hematology",
+        "Suarez": "Cardiology",
+        "Tam": "Nephrology",
+        "Ueda": "Nephrology",
+        "Vance": "Cardiology",
+        "Wynn": "Hematology"
+      },
+      {
+        "Quade": "Cardiology",
+        "Reilly": "Hematology",
+        "Suarez": "Cardiology",
+        "Tam": "Nephrology",
+        "Ueda": "Nephrology",
+        "Vance": "Hematology",
+        "Wynn": "Cardiology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b104-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b104-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Quade, Reilly, Suarez; Hematology: Tam, Ueda; Nephrology: Vance, Wynn"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Quade, Vance, Wynn; Hematology: Reilly, Suarez; Nephrology: Tam, Ueda"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Quade, Reilly, Vance; Hematology: Suarez, Wynn; Nephrology: Tam, Ueda"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Quade, Tam, Ueda; Hematology: Reilly, Vance; Nephrology: Suarez, Wynn"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Quade, Suarez, Tam; Hematology: Reilly, Ueda; Nephrology: Vance, Wynn"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "(C) satisfies all rules: Quade is in Cardiology; Reilly (Cardiology) and Suarez (Hematology) are in different departments; Tam and Ueda are both in Nephrology; Vance is not in Hematology so the conditional is vacuous; Suarez is not in Nephrology; group sizes are 3/2/2.",
+          "A": "Reilly and Suarez are both in Cardiology, violating the rule that they be in different departments.",
+          "B": "Reilly and Suarez are both in Hematology, violating the different-department rule.",
+          "C": "Correct.",
+          "D": "Suarez is assigned to Nephrology, which is prohibited.",
+          "E": "Tam and Ueda are in different departments (Cardiology and Hematology), violating the same-department rule."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b104-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b104-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Tam is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Tam",
+            "position": "Cardiology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Reilly is assigned to Hematology."
+          },
+          {
+            "label": "B",
+            "text": "Suarez is assigned to Hematology."
+          },
+          {
+            "label": "C",
+            "text": "Vance is assigned to Nephrology."
+          },
+          {
+            "label": "D",
+            "text": "Wynn is assigned to Nephrology."
+          },
+          {
+            "label": "E",
+            "text": "Reilly is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "If Tam is in Cardiology, then Ueda is too. With Quade, that fills Cardiology. Reilly, Suarez, Vance, and Wynn fill Hematology (2) and Nephrology (2). Since Suarez cannot be in Nephrology, Suarez must be in Hematology.",
+          "A": "Reilly could be in Nephrology (Reilly must differ from Suarez, who is in Hematology).",
+          "B": "Correct.",
+          "C": "Vance could be in Hematology or Nephrology.",
+          "D": "Wynn could be in Hematology or Nephrology.",
+          "E": "Cardiology is already full with Quade, Tam, and Ueda."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b104-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b104-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Tam and Suarez are both assigned to Hematology."
+          },
+          {
+            "label": "B",
+            "text": "Reilly and Wynn are both assigned to Nephrology."
+          },
+          {
+            "label": "C",
+            "text": "Vance and Suarez are both assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Tam is assigned to Hematology and Wynn is assigned to Hematology."
+          },
+          {
+            "label": "E",
+            "text": "Suarez is assigned to Cardiology and Reilly is assigned to Hematology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "The solution Quade, Suarez, Vance in Cardiology; Reilly, Wynn in Hematology; Tam, Ueda in Nephrology satisfies every rule, confirming (E) is possible.",
+          "A": "If Tam is in Hematology, Ueda is too, filling Hematology. Then Suarez cannot be in Hematology.",
+          "B": "Reilly and Wynn in Nephrology would fill Nephrology, leaving Suarez and Vance to fill Hematology together with one other. But then Tam and Ueda would need to share a department, and no valid assignment results—Suarez would need to be in Cardiology, leaving Vance alone, and Tam+Ueda can't both fit anywhere consistently.",
+          "C": "If Suarez and Vance are in Cardiology with Quade, Cardiology is full. Then Tam+Ueda must share Hematology or Nephrology, but Reilly (who must differ from Suarez) must also fit, forcing Reilly into whichever slot Tam/Ueda don't occupy—but Reilly alone can't fill a 2-slot group with Wynn if Wynn is placed by the conditional. Enumeration shows no valid world.",
+          "D": "If Tam is in Hematology, Ueda is too, filling Hematology; Wynn cannot also be in Hematology.",
+          "E": "Correct."
+        },
+        "tags": [
+          "could_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b104-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b104-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "If Vance is assigned to Hematology, then which one of the following CANNOT be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Vance",
+            "position": "Hematology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Reilly is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Suarez is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Tam is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Wynn is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Reilly is assigned to Hematology."
+          }
+        ],
+        "correctAnswer": "E",
+        "explanations": {
+          "correct": "If Vance is in Hematology, the conditional forces Wynn to Nephrology. Hematology then has one remaining slot. If Reilly were in Hematology, Suarez would be in Cardiology (different from Reilly, not Nephrology). Cardiology would hold Quade, Suarez, and one of Tam/Ueda—but Tam and Ueda must share a department. The only 2-slot department with room left is Nephrology (with Wynn), leaving one Cardiology slot empty. No valid world exists.",
+          "A": "Possible: Quade, Reilly, Wynn... wait, Wynn must be in Nephrology. Actually Reilly can be in Cardiology with Quade and one other while Tam/Ueda share Nephrology with Wynn—but Nephrology only has 2 slots. Reconsider: Quade, Reilly, Suarez in Cardiology fails (R and S differ). Valid world: Quade, Reilly in Cardiology with Tam or Ueda—but Tam/Ueda share. So Quade+Reilly+? in Cardiology with Suarez in Hematology? Suarez must differ from Reilly; Suarez in Hematology works. Then Tam/Ueda in Nephrology with Wynn—3 in Nephrology, too many. The verified solution list shows Reilly in Cardiology is possible (solution 1).",
+          "B": "Solution 3 in the verified list has Suarez in Cardiology with Vance in Nephrology, not Hematology. Under Vance=Hematology specifically, solution 7 shows Suarez in Cardiology is possible.",
+          "C": "Solution 6: Tam in Cardiology is compatible with some assignments. Under Vance=Hematology, it remains possible.",
+          "D": "Solution 2 has Wynn in Cardiology with Vance in Hematology.",
+          "E": "Correct—no valid assignment places Reilly in Hematology when Vance is in Hematology."
+        },
+        "tags": [
+          "cannot_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b104-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b104-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following must be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Quade and Vance are assigned to the same department."
+          },
+          {
+            "label": "B",
+            "text": "At least one of Reilly and Suarez is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Tam is assigned to Nephrology."
+          },
+          {
+            "label": "D",
+            "text": "Wynn is assigned to Hematology."
+          },
+          {
+            "label": "E",
+            "text": "Vance is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "Reilly and Suarez must be in different departments, and Suarez cannot be in Nephrology. So Suarez is in Cardiology or Hematology, and Reilly is in one of the other two. Checking all verified solutions: in every case, at least one of Reilly or Suarez occupies a Cardiology slot.",
+          "A": "Solution 1 places Vance in Cardiology with Quade, but solution 5 places Vance in Nephrology—not required.",
+          "B": "Correct.",
+          "C": "Solution 3 places Tam in Hematology.",
+          "D": "Solution 2 places Wynn in Cardiology.",
+          "E": "Solution 3 places Vance in Nephrology."
+        },
+        "tags": [
+          "must_be_true"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]

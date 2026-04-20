@@ -1,0 +1,395 @@
+[
+  {
+    "id": "lg-game-gen-grouping-d2-b103-01",
+    "section": "LG",
+    "family": "grouping",
+    "difficulty": 2,
+    "scenario": "A hospital administrator is assigning exactly seven medical interns—Gupta, Hakim, Ibarra, Jansen, Kwon, Lind, and Moreau—to exactly three departments: Cardiology, Neurology, and Pediatrics. Each intern is assigned to exactly one department. Cardiology must be assigned exactly two interns, Neurology must be assigned exactly two interns, and Pediatrics must be assigned exactly three interns. The assignment must meet the following conditions: Gupta and Hakim are assigned to different departments. Ibarra is assigned to Pediatrics. If Jansen is assigned to Cardiology, then Kwon is assigned to Neurology. Lind and Moreau are assigned to the same department. Exactly one of Hakim and Kwon is assigned to Pediatrics.",
+    "entities": [
+      "Gupta",
+      "Hakim",
+      "Ibarra",
+      "Jansen",
+      "Kwon",
+      "Lind",
+      "Moreau"
+    ],
+    "positions": [
+      "Cardiology",
+      "Neurology",
+      "Pediatrics"
+    ],
+    "rules": [
+      {
+        "type": "different_group",
+        "a": "Gupta",
+        "b": "Hakim"
+      },
+      {
+        "type": "at",
+        "entity": "Ibarra",
+        "position": "Pediatrics"
+      },
+      {
+        "type": "same_group",
+        "a": "Lind",
+        "b": "Moreau"
+      },
+      {
+        "type": "exactly_one_of",
+        "entities": [
+          "Hakim",
+          "Kwon"
+        ],
+        "position": "Pediatrics"
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Cardiology",
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Neurology",
+        "n": 2
+      },
+      {
+        "type": "exactly_n_in_group",
+        "group": "Pediatrics",
+        "n": 3
+      }
+    ],
+    "verifiedSolutions": [
+      {
+        "Gupta": "Cardiology",
+        "Hakim": "Pediatrics",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Cardiology",
+        "Kwon": "Neurology",
+        "Lind": "Neurology",
+        "Moreau": "Neurology"
+      },
+      {
+        "Gupta": "Neurology",
+        "Hakim": "Pediatrics",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Neurology",
+        "Kwon": "Cardiology",
+        "Lind": "Cardiology",
+        "Moreau": "Cardiology"
+      },
+      {
+        "Gupta": "Pediatrics",
+        "Hakim": "Cardiology",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Cardiology",
+        "Kwon": "Pediatrics",
+        "Lind": "Neurology",
+        "Moreau": "Neurology"
+      },
+      {
+        "Gupta": "Pediatrics",
+        "Hakim": "Neurology",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Neurology",
+        "Kwon": "Pediatrics",
+        "Lind": "Cardiology",
+        "Moreau": "Cardiology"
+      },
+      {
+        "Gupta": "Cardiology",
+        "Hakim": "Neurology",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Pediatrics",
+        "Kwon": "Pediatrics",
+        "Lind": "Cardiology",
+        "Moreau": "Cardiology"
+      },
+      {
+        "Gupta": "Neurology",
+        "Hakim": "Cardiology",
+        "Ibarra": "Pediatrics",
+        "Jansen": "Pediatrics",
+        "Kwon": "Pediatrics",
+        "Lind": "Neurology",
+        "Moreau": "Neurology"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lg-gen-grouping-d2-b103-1-q1",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b103-01",
+        "questionType": "orientation_question",
+        "difficulty": 2,
+        "questionStem": "Which one of the following could be a complete and accurate assignment of interns to departments?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Cardiology: Gupta, Jansen; Neurology: Kwon, Lind; Pediatrics: Hakim, Ibarra, Moreau"
+          },
+          {
+            "label": "B",
+            "text": "Cardiology: Lind, Moreau; Neurology: Gupta, Jansen; Pediatrics: Hakim, Ibarra, Kwon"
+          },
+          {
+            "label": "C",
+            "text": "Cardiology: Hakim, Jansen; Neurology: Gupta, Kwon; Pediatrics: Ibarra, Lind, Moreau"
+          },
+          {
+            "label": "D",
+            "text": "Cardiology: Gupta, Hakim; Neurology: Jansen, Kwon; Pediatrics: Ibarra, Lind, Moreau"
+          },
+          {
+            "label": "E",
+            "text": "Cardiology: Lind, Moreau; Neurology: Hakim, Jansen; Pediatrics: Gupta, Ibarra, Kwon"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "B satisfies every rule: Gupta (Neurology) and Hakim (Pediatrics) are in different departments; Ibarra is in Pediatrics; Lind and Moreau are together in Cardiology; of Hakim and Kwon, exactly one (Hakim) is in Pediatrics; group sizes are 2/2/3.",
+          "A": "Lind and Moreau are split (Lind in Neurology, Moreau in Pediatrics), violating the same-department rule.",
+          "C": "Both Hakim (Cardiology) and Kwon (Neurology) are absent from Pediatrics, violating the 'exactly one of Hakim/Kwon in Pediatrics' rule.",
+          "D": "Gupta and Hakim are both in Cardiology, violating the different-departments rule.",
+          "E": "Jansen is in Cardiology but Kwon is in Pediatrics rather than Neurology, violating the Jansen→Kwon conditional."
+        },
+        "tags": [
+          "orientation_question",
+          "grouping"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b103-1-q2",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b103-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Jansen is assigned to Cardiology, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Jansen",
+            "position": "Cardiology"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hakim is assigned to Pediatrics."
+          },
+          {
+            "label": "B",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "C",
+            "text": "Lind is assigned to Pediatrics."
+          },
+          {
+            "label": "D",
+            "text": "Moreau is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Kwon is assigned to Pediatrics."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanations": {
+          "correct": "With Jansen in Cardiology, the conditional forces Kwon into Neurology. Then 'exactly one of Hakim/Kwon in Pediatrics' requires Hakim to be in Pediatrics. This holds in both surviving solutions.",
+          "B": "Gupta could be in Cardiology or Neurology in the two surviving solutions.",
+          "C": "Lind is in Neurology or Cardiology, never Pediatrics (a pair must share, and Pediatrics has Ibarra plus Hakim already).",
+          "D": "Moreau is in Neurology in one surviving solution.",
+          "E": "Kwon is forced into Neurology, not Pediatrics."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b103-1-q3",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b103-01",
+        "questionType": "could_be_true",
+        "difficulty": 2,
+        "questionStem": "If Kwon is assigned to Pediatrics, then which one of the following could be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Kwon",
+            "position": "Pediatrics"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hakim is assigned to Pediatrics."
+          },
+          {
+            "label": "B",
+            "text": "Jansen is assigned to Neurology."
+          },
+          {
+            "label": "C",
+            "text": "Lind is assigned to Pediatrics."
+          },
+          {
+            "label": "D",
+            "text": "Gupta is assigned to Cardiology."
+          },
+          {
+            "label": "E",
+            "text": "Moreau is assigned to Pediatrics."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanations": {
+          "correct": "In the solution {Gupta: Cardiology, Hakim: Neurology, Ibarra: Pediatrics, Jansen: Pediatrics, Kwon: Pediatrics, Lind: Cardiology, Moreau: Cardiology}, Gupta is in Cardiology. So this could be true.",
+          "A": "With Kwon in Pediatrics, 'exactly one of Hakim/Kwon in Pediatrics' forces Hakim out of Pediatrics.",
+          "B": "If Kwon is in Pediatrics and Jansen were in Neurology, Pediatrics needs one more intern besides Ibarra and Kwon—but Lind/Moreau must pair and can't fit (Cardiology would need 2 plus Lind/Moreau=4 total). Checking: with Jansen in Neurology, Gupta must occupy the remaining Cardiology or Neurology slot opposite Hakim; Lind/Moreau must pair. No valid solution places Jansen in Neurology under this hypothesis.",
+          "C": "Lind and Moreau must share a department; Pediatrics already has Ibarra and Kwon, leaving only one slot, so the pair cannot go there.",
+          "E": "Same as C—the Lind/Moreau pair cannot fit into Pediatrics' single remaining slot."
+        },
+        "tags": [
+          "could_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b103-1-q4",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b103-01",
+        "questionType": "cannot_be_true",
+        "difficulty": 2,
+        "questionStem": "Which one of the following CANNOT be true?",
+        "choices": [
+          {
+            "label": "A",
+            "text": "Gupta is assigned to Pediatrics."
+          },
+          {
+            "label": "B",
+            "text": "Hakim and Jansen are assigned to the same department."
+          },
+          {
+            "label": "C",
+            "text": "Lind is assigned to Pediatrics."
+          },
+          {
+            "label": "D",
+            "text": "Jansen is assigned to Pediatrics."
+          },
+          {
+            "label": "E",
+            "text": "Kwon is assigned to Cardiology."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanations": {
+          "correct": "Lind and Moreau must share a department. Pediatrics has Ibarra fixed, and the rule 'exactly one of Hakim/Kwon in Pediatrics' means Pediatrics always contains Ibarra plus exactly one of {Hakim, Kwon} plus one other intern. The Lind/Moreau pair would require both of Pediatrics' two non-Ibarra slots, leaving no room for the mandatory Hakim-or-Kwon intern. Thus Lind (and Moreau) can never be in Pediatrics.",
+          "A": "Gupta is in Pediatrics in two verified solutions (e.g., solution 3).",
+          "B": "Hakim and Jansen are both in Cardiology in solution 3, same department.",
+          "D": "Jansen is in Pediatrics in solutions 5 and 6.",
+          "E": "Kwon is in Cardiology in solution 2."
+        },
+        "tags": [
+          "cannot_be_true",
+          "unconditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      },
+      {
+        "id": "lg-gen-grouping-d2-b103-1-q5",
+        "section": "LG",
+        "gameId": "lg-game-gen-grouping-d2-b103-01",
+        "questionType": "must_be_true",
+        "difficulty": 2,
+        "questionStem": "If Gupta is assigned to Pediatrics, then which one of the following must be true?",
+        "localRules": [
+          {
+            "type": "at",
+            "entity": "Gupta",
+            "position": "Pediatrics"
+          }
+        ],
+        "choices": [
+          {
+            "label": "A",
+            "text": "Hakim is assigned to Cardiology."
+          },
+          {
+            "label": "B",
+            "text": "Kwon is assigned to Pediatrics."
+          },
+          {
+            "label": "C",
+            "text": "Jansen is assigned to Cardiology."
+          },
+          {
+            "label": "D",
+            "text": "Lind is assigned to Neurology."
+          },
+          {
+            "label": "E",
+            "text": "Moreau is assigned to Pediatrics."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanations": {
+          "correct": "With Gupta in Pediatrics, Pediatrics holds Gupta and Ibarra plus one more. Hakim must be in Cardiology or Neurology (different from Gupta). So Hakim is not in Pediatrics, which forces Kwon into Pediatrics by the 'exactly one of Hakim/Kwon' rule. Both surviving solutions confirm Kwon ∈ Pediatrics.",
+          "A": "Hakim could be in Neurology (solution 4), not only Cardiology.",
+          "C": "Jansen is in Cardiology in solution 3 but in Neurology in solution 4.",
+          "D": "Lind is in Cardiology in solution 4.",
+          "E": "Moreau is paired with Lind in Cardiology or Neurology, never in Pediatrics here."
+        },
+        "tags": [
+          "must_be_true",
+          "conditional"
+        ],
+        "source": {
+          "pipelineVersion": "1.0",
+          "generator": "anthropic-api",
+          "fewShotRefs": [
+            "lg-grouping.json"
+          ]
+        }
+      }
+    ],
+    "source": {
+      "pipelineVersion": "1.0",
+      "generator": "anthropic-api",
+      "fewShotRefs": [
+        "lg-grouping.json"
+      ]
+    },
+    "externallyVerified": true
+  }
+]
