@@ -82,7 +82,12 @@ WORKDIR="$(mktemp -d)"
 cat > "$WORKDIR/index.mjs" <<'PLACEHOLDER'
 export const handler = async () => ({ statusCode: 200, body: 'placeholder — run deploy-lambda.sh' });
 PLACEHOLDER
-(cd "$WORKDIR" && zip -q "$PLACEHOLDER_ZIP" index.mjs)
+python3 -c "
+import zipfile, sys, os
+os.chdir(sys.argv[1])
+with zipfile.ZipFile(sys.argv[2], 'w', zipfile.ZIP_DEFLATED) as z:
+    z.write('index.mjs')
+" "$WORKDIR" "$PLACEHOLDER_ZIP"
 rm -rf "$WORKDIR"
 
 if ! aws_cli lambda get-function --function-name "$FUNCTION_NAME" > /dev/null 2>&1; then
@@ -107,18 +112,23 @@ rm -f "$PLACEHOLDER_ZIP"
 # 4. Function URL (streaming, auth NONE, CORS)
 if ! aws_cli lambda get-function-url-config --function-name "$FUNCTION_NAME" > /dev/null 2>&1; then
   echo "[setup-aws] creating Function URL"
+  CORS_JSON="$(cat <<JSON
+{"AllowOrigins":["$ALLOWED_ORIGIN"],"AllowMethods":["*"],"AllowHeaders":["content-type","x-lsatprep-token"],"MaxAge":600}
+JSON
+)"
   aws_cli lambda create-function-url-config \
     --function-name "$FUNCTION_NAME" \
     --auth-type NONE \
     --invoke-mode RESPONSE_STREAM \
-    --cors "AllowOrigins=$ALLOWED_ORIGIN,AllowMethods=POST,AllowMethods=OPTIONS,AllowHeaders=content-type,AllowHeaders=x-lsatprep-token,MaxAge=600" > /dev/null || true
-  aws_cli lambda add-permission \
-    --function-name "$FUNCTION_NAME" \
-    --statement-id FunctionURLAllowPublicAccess \
-    --principal "*" \
-    --action lambda:InvokeFunctionUrl \
-    --function-url-auth-type NONE > /dev/null
+    --cors "$CORS_JSON" > /dev/null
 fi
+# Tolerate ResourceConflictException (permission already exists).
+aws_cli lambda add-permission \
+  --function-name "$FUNCTION_NAME" \
+  --statement-id FunctionURLAllowPublicAccess \
+  --principal "*" \
+  --action lambda:InvokeFunctionUrl \
+  --function-url-auth-type NONE > /dev/null 2>&1 || true
 LAMBDA_FUNCTION_URL="$(aws_cli lambda get-function-url-config --function-name "$FUNCTION_NAME" --query FunctionUrl --output text)"
 if grep -q '^LAMBDA_FUNCTION_URL=' "$ENV_FILE"; then
   sed -i "s|^LAMBDA_FUNCTION_URL=.*|LAMBDA_FUNCTION_URL=$LAMBDA_FUNCTION_URL|" "$ENV_FILE"

@@ -16,9 +16,21 @@ cp -r src "$STAGE/"
 cp package.json "$STAGE/"
 cp -r node_modules "$STAGE/"
 
-pushd "$STAGE" > /dev/null
-zip -rq "$ROOT/lambda/dist/lsatprep-api.zip" src package.json node_modules
-popd > /dev/null
+if command -v zip >/dev/null; then
+  (cd "$STAGE" && zip -rq "$ROOT/lambda/dist/lsatprep-api.zip" .)
+else
+  python3 -c "
+import zipfile, os, sys
+stage = sys.argv[1]
+out = sys.argv[2]
+with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
+    for root, _, files in os.walk(stage):
+        for f in files:
+            full = os.path.join(root, f)
+            rel = os.path.relpath(full, stage)
+            z.write(full, rel)
+" "$STAGE" "$ROOT/lambda/dist/lsatprep-api.zip"
+fi
 
 rm -rf "$STAGE"
 
