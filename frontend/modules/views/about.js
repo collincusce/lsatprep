@@ -1,39 +1,40 @@
-// About page — project overview, coverage matrix, pipeline summary, privacy notes.
+// About page — written for LSAT test-takers. Explains what this kit gives you,
+// how to use it, and the bits you should know about question quality + privacy.
 
 const BASE = window.location.pathname.includes('/lsatprep/') ? '/lsatprep' : '';
 
 const LR_SUBTYPES = [
-  ['Assumption — Necessary',      159, '38 / 70 / 51'],
-  ['Assumption — Sufficient',     147, '32 / 64 / 51'],
-  ['Strengthen',                  192, '51 / 90 / 51'],
-  ['Weaken',                      191, '51 / 89 / 51'],
-  ['Flaw',                        166, '38 / 77 / 51'],
-  ['Parallel Reasoning',          115, '26 / 51 / 38'],
-  ['Parallel Flaw',                89, '19 / 38 / 32'],
-  ['Method of Reasoning',         103, '26 / 45 / 32'],
-  ['Role in Argument',            103, '26 / 45 / 32'],
-  ['Point at Issue',               83, '19 / 38 / 26'],
-  ['Main Point',                   83, '26 / 38 / 19'],
-  ['Must Be True',                128, '32 / 58 / 38'],
-  ['Most Strongly Supported',     115, '32 / 51 / 32'],
-  ['Principle — Conform',         103, '26 / 45 / 32'],
-  ['Principle — Justify',          83, '19 / 38 / 26'],
-  ['Paradox / Resolve',           140, '38 / 64 / 38']
+  ['Assumption — Necessary',      240, '80 / 120 / 40'],
+  ['Assumption — Sufficient',     120, '40 / 60 / 20'],
+  ['Strengthen',                  240, '80 / 120 / 40'],
+  ['Weaken',                      240, '80 / 120 / 40'],
+  ['Flaw',                        200, '60 / 100 / 40'],
+  ['Parallel Reasoning',          120, '20 / 60 / 40'],
+  ['Parallel Flaw',               100, '20 / 60 / 20'],
+  ['Method of Reasoning',         100, '40 / 40 / 20'],
+  ['Role in Argument',            120, '40 / 60 / 20'],
+  ['Point at Issue',              100, '40 / 40 / 20'],
+  ['Main Point',                  100, '60 / 40 / 0'],
+  ['Must Be True',                140, '40 / 80 / 20'],
+  ['Most Strongly Supported',     120, '40 / 60 / 20'],
+  ['Principle — Conform',          60, '20 / 30 / 10'],
+  ['Principle — Justify',          60, '20 / 30 / 10'],
+  ['Paradox / Resolve',            60, '20 / 20 / 20']
 ];
 
 const RC_GENRES = [
-  ['Humanities',           247, '62 / 116 / 69'],
-  ['Social Sciences',      238, '54 / 115 / 69'],
-  ['Natural Science',      231, '54 / 108 / 69'],
-  ['Law',                  215, '46 / 100 / 69'],
-  ['Comparative Reading',  169, '38 / 85 / 46 — paired']
+  ['Humanities',           280, '40 passages'],
+  ['Social Sciences',      280, '40 passages'],
+  ['Natural Science',      280, '40 passages'],
+  ['Law',                  140, '20 passages'],
+  ['Comparative Reading',  120, '20 passages — paired']
 ];
 
 const LG_FAMILIES = [
-  ['Basic Linear',     225, '71 / 103 / 51'],
-  ['Advanced Linear',  212, '45 / 96 / 71'],
-  ['Grouping',         237, '58 / 115 / 64'],
-  ['Hybrid',           226, '39 / 116 / 71']
+  ['Basic Linear',     200, '30 games'],
+  ['Advanced Linear',  260, '40 games'],
+  ['Grouping',         240, '40 games'],
+  ['Hybrid',           220, '30 games']
 ];
 
 function row(cells, opts = {}) {
@@ -48,13 +49,13 @@ function row(cells, opts = {}) {
 function matrixTable() {
   const head = row(['Section / Type', 'Count', 'By difficulty 1 / 2 / 3'], { header: true });
   const body = [
-    row(['<strong>Logical Reasoning</strong>', '<strong>2,000</strong>', '16 subtypes × difficulty'], { sectionHead: true }),
+    row(['<strong>Logical Reasoning</strong>', '<strong>~2,000</strong>', '16 subtypes'], { sectionHead: true }),
     ...LR_SUBTYPES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Reading Comprehension</strong>', '<strong>1,100</strong>', '~157 passages × ~7 Q'], { sectionHead: true }),
+    row(['<strong>Reading Comprehension</strong>', '<strong>~1,100</strong>', '~160 passages × ~7 Q'], { sectionHead: true }),
     ...RC_GENRES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Logic Games</strong>', '<strong>900</strong>', '~138 games × ~6–7 Q'], { sectionHead: true }),
+    row(['<strong>Logic Games</strong>', '<strong>~900</strong>', '~140 games × ~6–7 Q'], { sectionHead: true }),
     ...LG_FAMILIES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Grand total</strong>', '<strong>4,000</strong>', ''], { sectionHead: true })
+    row(['<strong>Grand total</strong>', '<strong>~4,000</strong>', ''], { sectionHead: true })
   ].join('');
   return `
     <div class="matrix-wrap">
@@ -70,83 +71,57 @@ export function renderAbout(mainEl) {
   mainEl.innerHTML = `
     <section class="card">
       <h1>About LSAT Prep</h1>
-      <p class="muted">A single-user study kit for a friend preparing for the LSAT. Covers Logical Reasoning and Reading Comprehension (the current LSAT) plus the retired Logic Games section behind an opt-in toggle.</p>
+      <p class="muted" style="font-size:var(--text-lg)">A practice kit built to help you drill every LSAT question type, take timed sections or full-length tests, practice the Writing Sample, and get a real explanation the moment you want one.</p>
     </section>
 
     <section class="card">
-      <h2>How it's built</h2>
+      <h2>What you get</h2>
       <ul>
-        <li><strong>Frontend:</strong> vanilla JavaScript ES modules — no framework, no build step. Runs directly from GitHub Pages.</li>
-        <li><strong>State:</strong> your attempts, sessions, writing samples, and coach threads live in <code>localStorage</code> only. Nothing leaves your browser except explicit AI calls.</li>
-        <li><strong>AI features</strong> (writing-sample grading, tailored wrong-answer explanations, per-question coach chat, diagnostic weakness reports) call a tiny AWS Lambda that proxies to Anthropic's Claude API. The API key lives on the Lambda, never in the browser.</li>
-        <li><strong>Question bank</strong> is a static 4,000-question JSON file, generated offline through a 6-stage pipeline (research → taxonomy → coverage → generate → critic → assemble) using parallel Claude Code subagents.</li>
+        <li><strong>~4,000 practice questions</strong> across Logical Reasoning, Reading Comprehension, and Logic Games — calibrated to 1★ / 2★ / 3★ difficulty against what real LSAT takers find easy, medium, or hard.</li>
+        <li><strong>Three study modes.</strong> Drill (one question at a time, instant feedback), timed section (one 35-minute section, scored at the end), and full-length test (four sections with a break, end-of-test scoring).</li>
+        <li><strong>Writing Sample practice.</strong> 30 LSAC-style prompts. You write for 35 minutes, then get a rubric grade (A–F) with feedback on organization, argument strength, evidence use, and clarity.</li>
+        <li><strong>AI tutor on every question.</strong> When you miss one, you can ask for a tailored explanation or open a coach chat that hints at what you missed rather than just handing you the answer.</li>
+        <li><strong>Progress tracking</strong> with a diagnostic weakness report that reads your attempts and tells you which subtypes to focus on next.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>Coverage matrix</h2>
-      <p class="muted">The 4,000 questions are stratified across section, subtype, and difficulty per <code>generation/coverage-matrix.json</code> — the same file the Phase 4 generator subagents fan out on. Counts below are exact targets; the per-run generation report records the actual delivered distribution after any drops or backfills.</p>
-      ${matrixTable()}
-      <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-3)">Difficulty 1 ≈ 80–100% of real LSAT takers get it right · 2 ≈ 50–79% · 3 ≈ under 50%. Calibration anchors extrapolated from LSAC percentile data and public 7sage / LSAT Hacks commentary — our mapping, not an official LSAC curve.</p>
-    </section>
-
-    <section class="card">
-      <h2>Generation pipeline</h2>
+      <h2>How to use it</h2>
       <ol>
-        <li><strong>Research</strong> — a Claude Code subagent fetches LSAC's free public samples, 7sage difficulty commentary, and PowerScore / LSAT Trainer taxonomies. Produces a dossier and a corpus of authentic LSAT-style anchors.</li>
-        <li><strong>Taxonomy</strong> — human-readable rubric cards (per LR subtype, RC genre, LG family) authored from the dossier, mirrored to a machine-readable <code>taxonomy.json</code>.</li>
-        <li><strong>Coverage matrix</strong> — the table above, as JSON, summing to ~4,000.</li>
-        <li><strong>Parallel generation</strong> — ~40–50 generator subagents fan out, each handling one matrix cell. Every prompt includes a mandatory domain-diversity requirement (medicine, ethics, economics, law, environmental science, technology, linguistics, history, policy, arts).</li>
-        <li><strong>Independent critic pass</strong> — fresh subagents grade every question cold, seeing only the rubric and the question text (never the generator's reasoning). Authenticity floor: 3.5 / 5. Logic Games additionally run through a JavaScript constraint solver that enumerates valid permutations and verifies the stated correct answer is actually valid.</li>
-        <li><strong>Regenerate + assemble</strong> — flagged questions go back for up to 2 regeneration passes. Survivors are merged into <code>questions.json</code>, versioned by date, and shipped. A generation report captures averages, flag counts, and a stratified sample for human review.</li>
+        <li><strong>Warm up with Drill mode.</strong> Pick a section and subtype, keep the difficulty at 1★ if you're learning a new type. Read each explanation — even on questions you got right.</li>
+        <li><strong>Move to 2★ once a subtype is consistent.</strong> The jump from 1★ to 2★ is where trap answers start to look plausible. This is the real work.</li>
+        <li><strong>Use the coach.</strong> When a question stumps you, open the coach instead of just revealing the answer. A good tutor conversation is worth five explanations.</li>
+        <li><strong>Timed sections weekly.</strong> 35 minutes per section, no feedback until done. That's how you learn pace.</li>
+        <li><strong>Full-length tests monthly.</strong> Simulate a real LSAT. Afterwards, run a diagnostic and come back to drill the weakest subtypes.</li>
       </ol>
     </section>
 
     <section class="card">
-      <h2>AI model slotting</h2>
-      <div class="row" style="align-items:flex-start">
-        <div class="card" style="flex:1;margin:0;min-width:200px">
-          <h3 style="margin-top:0">Opus 4.7</h3>
-          <p class="muted" style="margin:0">Writing Sample grading — rubric-based scoring across organization, argument strength, evidence use, clarity.</p>
-        </div>
-        <div class="card" style="flex:1;margin:0;min-width:200px">
-          <h3 style="margin-top:0">Sonnet 4.6</h3>
-          <p class="muted" style="margin:0">Diagnostic weakness reports — reads up to 500 attempts and surfaces patterns.</p>
-        </div>
-        <div class="card" style="flex:1;margin:0;min-width:200px">
-          <h3 style="margin-top:0">Haiku 4.5</h3>
-          <p class="muted" style="margin:0">Per-question explanations and streaming coach chat — fast, cheap, tailored to your specific wrong answer.</p>
-        </div>
-      </div>
-      <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-3)">System prompts are cached across requests via Anthropic's prompt-caching beta.</p>
+      <h2>What the question bank covers</h2>
+      <p class="muted">Questions are stratified across section, subtype, and difficulty so you never run out of practice in any slot.</p>
+      ${matrixTable()}
+      <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-3)">Difficulty 1★ ≈ 80–100% of real LSAT takers get it right · 2★ ≈ 50–79% · 3★ ≈ under 50%. This is our mapping based on public LSAC percentile data and 7sage / LSAT Hacks commentary — not an official LSAC curve.</p>
     </section>
 
     <section class="card">
-      <h2>Privacy &amp; data</h2>
+      <h2>About the questions</h2>
+      <p>Every question is written by AI, calibrated to feel like real LSAT content — same voice, same trap patterns, same difficulty anchors against actual test-taker performance. Topics are varied across medicine, ethics, law, economics, history, the sciences, and the arts so you don't see the same kind of argument twice in a row.</p>
+      <p class="muted" style="font-size:var(--text-sm)">These are practice questions, not official LSAC content. They're calibrated to feel like the real thing, but only what's on test day counts for a score.</p>
+    </section>
+
+    <section class="card">
+      <h2>Privacy</h2>
       <ul>
-        <li>All attempts, session history, writing samples, and coach conversations live in <code>localStorage</code> under the single key <code>lsatprep:v1:state</code>.</li>
-        <li>Nothing is sent to a server except when you explicitly trigger an AI feature (coach, explain, writing grade, diagnostic). Those requests include the question text, your answer, and relevant history — and go only to the project's own Lambda, which forwards to Anthropic.</li>
-        <li>No analytics, no cookies, no third-party scripts.</li>
-        <li>Export / import JSON from <a href="${BASE}/settings">Settings</a> — that's how you move progress between devices or back it up.</li>
+        <li>Your attempts, session history, writing samples, and coach conversations stay in your browser. Nothing is uploaded, analyzed, or shared.</li>
+        <li>AI features (coach, explanations, writing-sample grading, diagnostics) only send the question you're on and your answer to the AI — and only when you click the button that triggers them.</li>
+        <li>No accounts, no cookies, no analytics, no trackers.</li>
+        <li>You can export or import your progress as a JSON file from <a href="${BASE}/settings">Settings</a> — useful for moving between devices or keeping a backup.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>Cost &amp; abuse posture</h2>
-      <ul>
-        <li>AWS Lambda: within the always-free tier at single-user scale.</li>
-        <li>Anthropic usage: capped at $10 / month as a hard ceiling set by Anthropic.</li>
-        <li>The Lambda has reserved concurrency of 3 and a shared-secret header; CORS is restricted to the site's own origin.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Source &amp; further reading</h2>
-      <ul>
-        <li>Repo: <a href="https://github.com/collincusce/lsatprep">github.com/collincusce/lsatprep</a></li>
-        <li>Design doc and implementation plan live under <code>docs/plans/</code> in the repo.</li>
-        <li>Research dossier (methodology + cited sources): <code>docs/research/lsat-research-dossier.md</code>.</li>
-      </ul>
+      <h2>A note from Collin</h2>
+      <p class="muted">This site is a friend-project. I built it because I wanted my friend to have a serious amount of quality practice material without a subscription. If anything in the bank feels off — a question that seems broken, a trap answer that's actually right, a passage that reads wrong — tell me and I'll fix it.</p>
     </section>
   `;
 }
