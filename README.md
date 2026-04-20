@@ -16,7 +16,7 @@ A friend-project LSAT prep web app: 4,000 AI-generated questions across Logical 
 
 ## Coverage matrix
 
-The 4,000 questions are stratified across section, subtype, and difficulty per `generation/coverage-matrix.json` — the same file the Phase 4 generator subagents fan out on. Counts below are exact targets from that file; the per-run generation report records the actual delivered distribution after any drops or backfills. Difficulty is 1★ (≈80–100% of LSAT takers get it right) / 2★ (≈50–79%) / 3★ (under 50%).
+The bank ships **4,022 questions**, stratified across section, subtype, and difficulty. Counts below are the actual delivered distribution in `frontend/questions.json` (bankVersion `2026-04-20-018`). Difficulty is 1★ (≈80–100% of LSAT takers get it right) / 2★ (≈50–79%) / 3★ (under 50%).
 
 | Section / Type                           |      Count | By difficulty 1 / 2 / 3   |
 | :--------------------------------------- | ---------: | :------------------------ |
@@ -37,18 +37,18 @@ The 4,000 questions are stratified across section, subtype, and difficulty per `
 | &nbsp;&nbsp;Principle — Conform          |        103 | 26 / 45 / 32              |
 | &nbsp;&nbsp;Principle — Justify          |         83 | 19 / 38 / 26              |
 | &nbsp;&nbsp;Paradox / Resolve            |        140 | 38 / 64 / 38              |
-| **Reading Comprehension**                |  **1,100** | ~157 passages × ~7 Q      |
-| &nbsp;&nbsp;Humanities                   |        247 | 62 / 116 / 69             |
-| &nbsp;&nbsp;Social Sciences              |        238 | 54 / 115 / 69             |
-| &nbsp;&nbsp;Natural Science              |        231 | 54 / 108 / 69             |
-| &nbsp;&nbsp;Law                          |        215 | 46 / 100 / 69             |
-| &nbsp;&nbsp;Comparative Reading          |        169 | 38 / 85 / 46 (paired)     |
-| **Logic Games**                          |    **900** | ~138 games × ~6–7 Q       |
-| &nbsp;&nbsp;Basic Linear                 |        225 | 71 / 103 / 51             |
-| &nbsp;&nbsp;Advanced Linear              |        212 | 45 / 96 / 71              |
-| &nbsp;&nbsp;Grouping                     |        237 | 58 / 115 / 64             |
-| &nbsp;&nbsp;Hybrid                       |        226 | 39 / 116 / 71             |
-| **Grand total**                          |  **4,000** |                           |
+| **Reading Comprehension**                |  **1,141** | 163 passages × 7 Q        |
+| &nbsp;&nbsp;Humanities                   |        252 | 63 / 119 / 70             |
+| &nbsp;&nbsp;Social Sciences              |        245 | 56 / 119 / 70             |
+| &nbsp;&nbsp;Natural Science              |        238 | 56 / 112 / 70             |
+| &nbsp;&nbsp;Law                          |        224 | 49 / 105 / 70             |
+| &nbsp;&nbsp;Comparative Reading          |        182 | 42 / 91 / 49 (paired)     |
+| **Logic Games**                          |    **881** | 177 games × ~5 Q          |
+| &nbsp;&nbsp;Basic Linear                 |        220 | 70 / 100 / 50             |
+| &nbsp;&nbsp;Advanced Linear              |        210 | 45 / 95 / 70              |
+| &nbsp;&nbsp;Grouping                     |        230 | 55 / 115 / 60             |
+| &nbsp;&nbsp;Hybrid                       |        221 | 35 / 116 / 70             |
+| **Grand total**                          |  **4,022** |                           |
 
 ## Dev setup
 

@@ -3,38 +3,39 @@
 
 const BASE = window.location.pathname.includes('/lsatprep/') ? '/lsatprep' : '';
 
+// Per-cell delivered counts from frontend/questions.json (bankVersion 2026-04-20-018).
 const LR_SUBTYPES = [
-  ['Assumption — Necessary',      240, '80 / 120 / 40'],
-  ['Assumption — Sufficient',     120, '40 / 60 / 20'],
-  ['Strengthen',                  240, '80 / 120 / 40'],
-  ['Weaken',                      240, '80 / 120 / 40'],
-  ['Flaw',                        200, '60 / 100 / 40'],
-  ['Parallel Reasoning',          120, '20 / 60 / 40'],
-  ['Parallel Flaw',               100, '20 / 60 / 20'],
-  ['Method of Reasoning',         100, '40 / 40 / 20'],
-  ['Role in Argument',            120, '40 / 60 / 20'],
-  ['Point at Issue',              100, '40 / 40 / 20'],
-  ['Main Point',                  100, '60 / 40 / 0'],
-  ['Must Be True',                140, '40 / 80 / 20'],
-  ['Most Strongly Supported',     120, '40 / 60 / 20'],
-  ['Principle — Conform',          60, '20 / 30 / 10'],
-  ['Principle — Justify',          60, '20 / 30 / 10'],
-  ['Paradox / Resolve',            60, '20 / 20 / 20']
+  ['Assumption — Necessary',      159, '38 / 70 / 51'],
+  ['Assumption — Sufficient',     147, '32 / 64 / 51'],
+  ['Strengthen',                  192, '51 / 90 / 51'],
+  ['Weaken',                      191, '51 / 89 / 51'],
+  ['Flaw',                        166, '38 / 77 / 51'],
+  ['Parallel Reasoning',          115, '26 / 51 / 38'],
+  ['Parallel Flaw',                89, '19 / 38 / 32'],
+  ['Method of Reasoning',         103, '26 / 45 / 32'],
+  ['Role in Argument',            103, '26 / 45 / 32'],
+  ['Point at Issue',               83, '19 / 38 / 26'],
+  ['Main Point',                   83, '26 / 38 / 19'],
+  ['Must Be True',                128, '32 / 58 / 38'],
+  ['Most Strongly Supported',     115, '32 / 51 / 32'],
+  ['Principle — Conform',         103, '26 / 45 / 32'],
+  ['Principle — Justify',          83, '19 / 38 / 26'],
+  ['Paradox / Resolve',           140, '38 / 64 / 38']
 ];
 
 const RC_GENRES = [
-  ['Humanities',           280, '40 passages'],
-  ['Social Sciences',      280, '40 passages'],
-  ['Natural Science',      280, '40 passages'],
-  ['Law',                  140, '20 passages'],
-  ['Comparative Reading',  120, '20 passages — paired']
+  ['Humanities',           252, '63 / 119 / 70'],
+  ['Social Sciences',      245, '56 / 119 / 70'],
+  ['Natural Science',      238, '56 / 112 / 70'],
+  ['Law',                  224, '49 / 105 / 70'],
+  ['Comparative Reading',  182, '42 / 91 / 49 — paired']
 ];
 
 const LG_FAMILIES = [
-  ['Basic Linear',     200, '30 games'],
-  ['Advanced Linear',  260, '40 games'],
-  ['Grouping',         240, '40 games'],
-  ['Hybrid',           220, '30 games']
+  ['Basic Linear',     220, '70 / 100 / 50'],
+  ['Advanced Linear',  210, '45 / 95 / 70'],
+  ['Grouping',         230, '55 / 115 / 60'],
+  ['Hybrid',           221, '35 / 116 / 70']
 ];
 
 function row(cells, opts = {}) {
@@ -49,13 +50,13 @@ function row(cells, opts = {}) {
 function matrixTable() {
   const head = row(['Section / Type', 'Count', 'By difficulty 1 / 2 / 3'], { header: true });
   const body = [
-    row(['<strong>Logical Reasoning</strong>', '<strong>~2,000</strong>', '16 subtypes'], { sectionHead: true }),
+    row(['<strong>Logical Reasoning</strong>', '<strong>2,000</strong>', '16 subtypes'], { sectionHead: true }),
     ...LR_SUBTYPES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Reading Comprehension</strong>', '<strong>~1,100</strong>', '~160 passages × ~7 Q'], { sectionHead: true }),
+    row(['<strong>Reading Comprehension</strong>', '<strong>1,141</strong>', '163 passages × 7 Q'], { sectionHead: true }),
     ...RC_GENRES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Logic Games</strong>', '<strong>~900</strong>', '~140 games × ~6–7 Q'], { sectionHead: true }),
+    row(['<strong>Logic Games</strong>', '<strong>881</strong>', '177 games × ~5 Q'], { sectionHead: true }),
     ...LG_FAMILIES.map(r => row([`&nbsp;&nbsp;${r[0]}`, r[1], r[2]])),
-    row(['<strong>Grand total</strong>', '<strong>~4,000</strong>', ''], { sectionHead: true })
+    row(['<strong>Grand total</strong>', '<strong>4,022</strong>', ''], { sectionHead: true })
   ].join('');
   return `
     <div class="matrix-wrap">
@@ -77,7 +78,7 @@ export function renderAbout(mainEl) {
     <section class="card">
       <h2>What you get</h2>
       <ul>
-        <li><strong>~4,000 practice questions</strong> across Logical Reasoning, Reading Comprehension, and Logic Games — calibrated to 1★ / 2★ / 3★ difficulty against what real LSAT takers find easy, medium, or hard.</li>
+        <li><strong>4,022 practice questions</strong> across Logical Reasoning, Reading Comprehension, and Logic Games — calibrated to 1★ / 2★ / 3★ difficulty against what real LSAT takers find easy, medium, or hard.</li>
         <li><strong>Three study modes.</strong> Drill (one question at a time, instant feedback), timed section (one 35-minute section, scored at the end), and full-length test (four sections with a break, end-of-test scoring).</li>
         <li><strong>Realistic difficulty mix.</strong> Any timed section, full-length test, or drill (where you haven't pinned a difficulty) is sampled at roughly <strong>30% easy · 45% medium · 25% hard</strong> — the same mix real LSAT sections are built on — and ordered randomly within the section.</li>
         <li><strong>Writing Sample practice.</strong> 30 LSAC-style prompts. You write for 35 minutes, then get a rubric grade (A–F) with feedback on organization, argument strength, evidence use, and clarity.</li>
